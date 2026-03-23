@@ -5,12 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-date=2024-01-01",
-    "worker:dev": "cd worker && wrangler dev",
-    "worker:deploy": "cd worker && wrangler deploy"
+    "start": "next start -p ${PORT:-3000}",
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "^15.3.0",
@@ -18,7 +14,6 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
