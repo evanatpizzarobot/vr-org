@@ -1,0 +1,10 @@
+name = "vr-org-feed-worker"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[triggers]
+crons = ["*/15 * * * *"]
+
+[[kv_namespaces]]
+binding = "FEED_KV"
+id = "PLACEHOLDER_KV_ID"
