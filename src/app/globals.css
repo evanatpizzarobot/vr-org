@@ -186,6 +186,11 @@ body {
   color: #fb7185;
 }
 
+/* ===== LOGO DARK MODE ===== */
+[data-theme="dark"] .dark-logo-invert {
+  filter: brightness(1.8) contrast(0.9);
+}
+
 /* ===== TICKER ANIMATION ===== */
 @keyframes ticker-scroll {
   0% {

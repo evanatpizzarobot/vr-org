@@ -24,23 +24,12 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
       }}
     >
       <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2.5 no-underline">
-          <div
-            className="w-9 h-9 rounded-lg flex items-center justify-center font-display font-extrabold text-sm"
-            style={{
-              background: "linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta))",
-              color: "var(--bg-primary)",
-              letterSpacing: "-0.5px",
-            }}
-          >
-            VR
-          </div>
-          <div
-            className="font-display text-[22px] font-bold"
-            style={{ color: "var(--text-primary)", letterSpacing: "-0.5px" }}
-          >
-            VR<span style={{ color: "var(--accent-cyan)" }}>.org</span>
-          </div>
+        <a href="/" className="flex items-center gap-1 no-underline">
+          <img
+            src="/logo.png"
+            alt="VR.org"
+            className="h-10 w-auto dark-logo-invert"
+          />
         </a>
 
         <div className="flex items-center gap-4">

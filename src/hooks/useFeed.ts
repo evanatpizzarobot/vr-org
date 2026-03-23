@@ -49,9 +49,24 @@ export function useFeed() {
 
   useEffect(() => {
     fetchData();
-    // Poll every 5 minutes
+
+    // Retry quickly if we got no real data (feeds still loading server-side)
+    let retryCount = 0;
+    const retryInterval = setInterval(() => {
+      retryCount++;
+      if (retryCount >= 6) {
+        clearInterval(retryInterval);
+        return;
+      }
+      fetchData();
+    }, 5000);
+
+    // Poll every 5 minutes for fresh data
     const interval = setInterval(fetchData, 5 * 60 * 1000);
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(retryInterval);
+      clearInterval(interval);
+    };
   }, [fetchData]);
 
   return { articles, trending, sourceStats, lastUpdated, loading, error, refetch: fetchData };

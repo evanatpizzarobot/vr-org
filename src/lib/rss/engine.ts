@@ -13,11 +13,16 @@ let cache: FeedCache = {
 
 let refreshTimer: ReturnType<typeof setInterval> | null = null;
 let isRefreshing = false;
+let initialFetchDone = false;
 
 const REFRESH_INTERVAL = 15 * 60 * 1000; // 15 minutes
 
 export function getCache(): FeedCache {
   return cache;
+}
+
+export function isReady(): boolean {
+  return initialFetchDone;
 }
 
 function deduplicateArticles(articles: Article[]): Article[] {
@@ -91,6 +96,7 @@ export async function refreshFeed(): Promise<void> {
   );
 
   isRefreshing = false;
+  initialFetchDone = true;
 }
 
 export function startFeedEngine(): void {

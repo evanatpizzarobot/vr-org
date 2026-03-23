@@ -39,3 +39,12 @@ next-env.d.ts
 # cloudflare
 .wrangler
 .dev.vars
+
+# claude
+.claude/
+
+# data
+data/
+
+# duplicate nested dir
+vr-org/
