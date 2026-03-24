@@ -64,6 +64,16 @@ export async function GET() {
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://vr.org/best-vr-games</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vr.org/best-vr-games-2026</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
 ${articleUrls}
   <url>
     <loc>https://vr.org/about</loc>

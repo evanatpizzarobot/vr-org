@@ -56,6 +56,8 @@ export function Footer() {
             {[
               { label: "What is VR?", href: "/what-is-vr" },
               { label: "Best VR Headsets 2026", href: "/best-vr-headsets" },
+              { label: "Top 10 VR Games", href: "/best-vr-games" },
+              { label: "Best VR Games 2026", href: "/best-vr-games-2026" },
             ].map(({ label, href }, i) => (
               <span key={href}>
                 {i > 0 && " • "}
