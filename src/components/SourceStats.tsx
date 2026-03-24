@@ -28,14 +28,14 @@ export function SourceStats({ stats }: SourceStatsProps) {
         return (
           <div
             key={key}
-            className="flex items-center justify-between py-2"
+            className="flex items-center gap-3 py-2"
             style={{ borderBottom: "1px solid color-mix(in srgb, var(--border) 50%, transparent)" }}
           >
-            <span className="text-[13px] font-medium" style={{ color: "var(--text-primary)" }}>
+            <span className="text-[13px] font-medium shrink-0 w-[110px] truncate" style={{ color: "var(--text-primary)" }}>
               {name}
             </span>
             <div
-              className="flex-1 max-w-[80px] h-[3px] rounded-sm mx-3 overflow-hidden"
+              className="flex-1 h-[3px] rounded-sm overflow-hidden"
               style={{ background: "var(--border)" }}
             >
               <div
@@ -46,7 +46,7 @@ export function SourceStats({ stats }: SourceStatsProps) {
                 }}
               />
             </div>
-            <span className="font-mono text-[11px]" style={{ color: "var(--text-muted)" }}>
+            <span className="font-mono text-[11px] shrink-0 w-[24px] text-right" style={{ color: "var(--text-muted)" }}>
               {count}
             </span>
           </div>
