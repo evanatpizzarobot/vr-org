@@ -22,6 +22,7 @@ export const ORGANIZATION_SCHEMA = {
   foundingDate: "2017",
   sameAs: [
     "https://x.com/vrdotorg",
+    "https://www.youtube.com/channel/UCTKqC49lw-HF1NxlquRoc0Q",
     "https://www.facebook.com/VRorg-760203404165583/",
   ],
   contactPoint: {

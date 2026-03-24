@@ -89,6 +89,12 @@ export default function AboutPage() {
               @vrdotorg
             </a>
           </li>
+          <li>
+            YouTube:{" "}
+            <a href="https://www.youtube.com/channel/UCTKqC49lw-HF1NxlquRoc0Q" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              VR.org
+            </a>
+          </li>
         </ul>
 
         <h2 className="font-display text-2xl font-semibold mt-8 mb-4">Team</h2>
