@@ -3,6 +3,7 @@
 import type { TrendingTopic } from "@/types";
 import { SourceStats } from "./SourceStats";
 import { TrendingTopics } from "./TrendingTopics";
+import { NetActuateBanner } from "./NetActuateBanner";
 import { AdSlot } from "./AdSlot";
 
 interface SidebarProps {
@@ -14,7 +15,7 @@ export function Sidebar({ sourceStats, trending }: SidebarProps) {
   return (
     <div className="flex flex-col gap-5">
       <SourceStats stats={sourceStats} />
-      <AdSlot />
+      <NetActuateBanner />
       <TrendingTopics topics={trending} />
       <AdSlot />
     </div>

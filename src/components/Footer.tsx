@@ -23,11 +23,19 @@ export function Footer() {
           — Everything VR &amp; AR
         </div>
 
-        <div className="flex gap-5">
-          {["About", "Contact", "Privacy"].map((label) => (
+        <div className="flex gap-5 flex-wrap">
+          {[
+            { label: "Hardware", href: "/hardware" },
+            { label: "Gaming", href: "/gaming" },
+            { label: "Software", href: "/software" },
+            { label: "Enterprise", href: "/enterprise" },
+            { label: "AR", href: "/ar" },
+            { label: "About", href: "/about" },
+            { label: "Privacy", href: "/privacy" },
+          ].map(({ label, href }) => (
             <a
               key={label}
-              href={`/${label.toLowerCase()}`}
+              href={href}
               className="text-xs no-underline transition-colors hover:!text-[var(--accent-cyan)]"
               style={{ color: "var(--text-muted)" }}
             >
