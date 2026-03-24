@@ -186,6 +186,17 @@ body {
   color: #fb7185;
 }
 
+/* ===== SPONSOR BANNER ===== */
+[data-theme="light"] .sponsor-banner {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef4 100%);
+}
+[data-theme="dark"] .sponsor-banner {
+  background: linear-gradient(135deg, #1a2340 0%, #162038 100%);
+}
+[data-theme="light"] .sponsor-logo {
+  filter: brightness(0);
+}
+
 /* ===== LOGO DARK MODE ===== */
 [data-theme="dark"] .dark-logo-invert {
   filter: brightness(1.8) contrast(0.9);

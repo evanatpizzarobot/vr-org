@@ -1,44 +1,50 @@
+"use client";
+
 export function NetActuateBanner() {
   return (
     <a
       href="https://www.netactuate.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="block rounded-[10px] border no-underline transition-all hover:border-[var(--accent-cyan)] overflow-hidden"
+      className="block rounded-[10px] border no-underline transition-all hover:border-[var(--accent-cyan)] hover:translate-y-[-1px] group sponsor-banner"
       style={{
-        background: "var(--bg-card)",
         borderColor: "var(--border)",
       }}
     >
-      <div
-        className="px-4 py-3 text-center"
-        style={{
-          background: "linear-gradient(135deg, #0a1628 0%, #132240 100%)",
-        }}
-      >
-        <div className="font-display text-[15px] font-bold tracking-wide text-white mb-0.5">
-          Net<span style={{ color: "#4fc3f7" }}>Actuate</span>
-        </div>
-        <div className="text-[10px] uppercase tracking-[1.5px] text-gray-400">
-          Global Edge Infrastructure
-        </div>
-      </div>
-      <div
-        className="px-4 py-3 text-center"
-        style={{ borderTop: "1px solid var(--border)" }}
-      >
+      <div className="px-5 py-5 flex flex-col items-center text-center">
+        <span
+          className="font-mono text-[9px] font-medium uppercase tracking-[2px] mb-3"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Hosted by
+        </span>
+
+        {/* Dark mode: white logo from NetActuate docs */}
+        <img
+          src="https://www.netactuate.com/docs/img/NA-White-Logo-H.png"
+          alt="NetActuate — Global Edge Infrastructure"
+          className="max-w-[160px] w-full h-auto mb-3 sponsor-logo"
+        />
+
         <div
-          className="text-[11px] leading-[1.5]"
+          className="text-[12px] font-medium mb-0.5"
           style={{ color: "var(--text-secondary)" }}
         >
-          Powering VR.org from 40+ edge locations worldwide
+          Global Edge Infrastructure
         </div>
         <div
-          className="text-[10px] mt-1.5 font-mono"
+          className="text-[11px] mb-3"
+          style={{ color: "var(--text-muted)" }}
+        >
+          45+ locations worldwide
+        </div>
+
+        <span
+          className="font-mono text-[11px] flex items-center gap-1 group-hover:gap-2 transition-all"
           style={{ color: "var(--accent-cyan)" }}
         >
-          netactuate.com →
-        </div>
+          Learn More →
+        </span>
       </div>
     </a>
   );

@@ -67,20 +67,8 @@ export default function AboutPage() {
           </li>
           <li>
             Twitter / X:{" "}
-            <a href="https://twitter.com/vrdotorg" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+            <a href="https://x.com/vrdotorg" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
               @vrdotorg
-            </a>
-          </li>
-          <li>
-            Instagram:{" "}
-            <a href="https://instagram.com/vrdotorg" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-              @vrdotorg
-            </a>
-          </li>
-          <li>
-            YouTube:{" "}
-            <a href="https://youtube.com/@vr.org" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-              VR.org
             </a>
           </li>
         </ul>
