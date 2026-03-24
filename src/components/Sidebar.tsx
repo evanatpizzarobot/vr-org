@@ -2,9 +2,11 @@
 
 import type { TrendingTopic } from "@/types";
 import { SourceStats } from "./SourceStats";
+import { TopListWidget } from "./TopListWidget";
 import { TrendingTopics } from "./TrendingTopics";
 import { NetActuateBanner } from "./NetActuateBanner";
 import { AdSlot } from "./AdSlot";
+import { TOP_VR_GAMES_2026, TOP_VR_APPS } from "@/lib/top-lists";
 
 interface SidebarProps {
   sourceStats: Record<string, { name: string; count: number }>;
@@ -16,8 +18,10 @@ export function Sidebar({ sourceStats, trending }: SidebarProps) {
     <div className="flex flex-col gap-5">
       <SourceStats stats={sourceStats} />
       <NetActuateBanner />
-      <TrendingTopics topics={trending} />
+      <TopListWidget list={TOP_VR_GAMES_2026} />
+      <TopListWidget list={TOP_VR_APPS} />
       <AdSlot />
+      <TrendingTopics topics={trending} />
     </div>
   );
 }

@@ -21,6 +21,19 @@ interface CategoryHubProps {
   description: string;
 }
 
+const CATEGORY_GUIDES: Record<string, { label: string; href: string; description: string }[]> = {
+  gaming: [
+    { label: "Top 10 VR Games of All Time", href: "/best-vr-games", description: "The definitive ranking of the greatest VR games ever made." },
+    { label: "Best VR Games 2026", href: "/best-vr-games-2026", description: "The top VR games to play right now in 2026." },
+  ],
+  hardware: [
+    { label: "Best VR Headsets 2026", href: "/best-vr-headsets", description: "Our picks for the best VR headsets you can buy today." },
+  ],
+  software: [
+    { label: "Best VR Apps & Utilities", href: "/best-vr-apps", description: "The top VR apps for productivity, social, fitness, and more." },
+  ],
+};
+
 export function CategoryHub({ category, title, description }: CategoryHubProps) {
   const { articles, trending, sourceStats, lastUpdated, loading } = useFeed();
   const [view, setView] = useState<"full" | "compact">("full");
@@ -196,6 +209,60 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
                 {/* RSS featured articles */}
                 {featured.map((article, i) => (
                   <ArticleCard key={article.id} article={article} index={i} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Guides section */}
+          {CATEGORY_GUIDES[category] && (
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span
+                  className="font-display text-[13px] font-semibold uppercase tracking-[2px]"
+                  style={{ color: "var(--accent-cyan)" }}
+                >
+                  Guides
+                </span>
+                <div className="flex-1 h-px" style={{ background: "var(--border)" }} />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {CATEGORY_GUIDES[category].map((guide) => (
+                  <a
+                    key={guide.href}
+                    href={guide.href}
+                    className="block rounded-[10px] border no-underline transition-all group relative overflow-hidden hover:translate-y-[-1px]"
+                    style={{
+                      background: "var(--bg-card)",
+                      borderColor: "var(--border)",
+                      padding: "16px 20px",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "var(--bg-card-hover)";
+                      e.currentTarget.style.borderColor = "var(--border-active)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "var(--bg-card)";
+                      e.currentTarget.style.borderColor = "var(--border)";
+                    }}
+                  >
+                    <div
+                      className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity"
+                      style={{ background: "var(--accent-cyan)" }}
+                    />
+                    <div
+                      className="font-display font-semibold text-[15px] leading-[1.4] transition-colors group-hover:!text-[var(--accent-cyan)] mb-1"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {guide.label}
+                    </div>
+                    <div
+                      className="text-[12px] leading-[1.5]"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {guide.description}
+                    </div>
+                  </a>
                 ))}
               </div>
             </div>

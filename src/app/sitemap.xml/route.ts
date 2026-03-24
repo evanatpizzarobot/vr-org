@@ -74,6 +74,11 @@ export async function GET() {
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://vr.org/best-vr-apps</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 ${articleUrls}
   <url>
     <loc>https://vr.org/about</loc>

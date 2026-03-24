@@ -68,6 +68,12 @@ export const SOURCES: Record<
     lightColor: "#7C3AED",
     cssClass: "source-venturebeat",
   },
+  vrorg: {
+    name: "VR.org",
+    color: "#00e5ff",
+    lightColor: "#0891B2",
+    cssClass: "source-vrorg",
+  },
 };
 
 export const CATEGORIES = [
