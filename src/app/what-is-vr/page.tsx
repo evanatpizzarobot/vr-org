@@ -82,7 +82,7 @@ export default function WhatIsVRPage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Virtual reality (VR) is a technology that immerses you in a
+          Virtual Reality (VR) is a technology that immerses you in a
           computer-generated, three-dimensional environment that you can explore
           and interact with as though you were physically inside it. By wearing a
           headset that covers your eyes and ears, VR replaces the real world
