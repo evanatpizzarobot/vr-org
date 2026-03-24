@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
@@ -8,6 +8,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { AdSlot } from "@/components/AdSlot";
 import { LoadingSkeleton } from "@/components/LoadingSkeleton";
 import { useFeed } from "@/hooks/useFeed";
+import type { Article } from "@/types";
 
 interface CategoryHubProps {
   category: string;
@@ -18,7 +19,27 @@ interface CategoryHubProps {
 export function CategoryHub({ category, title, description }: CategoryHubProps) {
   const { articles, trending, sourceStats, lastUpdated, loading } = useFeed();
   const [view, setView] = useState<"full" | "compact">("full");
+  const [featured, setFeatured] = useState<Article[]>([]);
+  const [featuredLoading, setFeaturedLoading] = useState(true);
   const compact = view === "compact";
+
+  // Fetch pinned/featured articles from the server
+  useEffect(() => {
+    async function fetchFeatured() {
+      try {
+        const res = await fetch(`/api/featured?category=${category}`);
+        if (res.ok) {
+          const data = await res.json();
+          setFeatured(data.featured);
+        }
+      } catch {
+        // Featured section is optional, fail silently
+      } finally {
+        setFeaturedLoading(false);
+      }
+    }
+    fetchFeatured();
+  }, [category]);
 
   const categoryArticles = useMemo(() => {
     return articles.filter(
@@ -26,30 +47,8 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
     );
   }, [articles, category]);
 
-  // Top 5 articles as "featured" (most recent from diverse sources)
-  const featured = useMemo(() => {
-    const seen = new Set<string>();
-    const picks = [];
-    for (const a of categoryArticles) {
-      if (!seen.has(a.source)) {
-        picks.push(a);
-        seen.add(a.source);
-      }
-      if (picks.length >= 5) break;
-    }
-    // Fill remaining slots if we didn't get 5 unique sources
-    if (picks.length < 5) {
-      for (const a of categoryArticles) {
-        if (!picks.includes(a)) {
-          picks.push(a);
-        }
-        if (picks.length >= 5) break;
-      }
-    }
-    return picks;
-  }, [categoryArticles]);
-
-  const remaining = useMemo(() => {
+  // Live feed excludes any articles already shown in featured
+  const liveFeed = useMemo(() => {
     const featuredIds = new Set(featured.map((a) => a.id));
     return categoryArticles.filter((a) => !featuredIds.has(a.id));
   }, [categoryArticles, featured]);
@@ -77,8 +76,9 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
 
       <div className="max-w-[1400px] mx-auto px-6 pb-16 pt-6 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 relative z-10">
         <div>
-          {/* Featured section */}
-          {!loading && featured.length > 0 && (
+          {/* Featured / Pinned section */}
+          {featuredLoading && <LoadingSkeleton count={3} />}
+          {!featuredLoading && featured.length > 0 && (
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
                 <span
@@ -88,6 +88,12 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
                   Featured
                 </span>
                 <div className="flex-1 h-px" style={{ background: "var(--border)" }} />
+                <span
+                  className="font-mono text-[10px]"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Pinned articles
+                </span>
               </div>
               <div className="flex flex-col gap-0.5">
                 {featured.map((article, i) => (
@@ -147,7 +153,7 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
 
             {!loading && (
               <div className="flex flex-col gap-0.5">
-                {remaining.map((article, i) => (
+                {liveFeed.map((article, i) => (
                   <div key={article.id}>
                     {i > 0 && i % 6 === 0 && <AdSlot inline />}
                     <ArticleCard article={article} compact={compact} index={i} />
@@ -156,7 +162,7 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
               </div>
             )}
 
-            {!loading && remaining.length === 0 && featured.length === 0 && (
+            {!loading && liveFeed.length === 0 && featured.length === 0 && (
               <div
                 className="text-center py-16 text-sm"
                 style={{ color: "var(--text-muted)" }}

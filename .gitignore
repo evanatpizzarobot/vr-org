@@ -43,8 +43,9 @@ next-env.d.ts
 # claude
 .claude/
 
-# data
-data/
+# data (but keep the featured.json seed)
+data/*
+!data/featured.json
 
 # duplicate nested dir
 vr-org/

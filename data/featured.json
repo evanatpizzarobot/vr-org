@@ -1,0 +1,418 @@
+{
+  "hardware": [
+    {
+      "id": "8c126c16ad63b2d4",
+      "source": "uploadvr",
+      "sourceName": "UploadVR",
+      "title": "Microsoft Details Flight Simulator 2024's Upcoming PlayStation VR2 Support",
+      "snippet": "A PlayStation Blog post shares new details and insight into bringing Flight Simulator 2024 to PlayStation VR2.Announced back in September, a free update will see Microsoft Flight Simulator 2024...",
+      "link": "https://www.uploadvr.com/microsoft-details-flight-simulator-2024s-upcoming-playstation-vr2-support/",
+      "author": "James Tocchio",
+      "pubDate": "2026-03-20T21:00:24.000Z",
+      "category": "hardware",
+      "tags": [
+        "hardware",
+        "sony"
+      ],
+      "imageUrl": "https://www.uploadvr.com/content/images/2026/03/flight-sim-psvr2.webp",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "9adeae5eecebcc6e",
+      "source": "roadtovr",
+      "sourceName": "Road to VR",
+      "title": "Meta Shows Confidence in EMG Input for Wearables by Funding Six External Studies",
+      "snippet": "Meta announced it’s tapped six external teams to receive a research grant in order to advance work on its surface electromyography (sEMG) based wristband controller. Meta revealed in a blog post it’s...",
+      "link": "https://www.roadtovr.com/meta-emg-input-wearables-research-grant/",
+      "author": "Scott Hayden",
+      "pubDate": "2026-03-20T14:17:07.000Z",
+      "category": "hardware",
+      "tags": [
+        "hardware",
+        "meta"
+      ],
+      "imageUrl": "https://roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2026/03/wrist-band-meta-display-341x220.jpg",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "df07b2a44a808530",
+      "source": "ghosthowls",
+      "sourceName": "The Ghost Howls",
+      "title": "The XR Week Peek (2026.03.03): Pico teases Project Swan headset, The8thWall goes opensource, and more!",
+      "snippet": "I’m back in Italy: I’m happy to eat pasta and lasagna again, but I guess I will miss the baozi (especially the amazing ones I’ve found in Chongqing). I’m a bit tired, but quite all right. Talking...",
+      "link": "https://skarredghost.com/2026/03/03/pico-project-swan-the8thwall/",
+      "author": "Skarredghost",
+      "pubDate": "2026-03-03T18:20:02.000Z",
+      "category": "hardware",
+      "tags": [
+        "hardware",
+        "meta",
+        "apple",
+        "valve",
+        "sony"
+      ],
+      "imageUrl": "https://i0.wp.com/skarredghost.com/wp-content/uploads/2026/03/pico-project-swan-announcement.jpg?resize=640%2C360&#038;ssl=1",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "3f4f1da3d6c6f161",
+      "source": "hypergrid",
+      "sourceName": "Hypergrid Business",
+      "title": "What Mark Zuckerberg’s metaverse U-turn means for the future of virtual reality",
+      "snippet": "(Image by Maria Korolov via Adobe Firefly.) Mark Zuckerberg’s vision for the metaverse was meant to reimagine how we interact with each other and the world, providing us with an immersive world where...",
+      "link": "https://www.hypergridbusiness.com/2026/02/what-mark-zuckerbergs-metaverse-u-turn-means-for-the-future-of-virtual-reality/",
+      "author": "Per Ola Kristensson",
+      "pubDate": "2026-02-12T22:22:25.000Z",
+      "category": "hardware",
+      "tags": [
+        "hardware",
+        "meta",
+        "valve"
+      ],
+      "imageUrl": "https://www.hypergridbusiness.com/wp-content/uploads/2026/02/Firefly_metas-vision-for-the-metaverse-613x350.jpg",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "81a7cdcf82ef0395",
+      "source": "mixed",
+      "sourceName": "Mixed News",
+      "title": "An unofficial VR port of Counter-Strike 1.6 is coming to Meta Quest",
+      "snippet": "Team Beef, known for its standalone VR ports of classic games, is working on a VR version of Counter-Strike 1.6 for Quest and Pico headsets. The post An unofficial VR port of Counter-Strike 1.6 is...",
+      "link": "https://mixed-news.com/en/counter-strike-1-6-team-beef-vr-port/",
+      "author": "Tomislav Bezmalinovic",
+      "pubDate": "2025-05-28T16:00:26.000Z",
+      "category": "hardware",
+      "tags": [
+        "hardware",
+        "meta"
+      ],
+      "imageUrl": "https://mixed-news.com/en/wp-content/uploads/2025/05/Counterstrike-16.png",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    }
+  ],
+  "gaming": [
+    {
+      "id": "54dc8564b377f6fa",
+      "source": "ghosthowls",
+      "sourceName": "The Ghost Howls",
+      "title": "The XR Week Peek (2026.03.23): Meta almost shuts down Horizon Worlds VR, NVIDIA had its GTC conference, and more!",
+      "snippet": "Spring is here, and we all hope it is going to bring away some of the cold of the Winter of VR!  Before heading to the most relevant pieces of XR news of the week, let me thank Feedspot for having...",
+      "link": "https://skarredghost.com/2026/03/23/meta-shuts-horizon-worlds-gtc/",
+      "author": "Skarredghost",
+      "pubDate": "2026-03-23T22:37:48.000Z",
+      "category": "gaming",
+      "tags": [
+        "gaming",
+        "meta",
+        "apple",
+        "valve",
+        "sony"
+      ],
+      "imageUrl": "https://s.w.org/images/core/emoji/17.0.2/72x72/2764.png",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "a33d16013f408b97",
+      "source": "uploadvr",
+      "sourceName": "UploadVR",
+      "title": "Chaotic Free-To-Play VR Shooter Frenzies Shuts Down In April",
+      "snippet": "Chaotic free-to-play multiplayer VR shooter Frenzies will shut down next month, following the closure of its development studio.We previously reported that nDreams was undergoing a massive...",
+      "link": "https://www.uploadvr.com/frenzies-shuts-down-in-april/",
+      "author": "Mike Johnson",
+      "pubDate": "2026-03-23T16:54:14.000Z",
+      "category": "gaming",
+      "tags": [
+        "gaming",
+        "meta",
+        "sony"
+      ],
+      "imageUrl": "https://www.uploadvr.com/content/images/2026/03/image-7-1.png",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "3999676d8ca8a00b",
+      "source": "roadtovr",
+      "sourceName": "Road to VR",
+      "title": "VR Design Unpacked: The Incredible Details of ‘Half-Life: Alyx’",
+      "snippet": "In Inside XR Design we examine specific examples of great VR design. Today we’re looking at the details of Half-Life: Alyx and how they add an immersive layer to the game rarely found elsewhere....",
+      "link": "https://www.roadtovr.com/these-details-make-half-life-alyx-unlike-any-other-vr-game-inside-xr-design/",
+      "author": "Ben Lang",
+      "pubDate": "2026-03-23T16:17:23.000Z",
+      "category": "gaming",
+      "tags": [
+        "gaming",
+        "valve"
+      ],
+      "imageUrl": "https://roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2023/11/ixrd-alyx-thumb-341x220.jpg",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "a38194f82bb8ed2a",
+      "source": "hypergrid",
+      "sourceName": "Hypergrid Business",
+      "title": "Meta kills its VR metaverse after $84 billion in losses",
+      "snippet": "Update Mar. 19: Meta CTO Andrew Bosworth said on an Instagram AMA that Meta has reversed its decision. The link to the Instagram post is dead, but he also posted an update on Threads, which is still...",
+      "link": "https://www.hypergridbusiness.com/2026/03/meta-kills-its-vr-metaverse-after-84-billion-in-losses/",
+      "author": "Maria Korolov",
+      "pubDate": "2026-03-18T21:03:05.000Z",
+      "category": "gaming",
+      "tags": [
+        "gaming",
+        "meta"
+      ],
+      "imageUrl": "https://www.hypergridbusiness.com/wp-content/uploads/2022/12/dd407ef0-94d1-11ec-9bdf-e9862f60b9ac-647x350.webp",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "8af8afbcc8ca3c9d",
+      "source": "mixed",
+      "sourceName": "Mixed News",
+      "title": "New VR sci-fi shooter Into The Darkness impresses with elaborate graphics and physics-based action",
+      "snippet": "With its appealing graphics and physics-based action, Into The Darkness VR is arousing curiosity - the Early Access launch is imminent. The post New VR sci-fi shooter Into The Darkness impresses with...",
+      "link": "https://mixed-news.com/en/new-vr-sci-fi-shooter-into-the-darkness-impresses-with-elaborate-graphics-and-physics-based-action/",
+      "author": "Josef Erl",
+      "pubDate": "2025-05-23T08:47:27.000Z",
+      "category": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "imageUrl": "https://mixed-news.com/en/wp-content/uploads/2025/05/Into-The-Darkness-VR.jpg",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    }
+  ],
+  "software": [
+    {
+      "id": "9e847abb1f90a513",
+      "source": "uploadvr",
+      "sourceName": "UploadVR",
+      "title": "visionOS 27 Will Likely Be Unveiled On June 8",
+      "snippet": "Apple's annual Worldwide Developers Conference (WWDC) will take place on June 8 this year.The main event will be a free online livestream, and there will also be an in-person event at Apple...",
+      "link": "https://www.uploadvr.com/visionos-27-will-likely-be-unveiled-on-june-8/",
+      "author": "David Heaney",
+      "pubDate": "2026-03-23T17:45:01.000Z",
+      "category": "software",
+      "tags": [
+        "software",
+        "apple",
+        "sony"
+      ],
+      "imageUrl": "https://www.uploadvr.com/content/images/2026/03/Apple-WWDC26-event-branding.jpg",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "b5dce98d0f91b335",
+      "source": "ghosthowls",
+      "sourceName": "The Ghost Howls",
+      "title": "2Sync hands-on: true mixed reality that adapts to your real environment",
+      "snippet": "Last year, in November, I was finally able to go hands-on with 2Sync, an innovative solution that creates a compelling blend of the real and the virtual. I don’t know why I waited so long to write...",
+      "link": "https://skarredghost.com/2026/03/19/2sync-mr-impressions/",
+      "author": "Skarredghost",
+      "pubDate": "2026-03-19T15:01:56.000Z",
+      "category": "software",
+      "tags": [
+        "software",
+        "meta"
+      ],
+      "imageUrl": "https://i0.wp.com/skarredghost.com/wp-content/uploads/2026/03/2SyncTech_Functions1.jpg?resize=640%2C320&#038;ssl=1",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "66971ccd40ffdce1",
+      "source": "roadtovr",
+      "sourceName": "Road to VR",
+      "title": "Meta to Keep Existing ‘Horizon Worlds’ VR Experiences on Life Support for Time Being",
+      "snippet": "Meta previously announced it was shuttering the VR version of Horizon Worlds, but now it seems the company has changed course, revealing that some experiences will still be accessible on Quest moving...",
+      "link": "https://www.roadtovr.com/meta-keeps-horizon-worlds-vr-open/",
+      "author": "Scott Hayden",
+      "pubDate": "2026-03-19T11:17:50.000Z",
+      "category": "software",
+      "tags": [
+        "software",
+        "meta"
+      ],
+      "imageUrl": "https://roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2025/02/horizon-worlds-341x220.jpg",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "69090e0c0d1a5557",
+      "source": "hypergrid",
+      "sourceName": "Hypergrid Business",
+      "title": "OpenSim land up, actives down slightly in March",
+      "snippet": "OpenSim’s public grids gained the equivalent of more than 1,000 regions this month. That’s more than 70 square kilometers of land. The grids have also reported more than 1,000 new user registrations....",
+      "link": "https://www.hypergridbusiness.com/2026/03/opensim-land-up-actives-down-slightly-in-march/",
+      "author": "Maria Korolov",
+      "pubDate": "2026-03-15T19:09:53.000Z",
+      "category": "software",
+      "tags": [
+        "software",
+        "meta"
+      ],
+      "imageUrl": "https://www.hypergridbusiness.com/wp-content/uploads/2026/03/Hypergrid-Business-Data-Mar-2026-637x350.png",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "ba63c1d223da73d8",
+      "source": "techcrunch",
+      "sourceName": "TechCrunch",
+      "title": "2025 will be a ‘pivotal year’ for Meta’s augmented and virtual reality, says CTO",
+      "snippet": "Andrew \"Boz\" Bosworth, Meta's CTO, says 2025 will be a pivotal year for Reality Labs, the company's augmented and virtual reality unit.",
+      "link": "https://techcrunch.com/2025/06/06/2025-will-be-a-pivotal-year-for-metas-augmented-and-virtual-reality-says-cto/",
+      "author": "Rebecca Bellan",
+      "pubDate": "2025-06-06T21:52:20.000Z",
+      "category": "software",
+      "tags": [
+        "software",
+        "meta"
+      ],
+      "imageUrl": null,
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    }
+  ],
+  "enterprise": [
+    {
+      "id": "24d5a2839d7a4ae7",
+      "source": "techcrunch",
+      "sourceName": "TechCrunch",
+      "title": "Meta taps US, UK universities to test VR in education, creates digital twin ‘metaversities’ in Europe",
+      "snippet": "As part of an ongoing effort to embed virtual reality (VR) in education, Meta has launched a new partnership with a slew of universities in the U.S. and U.K., designed to provide feedback on a new...",
+      "link": "https://techcrunch.com/2024/11/11/meta-taps-us-uk-universities-to-test-vr-in-education-creates-digital-twin-metaversities-in-europe/",
+      "author": "Paul Sawers",
+      "pubDate": "2024-11-11T14:33:43.000Z",
+      "category": "enterprise",
+      "tags": [
+        "enterprise",
+        "meta"
+      ],
+      "imageUrl": null,
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "d0e08af9c34d2d96",
+      "source": "techcrunch",
+      "sourceName": "TechCrunch",
+      "title": "ArborXR secures $12M to boost its management platform for AR and VR devices",
+      "snippet": "ArborXR, a startup that helps companies remotely manage AR and VR devices, believed that enterprise customers would be the primary targets for AR and VR devices. Now, that bet is paying off. On...",
+      "link": "https://techcrunch.com/2024/08/13/arborxr-secures-12m-to-boost-management-platform-for-ar-and-vr-devices/",
+      "author": "Lauren Forristal",
+      "pubDate": "2024-08-13T14:30:00.000Z",
+      "category": "enterprise",
+      "tags": [
+        "enterprise"
+      ],
+      "imageUrl": null,
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    }
+  ],
+  "ar": [
+    {
+      "id": "dedaa91993186622",
+      "source": "uploadvr",
+      "sourceName": "UploadVR",
+      "title": "Subcontractors See Intimate Meta AI Visual Queries From Smart Glasses",
+      "snippet": "Subcontractors see intimate Meta AI visual queries from the company's smart glasses, sometimes accidentally triggered, a report from two Swedish newspapers revealed.Svenska Dagbladet and...",
+      "link": "https://www.uploadvr.com/subcontractors-see-intimate-meta-ai-visual-queries-from-smart-glasses/",
+      "author": "David Heaney",
+      "pubDate": "2026-03-15T15:23:54.000Z",
+      "category": "ar",
+      "tags": [
+        "ar",
+        "meta",
+        "apple"
+      ],
+      "imageUrl": "https://www.uploadvr.com/content/images/2026/03/Svenska-Dagbladet-smart-glasses-privacy-feature-image.png",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "047091be2ab76e5c",
+      "source": "xrnews",
+      "sourceName": "Extended Reality News",
+      "title": "Beyond the Screen: How Extended Reality Is Reshaping Our World",
+      "snippet": "We are standing at the edge of a profound shift in how human beings perceive and interact with reality itself. Extended Reality — the umbrella term encompassing Virtual Reality (VR), Augmented...",
+      "link": "https://extendedreality.news/beyond-the-screen-how-extended-reality-is-reshaping-our-world/",
+      "author": "Sharad Saxena",
+      "pubDate": "2026-03-05T09:02:18.000Z",
+      "category": "ar",
+      "tags": [
+        "ar"
+      ],
+      "imageUrl": null,
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "905a092956b7b5d5",
+      "source": "mixed",
+      "sourceName": "Mixed News",
+      "title": "XR weekly round-up: Valve’s VR headset delayed to 2026, Meta Quest gets a new UI, and Xreal glasses go 6DoF",
+      "snippet": "Google shows display smart glasses, Apple's AR headset not until 2026, Xreal Eye turns One into 6DoF glasses and new UI for Quest... The post XR weekly round-up: Valve’s VR headset delayed to 2026,...",
+      "link": "https://mixed-news.com/en/xr-update-21-2025/",
+      "author": "Josef Erl",
+      "pubDate": "2025-05-24T08:00:15.000Z",
+      "category": "ar",
+      "tags": [
+        "ar",
+        "meta",
+        "apple",
+        "valve"
+      ],
+      "imageUrl": "https://mixed-news.com/en/wp-content/uploads/2025/05/XR-Update-21-2025.jpg",
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "6d9632443904325e",
+      "source": "techcrunch",
+      "sourceName": "TechCrunch",
+      "title": "Sony’s PS VR2 is getting compatibility, possibly by end of year",
+      "snippet": "PlayStation VR often gets overlooked in conversations about mixed reality. These days, it seems all anyone wants to talk about is Apple Vision Pro versus Meta Quest. But Sony has been an enduring...",
+      "link": "https://techcrunch.com/2024/02/22/sonys-ps-vr2-is-getting-compatibility-possibly-by-end-of-year/",
+      "author": "Brian Heater",
+      "pubDate": "2024-02-22T19:23:58.000Z",
+      "category": "ar",
+      "tags": [
+        "ar",
+        "meta",
+        "apple",
+        "sony"
+      ],
+      "imageUrl": null,
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "61b0a0315a9c66f5",
+      "source": "xrnews",
+      "sourceName": "Extended Reality News",
+      "title": "Extended Reality 2026: How AR, VR, and MR Will Transform Our Digital World",
+      "snippet": "The year 2026 is set to mark a massive leap in Extended Reality (XR) — the powerful fusion of Augmented Reality (AR), Virtual Reality (VR), and Mixed Reality (MR). These immersive technologies are...",
+      "link": "https://extendedreality.news/extended-reality-2026-how-ar-vr-and-mr-will-transform-our-digital-world/",
+      "author": "extendedreality",
+      "pubDate": "2025-10-11T07:07:05.000Z",
+      "category": "ar",
+      "tags": [
+        "ar"
+      ],
+      "imageUrl": null,
+      "pinnedAt": "2026-03-24T01:09:49.720Z",
+      "expiresAt": "2026-04-23T01:09:49.720Z"
+    }
+  ]
+}

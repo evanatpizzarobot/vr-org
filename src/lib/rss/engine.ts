@@ -2,6 +2,7 @@ import type { Article, FeedCache, SourceMeta } from "./types";
 import { RSS_SOURCES } from "./sources";
 import { fetchSource } from "./fetcher";
 import { computeTrending } from "./trending";
+import { refreshFeatured } from "@/lib/featured";
 
 // ===== In-Memory Cache =====
 let cache: FeedCache = {
@@ -94,6 +95,13 @@ export async function refreshFeed(): Promise<void> {
   console.log(
     `[VR.org] Feed refreshed: ${trimmed.length} articles from ${okCount}/${RSS_SOURCES.length} sources`
   );
+
+  // Auto-populate featured articles for category pages
+  try {
+    refreshFeatured(trimmed);
+  } catch (err) {
+    console.error("[VR.org] Failed to refresh featured articles:", err);
+  }
 
   isRefreshing = false;
   initialFetchDone = true;
