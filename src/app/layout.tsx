@@ -64,6 +64,12 @@ export default function RootLayout({
         />
         <StructuredData data={ORGANIZATION_SCHEMA} />
         <StructuredData data={WEBSITE_SCHEMA} />
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7224757913262984"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         <div className="ambient-bg" />
