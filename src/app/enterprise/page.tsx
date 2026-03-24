@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     url: "https://vr.org/enterprise",
     siteName: "VR.org",
   },
+  alternates: {
+    canonical: "https://vr.org/enterprise",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Enterprise XR News | VR.org",

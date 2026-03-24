@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     url: "https://vr.org/hardware",
     siteName: "VR.org",
   },
+  alternates: {
+    canonical: "https://vr.org/hardware",
+  },
   twitter: {
     card: "summary_large_image",
     title: "VR & AR Hardware News | VR.org",

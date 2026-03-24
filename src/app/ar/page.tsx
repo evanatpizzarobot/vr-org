@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     url: "https://vr.org/ar",
     siteName: "VR.org",
   },
+  alternates: {
+    canonical: "https://vr.org/ar",
+  },
   twitter: {
     card: "summary_large_image",
     title: "AR & Spatial Computing News | VR.org",

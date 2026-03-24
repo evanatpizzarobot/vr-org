@@ -9,6 +9,11 @@ import { AdSlot } from "@/components/AdSlot";
 import { LoadingSkeleton } from "@/components/LoadingSkeleton";
 import { useFeed } from "@/hooks/useFeed";
 import type { Article } from "@/types";
+import {
+  StructuredData,
+  breadcrumbSchema,
+  categoryPageSchema,
+} from "@/components/StructuredData";
 
 interface CategoryHubProps {
   category: string;
@@ -55,6 +60,19 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
 
   return (
     <>
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "VR.org", url: "https://vr.org" },
+          { name: title, url: `https://vr.org/${category}` },
+        ])}
+      />
+      <StructuredData
+        data={categoryPageSchema(
+          `${title} — VR & AR News`,
+          description,
+          `https://vr.org/${category}`
+        )}
+      />
       <Header articleCount={categoryArticles.length} lastUpdated={lastUpdated} />
 
       <div

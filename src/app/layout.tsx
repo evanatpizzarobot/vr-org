@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeScript } from "@/components/ThemeScript";
+import {
+  StructuredData,
+  ORGANIZATION_SCHEMA,
+  WEBSITE_SCHEMA,
+} from "@/components/StructuredData";
 
 export const metadata: Metadata = {
   title: "VR.org — Virtual Reality & Augmented Reality News",
@@ -13,12 +18,27 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://vr.org",
     siteName: "VR.org",
+    images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "VR.org — Virtual Reality & Augmented Reality News",
     description:
       "Real-time VR, AR, and XR news aggregated from the world's top sources.",
+    images: ["https://vr.org/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://vr.org",
+    types: {
+      "application/rss+xml": "https://vr.org/feed.xml",
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -31,7 +51,6 @@ export default function RootLayout({
     <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         <ThemeScript />
-        {/* Google Search Console verification — replace content value with actual code */}
         <meta name="google-site-verification" content="cfkAakzduCtr-941_j8S-6S9ZGXylJLE1r9kn1HU1F8" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -43,6 +62,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
+        <StructuredData data={ORGANIZATION_SCHEMA} />
+        <StructuredData data={WEBSITE_SCHEMA} />
       </head>
       <body>
         <div className="ambient-bg" />
