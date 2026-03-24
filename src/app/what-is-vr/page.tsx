@@ -6,11 +6,11 @@ import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 export const metadata: Metadata = {
   title: "What is Virtual Reality? The Complete Guide to VR | VR.org",
   description:
-    "What is virtual reality? Learn how VR works, the different types of VR headsets, what you can do in VR, and where the technology is heading. VR explained clearly.",
+    "What is Virtual Reality? Learn how VR works, the different types of VR headsets, what you can do in VR, and where the technology is heading. VR explained clearly.",
   openGraph: {
     title: "What is Virtual Reality? The Complete Guide to VR | VR.org",
     description:
-      "Everything you need to know about virtual reality — how it works, types of headsets, use cases, and the future of VR.",
+      "Everything you need to know about Virtual Reality: how it works, types of headsets, use cases, and the future of VR.",
     url: "https://vr.org/what-is-vr",
     siteName: "VR.org",
     images: [
@@ -35,7 +35,7 @@ export default function WhatIsVRPage() {
     "@type": "Article",
     headline: "What is Virtual Reality? The Complete Guide to VR",
     description:
-      "Everything you need to know about virtual reality — how it works, types of headsets, use cases, history, and the future of VR technology.",
+      "Everything you need to know about Virtual Reality: how it works, types of headsets, use cases, history, and the future of VR technology.",
     url: "https://vr.org/what-is-vr",
     datePublished: "2026-03-23",
     dateModified: "2026-03-23",
@@ -86,7 +86,7 @@ export default function WhatIsVRPage() {
           computer-generated, three-dimensional environment that you can explore
           and interact with as though you were physically inside it. By wearing a
           headset that covers your eyes and ears, VR replaces the real world
-          around you with a simulated one — whether that&apos;s the surface of
+          around you with a simulated one. Whether that&apos;s the surface of
           Mars, the cockpit of a fighter jet, or a fantastical game world that
           couldn&apos;t exist in real life. It&apos;s one of the most
           transformative technologies of the 21st century, reshaping how we play,
@@ -102,7 +102,7 @@ export default function WhatIsVRPage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          At its core, virtual reality is the creation of an immersive digital
+          At its core, Virtual Reality is the creation of an immersive digital
           environment that tricks your senses into believing you are somewhere
           else. A VR system typically consists of a head-mounted display (HMD)
           with high-resolution screens positioned close to your eyes, lenses that
@@ -110,7 +110,7 @@ export default function WhatIsVRPage() {
           scale, motion-tracking sensors that follow the position and rotation of
           your head in real time, and spatial audio that adjusts dynamically
           based on where you&apos;re looking. The result is a feeling of
-          &quot;presence&quot; — the psychological sensation that you truly
+          &quot;presence,&quot; the psychological sensation that you truly
           occupy the virtual space. When VR is done well, your brain responds to
           the simulated environment much the way it would to the real one:
           heights feel vertigo-inducing, close objects feel reachable, and spaces
@@ -127,7 +127,7 @@ export default function WhatIsVRPage() {
           style={{ color: "var(--text-secondary)" }}
         >
           A VR headset works by presenting a slightly different image to each eye
-          — the same principle behind stereoscopic 3D — while filling as much of
+          using the same principle behind stereoscopic 3D, while filling as much of
           your peripheral vision as possible. Modern headsets typically use LCD
           or micro-OLED panels running at 90 Hz or higher, because lower refresh
           rates can cause discomfort and motion sickness. Pancake lenses or
@@ -142,7 +142,7 @@ export default function WhatIsVRPage() {
           <strong>Tracking</strong> is what makes VR interactive rather than just
           a passive viewing experience. Most modern headsets use inside-out
           tracking, where cameras mounted on the headset itself scan your
-          environment and determine your position and orientation — this is
+          environment and determine your position and orientation. This is
           called six degrees of freedom (6DoF), meaning the headset tracks
           movement along three positional axes (forward/back, left/right,
           up/down) and three rotational axes (pitch, yaw, roll). Older systems
@@ -170,7 +170,7 @@ export default function WhatIsVRPage() {
           audio engines position sounds in 3D space around you, so a voice to
           your left actually sounds like it&apos;s coming from your left.
           Haptic feedback in controllers provides vibrations and resistance that
-          simulate touch — and emerging accessories like haptic vests and gloves
+          simulate touch, and emerging accessories like haptic vests and gloves
           are pushing tactile feedback even further.
         </p>
 
@@ -189,7 +189,7 @@ export default function WhatIsVRPage() {
           Standalone headsets are self-contained, all-in-one devices that
           don&apos;t require a PC, console, or phone to operate. The processor,
           battery, storage, display, and tracking hardware are all built into the
-          headset itself. Meta&apos;s Quest line is the most prominent example —
+          headset itself. Meta&apos;s Quest line is the most prominent example.
           the Quest 3 and Quest 3S brought mixed reality capabilities and
           improved processing power to a sub-$500 price point, making VR more
           accessible than ever. Standalone headsets are the dominant form factor
@@ -234,9 +234,9 @@ export default function WhatIsVRPage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Mobile VR — where you slid a smartphone into a headset shell like
-          Google Cardboard or Samsung Gear VR — was many people&apos;s first
-          taste of virtual reality in the mid-2010s. The experience was limited
+          Mobile VR was a category where you slid a smartphone into a headset shell like
+          Google Cardboard or Samsung Gear VR. It was many people&apos;s first
+          taste of Virtual Reality in the mid-2010s. The experience was limited
           to three degrees of freedom (head rotation only, no positional
           tracking) and relied on the phone&apos;s processing power. The
           category has been almost entirely supplanted by affordable standalone
@@ -258,9 +258,9 @@ export default function WhatIsVRPage() {
           <em>Half-Life: Alyx</em>, <em>Beat Saber</em>,{" "}
           <em>Asgard&apos;s Wrath 2</em>, <em>Resident Evil 4 VR</em>, and{" "}
           <em>Batman: Arkham Shadow</em> have shown that VR gaming can deliver
-          experiences impossible on a flat screen. The physicality of VR — using
+          experiences impossible on a flat screen. The physicality of VR, using
           your actual hands to reload a weapon, swing a sword, or duck behind
-          cover — creates a level of immersion that traditional gaming
+          cover, creates a level of immersion that traditional gaming
           can&apos;t match. The VR gaming library has grown enormously, spanning
           shooters, puzzle games, RPGs, rhythm games, simulators, and horror.
         </p>
@@ -275,7 +275,7 @@ export default function WhatIsVRPage() {
           user-created worlds as customizable avatars. VRChat in particular has
           cultivated a massive community of creators who build intricate worlds
           and avatars. Social VR is where many people spend the most time in
-          their headsets — it&apos;s less about a specific app and more about
+          their headsets. It&apos;s less about a specific app and more about
           the emergent social experiences that arise when people share a virtual
           space.
         </p>
@@ -308,8 +308,8 @@ export default function WhatIsVRPage() {
           entering a real cockpit. Retail and manufacturing workers practice
           scenarios through companies like Strivr and Transfr. Military
           organizations use VR for combat training and situational awareness
-          exercises. The ability to learn by doing — rather than by reading or
-          watching — makes VR uniquely effective for skill-based training, with
+          exercises. The ability to learn by doing, rather than by reading or
+          watching, makes VR uniquely effective for skill-based training, with
           studies consistently showing improved retention rates compared to
           traditional methods.
         </p>
@@ -373,7 +373,7 @@ export default function WhatIsVRPage() {
           <li>
             <strong>Augmented Reality (AR)</strong> overlays digital content onto
             the real world. You still see your actual surroundings, with virtual
-            objects layered on top — think smartphone AR apps or smart glasses.
+            objects layered on top, such as smartphone AR apps or smart glasses.
           </li>
           <li>
             <strong>Mixed Reality (MR)</strong> blends virtual and real elements
@@ -384,7 +384,7 @@ export default function WhatIsVRPage() {
           </li>
           <li>
             <strong>Extended Reality (XR)</strong> is the umbrella term that
-            encompasses VR, AR, and MR — essentially any technology that alters
+            encompasses VR, AR, and MR. It is essentially any technology that alters
             your perception of reality with computer-generated content.
           </li>
         </ul>
@@ -415,14 +415,14 @@ export default function WhatIsVRPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The idea of virtual reality is older than most people realize. In 1962,
+          The idea of Virtual Reality is older than most people realize. In 1962,
           filmmaker Morton Heilig built the Sensorama, a mechanical device that
           combined 3D film, stereo sound, vibrations, and even scent to create
           an immersive experience. In the 1980s, Jaron Lanier&apos;s company VPL
-          Research coined the term &quot;virtual reality&quot; and built some of
+          Research coined the term &quot;Virtual Reality&quot; and built some of
           the first commercial VR headsets and data gloves. The early 1990s
-          brought a wave of VR hype — Nintendo released the ill-fated Virtual
-          Boy in 1995, and VR arcades appeared in shopping malls — but the
+          brought a wave of VR hype. Nintendo released the ill-fated Virtual
+          Boy in 1995, and VR arcades appeared in shopping malls. But the
           technology simply wasn&apos;t ready for mainstream adoption.
         </p>
 
@@ -434,8 +434,8 @@ export default function WhatIsVRPage() {
           Rift Kickstarter, demonstrating that smartphone-grade screens and
           sensors could deliver convincing VR at consumer-friendly prices.
           Facebook acquired Oculus in 2014 for $2 billion, signaling serious
-          corporate investment. The first consumer VR headsets shipped in 2016 —
-          the Oculus Rift CV1, HTC Vive, and PlayStation VR — launching what many
+          corporate investment. The first consumer VR headsets shipped in 2016:
+          the Oculus Rift CV1, HTC Vive, and PlayStation VR, launching what many
           consider the true beginning of consumer VR.
         </p>
 
@@ -449,7 +449,7 @@ export default function WhatIsVRPage() {
           all time, selling over 20 million units. Apple entered the space in
           2024 with the Vision Pro, a high-end spatial computing headset that
           blurred the line between VR and AR. By 2026, the VR industry has
-          matured significantly — headsets are lighter, displays are sharper,
+          matured significantly. Headsets are lighter, displays are sharper,
           content libraries are deep, and the technology has found footing in
           both consumer and enterprise markets.
         </p>
@@ -464,7 +464,7 @@ export default function WhatIsVRPage() {
           style={{ color: "var(--text-secondary)" }}
         >
           VR technology is advancing rapidly across multiple fronts. Headsets are
-          getting dramatically lighter and more comfortable — the era of bulky,
+          getting dramatically lighter and more comfortable. The era of bulky,
           front-heavy goggles is giving way to slim, glasses-like form factors
           enabled by micro-OLED displays and pancake optics. Display resolution
           is approaching the point where individual pixels are imperceptible,
@@ -476,8 +476,8 @@ export default function WhatIsVRPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Eye tracking and foveated rendering — where the headset only renders
-          full detail where you&apos;re actually looking — are becoming standard
+          Eye tracking and foveated rendering, where the headset only renders
+          full detail where you&apos;re actually looking, are becoming standard
           features, enabling better visuals with less processing power. AI is
           being integrated into VR experiences for smarter NPCs, real-time
           environment generation, and more natural avatar interactions. Neural
@@ -517,7 +517,7 @@ export default function WhatIsVRPage() {
           adults. The lenses in a VR headset focus the image at a distance of
           about 1.5 to 2 meters, so your eyes aren&apos;t straining to focus on
           a close-up screen the way they might with a phone. However, extended
-          sessions can cause temporary eye strain, dry eyes, or fatigue — the
+          sessions can cause temporary eye strain, dry eyes, or fatigue, the
           same symptoms associated with prolonged use of any screen. Taking
           regular breaks (every 30-60 minutes) is recommended. For children,
           most manufacturers suggest age 13+ due to ongoing visual development.
@@ -531,7 +531,7 @@ export default function WhatIsVRPage() {
           style={{ color: "var(--text-secondary)" }}
         >
           Not anymore. Standalone headsets like the Meta Quest 3 and Quest 3S
-          work entirely on their own — no PC required. You just put the headset
+          work entirely on their own with no PC required. You just put the headset
           on and go. However, if you want to use a PC VR headset (like the Valve
           Index or Bigscreen Beyond) or stream PC VR games wirelessly to a
           standalone headset, you&apos;ll need a gaming PC with a modern GPU. A
@@ -600,7 +600,7 @@ export default function WhatIsVRPage() {
         >
           Some people experience motion sickness (often called
           &quot;cybersickness&quot;) in VR, particularly in experiences that
-          involve artificial locomotion — where your virtual body moves but your
+          involve artificial locomotion, where your virtual body moves but your
           real body stays still. However, many VR apps use comfort features like
           teleportation movement, vignettes during motion, and snap turning to
           minimize this. Most users find that they build tolerance over time with
@@ -630,7 +630,7 @@ export default function WhatIsVRPage() {
             >
               VR Hardware News
             </a>{" "}
-            — The latest on headsets, controllers, and accessories
+            - The latest on headsets, controllers, and accessories
           </li>
           <li>
             <a
@@ -640,7 +640,7 @@ export default function WhatIsVRPage() {
             >
               Best VR Headsets
             </a>{" "}
-            — Our guide to the top headsets you can buy right now
+            - Our guide to the top headsets you can buy right now
           </li>
           <li>
             <a
@@ -650,7 +650,7 @@ export default function WhatIsVRPage() {
             >
               VR.org Home
             </a>{" "}
-            — Real-time VR, AR, and XR news from around the web
+            - Real-time VR, AR, and XR news from around the web
           </li>
         </ul>
       </main>
