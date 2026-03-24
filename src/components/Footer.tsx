@@ -20,7 +20,7 @@ export function Footer() {
           >
             VR.org
           </a>{" "}
-          — Everything VR &amp; AR
+          | Everything VR &amp; AR
         </div>
 
         <div className="flex gap-5 flex-wrap">

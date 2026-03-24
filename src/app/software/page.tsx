@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
 
 export const metadata: Metadata = {
-  title: "VR & AR Software News — Platforms, Apps & Tools | VR.org",
+  title: "VR & AR Software News - Platforms, Apps & Tools | VR.org",
   description:
     "Virtual reality and augmented reality software news. Platform updates, SDK releases, social VR, creator tools, and spatial computing applications.",
   openGraph: {
-    title: "VR & AR Software News — Platforms, Apps & Tools | VR.org",
+    title: "VR & AR Software News - Platforms, Apps & Tools | VR.org",
     description: "Virtual reality and augmented reality software news. Platform updates, SDK releases, and spatial computing applications.",
     url: "https://vr.org/software",
     siteName: "VR.org",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "VR & AR Software News | VR.org",
-    description: "VR and AR software news — platforms, SDKs, apps, and tools.",
+    description: "VR and AR software news - platforms, SDKs, apps, and tools.",
   },
 };
 

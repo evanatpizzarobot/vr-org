@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
 
 export const metadata: Metadata = {
-  title: "Enterprise XR News — Business, Training & Industry | VR.org",
+  title: "Enterprise XR News - Business, Training & Industry | VR.org",
   description:
     "Enterprise VR and AR news. XR adoption in business, training, healthcare, manufacturing, investment trends, and industry analysis.",
   openGraph: {
-    title: "Enterprise XR News — Business, Training & Industry | VR.org",
+    title: "Enterprise XR News - Business, Training & Industry | VR.org",
     description: "Enterprise VR and AR news. XR adoption in business, training, healthcare, and industry analysis.",
     url: "https://vr.org/enterprise",
     siteName: "VR.org",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Enterprise XR News | VR.org",
-    description: "Enterprise VR and AR news — business adoption, training, and investment.",
+    description: "Enterprise VR and AR news - business adoption, training, and investment.",
   },
 };
 

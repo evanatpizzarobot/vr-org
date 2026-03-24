@@ -22,7 +22,7 @@ export function NetActuateBanner() {
         {/* Dark mode: white logo from NetActuate docs */}
         <img
           src="https://www.netactuate.com/docs/img/NA-White-Logo-H.png"
-          alt="NetActuate — Global Edge Infrastructure"
+          alt="NetActuate - Global Edge Infrastructure"
           className="max-w-[160px] w-full h-auto mb-3 sponsor-logo"
         />
 

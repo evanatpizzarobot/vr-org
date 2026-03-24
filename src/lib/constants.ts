@@ -209,7 +209,7 @@ export const MOCK_ARTICLES = [
     id: "9",
     source: "uploadvr",
     sourceName: "UploadVR",
-    title: "The Boys: Trigger Warning — Amazon's Hit Series Coming to VR",
+    title: "The Boys: Trigger Warning - Amazon's Hit Series Coming to VR",
     snippet:
       "Amazon announced an immersive VR adventure based on The Boys franchise, promising action-packed gameplay in the show's signature irreverent style.",
     link: "https://uploadvr.com",
@@ -279,7 +279,7 @@ export const MOCK_ARTICLES = [
     id: "14",
     source: "venturebeat",
     sourceName: "VentureBeat",
-    title: "AWE USA 2026 Returns to Long Beach This June — Largest XR Conference Yet",
+    title: "AWE USA 2026 Returns to Long Beach This June - Largest XR Conference Yet",
     snippet:
       "The annual Augmented World Expo is set for June 15-18 in Long Beach, California, promising its biggest lineup of speakers and demos focused on spatial computing.",
     link: "https://venturebeat.com",
@@ -349,7 +349,7 @@ export const MOCK_ARTICLES = [
     id: "19",
     source: "theverge",
     sourceName: "The Verge",
-    title: "Microsoft Announces Project Helix — Next Xbox Console Codename Revealed",
+    title: "Microsoft Announces Project Helix - Next Xbox Console Codename Revealed",
     snippet:
       "While details are sparse, Microsoft's next console announcement has the VR community speculating about potential mixed reality integration.",
     link: "https://www.theverge.com",

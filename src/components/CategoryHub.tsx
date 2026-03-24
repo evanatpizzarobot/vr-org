@@ -91,7 +91,7 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
       />
       <StructuredData
         data={categoryPageSchema(
-          `${title} — VR & AR News`,
+          `${title} | VR & AR News`,
           description,
           `https://vr.org/${category}`
         )}

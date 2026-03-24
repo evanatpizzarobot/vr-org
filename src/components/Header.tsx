@@ -107,7 +107,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
         </div>
       </div>
 
-      {/* Mobile nav — horizontally scrollable */}
+      {/* Mobile nav - horizontally scrollable */}
       <nav
         className="md:hidden flex items-center gap-4 px-4 pb-2 overflow-x-auto"
         style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}

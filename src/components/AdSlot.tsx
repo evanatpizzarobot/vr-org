@@ -16,7 +16,7 @@ export function AdSlot({ inline }: AdSlotProps) {
     >
       Ad Space
       <br />
-      — Google AdSense —
+      Google AdSense
     </div>
   );
 }

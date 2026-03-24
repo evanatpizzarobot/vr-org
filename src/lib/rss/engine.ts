@@ -119,7 +119,7 @@ export function startFeedEngine(): void {
   }, REFRESH_INTERVAL);
 
   console.log(
-    `[VR.org] Feed engine started — refreshing every ${REFRESH_INTERVAL / 60000} minutes`
+    `[VR.org] Feed engine started - refreshing every ${REFRESH_INTERVAL / 60000} minutes`
   );
 }
 
