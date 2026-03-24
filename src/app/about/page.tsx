@@ -60,15 +60,49 @@ export default function AboutPage() {
         <h2 className="font-display text-2xl font-semibold mb-4">Connect with us</h2>
         <ul className="text-[15px] leading-[1.7] list-none flex flex-col gap-2" style={{ color: "var(--text-secondary)" }}>
           <li>
-            Email:{" "}
+            General inquiries:{" "}
             <a href="mailto:contact@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
               contact@vr.org
+            </a>
+          </li>
+          <li>
+            Advertising &amp; sponsorships:{" "}
+            <a href="mailto:advertise@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              advertise@vr.org
+            </a>
+          </li>
+          <li>
+            Press &amp; media:{" "}
+            <a href="mailto:press@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              press@vr.org
             </a>
           </li>
           <li>
             Twitter / X:{" "}
             <a href="https://x.com/vrdotorg" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
               @vrdotorg
+            </a>
+          </li>
+        </ul>
+
+        <h2 className="font-display text-2xl font-semibold mt-8 mb-4">Team</h2>
+        <ul className="text-[15px] leading-[1.7] list-none flex flex-col gap-2" style={{ color: "var(--text-secondary)" }}>
+          <li>
+            Evan —{" "}
+            <a href="mailto:evan@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              evan@vr.org
+            </a>
+          </li>
+          <li>
+            Mark —{" "}
+            <a href="mailto:mark@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              mark@vr.org
+            </a>
+          </li>
+          <li>
+            Sandy —{" "}
+            <a href="mailto:sandy@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              sandy@vr.org
             </a>
           </li>
         </ul>
