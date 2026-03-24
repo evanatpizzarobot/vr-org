@@ -2,8 +2,14 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata = {
-  title: "Privacy Policy — VR.org",
-  description: "VR.org privacy policy — how we handle your data.",
+  title: "Privacy Policy | VR.org",
+  description: "VR.org privacy policy. How we handle data, cookies, and third-party services.",
+  openGraph: {
+    title: "Privacy Policy | VR.org",
+    description: "VR.org privacy policy. How we handle data, cookies, and third-party services.",
+    url: "https://vr.org/privacy",
+    siteName: "VR.org",
+  },
 };
 
 export default function PrivacyPage() {

@@ -2,13 +2,19 @@ import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
 
 export const metadata: Metadata = {
-  title: "VR Gaming News — Games, Launches & Studios | VR.org",
+  title: "VR Gaming News — Games, Launches & Reviews | VR.org",
   description:
-    "Latest VR gaming news. Game launches, trailers, studio announcements, mods, and reviews across Quest, PCVR, PSVR 2, and more.",
+    "Breaking VR gaming news. New game announcements, trailers, release dates, reviews, and updates from the top VR gaming studios and platforms.",
   openGraph: {
-    title: "VR Gaming News | VR.org",
-    description: "Latest VR gaming news — launches, trailers, studios, and reviews.",
+    title: "VR Gaming News — Games, Launches & Reviews | VR.org",
+    description: "Breaking VR gaming news. New game announcements, trailers, release dates, reviews, and updates.",
     url: "https://vr.org/gaming",
+    siteName: "VR.org",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VR Gaming News | VR.org",
+    description: "Breaking VR gaming news — launches, trailers, studios, and reviews.",
   },
 };
 

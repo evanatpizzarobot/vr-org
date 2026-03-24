@@ -1,6 +1,16 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
+
+const NAV_ITEMS = [
+  { label: "Feed", href: "/" },
+  { label: "Hardware", href: "/hardware" },
+  { label: "Gaming", href: "/gaming" },
+  { label: "Software", href: "/software" },
+  { label: "Enterprise", href: "/enterprise" },
+  { label: "AR", href: "/ar" },
+];
 
 interface HeaderProps {
   articleCount: number;
@@ -8,6 +18,7 @@ interface HeaderProps {
 }
 
 export function Header({ articleCount, lastUpdated }: HeaderProps) {
+  const pathname = usePathname();
   const timeStr = lastUpdated
     ? new Date(lastUpdated).toLocaleTimeString([], {
         hour: "2-digit",
@@ -24,17 +35,46 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
       }}
     >
       <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-1 no-underline">
-          <img
-            src="/logo.png"
-            alt="VR.org"
-            className="h-10 w-auto dark-logo-invert"
-          />
-        </a>
+        <div className="flex items-center gap-6">
+          <a href="/" className="flex items-center gap-1 no-underline flex-shrink-0">
+            <img
+              src="/logo.png"
+              alt="VR.org"
+              className="h-10 w-auto dark-logo-invert"
+            />
+          </a>
 
-        <div className="flex items-center gap-4">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-5">
+            {NAV_ITEMS.map(({ label, href }) => {
+              const isActive = pathname === href;
+              return (
+                <a
+                  key={href}
+                  href={href}
+                  className="text-[13px] font-medium no-underline transition-colors whitespace-nowrap"
+                  style={{
+                    color: isActive ? "var(--accent-cyan)" : "var(--text-secondary)",
+                    borderBottom: isActive ? "2px solid var(--accent-cyan)" : "2px solid transparent",
+                    paddingBottom: "2px",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) e.currentTarget.style.color = "var(--accent-cyan)";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) e.currentTarget.style.color = "var(--text-secondary)";
+                  }}
+                >
+                  {label}
+                </a>
+              );
+            })}
+          </nav>
+        </div>
+
+        <div className="flex items-center gap-4 flex-shrink-0">
           <div
-            className="w-2 h-2 rounded-full"
+            className="w-2 h-2 rounded-full hidden sm:block"
             style={{
               background: "var(--accent-green)",
               boxShadow: "0 0 8px var(--accent-green)",
@@ -42,14 +82,14 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
             }}
           />
           <span
-            className="font-mono text-[11px] uppercase tracking-[1.5px]"
+            className="font-mono text-[11px] uppercase tracking-[1.5px] hidden sm:inline"
             style={{ color: "var(--accent-green)" }}
           >
-            Live Feed
+            Live
           </span>
           {articleCount > 0 && (
             <span
-              className="font-mono text-xs hidden sm:inline"
+              className="font-mono text-xs hidden lg:inline"
               style={{ color: "var(--text-muted)" }}
             >
               {articleCount} articles
@@ -57,7 +97,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
           )}
           {timeStr && (
             <span
-              className="font-mono text-[11px] hidden md:inline"
+              className="font-mono text-[11px] hidden lg:inline"
               style={{ color: "var(--text-muted)" }}
             >
               Updated {timeStr}
@@ -66,6 +106,30 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
           <ThemeToggle />
         </div>
       </div>
+
+      {/* Mobile nav — horizontally scrollable */}
+      <nav
+        className="md:hidden flex items-center gap-4 px-4 pb-2 overflow-x-auto"
+        style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
+      >
+        {NAV_ITEMS.map(({ label, href }) => {
+          const isActive = pathname === href;
+          return (
+            <a
+              key={href}
+              href={href}
+              className="text-[13px] font-medium no-underline whitespace-nowrap flex-shrink-0"
+              style={{
+                color: isActive ? "var(--accent-cyan)" : "var(--text-secondary)",
+                borderBottom: isActive ? "2px solid var(--accent-cyan)" : "2px solid transparent",
+                paddingBottom: "2px",
+              }}
+            >
+              {label}
+            </a>
+          );
+        })}
+      </nav>
     </header>
   );
 }

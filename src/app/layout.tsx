@@ -3,18 +3,22 @@ import "./globals.css";
 import { ThemeScript } from "@/components/ThemeScript";
 
 export const metadata: Metadata = {
-  title: "VR.org — Virtual & Augmented Reality News Feed",
+  title: "VR.org — Virtual Reality & Augmented Reality News",
   description:
-    "Real-time VR, AR, and XR news aggregated from the world's top sources. Hardware, gaming, software, enterprise — all in one feed.",
+    "Real-time VR, AR, and XR news aggregated from the world's top sources. Hardware, gaming, software, enterprise — all in one live feed.",
   openGraph: {
-    title: "VR.org — The Pulse of VR & AR",
+    title: "VR.org — Virtual Reality & Augmented Reality News",
     description:
-      "Real-time news feed for virtual reality, augmented reality, and spatial computing.",
+      "Real-time VR, AR, and XR news aggregated from the world's top sources. Hardware, gaming, software, enterprise — all in one live feed.",
     type: "website",
     url: "https://vr.org",
+    siteName: "VR.org",
   },
   twitter: {
     card: "summary_large_image",
+    title: "VR.org — Virtual Reality & Augmented Reality News",
+    description:
+      "Real-time VR, AR, and XR news aggregated from the world's top sources.",
   },
 };
 
@@ -27,6 +31,8 @@ export default function RootLayout({
     <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         <ThemeScript />
+        {/* Google Search Console verification — replace content value with actual code */}
+        <meta name="google-site-verification" content="REPLACE_WITH_VERIFICATION_CODE" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

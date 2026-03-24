@@ -2,8 +2,14 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata = {
-  title: "About — VR.org",
-  description: "About VR.org — a real-time news aggregator for virtual reality, augmented reality, and spatial computing.",
+  title: "About VR.org — Your VR & AR News Hub",
+  description: "VR.org is a real-time news aggregator for virtual reality, augmented reality, and spatial computing. Learn about our mission and team.",
+  openGraph: {
+    title: "About VR.org — Your VR & AR News Hub",
+    description: "VR.org is a real-time news aggregator for virtual reality, augmented reality, and spatial computing.",
+    url: "https://vr.org/about",
+    siteName: "VR.org",
+  },
 };
 
 export default function AboutPage() {

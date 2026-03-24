@@ -4,11 +4,17 @@ import { CategoryHub } from "@/components/CategoryHub";
 export const metadata: Metadata = {
   title: "VR & AR Hardware News — Headsets, Displays & Controllers | VR.org",
   description:
-    "Latest VR and AR hardware news. Headset reviews, display technology, controller innovations, and specs for Meta Quest, Apple Vision Pro, PSVR 2, Steam Frame, and more.",
+    "Latest virtual reality and augmented reality hardware news. Headset reviews, specs, launches, and teardowns from Quest, Vision Pro, PSVR, Steam Frame, and more.",
   openGraph: {
+    title: "VR & AR Hardware News — Headsets, Displays & Controllers | VR.org",
+    description: "Latest virtual reality and augmented reality hardware news. Headset reviews, specs, launches, and teardowns.",
+    url: "https://vr.org/hardware",
+    siteName: "VR.org",
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "VR & AR Hardware News | VR.org",
     description: "Latest VR and AR hardware news — headsets, displays, controllers, and specs.",
-    url: "https://vr.org/hardware",
   },
 };
 

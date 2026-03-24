@@ -2,13 +2,19 @@ import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
 
 export const metadata: Metadata = {
-  title: "AR & Spatial Computing News — Smart Glasses & Mixed Reality | VR.org",
+  title: "Augmented Reality News — AR Glasses & Spatial Computing | VR.org",
   description:
-    "Latest AR and spatial computing news. Smart glasses, mixed reality, Apple Vision Pro, Meta Orion, and the future of augmented reality.",
+    "Augmented reality and spatial computing news. Smart glasses, AR wearables, mixed reality, Apple Vision Pro, and the future of AR technology.",
   openGraph: {
-    title: "AR & Spatial Computing News | VR.org",
-    description: "Latest AR news — smart glasses, mixed reality, spatial computing, and more.",
+    title: "Augmented Reality News — AR Glasses & Spatial Computing | VR.org",
+    description: "Augmented reality and spatial computing news. Smart glasses, mixed reality, and the future of AR.",
     url: "https://vr.org/ar",
+    siteName: "VR.org",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AR & Spatial Computing News | VR.org",
+    description: "Augmented reality news — smart glasses, spatial computing, and mixed reality.",
   },
 };
 
