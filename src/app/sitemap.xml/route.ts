@@ -1,7 +1,20 @@
 import { NextResponse } from "next/server";
+import { getAllArticles } from "@/lib/articles";
 
 export async function GET() {
   const now = new Date().toISOString().split("T")[0];
+  const articles = getAllArticles();
+
+  const articleUrls = articles
+    .map(
+      (a) => `  <url>
+    <loc>https://vr.org/articles/${a.slug}</loc>
+    <lastmod>${a.updatedDate || a.publishDate}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`
+    )
+    .join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -51,6 +64,7 @@ export async function GET() {
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+${articleUrls}
   <url>
     <loc>https://vr.org/about</loc>
     <changefreq>monthly</changefreq>

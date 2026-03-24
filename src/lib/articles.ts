@@ -1,0 +1,43 @@
+import fs from "fs";
+import path from "path";
+
+export interface EditorialArticle {
+  id: string;
+  slug: string;
+  title: string;
+  author: string;
+  authorRole: string;
+  publishDate: string;
+  updatedDate: string | null;
+  category: string;
+  tags: string[];
+  snippet: string;
+  featured: boolean;
+  body: string;
+}
+
+const ARTICLES_PATH = path.join(process.cwd(), "data", "articles.json");
+
+export function getAllArticles(): EditorialArticle[] {
+  try {
+    if (!fs.existsSync(ARTICLES_PATH)) return [];
+    const raw = fs.readFileSync(ARTICLES_PATH, "utf-8");
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
+}
+
+export function getArticleBySlug(slug: string): EditorialArticle | null {
+  const articles = getAllArticles();
+  return articles.find((a) => a.slug === slug) || null;
+}
+
+export function getFeaturedArticles(category: string): EditorialArticle[] {
+  const articles = getAllArticles();
+  return articles.filter((a) => a.featured && a.category === category);
+}
+
+export function getAllSlugs(): string[] {
+  return getAllArticles().map((a) => a.slug);
+}

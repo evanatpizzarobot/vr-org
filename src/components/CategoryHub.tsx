@@ -25,17 +25,27 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
   const { articles, trending, sourceStats, lastUpdated, loading } = useFeed();
   const [view, setView] = useState<"full" | "compact">("full");
   const [featured, setFeatured] = useState<Article[]>([]);
+  const [editorialArticles, setEditorialArticles] = useState<
+    { id: string; slug: string; title: string; author: string; authorRole: string; snippet: string; publishDate: string; category: string; tags: string[] }[]
+  >([]);
   const [featuredLoading, setFeaturedLoading] = useState(true);
   const compact = view === "compact";
 
-  // Fetch pinned/featured articles from the server
+  // Fetch pinned/featured articles and editorial articles
   useEffect(() => {
     async function fetchFeatured() {
       try {
-        const res = await fetch(`/api/featured?category=${category}`);
-        if (res.ok) {
-          const data = await res.json();
+        const [featuredRes, editorialRes] = await Promise.all([
+          fetch(`/api/featured?category=${category}`),
+          fetch(`/api/articles?category=${category}&featured=true`),
+        ]);
+        if (featuredRes.ok) {
+          const data = await featuredRes.json();
           setFeatured(data.featured);
+        }
+        if (editorialRes.ok) {
+          const data = await editorialRes.json();
+          setEditorialArticles(data.articles);
         }
       } catch {
         // Featured section is optional, fail silently
@@ -96,7 +106,7 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
         <div>
           {/* Featured / Pinned section */}
           {featuredLoading && <LoadingSkeleton count={3} />}
-          {!featuredLoading && featured.length > 0 && (
+          {!featuredLoading && (featured.length > 0 || editorialArticles.length > 0) && (
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
                 <span
@@ -114,6 +124,76 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
                 </span>
               </div>
               <div className="flex flex-col gap-0.5">
+                {/* Editorial / Original articles */}
+                {editorialArticles.map((ea) => (
+                  <a
+                    key={ea.id}
+                    href={`/articles/${ea.slug}`}
+                    className="block rounded-[10px] border no-underline transition-all group relative overflow-hidden fade-in hover:translate-y-[-1px]"
+                    style={{
+                      background: "var(--bg-card)",
+                      borderColor: "var(--border)",
+                      padding: "18px 20px",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "var(--bg-card-hover)";
+                      e.currentTarget.style.borderColor = "var(--border-active)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "var(--bg-card)";
+                      e.currentTarget.style.borderColor = "var(--border)";
+                    }}
+                  >
+                    <div
+                      className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity"
+                      style={{ background: "var(--accent-cyan)" }}
+                    />
+                    <div className="flex items-center gap-2.5 mb-2">
+                      <span
+                        className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px]"
+                        style={{
+                          background: "rgba(8, 145, 178, 0.15)",
+                          color: "var(--accent-cyan)",
+                        }}
+                      >
+                        VR.org Original
+                      </span>
+                      <span
+                        className="font-mono text-[10px] uppercase tracking-[0.5px]"
+                        style={{ color: "var(--text-muted)" }}
+                      >
+                        {ea.category}
+                      </span>
+                      <span
+                        className="font-mono text-[10px] ml-auto"
+                        style={{ color: "var(--text-muted)" }}
+                      >
+                        By {ea.author}
+                      </span>
+                    </div>
+                    <div
+                      className="font-display font-semibold leading-[1.4] transition-colors group-hover:!text-[var(--accent-cyan)]"
+                      style={{ fontSize: 16, color: "var(--text-primary)", marginBottom: 6 }}
+                    >
+                      {ea.title}
+                    </div>
+                    <div
+                      className="text-[13px] leading-[1.55] line-clamp-2"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {ea.snippet}
+                    </div>
+                    <div className="flex items-center gap-4 mt-2.5">
+                      <span
+                        className="font-mono text-[11px] flex items-center gap-1 group-hover:gap-2 transition-all"
+                        style={{ color: "var(--accent-cyan)" }}
+                      >
+                        Read article &rarr;
+                      </span>
+                    </div>
+                  </a>
+                ))}
+                {/* RSS featured articles */}
                 {featured.map((article, i) => (
                   <ArticleCard key={article.id} article={article} index={i} />
                 ))}

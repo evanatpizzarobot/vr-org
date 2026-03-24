@@ -266,3 +266,41 @@ nav::-webkit-scrollbar {
   animation: fadeIn 0.4s ease forwards;
   opacity: 0;
 }
+
+/* ===== ARTICLE BODY TYPOGRAPHY ===== */
+.article-body p {
+  font-size: 16px;
+  line-height: 1.78;
+  color: var(--text-secondary);
+  margin-bottom: 1.5em;
+}
+
+.article-body h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+}
+
+.article-body blockquote {
+  border-left: 3px solid var(--accent-cyan);
+  padding-left: 1.25em;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.article-body a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+.article-body a:hover {
+  text-decoration: underline;
+}
+
+.article-body strong {
+  color: var(--text-primary);
+}

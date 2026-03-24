@@ -46,6 +46,7 @@ next-env.d.ts
 # data (but keep the featured.json seed)
 data/*
 !data/featured.json
+!data/articles.json
 
 # duplicate nested dir
 vr-org/
