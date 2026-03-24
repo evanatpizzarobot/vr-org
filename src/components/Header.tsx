@@ -47,12 +47,14 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
           >
             Live Feed
           </span>
-          <span
-            className="font-mono text-xs hidden sm:inline"
-            style={{ color: "var(--text-muted)" }}
-          >
-            {articleCount} articles
-          </span>
+          {articleCount > 0 && (
+            <span
+              className="font-mono text-xs hidden sm:inline"
+              style={{ color: "var(--text-muted)" }}
+            >
+              {articleCount} articles
+            </span>
+          )}
           {timeStr && (
             <span
               className="font-mono text-[11px] hidden md:inline"
