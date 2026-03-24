@@ -24,31 +24,33 @@ export function SourceStats({ stats }: SourceStatsProps) {
 
       {entries.map(([key, { name, count }]) => {
         const src = SOURCES[key];
-        const pct = (count / max) * 100;
+        const pct = Math.max((count / max) * 100, 2);
         return (
           <div
             key={key}
-            className="flex items-center gap-3 py-2"
+            className="py-2.5"
             style={{ borderBottom: "1px solid color-mix(in srgb, var(--border) 50%, transparent)" }}
           >
-            <span className="text-[13px] font-medium shrink-0 w-[110px] truncate" style={{ color: "var(--text-primary)" }}>
-              {name}
-            </span>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[12px] font-medium" style={{ color: "var(--text-primary)" }}>
+                {name}
+              </span>
+              <span className="font-mono text-[11px]" style={{ color: "var(--text-muted)" }}>
+                {count}
+              </span>
+            </div>
             <div
-              className="flex-1 h-[3px] rounded-sm overflow-hidden"
+              className="w-full h-[3px] rounded-full overflow-hidden"
               style={{ background: "var(--border)" }}
             >
               <div
-                className="h-full rounded-sm transition-all duration-600"
+                className="h-full rounded-full transition-all duration-600"
                 style={{
                   width: `${pct}%`,
                   background: src?.color || "var(--accent-cyan)",
                 }}
               />
             </div>
-            <span className="font-mono text-[11px] shrink-0 w-[24px] text-right" style={{ color: "var(--text-muted)" }}>
-              {count}
-            </span>
           </div>
         );
       })}
