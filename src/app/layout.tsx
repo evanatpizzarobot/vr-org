@@ -32,7 +32,7 @@ export default function RootLayout({
       <head>
         <ThemeScript />
         {/* Google Search Console verification — replace content value with actual code */}
-        <meta name="google-site-verification" content="REPLACE_WITH_VERIFICATION_CODE" />
+        <meta name="google-site-verification" content="cfkAakzduCtr-941_j8S-6S9ZGXylJLE1r9kn1HU1F8" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
