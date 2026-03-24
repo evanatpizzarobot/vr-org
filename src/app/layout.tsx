@@ -29,16 +29,16 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://vr.org",
-    types: {
-      "application/rss+xml": "https://vr.org/feed.xml",
-    },
   },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "32x32" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: "/favicon.svg",
+  },
+  manifest: "/site.webmanifest",
+  other: {
+    "theme-color": "#0891B2",
   },
 };
 

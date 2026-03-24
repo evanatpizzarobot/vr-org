@@ -45,8 +45,34 @@ export function Footer() {
         </div>
 
         <div
-          className="w-full pt-4 border-t mt-2 font-mono text-[10px] tracking-[0.5px]"
-          style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}
+          className="w-full pt-4 border-t mt-2 flex flex-wrap gap-x-5 gap-y-1"
+          style={{ borderColor: "var(--border)" }}
+        >
+          <span
+            className="font-mono text-[10px] tracking-[0.5px]"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Guides:{" "}
+            {[
+              { label: "What is VR?", href: "/what-is-vr" },
+              { label: "Best VR Headsets 2026", href: "/best-vr-headsets" },
+            ].map(({ label, href }, i) => (
+              <span key={href}>
+                {i > 0 && " • "}
+                <a
+                  href={href}
+                  className="no-underline hover:underline"
+                  style={{ color: "var(--accent-cyan)" }}
+                >
+                  {label}
+                </a>
+              </span>
+            ))}
+          </span>
+        </div>
+        <div
+          className="w-full pt-2 font-mono text-[10px] tracking-[0.5px]"
+          style={{ color: "var(--text-muted)" }}
         >
           Sources: {sourceNames}
         </div>

@@ -19,7 +19,11 @@ export const ORGANIZATION_SCHEMA = {
   logo: "https://vr.org/logo.png",
   description:
     "Real-time news aggregator for virtual reality, augmented reality, and spatial computing.",
-  sameAs: ["https://x.com/vrdotorg"],
+  foundingDate: "2017",
+  sameAs: [
+    "https://x.com/vrdotorg",
+    "https://www.facebook.com/VRorg-760203404165583/",
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     email: "contact@vr.org",
@@ -34,6 +38,11 @@ export const WEBSITE_SCHEMA = {
   url: "https://vr.org",
   description:
     "Real-time VR, AR, and XR news aggregated from the world's top sources.",
+  publisher: {
+    "@type": "Organization",
+    name: "VR.org",
+    url: "https://vr.org",
+  },
   potentialAction: {
     "@type": "SearchAction",
     target: {
