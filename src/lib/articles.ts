@@ -33,11 +33,15 @@ export function getArticleBySlug(slug: string): EditorialArticle | null {
   return articles.find((a) => a.slug === slug) || null;
 }
 
+const MAX_FEATURED_PER_CATEGORY = 3;
+
 export function getFeaturedArticles(category: string): EditorialArticle[] {
   const articles = getAllArticles();
-  return articles.filter(
-    (a) => a.featured && (a.category === category || a.tags.includes(category))
-  );
+  return articles
+    .filter(
+      (a) => a.featured && (a.category === category || a.tags.includes(category))
+    )
+    .slice(0, MAX_FEATURED_PER_CATEGORY);
 }
 
 export function getAllSlugs(): string[] {
