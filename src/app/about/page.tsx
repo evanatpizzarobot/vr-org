@@ -106,13 +106,13 @@ export default function AboutPage() {
             </a>
           </li>
           <li>
-            Advertising &amp; sponsorships:{" "}
+            Advertising &amp; Sponsorships:{" "}
             <a href="mailto:advertise@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
               advertise@vr.org
             </a>
           </li>
           <li>
-            Press &amp; media:{" "}
+            Press &amp; Media:{" "}
             <a href="mailto:press@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
               press@vr.org
             </a>
