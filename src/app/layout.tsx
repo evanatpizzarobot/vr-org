@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     description:
       "Real-time VR, AR, and XR news aggregated from the world's top sources. Hardware, gaming, software, enterprise - all in one live feed.",
     type: "website",
-    url: "https://vr.org",
+    url: "https://vr.org/",
     siteName: "VR.org",
     images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     images: ["https://vr.org/og-image.png"],
   },
   alternates: {
-    canonical: "https://vr.org",
+    canonical: "https://vr.org/",
   },
   icons: {
     icon: [
