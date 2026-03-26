@@ -52,6 +52,7 @@ export default function RootLayout({
       <head>
         <ThemeScript />
         <meta name="google-site-verification" content="cfkAakzduCtr-941_j8S-6S9ZGXylJLE1r9kn1HU1F8" />
+        <meta name="google-adsense-account" content="ca-pub-7224757913262984" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
