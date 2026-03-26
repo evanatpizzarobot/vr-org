@@ -83,6 +83,7 @@ export const CATEGORIES = [
   { key: "software", label: "Software" },
   { key: "enterprise", label: "Enterprise" },
   { key: "ar", label: "AR / Spatial" },
+  { key: "xr", label: "XR" },
 ] as const;
 
 export const COMPANY_FILTERS = [

@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import type { Article, RSSSource } from "./types";
-import { categorize, getCompanyTags } from "./categorizer";
+import { categorize, getCategoryTags, getCompanyTags } from "./categorizer";
 
 function hashString(str: string): string {
   return crypto.createHash("sha256").update(str).digest("hex").slice(0, 16);
@@ -126,8 +126,9 @@ export async function fetchSource(source: RSSSource): Promise<Article[]> {
       const rawSnippet = stripHtml(contentEncoded || description);
       const snippet = truncate(rawSnippet, 200);
       const category = categorize(title, rawSnippet);
+      const categoryTags = getCategoryTags(title, rawSnippet, category);
       const companyTags = getCompanyTags(title, rawSnippet);
-      const tags = [...new Set([category, ...companyTags])];
+      const tags = [...new Set([category, ...categoryTags, ...companyTags])];
       const imageUrl = extractImageUrl(itemXml);
 
       let pubDate: string;

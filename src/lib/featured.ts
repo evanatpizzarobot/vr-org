@@ -58,7 +58,7 @@ export function writeFeatured(data: FeaturedData): void {
 export function refreshFeatured(allArticles: Article[]): FeaturedData {
   const data = readFeatured();
   const now = new Date();
-  const categories = ["hardware", "gaming", "software", "enterprise", "ar"];
+  const categories = ["hardware", "gaming", "software", "enterprise", "ar", "xr"];
 
   for (const category of categories) {
     // Remove expired articles

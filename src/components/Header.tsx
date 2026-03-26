@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { label: "Software", href: "/software" },
   { label: "Enterprise", href: "/enterprise" },
   { label: "AR", href: "/ar" },
+  { label: "XR", href: "/xr" },
   { label: "Originals", href: "/originals" },
 ];
 

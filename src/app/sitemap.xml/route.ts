@@ -55,6 +55,18 @@ export async function GET() {
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://vr.org/xr</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://vr.org/originals</loc>
+    <lastmod>${now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://vr.org/what-is-vr</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
