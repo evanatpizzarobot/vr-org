@@ -11,7 +11,7 @@ export async function GET() {
     <loc>https://vr.org/articles/${a.slug}</loc>
     <lastmod>${a.updatedDate || a.publishDate}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>`
     )
     .join("\n");
