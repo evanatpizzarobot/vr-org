@@ -129,12 +129,6 @@ export default function AboutPage() {
               VR.org
             </a>
           </li>
-          <li>
-            Instagram:{" "}
-            <a href="https://instagram.com/vrdotorg" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-              @vrdotorg
-            </a>
-          </li>
         </ul>
 
         <h2 className="font-display text-2xl font-semibold mt-8 mb-4">Team</h2>
