@@ -100,7 +100,7 @@ export default function AboutPage() {
         <h2 className="font-display text-2xl font-semibold mb-4">Connect with us</h2>
         <ul className="text-[15px] leading-[1.7] list-none flex flex-col gap-2" style={{ color: "var(--text-secondary)" }}>
           <li>
-            General inquiries:{" "}
+            General Inquiries:{" "}
             <a href="mailto:contact@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
               contact@vr.org
             </a>
