@@ -9,7 +9,9 @@ export async function GET(request: NextRequest) {
   let articles = getAllArticles();
 
   if (category) {
-    articles = articles.filter((a) => a.category === category);
+    articles = articles.filter(
+      (a) => a.category === category || a.tags.includes(category)
+    );
   }
 
   if (featured === "true") {

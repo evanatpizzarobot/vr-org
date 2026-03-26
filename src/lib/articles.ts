@@ -35,7 +35,9 @@ export function getArticleBySlug(slug: string): EditorialArticle | null {
 
 export function getFeaturedArticles(category: string): EditorialArticle[] {
   const articles = getAllArticles();
-  return articles.filter((a) => a.featured && a.category === category);
+  return articles.filter(
+    (a) => a.featured && (a.category === category || a.tags.includes(category))
+  );
 }
 
 export function getAllSlugs(): string[] {
