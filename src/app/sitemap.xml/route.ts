@@ -64,30 +64,35 @@ export async function GET() {
     <loc>https://vr.org/originals</loc>
     <lastmod>${now}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vr.org/what-is-vr</loc>
+    <lastmod>${now}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://vr.org/best-vr-headsets</loc>
+    <lastmod>${now}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://vr.org/best-vr-games</loc>
+    <lastmod>${now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://vr.org/best-vr-games-2026</loc>
+    <lastmod>${now}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://vr.org/best-vr-apps</loc>
+    <lastmod>${now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
