@@ -22,7 +22,10 @@ export function getAllArticles(): EditorialArticle[] {
   try {
     if (!fs.existsSync(ARTICLES_PATH)) return [];
     const raw = fs.readFileSync(ARTICLES_PATH, "utf-8");
-    return JSON.parse(raw);
+    const articles: EditorialArticle[] = JSON.parse(raw);
+    return articles.sort(
+      (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+    );
   } catch {
     return [];
   }
