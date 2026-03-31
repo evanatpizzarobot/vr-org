@@ -328,3 +328,20 @@ nav::-webkit-scrollbar {
   margin-top: 0.5em;
   font-style: italic;
 }
+
+.article-body figure.half-width {
+  max-width: 50%;
+}
+
+.article-body figure a {
+  display: block;
+  cursor: zoom-in;
+}
+
+.article-body figure a img {
+  transition: opacity 0.2s ease;
+}
+
+.article-body figure a:hover img {
+  opacity: 0.85;
+}
