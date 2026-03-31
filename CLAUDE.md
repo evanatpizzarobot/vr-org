@@ -273,9 +273,9 @@ ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76 "pm2 status && pm2 logs vr-org --lines
 5. No rebuild needed, changes are instant
 6. Request indexing in Google Search Console for /articles/[slug]
 
-## Article Images
+## Article Images (REQUIRED for every article)
 
-All original articles include 2-4 inline images using `<figure>` elements in the body HTML. CSS styling lives in globals.css under `.article-body figure/img/figcaption`.
+Every original article MUST include inline images. This is not optional. Images make articles visually appealing and are a core part of the editorial standard. Add 2-4 images per article minimum, more if the article covers multiple products/games (e.g., one image per item in a roundup). CSS styling lives in globals.css under `.article-body figure/img/figcaption`.
 
 **Image format in article body HTML:**
 ```html
@@ -297,6 +297,10 @@ All original articles include 2-4 inline images using `<figure>` elements in the
 - Place images after the first paragraph (hero image) and after key section H2s
 - For games: use Steam store headers or gameplay screenshots
 - For hardware: use Wikimedia Commons hardware photos or official press images
+- For roundup/listicle articles: include one image per item, not just 2 random images
+- YouTube thumbnails (img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg) are stable and good fallbacks
+- Use `class="half-width"` on `<figure>` if an image is too large at full width
+- Wrap image in `<a href="FULL_URL" target="_blank">` for click-to-enlarge when useful
 
 ## Adding a New Category Page (workflow)
 
