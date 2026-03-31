@@ -1,0 +1,342 @@
+# CLAUDE.md - VR.org
+
+## Project Overview
+
+VR.org is a real-time VR/AR/XR news aggregator combined with an original editorial publication. The site pulls headlines from 11 RSS sources, categorizes them across hub pages, and features VR.org Original articles written by the editorial team. Co-founded by Evan Marcus (Pizza Robot Studios LLC) and Mark Mahle (NetActuate).
+
+**Live site:** https://vr.org
+**Repo:** github.com/evanatpizzarobot/vr-org
+**Owner:** Evan Marcus, evan@pizzarobotstudios.com
+
+## Infrastructure
+
+- **VPS:** NetActuate (Mark's company, netactuate.com), Ubuntu 24.04 LTS
+- **IP:** 104.225.12.76
+- **Location:** DFW2, Dallas, TX
+- **Specs:** 2GB RAM, 1 CPU, 25GB Disk
+- **SSH user:** ubuntu
+- **SSH key:** ~/.ssh/vr-org (desktop), ~/.ssh/id_ed25519 (laptop)
+
+## Stack
+
+- **Frontend:** Next.js (App Router) + Tailwind CSS
+- **Server:** Nginx (reverse proxy, SSL termination, gzip, HTTP/2, HSTS)
+- **Process manager:** PM2 (app name: "vr-org")
+- **RSS cron:** node-cron (every 15 minutes, runs inside Next.js process)
+- **RSS parser:** rss-parser
+- **Data storage:** Local JSON files in data/ directory (no database)
+- **SSL:** Let's Encrypt via Certbot (auto-renewing)
+- **DNS:** Managed by NetActuate (Mark handles DNS)
+- **Theme:** Light default with dark mode toggle
+
+## Auto-Deploy
+
+GitHub webhook listener on port 9000. Push to main branch triggers:
+1. git pull origin main
+2. npm install --production
+3. npm run build
+4. pm2 restart vr-org
+
+Deploy listener runs via PM2 as "deploy-hook". Logs to /home/ubuntu/deploy.log.
+
+## Project Structure
+
+```
+vr-org/
+  src/
+    app/
+      layout.tsx          # Root layout, fonts, theme, meta, AdSense, JSON-LD
+      page.tsx             # Homepage feed
+      globals.css          # CSS variables, light/dark themes
+      about/page.tsx
+      privacy/page.tsx
+      hardware/page.tsx
+      gaming/page.tsx
+      software/page.tsx
+      enterprise/page.tsx
+      ar/page.tsx
+      xr/page.tsx
+      originals/page.tsx
+      what-is-vr/page.tsx
+      best-vr-headsets/page.tsx
+      best-vr-games/page.tsx
+      best-vr-games-2026/page.tsx
+      best-vr-apps/page.tsx
+      articles/[slug]/page.tsx   # Dynamic article pages
+      api/
+        feed/route.ts
+        trending/route.ts
+        sources/route.ts
+        health/route.ts
+      sitemap.xml/route.ts
+      robots.txt (or route)
+      ads.txt (public/)
+    components/
+      Header.tsx           # Logo, nav, live indicator, theme toggle
+      Ticker.tsx           # Scrolling headline ticker
+      FilterBar.tsx        # Category + company filter pills
+      ArticleCard.tsx      # Individual article card
+      Feed.tsx             # Feed column with cards + inline ads
+      Sidebar.tsx          # Sources, NetActuate banner, widgets, trending, ads
+      SourceStats.tsx
+      TrendingTopics.tsx
+      TopListWidget.tsx    # Top VR Games / Top VR Apps sidebar widgets
+      SponsorBanner.tsx    # NetActuate banner (permanent)
+      AdSlot.tsx
+      ThemeToggle.tsx
+      ThemeScript.tsx
+      LoadingSkeleton.tsx
+      Footer.tsx
+      JsonLd.tsx           # Reusable JSON-LD structured data component
+    hooks/
+      useFeed.ts
+      useTheme.ts
+      useFilters.ts
+    lib/
+      constants.ts         # Source configs, colors, categories
+      api.ts               # API client
+      feed-service.ts      # RSS fetch, parse, categorize, cache
+      cache.ts             # JSON file read/write
+      init-cron.ts         # 15-min RSS cron scheduler
+      top-lists.ts         # Top 10 games/apps data (or data/top-lists.json)
+    types/
+      index.ts
+  data/                    # Runtime data, NOT in git, read dynamically
+    feed.json              # Cached RSS articles
+    trending.json          # Trending topics
+    sources.json           # Source stats
+    meta.json              # Feed metadata
+    featured.json          # Auto-rotating featured articles (30-day cycle)
+    articles.json          # VR.org Original editorial articles
+  public/
+    favicon.ico
+    apple-touch-icon.png
+    site.webmanifest
+    og-image.png
+    ads.txt                # Google AdSense authorization
+    logo.png
+  deploy.sh
+```
+
+## RSS Sources (11)
+
+1. Road to VR - roadtovr.com/feed/
+2. UploadVR - uploadvr.com/feed/
+3. TechCrunch VR - techcrunch.com/tag/virtual-reality/feed/
+4. XR Today - xrtoday.com/feed/
+5. Mixed News - mixed-news.com/en/feed/
+6. The Ghost Howls - skarredghost.com/feed/
+7. Hypergrid Business - hypergridbusiness.com/feed/
+8. Extended Reality News - extendedreality.news/feed/
+9. The Verge (manual/filtered)
+10. Ars Technica (manual/filtered)
+11. VentureBeat (manual/filtered)
+
+## Category Pages
+
+| Route | Category | Key Topics |
+|-------|----------|------------|
+| /hardware | hardware | Headsets, controllers, displays, specs, teardowns |
+| /gaming | gaming | Games, launches, trailers, studios, mods |
+| /software | software | Platforms, SDKs, apps, social VR, tools |
+| /enterprise | enterprise | Business, training, healthcare, investment |
+| /ar | ar | AR glasses, spatial computing, overlays |
+| /xr | xr | Extended reality, mixed reality, Android XR, WebXR |
+
+## Featured Article System
+
+- Each category page shows up to 3 VR.org Original articles pinned at top
+- RSS featured articles auto-selected (one per source), rotate every 30 days
+- Stored in data/featured.json, auto-fills empty slots every 15 minutes
+- Original articles tagged across multiple categories auto-distribute to all matching pages
+- Originals display with cyan "VR.org Original" badge
+
+## Editorial Article System
+
+- Articles stored in data/articles.json
+- Dynamic route at /articles/[slug]
+- Each article has: id, slug, title, author, authorRole, publishDate, category, tags, snippet, featured, body (HTML)
+- Adding/editing articles: SSH into VPS, edit data/articles.json, no rebuild needed
+- All articles must have full Article schema JSON-LD
+- Author: "Evan Marcus", authorRole: "Co-Founder, VR.org"
+- /originals page lists all editorial articles
+
+## Pillar Pages
+
+| Route | Topic | Priority |
+|-------|-------|----------|
+| /what-is-vr | What is Virtual Reality explainer | 0.85 |
+| /best-vr-headsets | VR headset buyer's guide 2026 | 0.85 |
+| /best-vr-games | Top 10 VR games of all time | 0.85 |
+| /best-vr-games-2026 | Best VR games of 2026 | 0.85 |
+| /best-vr-apps | Best VR apps and utilities | 0.85 |
+
+## SEO Infrastructure
+
+- JSON-LD: Organization, WebSite, CollectionPage (per category), Article (per article), BreadcrumbList
+- Unique title + meta description on every page
+- Canonical URLs on every page
+- Open Graph + Twitter Card meta on every page
+- Dynamic sitemap.xml (27+ URLs, auto-includes new articles)
+- robots.txt allowing all crawlers
+- Google Search Console verified
+- Favicons + web app manifest
+- ads.txt for AdSense (pub-7224757913262984)
+
+## AdSense
+
+- Publisher ID: pub-7224757913262984 (same account as TerminalFeed)
+- ads.txt at /ads.txt
+- Ad slots: sidebar (1 slot below trending), inline feed (every 6 articles)
+- Currently in "Getting ready" status, pending approval
+- AdSense script in layout.tsx head
+
+## Sidebar Layout (top to bottom)
+
+1. Sources card (with VR.org included)
+2. NetActuate sponsor banner (permanent, links to netactuate.com)
+3. Top VR Games 2026 widget (numbered list, links to /best-vr-games-2026)
+4. Top VR Apps & Utilities widget (links to /best-vr-apps)
+5. AdSense ad slot
+6. Trending Topics card
+
+## NetActuate Sponsor
+
+- Permanent sidebar banner, not a rotating ad
+- Links to https://netactuate.com
+- Uses official NetActuate logo
+- Dark theme logo: netactuate.com/docs/img/NA-White-Logo-H.png
+- Tagline: "Global Edge Infrastructure" / "45+ locations worldwide"
+- Mark Mahle is co-founder and owns the vr.org domain
+
+## Performance & Security
+
+- Nginx gzip compression (HTML, CSS, JS, JSON, XML)
+- HTTP/2 enabled
+- HSTS (Strict-Transport-Security)
+- Security headers: X-Frame-Options, X-Content-Type-Options, X-XSS-Protection, Referrer-Policy
+- Static asset caching: 1 year for /_next/static, 7 days for public assets
+- www.vr.org redirects to vr.org (non-www canonical)
+
+## Writing Rules (CRITICAL)
+
+- **NO EM DASHES anywhere.** Never use -- or the em dash character. Use commas, periods, or restructure sentences instead. This is the #1 anti-AI-detection rule across all Pizza Robot Studios projects.
+- Article body content stored as HTML in JSON (p tags, h2 tags)
+- Vary article lengths. Not every article should be the same word count. Short takes: 400-600 words. Medium: 800-1,200 words. Long-form: 1,500-2,500 words. Match length to subject matter.
+- Vary article structure. Not every article needs the same H2-H2-H2-H2 pattern. Some conversational, some list-driven, some flowing narrative.
+- Author is always "Evan Marcus" with authorRole "Co-Founder, VR.org"
+- Spread publish dates naturally. Never publish many articles on the same date.
+
+## Data Files (read dynamically, no rebuild needed)
+
+These files in data/ are read at request time, NOT at build time. Editing them on the VPS takes effect immediately without rebuilding:
+- data/articles.json
+- data/featured.json
+- data/feed.json
+- data/trending.json
+- data/sources.json
+- data/meta.json
+
+If any code imports from data/ statically (like top-lists.ts in src/lib/), that DOES require a rebuild. Prefer JSON files in data/ over TypeScript files in src/lib/ for content that should update without rebuilds.
+
+## Deploy Commands
+
+### Auto-deploy (preferred)
+Push to main branch on GitHub. Webhook auto-deploys.
+
+### Manual deploy (if needed)
+```bash
+ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76
+cd ~/vr-org
+git pull origin main
+npm install --production
+npm run build
+pm2 restart vr-org
+```
+
+### Quick deploy script
+```bash
+ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76 "cd ~/vr-org && git pull && npm run build && pm2 restart vr-org"
+```
+
+### Check status
+```bash
+ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76 "pm2 status && pm2 logs vr-org --lines 20"
+```
+
+## Adding a New Article (workflow)
+
+1. Add article object to data/articles.json on VPS
+2. Set "featured": true to pin to category pages
+3. Tag with relevant categories (article appears on all matching pages)
+4. Add 2-4 inline images using `<figure>` tags in the body HTML (see Article Images below)
+5. No rebuild needed, changes are instant
+6. Request indexing in Google Search Console for /articles/[slug]
+
+## Article Images
+
+All original articles include 2-4 inline images using `<figure>` elements in the body HTML. CSS styling lives in globals.css under `.article-body figure/img/figcaption`.
+
+**Image format in article body HTML:**
+```html
+<figure><img src="URL" alt="Descriptive alt text" loading="lazy" /><figcaption>Image: Source / License</figcaption></figure>
+```
+
+**Preferred image sources (most stable to least):**
+1. Wikimedia Commons (upload.wikimedia.org) - permanent, public domain or CC
+2. Apple Newsroom (apple.com/newsroom/images/) - official press kit, long-lived
+3. Google Storage (storage.googleapis.com/gweb-uniblog-publish-prod/) - official blog assets
+4. Steam CDN (shared.akamai.steamstatic.com/store_item_assets/) - persists as long as game exists on Steam
+
+**Rules:**
+- Always use `loading="lazy"` on images
+- Always include descriptive alt text for accessibility
+- Always credit the source in figcaption
+- Use press kit images, official promotional art, Wikimedia Commons, or self-captured screenshots
+- Do not hotlink from social CDNs (Facebook, Instagram, Oculus CDN) as those URLs expire
+- Place images after the first paragraph (hero image) and after key section H2s
+- For games: use Steam store headers or gameplay screenshots
+- For hardware: use Wikimedia Commons hardware photos or official press images
+
+## Adding a New Category Page (workflow)
+
+1. Create src/app/[category]/page.tsx
+2. Add category to constants.ts (CATEGORIES array)
+3. Add nav link in Header.tsx
+4. Add RSS keyword matching rules in categorizer
+5. Add SEO meta (unique title + description)
+6. Add JSON-LD CollectionPage schema
+7. Add to sitemap
+8. Deploy (requires rebuild)
+
+## Social Links
+
+- Twitter/X: @vrdotorg
+- Instagram: @vrdotorg
+- YouTube: youtube.com/channel/UCTKqC49lw-HF1NxlquRoc0Q
+- Facebook: VRorg-760203404165583
+
+## Team
+
+- Evan Marcus (evan@vr.org) - Co-Founder, editorial, development
+- Mark Mahle (mark@vr.org) - Co-Founder, infrastructure, domain owner
+- Sandy (sandy@vr.org) - Team member
+
+## Contact Emails
+
+- General: contact@vr.org
+- Advertising: advertise@vr.org
+- Press: press@vr.org
+
+## Related Projects (Pizza Robot Studios)
+
+This CLAUDE.md is specific to VR.org. See the global CLAUDE.md at ~/.claude/CLAUDE.md for Pizza Robot Studios defaults that apply across all projects (permissions, no em dashes rule, code style, stack preferences).
+
+## NetActuate AI Provisioning
+
+For future VPS needs, NetActuate repos include AGENTS.md files for AI-assisted provisioning. CC can deploy VMs and BGP clusters from plain English prompts. Key repos:
+- netactuate-ansible-compute (VMs)
+- netactuate-ansible-bgp-bird2 (anycast)
+- netactuate-terraform-bgp
+Docs: netactuate.com/docs/guides/ai-assisted-provisioning
+Requires: API key + contract ID from NetActuate portal (Account > API Access)
