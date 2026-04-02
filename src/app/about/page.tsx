@@ -4,6 +4,9 @@ import { Footer } from "@/components/Footer";
 export const metadata = {
   title: "About VR.org | Your VR & AR News Hub",
   description: "VR.org is a real-time news aggregator for virtual reality, augmented reality, and spatial computing. Learn about our mission and team.",
+  alternates: {
+    canonical: "https://vr.org/about",
+  },
   openGraph: {
     title: "About VR.org | Your VR & AR News Hub",
     description: "VR.org is a real-time news aggregator for virtual reality, augmented reality, and spatial computing.",

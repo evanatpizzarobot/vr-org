@@ -99,11 +99,13 @@ export async function GET() {
 ${articleUrls}
   <url>
     <loc>https://vr.org/about</loc>
+    <lastmod>${now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://vr.org/privacy</loc>
+    <lastmod>${now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
