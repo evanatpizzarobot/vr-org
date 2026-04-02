@@ -4,6 +4,9 @@ import { Footer } from "@/components/Footer";
 export const metadata = {
   title: "Privacy Policy | VR.org",
   description: "VR.org privacy policy. How we handle data, cookies, and third-party services.",
+  alternates: {
+    canonical: "https://vr.org/privacy",
+  },
   openGraph: {
     title: "Privacy Policy | VR.org",
     description: "VR.org privacy policy. How we handle data, cookies, and third-party services.",
