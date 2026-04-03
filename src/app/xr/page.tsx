@@ -28,7 +28,7 @@ export default function XRPage() {
     <CategoryHub
       category="xr"
       title="XR / Extended Reality"
-      description="Extended reality, mixed reality, spatial computing, and the technologies bridging VR, AR, and the physical world."
+      description="Extended reality encompasses VR, AR, and everything in between. Platform launches, industry analysis, developer ecosystems, and the convergence of immersive technologies. Android XR, WebXR, mixed reality headsets, and cross-platform frameworks all fall under this umbrella."
     />
   );
 }

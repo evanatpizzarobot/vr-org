@@ -26,7 +26,7 @@ export default function EnterprisePage() {
     <CategoryHub
       category="enterprise"
       title="Enterprise"
-      description="Business adoption, workforce training, healthcare, investment, and industry analysis in VR and AR."
+      description="How businesses are adopting VR, AR, and XR technology. Training simulations, healthcare applications, manufacturing workflows, investment trends, and enterprise strategy in the spatial computing industry. We follow the money and the deployments shaping how organizations use immersive tech at scale."
     />
   );
 }

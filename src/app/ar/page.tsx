@@ -26,7 +26,7 @@ export default function ARPage() {
     <CategoryHub
       category="ar"
       title="AR / Spatial Computing"
-      description="Smart glasses, mixed reality, spatial computing, and the expanding world of augmented reality."
+      description="Augmented reality news and analysis. Smart glasses, AR wearables, spatial computing, and the technology blending digital content with the physical world. From Apple Vision Pro updates to lightweight AR glasses from Meta and Snap, we track the devices and platforms making AR part of daily life."
     />
   );
 }
