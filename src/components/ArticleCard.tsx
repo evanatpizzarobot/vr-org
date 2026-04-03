@@ -24,12 +24,12 @@ function timeAgo(dateStr: string): string {
 export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
   const src = SOURCES[article.source];
   const accentColor = src?.color || "var(--accent-cyan)";
+  const isOriginal = article.source === "vrorg";
 
   return (
     <a
       href={article.link}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(isOriginal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
       className="block rounded-[10px] border no-underline transition-all group relative overflow-hidden fade-in"
       style={{
         background: "var(--bg-card)",
@@ -58,11 +58,23 @@ export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
 
       {/* Meta row */}
       <div className="flex items-center gap-2.5 mb-2">
-        <span
-          className={`font-mono text-[10px] font-medium px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px] ${src?.cssClass || ""}`}
-        >
-          {article.sourceName}
-        </span>
+        {isOriginal ? (
+          <span
+            className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px]"
+            style={{
+              background: "rgba(8, 145, 178, 0.15)",
+              color: "var(--accent-cyan)",
+            }}
+          >
+            VR.org Original
+          </span>
+        ) : (
+          <span
+            className={`font-mono text-[10px] font-medium px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px] ${src?.cssClass || ""}`}
+          >
+            {article.sourceName}
+          </span>
+        )}
         <span
           className="font-mono text-[10px] uppercase tracking-[0.5px]"
           style={{ color: "var(--text-muted)" }}
@@ -106,7 +118,7 @@ export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
             className="font-mono text-[11px] flex items-center gap-1 group-hover:gap-2 transition-all"
             style={{ color: "var(--accent-cyan)" }}
           >
-            Read at source &rarr;
+            {isOriginal ? "Read article" : "Read at source"} &rarr;
           </span>
         </div>
       )}
