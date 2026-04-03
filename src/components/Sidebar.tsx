@@ -7,6 +7,7 @@ import { SourceStats } from "./SourceStats";
 import { TopListWidget } from "./TopListWidget";
 import { TrendingTopics } from "./TrendingTopics";
 import { NetActuateBanner } from "./NetActuateBanner";
+import { EditorsPicks } from "./EditorsPicks";
 import { AdSlot } from "./AdSlot";
 
 interface SidebarProps {
@@ -27,6 +28,7 @@ export function Sidebar({ sourceStats, trending }: SidebarProps) {
   return (
     <div className="flex flex-col gap-5">
       <SourceStats stats={sourceStats} />
+      <EditorsPicks />
       <NetActuateBanner />
       {topLists["top-vr-games-2026"] && (
         <TopListWidget list={topLists["top-vr-games-2026"]} />

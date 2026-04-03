@@ -26,7 +26,7 @@ export default function SoftwarePage() {
     <CategoryHub
       category="software"
       title="Software"
-      description="Platforms, SDKs, apps, social VR, and developer tools shaping the immersive ecosystem."
+      description="Platforms, apps, developer tools, and the software ecosystem powering virtual and augmented reality. From social VR platforms to creative tools and enterprise applications, we cover the software layer that brings hardware to life. SDK updates, platform policy changes, and new app launches all land here."
     />
   );
 }

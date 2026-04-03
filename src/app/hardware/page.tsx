@@ -26,7 +26,7 @@ export default function HardwarePage() {
     <CategoryHub
       category="hardware"
       title="Hardware"
-      description="VR & AR headsets, controllers, displays, and device specs - from consumer launches to prototype reveals."
+      description="The latest in VR and AR hardware, from headset launches and spec breakdowns to controller innovations and display technology. We track every major device release and provide in-depth coverage of the hardware shaping spatial computing. Whether it's a new Quest update, a PSVR2 accessory, or a prototype nobody saw coming, you'll find it here first."
     />
   );
 }

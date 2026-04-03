@@ -26,7 +26,7 @@ export default function GamingPage() {
     <CategoryHub
       category="gaming"
       title="Gaming"
-      description="VR game launches, trailers, studio news, mods, and reviews across all platforms."
+      description="VR gaming news, reviews, and analysis. From AAA launches and indie gems to game showcases and studio announcements, we cover the games that make VR worth owning. Our team tracks releases across Quest, PSVR2, SteamVR, and every major platform so you never miss what's next."
     />
   );
 }
