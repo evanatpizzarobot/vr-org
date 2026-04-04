@@ -21,23 +21,28 @@ VR.org is a real-time VR/AR/XR news aggregator combined with an original editori
 
 - **Frontend:** Next.js (App Router) + Tailwind CSS
 - **Server:** Nginx (reverse proxy, SSL termination, gzip, HTTP/2, HSTS)
-- **Process manager:** PM2 (app name: "vr-org")
+- **Runtime:** Docker container (via docker-compose), NOT PM2
+- **Next.js config:** `output: "standalone"` (REQUIRED by Docker build, do NOT remove)
 - **RSS cron:** node-cron (every 15 minutes, runs inside Next.js process)
 - **RSS parser:** rss-parser
 - **Data storage:** Local JSON files in data/ directory (no database)
+- **Data mounting:** `./data` is volume-mounted into the container at `/app/data` (changes to data/ on host are instant, no rebuild needed)
 - **SSL:** Let's Encrypt via Certbot (auto-renewing)
 - **DNS:** Managed by NetActuate (Mark handles DNS)
 - **Theme:** Light default with dark mode toggle
 
 ## Auto-Deploy
 
-GitHub webhook listener on port 9000. Push to main branch triggers:
-1. git pull origin main
-2. npm install --production
-3. npm run build
-4. pm2 restart vr-org
+GitHub webhook listener at `/home/ubuntu/deploy-listener.js` on port 9000, managed by PM2 as "deploy-hook". Push to master branch triggers:
+1. `git fetch origin master && git reset --hard origin/master`
+2. `docker compose up -d --build`
 
-Deploy listener runs via PM2 as "deploy-hook". Logs to /home/ubuntu/deploy.log.
+Logs to /home/ubuntu/deploy.log. Builds take ~3 minutes.
+
+**CRITICAL:** PM2 only manages the deploy-hook listener. The app itself runs in Docker. Do NOT create a PM2 process for "vr-org". Do NOT remove `output: "standalone"` from next.config.ts. Both will break the deploy pipeline.
+
+### Adding articles does NOT require a Docker rebuild
+Since `./data` is volume-mounted, updating `data/articles.json` and pushing to git is enough. The `git reset --hard` in the deploy updates the host file, and the running container reads it immediately via the mount. The Docker rebuild that follows is for code changes only.
 
 ## Project Structure
 
@@ -242,36 +247,44 @@ If any code imports from data/ statically (like top-lists.ts in src/lib/), that 
 ## Deploy Commands
 
 ### Auto-deploy (preferred)
-Push to main branch on GitHub. Webhook auto-deploys.
+Push to master branch on GitHub. Webhook auto-deploys via Docker (~3 min).
 
 ### Manual deploy (if needed)
 ```bash
 ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76
 cd ~/vr-org
-git pull origin main
-npm install --production
-npm run build
-pm2 restart vr-org
+git fetch origin master && git reset --hard origin/master
+docker compose up -d --build
 ```
 
 ### Quick deploy script
 ```bash
-ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76 "cd ~/vr-org && git pull && npm run build && pm2 restart vr-org"
+ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76 "cd ~/vr-org && git fetch origin master && git reset --hard origin/master && docker compose up -d --build"
 ```
 
 ### Check status
 ```bash
-ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76 "pm2 status && pm2 logs vr-org --lines 20"
+ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76 "docker ps && docker logs vr-org --tail 20 && tail -5 ~/deploy.log"
+```
+
+### Data-only changes (articles, featured, etc.)
+No Docker rebuild needed. The data/ directory is volume-mounted.
+```bash
+ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76 "cd ~/vr-org && git fetch origin master && git reset --hard origin/master"
 ```
 
 ## Adding a New Article (workflow)
 
-1. Add article object to data/articles.json on VPS
-2. Set "featured": true to pin to category pages
-3. Tag with relevant categories (article appears on all matching pages)
-4. Add 2-4 inline images using `<figure>` tags in the body HTML (see Article Images below)
-5. No rebuild needed, changes are instant
-6. Request indexing in Google Search Console for /articles/[slug]
+1. Add article object to data/articles.json in the LOCAL REPO
+2. New articles go at the TOP of the array (newest first in file order)
+3. Set "featured": true to pin to category pages
+4. Tag with relevant categories (article appears on all matching pages)
+5. Add 2-4 inline images using `<figure>` tags in the body HTML (see Article Images below)
+6. Commit and push. Deploy webhook syncs data/ via volume mount (no Docker rebuild needed for data-only changes, but the webhook rebuilds anyway)
+7. The "From Our Editors" homepage section auto-shows the 4 newest articles by publishDate
+8. Request indexing in Google Search Console for /articles/[slug]
+
+**This is a 2-minute task: edit JSON, commit, push. Do not touch infrastructure, Docker, PM2, or next.config.ts when adding articles.**
 
 ## Article Images (REQUIRED for every article)
 
