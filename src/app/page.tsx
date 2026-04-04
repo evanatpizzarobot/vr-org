@@ -39,9 +39,9 @@ export default function Home() {
   const sourceCount = Object.keys(sourceStats).length || Object.keys(SOURCES).length;
 
   useEffect(() => {
-    fetch("/api/articles")
+    fetch("/api/articles?mix=true&limit=4")
       .then((r) => r.json())
-      .then((data) => setEditorials((data.articles || []).slice(0, 4)))
+      .then((data) => setEditorials(data.articles || []))
       .catch(() => {});
   }, []);
 
