@@ -21,7 +21,7 @@ export function Ticker({ articles }: TickerProps) {
       style={{ background: "var(--ticker-bg)", borderColor: "var(--border)" }}
     >
       <div
-        className="flex-shrink-0 px-3.5 font-mono text-[10px] font-medium uppercase tracking-[2px] border-r h-full flex items-center"
+        className="ticker-label flex-shrink-0 px-3.5 font-mono text-[10px] font-medium uppercase tracking-[2px] border-r h-full flex items-center"
         style={{
           color: "var(--accent-cyan)",
           borderColor: "var(--border)",
@@ -31,19 +31,28 @@ export function Ticker({ articles }: TickerProps) {
         Trending
       </div>
       <div className="flex-1 overflow-hidden relative">
-        <div className="ticker-content flex gap-12 whitespace-nowrap pl-6">
+        <div className="ticker-content flex gap-8 whitespace-nowrap pl-6">
           {allItems.map((article, i) => {
             const src = SOURCES[article.source];
             return (
               <span
                 key={`${article.id}-${i}`}
-                className="text-xs flex-shrink-0"
+                className="text-xs flex-shrink-0 flex items-center gap-8"
                 style={{ color: "var(--text-secondary)" }}
               >
-                <span className="font-semibold" style={{ color: src?.color || "var(--accent-cyan)" }}>
-                  {article.sourceName}:
-                </span>{" "}
-                {article.title}
+                <span>
+                  <span className="font-semibold" style={{ color: src?.color || "var(--accent-cyan)" }}>
+                    {article.sourceName}
+                  </span>
+                  {" "}
+                  {article.title}
+                </span>
+                <span
+                  className="text-[8px] opacity-30"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  &#9679;
+                </span>
               </span>
             );
           })}

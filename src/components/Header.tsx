@@ -75,14 +75,17 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
         </div>
 
         <div className="flex items-center gap-4 flex-shrink-0">
-          <div
-            className="w-2 h-2 rounded-full hidden sm:block"
-            style={{
-              background: "var(--accent-green)",
-              boxShadow: "0 0 8px var(--accent-green)",
-              animation: "pulse-dot 2s ease-in-out infinite",
-            }}
-          />
+          {/* Live dot with pulse ring */}
+          <span className="live-dot-wrapper hidden sm:block">
+            <span
+              className="block w-2 h-2 rounded-full relative"
+              style={{
+                background: "var(--accent-green)",
+                boxShadow: "0 0 8px var(--accent-green)",
+                animation: "pulse-dot 2s ease-in-out infinite",
+              }}
+            />
+          </span>
           <span
             className="font-mono text-[11px] uppercase tracking-[1.5px] hidden sm:inline"
             style={{ color: "var(--accent-green)" }}
@@ -108,6 +111,9 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
           <ThemeToggle />
         </div>
       </div>
+
+      {/* Subtle animated gradient line under nav */}
+      <div className="section-divider-animated" style={{ opacity: 0.3 }} />
 
       {/* Mobile nav - horizontally scrollable */}
       <nav
