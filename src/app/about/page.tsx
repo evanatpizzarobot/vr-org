@@ -149,6 +149,9 @@ export default function AboutPage() {
         </ul>
 
         <h2 className="font-display text-2xl font-semibold mt-8 mb-4">Our Writers</h2>
+        <p className="text-[15px] leading-[1.7] mb-6" style={{ color: "var(--text-secondary)" }}>
+          Our editorial team publishes original content daily, covering every corner of the VR, AR, and XR industry.
+        </p>
         <div className="flex flex-col gap-5 mb-10">
           <div>
             <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Evan Marcus</div>
