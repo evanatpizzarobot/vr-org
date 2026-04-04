@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
-import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { getArticleBySlug, getAllSlugs } from "@/lib/articles";
 
 interface PageProps {
@@ -148,9 +147,6 @@ export default async function ArticlePage({ params }: PageProps) {
           className="article-body"
           dangerouslySetInnerHTML={{ __html: article.body }}
         />
-
-        {/* Newsletter signup */}
-        <NewsletterSignup variant="article" />
 
         {/* Tags */}
         <div

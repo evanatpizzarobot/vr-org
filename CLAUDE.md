@@ -357,13 +357,6 @@ When writing new articles, assign the author based on topic. Evan gets ~50%, the
 - Advertising: advertise@vr.org
 - Press: press@vr.org
 
-## Newsletter
-
-- Service: Buttondown (free tier, 100 subscribers)
-- Signup box: sidebar, footer, end of every article
-- Weekly roundup email sent every Friday (manually via Buttondown, content = the weekly roundup article)
-- Form action URL is a placeholder; Evan swaps in his real Buttondown endpoint after creating the account
-
 ## Events Calendar
 
 - Route: /events

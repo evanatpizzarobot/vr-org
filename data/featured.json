@@ -318,6 +318,75 @@
       "imageUrl": null,
       "pinnedAt": "2026-03-24T01:09:49.720Z",
       "expiresAt": "2026-04-23T01:09:49.720Z"
+    },
+    {
+      "id": "9d098ec647060d83",
+      "source": "uploadvr",
+      "sourceName": "UploadVR",
+      "title": "Breachers & Vacation Simulator Are Now In Quest's Horizon+ Games Catalog",
+      "snippet": "April's additions to the Meta Horizon+ games catalog are Breachers, Vacation Simulator and Prison Boss Prohibition.For April 2026, Meta is bringing three games to its Games Catalog, as well as two...",
+      "link": "https://www.uploadvr.com/meta-horizon-april-2026-games-update/",
+      "author": "James Tocchio",
+      "pubDate": "2026-04-03T13:57:14.000Z",
+      "category": "software",
+      "tags": [
+        "software",
+        "gaming",
+        "enterprise",
+        "ar",
+        "meta"
+      ],
+      "imageUrl": "https://www.uploadvr.com/content/images/2026/04/april-2026-meta-horizon-plus.jpg",
+      "pinnedAt": "2026-04-04T03:35:57.172Z",
+      "expiresAt": "2026-05-04T03:35:57.172Z"
+    },
+    {
+      "id": "cef6a5a888801ea7",
+      "source": "roadtovr",
+      "sourceName": "Road to VR",
+      "title": "“VRChat is not going anywhere” Founders Reassure Amid Downturn in Social VR Platforms",
+      "snippet": "Rec Room is shutting down in June. Meta’s Horizon Worlds is searching for greener pastures on mobile. Now, VRChat co-founders say there’s no need to worry about the social VR platform’s future. “In...",
+      "link": "https://www.roadtovr.com/vrchat-still-here-founders-say-rec-room-horizon-worlds/",
+      "author": "Scott Hayden",
+      "pubDate": "2026-04-03T13:14:53.000Z",
+      "category": "software",
+      "tags": [
+        "software",
+        "hardware",
+        "gaming",
+        "enterprise",
+        "ar",
+        "xr",
+        "meta",
+        "valve"
+      ],
+      "imageUrl": "https://roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2019/09/vrchat-1-e1775222119321-341x220.jpg",
+      "pinnedAt": "2026-04-04T03:35:57.172Z",
+      "expiresAt": "2026-05-04T03:35:57.172Z"
+    },
+    {
+      "id": "b30fd8ceb2b59c90",
+      "source": "ghosthowls",
+      "sourceName": "The Ghost Howls",
+      "title": "Join the VR funeral event to celebrate the end of the metaverse [APRIL FOOLS’ POST]",
+      "snippet": "Today, we are going to celebrate the end of VR with a big funeral event that is going to happen both in real life and VR. This will be the last act of that gimmick tech called virtual reality. The VR...",
+      "link": "https://skarredghost.com/2026/04/01/vr-funeral-dead/",
+      "author": "Skarredghost",
+      "pubDate": "2026-04-01T10:21:45.000Z",
+      "category": "gaming",
+      "tags": [
+        "gaming",
+        "hardware",
+        "software",
+        "enterprise",
+        "ar",
+        "xr",
+        "meta",
+        "valve"
+      ],
+      "imageUrl": null,
+      "pinnedAt": "2026-04-04T03:35:57.172Z",
+      "expiresAt": "2026-05-04T03:35:57.172Z"
     }
   ],
   "ar": [
@@ -413,6 +482,116 @@
       "imageUrl": null,
       "pinnedAt": "2026-03-24T01:09:49.720Z",
       "expiresAt": "2026-04-23T01:09:49.720Z"
+    }
+  ],
+  "xr": [
+    {
+      "id": "2a47cf3a99465ccc",
+      "source": "uploadvr",
+      "sourceName": "UploadVR",
+      "title": "Zero Caliber: Frostbite Is A Far Cry Inspired VR Shooter",
+      "snippet": "The developer of Zero Caliber and Gambit confirms it is working on two new VR titles, including a Far Cry inspired shooter.XReal Games, the team behind the Zero Caliber series, announced it is...",
+      "link": "https://www.uploadvr.com/zero-caliber-frostbite-is-a-far-cry-inspired-vr-shooter/",
+      "author": "Mike Johnson",
+      "pubDate": "2026-04-03T13:54:06.000Z",
+      "category": "gaming",
+      "tags": [
+        "gaming",
+        "software",
+        "ar",
+        "xr"
+      ],
+      "imageUrl": "https://www.uploadvr.com/content/images/2026/04/HE53PA0a0AAg6m3.jpg",
+      "pinnedAt": "2026-04-04T03:35:57.172Z",
+      "expiresAt": "2026-05-04T03:35:57.172Z"
+    },
+    {
+      "id": "cef6a5a888801ea7",
+      "source": "roadtovr",
+      "sourceName": "Road to VR",
+      "title": "“VRChat is not going anywhere” Founders Reassure Amid Downturn in Social VR Platforms",
+      "snippet": "Rec Room is shutting down in June. Meta’s Horizon Worlds is searching for greener pastures on mobile. Now, VRChat co-founders say there’s no need to worry about the social VR platform’s future. “In...",
+      "link": "https://www.roadtovr.com/vrchat-still-here-founders-say-rec-room-horizon-worlds/",
+      "author": "Scott Hayden",
+      "pubDate": "2026-04-03T13:14:53.000Z",
+      "category": "software",
+      "tags": [
+        "software",
+        "hardware",
+        "gaming",
+        "enterprise",
+        "ar",
+        "xr",
+        "meta",
+        "valve"
+      ],
+      "imageUrl": "https://roadtovrlive-5ea0.kxcdn.com/wp-content/uploads/2019/09/vrchat-1-e1775222119321-341x220.jpg",
+      "pinnedAt": "2026-04-04T03:35:57.172Z",
+      "expiresAt": "2026-05-04T03:35:57.172Z"
+    },
+    {
+      "id": "b30fd8ceb2b59c90",
+      "source": "ghosthowls",
+      "sourceName": "The Ghost Howls",
+      "title": "Join the VR funeral event to celebrate the end of the metaverse [APRIL FOOLS’ POST]",
+      "snippet": "Today, we are going to celebrate the end of VR with a big funeral event that is going to happen both in real life and VR. This will be the last act of that gimmick tech called virtual reality. The VR...",
+      "link": "https://skarredghost.com/2026/04/01/vr-funeral-dead/",
+      "author": "Skarredghost",
+      "pubDate": "2026-04-01T10:21:45.000Z",
+      "category": "gaming",
+      "tags": [
+        "gaming",
+        "hardware",
+        "software",
+        "enterprise",
+        "ar",
+        "xr",
+        "meta",
+        "valve"
+      ],
+      "imageUrl": null,
+      "pinnedAt": "2026-04-04T03:35:57.172Z",
+      "expiresAt": "2026-05-04T03:35:57.172Z"
+    },
+    {
+      "id": "67fee93ac9a97b3a",
+      "source": "hypergrid",
+      "sourceName": "Hypergrid Business",
+      "title": "It Wasn’t About AI After All: Lessons from The Wrong Biennale",
+      "snippet": "Synthetic Dreams Pavilion. (Image courtesy Kimm Starr.) Time really does fly. Six months later, The Wrong Biennale is coming to a close on March 31, 2026. The Wrong Biennale is an international...",
+      "link": "https://www.hypergridbusiness.com/2026/03/it-wasnt-about-ai-after-all-lessons-from-the-wrong-biennale/",
+      "author": "Kimm Starr",
+      "pubDate": "2026-04-01T01:24:13.000Z",
+      "category": "software",
+      "tags": [
+        "software",
+        "enterprise",
+        "ar",
+        "xr"
+      ],
+      "imageUrl": "https://www.hypergridbusiness.com/wp-content/uploads/2026/03/Image-1-Synthetic-Dreams-Pavillion-361x350.png",
+      "pinnedAt": "2026-04-04T03:35:57.172Z",
+      "expiresAt": "2026-05-04T03:35:57.172Z"
+    },
+    {
+      "id": "047091be2ab76e5c",
+      "source": "xrnews",
+      "sourceName": "Extended Reality News",
+      "title": "Beyond the Screen: How Extended Reality Is Reshaping Our World",
+      "snippet": "We are standing at the edge of a profound shift in how human beings perceive and interact with reality itself. Extended Reality — the umbrella term encompassing Virtual Reality (VR), Augmented...",
+      "link": "https://extendedreality.news/beyond-the-screen-how-extended-reality-is-reshaping-our-world/",
+      "author": "Sharad Saxena",
+      "pubDate": "2026-03-05T09:02:18.000Z",
+      "category": "xr",
+      "tags": [
+        "xr",
+        "gaming",
+        "software",
+        "ar"
+      ],
+      "imageUrl": null,
+      "pinnedAt": "2026-04-04T03:35:57.172Z",
+      "expiresAt": "2026-05-04T03:35:57.172Z"
     }
   ]
 }
