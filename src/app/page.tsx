@@ -76,7 +76,7 @@ export default function Home() {
         <div>
           {/* From Our Editors section */}
           {editorials.length > 0 && (
-            <div className="mb-8">
+            <div className="mb-8 fade-up" style={{ animationDelay: "100ms" }}>
               <div className="flex items-center gap-3 mb-4">
                 <span
                   className="font-display text-[13px] font-semibold uppercase tracking-[2px]"
@@ -185,7 +185,7 @@ export default function Home() {
           )}
 
           {/* Guides & Resources section */}
-          <div className="mb-8">
+          <div className="mb-8 fade-up" style={{ animationDelay: "200ms" }}>
             <div className="flex items-center gap-3 mb-4">
               <span
                 className="font-display text-[13px] font-semibold uppercase tracking-[2px]"
@@ -242,7 +242,7 @@ export default function Home() {
           {/* Main RSS feed */}
           <Feed articles={filtered} loading={loading} />
         </div>
-        <div className="order-first lg:order-last">
+        <div className="order-first lg:order-last fade-up" style={{ animationDelay: "250ms" }}>
           <Sidebar sourceStats={sourceStats} trending={trending} />
         </div>
       </div>

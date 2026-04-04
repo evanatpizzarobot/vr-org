@@ -99,17 +99,26 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
       <Header articleCount={categoryArticles.length} lastUpdated={lastUpdated} />
 
       <div
-        className="border-b"
-        style={{ borderColor: "var(--border)", background: "var(--bg-secondary)" }}
+        className="border-b category-header-wash"
+        style={{
+          borderColor: "var(--border)",
+          background: "var(--bg-secondary)",
+          ["--wash-color" as string]: `color-mix(in srgb, var(--cat-${category}, var(--accent-cyan)) 5%, transparent)`,
+        }}
       >
-        <div className="max-w-[1400px] mx-auto px-6 py-8">
+        <div className="max-w-[1400px] mx-auto px-6 py-10 relative z-10">
           <h1
-            className="font-display text-3xl font-bold mb-2"
+            className="font-display text-3xl font-bold mb-3"
             style={{ letterSpacing: "-0.5px" }}
           >
             {title}
           </h1>
-          <p className="text-[15px]" style={{ color: "var(--text-secondary)" }}>
+          {/* Category accent line */}
+          <div
+            className="w-12 h-[3px] rounded-full mb-4"
+            style={{ background: `var(--cat-${category}, var(--accent-cyan))` }}
+          />
+          <p className="text-[15px] leading-[1.7] max-w-[700px]" style={{ color: "var(--text-secondary)" }}>
             {description}
           </p>
         </div>

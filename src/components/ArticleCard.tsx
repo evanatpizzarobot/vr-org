@@ -37,22 +37,24 @@ export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
         boxShadow: "var(--shadow-card)",
         padding: compact ? "12px 16px" : "18px 20px",
         animationDelay: `${index * 40}ms`,
-        ["--card-accent" as string]: accentColor,
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.background = "var(--bg-card-hover)";
         e.currentTarget.style.borderColor = "var(--border-active)";
         e.currentTarget.style.transform = "translateY(-1px)";
+        e.currentTarget.style.boxShadow =
+          "0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.background = "var(--bg-card)";
         e.currentTarget.style.borderColor = "var(--border)";
         e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "var(--shadow-card)";
       }}
     >
-      {/* Left accent border on hover */}
+      {/* Left accent border — slides in from bottom on hover */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity"
+        className="card-accent-bar"
         style={{ background: accentColor }}
       />
 
@@ -60,17 +62,14 @@ export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
       <div className="flex items-center gap-2.5 mb-2">
         {isOriginal ? (
           <span
-            className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px]"
-            style={{
-              background: "rgba(8, 145, 178, 0.15)",
-              color: "var(--accent-cyan)",
-            }}
+            className="badge-original source-badge-hover font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px] flex items-center gap-1"
           >
+            <span style={{ fontSize: 8, lineHeight: 1 }}>&#9998;</span>
             VR.org Original
           </span>
         ) : (
           <span
-            className={`font-mono text-[10px] font-medium px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px] ${src?.cssClass || ""}`}
+            className={`source-badge-hover font-mono text-[10px] font-medium px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px] ${src?.cssClass || ""}`}
           >
             {article.sourceName}
           </span>
