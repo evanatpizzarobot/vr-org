@@ -3,12 +3,23 @@ const path = require("path");
 const tracker = require("./tracker");
 
 const DATA_DIR = path.join(__dirname, "..", "data");
+const API_BASE = "http://localhost:3000/api";
 
 function readJson(filename) {
   try {
     const filepath = path.join(DATA_DIR, filename);
     if (!fs.existsSync(filepath)) return null;
     return JSON.parse(fs.readFileSync(filepath, "utf-8"));
+  } catch {
+    return null;
+  }
+}
+
+async function fetchApi(endpoint) {
+  try {
+    const res = await fetch(`${API_BASE}/${endpoint}`);
+    if (!res.ok) return null;
+    return await res.json();
   } catch {
     return null;
   }
@@ -48,21 +59,24 @@ function getRotationOriginal(posted) {
   return candidates[Math.floor(Math.random() * candidates.length)];
 }
 
-function getRssHeadlines(posted) {
-  const feed = readJson("feed.json");
-  if (!feed || !feed.articles) return [];
+async function getRssHeadlines(posted) {
+  // Fetch from the live Next.js API (feed data is in-memory, not on disk)
+  const feedData = await fetchApi("feed?limit=200");
+  const trendingData = await fetchApi("trending");
+
+  if (!feedData || !feedData.articles) return [];
 
   const sixHoursAgo = Date.now() - 6 * 60 * 60 * 1000;
   const twentyFourHoursAgo = Date.now() - 24 * 60 * 60 * 1000;
 
-  // Score articles
-  const scored = feed.articles
+  // Score articles (skip VR.org originals, those go through Tier 1)
+  const scored = feedData.articles
+    .filter((a) => a.source !== "vrorg")
     .filter((a) => {
       const hash = tracker.hashUrl(a.link);
       return !tracker.wasPostedRecently(posted, hash, "rss", 48);
     })
     .filter((a) => {
-      // Only consider articles from the last 24 hours
       const pubTime = new Date(a.pubDate).getTime();
       return pubTime > twentyFourHoursAgo;
     })
@@ -74,12 +88,10 @@ function getRssHeadlines(posted) {
       if (pubTime > sixHoursAgo) score += 3;
       else score += 1;
 
-      // Source diversity (will be applied at selection time)
       // Trending topic match
-      const trending = readJson("trending.json");
-      if (trending && trending.topics) {
+      if (trendingData && trendingData.topics) {
         const titleLower = a.title.toLowerCase();
-        for (const topic of trending.topics) {
+        for (const topic of trendingData.topics) {
           if (titleLower.includes(topic.topic.toLowerCase())) {
             score += 2;
             break;
