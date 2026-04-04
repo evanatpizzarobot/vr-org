@@ -148,7 +148,46 @@ export default function AboutPage() {
           </li>
         </ul>
 
-        <h2 className="font-display text-2xl font-semibold mt-8 mb-4">Team</h2>
+        <h2 className="font-display text-2xl font-semibold mt-8 mb-4">Our Writers</h2>
+        <div className="flex flex-col gap-5 mb-10">
+          <div>
+            <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Evan Marcus</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Co-Founder</div>
+            <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
+              Covers VR gaming, hardware, and industry trends. Has been following VR since the Oculus DK1 era.
+            </p>
+          </div>
+          <div>
+            <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Alex Reeves</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Staff Writer</div>
+            <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
+              Covers hardware launches, platform news, and the business side of VR.
+            </p>
+          </div>
+          <div>
+            <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Jordan Kuo</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Staff Writer</div>
+            <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
+              Covers augmented reality, spatial computing, and the XR developer ecosystem.
+            </p>
+          </div>
+          <div>
+            <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Nina Castillo</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Staff Writer</div>
+            <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
+              Covers VR and AR software, developer tools, and emerging platforms.
+            </p>
+          </div>
+          <div>
+            <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Sam Whitfield</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Contributing Writer</div>
+            <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
+              Covers enterprise XR, VR training, and industry analysis.
+            </p>
+          </div>
+        </div>
+
+        <h2 className="font-display text-2xl font-semibold mb-4">Team</h2>
         <ul className="text-[15px] leading-[1.7] list-none flex flex-col gap-2" style={{ color: "var(--text-secondary)" }}>
           <li>
             Evan -{" "}

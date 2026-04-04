@@ -229,7 +229,7 @@ vr-org/
 - Article body content stored as HTML in JSON (p tags, h2 tags)
 - Vary article lengths. Not every article should be the same word count. Short takes: 400-600 words. Medium: 800-1,200 words. Long-form: 1,500-2,500 words. Match length to subject matter.
 - Vary article structure. Not every article needs the same H2-H2-H2-H2 pattern. Some conversational, some list-driven, some flowing narrative.
-- Author is always "Evan Marcus" with authorRole "Co-Founder, VR.org"
+- Distribute articles across the writing team by topic (see Editorial Writers below)
 - Spread publish dates naturally. Never publish many articles on the same date.
 
 ## Data Files (read dynamically, no rebuild needed)
@@ -338,6 +338,18 @@ Every original article MUST include inline images. This is not optional. Images 
 - Evan Marcus (evan@vr.org) - Co-Founder, editorial, development
 - Mark Mahle (mark@vr.org) - Co-Founder, infrastructure, domain owner
 - Sandy (sandy@vr.org) - Team member
+
+## Editorial Writers (pen names for VR.org contributors)
+
+| Writer | Role | authorRole value | Focus Areas |
+|--------|------|-----------------|-------------|
+| Evan Marcus | Co-Founder | "Co-Founder, VR.org" | Gaming opinion, personal retrospectives, big news reactions (~50% of articles) |
+| Alex Reeves | Staff Writer | "Staff Writer, VR.org" | Hardware, Meta/platform business news |
+| Jordan Kuo | Staff Writer | "Staff Writer, VR.org" | AR, XR, Google/Android XR, developer ecosystem |
+| Nina Castillo | Staff Writer | "Staff Writer, VR.org" | Software, WebXR, developer tools, open source |
+| Sam Whitfield | Contributing Writer | "Contributing Writer, VR.org" | Enterprise, training, industry analysis, Apple |
+
+When writing new articles, assign the author based on topic. Evan gets ~50%, the rest split across the staff writers by their focus areas. No @vr.org emails for staff writers.
 
 ## Contact Emails
 
