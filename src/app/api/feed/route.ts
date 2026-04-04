@@ -35,10 +35,7 @@ export async function GET(request: NextRequest) {
     imageUrl: null,
   }));
 
-  articles = [...articles, ...editorialFeedItems].sort(
-    (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
-  );
-
+  // Filter RSS articles by category/tag first
   if (category && category !== "all") {
     articles = articles.filter((a) => a.category === category || a.tags.includes(category));
   }
@@ -47,8 +44,30 @@ export async function GET(request: NextRequest) {
     articles = articles.filter((a) => a.tags.includes(tag));
   }
 
-  const total = articles.length;
-  const paginated = articles.slice(offset, offset + limit);
+  // Filter editorial articles the same way
+  let filteredEditorials = editorialFeedItems;
+  if (category && category !== "all") {
+    filteredEditorials = filteredEditorials.filter((a) => a.category === category || a.tags.includes(category));
+  }
+  if (tag) {
+    filteredEditorials = filteredEditorials.filter((a) => a.tags.includes(tag));
+  }
+
+  // Paginate RSS articles, then merge originals so they always appear
+  const paginatedRss = articles.slice(offset, offset + limit);
+  const merged = [...paginatedRss, ...filteredEditorials].sort(
+    (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
+  );
+
+  // Deduplicate in case originals were already within the RSS window
+  const seen = new Set<string>();
+  const paginated = merged.filter((a) => {
+    if (seen.has(a.id)) return false;
+    seen.add(a.id);
+    return true;
+  });
+
+  const total = articles.length + filteredEditorials.length;
 
   return NextResponse.json({
     articles: paginated,
