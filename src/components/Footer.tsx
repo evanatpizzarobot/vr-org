@@ -20,7 +20,18 @@ export function Footer() {
           >
             VR.org
           </a>{" "}
-          | Everything VR &amp; AR
+          | Everything VR &amp; AR{" "}
+          |{" "}
+          <a
+            href="https://x.com/vrdotorg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+            aria-label="Follow VR.org on X"
+          >
+            @vrdotorg
+          </a>
         </div>
 
         <div className="flex gap-5 flex-wrap">
