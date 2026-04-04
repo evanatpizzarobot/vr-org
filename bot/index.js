@@ -107,7 +107,7 @@ async function checkAndPost() {
   }
 
   // Default: RSS headline
-  const headlines = content.getRssHeadlines(posted);
+  const headlines = await content.getRssHeadlines(posted);
   if (headlines.length > 0) {
     const article = headlines[0];
     const tweet = formatter.formatRssTweet(article);
