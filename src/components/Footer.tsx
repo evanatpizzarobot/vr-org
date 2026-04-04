@@ -1,4 +1,5 @@
 import { SOURCES } from "@/lib/constants";
+import { NewsletterSignup } from "./NewsletterSignup";
 
 const SOURCE_COLORS: Record<string, string> = {
   "Road to VR": "var(--accent-cyan)",
@@ -56,6 +57,7 @@ export function Footer() {
             { label: "Software", href: "/software" },
             { label: "Enterprise", href: "/enterprise" },
             { label: "AR", href: "/ar" },
+            { label: "Events", href: "/events" },
             { label: "About", href: "/about" },
             { label: "Privacy", href: "/privacy" },
           ].map(({ label, href }) => (
@@ -85,6 +87,7 @@ export function Footer() {
               { label: "Top 10 VR Games", href: "/best-vr-games" },
               { label: "Best VR Games 2026", href: "/best-vr-games-2026" },
               { label: "Best VR Apps", href: "/best-vr-apps" },
+              { label: "Events Calendar", href: "/events" },
             ].map(({ label, href }, i) => (
               <span key={href}>
                 {i > 0 && " • "}
@@ -99,6 +102,7 @@ export function Footer() {
             ))}
           </span>
         </div>
+        <NewsletterSignup variant="footer" />
         <div
           className="w-full pt-2 font-mono text-[10px] tracking-[0.5px] flex flex-wrap gap-x-1"
           style={{ color: "var(--text-muted)" }}
