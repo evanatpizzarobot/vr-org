@@ -17,6 +17,8 @@ export function Feed({ articles, loading }: FeedProps) {
 
   return (
     <div className="flex flex-col gap-0.5">
+      {/* Animated gradient divider */}
+      <div className="section-divider-animated mb-2 rounded-full" />
       {/* Feed header */}
       <div className="flex items-center justify-between py-4 pb-3">
         <span
