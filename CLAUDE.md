@@ -357,6 +357,30 @@ When writing new articles, assign the author based on topic. Evan gets ~50%, the
 - Advertising: advertise@vr.org
 - Press: press@vr.org
 
+## Newsletter
+
+- Service: Buttondown (free tier, 100 subscribers)
+- Signup box: sidebar, footer, end of every article
+- Weekly roundup email sent every Friday (manually via Buttondown, content = the weekly roundup article)
+- Form action URL is a placeholder; Evan swaps in his real Buttondown endpoint after creating the account
+
+## Events Calendar
+
+- Route: /events
+- Data: data/events.json (read dynamically, tracked in git)
+- JSON-LD Event schema on each event
+- Sorted by date, upcoming first, past events muted
+- Added to nav, footer, sitemap
+- To add events: edit data/events.json, commit, push
+
+## "This Week in VR" Weekly Roundup
+
+- Published every Friday as a regular VR.org Original at /articles/this-week-in-vr-YYYY-MM-DD
+- Written by Sam Whitfield (Friday's assigned writer)
+- Summarizes 5-8 top stories of the week with links to full articles
+- Tags: broad (xr, gaming, hardware, ar, enterprise) so it appears on all category pages
+- Doubles as newsletter content (sent via Buttondown linking back to the article)
+
 ## X/Twitter Bot (@vrdotorg)
 
 - Posts 10-20 times daily via cron (hourly checks, 6 AM - 9 PM PT)

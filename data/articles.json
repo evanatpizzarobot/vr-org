@@ -1,5 +1,19 @@
 [
   {
+    "id": "this-week-in-vr-2026-04-04",
+    "slug": "this-week-in-vr-2026-04-04",
+    "title": "This Week in VR: Polyarc Layoffs, Black Mirror Goes VR, and the VR Games Showcase Recap",
+    "author": "Sam Whitfield",
+    "authorRole": "Contributing Writer, VR.org",
+    "publishDate": "2026-04-04",
+    "updatedDate": null,
+    "category": "xr",
+    "tags": ["xr", "gaming", "hardware", "ar", "enterprise"],
+    "snippet": "Weekly roundup: Moss studio Polyarc announces major layoffs, Black Mirror is getting a location-based VR experience, the VR Games Showcase delivered two dozen reveals, and more.",
+    "featured": true,
+    "body": "<p>Here's what happened in VR, AR, and XR this week.</p><p><strong>Polyarc, the studio behind Moss, announced major layoffs.</strong> The beloved VR studio is \"significantly reducing\" its team after what it called an unsuccessful period. Another VR pioneer joins the growing list of studios struggling with the economics of VR-exclusive development. <a href=\"/articles/polyarc-moss-studio-layoffs-vr-crisis\">Read our take</a></p><p><strong>Black Mirror is getting a location-based VR experience.</strong> VR studio Univrse and Banijay Live are bringing Netflix's dystopian anthology to VR, debuting at Infinity Experience in Montreal next month. If any IP belongs in VR, it's the show about technology going wrong. <a href=\"/articles/black-mirror-vr-experience-montreal\">Read more</a></p><p><strong>The VR Games Showcase delivered nearly two dozen reveals.</strong> Payday: Aces High is bringing four-player co-op heists to VR. Compass showed off an open-world flying game in the clouds. Little Nightmares VR confirmed for April. And Steam Frame is already showing up in platform compatibility lists before it's even launched. <a href=\"/articles/vr-games-showcase-march-2026-biggest-reveals\">Full recap</a></p><p><strong>Niantic made 8th Wall free and open source.</strong> The leading WebAR platform is now available to any developer at no cost. The hosted services are shutting down, but the tools themselves are open. A big deal for the WebAR ecosystem. <a href=\"/articles/niantic-8th-wall-free-open-source\">Read more</a></p><p><strong>Meta continues its quiet retreat from VR.</strong> Reality Labs layoffs, Horizon Worlds going mobile-first, third-party headset partnerships paused. The company that bet $70 billion on the metaverse is pivoting to AI wearables. <a href=\"/articles/meta-reality-labs-layoffs-pivot-2026\">Our analysis</a></p><p><strong>Google's Vibe Coding XR lets you build XR apps by talking to Gemini.</strong> The open source XR Blocks framework combined with Gemini Canvas can generate working, physics-aware WebXR applications from plain English in under 60 seconds. <a href=\"/articles/google-vibe-coding-xr-xr-blocks-gemini\">Read more</a></p><p><strong>Nintendo's Virtual Boy revival is exactly what you'd expect.</strong> A $100 plastic headset that plays 30-year-old red and black games. No head tracking, no room scale, just stereoscopic 3D through lenses. Peak Nintendo. <a href=\"/articles/nintendo-brought-back-virtual-boy-and-its-perfect\">Our take</a></p><p>That's the week. <a href=\"#newsletter\">Subscribe</a> to get this roundup in your inbox every Friday.</p>"
+  },
+  {
     "id": "polyarc-moss-studio-layoffs-vr-crisis",
     "slug": "polyarc-moss-studio-layoffs-vr-crisis",
     "title": "The Studio Behind Moss Just Gutted Its Team. VR Has a Problem.",
