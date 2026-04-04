@@ -36,7 +36,7 @@ export function getArticleBySlug(slug: string): EditorialArticle | null {
   return articles.find((a) => a.slug === slug) || null;
 }
 
-const MAX_FEATURED_PER_CATEGORY = 3;
+const MAX_FEATURED_PER_CATEGORY = 1;
 
 export function getFeaturedArticles(category: string): EditorialArticle[] {
   const articles = getAllArticles();
