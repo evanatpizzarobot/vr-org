@@ -36,6 +36,22 @@ function markPosted(tracker, key, section) {
   save(tracker);
 }
 
+function getDailyCounts(data) {
+  const today = new Date().toISOString().split("T")[0];
+  if (!data.dailyCounts || data.dailyCounts.date !== today) {
+    data.dailyCounts = { date: today, originals: 0, rss: 0, engagement: 0, total: 0 };
+    save(data);
+  }
+  return data.dailyCounts;
+}
+
+function incrementDailyCount(data, type) {
+  const daily = getDailyCounts(data);
+  daily[type] = (daily[type] || 0) + 1;
+  daily.total = (daily.total || 0) + 1;
+  save(data);
+}
+
 function pruneOldEntries(tracker, daysToKeep = 7) {
   const cutoff = Date.now() - daysToKeep * 24 * 60 * 60 * 1000;
   for (const section of ["articles", "rss"]) {
@@ -49,4 +65,4 @@ function pruneOldEntries(tracker, daysToKeep = 7) {
   save(tracker);
 }
 
-module.exports = { load, save, hashUrl, wasPostedRecently, markPosted, pruneOldEntries };
+module.exports = { load, save, hashUrl, wasPostedRecently, markPosted, getDailyCounts, incrementDailyCount, pruneOldEntries };
