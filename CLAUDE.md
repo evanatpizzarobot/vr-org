@@ -357,6 +357,26 @@ When writing new articles, assign the author based on topic. Evan gets ~50%, the
 - Advertising: advertise@vr.org
 - Press: press@vr.org
 
+## X/Twitter Bot (@vrdotorg)
+
+- Posts 10-20 times daily via cron (hourly checks, 6 AM - 9 PM PT)
+- Promotes VR.org Originals + curated RSS headlines + engagement posts
+- Runs on VPS via PM2 as "vr-org-bot" (separate from the Docker app)
+- Credentials in bot/.env (gitignored), Evan provides from developer.x.com
+- Duplicate tracking in data/posted-tweets.json (gitignored, VPS-only runtime state)
+- Uses twitter-api-v2 npm package
+- Set DRY_RUN=true in bot/.env to log without posting
+- Logs to bot/bot.log
+
+### Bot deploy on VPS
+```bash
+ssh -i ~/.ssh/vr-org ubuntu@104.225.12.76
+cd ~/vr-org/bot
+# Create .env with X API credentials first
+pm2 start index.js --name vr-org-bot
+pm2 save
+```
+
 ## Related Projects (Pizza Robot Studios)
 
 This CLAUDE.md is specific to VR.org. See the global CLAUDE.md at ~/.claude/CLAUDE.md for Pizza Robot Studios defaults that apply across all projects (permissions, no em dashes rule, code style, stack preferences).
