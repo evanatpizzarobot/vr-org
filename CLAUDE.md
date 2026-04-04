@@ -376,7 +376,10 @@ When writing new articles, assign the author based on topic. Evan gets ~50%, the
 
 ## X/Twitter Bot (@vrdotorg)
 
-- Posts 10-20 times daily via cron (hourly checks, 6 AM - 9 PM PT)
+- Posts 8-10 times daily (5/day during first-week ramp-up), hourly cron with 90-min minimum gap
+- Active hours: 6 AM - 11 PM PT
+- Daily limits: 1-2 originals, 5-6 RSS headlines, 1-2 engagement posts
+- Max 1-2 hashtags per post, varied tweet formats
 - Promotes VR.org Originals + curated RSS headlines + engagement posts
 - Runs on VPS via PM2 as "vr-org-bot" (separate from the Docker app)
 - Credentials in bot/.env (gitignored), Evan provides from developer.x.com

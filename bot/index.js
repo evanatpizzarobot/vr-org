@@ -11,30 +11,56 @@ const tracker = require("./tracker");
 const LOG_PATH = path.join(__dirname, "bot.log");
 const DRY_RUN = process.env.DRY_RUN === "true";
 
+// --- Posting limits ---
+const RAMP_UP_START = "2026-04-04";
+const RAMP_UP_DAYS = 7;
+const RAMP_UP_MAX = 5;
+const NORMAL_MAX = 10;
+const MIN_INTERVAL_MS = 90 * 60 * 1000; // 90 minutes between posts
+
+const TYPE_LIMITS = {
+  originals: 2, // includes new + rotation
+  rss: 6,
+  engagement: 2,
+};
+
 function log(msg) {
   const line = `${new Date().toISOString()} ${msg}`;
   console.log(line);
   fs.appendFileSync(LOG_PATH, line + "\n");
 }
 
-// PT hour slots mapped to post type
-// 6-7: rss, 8: original, 9-11: rss, 12: rss, 13: engagement,
-// 14: rss, 15: original-rotation, 16-17: rss, 18-19: rss, 20: original/engagement
-function getPostType(ptHour) {
-  if (ptHour === 8) return "original";
-  if (ptHour === 15) return "rotation";
-  if (ptHour === 13) return "engagement";
-  if (ptHour === 20) return Math.random() > 0.5 ? "rotation" : "engagement";
-  return "rss";
-}
-
 function getPtHour() {
-  // Convert current UTC time to PT (UTC-7 PDT / UTC-8 PST)
-  // Use a rough PDT offset; precise DST handling not critical for a bot
   const now = new Date();
   const utcHour = now.getUTCHours();
-  const ptHour = (utcHour - 7 + 24) % 24;
-  return ptHour;
+  return (utcHour - 7 + 24) % 24;
+}
+
+function getDailyMax() {
+  const start = new Date(RAMP_UP_START).getTime();
+  const daysSince = (Date.now() - start) / (1000 * 60 * 60 * 24);
+  return daysSince < RAMP_UP_DAYS ? RAMP_UP_MAX : NORMAL_MAX;
+}
+
+// Post type selection based on PT hour and remaining daily budget
+function getPostType(ptHour, daily) {
+  // Morning: try new originals
+  if (ptHour >= 7 && ptHour <= 9 && daily.originals < TYPE_LIMITS.originals) {
+    return "original";
+  }
+  // Afternoon: try rotating older originals
+  if (ptHour >= 14 && ptHour <= 16 && daily.originals < TYPE_LIMITS.originals) {
+    return "rotation";
+  }
+  // Midday or evening: engagement posts
+  if ((ptHour === 12 || ptHour === 19) && daily.engagement < TYPE_LIMITS.engagement) {
+    return "engagement";
+  }
+  // Default: RSS headlines
+  if (daily.rss < TYPE_LIMITS.rss) {
+    return "rss";
+  }
+  return null;
 }
 
 async function tryPost(text, label) {
@@ -56,42 +82,79 @@ async function tryPost(text, label) {
   }
 }
 
+function recordPost(posted, type) {
+  tracker.incrementDailyCount(posted, type);
+  posted.lastPostTime = new Date().toISOString();
+  tracker.save(posted);
+}
+
 async function checkAndPost() {
   const ptHour = getPtHour();
-  // Only post during active hours (6 AM - 9 PM PT)
-  if (ptHour < 6 || ptHour > 20) {
+
+  // Active hours: 6 AM - 10 PM PT (no posting 11 PM - 5 AM)
+  if (ptHour < 6 || ptHour >= 23) {
     return;
   }
 
   const posted = tracker.load();
-  const postType = getPostType(ptHour);
 
-  log(`[CHECK] PT hour=${ptHour}, type=${postType}`);
+  // Enforce 90-minute minimum gap between posts
+  if (posted.lastPostTime) {
+    const elapsed = Date.now() - new Date(posted.lastPostTime).getTime();
+    if (elapsed < MIN_INTERVAL_MS) {
+      log(`[SKIP] ${Math.round(elapsed / 60000)}min since last post, need 90min`);
+      return;
+    }
+  }
 
+  // Check daily post limit (ramp-up aware)
+  const daily = tracker.getDailyCounts(posted);
+  const maxToday = getDailyMax();
+  if (daily.total >= maxToday) {
+    log(`[SKIP] Daily limit reached (${daily.total}/${maxToday})`);
+    return;
+  }
+
+  const postType = getPostType(ptHour, daily);
+  if (!postType) {
+    log(`[SKIP] All type limits reached for today`);
+    return;
+  }
+
+  log(`[CHECK] PT hour=${ptHour}, type=${postType}, daily=${daily.total}/${maxToday}`);
+
+  // --- Original (new article) ---
   if (postType === "original") {
     const newArticles = content.getNewOriginals(posted);
     if (newArticles.length > 0) {
       const article = newArticles[0];
       const tweet = formatter.formatOriginalTweet(article);
       const ok = await tryPost(tweet, `original: ${article.slug}`);
-      if (ok) tracker.markPosted(posted, article.slug, "articles");
+      if (ok) {
+        tracker.markPosted(posted, article.slug, "articles");
+        recordPost(posted, "originals");
+      }
       return;
     }
-    // Fall through to rotation if no new articles
     log("[INFO] No new originals, trying rotation");
   }
 
+  // --- Rotation (older original) ---
   if (postType === "original" || postType === "rotation") {
     const article = content.getRotationOriginal(posted);
     if (article) {
       const tweet = formatter.formatOriginalTweet(article);
       const ok = await tryPost(tweet, `rotation: ${article.slug}`);
-      if (ok) tracker.markPosted(posted, article.slug, "articles");
+      if (ok) {
+        tracker.markPosted(posted, article.slug, "articles");
+        recordPost(posted, "originals");
+      }
       return;
     }
     log("[INFO] No rotation candidates, falling back to RSS");
   }
 
+  // --- Engagement ---
   if (postType === "engagement") {
     const template = content.getEngagementPost(posted);
     if (template) {
@@ -99,21 +162,28 @@ async function checkAndPost() {
       const ok = await tryPost(tweet, "engagement");
       if (ok) {
         posted.lastEngagementPost = new Date().toISOString();
-        tracker.save(posted);
+        recordPost(posted, "engagement");
       }
       return;
     }
     log("[INFO] Engagement cooldown active, falling back to RSS");
   }
 
-  // Default: RSS headline
+  // --- RSS headline (default fallback) ---
+  if (daily.rss >= TYPE_LIMITS.rss) {
+    log("[SKIP] RSS daily limit reached");
+    return;
+  }
   const headlines = await content.getRssHeadlines(posted);
   if (headlines.length > 0) {
     const article = headlines[0];
     const tweet = formatter.formatRssTweet(article);
     const hash = tracker.hashUrl(article.link);
     const ok = await tryPost(tweet, `rss: ${article.source}`);
-    if (ok) tracker.markPosted(posted, hash, "rss");
+    if (ok) {
+      tracker.markPosted(posted, hash, "rss");
+      recordPost(posted, "rss");
+    }
   } else {
     log("[INFO] No RSS headlines available to post");
   }
@@ -126,7 +196,7 @@ cron.schedule("0 7 * * *", () => {
   tracker.pruneOldEntries(posted);
 });
 
-// Run every hour on the hour
+// Check every hour (90-min gap enforced inside checkAndPost)
 cron.schedule("0 * * * *", () => {
   checkAndPost().catch((err) => log(`[FATAL] ${err.message}`));
 });
