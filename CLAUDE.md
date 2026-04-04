@@ -369,3 +369,74 @@ For future VPS needs, NetActuate repos include AGENTS.md files for AI-assisted p
 - netactuate-terraform-bgp
 Docs: netactuate.com/docs/guides/ai-assisted-provisioning
 Requires: API key + contract ID from NetActuate portal (Account > API Access)
+
+## Editorial Rotation Schedule
+
+VR.org publishes one original article per day, rotating writers by topic area. When Evan says "let's write today's article," check the day of the week and assign the appropriate writer.
+
+### Weekly Schedule
+
+| Day | Writer | Beat | Article Style |
+|-----|--------|------|---------------|
+| Monday | Jordan Kuo | AR, XR, spatial computing, Google, Android XR | Industry analysis, platform coverage, developer ecosystem. Medium length (800-1000 words). |
+| Tuesday | Evan Marcus | Gaming, opinion, personal takes | Opinionated, personal voice, first-person perspective. Any length, tends longer on passion topics. |
+| Wednesday | Nina Castillo | Software, WebXR, developer tools, open source | Technical but accessible, covers platforms and tools. Short to medium (500-900 words). |
+| Thursday | Alex Reeves | Hardware, Meta/platform business, headset news | Factual with analysis, covers launches and business moves. Medium length (700-1000 words). |
+| Friday | Sam Whitfield | Enterprise, training, industry reports, Apple | Business-focused, data-driven, covers enterprise adoption. Medium length (700-1000 words). |
+| Saturday | Evan Marcus | Big features, retrospectives, deep dives | Long-form, in-depth, personal. These are the signature pieces. (1200-2500 words). |
+| Sunday | Rotating (whoever fits the best story) | Best story of the weekend | Any writer, any length. Pick the most interesting weekend news and assign to the writer whose beat matches. |
+
+### Writer Voice Guidelines
+
+**Evan Marcus** — First person, opinionated, genuine enthusiasm. References personal gaming history. Uses "I" freely. Writes like a gamer talking to other gamers. The primary editorial voice of VR.org.
+
+**Alex Reeves** — Straightforward, analytical. Focuses on facts and implications. Less personal, more "here's what happened and here's what it means." Occasionally dry humor.
+
+**Jordan Kuo** — Tech-forward, developer-aware. Understands platforms and ecosystems. Writes about AR and XR with genuine knowledge of the developer side. Slightly more technical vocabulary.
+
+**Nina Castillo** — Accessible technical writing. Makes complex software topics approachable. Enthusiastic about open source and developer tools. Explains things clearly without being condescending.
+
+**Sam Whitfield** — Business-minded, data-aware. References market reports and industry trends. Writes for an audience that includes enterprise decision-makers. Professional but not stiff.
+
+### Daily Article Workflow
+
+1. Evan opens a conversation and says something like "let's write today's article" or "what should we cover today"
+2. Claude checks the day of the week to determine the assigned writer
+3. Claude searches for the latest VR/AR/XR news relevant to that writer's beat
+4. Claude presents 2-3 topic options for Evan to choose from
+5. Evan picks a topic (or suggests their own)
+6. Claude writes the article in the assigned writer's voice
+7. Claude outputs the article as a CC-ready spec with the JSON metadata and body content
+8. Evan hands it to CC to add to data/articles.json and deploy
+
+### Article Metadata Template
+
+Every article follows this structure in data/articles.json:
+
+```json
+{
+  "id": "slug-matching-the-title",
+  "slug": "slug-matching-the-title",
+  "title": "Article Title Here",
+  "author": "Writer Name",
+  "authorRole": "Role, VR.org",
+  "publishDate": "YYYY-MM-DD",
+  "updatedDate": null,
+  "category": "primary-category",
+  "tags": ["category1", "category2"],
+  "snippet": "1-2 sentence summary for cards and SEO description.",
+  "featured": true,
+  "body": "<p>HTML content here</p>"
+}
+```
+
+### Rules
+
+- No em dashes in any article, ever
+- Vary article lengths based on writer and topic (see schedule above)
+- Vary structure (not every article needs the same H2 pattern)
+- Spread topics across categories so no single category gets all the attention
+- If a major story breaks that doesn't match the day's assigned writer, assign it to whoever's beat it falls under regardless of the schedule
+- Evan can always override the schedule and write any article himself
+- publishDate should always be the actual date the article is written
+- Images should be sourced from Wikimedia Commons, Steam CDN, official press kits, or Google Storage (stable sources only)
