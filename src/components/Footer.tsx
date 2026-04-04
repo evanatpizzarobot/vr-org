@@ -1,5 +1,4 @@
 import { SOURCES } from "@/lib/constants";
-import { NewsletterSignup } from "./NewsletterSignup";
 
 const SOURCE_COLORS: Record<string, string> = {
   "Road to VR": "var(--accent-cyan)",
@@ -102,7 +101,6 @@ export function Footer() {
             ))}
           </span>
         </div>
-        <NewsletterSignup variant="footer" />
         <div
           className="w-full pt-2 font-mono text-[10px] tracking-[0.5px] flex flex-wrap gap-x-1"
           style={{ color: "var(--text-muted)" }}
