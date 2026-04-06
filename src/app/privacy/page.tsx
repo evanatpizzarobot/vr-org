@@ -49,15 +49,7 @@ export default function PrivacyPage() {
         </p>
         <p className="text-[15px] leading-[1.7] mb-8" style={{ color: "var(--text-secondary)" }}>
           <strong style={{ color: "var(--text-primary)" }}>Third-party advertising:</strong>{" "}
-          We use Google AdSense to display advertisements on our site. Google AdSense may use cookies and similar technologies to serve ads based on your prior visits to our site or other websites. You can opt out of personalized advertising by visiting{" "}
-          <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-            Google&apos;s Ad Settings
-          </a>
-          . For more information about how Google uses data when you use our site, visit{" "}
-          <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-            Google&apos;s Privacy &amp; Terms page
-          </a>
-          .
+          VR.org does not currently display third-party advertisements. If this changes in the future, this policy will be updated accordingly.
         </p>
 
         <h2 className="font-display text-2xl font-semibold mb-4">Information we do not collect</h2>
@@ -84,14 +76,11 @@ export default function PrivacyPage() {
         <h2 className="font-display text-2xl font-semibold mb-4">Third-party services</h2>
         <ul className="text-[15px] leading-[1.7] mb-8 list-disc pl-6 flex flex-col gap-1" style={{ color: "var(--text-secondary)" }}>
           <li>
-            <strong style={{ color: "var(--text-primary)" }}>Google AdSense:</strong> Advertising. See{" "}
+            <strong style={{ color: "var(--text-primary)" }}>Google Analytics (if added):</strong> Website analytics. See{" "}
             <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
               Google&apos;s privacy policy
             </a>
             .
-          </li>
-          <li>
-            <strong style={{ color: "var(--text-primary)" }}>Google Analytics (if added):</strong> Website analytics. See Google&apos;s privacy policy above.
           </li>
         </ul>
 
