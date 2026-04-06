@@ -8,7 +8,7 @@ import { TopListWidget } from "./TopListWidget";
 import { TrendingTopics } from "./TrendingTopics";
 import { NetActuateBanner } from "./NetActuateBanner";
 import { EditorsPicks } from "./EditorsPicks";
-import { AdSlot } from "./AdSlot";
+
 
 interface SidebarProps {
   sourceStats: Record<string, { name: string; count: number }>;
@@ -36,7 +36,6 @@ export function Sidebar({ sourceStats, trending }: SidebarProps) {
       {topLists["top-vr-apps"] && (
         <TopListWidget list={topLists["top-vr-apps"]} />
       )}
-      <AdSlot />
       <TrendingTopics topics={trending} />
     </div>
   );

@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { Sidebar } from "@/components/Sidebar";
-import { AdSlot } from "@/components/AdSlot";
+
 import { LoadingSkeleton } from "@/components/LoadingSkeleton";
 import { useFeed } from "@/hooks/useFeed";
 import type { Article } from "@/types";
@@ -329,7 +329,6 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
               <div className="flex flex-col gap-0.5">
                 {liveFeed.map((article, i) => (
                   <div key={article.id}>
-                    {i > 0 && i % 6 === 0 && <AdSlot inline />}
                     <ArticleCard article={article} compact={compact} index={i} />
                   </div>
                 ))}

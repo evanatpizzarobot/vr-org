@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { Article } from "@/types";
 import { ArticleCard } from "./ArticleCard";
-import { AdSlot } from "./AdSlot";
+
 import { LoadingSkeleton } from "./LoadingSkeleton";
 
 interface FeedProps {
@@ -61,7 +61,6 @@ export function Feed({ articles, loading }: FeedProps) {
       {!loading &&
         articles.map((article, i) => (
           <div key={article.id}>
-            {i > 0 && i % 6 === 0 && <AdSlot inline />}
             <ArticleCard article={article} compact={compact} index={i} />
           </div>
         ))}
