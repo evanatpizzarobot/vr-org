@@ -14,14 +14,14 @@ const DRY_RUN = process.env.DRY_RUN === "true";
 // --- Posting limits ---
 const RAMP_UP_START = "2026-04-04";
 const RAMP_UP_DAYS = 7;
-const RAMP_UP_MAX = 5;
-const NORMAL_MAX = 10;
-const MIN_INTERVAL_MS = 90 * 60 * 1000; // 90 minutes between posts
+const RAMP_UP_MAX = 3;
+const NORMAL_MAX = 3;
+const MIN_INTERVAL_MS = 4 * 60 * 60 * 1000; // 4 hours between posts
 
 const TYPE_LIMITS = {
-  originals: 2, // includes new + rotation
-  rss: 6,
-  engagement: 2,
+  originals: 1, // includes new + rotation
+  rss: 2,
+  engagement: 1,
 };
 
 function log(msg) {
