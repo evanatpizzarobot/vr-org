@@ -10,4 +10,5 @@ services:
       - PORT=3000
     volumes:
       - ./data:/app/data
+      - /var/log/nginx:/var/log/nginx:ro
     mem_limit: 512m
