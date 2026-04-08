@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { ThemeScript } from "@/components/ThemeScript";
 import {
@@ -52,6 +53,18 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZNNJ4FV2XN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZNNJ4FV2XN');
+          `}
+        </Script>
         <ThemeScript />
         <meta name="google-site-verification" content="cfkAakzduCtr-941_j8S-6S9ZGXylJLE1r9kn1HU1F8" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
