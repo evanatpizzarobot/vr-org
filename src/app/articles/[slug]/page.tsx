@@ -13,10 +13,19 @@ export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
 
+function extractFirstImage(html: string): string | null {
+  const match = html.match(/<img\s[^>]*src=["']([^"']+)["']/);
+  if (!match) return null;
+  const src = match[1];
+  return src.startsWith("http") ? src : `https://vr.org${src}`;
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) return { title: "Article Not Found | VR.org" };
+
+  const ogImage = extractFirstImage(article.body) || "https://vr.org/og-image.png";
 
   return {
     title: `${article.title} | VR.org`,
@@ -32,12 +41,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: article.publishDate,
       authors: [article.author],
       siteName: "VR.org",
-      images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: article.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description: article.snippet,
+      images: [ogImage],
     },
   };
 }
