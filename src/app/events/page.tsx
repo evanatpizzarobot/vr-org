@@ -53,10 +53,54 @@ function getEvents(): VREvent[] {
   }
 }
 
+const ORGANIZER_MAP: Record<string, string> = {
+  "AWE USA 2026": "AWE",
+  "AWE Asia 2026": "AWE",
+  "SIGGRAPH 2026": "ACM SIGGRAPH",
+  "Apple WWDC 2026": "Apple",
+  "Meta Connect 2026": "Meta",
+  "Google I/O 2026": "Google",
+  "IEEE VR 2026": "IEEE",
+  "ISMAR 2026": "IEEE",
+  "Laval Virtual 2026": "Laval Virtual",
+  "GDC 2026": "Informa",
+  "CES 2026": "CTA",
+  "CES 2027": "CTA",
+  "SPIE AR/VR/MR 2026": "SPIE",
+  "SPIE Photonics West 2027": "SPIE",
+  "MWC Barcelona 2026": "GSMA",
+  "SXSW 2026": "SXSW",
+  "NVIDIA GTC 2026": "NVIDIA",
+  "ACM CHI 2026": "ACM",
+  "Computex 2026": "TAITRA",
+  "Summer Game Fest 2026": "Summer Game Fest",
+  "Gamescom 2026": "Koelnmesse",
+  "IFA 2026": "gfu / Messe Berlin",
+  "Tokyo Game Show 2026": "CESA",
+  "Augmented Enterprise Summit 2026": "BrainXchange",
+  "Games for Change Festival 2026": "Games for Change",
+  "Immersive Tech Week 2026": "VRDays Foundation",
+  "UnitedXR Europe 2026": "UnitedXR",
+  "Meaningful XR 2026": "Meaningful XR",
+  "VR Games Showcase (Spring 2026)": "UploadVR",
+  "Web Summit 2026": "Web Summit",
+};
+
+function getAttendanceMode(location: string): string {
+  const loc = location.toLowerCase();
+  if (loc.includes("online") || loc.includes("virtual") || loc.includes("youtube")) {
+    return "https://schema.org/OnlineEventAttendanceMode";
+  }
+  return "https://schema.org/OfflineEventAttendanceMode";
+}
+
 function eventSchema(event: VREvent) {
   const locationParts = event.location.split(", ");
   const lastPart = locationParts[locationParts.length - 1]?.trim() || "";
   const isUS = locationParts.length > 1 && /^[A-Z]{2}$/.test(lastPart);
+  const organizerName = ORGANIZER_MAP[event.name] || event.name;
+  const attendanceMode = getAttendanceMode(event.location);
+  const year = event.startDate.split("-")[0];
 
   return {
     "@context": "https://schema.org",
@@ -65,10 +109,8 @@ function eventSchema(event: VREvent) {
     description: event.description,
     startDate: event.startDate,
     endDate: event.endDate,
-    eventAttendanceMode:
-      event.location === "Online"
-        ? "https://schema.org/OnlineEventAttendanceMode"
-        : "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: attendanceMode,
     location:
       event.location === "Online"
         ? {
@@ -85,6 +127,22 @@ function eventSchema(event: VREvent) {
               addressCountry: isUS ? "US" : lastPart,
             },
           },
+    image: ["https://vr.org/og-image.png"],
+    organizer: {
+      "@type": "Organization",
+      name: organizerName,
+      url: event.url,
+    },
+    performer: {
+      "@type": "Organization",
+      name: organizerName,
+    },
+    offers: {
+      "@type": "Offer",
+      url: event.url,
+      availability: "https://schema.org/InStock",
+      validFrom: `${year}-01-01`,
+    },
     url: event.url,
   };
 }
