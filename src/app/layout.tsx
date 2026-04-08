@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@vrdotorg",
+    creator: "@vrdotorg",
     title: "VR.org | Virtual Reality & Augmented Reality News",
     description:
       "Real-time VR, AR, and XR news aggregated from the world's top sources.",
