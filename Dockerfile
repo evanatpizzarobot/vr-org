@@ -21,8 +21,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup --system --gid 1000 nodejs
+RUN adduser --system --uid 1000 --ingroup nodejs nextjs
 
 # Copy standalone output
 COPY --from=builder /app/.next/standalone ./
