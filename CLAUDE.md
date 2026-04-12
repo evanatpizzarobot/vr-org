@@ -106,13 +106,12 @@ vr-org/
       top-lists.ts         # Top 10 games/apps data (or data/top-lists.json)
     types/
       index.ts
-  data/                    # Runtime data, NOT in git, read dynamically
-    feed.json              # Cached RSS articles
-    trending.json          # Trending topics
-    sources.json           # Source stats
-    meta.json              # Feed metadata
-    featured.json          # Auto-rotating featured articles (30-day cycle)
-    articles.json          # VR.org Original editorial articles
+  data/                    # Runtime data, read dynamically, volume-mounted
+    featured.json          # Auto-rotating featured articles (30-day cycle), written by engine
+    articles.json          # VR.org Original editorial articles (in git)
+    events.json            # Events calendar (in git)
+    top-lists.json         # Top VR games/apps (in git)
+    feed-cache.json        # Persistent RSS feed snapshot (written after each successful fetch)
   public/
     favicon.ico
     apple-touch-icon.png
@@ -123,19 +122,23 @@ vr-org/
   deploy.sh
 ```
 
-## RSS Sources (11)
+## RSS Sources (5 live)
 
-1. Road to VR - roadtovr.com/feed/
-2. UploadVR - uploadvr.com/feed/
-3. TechCrunch VR - techcrunch.com/tag/virtual-reality/feed/
-4. XR Today - xrtoday.com/feed/
-5. Mixed News - mixed-news.com/en/feed/
-6. The Ghost Howls - skarredghost.com/feed/
-7. Hypergrid Business - hypergridbusiness.com/feed/
-8. Extended Reality News - extendedreality.news/feed/
-9. The Verge (manual/filtered)
-10. Ars Technica (manual/filtered)
-11. VentureBeat (manual/filtered)
+1. Road to VR - https://www.roadtovr.com/feed/
+2. UploadVR - https://uploadvr.com/feed/
+3. Auganix - https://www.auganix.org/feed/
+4. UC Today XR - https://www.uctoday.com/tag/extended-reality/feed/
+5. Virtual Reality News - https://virtual.reality.news/rss
+
+**Dead sources removed on 2026-04-12** (they had not published in months):
+- XR Today (empty feed)
+- Mixed News (dead since Jun 2025)
+- The Ghost Howls (empty feed)
+- Hypergrid Business (empty feed)
+- TechCrunch VR tag (dead since Jun 2025)
+- Extended Reality News (~1 post/month)
+
+When auditing source health: `curl -sH 'User-Agent: Mozilla/5.0' URL | grep -oE '<pubDate>[^<]+' | head -3`. If newest pubDate is >14 days old, source is dead and should be replaced.
 
 ## Category Pages
 
@@ -234,15 +237,18 @@ vr-org/
 
 ## Data Files (read dynamically, no rebuild needed)
 
-These files in data/ are read at request time, NOT at build time. Editing them on the VPS takes effect immediately without rebuilding:
-- data/articles.json
-- data/featured.json
-- data/feed.json
-- data/trending.json
-- data/sources.json
-- data/meta.json
+The RSS feed is kept **in memory** inside the long-lived Node process (`src/lib/rss/engine.ts`). There is no feed.json/trending.json/sources.json/meta.json. The engine refreshes every 15 min via setInterval and exposes `getCache()` to API routes.
+
+These files in data/ ARE read at request time and can be edited on the VPS without rebuilding:
+- data/articles.json (editorial originals, in git)
+- data/events.json (events calendar, in git)
+- data/top-lists.json (top VR games/apps, in git)
+- data/featured.json (auto-rotating, written by engine every 15 min)
+- data/feed-cache.json (persistent RSS snapshot, written after each successful fetch, used as warm-start on container restart)
 
 If any code imports from data/ statically (like top-lists.ts in src/lib/), that DOES require a rebuild. Prefer JSON files in data/ over TypeScript files in src/lib/ for content that should update without rebuilds.
+
+**Dockerfile uid must match host ubuntu uid (1000)** for the container to write `featured.json` and `feed-cache.json` to the volume-mounted data directory. The nextjs user is created with `--uid 1000 --ingroup nodejs`.
 
 ## Deploy Commands
 
