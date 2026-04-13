@@ -22,7 +22,10 @@ export interface SourceMeta {
   name: string;
   count: number;
   lastFetched: string;
-  status: "ok" | "error";
+  status: "ok" | "error" | "disabled";
+  consecutiveFailures?: number;
+  disabledUntil?: string | null;
+  lastError?: string | null;
 }
 
 export interface FeedCache {
