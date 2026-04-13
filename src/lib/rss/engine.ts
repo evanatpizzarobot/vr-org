@@ -97,6 +97,11 @@ async function maybeFireStaleAlert(hoursStale: number): Promise<void> {
   if (now - lastAlertSentAt < ALERT_COOLDOWN) return;
 
   const webhookUrl = process.env.ALERT_WEBHOOK_URL;
+  const resendKey = process.env.RESEND_API_KEY;
+  const alertEmail = process.env.ALERT_EMAIL || "evan@pizzarobotstudios.com";
+  const fromEmail = process.env.ALERT_FROM_EMAIL || "alerts@vr.org";
+
+  const subject = `VR.org feed stale: ${hoursStale.toFixed(1)}h`;
   const message = `VR.org feed stale: ${hoursStale.toFixed(1)}h since last successful fetch. Sources: ${Object.entries(
     cache.sources
   )
@@ -106,21 +111,48 @@ async function maybeFireStaleAlert(hoursStale: number): Promise<void> {
   console.error(`[VR.org ALERT] ${message}`);
   lastAlertSentAt = now;
 
-  if (!webhookUrl) return;
-  try {
-    await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        text: message,
-        content: message,
-        hoursStale,
-        sources: cache.sources,
-        timestamp: new Date().toISOString(),
-      }),
-    });
-  } catch (err) {
-    console.error("[VR.org] Failed to POST alert webhook:", err);
+  if (webhookUrl) {
+    try {
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: message,
+          content: message,
+          hoursStale,
+          sources: cache.sources,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+    } catch (err) {
+      console.error("[VR.org] Failed to POST alert webhook:", err);
+    }
+  }
+
+  if (resendKey) {
+    try {
+      const html = `<h2>${subject}</h2><p>${message}</p><pre>${JSON.stringify(cache.sources, null, 2)}</pre><p><a href="https://vr.org/api/feed-health">Check /api/feed-health</a></p>`;
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${resendKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: fromEmail,
+          to: [alertEmail],
+          subject,
+          html,
+          text: message,
+        }),
+      });
+      if (!res.ok) {
+        const body = await res.text();
+        console.error(`[VR.org] Resend alert failed: ${res.status} ${body}`);
+      }
+    } catch (err) {
+      console.error("[VR.org] Failed to send Resend alert:", err);
+    }
   }
 }
 
