@@ -42,6 +42,13 @@ function truncate(text: string, maxLen: number): string {
   return text.slice(0, maxLen).replace(/\s+\S*$/, "") + "...";
 }
 
+const VR_RELEVANCE_REGEX =
+  /\b(?:vr|xr|virtual reality|augmented reality|extended reality|mixed reality|spatial computing|meta quest|quest [234]|quest pro|horizon worlds|vision pro|visionos|psvr|psvr2|playstation vr|steamvr|steam vr|steam frame|valve index|android xr|pico [45]|hololens|magic leap|xreal|nreal|rokid|webxr|openxr|oculus|ray-?ban meta|smart glasses|ar glasses|mr headset|vr headset)\b/i;
+
+function isVRRelevant(title: string, snippet: string): boolean {
+  return VR_RELEVANCE_REGEX.test(`${title} ${snippet}`);
+}
+
 function extractTag(xml: string, tag: string): string {
   const cdataPattern = new RegExp(
     `<${tag}[^>]*><!\\[CDATA\\[([\\s\\S]*?)\\]\\]></${tag}>`,
@@ -124,6 +131,11 @@ export async function fetchSource(source: RSSSource): Promise<Article[]> {
 
       const id = hashString(link);
       const rawSnippet = stripHtml(contentEncoded || description);
+
+      if (source.relevanceFilter && !isVRRelevant(title, rawSnippet)) {
+        continue;
+      }
+
       const snippet = truncate(rawSnippet, 200);
       const category = categorize(title, rawSnippet);
       const categoryTags = getCategoryTags(title, rawSnippet, category);

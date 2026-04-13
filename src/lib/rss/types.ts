@@ -40,4 +40,5 @@ export interface RSSSource {
   name: string;
   url: string;
   priority: "primary" | "secondary";
+  relevanceFilter?: boolean;
 }
