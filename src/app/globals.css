@@ -226,6 +226,14 @@ body {
   background: rgba(0, 229, 255, 0.1);
   color: var(--accent-cyan);
 }
+.source-generic {
+  background: color-mix(in srgb, var(--text-secondary) 10%, transparent);
+  color: var(--text-secondary);
+}
+[data-theme="dark"] .source-generic {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.75);
+}
 
 /* ===== VR.org Original badge shimmer ===== */
 .badge-original {

@@ -122,13 +122,24 @@ vr-org/
   deploy.sh
 ```
 
-## RSS Sources (5 live)
+## RSS Sources
 
+Sources live in `src/lib/rss/sources.ts`. Two tiers:
+
+**Tier 1: VR/AR/XR-native** (no filter, every article accepted)
 1. Road to VR - https://www.roadtovr.com/feed/
 2. UploadVR - https://uploadvr.com/feed/
 3. Auganix - https://www.auganix.org/feed/
 4. UC Today XR - https://www.uctoday.com/tag/extended-reality/feed/
 5. Virtual Reality News - https://virtual.reality.news/rss
+6. The Ghost Howls - https://skarredghost.com/feed/
+7. AR Insider - https://arinsider.co/feed/
+8. Next Reality - https://next.reality.news/rss
+
+**Tier 2: General tech/gaming** (filtered by VR/AR/XR keyword relevance, added 2026-04-12 to fix weekend gaps)
+Engadget, The Verge, Ars Technica, TechRadar, Tom's Hardware, Digital Trends, Gizmodo, Mashable, SlashGear, The Next Web, Wccftech, PCWorld, Windows Central, PC Gamer, Rock Paper Shotgun, Eurogamer, GameSpot, Kotaku, Destructoid, Push Square, Game Developer, 80 Level, Android Authority, 9to5Google, 9to5Mac, AppleInsider, MacRumors, NVIDIA Blog, Meta Newsroom, PlayStation Blog.
+
+The relevance filter lives in `src/lib/rss/fetcher.ts` (`VR_RELEVANCE_REGEX`). Matches titles/descriptions containing VR, XR, virtual/augmented/mixed/extended reality, spatial computing, Meta Quest, Vision Pro, PSVR, Steam VR, Android XR, HoloLens, WebXR, OpenXR, Oculus, Ray-Ban Meta, smart glasses, and related terms. Set `relevanceFilter: true` on a source to apply it.
 
 **Dead sources removed on 2026-04-12** (they had not published in months):
 - XR Today (empty feed)
