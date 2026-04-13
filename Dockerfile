@@ -21,18 +21,19 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
 
-RUN addgroup --system --gid 1000 nodejs
-RUN adduser --system --uid 1000 --ingroup nodejs nextjs
+# Use the pre-existing `node` user (uid 1000) from node:20-alpine base image.
+# This uid must match the host `ubuntu` user (1000) so the volume-mounted
+# data/ directory is writable for featured.json and feed-cache.json.
 
 # Copy standalone output
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public
+COPY --from=builder --chown=node:node /app/.next/standalone ./
+COPY --from=builder --chown=node:node /app/.next/static ./.next/static
+COPY --from=builder --chown=node:node /app/public ./public
 
-# Create data directory for persistent featured articles
-RUN mkdir -p /app/data && chown nextjs:nodejs /app/data
+# Create data directory for persistent state
+RUN mkdir -p /app/data && chown node:node /app/data
 
-USER nextjs
+USER node
 
 EXPOSE 3000
 
