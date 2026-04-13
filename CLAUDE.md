@@ -331,6 +331,9 @@ Every original article MUST include inline images. This is not optional. Images 
 - YouTube thumbnails (img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg) are stable and good fallbacks
 - Use `class="half-width"` on `<figure>` if an image is too large at full width
 - Wrap image in `<a href="FULL_URL" target="_blank">` for click-to-enlarge when useful
+- **Verify every image URL returns HTTP 200 before committing.** Wikimedia file paths often turn out to be wrong. Use the Commons API (`action=query&prop=imageinfo&iiprop=url&iiurlwidth=1280`) to get the real thumb URL, never hand-assemble `thumb/a/ab/FileName.jpg/Npx-FileName.jpg` paths.
+- Minimum width 1024px, prefer 1280px+, absolute URLs only.
+- Send a descriptive User-Agent like `VRorgBot/1.0 (https://vr.org; evan@pizzarobotstudios.com)` when checking Wikimedia (default UAs get 429-rate-limited).
 
 ## Adding a New Category Page (workflow)
 
