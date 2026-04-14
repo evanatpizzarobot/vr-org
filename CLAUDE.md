@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-VR.org is a real-time VR/AR/XR news aggregator combined with an original editorial publication. The site pulls headlines from 11 RSS sources, categorizes them across hub pages, and features VR.org Original articles written by the editorial team. Co-founded by Evan Marcus (Pizza Robot Studios LLC) and Mark Mahle (NetActuate).
+VR.org is a real-time VR/AR/XR news aggregator combined with an original editorial publication. The site pulls headlines from 8 VR-native RSS sources plus 30 filtered general-tech sources, categorizes them across hub pages, and features 25+ VR.org Original articles written by the editorial team. Co-founded by Evan Marcus (Pizza Robot Studios LLC) and Mark Mahle (NetActuate).
 
 **Live site:** https://vr.org
 **Repo:** github.com/evanatpizzarobot/vr-org
@@ -73,6 +73,8 @@ vr-org/
         trending/route.ts
         sources/route.ts
         health/route.ts
+        feed-health/route.ts   # RSS reliability monitor (UptimeRobot target)
+        stats/route.ts         # Traffic tracker endpoint
       sitemap.xml/route.ts
       robots.txt (or route)
       ads.txt (public/)
@@ -100,9 +102,10 @@ vr-org/
     lib/
       constants.ts         # Source configs, colors, categories
       api.ts               # API client
-      feed-service.ts      # RSS fetch, parse, categorize, cache
-      cache.ts             # JSON file read/write
-      init-cron.ts         # 15-min RSS cron scheduler
+      rss/
+        engine.ts          # In-memory RSS engine, self-healing cron, circuit breaker
+        sources.ts         # Tier 1 + Tier 2 source list
+        fetcher.ts         # Per-source fetch + VR_RELEVANCE_REGEX filter
       top-lists.ts         # Top 10 games/apps data (or data/top-lists.json)
     types/
       index.ts
@@ -150,6 +153,17 @@ The relevance filter lives in `src/lib/rss/fetcher.ts` (`VR_RELEVANCE_REGEX`). M
 - Extended Reality News (~1 post/month)
 
 When auditing source health: `curl -sH 'User-Agent: Mozilla/5.0' URL | grep -oE '<pubDate>[^<]+' | head -3`. If newest pubDate is >14 days old, source is dead and should be replaced.
+
+## RSS Reliability (engine.ts)
+
+The RSS engine is hardened to keep the feed live even when individual sources fail:
+
+- **Health check endpoint:** `/api/feed-health` returns JSON with last successful fetch time, article count, per-source status, and circuit breaker state. HTTP 200 if healthy, 503 if the cache is stale or empty. Used as the UptimeRobot monitor target.
+- **Self-healing cron:** The 15-minute scheduler watches its own last-success timestamp. If more than 30 minutes pass without a successful fetch, the engine tears down and restarts the cron job automatically.
+- **Persistent fallback:** After every successful fetch the engine writes `data/feed-cache.json`. On container restart the engine warm-starts from this snapshot, so a cold boot never shows an empty feed.
+- **Per-source circuit breaker:** Each source tracks consecutive failures. After 5 failures the source is auto-disabled for 24 hours, then re-enabled on a probe fetch. State is in-memory only.
+- **Per-source try/catch:** Each source fetch is isolated. One broken feed (timeout, 500, malformed XML) cannot throw out of the top-level job and kill the whole refresh.
+- **UptimeRobot:** External monitor hits `/api/feed-health` every 5 minutes and alerts on 503/timeout. Configure via uptimerobot.com when rotating the monitor.
 
 ## Category Pages
 
@@ -210,6 +224,12 @@ When auditing source health: `curl -sH 'User-Agent: Mozilla/5.0' URL | grep -oE 
 - Currently in "Getting ready" status, pending approval
 - AdSense script in layout.tsx head
 
+## Analytics
+
+- **GA4:** Live. Measurement ID `G-ZNNJ4FV2XN`, loaded from layout.tsx.
+- **Custom stats endpoint:** `/api/stats` returns aggregated traffic numbers for the internal traffic tracker dashboard.
+- **Search Console:** URL prefix property (`https://vr.org/`) is verified and reporting. Domain property is still pending Mark adding the required DNS TXT record at NetActuate.
+
 ## Sidebar Layout (top to bottom)
 
 1. Sources card (with VR.org included)
@@ -259,7 +279,7 @@ These files in data/ ARE read at request time and can be edited on the VPS witho
 
 If any code imports from data/ statically (like top-lists.ts in src/lib/), that DOES require a rebuild. Prefer JSON files in data/ over TypeScript files in src/lib/ for content that should update without rebuilds.
 
-**Dockerfile uid must match host ubuntu uid (1000)** for the container to write `featured.json` and `feed-cache.json` to the volume-mounted data directory. The nextjs user is created with `--uid 1000 --ingroup nodejs`.
+**Dockerfile uid must match host ubuntu uid (1000)** for the container to write `featured.json` and `feed-cache.json` to the volume-mounted data directory. The nextjs user is created with `--uid 1000 --ingroup nodejs`. Previously the container ran as uid 1001 and the auto-rotating featured articles job crashed with EACCES on every write. Fixed by pinning the Dockerfile user to uid 1000. Do not change this without also chown'ing the host `data/` directory.
 
 ## Deploy Commands
 
@@ -396,9 +416,11 @@ When writing new articles, assign the author based on topic. Evan gets ~50%, the
 
 ## X/Twitter Bot (@vrdotorg)
 
-- Posts 1-3 times daily, hourly cron with 4-hour minimum gap
-- Active hours: 6 AM - 11 PM PT
-- Daily limits: 1 original, 2 RSS headlines, 1 engagement post
+Conservative posting limits to avoid looking spammy or tripping X rate limits:
+
+- 8-10 posts per day max
+- Minimum 90 minutes between posts
+- No posting between 11 PM and 6 AM PT (quiet hours)
 - Max 1-2 hashtags per post, varied tweet formats
 - Promotes VR.org Originals + curated RSS headlines + engagement posts
 - Runs on VPS via PM2 as "vr-org-bot" (separate from the Docker app)
@@ -448,15 +470,15 @@ VR.org publishes one original article per day, rotating writers by topic area. W
 
 ### Writer Voice Guidelines
 
-**Evan Marcus** — First person, opinionated, genuine enthusiasm. References personal gaming history. Uses "I" freely. Writes like a gamer talking to other gamers. The primary editorial voice of VR.org.
+**Evan Marcus.** First person, opinionated, genuine enthusiasm. References personal gaming history. Uses "I" freely. Writes like a gamer talking to other gamers. The primary editorial voice of VR.org.
 
-**Alex Reeves** — Straightforward, analytical. Focuses on facts and implications. Less personal, more "here's what happened and here's what it means." Occasionally dry humor.
+**Alex Reeves.** Straightforward, analytical. Focuses on facts and implications. Less personal, more "here's what happened and here's what it means." Occasionally dry humor.
 
-**Jordan Kuo** — Tech-forward, developer-aware. Understands platforms and ecosystems. Writes about AR and XR with genuine knowledge of the developer side. Slightly more technical vocabulary.
+**Jordan Kuo.** Tech-forward, developer-aware. Understands platforms and ecosystems. Writes about AR and XR with genuine knowledge of the developer side. Slightly more technical vocabulary.
 
-**Nina Castillo** — Accessible technical writing. Makes complex software topics approachable. Enthusiastic about open source and developer tools. Explains things clearly without being condescending.
+**Nina Castillo.** Accessible technical writing. Makes complex software topics approachable. Enthusiastic about open source and developer tools. Explains things clearly without being condescending.
 
-**Sam Whitfield** — Business-minded, data-aware. References market reports and industry trends. Writes for an audience that includes enterprise decision-makers. Professional but not stiff.
+**Sam Whitfield.** Business-minded, data-aware. References market reports and industry trends. Writes for an audience that includes enterprise decision-makers. Professional but not stiff.
 
 ### Daily Article Workflow
 
