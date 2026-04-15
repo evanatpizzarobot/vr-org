@@ -174,7 +174,7 @@ export default function Home() {
                           className="font-mono text-[10px] ml-auto"
                           style={{ color: "var(--text-muted)" }}
                         >
-                          {new Date(ea.publishDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                          {new Date(ea.publishDate).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" })}
                         </span>
                       </div>
                     </a>

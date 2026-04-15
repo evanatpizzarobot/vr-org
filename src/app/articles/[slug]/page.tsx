@@ -92,7 +92,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const formattedDate = new Date(article.publishDate).toLocaleDateString(
     "en-US",
-    { year: "numeric", month: "long", day: "numeric" }
+    { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }
   );
 
   return (
