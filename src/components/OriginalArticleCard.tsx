@@ -23,6 +23,7 @@ export function OriginalArticleCard({
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "UTC",
   });
 
   return (
