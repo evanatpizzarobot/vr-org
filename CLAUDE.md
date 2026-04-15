@@ -257,6 +257,24 @@ The RSS engine is hardened to keep the feed live even when individual sources fa
 - Static asset caching: 1 year for /_next/static, 7 days for public assets
 - www.vr.org redirects to vr.org (non-www canonical)
 
+## publishDate Timezone Rule (CRITICAL)
+
+Article `publishDate` values in `data/articles.json` are bare date strings like `"2026-04-15"`. `new Date("2026-04-15")` parses these as UTC midnight, so `toLocaleDateString()` without an explicit `timeZone` option renders them in the browser's local zone and shows the **previous day** for any viewer west of UTC (Los Angeles is UTC-7/8, so "2026-04-15" displays as "Apr 14").
+
+**Any code that formats an article `publishDate` for display MUST pass `timeZone: "UTC"` to `toLocaleDateString`.** Example:
+
+```ts
+new Date(article.publishDate).toLocaleDateString("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+```
+
+Current call sites that already do this: `src/app/page.tsx` (From Our Editors), `src/components/OriginalArticleCard.tsx`, `src/app/articles/[slug]/page.tsx`. When adding new date-formatting spots (category pages, sidebars, widgets, JSON-LD datePublished fields if they truncate time), do not forget the UTC option.
+
+This was caught on 2026-04-15 when three articles dated today were displaying as Apr 14 across the homepage.
+
 ## Writing Rules (CRITICAL)
 
 - **NO EM DASHES anywhere.** Never use -- or the em dash character. Use commas, periods, or restructure sentences instead. This is the #1 anti-AI-detection rule across all Pizza Robot Studios projects.
