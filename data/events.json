@@ -122,15 +122,14 @@
   {
     "id": "google-io-2026",
     "name": "Google I/O 2026",
-    "description": "Google's annual developer conference. Expected to feature Android XR announcements, ARCore updates, and spatial computing platform news. Dates are tentative.",
+    "description": "Google's annual developer conference. Expected to feature Android XR announcements, ARCore updates, and spatial computing platform news. Keynote on May 19 at 10am PT.",
     "startDate": "2026-05-19",
     "endDate": "2026-05-20",
     "location": "Mountain View, CA",
     "venue": "Shoreline Amphitheatre",
-    "url": "https://io.google/",
+    "url": "https://io.google/2026/",
     "category": "conference",
-    "featured": true,
-    "tentative": true
+    "featured": true
   },
   {
     "id": "meaningful-xr-2026",
@@ -315,15 +314,14 @@
   {
     "id": "awe-asia-2026",
     "name": "AWE Asia 2026",
-    "description": "Asia-Pacific edition of the Augmented World Expo, covering enterprise XR, spatial computing, and immersive technology across the APAC market. Dates are tentative.",
-    "startDate": "2026-11-10",
-    "endDate": "2026-11-12",
+    "description": "Asia-Pacific edition of the Augmented World Expo, covering enterprise XR, spatial computing, and immersive technology across the APAC market.",
+    "startDate": "2026-02-02",
+    "endDate": "2026-02-04",
     "location": "Singapore",
-    "venue": "TBA",
-    "url": "https://www.awexr.com/",
+    "venue": "Singapore Expo",
+    "url": "https://www.aweasia.com/",
     "category": "conference",
-    "featured": false,
-    "tentative": true
+    "featured": false
   },
   {
     "id": "unitedxr-europe-2026",
