@@ -35,7 +35,7 @@ export function Footer() {
           >
             VR.org
           </a>{" "}
-          | Everything VR &amp; AR{" "}
+          | Everything VR, AR &amp; XR{" "}
           |{" "}
           <a
             href="https://x.com/vrdotorg"
