@@ -912,7 +912,7 @@ nav::-webkit-scrollbar {
   -webkit-backdrop-filter: blur(12px);
   width: fit-content;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 4px auto 0;
 }
 .stat {
   padding: 9px 20px;
