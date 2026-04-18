@@ -5,15 +5,11 @@ import { useState, useEffect, useCallback } from "react";
 type Theme = "light" | "dark";
 
 export function useTheme() {
-  const [theme, setThemeState] = useState<Theme>("light");
+  const [theme, setThemeState] = useState<Theme>("dark");
 
   useEffect(() => {
     const stored = localStorage.getItem("vr-org-theme") as Theme | null;
-    if (stored === "dark" || stored === "light") {
-      setThemeState(stored);
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setThemeState("dark");
-    }
+    setThemeState(stored === "light" ? "light" : "dark");
   }, []);
 
   const setTheme = useCallback((t: Theme) => {

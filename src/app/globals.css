@@ -33,12 +33,102 @@
   --cat-ar: #059669;
   --cat-xr: #2563eb;
 
+  /* Category RGB triplets (for alpha-mix usage) */
+  --cat-gaming-rgb: 124, 58, 237;
+  --cat-hardware-rgb: 8, 145, 178;
+  --cat-software-rgb: 234, 88, 12;
+  --cat-enterprise-rgb: 217, 119, 6;
+  --cat-ar-rgb: 5, 150, 105;
+  --cat-xr-rgb: 37, 99, 235;
+
   /* Writer accent colors */
   --writer-evan: #0891b2;
   --writer-alex: #ea580c;
   --writer-jordan: #2563eb;
   --writer-nina: #059669;
   --writer-sam: #7C3AED;
+
+  /* ===== NEW DESIGN-SYSTEM TOKENS (prototype handoff, 2026-04) ===== */
+  /* Brand */
+  --brand: #0891B2;
+  --brand-2: #0E7490;
+  --brand-rgb: 8, 145, 178;
+
+  /* Text tiers (map to existing aliases) */
+  --text-0: #0f172a;
+  --text-1: #334155;
+  --text-2: #64748b;
+  --text-3: #94a3b8;
+
+  /* Surface tiers */
+  --bg-0: #ffffff;
+  --bg-1: #f8fafc;
+  --bg-2: #f1f5f9;
+  --bg-3: #e2e8f0;
+  --bg-ink: #ffffff;
+  --bg-0-rgb: 255, 255, 255;
+
+  /* Border system */
+  --border-rgb: 203, 213, 225;
+  --border-soft: rgba(var(--border-rgb), 0.6);
+  --border-softer: rgba(var(--border-rgb), 0.4);
+  --border-solid: rgba(var(--border-rgb), 0.9);
+  --hairline: rgba(var(--border-rgb), 0.7);
+
+  /* Accent system (category pages override --accent + --accent-rgb) */
+  --accent: var(--brand);
+  --accent-2: var(--brand-2);
+  --accent-rgb: var(--brand-rgb);
+  --accent-faint: rgba(var(--accent-rgb), 0.05);
+  --accent-dim:   rgba(var(--accent-rgb), 0.08);
+  --accent-soft:  rgba(var(--accent-rgb), 0.10);
+  --accent-mid:   rgba(var(--accent-rgb), 0.18);
+  --accent-strong:rgba(var(--accent-rgb), 0.28);
+  --accent-glow:  rgba(var(--accent-rgb), 0.35);
+
+  /* Status */
+  --hot: #f59e0b;
+  --live: #ef4444;
+  --live-rgb: 239, 68, 68;
+  --ok: #10b981;
+
+  /* Surface / glass */
+  --surface-glass:   rgba(255,255,255,0.82);
+  --surface-glass-2: rgba(255,255,255,0.68);
+  --surface-glass-3: rgba(255,255,255,0.55);
+  --card-bg-top:     #ffffff;
+  --card-bg-bot:     #f8fafc;
+  --card-bg-solid:   #ffffff;
+
+  /* Ink alpha tints (light uses slate ink) */
+  --white-a03: rgba(15,23,42,0.03);
+  --white-a04: rgba(15,23,42,0.04);
+  --white-a06: rgba(15,23,42,0.06);
+  --white-a08: rgba(15,23,42,0.08);
+  --white-a10: rgba(15,23,42,0.10);
+  --white-a16: rgba(15,23,42,0.16);
+
+  /* Radii */
+  --r-xs: 4px; --r-sm: 6px; --r-md: 8px; --r-lg: 10px;
+  --r-xl: 12px; --r-2xl: 14px; --r-pill: 999px;
+
+  /* Typography families */
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Space Grotesk", "Outfit", sans-serif;
+
+  /* Shadows */
+  --shadow-accent: 0 8px 24px -6px var(--accent-glow);
+  --shadow-accent-lg: 0 12px 32px -8px var(--accent-glow);
+  --shadow-card-hover: 0 10px 24px -8px rgba(15,23,42,0.15), 0 4px 8px -4px rgba(15,23,42,0.08);
+  --shadow-panel: 0 20px 60px -12px rgba(15,23,42,0.25);
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 120ms; --dur: 200ms; --dur-slow: 360ms;
+
+  /* Noise overlay (dark mode only) */
+  --noise-opacity: 0;
 }
 
 /* ===== DARK THEME ===== */
@@ -71,12 +161,72 @@
   --cat-ar: #34D399;
   --cat-xr: #60A5FA;
 
+  /* Category RGB triplets (dark) */
+  --cat-gaming-rgb: 167, 139, 250;
+  --cat-hardware-rgb: 0, 212, 255;
+  --cat-software-rgb: 251, 146, 60;
+  --cat-enterprise-rgb: 251, 191, 36;
+  --cat-ar-rgb: 52, 211, 153;
+  --cat-xr-rgb: 96, 165, 250;
+
   /* Writer accent colors (brighter for dark) */
   --writer-evan: #00e5ff;
   --writer-alex: #ff9100;
   --writer-jordan: #448aff;
   --writer-nina: #00e676;
   --writer-sam: #b388ff;
+
+  /* ===== NEW DESIGN-SYSTEM TOKENS (dark overrides) ===== */
+  --brand: #00D4FF;
+  --brand-2: #06B6D4;
+  --brand-rgb: 0, 212, 255;
+
+  --text-0: #e6edf3;
+  --text-1: #b7c2cc;
+  --text-2: #7d8b97;
+  --text-3: #566472;
+
+  --bg-0: #0a0f14;
+  --bg-1: #0e141b;
+  --bg-2: #131a22;
+  --bg-3: #1a232d;
+  --bg-ink: #05131a;
+  --bg-0-rgb: 10, 15, 20;
+
+  --border-rgb: 31, 42, 54;
+  --border-soft: rgba(var(--border-rgb), 0.6);
+  --border-softer: rgba(var(--border-rgb), 0.4);
+  --border-solid: rgba(var(--border-rgb), 0.9);
+  --hairline: rgba(var(--border-rgb), 0.7);
+
+  --accent: var(--brand);
+  --accent-2: var(--brand-2);
+  --accent-rgb: var(--brand-rgb);
+  --accent-faint: rgba(var(--accent-rgb), 0.05);
+  --accent-dim:   rgba(var(--accent-rgb), 0.08);
+  --accent-soft:  rgba(var(--accent-rgb), 0.10);
+  --accent-mid:   rgba(var(--accent-rgb), 0.18);
+  --accent-strong:rgba(var(--accent-rgb), 0.28);
+  --accent-glow:  rgba(var(--accent-rgb), 0.35);
+
+  --surface-glass:   rgba(var(--bg-0-rgb), 0.72);
+  --surface-glass-2: rgba(var(--bg-0-rgb), 0.55);
+  --surface-glass-3: rgba(var(--bg-0-rgb), 0.40);
+  --card-bg-top:     rgba(19, 26, 34, 0.70);
+  --card-bg-bot:     rgba(14, 20, 27, 0.70);
+  --card-bg-solid:   rgba(14, 20, 27, 0.75);
+
+  --white-a03: rgba(255,255,255,0.03);
+  --white-a04: rgba(255,255,255,0.04);
+  --white-a06: rgba(255,255,255,0.06);
+  --white-a08: rgba(255,255,255,0.08);
+  --white-a10: rgba(255,255,255,0.10);
+  --white-a16: rgba(255,255,255,0.16);
+
+  --shadow-card-hover: 0 12px 32px -8px rgba(0,0,0,0.55);
+  --shadow-panel: 0 20px 60px -12px rgba(0,0,0,0.6);
+
+  --noise-opacity: 0.025;
 }
 
 /* ===== BASE STYLES ===== */
@@ -375,11 +525,15 @@ nav::-webkit-scrollbar {
 
 /* ===== EDITORIAL CARD ENHANCEMENTS ===== */
 .editorial-glow:hover {
-  box-shadow: 0 4px 20px rgba(8, 145, 178, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 8px 24px -6px var(--accent-glow),
+    0 2px 6px -2px rgba(15, 23, 42, 0.08);
 }
 
 [data-theme="dark"] .editorial-glow:hover {
-  box-shadow: 0 4px 24px rgba(0, 229, 255, 0.08), 0 0 0 1px rgba(0, 229, 255, 0.05);
+  box-shadow:
+    0 0 0 1px var(--accent-mid),
+    0 10px 30px -12px var(--accent-glow);
 }
 
 /* ===== ARTICLE CARD HOVER POLISH ===== */
@@ -569,4 +723,297 @@ nav::-webkit-scrollbar {
 
 .article-body figure a:hover img {
   opacity: 0.85;
+}
+
+/* ============================================================
+   HERO BACKGROUND CANVAS (cosmic + wireframe grid)
+   Fixed full-viewport layer behind the whole homepage. Content
+   sits above via z-index hoisting. Vignette fades the lower
+   portion back to --bg-0 so the feed/sidebar read cleanly.
+   ============================================================ */
+
+.hero-bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  display: block;
+}
+
+.hero-bg-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 0%, var(--accent-faint), transparent 60%),
+    radial-gradient(ellipse 100% 60% at 50% 100%, rgba(var(--bg-0-rgb), 0.9), transparent 70%),
+    linear-gradient(180deg,
+      rgba(var(--bg-0-rgb), 0) 0%,
+      rgba(var(--bg-0-rgb), 0.4) 65%,
+      rgba(var(--bg-0-rgb), 0.95) 100%);
+}
+
+/* Hoist top-level page content above the fixed canvas + vignette */
+.page-stack { position: relative; z-index: 2; }
+
+/* ============================================================
+   HOMEPAGE HERO (new, 2026-04 handoff)
+   All color/spacing driven via CSS custom properties.
+   ============================================================ */
+
+.hero-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 900px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+}
+.hero-ad[hidden] {
+  display: block !important;
+  visibility: hidden;
+  border: none;
+  background: none;
+  min-height: 0;
+}
+.hero-ad {
+  position: sticky;
+  top: 88px;
+  min-height: 320px;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--border-soft);
+  background: var(--card-bg-solid);
+  padding: 16px;
+  color: var(--text-2);
+}
+@media (max-width: 1200px) {
+  .hero-wrap { grid-template-columns: 1fr; padding: 40px 20px 28px; }
+  .hero-ad { display: none; }
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-mid);
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-cyan);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-glow);
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5.6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  margin: 0 0 18px;
+  background: linear-gradient(180deg, var(--text-primary) 0%, var(--text-secondary) 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-headline .accent {
+  background: linear-gradient(135deg,
+    var(--accent-cyan) 0%,
+    color-mix(in oklab, var(--accent-cyan) 50%, white) 60%,
+    var(--brand-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-lede {
+  max-width: 620px;
+  margin: 0 auto 28px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.hero-ctas {
+  display: inline-flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.btn {
+  padding: 11px 20px;
+  border-radius: var(--r-lg);
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s var(--ease), background 0.15s var(--ease), box-shadow 0.15s var(--ease), border-color 0.15s var(--ease);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-primary {
+  background: var(--accent-cyan);
+  color: var(--bg-ink);
+  box-shadow: 0 0 0 1px var(--accent-cyan), var(--shadow-accent);
+}
+.btn-primary:hover {
+  background: color-mix(in oklab, var(--accent-cyan) 85%, white);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent-cyan) 85%, white), var(--shadow-accent-lg);
+}
+.btn-ghost {
+  background: var(--white-a03);
+  border: 1px solid var(--white-a08);
+  color: var(--text-primary);
+}
+.btn-ghost:hover {
+  background: var(--white-a06);
+  border-color: var(--white-a16);
+}
+
+/* Hero stat chip strip (always on its own line below the CTAs) */
+.stat-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 4px;
+  background: rgba(var(--bg-0-rgb), 0.6);
+  border: 1px solid var(--border-solid);
+  border-radius: var(--r-2xl);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.stat {
+  padding: 9px 20px;
+  border-right: 1px solid rgba(var(--border-rgb), 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 112px;
+}
+.stat:last-child { border-right: none; }
+.stat-label {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.stat-value .tick {
+  color: var(--ok);
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.stat-value .tick::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--ok) 70%, transparent);
+  animation: pulse 2.2s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .hero-wrap { padding: 28px 16px 20px; }
+  .hero-eyebrow { font-size: 10px; margin-bottom: 16px; }
+  .hero-lede { font-size: 15px; margin-bottom: 22px; }
+  .hero-ctas { margin-bottom: 22px; flex-wrap: wrap; justify-content: center; }
+  .btn { padding: 10px 16px; font-size: 13px; }
+  .stat { padding: 8px 14px; min-width: 0; }
+  .stat-value { font-size: 15px; }
+}
+
+/* Soft hero glow behind the headline (scoped to the hero section) */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 900px;
+  height: 360px;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, var(--accent-dim), transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================================================
+   CARD POLISH (opt-in .card-surface class)
+   Gives cards a subtle vertical gradient + refined shadow that
+   works in both themes. Existing components keep their current
+   look unless they adopt this class.
+   ============================================================ */
+.card-surface {
+  background: linear-gradient(180deg, var(--card-bg-top), var(--card-bg-bot));
+  border: 1px solid var(--border-solid);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.card-surface:hover {
+  border-color: var(--accent-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px rgba(var(--accent-rgb), 0.1);
+}
+
+/* Section eyebrow + rule (matches prototype .section-header) */
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-cyan);
+}
+.section-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-strong), transparent);
 }
