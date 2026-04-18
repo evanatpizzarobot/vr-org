@@ -37,7 +37,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
         borderColor: "var(--border)",
       }}
     >
-      <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center relative">
+      <div className="px-6 h-16 flex items-center relative">
         {/* Mobile logo (desktop logo lives inside the centered cluster) */}
         <a href="/" className="flex items-center gap-1 no-underline flex-shrink-0 md:hidden">
           <img
