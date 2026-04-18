@@ -27,16 +27,16 @@ export function Sidebar({ sourceStats, trending }: SidebarProps) {
 
   return (
     <div className="flex flex-col gap-5">
-      <SourceStats stats={sourceStats} />
-      <EditorsPicks />
-      <NetActuateBanner />
       {topLists["top-vr-games-2026"] && (
         <TopListWidget list={topLists["top-vr-games-2026"]} />
       )}
+      <EditorsPicks />
       {topLists["top-vr-apps"] && (
         <TopListWidget list={topLists["top-vr-apps"]} />
       )}
+      <NetActuateBanner />
       <TrendingTopics topics={trending} />
+      <SourceStats stats={sourceStats} />
     </div>
   );
 }

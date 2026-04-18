@@ -17,15 +17,18 @@ export function Ticker({ articles }: TickerProps) {
 
   return (
     <div
-      className="border-b overflow-hidden h-9 items-center hidden md:flex"
-      style={{ background: "var(--ticker-bg)", borderColor: "var(--border)" }}
+      className="border-b overflow-hidden h-9 items-center hidden md:flex backdrop-blur-md"
+      style={{
+        background: "var(--surface-glass)",
+        borderColor: "var(--hairline)",
+      }}
     >
       <div
-        className="ticker-label flex-shrink-0 px-3.5 font-mono text-[10px] font-medium uppercase tracking-[2px] border-r h-full flex items-center"
+        className="ticker-label flex-shrink-0 px-3.5 font-mono text-[10px] font-bold uppercase tracking-[2px] h-full flex items-center"
         style={{
-          color: "var(--accent-cyan)",
-          borderColor: "var(--border)",
-          background: "var(--accent-cyan-dim)",
+          color: "var(--bg-ink)",
+          background: "var(--accent-cyan)",
+          boxShadow: "4px 0 12px rgba(var(--bg-0-rgb), 0.9)",
         }}
       >
         Trending

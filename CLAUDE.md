@@ -29,7 +29,7 @@ VR.org is a real-time VR/AR/XR news aggregator combined with an original editori
 - **Data mounting:** `./data` is volume-mounted into the container at `/app/data` (changes to data/ on host are instant, no rebuild needed)
 - **SSL:** Let's Encrypt via Certbot (auto-renewing)
 - **DNS:** Managed by NetActuate (Mark handles DNS)
-- **Theme:** Light default with dark mode toggle
+- **Theme:** Dark default with light mode toggle. OS `prefers-color-scheme` is intentionally ignored. Only a stored `vr-org-theme: "light"` in localStorage overrides the default; any other state (empty, "dark", corrupt) renders dark.
 
 ## Auto-Deploy
 
@@ -232,12 +232,12 @@ The RSS engine is hardened to keep the feed live even when individual sources fa
 
 ## Sidebar Layout (top to bottom)
 
-1. Sources card (with VR.org included)
-2. NetActuate sponsor banner (permanent, links to netactuate.com)
-3. Top VR Games 2026 widget (numbered list, links to /best-vr-games-2026)
-4. Top VR Apps & Utilities widget (links to /best-vr-apps)
-5. AdSense ad slot
-6. Trending Topics card
+1. Top VR Games 2026 widget (numbered list, links to /best-vr-games-2026)
+2. Editor's Picks (latest VR.org Originals)
+3. Top VR Apps & Utilities widget (links to /best-vr-apps)
+4. NetActuate sponsor banner (permanent, links to netactuate.com)
+5. Trending Topics card
+6. Sources card (with VR.org included)
 
 ## NetActuate Sponsor
 

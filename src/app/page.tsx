@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
+import { HeroBackground } from "@/components/HeroBackground";
 import { Ticker } from "@/components/Ticker";
 import { FilterBar } from "@/components/FilterBar";
 import { Feed } from "@/components/Feed";
@@ -48,12 +49,29 @@ const GUIDES = [
   { label: "Best VR Apps", href: "/best-vr-apps", description: "Top VR apps for productivity, social, fitness, and more." },
 ];
 
+function relativeTime(iso: string): string {
+  if (!iso) return "just now";
+  const diff = Date.now() - new Date(iso).getTime();
+  const mins = Math.max(1, Math.floor(diff / 60000));
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
+
 export default function Home() {
   const { articles, trending, sourceStats, lastUpdated, loading } = useFeed();
   const { activeFilter, filtered, setFilter } = useFilters(articles);
   const [editorials, setEditorials] = useState<EditorialSummary[]>([]);
 
   const sourceCount = Object.keys(sourceStats).length || Object.keys(SOURCES).length;
+  const heroDate = new Date().toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).toUpperCase();
 
   useEffect(() => {
     fetch("/api/articles?mix=true&limit=4")
@@ -64,15 +82,75 @@ export default function Home() {
 
   return (
     <>
+      <HeroBackground />
+      <div className="page-stack">
       <Header articleCount={filtered.length} lastUpdated={lastUpdated} />
       <Ticker articles={articles} />
+
+      {/* ===== HOMEPAGE HERO ===== */}
+      <section
+        className="hero-wrap fade-up"
+        style={{ animationDelay: "60ms" }}
+        aria-label="Site introduction"
+      >
+        <aside className="hero-ad" hidden data-slot="hero-left" />
+        <div className="hero">
+          <div className="hero-eyebrow">
+            <span>Spatial computing, daily &middot; {heroDate}</span>
+          </div>
+          <h1 className="hero-headline">
+            All the news from<br />
+            the <span className="accent">immersive web</span>.
+          </h1>
+          <p className="hero-lede">
+            VR.org aggregates the best headlines, launches, and content from across VR, AR and XR.
+            From Quest and Vision Pro to PSVR2, Steam, and spatial-computing research.
+          </p>
+          <div className="hero-ctas">
+            <a
+              href="#feed"
+              className="btn btn-primary"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("feed")?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+            >
+              Start reading &rarr;
+            </a>
+            <a href="/about#sources" className="btn btn-ghost">Browse sources</a>
+          </div>
+          <div className="stat-row" role="group" aria-label="Live stats">
+            <div className="stat">
+              <span className="stat-label">Sources</span>
+              <span className="stat-value">
+                {sourceCount}
+                <span className="tick">live</span>
+              </span>
+            </div>
+            <div className="stat">
+              <span className="stat-label">Stories today</span>
+              <span className="stat-value">{articles.length.toLocaleString()}</span>
+            </div>
+            <div className="stat">
+              <span className="stat-label">Last update</span>
+              <span className="stat-value">{lastUpdated ? relativeTime(lastUpdated) : "now"}</span>
+            </div>
+            <div className="stat">
+              <span className="stat-label">Categories</span>
+              <span className="stat-value">6</span>
+            </div>
+          </div>
+        </div>
+        <aside className="hero-ad" hidden data-slot="hero-right" />
+      </section>
+
       <FilterBar
         activeFilter={activeFilter}
         onFilterChange={setFilter}
         sourceCount={sourceCount}
       />
 
-      <div className="max-w-[1400px] mx-auto px-6 pb-16 pt-5 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 relative z-10">
+      <div id="feed" className="max-w-[1400px] mx-auto px-6 pb-16 pt-5 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 relative z-10">
         <div>
           {/* From Our Editors section */}
           {editorials.length > 0 && (
@@ -248,6 +326,7 @@ export default function Home() {
       </div>
 
       <Footer />
+      </div>
     </>
   );
 }
