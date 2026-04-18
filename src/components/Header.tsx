@@ -37,8 +37,18 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
         borderColor: "var(--border)",
       }}
     >
-      <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-6">
+      <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center relative">
+        {/* Mobile logo (desktop logo lives inside the centered cluster) */}
+        <a href="/" className="flex items-center gap-1 no-underline flex-shrink-0 md:hidden">
+          <img
+            src="/logo.png"
+            alt="VR.org"
+            className="h-10 w-auto dark-logo-invert"
+          />
+        </a>
+
+        {/* Desktop: logo + nav, absolutely centered */}
+        <div className="hidden md:flex items-center gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <a href="/" className="flex items-center gap-1 no-underline flex-shrink-0">
             <img
               src="/logo.png"
@@ -46,9 +56,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
               className="h-10 w-auto dark-logo-invert"
             />
           </a>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-5">
+          <nav className="flex items-center gap-5">
             {NAV_ITEMS.map(({ label, href }) => {
               const isActive = pathname === href;
               return (
@@ -75,7 +83,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
           </nav>
         </div>
 
-        <div className="flex items-center gap-4 flex-shrink-0">
+        <div className="flex items-center gap-4 flex-shrink-0 ml-auto">
           {/* Live dot with pulse ring */}
           <span className="live-dot-wrapper hidden sm:block">
             <span
