@@ -144,12 +144,6 @@ export default function Home() {
         <aside className="hero-ad" hidden data-slot="hero-right" />
       </section>
 
-      <FilterBar
-        activeFilter={activeFilter}
-        onFilterChange={setFilter}
-        sourceCount={sourceCount}
-      />
-
       <div id="feed" className="max-w-[1400px] mx-auto px-6 pb-16 pt-5 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 relative z-10">
         <div>
           {/* From Our Editors section */}
@@ -316,6 +310,13 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          {/* Filter chips scope only the RSS feed below */}
+          <FilterBar
+            activeFilter={activeFilter}
+            onFilterChange={setFilter}
+            sourceCount={sourceCount}
+          />
 
           {/* Main RSS feed */}
           <Feed articles={filtered} loading={loading} />
