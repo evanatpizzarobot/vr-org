@@ -319,32 +319,32 @@ export function HeroBackground({
         }
       }
 
-      // Wireframe grid
+      // Wireframe grid (blended horizon: no hard line, fade rows + cols
+      // in from the horizon so the grid dissolves out of the starfield)
       const cx = W / 2 + mx * 60 * dpr;
       const horizon = H * 0.62 + sy * 0.15 * dpr;
 
-      const hg = ctx.createRadialGradient(cx, horizon, 0, cx, horizon, H * 0.5);
-      hg.addColorStop(0, `rgba(${r},${g},${b},0.22)`);
-      hg.addColorStop(0.5, `rgba(${r},${g},${b},0.06)`);
+      // Wide horizon glow — extend upward more so sky-to-grid blends
+      const hg = ctx.createRadialGradient(cx, horizon, 0, cx, horizon, H * 0.6);
+      hg.addColorStop(0, `rgba(${r},${g},${b},0.26)`);
+      hg.addColorStop(0.4, `rgba(${r},${g},${b},0.10)`);
       hg.addColorStop(1, "rgba(0,0,0,0)");
       ctx.fillStyle = hg;
-      ctx.fillRect(0, horizon - H * 0.2, W, H - (horizon - H * 0.2));
-
-      ctx.strokeStyle = `rgba(${r},${g},${b},0.6)`;
-      ctx.lineWidth = 1 * dpr;
-      ctx.beginPath();
-      ctx.moveTo(0, horizon);
-      ctx.lineTo(W, horizon);
-      ctx.stroke();
+      ctx.fillRect(0, horizon - H * 0.32, W, H - (horizon - H * 0.32));
 
       const rows = 20;
       const cols = 22;
       const scroll = (t * 40 * speed) % (H * 0.05);
+
+      // Horizontal rows — fade in near horizon, taper with distance.
+      // nearFade goes 0 at p=0 (on horizon) up to 1 at p~0.3.
       for (let i = 0; i <= rows; i++) {
         const p = i / rows;
         const y = horizon + Math.pow(p, 1.3) * (H - horizon) + scroll * Math.pow(p, 1.2);
         if (y > H) continue;
-        const alpha = 0.35 * (1 - p * 0.7);
+        const nearFade = Math.min(1, p * 3.2);
+        const alpha = 0.35 * (1 - p * 0.7) * nearFade;
+        if (alpha < 0.005) continue;
         ctx.strokeStyle = `rgba(${r},${g},${b},${alpha})`;
         ctx.lineWidth = 1 * dpr;
         ctx.beginPath();
@@ -353,11 +353,18 @@ export function HeroBackground({
         ctx.lineTo(cx + spread, y);
         ctx.stroke();
       }
+
+      // Vanishing-point spokes — linear gradient along each line so the
+      // top (at horizon) is transparent and they fade in as they descend.
       for (let j = -cols; j <= cols; j++) {
         const p = j / cols;
         const farX = cx + p * W * 0.6;
         const nearX = cx + p * W * 3;
-        ctx.strokeStyle = `rgba(${r},${g},${b},0.3)`;
+        const colGrad = ctx.createLinearGradient(farX, horizon, nearX, H);
+        colGrad.addColorStop(0, `rgba(${r},${g},${b},0)`);
+        colGrad.addColorStop(0.25, `rgba(${r},${g},${b},0.08)`);
+        colGrad.addColorStop(1, `rgba(${r},${g},${b},0.3)`);
+        ctx.strokeStyle = colGrad;
         ctx.lineWidth = 1 * dpr;
         ctx.beginPath();
         ctx.moveTo(farX, horizon);
