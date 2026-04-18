@@ -10,7 +10,7 @@ interface FilterBarProps {
 
 export function FilterBar({ activeFilter, onFilterChange, sourceCount }: FilterBarProps) {
   return (
-    <div className="max-w-[1400px] mx-auto px-6 pt-5 flex items-center gap-2 flex-wrap">
+    <div className="flex items-center gap-2 flex-wrap mb-4">
       {CATEGORIES.map((cat) => (
         <button
           key={cat.key}
