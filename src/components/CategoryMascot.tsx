@@ -332,13 +332,6 @@ export function CategoryMascot({ kind, category, className }: CategoryMascotProp
         return project(rv, cx, cy, scale, spec.persp);
       });
 
-      const halo = ctx.createRadialGradient(cx, cy, 0, cx, cy, scale * 2);
-      halo.addColorStop(0, `rgba(${r},${g},${b},0.14)`);
-      halo.addColorStop(0.6, `rgba(${r},${g},${b},0.03)`);
-      halo.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = halo;
-      ctx.fillRect(cx - scale * 2.2, cy - scale * 2.2, scale * 4.4, scale * 4.4);
-
       ctx.lineWidth = 1.2 * dpr;
       for (const [i, j] of mesh.e) {
         const p1 = pts[i];
@@ -372,18 +365,10 @@ export function CategoryMascot({ kind, category, className }: CategoryMascotProp
     };
   }, [kind, category]);
 
-  const feather =
-    "radial-gradient(ellipse 78% 82% at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0) 100%)";
   return (
     <div
       className={className}
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
-        WebkitMaskImage: feather,
-        maskImage: feather,
-      }}
+      style={{ position: "relative", width: "100%", height: "100%" }}
       aria-hidden="true"
     >
       <canvas
