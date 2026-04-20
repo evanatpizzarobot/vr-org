@@ -372,10 +372,18 @@ export function CategoryMascot({ kind, category, className }: CategoryMascotProp
     };
   }, [kind, category]);
 
+  const feather =
+    "radial-gradient(ellipse 78% 82% at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0) 100%)";
   return (
     <div
       className={className}
-      style={{ position: "relative", width: "100%", height: "100%" }}
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        WebkitMaskImage: feather,
+        maskImage: feather,
+      }}
       aria-hidden="true"
     >
       <canvas
