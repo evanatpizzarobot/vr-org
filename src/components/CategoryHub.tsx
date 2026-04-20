@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { Sidebar } from "@/components/Sidebar";
+import { CategoryMascot, CATEGORY_MASCOT_KIND } from "@/components/CategoryMascot";
 
 import { LoadingSkeleton } from "@/components/LoadingSkeleton";
 import { useFeed } from "@/hooks/useFeed";
@@ -106,21 +107,37 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
           ["--wash-color" as string]: `color-mix(in srgb, var(--cat-${category}, var(--accent-cyan)) 5%, transparent)`,
         }}
       >
-        <div className="max-w-[1400px] mx-auto px-6 py-10 relative z-10">
-          <h1
-            className="font-display text-3xl font-bold mb-3"
-            style={{ letterSpacing: "-0.5px" }}
-          >
-            {title}
-          </h1>
-          {/* Category accent line */}
-          <div
-            className="w-12 h-[3px] rounded-full mb-4"
-            style={{ background: `var(--cat-${category}, var(--accent-cyan))` }}
-          />
-          <p className="text-[15px] leading-[1.7] max-w-[700px]" style={{ color: "var(--text-secondary)" }}>
-            {description}
-          </p>
+        <div className="max-w-[1400px] mx-auto px-6 py-10 relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-8 items-center">
+          <div>
+            <h1
+              className="font-display text-3xl font-bold mb-3"
+              style={{ letterSpacing: "-0.5px" }}
+            >
+              {title}
+            </h1>
+            {/* Category accent line */}
+            <div
+              className="w-12 h-[3px] rounded-full mb-4"
+              style={{ background: `var(--cat-${category}, var(--accent-cyan))` }}
+            />
+            <p className="text-[15px] leading-[1.7] max-w-[700px]" style={{ color: "var(--text-secondary)" }}>
+              {description}
+            </p>
+          </div>
+          {CATEGORY_MASCOT_KIND[category] && (
+            <div
+              className="hidden lg:block h-[220px] w-full"
+              style={{
+                borderLeft: "1px dashed var(--border)",
+                paddingLeft: 24,
+              }}
+            >
+              <CategoryMascot
+                kind={CATEGORY_MASCOT_KIND[category]}
+                category={category}
+              />
+            </div>
+          )}
         </div>
       </div>
 
