@@ -53,7 +53,10 @@ data/*
 !data/articles.json
 !data/top-lists.json
 !data/events.json
-# posted-tweets.json stays gitignored (runtime state on VPS only)
+!data/article-draft-*.json
+!data/drafts-published/
+!data/drafts-published/*.json
+# posted-tweets.json and feed-cache.json stay gitignored (runtime state on VPS only)
 
 # duplicate nested dir
 vr-org/
