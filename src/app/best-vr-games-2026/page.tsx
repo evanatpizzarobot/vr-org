@@ -1,6 +1,12 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
+import {
+  StructuredData,
+  breadcrumbSchema,
+  faqPageSchema,
+} from "@/components/StructuredData";
+import { RecentArticles } from "@/components/RecentArticles";
+import { AllPillarGuides } from "@/components/RelatedGuides";
 
 export const metadata = {
   title: "Best VR Games of 2026: New Releases & Must-Play Titles | VR.org",
@@ -33,7 +39,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Games of 2026: New Releases and Must-Play Titles",
   datePublished: "2026-03-24",
-  dateModified: "2026-03-24",
+  dateModified: "2026-04-20",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -61,11 +67,40 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Best VR Games 2026", url: "https://vr.org/best-vr-games-2026" },
 ]);
 
+const games2026Faq = faqPageSchema([
+  {
+    question: "What are the best VR games of 2026?",
+    answer:
+      "The best VR games released in 2026 so far include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, and Little Nightmares VR: Altered Echoes. The year is still young, with major releases like Microsoft Flight Simulator on PSVR2, Star Trek: Infection, and Aces of Thunder still on the way.",
+  },
+  {
+    question: "What VR games are coming in 2026?",
+    answer:
+      "Major VR releases expected in 2026 include Little Nightmares VR: Altered Echoes, Star Trek: Infection, TMNT VR, Aces of Thunder, Microsoft Flight Simulator for PSVR 2, and whatever launch title Valve ships alongside the Steam Frame headset.",
+  },
+  {
+    question: "When does the Steam Frame release?",
+    answer:
+      "Valve has confirmed the Steam Frame is in development but has not announced a release date. It is expected to launch sometime in 2026, likely bundled with a first-party Valve VR title. The Steam Frame is the most anticipated headset in the VR enthusiast community.",
+  },
+  {
+    question: "Are there new PSVR 2 games in 2026?",
+    answer:
+      "Yes. Microsoft Flight Simulator is coming to PSVR 2 in 2026, which could be a system-seller. Sony continues to support PSVR 2 with first-party and third-party AAA ports, and the headset now supports PC VR via an official adapter, opening the SteamVR library.",
+  },
+  {
+    question: "What is the best VR game in 2026 so far?",
+    answer:
+      "Batman: Arkham Shadow is arguably the best VR game available in early 2026, translating Rocksteady's freeflow combat into physical VR punches, counters, and gadget use. It stands out as one of the strongest Quest exclusives to date.",
+  },
+]);
+
 export default function BestVRGames2026Page() {
   return (
     <>
       <StructuredData data={articleSchema} />
       <StructuredData data={breadcrumbs} />
+      <StructuredData data={games2026Faq} />
       <Header articleCount={0} lastUpdated="" />
 
       <main
@@ -267,40 +302,15 @@ export default function BestVRGames2026Page() {
           released throughout 2026.
         </p>
 
-        {/* Related */}
-        <hr
-          className="my-8"
-          style={{ borderColor: "var(--border)" }}
+        {/* Latest gaming articles */}
+        <RecentArticles
+          tags={["gaming"]}
+          heading="Latest VR Gaming Coverage"
+          limit={5}
         />
-        <div
-          className="text-[15px] leading-[1.7]"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          <strong style={{ color: "var(--text-primary)" }}>Related:</strong>{" "}
-          <a
-            href="/best-vr-games"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            Best VR Games
-          </a>{" "}
-          &middot;{" "}
-          <a
-            href="/gaming"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            Gaming
-          </a>{" "}
-          &middot;{" "}
-          <a
-            href="/"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            VR.org Home
-          </a>
-        </div>
+
+        {/* Cross-link to other pillar pages */}
+        <AllPillarGuides exclude="best-vr-games-2026" />
       </main>
 
       <Footer />

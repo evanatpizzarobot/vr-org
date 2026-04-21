@@ -9,13 +9,13 @@ import {
 } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
-  title: "VR.org | Virtual Reality & Augmented Reality News",
+  title: "VR.org | VR News, AR News & XR News Today",
   description:
-    "Real-time VR, AR, and XR news aggregated from the world's top sources. Hardware, gaming, software, enterprise - all in one live feed.",
+    "VR news, AR news, and XR news updated in real time. Original articles plus headlines from 38+ trusted sources covering VR hardware, gaming, software, enterprise, and spatial computing.",
   openGraph: {
-    title: "VR.org | Virtual Reality & Augmented Reality News",
+    title: "VR.org | VR News, AR News & XR News Today",
     description:
-      "Real-time VR, AR, and XR news aggregated from the world's top sources. Hardware, gaming, software, enterprise - all in one live feed.",
+      "VR news, AR news, and XR news updated in real time. Original articles plus headlines from 38+ trusted sources covering VR hardware, gaming, software, enterprise, and spatial computing.",
     type: "website",
     url: "https://vr.org/",
     siteName: "VR.org",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@vrdotorg",
     creator: "@vrdotorg",
-    title: "VR.org | Virtual Reality & Augmented Reality News",
+    title: "VR.org | VR News, AR News & XR News Today",
     description:
-      "Real-time VR, AR, and XR news aggregated from the world's top sources.",
+      "VR news, AR news, and XR news updated in real time from the world's top sources.",
     images: ["https://vr.org/og-image.png"],
   },
   alternates: {

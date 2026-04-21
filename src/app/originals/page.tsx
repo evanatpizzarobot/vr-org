@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { OriginalsHub } from "@/components/OriginalsHub";
+import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
   title: "VR.org Originals - In-Depth VR & AR Articles | VR.org",
@@ -24,5 +25,15 @@ export const metadata: Metadata = {
 };
 
 export default function OriginalsPage() {
-  return <OriginalsHub />;
+  return (
+    <>
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "VR.org", url: "https://vr.org" },
+          { name: "Originals", url: "https://vr.org/originals" },
+        ])}
+      />
+      <OriginalsHub />
+    </>
+  );
 }

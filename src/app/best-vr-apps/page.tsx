@@ -1,7 +1,14 @@
 import { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
+import {
+  StructuredData,
+  breadcrumbSchema,
+  faqPageSchema,
+  itemListSchema,
+} from "@/components/StructuredData";
+import { RecentArticles } from "@/components/RecentArticles";
+import { AllPillarGuides } from "@/components/RelatedGuides";
 
 export const metadata: Metadata = {
   title: "Best VR Apps & Utilities 2026: Top 10 Must-Have Apps | VR.org",
@@ -34,7 +41,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Apps & Utilities 2026: Top 10 Must-Have Apps",
   datePublished: "2026-03-23",
-  dateModified: "2026-03-23",
+  dateModified: "2026-04-20",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -62,11 +69,54 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Best VR Apps 2026", url: "https://vr.org/best-vr-apps" },
 ]);
 
+const appsList = itemListSchema("Best VR Apps & Utilities 2026", [
+  { name: "Virtual Desktop", url: "https://vr.org/best-vr-apps#virtual-desktop" },
+  { name: "Immersed", url: "https://vr.org/best-vr-apps#immersed" },
+  { name: "VRChat", url: "https://vr.org/best-vr-apps#vrchat" },
+  { name: "Bigscreen", url: "https://vr.org/best-vr-apps#bigscreen" },
+  { name: "Gravity Sketch", url: "https://vr.org/best-vr-apps#gravity-sketch" },
+  { name: "Wander", url: "https://vr.org/best-vr-apps#wander" },
+  { name: "ShapesXR", url: "https://vr.org/best-vr-apps#shapesxr" },
+  { name: "Rec Room", url: "https://vr.org/best-vr-apps#rec-room" },
+  { name: "FitXR", url: "https://vr.org/best-vr-apps#fitxr" },
+  { name: "Resolve", url: "https://vr.org/best-vr-apps#resolve" },
+]);
+
+const appsFaq = faqPageSchema([
+  {
+    question: "What are the best VR apps in 2026?",
+    answer:
+      "The best VR apps in 2026 span productivity (Virtual Desktop, Immersed), social (VRChat, Rec Room), fitness (FitXR, Supernatural), design (Gravity Sketch, ShapesXR), entertainment (Bigscreen), exploration (Wander), and wellness (Resolve). Virtual Desktop is the single most important app for any Quest owner with a gaming PC.",
+  },
+  {
+    question: "What is the best VR productivity app?",
+    answer:
+      "Immersed and Virtual Desktop are the two best VR productivity apps. Immersed gives you up to five virtual monitors in VR space for remote work and development. Virtual Desktop streams your entire PC desktop into VR with low latency, doubling as both a productivity tool and a PC VR gaming bridge.",
+  },
+  {
+    question: "Is VRChat free?",
+    answer:
+      "Yes. VRChat is free to use on Quest, PC VR, and desktop. You can create a custom avatar, explore thousands of user-built worlds, and talk with the community without paying anything. Premium features like VRChat Plus offer cosmetic extras and additional avatar slots for a subscription.",
+  },
+  {
+    question: "What are the best free VR apps?",
+    answer:
+      "VRChat, Rec Room, Bigscreen, and Wander's basic tier are among the best free VR apps. Most Quest headsets also include a free YouTube VR app, a free Meta Horizon Worlds client, and various free demos and browser-based VR experiences.",
+  },
+  {
+    question: "What is the best VR fitness app?",
+    answer:
+      "FitXR and Supernatural are the two leading VR fitness apps, both offering structured workout classes with instructors, music, and progression systems. For game-like fitness, Beat Saber and Les Mills Bodycombat deliver serious cardio in a more gamified format.",
+  },
+]);
+
 export default function BestVRAppsPage() {
   return (
     <>
       <StructuredData data={articleSchema} />
       <StructuredData data={breadcrumbs} />
+      <StructuredData data={appsList} />
+      <StructuredData data={appsFaq} />
       <Header articleCount={0} lastUpdated="" />
 
       <main
@@ -98,7 +148,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 1. Virtual Desktop */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="virtual-desktop" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           1. Virtual Desktop
         </h2>
         <p
@@ -122,7 +172,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 2. Immersed */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="immersed" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           2. Immersed
         </h2>
         <p
@@ -147,7 +197,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 3. VRChat */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="vrchat" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           3. VRChat
         </h2>
         <p
@@ -173,7 +223,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 4. Bigscreen */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="bigscreen" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           4. Bigscreen
         </h2>
         <p
@@ -198,7 +248,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 5. Gravity Sketch */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="gravity-sketch" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           5. Gravity Sketch
         </h2>
         <p
@@ -223,7 +273,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 6. Wander */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="wander" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           6. Wander
         </h2>
         <p
@@ -248,7 +298,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 7. ShapesXR */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="shapesxr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           7. ShapesXR
         </h2>
         <p
@@ -273,7 +323,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 8. Rec Room */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="rec-room" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           8. Rec Room
         </h2>
         <p
@@ -298,7 +348,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 9. FitXR */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="fitxr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           9. FitXR
         </h2>
         <p
@@ -323,7 +373,7 @@ export default function BestVRAppsPage() {
         </p>
 
         {/* 10. Resolve */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="resolve" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           10. Resolve
         </h2>
         <p
@@ -407,6 +457,16 @@ export default function BestVRAppsPage() {
             VR.org Home
           </a>
         </div>
+
+        {/* Latest software articles */}
+        <RecentArticles
+          tags={["software", "xr"]}
+          heading="Latest Software & Platform Coverage"
+          limit={5}
+        />
+
+        {/* Cross-link to other pillar pages */}
+        <AllPillarGuides exclude="best-vr-apps" />
       </main>
 
       <Footer />

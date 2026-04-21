@@ -1,7 +1,14 @@
 import { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
+import {
+  StructuredData,
+  breadcrumbSchema,
+  faqPageSchema,
+  itemListSchema,
+} from "@/components/StructuredData";
+import { RecentArticles } from "@/components/RecentArticles";
+import { AllPillarGuides } from "@/components/RelatedGuides";
 
 export const metadata: Metadata = {
   title: "Top 10 VR Games of All Time | VR.org",
@@ -31,6 +38,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Top 10 VR Games of All Time",
   datePublished: "2026-03-24",
+  dateModified: "2026-04-20",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -51,11 +59,54 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Top 10 VR Games", url: "https://vr.org/best-vr-games" },
 ]);
 
+const gamesList = itemListSchema("Top 10 VR Games of All Time", [
+  { name: "Half-Life: Alyx", url: "https://vr.org/best-vr-games#half-life-alyx" },
+  { name: "Beat Saber", url: "https://vr.org/best-vr-games#beat-saber" },
+  { name: "Resident Evil 4 VR", url: "https://vr.org/best-vr-games#resident-evil-4-vr" },
+  { name: "Asgard's Wrath 2", url: "https://vr.org/best-vr-games#asgards-wrath-2" },
+  { name: "Superhot VR", url: "https://vr.org/best-vr-games#superhot-vr" },
+  { name: "Boneworks / Bonelab", url: "https://vr.org/best-vr-games#boneworks-bonelab" },
+  { name: "The Walking Dead: Saints and Sinners", url: "https://vr.org/best-vr-games#walking-dead-saints-sinners" },
+  { name: "Moss", url: "https://vr.org/best-vr-games#moss" },
+  { name: "Pavlov VR", url: "https://vr.org/best-vr-games#pavlov-vr" },
+  { name: "No Man's Sky VR", url: "https://vr.org/best-vr-games#no-mans-sky-vr" },
+]);
+
+const gamesFaq = faqPageSchema([
+  {
+    question: "What is the best VR game of all time?",
+    answer:
+      "Half-Life: Alyx is widely considered the best VR game of all time. Valve built every interaction from the ground up for VR, and the result is a polished, full-length AAA experience that no other VR title has matched for scope or ambition.",
+  },
+  {
+    question: "What are the best VR games for Meta Quest?",
+    answer:
+      "Asgard's Wrath 2, Beat Saber, Resident Evil 4 VR, Batman: Arkham Shadow, Superhot VR, and Bonelab are widely regarded as the best VR games on Meta Quest. The Quest platform also supports Half-Life: Alyx via PC VR streaming.",
+  },
+  {
+    question: "Is Half-Life: Alyx on Quest?",
+    answer:
+      "Half-Life: Alyx is a PC VR exclusive on SteamVR, but Quest owners can play it by connecting their headset to a gaming PC via USB-C (Quest Link) or wirelessly via Air Link or Virtual Desktop.",
+  },
+  {
+    question: "What are the best free VR games?",
+    answer:
+      "Pavlov VR (paid but with huge community mods), VRChat, Rec Room, and Gorilla Tag are among the most played free VR games. Many of the best paid VR games go on sale regularly on the Meta Store and Steam.",
+  },
+  {
+    question: "Do VR games make you fit?",
+    answer:
+      "Yes. Games like Beat Saber, Supernatural, FitXR, and Les Mills Bodycombat provide genuine cardio workouts. Many VR users burn 400 to 600 calories per hour in active VR games, and the Quest platform includes built-in fitness tracking.",
+  },
+]);
+
 export default function BestVRGamesPage() {
   return (
     <>
       <StructuredData data={articleSchema} />
       <StructuredData data={breadcrumbs} />
+      <StructuredData data={gamesList} />
+      <StructuredData data={gamesFaq} />
       <Header articleCount={0} lastUpdated="" />
       <main style={{ maxWidth: 720, margin: "0 auto" }} className="py-16 px-4">
         <h1
@@ -81,7 +132,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 1. Half-Life: Alyx */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="half-life-alyx" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           1. Half-Life: Alyx
         </h2>
         <p
@@ -112,7 +163,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 2. Beat Saber */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="beat-saber" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           2. Beat Saber
         </h2>
         <p
@@ -135,7 +186,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 3. Resident Evil 4 VR */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="resident-evil-4-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           3. Resident Evil 4 VR
         </h2>
         <p
@@ -159,7 +210,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 4. Asgard's Wrath 2 */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="asgards-wrath-2" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           4. Asgard&apos;s Wrath 2
         </h2>
         <p
@@ -182,7 +233,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 5. Superhot VR */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="superhot-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           5. Superhot VR
         </h2>
         <p
@@ -206,7 +257,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 6. Boneworks / Bonelab */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="boneworks-bonelab" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           6. Boneworks / Bonelab
         </h2>
         <p
@@ -230,7 +281,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 7. The Walking Dead: Saints and Sinners */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="walking-dead-saints-sinners" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           7. The Walking Dead: Saints and Sinners
         </h2>
         <p
@@ -253,7 +304,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 8. Moss */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="moss" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           8. Moss
         </h2>
         <p
@@ -276,7 +327,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 9. Pavlov VR */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="pavlov-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           9. Pavlov VR
         </h2>
         <p
@@ -299,7 +350,7 @@ export default function BestVRGamesPage() {
         </p>
 
         {/* 10. No Man's Sky VR */}
-        <h2 className="font-display text-2xl font-semibold mb-2">
+        <h2 id="no-mans-sky-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           10. No Man&apos;s Sky VR
         </h2>
         <p
@@ -340,36 +391,15 @@ export default function BestVRGamesPage() {
           the simplest ideas can become the most played VR games in your library.
         </p>
 
-        {/* Related */}
-        <h2 className="font-display text-2xl font-semibold mb-2">Related</h2>
-        <p
-          className="text-[15px] leading-[1.7] mb-8"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          <a
-            href="/best-vr-games-2026"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            Best VR Games of 2026
-          </a>
-          {" · "}
-          <a
-            href="/gaming"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            Gaming
-          </a>
-          {" · "}
-          <a
-            href="/"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            Home
-          </a>
-        </p>
+        {/* Latest gaming articles */}
+        <RecentArticles
+          tags={["gaming"]}
+          heading="Latest VR Gaming Coverage"
+          limit={5}
+        />
+
+        {/* Cross-link to other pillar pages */}
+        <AllPillarGuides exclude="best-vr-games" />
       </main>
       <Footer />
     </>
