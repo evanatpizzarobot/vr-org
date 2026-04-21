@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 
 export const metadata = {
   title: "Privacy Policy | VR.org",
@@ -18,6 +19,12 @@ export const metadata = {
 export default function PrivacyPage() {
   return (
     <>
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "VR.org", url: "https://vr.org" },
+          { name: "Privacy", url: "https://vr.org/privacy" },
+        ])}
+      />
       <Header articleCount={0} lastUpdated="" />
 
       <main

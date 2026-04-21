@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { getAllArticles } from "@/lib/articles";
 
+const PILLAR_LASTMOD = "2026-04-20";
+
 export async function GET() {
   const now = new Date().toISOString().split("T")[0];
   const articles = getAllArticles();
@@ -16,102 +18,125 @@ export async function GET() {
     )
     .join("\n");
 
+  const latestArticleDate =
+    articles.length > 0
+      ? (articles[0].updatedDate || articles[0].publishDate)
+      : now;
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vr.org/</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${latestArticleDate}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://vr.org/hardware</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${latestArticleDate}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vr.org/gaming</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${latestArticleDate}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vr.org/software</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${latestArticleDate}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vr.org/enterprise</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${latestArticleDate}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vr.org/ar</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${latestArticleDate}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vr.org/xr</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${latestArticleDate}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vr.org/originals</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${latestArticleDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vr.org/events</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://vr.org/what-is-vr</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://vr.org/best-vr-headsets</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://vr.org/best-vr-games</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://vr.org/best-vr-games-2026</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://vr.org/best-vr-apps</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vr.org/best-vr-fitness</loc>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vr.org/ar-glasses</loc>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://vr.org/vr-for-beginners</loc>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 ${articleUrls}
   <url>
     <loc>https://vr.org/about</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://vr.org/privacy</loc>
-    <lastmod>${now}</lastmod>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>

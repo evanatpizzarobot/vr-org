@@ -1,6 +1,13 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
+import {
+  StructuredData,
+  breadcrumbSchema,
+  faqPageSchema,
+  itemListSchema,
+} from "@/components/StructuredData";
+import { RecentArticles } from "@/components/RecentArticles";
+import { AllPillarGuides } from "@/components/RelatedGuides";
 
 export const metadata = {
   title: "Best VR Headsets 2026: Buyer's Guide & Comparison | VR.org",
@@ -38,7 +45,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headsets 2026: The Complete Buyer's Guide",
   datePublished: "2026-03-23",
-  dateModified: "2026-03-23",
+  dateModified: "2026-04-20",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -66,11 +73,55 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Best VR Headsets 2026", url: "https://vr.org/best-vr-headsets" },
 ]);
 
+const headsetList = itemListSchema("Best VR Headsets 2026", [
+  { name: "Meta Quest 3S", url: "https://vr.org/best-vr-headsets#meta-quest-3s" },
+  { name: "Meta Quest 3", url: "https://vr.org/best-vr-headsets#meta-quest-3" },
+  { name: "PlayStation VR2", url: "https://vr.org/best-vr-headsets#playstation-vr2" },
+  { name: "Apple Vision Pro", url: "https://vr.org/best-vr-headsets#apple-vision-pro" },
+  { name: "Valve Index", url: "https://vr.org/best-vr-headsets#valve-index" },
+  { name: "HP Reverb G2", url: "https://vr.org/best-vr-headsets#hp-reverb-g2" },
+]);
+
+const headsetFaq = faqPageSchema([
+  {
+    question: "Which VR headset should you buy in 2026?",
+    answer:
+      "For most buyers, the Meta Quest 3 at $499 is the best VR headset to buy in 2026. It balances price, performance, a massive content library, and PC VR compatibility. If you want the cheapest way into VR, the Meta Quest 3S at $299 is the best budget pick. PlayStation gamers should get the PSVR2, and buyers focused on spatial computing and premium media should consider the Apple Vision Pro.",
+  },
+  {
+    question: "What is the best VR headset for beginners?",
+    answer:
+      "The Meta Quest 3S at $299 is the best VR headset for beginners. It requires no PC, no external sensors, and no complicated setup. The Quest software library has hundreds of games and apps, and the onboarding experience is well designed for first-time VR users.",
+  },
+  {
+    question: "Do I need a gaming PC for VR?",
+    answer:
+      "No. Standalone headsets like the Meta Quest 3S, Quest 3, and Apple Vision Pro run entirely on their own hardware with no PC required. You only need a gaming PC if you want to play PC VR titles on SteamVR or use a tethered headset like the Valve Index or HP Reverb G2.",
+  },
+  {
+    question: "Is VR worth it in 2026?",
+    answer:
+      "Yes. VR in 2026 is a significant leap from where it was even two years ago. Display clarity has improved, standalone performance is strong enough for polished games, and mixed-reality passthrough has opened up entirely new use cases. At $299 for the Quest 3S, the barrier to entry has never been lower.",
+  },
+  {
+    question: "Can I wear glasses with a VR headset?",
+    answer:
+      "Most modern VR headsets accommodate glasses. The Quest 3 includes a glasses spacer that adds room inside the headset, and the Vision Pro supports custom Zeiss optical inserts. Many glasses-wearing VR users invest in prescription lens inserts that clip directly into the headset for better comfort and clarity.",
+  },
+  {
+    question: "What is the difference between Meta Quest 3 and Quest 3S?",
+    answer:
+      "The Quest 3 ($499) has higher-resolution pancake lenses, better passthrough, and slimmer optics. The Quest 3S ($299) uses Fresnel lenses and a slightly lower-resolution display but runs the same Snapdragon XR2 Gen 2 chip and the same game library. Most buyers will be happy with the Quest 3S unless mixed reality quality is a priority.",
+  },
+]);
+
 export default function BestVRHeadsetsPage() {
   return (
     <>
       <StructuredData data={articleSchema} />
       <StructuredData data={breadcrumbs} />
+      <StructuredData data={headsetList} />
+      <StructuredData data={headsetFaq} />
       <Header articleCount={0} lastUpdated="" />
 
       <main
@@ -98,6 +149,31 @@ export default function BestVRHeadsetsPage() {
           sharpest visuals, or a professional exploring spatial computing,
           this guide breaks down every major headset available today, with
           honest recommendations for each use case.
+        </p>
+
+        {/* Buyer intent */}
+        <h2 className="font-display text-2xl font-semibold mb-4">
+          Which VR headset should you buy?
+        </h2>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Short answer: if you are new to VR and want the best VR headset to buy
+          in 2026, get the{" "}
+          <strong style={{ color: "var(--text-primary)" }}>Meta Quest 3</strong>{" "}
+          at $499. It is the best all-around VR headset on the market, works
+          standalone or tethered to a gaming PC, and has the largest content
+          library of any VR platform. If $499 is out of reach, the{" "}
+          <strong style={{ color: "var(--text-primary)" }}>Meta Quest 3S</strong>{" "}
+          at $299 is the best cheap VR headset you can buy. For PS5 owners, the{" "}
+          <strong style={{ color: "var(--text-primary)" }}>PlayStation VR2</strong>{" "}
+          is the clear pick. And if you want the best mixed reality and spatial
+          computing experience money can buy, the{" "}
+          <strong style={{ color: "var(--text-primary)" }}>Apple Vision Pro</strong>{" "}
+          has no real competition. The rest of this guide breaks down every major
+          VR headset in detail so you can pick the right one for your specific
+          use case.
         </p>
 
         {/* Quick Comparison Table */}
@@ -201,7 +277,7 @@ export default function BestVRHeadsetsPage() {
         </h2>
 
         {/* Meta Quest 3S */}
-        <h3 className="font-display text-xl font-semibold mb-3">
+        <h3 id="meta-quest-3s" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           Meta Quest 3S: Best Budget VR Headset ($299)
         </h3>
         <p
@@ -240,7 +316,7 @@ export default function BestVRHeadsetsPage() {
         </p>
 
         {/* Meta Quest 3 */}
-        <h3 className="font-display text-xl font-semibold mb-3">
+        <h3 id="meta-quest-3" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           Meta Quest 3: Best All-Around VR Headset ($499)
         </h3>
         <p
@@ -279,7 +355,7 @@ export default function BestVRHeadsetsPage() {
         </p>
 
         {/* PlayStation VR2 */}
-        <h3 className="font-display text-xl font-semibold mb-3">
+        <h3 id="playstation-vr2" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           PlayStation VR2: Best for PlayStation Gamers ($549)
         </h3>
         <p
@@ -319,7 +395,7 @@ export default function BestVRHeadsetsPage() {
         </p>
 
         {/* Apple Vision Pro */}
-        <h3 className="font-display text-xl font-semibold mb-3">
+        <h3 id="apple-vision-pro" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           Apple Vision Pro: Best Spatial Computing Device ($3,499)
         </h3>
         <p
@@ -361,7 +437,7 @@ export default function BestVRHeadsetsPage() {
         </p>
 
         {/* Valve Index */}
-        <h3 className="font-display text-xl font-semibold mb-3">
+        <h3 id="valve-index" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           Valve Index: Best for PC VR Enthusiasts ($999)
         </h3>
         <p
@@ -402,7 +478,7 @@ export default function BestVRHeadsetsPage() {
         </p>
 
         {/* HP Reverb G2 */}
-        <h3 className="font-display text-xl font-semibold mb-3">
+        <h3 id="hp-reverb-g2" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           HP Reverb G2: Best for Sim Racing &amp; Flight Sim ($599)
         </h3>
         <p
@@ -641,32 +717,15 @@ export default function BestVRHeadsetsPage() {
           need to wear glasses entirely and improving comfort and clarity.
         </p>
 
-        {/* Related */}
-        <hr
-          className="my-8"
-          style={{ borderColor: "var(--border)" }}
+        {/* Latest hardware articles */}
+        <RecentArticles
+          tags={["hardware", "xr", "ar"]}
+          heading="Latest Hardware Coverage"
+          limit={5}
         />
-        <div
-          className="text-[15px] leading-[1.7]"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          <strong style={{ color: "var(--text-primary)" }}>Related:</strong>{" "}
-          <a
-            href="/hardware"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            Hardware News
-          </a>{" "}
-          &middot;{" "}
-          <a
-            href="/"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            VR.org Home
-          </a>
-        </div>
+
+        {/* Cross-link to other pillar pages */}
+        <AllPillarGuides exclude="best-vr-headsets" />
       </main>
 
       <Footer />

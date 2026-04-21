@@ -29,9 +29,19 @@ const CATEGORY_GUIDES: Record<string, { label: string; href: string; description
   ],
   hardware: [
     { label: "Best VR Headsets 2026", href: "/best-vr-headsets", description: "Our picks for the best VR headsets you can buy today." },
+    { label: "VR for Beginners", href: "/vr-for-beginners", description: "Everything a first-time VR buyer needs to know." },
   ],
   software: [
     { label: "Best VR Apps & Utilities", href: "/best-vr-apps", description: "The top VR apps for productivity, social, fitness, and more." },
+    { label: "Best VR Fitness Apps 2026", href: "/best-vr-fitness", description: "Top VR workout apps that actually replace the gym." },
+  ],
+  ar: [
+    { label: "Best AR Glasses 2026", href: "/ar-glasses", description: "Every major AR smart glasses device compared." },
+    { label: "Best VR Headsets 2026", href: "/best-vr-headsets", description: "Apple Vision Pro, Quest 3, and every major headset compared." },
+  ],
+  xr: [
+    { label: "Best AR Glasses 2026", href: "/ar-glasses", description: "Smart glasses and Android XR devices ranked." },
+    { label: "Best VR Apps & Utilities", href: "/best-vr-apps", description: "Top VR apps for productivity, social, and creativity." },
   ],
 };
 

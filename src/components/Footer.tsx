@@ -82,10 +82,13 @@ export function Footer() {
             Guides:{" "}
             {[
               { label: "What is VR?", href: "/what-is-vr" },
+              { label: "VR for Beginners", href: "/vr-for-beginners" },
               { label: "Best VR Headsets 2026", href: "/best-vr-headsets" },
+              { label: "Best AR Glasses 2026", href: "/ar-glasses" },
               { label: "Top 10 VR Games", href: "/best-vr-games" },
               { label: "Best VR Games 2026", href: "/best-vr-games-2026" },
               { label: "Best VR Apps", href: "/best-vr-apps" },
+              { label: "Best VR Fitness Apps", href: "/best-vr-fitness" },
               { label: "Events Calendar", href: "/events" },
             ].map(({ label, href }, i) => (
               <span key={href}>

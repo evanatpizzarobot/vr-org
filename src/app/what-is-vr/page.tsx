@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
+import {
+  StructuredData,
+  breadcrumbSchema,
+  faqPageSchema,
+} from "@/components/StructuredData";
+import { RecentArticles } from "@/components/RecentArticles";
+import { AllPillarGuides } from "@/components/RelatedGuides";
 
 export const metadata: Metadata = {
-  title: "What is Virtual Reality? The Complete Guide to VR | VR.org",
+  title:
+    "What is Virtual Reality? How VR Works, Types & Uses (2026 Guide) | VR.org",
   description:
-    "What is Virtual Reality? Learn how VR works, the different types of VR headsets, what you can do in VR, and where the technology is heading. VR explained clearly.",
+    "What is Virtual Reality? A plain-English 2026 guide to how VR works, the different types of VR headsets, what you can do in VR, and where the technology is heading.",
   openGraph: {
-    title: "What is Virtual Reality? The Complete Guide to VR | VR.org",
+    title:
+      "What is Virtual Reality? How VR Works, Types & Uses (2026 Guide) | VR.org",
     description:
-      "Everything you need to know about Virtual Reality: how it works, types of headsets, use cases, and the future of VR.",
+      "Everything you need to know about Virtual Reality in 2026: how VR works, types of headsets, use cases, and the future of VR.",
     url: "https://vr.org/what-is-vr",
     siteName: "VR.org",
     images: [
@@ -29,6 +37,54 @@ export const metadata: Metadata = {
   },
 };
 
+const whatIsVrFaq = faqPageSchema([
+  {
+    question: "What is Virtual Reality?",
+    answer:
+      "Virtual Reality (VR) is a technology that immerses you in a computer-generated, three-dimensional environment that you can explore and interact with as though you were physically inside it. By wearing a headset that covers your eyes and ears, VR replaces the real world around you with a simulated one.",
+  },
+  {
+    question: "How does VR work?",
+    answer:
+      "A VR headset presents a slightly different image to each eye using stereoscopic 3D principles, while tracking your head position in real time. Motion sensors and cameras map your movement into the simulation, and spatial audio adjusts dynamically based on where you are looking. The combined effect creates a feeling of presence inside the virtual environment.",
+  },
+  {
+    question: "Is VR bad for your eyes?",
+    answer:
+      "There is no scientific evidence that VR causes permanent eye damage in adults. The lenses focus the image at a distance of about 1.5 to 2 meters, so your eyes are not straining to focus on a close-up screen. Extended sessions can cause temporary eye strain or fatigue, the same as any screen, so regular breaks are recommended.",
+  },
+  {
+    question: "Do you need a powerful PC for VR?",
+    answer:
+      "Not anymore. Standalone headsets like the Meta Quest 3 and Quest 3S work entirely on their own with no PC required. You only need a gaming PC if you want to use a tethered headset like the Valve Index or stream PC VR games wirelessly to a standalone headset.",
+  },
+  {
+    question: "Can kids use VR?",
+    answer:
+      "Most VR headset manufacturers recommend their devices for users aged 13 and older due to concerns about developing vision and content moderation in social VR platforms. Some educational VR programs are designed for supervised use by younger children, but extended unsupervised VR is generally not recommended for kids under 13.",
+  },
+  {
+    question: "Is VR only for gaming?",
+    answer:
+      "No. While gaming is the most visible VR use case, the technology is widely used for fitness, social interaction, education, professional training, creative work, therapy, virtual tourism, architectural visualization, and enterprise collaboration.",
+  },
+  {
+    question: "How much does VR cost?",
+    answer:
+      "The Meta Quest 3S starts at around $300, making it the most accessible entry point for high-quality VR. The Quest 3 is about $500. PlayStation VR2 is $550 and requires a PS5. PC VR headsets range from $400 to $1,000 plus a capable gaming PC. At the high end, Apple Vision Pro starts at $3,499.",
+  },
+  {
+    question: "What is the difference between VR, AR, MR, and XR?",
+    answer:
+      "VR fully replaces your view of the real world with a digital one. AR overlays digital content onto the real world. MR blends virtual and real elements so they interact. XR is the umbrella term that covers all three.",
+  },
+  {
+    question: "Does VR cause motion sickness?",
+    answer:
+      "Some people experience motion sickness in VR, particularly in experiences that involve artificial locomotion. Modern VR apps use comfort features like teleportation, vignettes during motion, and snap turning to minimize this. Most users build tolerance over time with short, gradual sessions.",
+  },
+]);
+
 export default function WhatIsVRPage() {
   const articleSchema = {
     "@context": "https://schema.org",
@@ -38,7 +94,7 @@ export default function WhatIsVRPage() {
       "Everything you need to know about Virtual Reality: how it works, types of headsets, use cases, history, and the future of VR technology.",
     url: "https://vr.org/what-is-vr",
     datePublished: "2026-03-23",
-    dateModified: "2026-03-23",
+    dateModified: "2026-04-20",
     author: {
       "@type": "Organization",
       name: "VR.org",
@@ -65,6 +121,7 @@ export default function WhatIsVRPage() {
     <>
       <StructuredData data={articleSchema} />
       <StructuredData data={breadcrumbs} />
+      <StructuredData data={whatIsVrFaq} />
       <Header articleCount={0} lastUpdated="" />
 
       <main
@@ -609,50 +666,11 @@ export default function WhatIsVRPage() {
           and virtual movements match.
         </p>
 
-        {/* ── Related ── */}
-        <hr
-          className="my-12"
-          style={{ borderColor: "var(--border-primary)", opacity: 0.3 }}
-        />
+        {/* Latest articles */}
+        <RecentArticles heading="Latest from VR.org" limit={5} />
 
-        <h2 className="font-display text-2xl font-semibold mb-4">
-          Explore More on VR.org
-        </h2>
-        <ul
-          className="text-[15px] leading-[1.7] mb-8 list-disc pl-6 flex flex-col gap-1"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          <li>
-            <a
-              href="/hardware"
-              className="no-underline hover:underline"
-              style={{ color: "var(--accent-cyan)" }}
-            >
-              VR Hardware News
-            </a>{" "}
-            - The latest on headsets, controllers, and accessories
-          </li>
-          <li>
-            <a
-              href="/best-vr-headsets"
-              className="no-underline hover:underline"
-              style={{ color: "var(--accent-cyan)" }}
-            >
-              Best VR Headsets
-            </a>{" "}
-            - Our guide to the top headsets you can buy right now
-          </li>
-          <li>
-            <a
-              href="/"
-              className="no-underline hover:underline"
-              style={{ color: "var(--accent-cyan)" }}
-            >
-              VR.org Home
-            </a>{" "}
-            - Real-time VR, AR, and XR news from around the web
-          </li>
-        </ul>
+        {/* Cross-link to other pillar pages */}
+        <AllPillarGuides exclude="what-is-vr" />
       </main>
 
       <Footer />

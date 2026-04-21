@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 
 export const metadata = {
   title: "About VR.org | Your VR & AR News Hub",
@@ -18,6 +19,12 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <>
+      <StructuredData
+        data={breadcrumbSchema([
+          { name: "VR.org", url: "https://vr.org" },
+          { name: "About", url: "https://vr.org/about" },
+        ])}
+      />
       <Header articleCount={0} lastUpdated="" />
 
       <main
