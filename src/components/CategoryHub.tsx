@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { ArticleCard } from "@/components/ArticleCard";
 import { Sidebar } from "@/components/Sidebar";
 import { CategoryMascot, CATEGORY_MASCOT_KIND } from "@/components/CategoryMascot";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS, AD_LAYOUT_KEYS } from "@/lib/ads";
 
 import { LoadingSkeleton } from "@/components/LoadingSkeleton";
 import { useFeed } from "@/hooks/useFeed";
@@ -357,6 +359,16 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
                 {liveFeed.map((article, i) => (
                   <div key={article.id}>
                     <ArticleCard article={article} compact={compact} index={i} />
+                    {(i + 1) % 8 === 0 && i < liveFeed.length - 1 && (
+                      <div className="my-4">
+                        <AdSlot
+                          slot={AD_SLOTS.feed}
+                          format="fluid"
+                          layoutKey={AD_LAYOUT_KEYS.feed}
+                          minHeight={120}
+                        />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
