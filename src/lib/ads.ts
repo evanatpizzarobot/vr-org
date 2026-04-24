@@ -15,7 +15,7 @@
 export const AD_SLOTS = {
   sidebar: "5198848799",
   feed: "5007277106",
-  article: "ARTICLE_SLOT_ID",
+  article: "3311052050",
   rail: "RAIL_SLOT_ID",
 };
 
