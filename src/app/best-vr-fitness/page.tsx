@@ -177,6 +177,13 @@ export default function BestVRFitnessPage() {
         <h2 id="supernatural" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           1. Supernatural
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://cdn.getsupernatural.com/images/SN-landscape.png"
+            alt="Supernatural VR fitness app on Meta Quest"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: Within | Platform: Quest | Category: Structured cardio classes
         </p>
@@ -199,6 +206,13 @@ export default function BestVRFitnessPage() {
         <h2 id="fitxr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           2. FitXR
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://fitxr.com/cdn/shop/files/Hero_Image_Deck_1.png?v=1757556709"
+            alt="FitXR studio with instructor-led VR workouts"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: FitXR | Platform: Quest | Category: Class-based workouts
         </p>
@@ -219,6 +233,13 @@ export default function BestVRFitnessPage() {
         <h2 id="beat-saber" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           3. Beat Saber
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/620980/header.jpg"
+            alt="Beat Saber rhythm VR game"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: Beat Games | Platform: Quest, PC VR, PSVR | Category: Rhythm cardio
         </p>
@@ -239,6 +260,13 @@ export default function BestVRFitnessPage() {
         <h2 id="les-mills-bodycombat" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           4. Les Mills Bodycombat
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3484680/library_hero.jpg"
+            alt="Les Mills Bodycombat VR martial arts cardio"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: Odders Lab / Les Mills | Platform: Quest, PSVR2 | Category: Martial arts cardio
         </p>
@@ -257,6 +285,13 @@ export default function BestVRFitnessPage() {
         <h2 id="thrill-of-the-fight-2" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           5. Thrill of the Fight 2
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3279600/header.jpg"
+            alt="The Thrill of the Fight 2 VR boxing"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: Sealost Interactive | Platform: Quest | Category: Boxing simulator
         </p>
@@ -275,6 +310,13 @@ export default function BestVRFitnessPage() {
         <h2 id="pistol-whip" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           6. Pistol Whip
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/929530/header.jpg"
+            alt="Pistol Whip VR rhythm shooter"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: Cloudhead Games | Platform: Quest, PC VR, PSVR | Category: Rhythm shooter
         </p>
@@ -292,6 +334,13 @@ export default function BestVRFitnessPage() {
         <h2 id="holofit" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           7. Holofit
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://www.holodia.com/wp-content/uploads/2022/03/holofit_vr_fitness_cycling_rowing_running_boxing.png"
+            alt="Holofit VR overlay for cardio equipment"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: Holodia | Platform: Quest | Category: Cardio machine companion
         </p>
@@ -310,6 +359,13 @@ export default function BestVRFitnessPage() {
         <h2 id="liteboxer-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           8. Liteboxer VR
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/656a0f7700f22346d4b063b9/0fc2d4a3-f72c-4b31-a67b-f5092397b3fe/23_LS_P-010.jpg"
+            alt="Liteboxer VR boxing fitness"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: Liteboxer | Platform: Quest | Category: Boxing fitness
         </p>
@@ -327,6 +383,13 @@ export default function BestVRFitnessPage() {
         <h2 id="synth-riders" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           9. Synth Riders
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/885000/header.jpg"
+            alt="Synth Riders VR rhythm dance"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: Kluge Interactive | Platform: Quest, PC VR, PSVR | Category: Rhythm dance
         </p>
@@ -345,6 +408,13 @@ export default function BestVRFitnessPage() {
         <h2 id="creed-rise-to-glory" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           10. Creed: Rise to Glory
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/804490/header.jpg"
+            alt="Creed Rise to Glory VR boxing"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Developer: Survios | Platform: Quest, PC VR, PSVR | Category: Boxing story mode
         </p>
