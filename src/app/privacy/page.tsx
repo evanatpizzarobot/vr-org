@@ -71,11 +71,11 @@ export default function PrivacyPage() {
 
         <h2 className="font-display text-2xl font-semibold mb-4">Affiliate disclosure</h2>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          VR.org participates in affiliate programs, including the Amazon Services LLC Associates Program, B&amp;H Photo, the Meta Quest Creator Affiliate Program, and others. When you click on product links on our{" "}
+          VR.org participates in the Amazon Services LLC Associates Program and the B&amp;H Photo affiliate program. When you click on product links on our{" "}
           <a href="/deals" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
             deals page
           </a>
-          {" "}and make a qualifying purchase, we may earn a small commission at no additional cost to you.
+          {" "}and make a qualifying purchase, we may earn a small commission at no additional cost to you. Other retailer links (Meta Store, Bigscreen, direct manufacturer sites) are provided as a convenience and do not generate commissions for VR.org.
         </p>
         <p className="text-[15px] leading-[1.7] mb-8" style={{ color: "var(--text-secondary)" }}>
           Affiliate relationships do not influence our editorial coverage. Product recommendations are made by our editors based on hands-on testing, research, and industry expertise. Articles on VR.org do not contain affiliate links; all affiliate links live on the dedicated /deals page.
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
             .
           </li>
           <li>
-            <strong style={{ color: "var(--text-primary)" }}>Affiliate networks:</strong> Amazon Associates, B&amp;H Photo, Meta Quest Creator Program, ZyberVR affiliate program, and similar programs linked from our /deals page.
+            <strong style={{ color: "var(--text-primary)" }}>Affiliate networks:</strong> Amazon Associates and B&amp;H Photo, linked from our /deals page.
           </li>
         </ul>
 
