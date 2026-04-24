@@ -13,7 +13,7 @@
 //      - VR.org Side Rail    (Display, 160x600 vertical)
 //   3. Copy each slot ID here.
 export const AD_SLOTS = {
-  sidebar: "SIDEBAR_SLOT_ID",
+  sidebar: "5198848799",
   feed: "FEED_SLOT_ID",
   article: "ARTICLE_SLOT_ID",
   rail: "RAIL_SLOT_ID",
