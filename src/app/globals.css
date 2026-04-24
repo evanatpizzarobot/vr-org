@@ -1190,6 +1190,8 @@ nav::-webkit-scrollbar {
 }
 
 .deal-badge-favorite {
+  left: auto;
+  right: 12px;
   background: rgba(192, 38, 211, 0.18);
   color: var(--accent-magenta);
   border: 1px solid rgba(192, 38, 211, 0.35);
