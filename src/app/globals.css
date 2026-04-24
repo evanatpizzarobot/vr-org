@@ -1042,15 +1042,25 @@ nav::-webkit-scrollbar {
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  width: 160px;
+  width: 176px;
+  padding: 10px;
+  border-radius: var(--r-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
 }
 
 .side-rail-left {
-  left: calc((100vw - 1400px) / 2 - 180px);
+  left: calc((100vw - 1400px) / 2 - 100px);
 }
 
 .side-rail-right {
-  right: calc((100vw - 1400px) / 2 - 180px);
+  right: calc((100vw - 1400px) / 2 - 100px);
+}
+
+.side-rail .ad-label {
+  display: block;
+  margin-bottom: 6px;
+  text-align: center;
 }
 
 @media (min-width: 1700px) {
