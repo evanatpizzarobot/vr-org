@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-04-24",
-  "disclosure": "VR.org is a participant in the Amazon Associates and B&H Photo affiliate programs. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Meta Store, Bigscreen, direct manufacturer links) are provided as a convenience and do not earn us a commission. Our recommendations are editorially independent.",
+  "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (B&H Photo, Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
       "id": "headsets",
@@ -15,8 +15,7 @@
           "badge": "Best Value",
           "links": {
             "amazon": { "url": "https://amazon.com/dp/B0DG79992W?tag=vrorg00-20", "label": "Amazon" },
-            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=meta+quest+3s", "label": "B&H Photo" },
-            "meta": { "url": "https://www.meta.com/quest/quest-3s/", "label": "Meta Store" }
+            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=meta+quest+3s", "label": "B&H Photo" }
           }
         },
         {
@@ -27,8 +26,7 @@
           "badge": "Editor's Pick",
           "links": {
             "amazon": { "url": "https://amazon.com/dp/B0CHBMVP8Q?tag=vrorg00-20", "label": "Amazon" },
-            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=meta+quest+3", "label": "B&H Photo" },
-            "meta": { "url": "https://www.meta.com/quest/quest-3/", "label": "Meta Store" }
+            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=meta+quest+3", "label": "B&H Photo" }
           }
         },
         {
@@ -85,8 +83,7 @@
           "image": "",
           "description": "Official comfort upgrade. Better weight distribution and dial-fit adjustment for long sessions.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+elite+strap&tag=vrorg00-20", "label": "Amazon" },
-            "meta": { "url": "https://www.meta.com/quest/accessories/quest-3-elite-strap/", "label": "Meta Store" }
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+elite+strap&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
@@ -115,8 +112,7 @@
           "image": "",
           "description": "Official USB-C cable for PC VR. Reliable, long reach, and fast data transfer.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+link+cable&tag=vrorg00-20", "label": "Amazon" },
-            "meta": { "url": "https://www.meta.com/quest/accessories/quest-link-cable/", "label": "Meta Store" }
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+link+cable&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
