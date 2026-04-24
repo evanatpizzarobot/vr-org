@@ -726,6 +726,29 @@ nav::-webkit-scrollbar {
 }
 
 /* ============================================================
+   FITNESS PAGE FIGURES (pillar page inline images)
+   Used on /best-vr-fitness to give each ranked app a consistent
+   hero image with uniform aspect ratio, regardless of source.
+   ============================================================ */
+.fitness-figure {
+  margin: 1rem 0 1.25rem;
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+.fitness-figure img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ============================================================
    HERO BACKGROUND CANVAS (cosmic + wireframe grid)
    Fixed full-viewport layer behind the whole homepage. Content
    sits above via z-index hoisting. Vignette fades the lower
