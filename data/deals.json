@@ -107,21 +107,21 @@
           }
         },
         {
-          "name": "Meta Quest Link Cable (5m)",
-          "price": "$79",
-          "image": "",
-          "description": "Official USB-C cable for PC VR. Reliable, long reach, and fast data transfer.",
+          "name": "KIWI Design Link Cable (5m)",
+          "price": "$25",
+          "image": "https://www.kiwidesign.com/cdn/shop/files/KIWIdesignL1PlusLinkCablewithCharging16FT-USB3.0toUSB-C.jpg?v=1751872251",
+          "description": "USB 3.0 to USB-C cable for Quest PC VR. Works identically to Meta's official cable at a fraction of the price, with passthrough charging built in.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+link+cable&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+link+cable+quest+3&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
-          "name": "Quest 3 Carrying Case",
-          "price": "$79",
-          "image": "",
-          "description": "Official hard shell travel case. Fits headset, controllers, and charging cable.",
+          "name": "KIWI Design Carrying Case for Quest 3",
+          "price": "$39",
+          "image": "https://www.kiwidesign.com/cdn/shop/files/KIWIdesign-P4-Portable-Carrying-Case-1.jpg?v=1749814258",
+          "description": "Hard shell travel case built for Quest 3. Fits the headset, controllers, and a charging cable with room for one accessory strap.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+carrying+case&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+quest+3+carrying+case&tag=vrorg00-20", "label": "Amazon" }
           }
         }
       ]
