@@ -10,7 +10,7 @@
         {
           "name": "Meta Quest 3S (128GB)",
           "price": "$349",
-          "image": "",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Meta_Quest_3S_Display_Unit.jpg/1280px-Meta_Quest_3S_Display_Unit.jpg",
           "description": "The best entry-level VR headset. Great mixed reality, solid game library, no PC required.",
           "badge": "Best Value",
           "links": {
@@ -21,7 +21,7 @@
         {
           "name": "Meta Quest 3 (512GB)",
           "price": "$599",
-          "image": "",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Meta_Quest_3_display_unit.jpg/1280px-Meta_Quest_3_display_unit.jpg",
           "description": "The full-featured Quest. Better lenses, more storage, best standalone VR experience available.",
           "badge": "Editor's Pick",
           "links": {
@@ -32,7 +32,7 @@
         {
           "name": "PlayStation VR2",
           "price": "$549",
-          "image": "",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/PSVR2.png/1280px-PSVR2.png",
           "description": "Best console VR. Eye tracking, haptic feedback, and incredible PS5 exclusives like Horizon Call of the Mountain.",
           "links": {
             "amazon": { "url": "https://amazon.com/dp/B0BNR3KTLL?tag=vrorg00-20", "label": "Amazon" },
@@ -42,7 +42,7 @@
         {
           "name": "Bigscreen Beyond 2",
           "price": "$1,019",
-          "image": "",
+          "image": "https://cdn.shopify.com/s/files/1/0643/5169/9161/files/BigScreenStudio-BS2_LAUNCH_RC14_Max.00_01_14_17.Still003.jpg?v=1745344722",
           "description": "107 grams. The lightest, sharpest PC VR headset ever made. Enthusiast-grade and custom-fit.",
           "badge": "Premium",
           "links": {
@@ -52,7 +52,7 @@
         {
           "name": "VITURE Beast",
           "price": "$549",
-          "image": "",
+          "image": "https://cdn.shopify.com/s/files/1/0762/8760/7065/files/R6_01.jpg?v=1751881380",
           "description": "XR display glasses with a 174-inch virtual screen. Works with PS5, Switch, Steam Deck, phones.",
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=viture+beast&tag=vrorg00-20", "label": "Amazon" },
@@ -62,7 +62,7 @@
         {
           "name": "Apple Vision Pro (M5)",
           "price": "$3,499",
-          "image": "",
+          "image": "https://www.apple.com/newsroom/images/2025/10/apple-vision-pro-upgraded-with-the-m5-chip-and-dual-knit-band/article/Apple-Vision-Pro-hero-251015.jpg",
           "description": "The most advanced spatial computer. Incredible display, eye and hand tracking, visionOS ecosystem.",
           "badge": "Premium",
           "links": {
@@ -80,7 +80,7 @@
         {
           "name": "Meta Quest 3 Elite Strap",
           "price": "$59",
-          "image": "",
+          "image": "https://www.knoxlabs.com/cdn/shop/files/MetaQuest3EliteStrap01.webp?v=1696252275",
           "description": "Official comfort upgrade. Better weight distribution and dial-fit adjustment for long sessions.",
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+elite+strap&tag=vrorg00-20", "label": "Amazon" }
@@ -89,7 +89,7 @@
         {
           "name": "ZyberVR Battery Head Strap",
           "price": "$49",
-          "image": "",
+          "image": "https://zybervr.com/cdn/shop/files/Q3-HS01B1-2biggermargint.png?v=1702367033",
           "description": "Extended battery life and improved comfort in one. The best third-party Quest strap.",
           "badge": "Best Value",
           "links": {
@@ -100,7 +100,7 @@
         {
           "name": "KIWI Design Head Strap",
           "price": "$35",
-          "image": "",
+          "image": "https://www.kiwidesign.com/cdn/shop/files/KIWIdesign_K4_Comfort_Head_Strap_for_Quest3_0.png?v=1749814244",
           "description": "Budget-friendly comfort strap. Solid build quality for the price.",
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=kiwi+design+quest+3+head+strap&tag=vrorg00-20", "label": "Amazon" }
@@ -134,7 +134,7 @@
         {
           "name": "NVIDIA RTX 4070 Super",
           "price": "~$599",
-          "image": "",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/2023_Gigabyte_GeForce_RTX_4070_Aero_OC_12GB_%286%29.jpg/1280px-2023_Gigabyte_GeForce_RTX_4070_Aero_OC_12GB_%286%29.jpg",
           "description": "The sweet spot GPU for VR. Handles Quest Link and SteamVR at high settings with headroom to spare.",
           "badge": "Best Value",
           "links": {
@@ -145,7 +145,7 @@
         {
           "name": "NVIDIA RTX 4080 Super",
           "price": "~$999",
-          "image": "",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/ITX_4080S_Expert.jpg/1280px-ITX_4080S_Expert.jpg",
           "description": "High-end VR without compromise. Runs the Bigscreen Beyond 2 at near-native resolution.",
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=rtx+4080+super&tag=vrorg00-20", "label": "Amazon" },
@@ -155,7 +155,7 @@
         {
           "name": "NVIDIA RTX 4090",
           "price": "~$1,599",
-          "image": "",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Asus_Strix_RTX_4090.jpg/1280px-Asus_Strix_RTX_4090.jpg",
           "description": "The absolute best. Overkill for most VR, but sim racers and flight sim enthusiasts will thank it.",
           "badge": "Premium",
           "links": {
