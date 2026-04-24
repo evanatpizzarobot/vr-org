@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { Article } from "@/types";
 import { ArticleCard } from "./ArticleCard";
 import { AdSlot } from "./AdSlot";
-import { AD_SLOTS } from "@/lib/ads";
+import { AD_SLOTS, AD_LAYOUT_KEYS } from "@/lib/ads";
 
 import { LoadingSkeleton } from "./LoadingSkeleton";
 
@@ -66,7 +66,12 @@ export function Feed({ articles, loading }: FeedProps) {
             <ArticleCard article={article} compact={compact} index={i} />
             {(i + 1) % 8 === 0 && i < articles.length - 1 && (
               <div className="my-4">
-                <AdSlot slot={AD_SLOTS.feed} format="horizontal" minHeight={90} />
+                <AdSlot
+                  slot={AD_SLOTS.feed}
+                  format="fluid"
+                  layoutKey={AD_LAYOUT_KEYS.feed}
+                  minHeight={120}
+                />
               </div>
             )}
           </div>

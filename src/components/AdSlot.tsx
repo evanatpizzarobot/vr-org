@@ -4,11 +4,12 @@ import { useEffect, useRef } from "react";
 
 interface AdSlotProps {
   slot: string;
-  format?: "auto" | "rectangle" | "horizontal" | "vertical";
+  format?: "auto" | "rectangle" | "horizontal" | "vertical" | "fluid";
   responsive?: boolean;
   className?: string;
   label?: boolean;
   minHeight?: number;
+  layoutKey?: string;
 }
 
 export function AdSlot({
@@ -18,6 +19,7 @@ export function AdSlot({
   className = "",
   label = true,
   minHeight,
+  layoutKey,
 }: AdSlotProps) {
   const pushed = useRef(false);
 
@@ -44,7 +46,11 @@ export function AdSlot({
         data-ad-client="ca-pub-7224757913262984"
         data-ad-slot={slot}
         data-ad-format={format}
-        data-full-width-responsive={responsive ? "true" : "false"}
+        {...(format === "fluid"
+          ? layoutKey
+            ? { "data-ad-layout-key": layoutKey }
+            : {}
+          : { "data-full-width-responsive": responsive ? "true" : "false" })}
       />
     </div>
   );

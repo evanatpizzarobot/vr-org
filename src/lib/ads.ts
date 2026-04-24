@@ -14,7 +14,13 @@
 //   3. Copy each slot ID here.
 export const AD_SLOTS = {
   sidebar: "5198848799",
-  feed: "FEED_SLOT_ID",
+  feed: "5007277106",
   article: "ARTICLE_SLOT_ID",
   rail: "RAIL_SLOT_ID",
+};
+
+// In-Feed ads are "fluid" format and require a layout key that AdSense
+// generates when the ad unit is created. One key per in-feed unit.
+export const AD_LAYOUT_KEYS = {
+  feed: "-h3-5+1v-2l-d",
 };
