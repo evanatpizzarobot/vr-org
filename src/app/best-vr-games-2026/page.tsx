@@ -172,6 +172,13 @@ export default function BestVRGames2026Page() {
         <h3 className="font-display text-xl font-semibold mb-2">
           Resident Evil Requiem
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3764200/ce5437442768e38eb575f205ab9397d0264017b0/header.jpg"
+            alt="Resident Evil Requiem key art featuring Grace Ashcroft and Leon S. Kennedy"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -193,6 +200,13 @@ export default function BestVRGames2026Page() {
         <h3 className="font-display text-xl font-semibold mb-2">
           Batman: Arkham Shadow
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://img.youtube.com/vi/EPcCWR3DTIw/maxresdefault.jpg"
+            alt="Batman: Arkham Shadow story trailer art for Meta Quest 3"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -215,6 +229,13 @@ export default function BestVRGames2026Page() {
         <h3 className="font-display text-xl font-semibold mb-2">
           Little Nightmares VR: Altered Echoes
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2482940/d452a2c46f521825dead1bd5fda5a2b6a31d6379/header.jpg"
+            alt="Little Nightmares VR: Altered Echoes key art showing Dark Six in a shadowed corridor"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -241,6 +262,13 @@ export default function BestVRGames2026Page() {
         <h3 className="font-display text-xl font-semibold mb-2">
           Whatever Valve ships with Steam Frame
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4165890/866449b5fb3696b4c869e954c1e98d1e19df0721/header.jpg"
+            alt="Valve Steam Frame wireless VR headset official product image"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -256,6 +284,13 @@ export default function BestVRGames2026Page() {
         <h3 className="font-display text-xl font-semibold mb-2">
           Star Trek: Infection
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3954580/56bc2d41e38178545b45c2b79262e146e7c628ff/header.jpg"
+            alt="Star Trek: Infection VR key art aboard the U.S.S. Lumen"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -270,6 +305,13 @@ export default function BestVRGames2026Page() {
         <h3 className="font-display text-xl font-semibold mb-2">
           TMNT VR
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713650/b90ef5253a5ed86410cbbe2915e4286d46d7d9f6/header.jpg"
+            alt="Teenage Mutant Ninja Turtles: Empire City VR key art with the four turtles"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -284,6 +326,13 @@ export default function BestVRGames2026Page() {
         <h3 className="font-display text-xl font-semibold mb-2">
           Aces of Thunder
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2754090/header.jpg"
+            alt="Aces of Thunder VR dogfight artwork with warplanes in combat"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -298,6 +347,13 @@ export default function BestVRGames2026Page() {
         <h3 className="font-display text-xl font-semibold mb-2">
           Microsoft Flight Simulator (PSVR 2)
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2537590/header.jpg"
+            alt="Microsoft Flight Simulator 2024 cockpit and aircraft key art"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
