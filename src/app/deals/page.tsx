@@ -118,7 +118,7 @@ export default function DealsPage() {
             className="font-display text-[42px] md:text-[52px] font-bold mb-4"
             style={{ letterSpacing: "-0.5px" }}
           >
-            VR Gear We Recommend
+            Gear We Recommend
           </h1>
           <p
             className="text-[16px] leading-[1.6] mb-6"
