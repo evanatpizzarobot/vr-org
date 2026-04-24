@@ -65,6 +65,11 @@ export default function RootLayout({
             gtag('config', 'G-ZNNJ4FV2XN');
           `}
         </Script>
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7224757913262984"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <ThemeScript />
         <meta name="google-site-verification" content="cfkAakzduCtr-941_j8S-6S9ZGXylJLE1r9kn1HU1F8" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -8,6 +8,8 @@ import { TopListWidget } from "./TopListWidget";
 import { TrendingTopics } from "./TrendingTopics";
 import { NetActuateBanner } from "./NetActuateBanner";
 import { EditorsPicks } from "./EditorsPicks";
+import { AdSlot } from "./AdSlot";
+import { AD_SLOTS } from "@/lib/ads";
 
 
 interface SidebarProps {
@@ -35,6 +37,12 @@ export function Sidebar({ sourceStats, trending }: SidebarProps) {
         <TopListWidget list={topLists["top-vr-apps"]} />
       )}
       <NetActuateBanner />
+      <AdSlot
+        slot={AD_SLOTS.sidebar}
+        format="rectangle"
+        className="rounded-lg"
+        minHeight={250}
+      />
       <TrendingTopics topics={trending} />
       <SourceStats stats={sourceStats} />
     </div>

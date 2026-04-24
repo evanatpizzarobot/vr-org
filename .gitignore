@@ -53,6 +53,7 @@ data/*
 !data/articles.json
 !data/top-lists.json
 !data/events.json
+!data/deals.json
 !data/article-draft-*.json
 !data/drafts-published/
 !data/drafts-published/*.json

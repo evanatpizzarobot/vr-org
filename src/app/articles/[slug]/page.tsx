@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 import { RelatedGuides } from "@/components/RelatedGuides";
+import { ArticleAd } from "@/components/ArticleAd";
 import { getArticleBySlug, getAllSlugs } from "@/lib/articles";
 
 interface PageProps {
@@ -158,6 +159,9 @@ export default async function ArticlePage({ params }: PageProps) {
           className="article-body"
           dangerouslySetInnerHTML={{ __html: article.body }}
         />
+
+        {/* Ad after article body */}
+        <ArticleAd />
 
         {/* Related Guides */}
         <RelatedGuides tags={[article.category, ...article.tags]} />

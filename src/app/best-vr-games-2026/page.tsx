@@ -133,6 +133,36 @@ export default function BestVRGames2026Page() {
           so far, plus the most anticipated titles still on the way.
         </p>
 
+        <a
+          href="/deals#gaming-pcs"
+          className="block no-underline rounded-[10px] border px-5 py-4 mb-10 transition-all hover:translate-y-[-1px]"
+          style={{
+            background: "var(--accent-dim)",
+            borderColor: "var(--accent-mid)",
+            color: "var(--text-primary)",
+          }}
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <div
+                className="font-display text-[15px] font-semibold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Need a VR-ready PC? &rarr;
+              </div>
+              <div className="text-[13px] mt-1" style={{ color: "var(--text-secondary)" }}>
+                GPU recommendations for the games in this list.
+              </div>
+            </div>
+            <span
+              className="font-mono text-[11px] uppercase tracking-[1.5px] whitespace-nowrap"
+              style={{ color: "var(--accent-cyan)" }}
+            >
+              /deals
+            </span>
+          </div>
+        </a>
+
         {/* Best new releases of 2026 (so far) */}
         <h2 className="font-display text-2xl font-semibold mb-4">
           Best new releases of 2026 (so far)

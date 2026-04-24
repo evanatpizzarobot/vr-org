@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { label: "XR", href: "/xr" },
   { label: "Events", href: "/events" },
   { label: "Originals", href: "/originals" },
+  { label: "Deals", href: "/deals", isNew: true },
 ];
 
 interface HeaderProps {
@@ -57,13 +58,13 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
             />
           </a>
           <nav className="flex items-center gap-5">
-            {NAV_ITEMS.map(({ label, href }) => {
+            {NAV_ITEMS.map(({ label, href, isNew }) => {
               const isActive = pathname === href;
               return (
                 <a
                   key={href}
                   href={href}
-                  className="text-[13px] font-medium no-underline transition-colors whitespace-nowrap"
+                  className="text-[13px] font-medium no-underline transition-colors whitespace-nowrap relative inline-flex items-center gap-1.5"
                   style={{
                     color: isActive ? "var(--accent-cyan)" : "var(--text-secondary)",
                     borderBottom: isActive ? "2px solid var(--accent-cyan)" : "2px solid transparent",
@@ -77,6 +78,17 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
                   }}
                 >
                   {label}
+                  {isNew && (
+                    <span
+                      className="font-mono text-[8px] font-bold px-1.5 py-[1px] rounded uppercase tracking-[0.5px]"
+                      style={{
+                        background: "var(--accent-magenta)",
+                        color: "#fff",
+                      }}
+                    >
+                      New
+                    </span>
+                  )}
                 </a>
               );
             })}
@@ -129,13 +141,13 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
         className="md:hidden flex items-center gap-4 px-4 pb-2 overflow-x-auto"
         style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" }}
       >
-        {NAV_ITEMS.map(({ label, href }) => {
+        {NAV_ITEMS.map(({ label, href, isNew }) => {
           const isActive = pathname === href;
           return (
             <a
               key={href}
               href={href}
-              className="text-[13px] font-medium no-underline whitespace-nowrap flex-shrink-0"
+              className="text-[13px] font-medium no-underline whitespace-nowrap flex-shrink-0 inline-flex items-center gap-1.5"
               style={{
                 color: isActive ? "var(--accent-cyan)" : "var(--text-secondary)",
                 borderBottom: isActive ? "2px solid var(--accent-cyan)" : "2px solid transparent",
@@ -143,6 +155,14 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
               }}
             >
               {label}
+              {isNew && (
+                <span
+                  className="font-mono text-[8px] font-bold px-1.5 py-[1px] rounded uppercase tracking-[0.5px]"
+                  style={{ background: "var(--accent-magenta)", color: "#fff" }}
+                >
+                  New
+                </span>
+              )}
             </a>
           );
         })}
