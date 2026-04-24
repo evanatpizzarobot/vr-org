@@ -311,6 +311,13 @@ export default function BestVRHeadsetsPage() {
         <h3 id="meta-quest-3s" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           Meta Quest 3S: Best Budget VR Headset ($299)
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Meta_Quest_3S_Display_Unit.jpg"
+            alt="Meta Quest 3S standalone VR headset display unit"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
@@ -350,6 +357,13 @@ export default function BestVRHeadsetsPage() {
         <h3 id="meta-quest-3" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           Meta Quest 3: Best All-Around VR Headset ($499)
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/a/af/Meta_Quest_3_display_unit.jpg"
+            alt="Meta Quest 3 mixed reality headset on display"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
@@ -389,6 +403,13 @@ export default function BestVRHeadsetsPage() {
         <h3 id="playstation-vr2" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           PlayStation VR2: Best for PlayStation Gamers ($549)
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/7/74/PSVR2_%28Non-Stereoscopic%29.png"
+            alt="PlayStation VR2 headset and Sense controllers"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
@@ -429,6 +450,13 @@ export default function BestVRHeadsetsPage() {
         <h3 id="apple-vision-pro" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           Apple Vision Pro: Best Spatial Computing Device ($3,499)
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/5/51/Apple_Vision_Pro_with_Solo_Knit_Band.jpg"
+            alt="Apple Vision Pro spatial computer with the Solo Knit Band"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
@@ -471,6 +499,13 @@ export default function BestVRHeadsetsPage() {
         <h3 id="valve-index" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           Valve Index: Best for PC VR Enthusiasts ($999)
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Air_Force_officer_using_Valve_Index.jpg"
+            alt="Valve Index VR headset in use with knuckle controllers"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
@@ -512,6 +547,13 @@ export default function BestVRHeadsetsPage() {
         <h3 id="hp-reverb-g2" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           HP Reverb G2: Best for Sim Racing &amp; Flight Sim ($599)
         </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1010210/header.jpg"
+            alt="HP Reverb G2 PC VR headset official product image"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}

@@ -135,6 +135,13 @@ export default function BestVRGamesPage() {
         <h2 id="half-life-alyx" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           1. Half-Life: Alyx
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/546560/header.jpg"
+            alt="Half-Life: Alyx Steam header art with Alyx Vance and a Combine soldier"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -166,6 +173,13 @@ export default function BestVRGamesPage() {
         <h2 id="beat-saber" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           2. Beat Saber
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/620980/header.jpg"
+            alt="Beat Saber rhythm VR game header art"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -189,6 +203,13 @@ export default function BestVRGamesPage() {
         <h2 id="resident-evil-4-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           3. Resident Evil 4 VR
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/d/d9/Resi4-gc-cover.jpg"
+            alt="Resident Evil 4 cover art used as the basis for the Quest VR port"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -213,6 +234,13 @@ export default function BestVRGamesPage() {
         <h2 id="asgards-wrath-2" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           4. Asgard&apos;s Wrath 2
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/b/b4/Asgard%27s_Wrath_2_cover.jpg"
+            alt="Asgard's Wrath 2 cover art for Meta Quest"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -236,6 +264,13 @@ export default function BestVRGamesPage() {
         <h2 id="superhot-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           5. Superhot VR
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/617830/header.jpg"
+            alt="Superhot VR Steam header art with red shattering enemies"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -260,6 +295,13 @@ export default function BestVRGamesPage() {
         <h2 id="boneworks-bonelab" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           6. Boneworks / Bonelab
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/823500/header.jpg"
+            alt="Boneworks key art from Stress Level Zero"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -284,6 +326,13 @@ export default function BestVRGamesPage() {
         <h2 id="walking-dead-saints-sinners" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           7. The Walking Dead: Saints and Sinners
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/916840/header.jpg"
+            alt="The Walking Dead: Saints and Sinners VR header art"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -307,6 +356,13 @@ export default function BestVRGamesPage() {
         <h2 id="moss" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           8. Moss
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/846470/header.jpg"
+            alt="Moss VR header art featuring Quill the mouse adventurer"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -330,6 +386,13 @@ export default function BestVRGamesPage() {
         <h2 id="pavlov-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           9. Pavlov VR
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/555160/header.jpg"
+            alt="Pavlov VR competitive multiplayer shooter Steam header"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -353,6 +416,13 @@ export default function BestVRGamesPage() {
         <h2 id="no-mans-sky-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           10. No Man&apos;s Sky VR
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/275850/header.jpg"
+            alt="No Man's Sky Steam header art with explorer and alien fauna"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}

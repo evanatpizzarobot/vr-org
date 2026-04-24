@@ -188,6 +188,13 @@ export default function ARGlassesPage() {
         <h2 id="ray-ban-meta" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           Ray-Ban Meta (Gen 2): Best mainstream smart glasses
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Ray-Ban_Stories.jpg"
+            alt="Ray-Ban Meta smart glasses by EssilorLuxottica"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Made by Meta and EssilorLuxottica | Price: ~$329 | Display: None
         </p>
@@ -208,6 +215,13 @@ export default function ARGlassesPage() {
         <h2 id="rokid-glasses" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           Rokid Glasses: Best display smart glasses
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/COP30_-_Rokid_01.jpg/1280px-COP30_-_Rokid_01.jpg"
+            alt="Rokid Glasses with built-in micro-LED display"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Made by Rokid | Price: ~$499 | Display: Micro-LED monocular
         </p>
@@ -228,6 +242,13 @@ export default function ARGlassesPage() {
         <h2 id="xreal-one-pro" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           Xreal One Pro: Best AR glasses for media & gaming
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Tokyo-Game-Show-2024-Day4---2024-09-29_252.jpg/1280px-Tokyo-Game-Show-2024-Day4---2024-09-29_252.jpg"
+            alt="Xreal AR glasses on display at Tokyo Game Show 2024"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Made by Xreal | Price: ~$599 | Display: 1080p micro-OLED, 57 degree FOV
         </p>
@@ -248,6 +269,13 @@ export default function ARGlassesPage() {
         <h2 id="viture-pro" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           Viture Pro: Best for prescription and portability
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://www.viture.com/opengraph-image?376fa9d8052ebb8e"
+            alt="Viture Pro XR glasses with built-in myopia adjustment"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Made by Viture | Price: ~$499 | Display: 1080p micro-OLED, 46 degree FOV
         </p>
@@ -267,6 +295,13 @@ export default function ARGlassesPage() {
         <h2 id="meta-orion" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           Meta Orion: The developer preview of true AR
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://about.fb.com/wp-content/uploads/2024/09/Connect-24_Introducing-Orion_Header.jpg"
+            alt="Meta Orion AR glasses developer preview revealed at Connect 2024"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Made by Meta | Price: Not available for consumers | Display: Custom micro-LED waveguide
         </p>
@@ -287,6 +322,13 @@ export default function ARGlassesPage() {
         <h2 id="android-xr-glasses" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           Google Android XR Glasses: The Android of smart glasses
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/0098-ARVR-XR-Blog-Header-2096x1182-v2.width-1300.png"
+            alt="Google Android XR platform header from the Google Keyword blog"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Made by Google with Samsung, Xreal, and partners | Price: TBA | Display: Varies by OEM
         </p>
@@ -307,6 +349,13 @@ export default function ARGlassesPage() {
         <h2 id="apple-vision-pro" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           Apple Vision Pro: Not glasses, still the benchmark
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/5/51/Apple_Vision_Pro_with_Solo_Knit_Band.jpg"
+            alt="Apple Vision Pro mixed-reality headset with the Solo Knit Band"
+            loading="lazy"
+          />
+        </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
           Made by Apple | Price: $3,499 | Display: Dual 4K+ micro-OLED
         </p>
