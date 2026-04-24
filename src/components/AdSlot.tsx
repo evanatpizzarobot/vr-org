@@ -10,6 +10,7 @@ interface AdSlotProps {
   label?: boolean;
   minHeight?: number;
   layoutKey?: string;
+  adLayout?: string;
 }
 
 export function AdSlot({
@@ -20,6 +21,7 @@ export function AdSlot({
   label = true,
   minHeight,
   layoutKey,
+  adLayout,
 }: AdSlotProps) {
   const pushed = useRef(false);
 
@@ -42,15 +44,15 @@ export function AdSlot({
       {label && <span className="ad-label">Advertisement</span>}
       <ins
         className="adsbygoogle"
-        style={{ display: "block" }}
+        style={{ display: "block", ...(adLayout === "in-article" ? { textAlign: "center" } : {}) }}
         data-ad-client="ca-pub-7224757913262984"
         data-ad-slot={slot}
         data-ad-format={format}
-        {...(format === "fluid"
-          ? layoutKey
-            ? { "data-ad-layout-key": layoutKey }
-            : {}
-          : { "data-full-width-responsive": responsive ? "true" : "false" })}
+        {...(adLayout ? { "data-ad-layout": adLayout } : {})}
+        {...(layoutKey ? { "data-ad-layout-key": layoutKey } : {})}
+        {...(format !== "fluid"
+          ? { "data-full-width-responsive": responsive ? "true" : "false" }
+          : {})}
       />
     </div>
   );
