@@ -61,21 +61,29 @@ export function Feed({ articles, loading }: FeedProps) {
 
       {/* Articles */}
       {!loading &&
-        articles.map((article, i) => (
-          <div key={article.id}>
-            <ArticleCard article={article} compact={compact} index={i} />
-            {(i + 1) % 8 === 0 && i < articles.length - 1 && (
-              <div className="my-4">
-                <AdSlot
-                  slot={AD_SLOTS.feed}
-                  format="fluid"
-                  layoutKey={AD_LAYOUT_KEYS.feed}
-                  minHeight={120}
-                />
-              </div>
-            )}
-          </div>
-        ))}
+        articles.map((article, i) => {
+          // Show an in-feed ad after the 3rd card, then every 5 cards after that.
+          // This gives the first ad high visibility without being in-your-face,
+          // and spaces the rest out enough to avoid feeling spammy.
+          const showAd =
+            i < articles.length - 1 &&
+            (i === 2 || (i > 2 && (i - 2) % 5 === 0));
+          return (
+            <div key={article.id}>
+              <ArticleCard article={article} compact={compact} index={i} />
+              {showAd && (
+                <div className="my-4">
+                  <AdSlot
+                    slot={AD_SLOTS.feed}
+                    format="fluid"
+                    layoutKey={AD_LAYOUT_KEYS.feed}
+                    minHeight={120}
+                  />
+                </div>
+              )}
+            </div>
+          );
+        })}
 
       {/* Empty state */}
       {!loading && articles.length === 0 && (
