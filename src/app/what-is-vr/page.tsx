@@ -558,6 +558,36 @@ export default function WhatIsVRPage() {
           phones, tablets, and PCs.
         </p>
 
+        <a
+          href="/deals#headsets"
+          className="block no-underline rounded-[10px] border px-5 py-4 mb-10 transition-all hover:translate-y-[-1px]"
+          style={{
+            background: "var(--accent-dim)",
+            borderColor: "var(--accent-mid)",
+            color: "var(--text-primary)",
+          }}
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <div
+                className="font-display text-[15px] font-semibold"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Ready to try VR? &rarr;
+              </div>
+              <div className="text-[13px] mt-1" style={{ color: "var(--text-secondary)" }}>
+                Our picks for the best first-time VR headsets.
+              </div>
+            </div>
+            <span
+              className="font-mono text-[11px] uppercase tracking-[1.5px] whitespace-nowrap"
+              style={{ color: "var(--accent-cyan)" }}
+            >
+              /deals
+            </span>
+          </div>
+        </a>
+
         {/* ── Frequently Asked Questions ── */}
         <h2 className="font-display text-2xl font-semibold mb-4">
           Frequently Asked Questions

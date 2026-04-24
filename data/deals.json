@@ -1,0 +1,173 @@
+{
+  "lastUpdated": "2026-04-24",
+  "disclosure": "VR.org is a participant in affiliate programs including Amazon Associates, B&H Photo, and others. We earn a small commission from qualifying purchases at no extra cost to you. Our recommendations are editorially independent.",
+  "sections": [
+    {
+      "id": "headsets",
+      "title": "VR Headsets",
+      "description": "Our picks for the best VR and XR headsets you can buy right now.",
+      "items": [
+        {
+          "name": "Meta Quest 3S (128GB)",
+          "price": "$349",
+          "image": "",
+          "description": "The best entry-level VR headset. Great mixed reality, solid game library, no PC required.",
+          "badge": "Best Value",
+          "links": {
+            "amazon": { "url": "https://amazon.com/dp/B0DG79992W", "label": "Amazon" },
+            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=meta+quest+3s", "label": "B&H Photo" },
+            "meta": { "url": "https://www.meta.com/quest/quest-3s/", "label": "Meta Store" }
+          }
+        },
+        {
+          "name": "Meta Quest 3 (512GB)",
+          "price": "$599",
+          "image": "",
+          "description": "The full-featured Quest. Better lenses, more storage, best standalone VR experience available.",
+          "badge": "Editor's Pick",
+          "links": {
+            "amazon": { "url": "https://amazon.com/dp/B0CHBMVP8Q", "label": "Amazon" },
+            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=meta+quest+3", "label": "B&H Photo" },
+            "meta": { "url": "https://www.meta.com/quest/quest-3/", "label": "Meta Store" }
+          }
+        },
+        {
+          "name": "PlayStation VR2",
+          "price": "$549",
+          "image": "",
+          "description": "Best console VR. Eye tracking, haptic feedback, and incredible PS5 exclusives like Horizon Call of the Mountain.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/dp/B0BNR3KTLL", "label": "Amazon" },
+            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=playstation+vr2", "label": "B&H Photo" }
+          }
+        },
+        {
+          "name": "Bigscreen Beyond 2",
+          "price": "$1,019",
+          "image": "",
+          "description": "107 grams. The lightest, sharpest PC VR headset ever made. Enthusiast-grade and custom-fit.",
+          "badge": "Premium",
+          "links": {
+            "direct": { "url": "https://www.bigscreenvr.com/", "label": "Bigscreen" }
+          }
+        },
+        {
+          "name": "VITURE Beast",
+          "price": "$549",
+          "image": "",
+          "description": "XR display glasses with a 174-inch virtual screen. Works with PS5, Switch, Steam Deck, phones.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=viture+beast", "label": "Amazon" },
+            "direct": { "url": "https://www.viture.com/", "label": "VITURE" }
+          }
+        },
+        {
+          "name": "Apple Vision Pro (M5)",
+          "price": "$3,499",
+          "image": "",
+          "description": "The most advanced spatial computer. Incredible display, eye and hand tracking, visionOS ecosystem.",
+          "badge": "Premium",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=apple+vision+pro", "label": "Amazon" },
+            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=apple+vision+pro", "label": "B&H Photo" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "accessories",
+      "title": "VR Accessories",
+      "description": "Essential upgrades for your VR setup.",
+      "items": [
+        {
+          "name": "Meta Quest 3 Elite Strap",
+          "price": "$59",
+          "image": "",
+          "description": "Official comfort upgrade. Better weight distribution and dial-fit adjustment for long sessions.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+elite+strap", "label": "Amazon" },
+            "meta": { "url": "https://www.meta.com/quest/accessories/quest-3-elite-strap/", "label": "Meta Store" }
+          }
+        },
+        {
+          "name": "ZyberVR Battery Head Strap",
+          "price": "$49",
+          "image": "",
+          "description": "Extended battery life and improved comfort in one. The best third-party Quest strap.",
+          "badge": "Best Value",
+          "links": {
+            "zybervr": { "url": "https://zybervr.com/", "label": "ZyberVR" },
+            "amazon": { "url": "https://amazon.com/s?k=zybervr+battery+head+strap", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "KIWI Design Head Strap",
+          "price": "$35",
+          "image": "",
+          "description": "Budget-friendly comfort strap. Solid build quality for the price.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+quest+3+head+strap", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "Meta Quest Link Cable (5m)",
+          "price": "$79",
+          "image": "",
+          "description": "Official USB-C cable for PC VR. Reliable, long reach, and fast data transfer.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+link+cable", "label": "Amazon" },
+            "meta": { "url": "https://www.meta.com/quest/accessories/quest-link-cable/", "label": "Meta Store" }
+          }
+        },
+        {
+          "name": "Quest 3 Carrying Case",
+          "price": "$79",
+          "image": "",
+          "description": "Official hard shell travel case. Fits headset, controllers, and charging cable.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+carrying+case", "label": "Amazon" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "gaming-pcs",
+      "title": "Gaming PCs for VR",
+      "description": "VR-ready GPU recommendations for PC VR gaming.",
+      "items": [
+        {
+          "name": "NVIDIA RTX 4070 Super",
+          "price": "~$599",
+          "image": "",
+          "description": "The sweet spot GPU for VR. Handles Quest Link and SteamVR at high settings with headroom to spare.",
+          "badge": "Best Value",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=rtx+4070+super", "label": "Amazon" },
+            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=rtx+4070+super", "label": "B&H Photo" }
+          }
+        },
+        {
+          "name": "NVIDIA RTX 4080 Super",
+          "price": "~$999",
+          "image": "",
+          "description": "High-end VR without compromise. Runs the Bigscreen Beyond 2 at near-native resolution.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=rtx+4080+super", "label": "Amazon" },
+            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=rtx+4080+super", "label": "B&H Photo" }
+          }
+        },
+        {
+          "name": "NVIDIA RTX 4090",
+          "price": "~$1,599",
+          "image": "",
+          "description": "The absolute best. Overkill for most VR, but sim racers and flight sim enthusiasts will thank it.",
+          "badge": "Premium",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=rtx+4090", "label": "Amazon" },
+            "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=rtx+4090", "label": "B&H Photo" }
+          }
+        }
+      ]
+    }
+  ]
+}

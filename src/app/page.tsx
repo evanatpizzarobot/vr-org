@@ -8,6 +8,7 @@ import { FilterBar } from "@/components/FilterBar";
 import { Feed } from "@/components/Feed";
 import { Sidebar } from "@/components/Sidebar";
 import { Footer } from "@/components/Footer";
+import { SideRailAds } from "@/components/SideRailAds";
 import { useFeed } from "@/hooks/useFeed";
 import { useFilters } from "@/hooks/useFilters";
 import { SOURCES } from "@/lib/constants";
@@ -82,6 +83,7 @@ export default function Home() {
 
   return (
     <>
+      <SideRailAds />
       <HeroBackground />
       <div className="page-stack">
       <Header articleCount={filtered.length} lastUpdated={lastUpdated} />
@@ -93,7 +95,6 @@ export default function Home() {
         style={{ animationDelay: "60ms" }}
         aria-label="Site introduction"
       >
-        <aside className="hero-ad" hidden data-slot="hero-left" />
         <div className="hero">
           <div className="hero-eyebrow">
             <span>Spatial computing, daily &middot; {heroDate}</span>
@@ -141,7 +142,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <aside className="hero-ad" hidden data-slot="hero-right" />
       </section>
 
       <div id="feed" className="max-w-[1400px] mx-auto px-6 pb-16 pt-5 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 relative z-10">

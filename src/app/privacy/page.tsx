@@ -56,7 +56,29 @@ export default function PrivacyPage() {
         </p>
         <p className="text-[15px] leading-[1.7] mb-8" style={{ color: "var(--text-secondary)" }}>
           <strong style={{ color: "var(--text-primary)" }}>Third-party advertising:</strong>{" "}
-          VR.org does not currently display third-party advertisements. If this changes in the future, this policy will be updated accordingly.
+          VR.org uses Google AdSense to display advertisements. Google and its partners may use cookies and similar technologies to serve ads based on your prior visits to this and other websites. You can opt out of personalized advertising at any time by visiting{" "}
+          <a
+            href="https://adssettings.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Google Ads Settings
+          </a>
+          .
+        </p>
+
+        <h2 className="font-display text-2xl font-semibold mb-4">Affiliate disclosure</h2>
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          VR.org participates in affiliate programs, including the Amazon Services LLC Associates Program, B&amp;H Photo, the Meta Quest Creator Affiliate Program, and others. When you click on product links on our{" "}
+          <a href="/deals" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+            deals page
+          </a>
+          {" "}and make a qualifying purchase, we may earn a small commission at no additional cost to you.
+        </p>
+        <p className="text-[15px] leading-[1.7] mb-8" style={{ color: "var(--text-secondary)" }}>
+          Affiliate relationships do not influence our editorial coverage. Product recommendations are made by our editors based on hands-on testing, research, and industry expertise. Articles on VR.org do not contain affiliate links; all affiliate links live on the dedicated /deals page.
         </p>
 
         <h2 className="font-display text-2xl font-semibold mb-4">Information we do not collect</h2>
@@ -83,11 +105,21 @@ export default function PrivacyPage() {
         <h2 className="font-display text-2xl font-semibold mb-4">Third-party services</h2>
         <ul className="text-[15px] leading-[1.7] mb-8 list-disc pl-6 flex flex-col gap-1" style={{ color: "var(--text-secondary)" }}>
           <li>
-            <strong style={{ color: "var(--text-primary)" }}>Google Analytics (if added):</strong> Website analytics. See{" "}
+            <strong style={{ color: "var(--text-primary)" }}>Google Analytics:</strong> Website analytics. See{" "}
             <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
               Google&apos;s privacy policy
             </a>
             .
+          </li>
+          <li>
+            <strong style={{ color: "var(--text-primary)" }}>Google AdSense:</strong> Advertising network. See{" "}
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              how Google uses information from sites that use our services
+            </a>
+            .
+          </li>
+          <li>
+            <strong style={{ color: "var(--text-primary)" }}>Affiliate networks:</strong> Amazon Associates, B&amp;H Photo, Meta Quest Creator Program, ZyberVR affiliate program, and similar programs linked from our /deals page.
           </li>
         </ul>
 
