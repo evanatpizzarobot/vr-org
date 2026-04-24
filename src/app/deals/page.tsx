@@ -47,6 +47,7 @@ function badgeClass(badge?: string): string {
   if (lower.includes("value")) return "deal-badge deal-badge-value";
   if (lower.includes("pick")) return "deal-badge deal-badge-pick";
   if (lower.includes("premium")) return "deal-badge deal-badge-premium";
+  if (lower.includes("favorite") || lower.includes("staff")) return "deal-badge deal-badge-favorite";
   return "deal-badge deal-badge-pick";
 }
 
