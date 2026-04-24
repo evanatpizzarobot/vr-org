@@ -14,7 +14,7 @@
           "description": "The best entry-level VR headset. Great mixed reality, solid game library, no PC required.",
           "badge": "Best Value",
           "links": {
-            "amazon": { "url": "https://amazon.com/dp/B0DG79992W", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/dp/B0DG79992W?tag=vrorg00-20", "label": "Amazon" },
             "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=meta+quest+3s", "label": "B&H Photo" },
             "meta": { "url": "https://www.meta.com/quest/quest-3s/", "label": "Meta Store" }
           }
@@ -26,7 +26,7 @@
           "description": "The full-featured Quest. Better lenses, more storage, best standalone VR experience available.",
           "badge": "Editor's Pick",
           "links": {
-            "amazon": { "url": "https://amazon.com/dp/B0CHBMVP8Q", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/dp/B0CHBMVP8Q?tag=vrorg00-20", "label": "Amazon" },
             "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=meta+quest+3", "label": "B&H Photo" },
             "meta": { "url": "https://www.meta.com/quest/quest-3/", "label": "Meta Store" }
           }
@@ -37,7 +37,7 @@
           "image": "",
           "description": "Best console VR. Eye tracking, haptic feedback, and incredible PS5 exclusives like Horizon Call of the Mountain.",
           "links": {
-            "amazon": { "url": "https://amazon.com/dp/B0BNR3KTLL", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/dp/B0BNR3KTLL?tag=vrorg00-20", "label": "Amazon" },
             "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=playstation+vr2", "label": "B&H Photo" }
           }
         },
@@ -57,7 +57,7 @@
           "image": "",
           "description": "XR display glasses with a 174-inch virtual screen. Works with PS5, Switch, Steam Deck, phones.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=viture+beast", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/s?k=viture+beast&tag=vrorg00-20", "label": "Amazon" },
             "direct": { "url": "https://www.viture.com/", "label": "VITURE" }
           }
         },
@@ -68,7 +68,7 @@
           "description": "The most advanced spatial computer. Incredible display, eye and hand tracking, visionOS ecosystem.",
           "badge": "Premium",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=apple+vision+pro", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/s?k=apple+vision+pro&tag=vrorg00-20", "label": "Amazon" },
             "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=apple+vision+pro", "label": "B&H Photo" }
           }
         }
@@ -85,7 +85,7 @@
           "image": "",
           "description": "Official comfort upgrade. Better weight distribution and dial-fit adjustment for long sessions.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+elite+strap", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+elite+strap&tag=vrorg00-20", "label": "Amazon" },
             "meta": { "url": "https://www.meta.com/quest/accessories/quest-3-elite-strap/", "label": "Meta Store" }
           }
         },
@@ -97,7 +97,7 @@
           "badge": "Best Value",
           "links": {
             "zybervr": { "url": "https://zybervr.com/", "label": "ZyberVR" },
-            "amazon": { "url": "https://amazon.com/s?k=zybervr+battery+head+strap", "label": "Amazon" }
+            "amazon": { "url": "https://amazon.com/s?k=zybervr+battery+head+strap&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
@@ -106,7 +106,7 @@
           "image": "",
           "description": "Budget-friendly comfort strap. Solid build quality for the price.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+quest+3+head+strap", "label": "Amazon" }
+            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+quest+3+head+strap&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
@@ -115,7 +115,7 @@
           "image": "",
           "description": "Official USB-C cable for PC VR. Reliable, long reach, and fast data transfer.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+link+cable", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+link+cable&tag=vrorg00-20", "label": "Amazon" },
             "meta": { "url": "https://www.meta.com/quest/accessories/quest-link-cable/", "label": "Meta Store" }
           }
         },
@@ -125,7 +125,7 @@
           "image": "",
           "description": "Official hard shell travel case. Fits headset, controllers, and charging cable.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+carrying+case", "label": "Amazon" }
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+carrying+case&tag=vrorg00-20", "label": "Amazon" }
           }
         }
       ]
@@ -142,7 +142,7 @@
           "description": "The sweet spot GPU for VR. Handles Quest Link and SteamVR at high settings with headroom to spare.",
           "badge": "Best Value",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=rtx+4070+super", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/s?k=rtx+4070+super&tag=vrorg00-20", "label": "Amazon" },
             "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=rtx+4070+super", "label": "B&H Photo" }
           }
         },
@@ -152,7 +152,7 @@
           "image": "",
           "description": "High-end VR without compromise. Runs the Bigscreen Beyond 2 at near-native resolution.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=rtx+4080+super", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/s?k=rtx+4080+super&tag=vrorg00-20", "label": "Amazon" },
             "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=rtx+4080+super", "label": "B&H Photo" }
           }
         },
@@ -163,7 +163,7 @@
           "description": "The absolute best. Overkill for most VR, but sim racers and flight sim enthusiasts will thank it.",
           "badge": "Premium",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=rtx+4090", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/s?k=rtx+4090&tag=vrorg00-20", "label": "Amazon" },
             "bh": { "url": "https://www.bhphotovideo.com/c/search?Ntt=rtx+4090", "label": "B&H Photo" }
           }
         }
