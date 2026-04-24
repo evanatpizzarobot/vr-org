@@ -124,7 +124,7 @@ export default function DealsPage() {
             className="text-[16px] leading-[1.6] mb-6"
             style={{ color: "var(--text-secondary)" }}
           >
-            Hand-picked headsets, accessories, and PC hardware from the VR.org editorial team.
+            Hand-picked headsets, AR glasses, accessories, and PC hardware from the VR.org editorial team.
             Prices and availability change constantly, so we check these links often.
           </p>
           <p className="deals-disclosure">{deals.disclosure}</p>
