@@ -1050,11 +1050,11 @@ nav::-webkit-scrollbar {
 }
 
 .side-rail-left {
-  left: calc((100vw - 1400px) / 2 - 100px);
+  left: calc((100vw - 1400px) / 2 - 216px);
 }
 
 .side-rail-right {
-  right: calc((100vw - 1400px) / 2 - 100px);
+  right: calc((100vw - 1400px) / 2 - 216px);
 }
 
 .side-rail .ad-label {
@@ -1063,7 +1063,7 @@ nav::-webkit-scrollbar {
   text-align: center;
 }
 
-@media (min-width: 1700px) {
+@media (min-width: 1900px) {
   .side-rail {
     display: block;
   }
