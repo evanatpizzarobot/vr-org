@@ -1166,6 +1166,18 @@ nav::-webkit-scrollbar {
   border: 1px solid rgba(245, 158, 11, 0.35);
 }
 
+.deal-badge-favorite {
+  background: rgba(192, 38, 211, 0.18);
+  color: var(--accent-magenta);
+  border: 1px solid rgba(192, 38, 211, 0.35);
+}
+
+[data-theme="dark"] .deal-badge-favorite {
+  background: rgba(224, 64, 251, 0.14);
+  color: var(--accent-magenta);
+  border-color: rgba(224, 64, 251, 0.4);
+}
+
 .deal-body {
   padding: 18px 20px 20px;
   display: flex;
