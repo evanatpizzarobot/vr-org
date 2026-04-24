@@ -151,6 +151,13 @@ export default function BestVRAppsPage() {
         <h2 id="virtual-desktop" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           1. Virtual Desktop
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/382110/header.jpg"
+            alt="Virtual Desktop streaming a PC desktop into VR"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -175,6 +182,13 @@ export default function BestVRAppsPage() {
         <h2 id="immersed" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           2. Immersed
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://img.youtube.com/vi/HQQ8E0bcC0Q/maxresdefault.jpg"
+            alt="Immersed multi-monitor virtual workstation running on Quest"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -200,6 +214,13 @@ export default function BestVRAppsPage() {
         <h2 id="vrchat" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           3. VRChat
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/438100/header.jpg"
+            alt="VRChat social VR platform Steam header"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -226,6 +247,13 @@ export default function BestVRAppsPage() {
         <h2 id="bigscreen" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           4. Bigscreen
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/457550/header.jpg"
+            alt="Bigscreen virtual movie theater Steam header"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -251,6 +279,13 @@ export default function BestVRAppsPage() {
         <h2 id="gravity-sketch" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           5. Gravity Sketch
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://gravitysketch.com/wp-content/uploads/2024/10/2-people-VR-3-1-1-scaled.jpg"
+            alt="Designers collaborating in Gravity Sketch's 3D VR design tool"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -276,6 +311,13 @@ export default function BestVRAppsPage() {
         <h2 id="wander" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           6. Wander
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://img.youtube.com/vi/0dH7DTyROVY/maxresdefault.jpg"
+            alt="Wander VR exploring the world via Google Street View on Quest"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -301,6 +343,13 @@ export default function BestVRAppsPage() {
         <h2 id="shapesxr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           7. ShapesXR
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://cdn.prod.website-files.com/615dc84364c5917b852e46b2/69e1441486fa88195276e517_ShapesXR.jpg"
+            alt="ShapesXR collaborative spatial design and prototyping tool"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -326,6 +375,13 @@ export default function BestVRAppsPage() {
         <h2 id="rec-room" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           8. Rec Room
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/471710/header.jpg"
+            alt="Rec Room cross-platform social game Steam header"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -351,6 +407,13 @@ export default function BestVRAppsPage() {
         <h2 id="fitxr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           9. FitXR
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://fitxr.com/cdn/shop/files/Hero_Image_Deck_1.png?v=1757556709"
+            alt="FitXR studio with instructor-led VR workouts"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
@@ -376,6 +439,13 @@ export default function BestVRAppsPage() {
         <h2 id="resolve" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           10. Resolve
         </h2>
+        <figure className="fitness-figure">
+          <img
+            src="https://img.youtube.com/vi/dmYCupz9mgE/maxresdefault.jpg"
+            alt="Resolve VR meditation app with immersive nature environments"
+            loading="lazy"
+          />
+        </figure>
         <p
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
