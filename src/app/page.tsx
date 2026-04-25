@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
-import { HeroBackground } from "@/components/HeroBackground";
 import { Ticker } from "@/components/Ticker";
 import { FilterBar } from "@/components/FilterBar";
 import { Feed } from "@/components/Feed";
@@ -84,8 +83,6 @@ export default function Home() {
   return (
     <>
       <SideRailAds />
-      <HeroBackground />
-      <div className="page-stack">
       <Header articleCount={filtered.length} lastUpdated={lastUpdated} />
       <Ticker articles={articles} />
 
@@ -327,7 +324,6 @@ export default function Home() {
       </div>
 
       <Footer />
-      </div>
     </>
   );
 }
