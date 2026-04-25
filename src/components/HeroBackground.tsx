@@ -284,7 +284,7 @@ export function HeroBackground({
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let earth: EarthRotate | null = null;
-    if (earthCanvasRef.current) {
+    if (isHome && earthCanvasRef.current) {
       earth = new EarthRotate(
         earthCanvasRef.current,
         "/space-bg/earth-surface.png",
@@ -403,7 +403,7 @@ export function HeroBackground({
       const layer = shipsLayerRef.current;
       if (layer) layer.innerHTML = "";
     };
-  }, [variant]);
+  }, [variant, isHome]);
 
   // Daylight mode: existing canvas-based geometric shapes
   useEffect(() => {
@@ -633,12 +633,14 @@ export function HeroBackground({
               alt=""
             />
           )}
-          <canvas
-            ref={earthCanvasRef}
-            className="space-bg__planet space-bg__planet--earth"
-            width={400}
-            height={400}
-          />
+          {isHome && (
+            <canvas
+              ref={earthCanvasRef}
+              className="space-bg__planet space-bg__planet--earth"
+              width={400}
+              height={400}
+            />
+          )}
           <img
             className="space-bg__star space-bg__star--1"
             src="/space-bg/star-sparkle-white.png"
