@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface HeroBackgroundProps {
   intensity?: number;
@@ -306,6 +307,8 @@ export function HeroBackground({
 }: HeroBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [variant, setVariant] = useState<Variant>("daylight");
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const read = () => {
@@ -366,19 +369,23 @@ export function HeroBackground({
         bandPalette: { r: 220, g: 180, b: 130 },
         lightFromRight: true,
       },
-      {
-        type: "rocky",
-        baseX: 0.12,
-        baseY: 0.32,
-        jitterX: (Math.random() - 0.5) * 0.05,
-        jitterY: (Math.random() - 0.5) * 0.05,
-        radius: 50,
-        parallaxMx: 0.25,
-        parallaxSy: 0.1,
-        driftSpeed: 0.03,
-        bandPalette: { r: 175, g: 165, b: 155 },
-        lightFromRight: false,
-      },
+      ...(isHome
+        ? [
+            {
+              type: "rocky" as const,
+              baseX: 0.12,
+              baseY: 0.32,
+              jitterX: (Math.random() - 0.5) * 0.05,
+              jitterY: (Math.random() - 0.5) * 0.05,
+              radius: 50,
+              parallaxMx: 0.25,
+              parallaxSy: 0.1,
+              driftSpeed: 0.03,
+              bandPalette: { r: 175, g: 165, b: 155 },
+              lightFromRight: false,
+            },
+          ]
+        : []),
     ];
 
     let planetCaches: PlanetCache[] = [];
@@ -723,7 +730,7 @@ export function HeroBackground({
       ctx.fillStyle = neb3;
       ctx.fillRect(0, 0, W, H * 0.55);
 
-      // Planet 2 (rocky, "farther" layer)
+      // Planet 2 (rocky, "farther" layer) — homepage only
       if (planetCaches[1]) drawCachedPlanet(planetConfigs[1], planetCaches[1], t, mx, my, sy);
 
       // Mid stars
@@ -731,6 +738,7 @@ export function HeroBackground({
 
       // Planet 1 (gas giant, "closer" layer)
       if (planetCaches[0]) drawCachedPlanet(planetConfigs[0], planetCaches[0], t, mx, my, sy);
+
 
       // Near stars (with sparkle)
       drawStarLayer(stars.near, t, mx, my, sy, !reduced);
@@ -990,7 +998,7 @@ export function HeroBackground({
       window.removeEventListener("mousemove", onMouse);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [variant, intensity, parallax, mouse]);
+  }, [variant, intensity, parallax, mouse, isHome]);
 
   return (
     <>
