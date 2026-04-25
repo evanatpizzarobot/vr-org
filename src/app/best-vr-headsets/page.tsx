@@ -132,11 +132,26 @@ export default function BestVRHeadsetsPage() {
       >
         {/* H1 */}
         <h1
-          className="font-display text-4xl font-bold mb-8"
+          className="font-display text-4xl font-bold mb-3"
           style={{ letterSpacing: "-0.5px" }}
         >
           Best VR Headsets 2026: The Complete Buyer&apos;s Guide
         </h1>
+
+        <p
+          className="text-[13px] mb-8"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Part of our{" "}
+          <a
+            href="/best-of"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Best Of 2026
+          </a>{" "}
+          guide collection.
+        </p>
 
         <p
           className="text-[15px] leading-[1.7] mb-8"
