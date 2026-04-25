@@ -74,6 +74,12 @@ export async function GET() {
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://vr.org/best-of</loc>
+    <lastmod>${PILLAR_LASTMOD}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://vr.org/events</loc>
     <lastmod>${PILLAR_LASTMOD}</lastmod>
     <changefreq>monthly</changefreq>

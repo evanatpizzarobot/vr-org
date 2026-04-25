@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { label: "XR", href: "/xr" },
   { label: "Events", href: "/events" },
   { label: "Originals", href: "/originals" },
+  { label: "Best Of", href: "/best-of" },
   { label: "Deals", href: "/deals", isNew: true },
 ];
 

@@ -139,10 +139,25 @@ export default function ARGlassesPage() {
           Best AR Glasses 2026
         </h1>
         <p
-          className="text-sm mb-10"
+          className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
           Last updated: April 2026
+        </p>
+
+        <p
+          className="text-[13px] mb-8"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Part of our{" "}
+          <a
+            href="/best-of"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Best Of 2026
+          </a>{" "}
+          guide collection.
         </p>
 
         <p

@@ -57,6 +57,7 @@ export function Footer() {
             { label: "Enterprise", href: "/enterprise" },
             { label: "AR", href: "/ar" },
             { label: "Events", href: "/events" },
+            { label: "Best Of", href: "/best-of" },
             { label: "Deals", href: "/deals" },
             { label: "About", href: "/about" },
             { label: "Privacy", href: "/privacy" },
