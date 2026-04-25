@@ -6,17 +6,20 @@
 //
 // Steps to configure:
 //   1. Go to https://adsense.google.com
-//   2. Create these four ad units (Display ad, In-feed, In-article, Display):
+//   2. Create these ad units:
 //      - VR.org Sidebar      (Display, responsive rectangle)
 //      - VR.org In-Feed      (In-feed ad, responsive horizontal)
 //      - VR.org In-Article   (In-article ad)
 //      - VR.org Side Rail    (Display, 160x600 vertical)
+//      - VR.org Pillar Page  (Display, responsive)
 //   3. Copy each slot ID here.
 export const AD_SLOTS = {
   sidebar: "5198848799",
   feed: "5007277106",
   article: "3311052050",
   rail: "1380479557",
+  // TODO: replace once "VR.org Pillar Page" ad unit is created in AdSense console.
+  pillar: "PILLAR_TBD",
 };
 
 // In-Feed ads are "fluid" format and require a layout key that AdSense

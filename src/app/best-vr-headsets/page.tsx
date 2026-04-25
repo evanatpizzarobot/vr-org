@@ -8,6 +8,8 @@ import {
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata = {
   title: "Best VR Headsets 2026: Buyer's Guide & Comparison | VR.org",
@@ -206,6 +208,11 @@ export default function BestVRHeadsetsPage() {
           VR headset in detail so you can pick the right one for your specific
           use case.
         </p>
+
+        {/* Ad: after intro, before comparison table */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="auto" />
+        </div>
 
         {/* Quick Comparison Table */}
         <h2 className="font-display text-2xl font-semibold mb-4">
@@ -446,6 +453,11 @@ export default function BestVRHeadsetsPage() {
           PlayStation should look elsewhere.
         </p>
 
+        {/* Ad: between PSVR2 (3rd) and Apple Vision Pro (4th) */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
+
         {/* Apple Vision Pro */}
         <h3 id="apple-vision-pro" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
           Apple Vision Pro: Best Spatial Computing Device ($3,499)
@@ -679,6 +691,11 @@ export default function BestVRHeadsetsPage() {
           too. A good head strap ($50-$80), carrying case ($30-$60), and
           games add to the total cost of ownership.
         </p>
+
+        {/* Ad: after How to Choose, before What's Coming / FAQ */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="auto" />
+        </div>
 
         {/* What's Coming in 2026 */}
         <h2 className="font-display text-2xl font-semibold mb-4">

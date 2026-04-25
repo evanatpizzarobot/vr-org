@@ -9,6 +9,8 @@ import {
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
   title: "Top 10 VR Games of All Time | VR.org",
@@ -291,6 +293,11 @@ export default function BestVRGamesPage() {
           why VR exists.
         </p>
 
+        {/* Ad: between #5 (Superhot VR) and #6 (Boneworks) */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
+
         {/* 6. Boneworks / Bonelab */}
         <h2 id="boneworks-bonelab" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           6. Boneworks / Bonelab
@@ -444,6 +451,11 @@ export default function BestVRGamesPage() {
           improve VR support years after launch, making it one of the best
           ongoing VR experiences.
         </p>
+
+        {/* Ad: after the last ranked game, before honorable mentions */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="auto" />
+        </div>
 
         {/* Honorable Mentions */}
         <h2 className="font-display text-2xl font-semibold mb-2">
