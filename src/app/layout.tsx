@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { ThemeScript } from "@/components/ThemeScript";
+import { HeroBackground } from "@/components/HeroBackground";
 import {
   StructuredData,
   ORGANIZATION_SCHEMA,
@@ -88,7 +89,8 @@ export default function RootLayout({
       <body>
         <div className="ambient-bg" />
         <div className="scanline-overlay" />
-        {children}
+        <HeroBackground />
+        <div className="page-stack">{children}</div>
       </body>
     </html>
   );
