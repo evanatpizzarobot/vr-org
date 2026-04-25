@@ -89,7 +89,7 @@ export default function RootLayout({
       <body>
         <div className="ambient-bg" />
         <div className="scanline-overlay" />
-        <HeroBackground />
+        <HeroBackground mouse={false} />
         <div className="page-stack">{children}</div>
       </body>
     </html>
