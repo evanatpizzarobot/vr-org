@@ -883,7 +883,7 @@ nav::-webkit-scrollbar {
 }
 .space-bg__planet--earth {
   left: 30%;
-  top: 4%;
+  top: -5%;
   width: 280px;
   height: 280px;
 }
@@ -891,7 +891,7 @@ nav::-webkit-scrollbar {
   .space-bg__planet--earth { width: 220px; height: 220px; left: 22%; }
 }
 @media (max-width: 720px) {
-  .space-bg__planet--earth { width: 160px; height: 160px; left: 14%; top: 4%; }
+  .space-bg__planet--earth { width: 160px; height: 160px; left: 14%; top: -3%; }
   .space-bg__planet--rocky { width: 70px; height: 70px; right: 6%; }
 }
 .space-bg__planet--rocky {
