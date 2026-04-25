@@ -783,6 +783,122 @@ nav::-webkit-scrollbar {
 .page-stack { position: relative; z-index: 2; }
 
 /* ============================================================
+   Asset-based space background (cosmic variant)
+   Drop-in port of /handoff/space-bg with fixed full-viewport
+   positioning so it behaves like the procedural canvas it replaces.
+   ============================================================ */
+.space-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(40, 80, 140, 0.25), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(80, 30, 90, 0.18), transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, #0a1428 0%, #050811 70%);
+}
+
+.space-bg__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(1px 1px at 8% 20%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 22% 55%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 38% 14%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 55% 38%, rgba(200,220,255,0.85), transparent),
+    radial-gradient(1px 1px at 71% 67%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 84% 25%, rgba(255,235,200,0.75), transparent),
+    radial-gradient(1px 1px at 5% 78%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 32% 88%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(2px 2px at 49% 72%, rgba(180,210,255,0.8), transparent),
+    radial-gradient(1px 1px at 92% 50%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 67% 12%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 14% 39%, rgba(255,255,255,0.4), transparent);
+}
+
+.space-bg__planet {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+.space-bg__planet--earth {
+  right: 14%;
+  top: 8%;
+  width: 280px;
+  height: 280px;
+}
+@media (max-width: 1100px) {
+  .space-bg__planet--earth { width: 220px; height: 220px; right: 8%; }
+}
+@media (max-width: 720px) {
+  .space-bg__planet--earth { width: 160px; height: 160px; right: 4%; top: 6%; }
+  .space-bg__planet--rocky { width: 70px; height: 70px; left: 6%; }
+}
+.space-bg__planet--rocky {
+  left: 14%;
+  top: 12%;
+  width: 110px;
+  height: 110px;
+  opacity: 0.85;
+}
+
+.space-bg__star {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  opacity: 0.9;
+}
+.space-bg__star--1 { top: 22%; left: 38%; animation: space-bg-twinkle 4s ease-in-out infinite; }
+.space-bg__star--2 {
+  top: 60%; left: 18%; width: 48px; height: 48px; opacity: 0.8;
+  animation: space-bg-twinkle 5.5s ease-in-out infinite 0.7s;
+}
+.space-bg__star--3 {
+  top: 32%; right: 38%; width: 40px; height: 40px; opacity: 0.7;
+  animation: space-bg-twinkle 6.5s ease-in-out infinite 1.4s;
+}
+
+.space-bg__ships {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+.space-bg__ship {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@keyframes space-bg-ship-pass {
+  0%   { transform: translate(0, 0) var(--ship-flip, );      opacity: 0; }
+  10%  { opacity: var(--ship-op, 0.6); }
+  90%  { opacity: var(--ship-op, 0.6); }
+  100% { transform: translate(var(--travel-x, 0), var(--travel-y, 0)) var(--ship-flip, ); opacity: 0; }
+}
+
+@keyframes space-bg-twinkle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space-bg__star,
+  .space-bg__ship { animation: none !important; }
+  .space-bg__ships { display: none; }
+}
+
+/* ============================================================
    HOMEPAGE HERO (new, 2026-04 handoff)
    All color/spacing driven via CSS custom properties.
    ============================================================ */

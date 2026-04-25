@@ -39,265 +39,217 @@ const SHAPES: Shape[] = [
   { kind: "ring",   x: 0.18, y: 0.08, size: 55,  rot: 0,     drift: 0.08, speed: 0.06, alpha: 0.08, tint: "violet" },
 ];
 
-type StarLayer = "far" | "mid" | "near";
-
-interface StarColor {
-  r: number;
-  g: number;
-  b: number;
+interface ShipDef {
+  file: string;
+  width: number;
+  baseOp: number;
+  weight: number;
+  minDur: number;
+  maxDur: number;
 }
 
-interface Star {
-  x: number;
-  y: number;
-  size: number;
-  twinkleSpeed: number;
-  twinkleOffset: number;
-  layer: StarLayer;
-  color: StarColor;
-  sparkle: boolean;
-  parallaxMx: number;
-  parallaxSy: number;
+const SHIPS: ShipDef[] = [
+  { file: "ship-shuttle.png",  width: 140, baseOp: 0.65, weight: 4, minDur: 14, maxDur: 22 },
+  { file: "ship-ufo.png",      width: 90,  baseOp: 0.55, weight: 3, minDur: 18, maxDur: 28 },
+  { file: "ship-cargo.png",    width: 170, baseOp: 0.50, weight: 2, minDur: 28, maxDur: 42 },
+  { file: "ship-squadron.png", width: 60,  baseOp: 0.50, weight: 3, minDur: 9,  maxDur: 14 },
+];
+
+const SCHEDULE = {
+  short:  { weight: 0.50, min: 8,  max: 16 },
+  medium: { weight: 0.35, min: 16, max: 28 },
+  long:   { weight: 0.15, min: 28, max: 45 },
+};
+
+const AVOID_LANE = { topMin: 38, topMax: 58 };
+const SPAWN_LANE = { topMin: 8,  topMax: 88 };
+
+const rand = (a: number, b: number) => a + Math.random() * (b - a);
+
+function pickShip(): ShipDef {
+  const total = SHIPS.reduce((s, x) => s + x.weight, 0);
+  let r = Math.random() * total;
+  for (const s of SHIPS) {
+    if ((r -= s.weight) <= 0) return s;
+  }
+  return SHIPS[0];
 }
 
-interface Shooter {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  life: number;
-  maxLife: number;
+function pickGap(): number {
+  const r = Math.random();
+  let cum = 0;
+  for (const k of ["short", "medium", "long"] as const) {
+    cum += SCHEDULE[k].weight;
+    if (r <= cum) return rand(SCHEDULE[k].min, SCHEDULE[k].max);
+  }
+  return rand(SCHEDULE.short.min, SCHEDULE.short.max);
 }
 
-interface Spacecraft {
-  startX: number;
-  startY: number;
-  endX: number;
-  endY: number;
-  duration: number;
-  startT: number;
-  size: number;
-  alpha: number;
-  hueWarm: boolean;
+function pickLane(): number {
+  let top = 0;
+  let attempts = 0;
+  do {
+    top = rand(SPAWN_LANE.topMin, SPAWN_LANE.topMax);
+    attempts++;
+  } while (top > AVOID_LANE.topMin && top < AVOID_LANE.topMax && attempts < 8);
+  return top;
 }
 
-interface PlanetCache {
+// Rotating earth — projects an equirectangular texture onto a sphere each frame.
+class EarthRotate {
   canvas: HTMLCanvasElement;
-  centerX: number;
-  centerY: number;
-  radius: number;
-  padding: number;
-}
+  ctx: CanvasRenderingContext2D;
+  surfaceSrc: string;
+  cloudsSrc: string;
+  rotSpeed = 0.012;
+  cloudSpeed = 0.018;
+  tilt = -0.35;
+  lightDir = { x: -0.6, y: -0.4, z: 0.7 };
+  surfData: ImageData | null = null;
+  cloudData: ImageData | null = null;
+  frameImg: ImageData | null = null;
+  W = 0;
+  H = 0;
+  rot = 0;
+  cloudRot = 0;
+  raf: number | null = null;
+  cancelled = false;
 
-interface PlanetConfig {
-  type: "gas" | "rocky";
-  baseX: number;
-  baseY: number;
-  jitterX: number;
-  jitterY: number;
-  radius: number;
-  parallaxMx: number;
-  parallaxSy: number;
-  driftSpeed: number;
-  bandPalette: { r: number; g: number; b: number };
-  lightFromRight: boolean;
-}
-
-function pickStarColor(): StarColor {
-  const roll = Math.random();
-  if (roll < 0.7) return { r: 232, g: 240, b: 255 };
-  if (roll < 0.85) return { r: 255, g: 240, b: 200 };
-  if (roll < 0.95) return { r: 200, g: 215, b: 255 };
-  return { r: 255, g: 200, b: 170 };
-}
-
-function makeStarLayer(
-  count: number,
-  layer: StarLayer,
-  sizeMin: number,
-  sizeMax: number,
-  parallaxMx: number,
-  parallaxSy: number,
-  twinkleMin: number,
-  twinkleMax: number,
-  sparkleProb: number
-): Star[] {
-  const arr: Star[] = [];
-  for (let i = 0; i < count; i++) {
-    arr.push({
-      x: Math.random(),
-      y: Math.random() * 0.62,
-      size: sizeMin + Math.random() * (sizeMax - sizeMin),
-      twinkleSpeed: twinkleMin + Math.random() * (twinkleMax - twinkleMin),
-      twinkleOffset: Math.random() * Math.PI * 2,
-      layer,
-      color: pickStarColor(),
-      sparkle: Math.random() < sparkleProb,
-      parallaxMx,
-      parallaxSy,
-    });
+  constructor(canvas: HTMLCanvasElement, surfaceSrc: string, cloudsSrc: string) {
+    this.canvas = canvas;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("EarthRotate: no 2d context");
+    this.ctx = ctx;
+    this.surfaceSrc = surfaceSrc;
+    this.cloudsSrc = cloudsSrc;
   }
-  return arr;
+
+  start(): void {
+    Promise.all([loadImage(this.surfaceSrc), loadImage(this.cloudsSrc)])
+      .then(([surfImg, cloudImg]) => {
+        if (this.cancelled) return;
+        this.surfData = bakeImageData(surfImg);
+        this.cloudData = bakeImageData(cloudImg);
+        this.W = this.canvas.width;
+        this.H = this.canvas.height;
+        this.frameImg = this.ctx.createImageData(this.W, this.H);
+        this.loop();
+      })
+      .catch(() => {
+        // texture failed — leave canvas blank
+      });
+  }
+
+  stop(): void {
+    this.cancelled = true;
+    if (this.raf !== null) cancelAnimationFrame(this.raf);
+  }
+
+  private loop = (): void => {
+    if (this.cancelled) return;
+    this.render();
+    this.rot += this.rotSpeed * 0.5;
+    this.cloudRot += this.cloudSpeed * 0.5;
+    this.raf = requestAnimationFrame(this.loop);
+  };
+
+  private render(): void {
+    if (!this.surfData || !this.cloudData || !this.frameImg) return;
+    const W = this.W, H = this.H;
+    const cx = W / 2, cy = H / 2;
+    const R = Math.min(W, H) / 2 - 4;
+    const sd = this.surfData.data, sw = this.surfData.width, sh = this.surfData.height;
+    const cd = this.cloudData.data;
+    const img = this.frameImg.data;
+    const rot = this.rot, cloudRot = this.cloudRot;
+    const tilt = this.tilt;
+    const sinT = Math.sin(tilt), cosT = Math.cos(tilt);
+    const L = this.lightDir;
+    const Llen = Math.sqrt(L.x * L.x + L.y * L.y + L.z * L.z);
+    const lx = L.x / Llen, ly = L.y / Llen, lz = L.z / Llen;
+
+    for (let py = 0; py < H; py++) {
+      const dy = (py - cy) / R;
+      for (let px = 0; px < W; px++) {
+        const dx = (px - cx) / R;
+        const r2 = dx * dx + dy * dy;
+        const i = (py * W + px) * 4;
+        if (r2 >= 1) {
+          img[i] = 0; img[i + 1] = 0; img[i + 2] = 0; img[i + 3] = 0;
+          continue;
+        }
+        const nx = dx;
+        const ny = dy;
+        const nz = Math.sqrt(1 - r2);
+
+        const py2 = ny * cosT - nz * sinT;
+        const pz2 = ny * sinT + nz * cosT;
+        const px2 = nx;
+
+        let lon = Math.atan2(px2, pz2) + rot;
+        const lat = Math.asin(py2);
+        lon = lon - Math.floor(lon / (Math.PI * 2)) * Math.PI * 2;
+        const u = lon / (Math.PI * 2);
+        const v = lat / Math.PI + 0.5;
+
+        const tx = Math.floor(u * sw) % sw;
+        let ty = Math.floor(v * sh);
+        if (ty < 0) ty = 0; else if (ty >= sh) ty = sh - 1;
+        const ti = (ty * sw + tx) * 4;
+
+        const lambert = nx * lx + ny * ly + nz * lz;
+        let shade = 0.55 + 0.55 * lambert;
+        if (shade < 0.25) shade = 0.25;
+        if (shade > 1.05) shade = 1.05;
+
+        const sr = sd[ti], sg = sd[ti + 1], sb = sd[ti + 2];
+
+        let clon = lon - rot + cloudRot;
+        clon = clon - Math.floor(clon / (Math.PI * 2)) * Math.PI * 2;
+        const cu = clon / (Math.PI * 2);
+        const ctx2 = Math.floor(cu * sw) % sw;
+        const ci = (ty * sw + ctx2) * 4;
+        const cAlpha = cd[ci + 3] / 255;
+        let rr = sr * (1 - cAlpha) + cd[ci]     * cAlpha;
+        let gg = sg * (1 - cAlpha) + cd[ci + 1] * cAlpha;
+        let bb = sb * (1 - cAlpha) + cd[ci + 2] * cAlpha;
+
+        rr *= shade; gg *= shade; bb *= shade;
+
+        const rim = r2 * r2 * r2;
+        const rimT = Math.max(0, Math.min(1, (rim - 0.4) / 0.6));
+        rr = rr * (1 - rimT * 0.6) + 140 * rimT * 0.6;
+        gg = gg * (1 - rimT * 0.6) + 195 * rimT * 0.6;
+        bb = bb * (1 - rimT * 0.6) + 245 * rimT * 0.6;
+
+        img[i] = rr;
+        img[i + 1] = gg;
+        img[i + 2] = bb;
+        img[i + 3] = 255;
+      }
+    }
+    this.ctx.putImageData(this.frameImg, 0, 0);
+  }
 }
 
-function buildGasGiantCache(
-  radiusPx: number,
-  palette: { r: number; g: number; b: number },
-  lightFromRight: boolean,
-  dpr: number
-): PlanetCache {
-  const r = radiusPx * dpr;
-  const ringExtra = r * 0.95;
-  const cw = (r + ringExtra) * 2;
-  const ch = (r + ringExtra) * 2;
-  const cv = document.createElement("canvas");
-  cv.width = Math.ceil(cw);
-  cv.height = Math.ceil(ch);
-  const c = cv.getContext("2d");
-  if (!c) {
-    return { canvas: cv, centerX: cw / 2, centerY: ch / 2, radius: r, padding: ringExtra };
-  }
-  const cx = cw / 2;
-  const cy = ch / 2;
-
-  // Atmospheric haze (extends 4-6px past the planet edge)
-  const haloOuter = r * 1.08;
-  const haze = c.createRadialGradient(cx, cy, r * 0.95, cx, cy, haloOuter);
-  haze.addColorStop(0, `rgba(${palette.r},${palette.g},${palette.b},0.18)`);
-  haze.addColorStop(0.6, `rgba(${palette.r},${palette.g},${palette.b},0.08)`);
-  haze.addColorStop(1, `rgba(${palette.r},${palette.g},${palette.b},0)`);
-  c.fillStyle = haze;
-  c.beginPath();
-  c.arc(cx, cy, haloOuter, 0, Math.PI * 2);
-  c.fill();
-
-  // Sphere base shading (light from upper-right or upper-left depending on flag)
-  const lightX = lightFromRight ? cx + r * 0.35 : cx - r * 0.35;
-  const lightY = cy - r * 0.35;
-  const sphere = c.createRadialGradient(lightX, lightY, 0, cx, cy, r * 1.05);
-  const lit = (channel: number) => Math.min(255, Math.round(channel * 1.35 + 30));
-  const dark = (channel: number) => Math.round(channel * 0.18);
-  sphere.addColorStop(0, `rgba(${lit(palette.r)},${lit(palette.g)},${lit(palette.b)},0.85)`);
-  sphere.addColorStop(0.45, `rgba(${palette.r},${palette.g},${palette.b},0.7)`);
-  sphere.addColorStop(0.85, `rgba(${Math.round(palette.r * 0.55)},${Math.round(palette.g * 0.55)},${Math.round(palette.b * 0.7)},0.55)`);
-  sphere.addColorStop(1, `rgba(${dark(palette.r)},${dark(palette.g)},${dark(palette.b)},0.55)`);
-  c.fillStyle = sphere;
-  c.beginPath();
-  c.arc(cx, cy, r, 0, Math.PI * 2);
-  c.fill();
-
-  // Terminator shadow (left ~35% darkens to near-black)
-  c.save();
-  c.beginPath();
-  c.arc(cx, cy, r, 0, Math.PI * 2);
-  c.clip();
-  const termStartX = lightFromRight ? cx - r : cx + r;
-  const termEndX = lightFromRight ? cx + r * 0.5 : cx - r * 0.5;
-  const term = c.createLinearGradient(termStartX, cy, termEndX, cy);
-  term.addColorStop(0, "rgba(4,8,18,0.65)");
-  term.addColorStop(0.5, "rgba(4,8,18,0.25)");
-  term.addColorStop(1, "rgba(0,0,0,0)");
-  c.fillStyle = term;
-  c.fillRect(cx - r, cy - r, r * 2, r * 2);
-  c.restore();
-
-  // Soft outer rim line (subtle definition without harsh edge)
-  c.beginPath();
-  c.arc(cx, cy, r, 0, Math.PI * 2);
-  c.strokeStyle = `rgba(${palette.r},${palette.g},${palette.b},0.22)`;
-  c.lineWidth = 0.75 * dpr;
-  c.stroke();
-
-  return { canvas: cv, centerX: cx, centerY: cy, radius: r, padding: ringExtra };
+function loadImage(src: string): Promise<HTMLImageElement> {
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => res(img);
+    img.onerror = rej;
+    img.src = src;
+  });
 }
 
-function buildRockyPlanetCache(
-  radiusPx: number,
-  palette: { r: number; g: number; b: number },
-  lightFromRight: boolean,
-  dpr: number
-): PlanetCache {
-  const r = radiusPx * dpr;
-  const haloExtra = r * 0.25;
-  const cw = (r + haloExtra) * 2;
-  const ch = (r + haloExtra) * 2;
-  const cv = document.createElement("canvas");
-  cv.width = Math.ceil(cw);
-  cv.height = Math.ceil(ch);
-  const c = cv.getContext("2d");
-  if (!c) {
-    return { canvas: cv, centerX: cw / 2, centerY: ch / 2, radius: r, padding: haloExtra };
-  }
-  const cx = cw / 2;
-  const cy = ch / 2;
-
-  // Thin cool atmospheric glow
-  const haloOuter = r * 1.05;
-  const haze = c.createRadialGradient(cx, cy, r * 0.96, cx, cy, haloOuter);
-  haze.addColorStop(0, "rgba(180,210,255,0.14)");
-  haze.addColorStop(1, "rgba(180,210,255,0)");
-  c.fillStyle = haze;
-  c.beginPath();
-  c.arc(cx, cy, haloOuter, 0, Math.PI * 2);
-  c.fill();
-
-  // Sphere base shading
-  const lightX = lightFromRight ? cx + r * 0.3 : cx - r * 0.3;
-  const lightY = cy - r * 0.3;
-  const sphere = c.createRadialGradient(lightX, lightY, 0, cx, cy, r * 1.05);
-  sphere.addColorStop(0, `rgba(${Math.min(255, Math.round(palette.r * 1.25 + 25))},${Math.min(255, Math.round(palette.g * 1.25 + 25))},${Math.min(255, Math.round(palette.b * 1.25 + 25))},0.7)`);
-  sphere.addColorStop(0.5, `rgba(${palette.r},${palette.g},${palette.b},0.55)`);
-  sphere.addColorStop(1, `rgba(${Math.round(palette.r * 0.3)},${Math.round(palette.g * 0.3)},${Math.round(palette.b * 0.4)},0.5)`);
-  c.fillStyle = sphere;
-  c.beginPath();
-  c.arc(cx, cy, r, 0, Math.PI * 2);
-  c.fill();
-
-  // Crater spots (5 random softly-shaded dots)
-  c.save();
-  c.beginPath();
-  c.arc(cx, cy, r, 0, Math.PI * 2);
-  c.clip();
-  const craterCount = 5;
-  for (let i = 0; i < craterCount; i++) {
-    const angle = Math.random() * Math.PI * 2;
-    const dist = Math.random() * r * 0.7;
-    const ccx = cx + Math.cos(angle) * dist;
-    const ccy = cy + Math.sin(angle) * dist;
-    const cr = (1.5 + Math.random() * 3) * dpr;
-    const grad = c.createRadialGradient(ccx, ccy, 0, ccx, ccy, cr);
-    grad.addColorStop(0, "rgba(15,18,28,0.55)");
-    grad.addColorStop(1, "rgba(15,18,28,0)");
-    c.fillStyle = grad;
-    c.beginPath();
-    c.arc(ccx, ccy, cr, 0, Math.PI * 2);
-    c.fill();
-  }
-  c.restore();
-
-  // Terminator shadow
-  c.save();
-  c.beginPath();
-  c.arc(cx, cy, r, 0, Math.PI * 2);
-  c.clip();
-  const termStartX = lightFromRight ? cx - r : cx + r;
-  const termEndX = lightFromRight ? cx + r * 0.5 : cx - r * 0.5;
-  const term = c.createLinearGradient(termStartX, cy, termEndX, cy);
-  term.addColorStop(0, "rgba(2,4,10,0.6)");
-  term.addColorStop(0.5, "rgba(2,4,10,0.22)");
-  term.addColorStop(1, "rgba(0,0,0,0)");
-  c.fillStyle = term;
-  c.fillRect(cx - r, cy - r, r * 2, r * 2);
-  c.restore();
-
-  // Subtle rim line
-  c.beginPath();
-  c.arc(cx, cy, r, 0, Math.PI * 2);
-  c.strokeStyle = "rgba(190,210,240,0.18)";
-  c.lineWidth = 0.75 * dpr;
-  c.stroke();
-
-  return { canvas: cv, centerX: cx, centerY: cy, radius: r, padding: haloExtra };
+function bakeImageData(img: HTMLImageElement): ImageData {
+  const c = document.createElement("canvas");
+  c.width = img.width;
+  c.height = img.height;
+  const cctx = c.getContext("2d");
+  if (!cctx) throw new Error("bakeImageData: no 2d context");
+  cctx.drawImage(img, 0, 0);
+  return cctx.getImageData(0, 0, img.width, img.height);
 }
 
 export function HeroBackground({
@@ -305,7 +257,9 @@ export function HeroBackground({
   parallax = true,
   mouse = true,
 }: HeroBackgroundProps) {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const daylightCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const earthCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const shipsLayerRef = useRef<HTMLDivElement | null>(null);
   const [variant, setVariant] = useState<Variant>("daylight");
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -324,8 +278,137 @@ export function HeroBackground({
     return () => mo.disconnect();
   }, []);
 
+  // Cosmic mode: Earth rotation + ship scheduler
   useEffect(() => {
-    const canvas = canvasRef.current;
+    if (variant !== "cosmic") return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let earth: EarthRotate | null = null;
+    if (earthCanvasRef.current) {
+      earth = new EarthRotate(
+        earthCanvasRef.current,
+        "/space-bg/earth-surface.png",
+        "/space-bg/earth-clouds.png"
+      );
+      earth.start();
+    }
+
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+
+    function launchShip() {
+      if (cancelled) return;
+      const layer = shipsLayerRef.current;
+      if (!layer || document.hidden) return;
+      const ship = pickShip();
+      const img = document.createElement("img");
+      img.className = "space-bg__ship";
+      img.src = `/space-bg/${ship.file}`;
+      img.alt = "";
+      img.style.width = ship.width + "px";
+
+      const layerW = layer.clientWidth || window.innerWidth;
+      const layerH = layer.clientHeight || window.innerHeight;
+      const padX = ship.width + 40;
+      const padY = ship.width + 40;
+      const isUFO = ship.file === "ship-ufo.png";
+      let durMul = 1;
+
+      if (isUFO) {
+        // UFOs travel vertically or diagonally, never simple horizontal
+        const sideX = () => {
+          // pick X away from hero center (avoid 30-70%)
+          return Math.random() < 0.5
+            ? rand(0.05, 0.28) * layerW
+            : rand(0.72, 0.95) * layerW;
+        };
+        const variant = Math.floor(Math.random() * 6);
+        let startX = 0, startY = 0, endX = 0, endY = 0;
+        if (variant === 0) {
+          // top → bottom
+          startX = sideX(); startY = -padY;
+          endX = startX;    endY = layerH + padY;
+        } else if (variant === 1) {
+          // bottom → top
+          startX = sideX(); startY = layerH + padY;
+          endX = startX;    endY = -padY;
+        } else if (variant === 2) {
+          // diagonal ↘ top-left → bottom-right
+          startX = -padX;        startY = -padY;
+          endX = layerW + padX;  endY = layerH + padY;
+          durMul = 1.3;
+        } else if (variant === 3) {
+          // diagonal ↙ top-right → bottom-left
+          startX = layerW + padX; startY = -padY;
+          endX = -padX;           endY = layerH + padY;
+          durMul = 1.3;
+        } else if (variant === 4) {
+          // diagonal ↗ bottom-left → top-right
+          startX = -padX;        startY = layerH + padY;
+          endX = layerW + padX;  endY = -padY;
+          durMul = 1.3;
+        } else {
+          // diagonal ↖ bottom-right → top-left
+          startX = layerW + padX; startY = layerH + padY;
+          endX = -padX;           endY = -padY;
+          durMul = 1.3;
+        }
+        img.style.left = startX + "px";
+        img.style.top = startY + "px";
+        img.style.setProperty("--travel-x", (endX - startX) + "px");
+        img.style.setProperty("--travel-y", (endY - startY) + "px");
+        img.style.setProperty("--ship-flip", "");
+      } else {
+        // Other ships: horizontal traversal in either direction
+        const ltr = Math.random() < 0.5;
+        const travel = layerW + padX * 2;
+        img.style.top = pickLane() + "%";
+        if (ltr) {
+          img.style.left = -padX + "px";
+          img.style.setProperty("--ship-flip", "scaleX(-1)");
+          img.style.setProperty("--travel-x", travel + "px");
+        } else {
+          img.style.left = layerW + padX - ship.width + "px";
+          img.style.setProperty("--ship-flip", "");
+          img.style.setProperty("--travel-x", -travel + "px");
+        }
+        img.style.setProperty("--travel-y", "0px");
+      }
+
+      img.style.setProperty(
+        "--ship-op",
+        Math.min(0.85, ship.baseOp * rand(0.75, 1.1)).toFixed(2)
+      );
+
+      const dur = rand(ship.minDur, ship.maxDur) * durMul;
+      img.style.animation = `space-bg-ship-pass ${dur}s linear forwards`;
+
+      layer.appendChild(img);
+      img.addEventListener("animationend", () => img.remove());
+    }
+
+    function tick() {
+      launchShip();
+      timer = setTimeout(tick, pickGap() * 1000);
+    }
+
+    if (!reduced) {
+      timer = setTimeout(tick, 800);
+    }
+
+    return () => {
+      cancelled = true;
+      if (timer !== null) clearTimeout(timer);
+      if (earth) earth.stop();
+      const layer = shipsLayerRef.current;
+      if (layer) layer.innerHTML = "";
+    };
+  }, [variant]);
+
+  // Daylight mode: existing canvas-based geometric shapes
+  useEffect(() => {
+    if (variant !== "daylight") return;
+    const canvas = daylightCanvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -337,6 +420,24 @@ export function HeroBackground({
     let W = 0;
     let H = 0;
     let dpr = 1;
+
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = canvas.width = window.innerWidth * dpr;
+      H = canvas.height = window.innerHeight * dpr;
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+    };
+    resize();
+
+    const st = { mouseX: 0.5, mouseY: 0.5, scrollY: 0 };
+    const onMouse = (e: MouseEvent) => {
+      st.mouseX = e.clientX / window.innerWidth;
+      st.mouseY = e.clientY / window.innerHeight;
+    };
+    const onScroll = () => {
+      st.scrollY = window.scrollY;
+    };
 
     const accentRGB = () => {
       const raw = getComputedStyle(document.documentElement)
@@ -355,486 +456,11 @@ export function HeroBackground({
       return accentRGB();
     };
 
-    const planetConfigs: PlanetConfig[] = [
-      {
-        type: "gas",
-        baseX: 0.82,
-        baseY: 0.18,
-        jitterX: (Math.random() - 0.5) * 0.05,
-        jitterY: (Math.random() - 0.5) * 0.05,
-        radius: 90,
-        parallaxMx: 0.45,
-        parallaxSy: 0.2,
-        driftSpeed: 0.02,
-        bandPalette: { r: 220, g: 180, b: 130 },
-        lightFromRight: true,
-      },
-      ...(isHome
-        ? [
-            {
-              type: "rocky" as const,
-              baseX: 0.12,
-              baseY: 0.32,
-              jitterX: (Math.random() - 0.5) * 0.05,
-              jitterY: (Math.random() - 0.5) * 0.05,
-              radius: 50,
-              parallaxMx: 0.25,
-              parallaxSy: 0.1,
-              driftSpeed: 0.03,
-              bandPalette: { r: 175, g: 165, b: 155 },
-              lightFromRight: false,
-            },
-          ]
-        : []),
-    ];
-
-    let planetCaches: PlanetCache[] = [];
-    let stars: { far: Star[]; mid: Star[]; near: Star[] } = { far: [], mid: [], near: [] };
-
-    const buildPlanetCaches = () => {
-      planetCaches = planetConfigs.map((p) =>
-        p.type === "gas"
-          ? buildGasGiantCache(p.radius, p.bandPalette, p.lightFromRight, dpr)
-          : buildRockyPlanetCache(p.radius, p.bandPalette, p.lightFromRight, dpr)
-      );
-    };
-
-    const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = canvas.width = window.innerWidth * dpr;
-      H = canvas.height = window.innerHeight * dpr;
-      canvas.style.width = window.innerWidth + "px";
-      canvas.style.height = window.innerHeight + "px";
-      buildPlanetCaches();
-    };
-    resize();
-
-    if (variant === "cosmic") {
-      stars = {
-        far: makeStarLayer(170, "far", 0.3, 0.8, 0.15, 0.05, 0.4, 1.2, 0),
-        mid: makeStarLayer(85, "mid", 0.8, 1.5, 0.35, 0.15, 0.6, 1.8, 0.35),
-        near: makeStarLayer(30, "near", 1.5, 2.5, 0.6, 0.3, 0.8, 2.2, 1),
-      };
-    }
-
-    const st = { mouseX: 0.5, mouseY: 0.5, scrollY: 0 };
-    const onMouse = (e: MouseEvent) => {
-      st.mouseX = e.clientX / window.innerWidth;
-      st.mouseY = e.clientY / window.innerHeight;
-    };
-    const onScroll = () => {
-      st.scrollY = window.scrollY;
-    };
-
-    let shooter: Shooter | null = null;
-    let nextShooter = 3 + Math.random() * 5;
-
-    let craft: Spacecraft | null = null;
-    let nextCraftCheck = 30 + Math.random() * 30;
-
     const t0 = performance.now();
     let rafId: number | null = null;
 
-    const drawStarLayer = (
-      arr: Star[],
-      t: number,
-      mx: number,
-      my: number,
-      sy: number,
-      allowSparkle: boolean
-    ) => {
-      const speed = intensity / 100;
-      for (const s of arr) {
-        const px = s.x * W + mx * 80 * dpr * s.parallaxMx - sy * s.parallaxSy * dpr;
-        const py = s.y * H + my * 40 * dpr * s.parallaxMx - sy * s.parallaxSy * 0.7 * dpr;
-        if (py > H * 0.66) continue;
-        const twinkle = 0.5 + 0.5 * Math.sin(t * s.twinkleSpeed * speed + s.twinkleOffset);
-        const baseAlpha = s.layer === "far" ? 0.35 : s.layer === "mid" ? 0.55 : 0.75;
-        const alpha = baseAlpha * (0.55 + 0.45 * twinkle);
-        ctx.beginPath();
-        ctx.arc(px, py, s.size * dpr, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${s.color.r},${s.color.g},${s.color.b},${alpha})`;
-        ctx.fill();
-
-        if (allowSparkle && s.sparkle && twinkle > 0.85) {
-          const spikeAlpha = (twinkle - 0.85) / 0.15 * 0.55 * baseAlpha;
-          const spikeLen = s.size * 3.2 * dpr;
-          ctx.strokeStyle = `rgba(${s.color.r},${s.color.g},${s.color.b},${spikeAlpha})`;
-          ctx.lineWidth = 0.5 * dpr;
-          ctx.beginPath();
-          ctx.moveTo(px - spikeLen, py);
-          ctx.lineTo(px + spikeLen, py);
-          ctx.moveTo(px, py - spikeLen);
-          ctx.lineTo(px, py + spikeLen);
-          ctx.stroke();
-        }
-      }
-    };
-
-    const drawCachedPlanet = (
-      cfg: PlanetConfig,
-      cache: PlanetCache,
-      t: number,
-      mx: number,
-      my: number,
-      sy: number
-    ) => {
-      const px =
-        (cfg.baseX + cfg.jitterX) * W +
-        Math.cos(t * cfg.driftSpeed) * 6 * dpr +
-        mx * 30 * dpr * cfg.parallaxMx -
-        sy * cfg.parallaxSy * dpr;
-      const py =
-        (cfg.baseY + cfg.jitterY) * H +
-        Math.sin(t * cfg.driftSpeed) * 3 * dpr +
-        my * 20 * dpr * cfg.parallaxMx -
-        sy * cfg.parallaxSy * 0.6 * dpr;
-
-      ctx.globalAlpha = 0.85;
-      ctx.drawImage(
-        cache.canvas,
-        px - cache.centerX,
-        py - cache.centerY
-      );
-      ctx.globalAlpha = 1;
-
-      // Per-frame band rendering for gas giant (allows slow rotation drift)
-      if (cfg.type === "gas") {
-        const r = cache.radius;
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(px, py, r, 0, Math.PI * 2);
-        ctx.clip();
-        const bandPhase = t * 0.08;
-        const bandCount = 7;
-        const drift = (t * 0.6) % (r * 2);
-        for (let i = 0; i < bandCount; i++) {
-          const offset = (i / bandCount) * r * 2 - r + (drift * 0.05);
-          const wobble = Math.sin(bandPhase + i * 1.3) * r * 0.04;
-          const bandY = py + offset + wobble;
-          const bandH = r * 0.18;
-          const tone = i % 2 === 0 ? 1.15 : 0.85;
-          const br = Math.min(255, Math.round(cfg.bandPalette.r * tone));
-          const bg = Math.min(255, Math.round(cfg.bandPalette.g * tone));
-          const bb = Math.min(255, Math.round(cfg.bandPalette.b * tone));
-          const alpha = 0.13 + 0.05 * Math.cos(bandPhase + i);
-          ctx.fillStyle = `rgba(${br},${bg},${bb},${alpha})`;
-          ctx.fillRect(px - r * 1.05, bandY, r * 2.1, bandH);
-        }
-
-        // Re-apply terminator on top of bands so shading stays consistent
-        const termGrad = ctx.createLinearGradient(px - r, py, px + r * 0.5, py);
-        termGrad.addColorStop(0, "rgba(4,8,18,0.45)");
-        termGrad.addColorStop(0.6, "rgba(4,8,18,0.15)");
-        termGrad.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = termGrad;
-        ctx.fillRect(px - r, py - r, r * 2, r * 2);
-        ctx.restore();
-
-        // Ring system (drawn after the planet body, with the back half occluded
-        // by re-drawing the planet circle clip)
-        ctx.save();
-        ctx.translate(px, py);
-        ctx.rotate(-0.32 + my * 0.08);
-        ctx.scale(1, 0.22);
-
-        // Back half (behind planet) — draw, then the planet body cache redraws on top in next frame layer
-        ctx.beginPath();
-        ctx.arc(0, 0, r * 1.55, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${cfg.bandPalette.r},${cfg.bandPalette.g},${cfg.bandPalette.b},0.32)`;
-        ctx.lineWidth = 2.5 * dpr;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(0, 0, r * 1.78, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${cfg.bandPalette.r},${cfg.bandPalette.g},${cfg.bandPalette.b},0.16)`;
-        ctx.lineWidth = 1.2 * dpr;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(0, 0, r * 1.4, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${cfg.bandPalette.r},${cfg.bandPalette.g},${cfg.bandPalette.b},0.22)`;
-        ctx.lineWidth = 1 * dpr;
-        ctx.stroke();
-        ctx.restore();
-
-        // Subtle ring shadow on planet surface (thin band where the ring crosses)
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(px, py, r, 0, Math.PI * 2);
-        ctx.clip();
-        const shadowGrad = ctx.createLinearGradient(px - r, py - r * 0.05, px + r, py + r * 0.05);
-        shadowGrad.addColorStop(0, "rgba(0,0,0,0)");
-        shadowGrad.addColorStop(0.5, "rgba(0,0,0,0.18)");
-        shadowGrad.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = shadowGrad;
-        ctx.fillRect(px - r, py - r * 0.06, r * 2, r * 0.12);
-        ctx.restore();
-      }
-    };
-
-    const drawSpacecraft = (t: number, mx: number, my: number, sy: number) => {
-      if (reduced) return;
-      if (!craft && t > nextCraftCheck) {
-        nextCraftCheck = t + 30 + Math.random() * 30;
-        if (Math.random() < 0.7) {
-          // Spawn from top, left, or right edge
-          const edge = Math.floor(Math.random() * 3);
-          const margin = 40 * dpr;
-          let sx = 0, sy2 = 0, ex = 0, ey = 0;
-          if (edge === 0) {
-            // top → bottom (with slight drift)
-            sx = Math.random() * W;
-            sy2 = -margin;
-            ex = sx + (Math.random() - 0.5) * W * 0.5;
-            ey = H * (0.45 + Math.random() * 0.2);
-          } else if (edge === 1) {
-            // left → right
-            sx = -margin;
-            sy2 = H * (0.1 + Math.random() * 0.45);
-            ex = W + margin;
-            ey = sy2 + (Math.random() - 0.5) * H * 0.2;
-          } else {
-            // right → left
-            sx = W + margin;
-            sy2 = H * (0.1 + Math.random() * 0.45);
-            ex = -margin;
-            ey = sy2 + (Math.random() - 0.5) * H * 0.2;
-          }
-          craft = {
-            startX: sx,
-            startY: sy2,
-            endX: ex,
-            endY: ey,
-            duration: 8 + Math.random() * 7,
-            startT: t,
-            size: (6 + Math.random() * 6) * dpr,
-            alpha: 0.22 + Math.random() * 0.13,
-            hueWarm: Math.random() < 0.5,
-          };
-        }
-      }
-      if (!craft) return;
-      const prog = (t - craft.startT) / craft.duration;
-      if (prog >= 1) {
-        craft = null;
-        return;
-      }
-      const eased = prog;
-      const cx0 = craft.startX + (craft.endX - craft.startX) * eased;
-      const cy0 = craft.startY + (craft.endY - craft.startY) * eased;
-      // Apply ship-layer parallax
-      const px = cx0 + mx * 80 * dpr * 0.5 - sy * 0.25 * dpr;
-      const py = cy0 + my * 40 * dpr * 0.5 - sy * 0.18 * dpr;
-      const dx = craft.endX - craft.startX;
-      const dy = craft.endY - craft.startY;
-      const len = Math.hypot(dx, dy) || 1;
-      const ux = dx / len;
-      const uy = dy / len;
-      const fade = Math.sin(prog * Math.PI); // fades in and out
-      const a = craft.alpha * fade;
-
-      // Engine trail (3 fading dots behind craft)
-      const trailColor = craft.hueWarm
-        ? "255, 170, 110"
-        : "180, 220, 255";
-      for (let i = 1; i <= 3; i++) {
-        const tx = px - ux * craft.size * (i * 1.4);
-        const ty = py - uy * craft.size * (i * 1.4);
-        const tAlpha = a * (1 - i / 4);
-        const tSize = craft.size * (0.5 - i * 0.1);
-        ctx.beginPath();
-        ctx.arc(tx, ty, tSize, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${trailColor},${tAlpha})`;
-        ctx.fill();
-      }
-
-      // Body — short pill perpendicular to motion
-      ctx.save();
-      ctx.translate(px, py);
-      ctx.rotate(Math.atan2(dy, dx));
-      const bodyW = craft.size;
-      const bodyH = craft.size * 0.4;
-      ctx.fillStyle = `rgba(220,230,245,${a})`;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, bodyW * 0.55, bodyH * 0.55, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.strokeStyle = `rgba(255,255,255,${a * 0.7})`;
-      ctx.lineWidth = 0.4 * dpr;
-      ctx.stroke();
-      ctx.restore();
-    };
-
-    const drawCosmic = (t: number) => {
-      const speed = intensity / 100;
-      ctx.clearRect(0, 0, W, H);
-
-      const { r, g, b } = accentRGB();
-      const mx = mouse ? st.mouseX - 0.5 : 0;
-      const my = mouse ? st.mouseY - 0.5 : 0;
-      const sy = parallax ? st.scrollY : 0;
-
-      // Sky gradient
-      const skyGrad = ctx.createLinearGradient(0, 0, 0, H * 0.7);
-      skyGrad.addColorStop(0, `rgba(${r},${g},${b},0.10)`);
-      skyGrad.addColorStop(0.4, `rgba(${r},${g},${b},0.04)`);
-      skyGrad.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = skyGrad;
-      ctx.fillRect(0, 0, W, H * 0.7);
-
-      // Far stars (deepest layer, behind nebula)
-      drawStarLayer(stars.far, t, mx, my, sy, false);
-
-      // Nebula blobs (3 with subtle drift)
-      const driftA = Math.sin(t * 0.08) * 14 * dpr;
-      const driftB = Math.cos(t * 0.07) * 12 * dpr;
-      const driftC = Math.sin(t * 0.11 + 2) * 10 * dpr;
-
-      const neb1 = ctx.createRadialGradient(
-        W * 0.7 + driftA,
-        H * 0.25 + driftB,
-        0,
-        W * 0.7 + driftA,
-        H * 0.25 + driftB,
-        W * 0.38
-      );
-      neb1.addColorStop(0, `rgba(${r},${g},${b},0.07)`);
-      neb1.addColorStop(0.5, `rgba(${r},${g},${b},0.02)`);
-      neb1.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = neb1;
-      ctx.fillRect(0, 0, W, H * 0.7);
-
-      const neb2 = ctx.createRadialGradient(
-        W * 0.2 + driftC,
-        H * 0.18 + driftA * 0.6,
-        0,
-        W * 0.2 + driftC,
-        H * 0.18 + driftA * 0.6,
-        W * 0.32
-      );
-      neb2.addColorStop(0, "rgba(140,110,210,0.06)");
-      neb2.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = neb2;
-      ctx.fillRect(0, 0, W, H * 0.7);
-
-      const neb3 = ctx.createRadialGradient(
-        W * 0.5 + driftB * 0.7,
-        H * 0.1 + driftC,
-        0,
-        W * 0.5 + driftB * 0.7,
-        H * 0.1 + driftC,
-        W * 0.22
-      );
-      neb3.addColorStop(0, `rgba(${Math.round(r * 0.6)},${Math.round(g * 0.7)},${Math.min(255, b + 20)},0.05)`);
-      neb3.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = neb3;
-      ctx.fillRect(0, 0, W, H * 0.55);
-
-      // Planet 2 (rocky, "farther" layer) — homepage only
-      if (planetCaches[1]) drawCachedPlanet(planetConfigs[1], planetCaches[1], t, mx, my, sy);
-
-      // Mid stars
-      drawStarLayer(stars.mid, t, mx, my, sy, !reduced);
-
-      // Planet 1 (gas giant, "closer" layer)
-      if (planetCaches[0]) drawCachedPlanet(planetConfigs[0], planetCaches[0], t, mx, my, sy);
-
-
-      // Near stars (with sparkle)
-      drawStarLayer(stars.near, t, mx, my, sy, !reduced);
-
-      // Shooting star
-      if (!shooter && t > nextShooter) {
-        shooter = {
-          x: Math.random() * 0.5 * W,
-          y: Math.random() * 0.25 * H,
-          vx: (200 + Math.random() * 200) * dpr,
-          vy: (80 + Math.random() * 60) * dpr,
-          life: 0,
-          maxLife: 1.2,
-        };
-        nextShooter = t + 4 + Math.random() * 6;
-      }
-      if (shooter) {
-        shooter.life += 1 / 60;
-        const prog = shooter.life / shooter.maxLife;
-        if (prog >= 1) {
-          shooter = null;
-        } else {
-          const sx = shooter.x + shooter.vx * shooter.life;
-          const sy2 = shooter.y + shooter.vy * shooter.life;
-          const tailLen = 80 * dpr;
-          const tx = sx - (shooter.vx / Math.hypot(shooter.vx, shooter.vy)) * tailLen;
-          const ty = sy2 - (shooter.vy / Math.hypot(shooter.vx, shooter.vy)) * tailLen;
-          const a = (1 - prog) * 0.9;
-          const g2 = ctx.createLinearGradient(tx, ty, sx, sy2);
-          g2.addColorStop(0, "rgba(255,255,255,0)");
-          g2.addColorStop(1, `rgba(255,255,255,${a})`);
-          ctx.strokeStyle = g2;
-          ctx.lineWidth = 1.5 * dpr;
-          ctx.beginPath();
-          ctx.moveTo(tx, ty);
-          ctx.lineTo(sx, sy2);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.arc(sx, sy2, 2 * dpr, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,255,255,${a})`;
-          ctx.fill();
-        }
-      }
-
-      // Spacecraft
-      drawSpacecraft(t, mx, my, sy);
-
-      // Wireframe grid
-      const cx = W / 2 + mx * 60 * dpr;
-      const horizon = H * 0.62 + sy * 0.15 * dpr;
-
-      const hg = ctx.createRadialGradient(cx, horizon, 0, cx, horizon, H * 0.6);
-      hg.addColorStop(0, `rgba(${r},${g},${b},0.26)`);
-      hg.addColorStop(0.4, `rgba(${r},${g},${b},0.10)`);
-      hg.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = hg;
-      ctx.fillRect(0, horizon - H * 0.32, W, H - (horizon - H * 0.32));
-
-      const rows = 20;
-      const cols = 22;
-      const scroll = (t * 40 * speed) % (H * 0.05);
-
-      for (let i = 0; i <= rows; i++) {
-        const p = i / rows;
-        const y = horizon + Math.pow(p, 1.3) * (H - horizon) + scroll * Math.pow(p, 1.2);
-        if (y > H) continue;
-        const nearFade = Math.min(1, p * 3.2);
-        const alpha = 0.35 * (1 - p * 0.7) * nearFade;
-        if (alpha < 0.005) continue;
-        ctx.strokeStyle = `rgba(${r},${g},${b},${alpha})`;
-        ctx.lineWidth = 1 * dpr;
-        ctx.beginPath();
-        const spread = (y - horizon) * 2.2;
-        ctx.moveTo(cx - spread, y);
-        ctx.lineTo(cx + spread, y);
-        ctx.stroke();
-      }
-
-      for (let j = -cols; j <= cols; j++) {
-        const p = j / cols;
-        const farX = cx + p * W * 0.6;
-        const nearX = cx + p * W * 3;
-        const colGrad = ctx.createLinearGradient(farX, horizon, nearX, H);
-        colGrad.addColorStop(0, `rgba(${r},${g},${b},0)`);
-        colGrad.addColorStop(0.25, `rgba(${r},${g},${b},0.08)`);
-        colGrad.addColorStop(1, `rgba(${r},${g},${b},0.3)`);
-        ctx.strokeStyle = colGrad;
-        ctx.lineWidth = 1 * dpr;
-        ctx.beginPath();
-        ctx.moveTo(farX, horizon);
-        ctx.lineTo(nearX, H);
-        ctx.stroke();
-      }
-    };
-
-    const drawDaylight = (t: number) => {
+    const draw = () => {
+      const t = (performance.now() - t0) / 1000;
       const speed = intensity / 100;
       const mx = mouse ? st.mouseX - 0.5 : 0;
       const my = mouse ? st.mouseY - 0.5 : 0;
@@ -844,7 +470,7 @@ export function HeroBackground({
 
       const { r: ar, g: ag, b: ab } = accentRGB();
 
-      // 1. Sky wash
+      // Sky wash
       const sky = ctx.createLinearGradient(0, 0, 0, H * 0.9);
       sky.addColorStop(0, `rgba(${ar},${ag},${ab},0.10)`);
       sky.addColorStop(0.35, `rgba(${ar},${ag},${ab},0.04)`);
@@ -853,7 +479,7 @@ export function HeroBackground({
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, W, H);
 
-      // 1b. Subtle cloud-like atmospheric gradient (new)
+      // Cloud-like atmospheric gradient
       const cloudY = H * 0.18 + Math.sin(t * 0.05) * 14 * dpr;
       const cloud = ctx.createRadialGradient(W * 0.55, cloudY, 0, W * 0.55, cloudY, W * 0.55);
       cloud.addColorStop(0, "rgba(255,250,242,0.045)");
@@ -862,7 +488,7 @@ export function HeroBackground({
       ctx.fillStyle = cloud;
       ctx.fillRect(0, 0, W, H * 0.6);
 
-      // 2. Atmospheric glows
+      // Atmospheric glows
       const g1x = W * 0.75 + Math.cos(t * 0.05) * 30 * dpr;
       const g1y = H * 0.2 + Math.sin(t * 0.04) * 15 * dpr;
       const g1 = ctx.createRadialGradient(g1x, g1y, 0, g1x, g1y, W * 0.45);
@@ -880,7 +506,7 @@ export function HeroBackground({
       ctx.fillStyle = g2;
       ctx.fillRect(0, 0, W, H);
 
-      // 3. Floating shapes
+      // Floating shapes
       for (let i = 0; i < SHAPES.length; i++) {
         const s = SHAPES[i];
         const phase = t * s.speed * speed + i;
@@ -963,7 +589,7 @@ export function HeroBackground({
         ctx.restore();
       }
 
-      // 4. Faint dot grid wash (lower 45%)
+      // Faint dot grid wash (lower 45%)
       ctx.fillStyle = `rgba(${ar},${ag},${ab},0.18)`;
       const step = 36 * dpr;
       const yStart = H * 0.55;
@@ -978,12 +604,7 @@ export function HeroBackground({
         }
       }
       ctx.globalAlpha = 1;
-    };
 
-    const draw = () => {
-      const t = (performance.now() - t0) / 1000;
-      if (variant === "cosmic") drawCosmic(t);
-      else drawDaylight(t);
       if (!reduced) rafId = requestAnimationFrame(draw);
     };
     draw();
@@ -998,11 +619,51 @@ export function HeroBackground({
       window.removeEventListener("mousemove", onMouse);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [variant, intensity, parallax, mouse, isHome]);
+  }, [variant, intensity, parallax, mouse]);
+
+  if (variant === "cosmic") {
+    return (
+      <>
+        <div className="space-bg" aria-hidden="true">
+          <div className="space-bg__stars" />
+          {isHome && (
+            <img
+              className="space-bg__planet space-bg__planet--rocky"
+              src="/space-bg/planet-rocky.png"
+              alt=""
+            />
+          )}
+          <canvas
+            ref={earthCanvasRef}
+            className="space-bg__planet space-bg__planet--earth"
+            width={400}
+            height={400}
+          />
+          <img
+            className="space-bg__star space-bg__star--1"
+            src="/space-bg/star-sparkle-white.png"
+            alt=""
+          />
+          <img
+            className="space-bg__star space-bg__star--2"
+            src="/space-bg/star-sparkle-blue.png"
+            alt=""
+          />
+          <img
+            className="space-bg__star space-bg__star--3"
+            src="/space-bg/star-sparkle-warm.png"
+            alt=""
+          />
+          <div ref={shipsLayerRef} className="space-bg__ships" />
+        </div>
+        <div className="hero-bg-vignette" aria-hidden="true" />
+      </>
+    );
+  }
 
   return (
     <>
-      <canvas ref={canvasRef} className="hero-bg-canvas" aria-hidden="true" />
+      <canvas ref={daylightCanvasRef} className="hero-bg-canvas" aria-hidden="true" />
       <div className="hero-bg-vignette" aria-hidden="true" />
     </>
   );
