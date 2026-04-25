@@ -95,170 +95,12 @@ function pickLane(): number {
   return top;
 }
 
-// Rotating earth — projects an equirectangular texture onto a sphere each frame.
-class EarthRotate {
-  canvas: HTMLCanvasElement;
-  ctx: CanvasRenderingContext2D;
-  surfaceSrc: string;
-  cloudsSrc: string;
-  rotSpeed = 0.012;
-  cloudSpeed = 0.018;
-  tilt = -0.35;
-  lightDir = { x: -0.6, y: -0.4, z: 0.7 };
-  surfData: ImageData | null = null;
-  cloudData: ImageData | null = null;
-  frameImg: ImageData | null = null;
-  W = 0;
-  H = 0;
-  rot = 0;
-  cloudRot = 0;
-  raf: number | null = null;
-  cancelled = false;
-
-  constructor(canvas: HTMLCanvasElement, surfaceSrc: string, cloudsSrc: string) {
-    this.canvas = canvas;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) throw new Error("EarthRotate: no 2d context");
-    this.ctx = ctx;
-    this.surfaceSrc = surfaceSrc;
-    this.cloudsSrc = cloudsSrc;
-  }
-
-  start(): void {
-    Promise.all([loadImage(this.surfaceSrc), loadImage(this.cloudsSrc)])
-      .then(([surfImg, cloudImg]) => {
-        if (this.cancelled) return;
-        this.surfData = bakeImageData(surfImg);
-        this.cloudData = bakeImageData(cloudImg);
-        this.W = this.canvas.width;
-        this.H = this.canvas.height;
-        this.frameImg = this.ctx.createImageData(this.W, this.H);
-        this.loop();
-      })
-      .catch(() => {
-        // texture failed — leave canvas blank
-      });
-  }
-
-  stop(): void {
-    this.cancelled = true;
-    if (this.raf !== null) cancelAnimationFrame(this.raf);
-  }
-
-  private loop = (): void => {
-    if (this.cancelled) return;
-    this.render();
-    this.rot += this.rotSpeed * 0.5;
-    this.cloudRot += this.cloudSpeed * 0.5;
-    this.raf = requestAnimationFrame(this.loop);
-  };
-
-  private render(): void {
-    if (!this.surfData || !this.cloudData || !this.frameImg) return;
-    const W = this.W, H = this.H;
-    const cx = W / 2, cy = H / 2;
-    const R = Math.min(W, H) / 2 - 4;
-    const sd = this.surfData.data, sw = this.surfData.width, sh = this.surfData.height;
-    const cd = this.cloudData.data;
-    const img = this.frameImg.data;
-    const rot = this.rot, cloudRot = this.cloudRot;
-    const tilt = this.tilt;
-    const sinT = Math.sin(tilt), cosT = Math.cos(tilt);
-    const L = this.lightDir;
-    const Llen = Math.sqrt(L.x * L.x + L.y * L.y + L.z * L.z);
-    const lx = L.x / Llen, ly = L.y / Llen, lz = L.z / Llen;
-
-    for (let py = 0; py < H; py++) {
-      const dy = (py - cy) / R;
-      for (let px = 0; px < W; px++) {
-        const dx = (px - cx) / R;
-        const r2 = dx * dx + dy * dy;
-        const i = (py * W + px) * 4;
-        if (r2 >= 1) {
-          img[i] = 0; img[i + 1] = 0; img[i + 2] = 0; img[i + 3] = 0;
-          continue;
-        }
-        const nx = dx;
-        const ny = dy;
-        const nz = Math.sqrt(1 - r2);
-
-        const py2 = ny * cosT - nz * sinT;
-        const pz2 = ny * sinT + nz * cosT;
-        const px2 = nx;
-
-        let lon = Math.atan2(px2, pz2) + rot;
-        const lat = Math.asin(py2);
-        lon = lon - Math.floor(lon / (Math.PI * 2)) * Math.PI * 2;
-        const u = lon / (Math.PI * 2);
-        const v = lat / Math.PI + 0.5;
-
-        const tx = Math.floor(u * sw) % sw;
-        let ty = Math.floor(v * sh);
-        if (ty < 0) ty = 0; else if (ty >= sh) ty = sh - 1;
-        const ti = (ty * sw + tx) * 4;
-
-        const lambert = nx * lx + ny * ly + nz * lz;
-        let shade = 0.55 + 0.55 * lambert;
-        if (shade < 0.25) shade = 0.25;
-        if (shade > 1.05) shade = 1.05;
-
-        const sr = sd[ti], sg = sd[ti + 1], sb = sd[ti + 2];
-
-        let clon = lon - rot + cloudRot;
-        clon = clon - Math.floor(clon / (Math.PI * 2)) * Math.PI * 2;
-        const cu = clon / (Math.PI * 2);
-        const ctx2 = Math.floor(cu * sw) % sw;
-        const ci = (ty * sw + ctx2) * 4;
-        const cAlpha = cd[ci + 3] / 255;
-        let rr = sr * (1 - cAlpha) + cd[ci]     * cAlpha;
-        let gg = sg * (1 - cAlpha) + cd[ci + 1] * cAlpha;
-        let bb = sb * (1 - cAlpha) + cd[ci + 2] * cAlpha;
-
-        rr *= shade; gg *= shade; bb *= shade;
-
-        const rim = r2 * r2 * r2;
-        const rimT = Math.max(0, Math.min(1, (rim - 0.4) / 0.6));
-        rr = rr * (1 - rimT * 0.6) + 140 * rimT * 0.6;
-        gg = gg * (1 - rimT * 0.6) + 195 * rimT * 0.6;
-        bb = bb * (1 - rimT * 0.6) + 245 * rimT * 0.6;
-
-        img[i] = rr;
-        img[i + 1] = gg;
-        img[i + 2] = bb;
-        img[i + 3] = 255;
-      }
-    }
-    this.ctx.putImageData(this.frameImg, 0, 0);
-  }
-}
-
-function loadImage(src: string): Promise<HTMLImageElement> {
-  return new Promise((res, rej) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.onload = () => res(img);
-    img.onerror = rej;
-    img.src = src;
-  });
-}
-
-function bakeImageData(img: HTMLImageElement): ImageData {
-  const c = document.createElement("canvas");
-  c.width = img.width;
-  c.height = img.height;
-  const cctx = c.getContext("2d");
-  if (!cctx) throw new Error("bakeImageData: no 2d context");
-  cctx.drawImage(img, 0, 0);
-  return cctx.getImageData(0, 0, img.width, img.height);
-}
-
 export function HeroBackground({
   intensity = 60,
   parallax = true,
   mouse = true,
 }: HeroBackgroundProps) {
   const daylightCanvasRef = useRef<HTMLCanvasElement | null>(null);
-  const earthCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const shipsLayerRef = useRef<HTMLDivElement | null>(null);
   const [variant, setVariant] = useState<Variant>("daylight");
   const pathname = usePathname();
@@ -278,20 +120,10 @@ export function HeroBackground({
     return () => mo.disconnect();
   }, []);
 
-  // Cosmic mode: Earth rotation + ship scheduler
+  // Cosmic mode: ship scheduler
   useEffect(() => {
     if (variant !== "cosmic") return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    let earth: EarthRotate | null = null;
-    if (isHome && earthCanvasRef.current) {
-      earth = new EarthRotate(
-        earthCanvasRef.current,
-        "/space-bg/earth-surface.png",
-        "/space-bg/earth-clouds.png"
-      );
-      earth.start();
-    }
 
     let cancelled = false;
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -315,9 +147,7 @@ export function HeroBackground({
       let durMul = 1;
 
       if (isUFO) {
-        // UFOs travel vertically or diagonally, never simple horizontal
         const sideX = () => {
-          // pick X away from hero center (avoid 30-70%)
           return Math.random() < 0.5
             ? rand(0.05, 0.28) * layerW
             : rand(0.72, 0.95) * layerW;
@@ -325,30 +155,24 @@ export function HeroBackground({
         const variant = Math.floor(Math.random() * 6);
         let startX = 0, startY = 0, endX = 0, endY = 0;
         if (variant === 0) {
-          // top → bottom
           startX = sideX(); startY = -padY;
           endX = startX;    endY = layerH + padY;
         } else if (variant === 1) {
-          // bottom → top
           startX = sideX(); startY = layerH + padY;
           endX = startX;    endY = -padY;
         } else if (variant === 2) {
-          // diagonal ↘ top-left → bottom-right
           startX = -padX;        startY = -padY;
           endX = layerW + padX;  endY = layerH + padY;
           durMul = 1.3;
         } else if (variant === 3) {
-          // diagonal ↙ top-right → bottom-left
           startX = layerW + padX; startY = -padY;
           endX = -padX;           endY = layerH + padY;
           durMul = 1.3;
         } else if (variant === 4) {
-          // diagonal ↗ bottom-left → top-right
           startX = -padX;        startY = layerH + padY;
           endX = layerW + padX;  endY = -padY;
           durMul = 1.3;
         } else {
-          // diagonal ↖ bottom-right → top-left
           startX = layerW + padX; startY = layerH + padY;
           endX = -padX;           endY = -padY;
           durMul = 1.3;
@@ -359,7 +183,6 @@ export function HeroBackground({
         img.style.setProperty("--travel-y", (endY - startY) + "px");
         img.style.setProperty("--ship-flip", "");
       } else {
-        // Other ships: horizontal traversal in either direction
         const ltr = Math.random() < 0.5;
         const travel = layerW + padX * 2;
         img.style.top = pickLane() + "%";
@@ -399,11 +222,10 @@ export function HeroBackground({
     return () => {
       cancelled = true;
       if (timer !== null) clearTimeout(timer);
-      if (earth) earth.stop();
       const layer = shipsLayerRef.current;
       if (layer) layer.innerHTML = "";
     };
-  }, [variant, isHome]);
+  }, [variant]);
 
   // Daylight mode: existing canvas-based geometric shapes
   useEffect(() => {
@@ -470,7 +292,6 @@ export function HeroBackground({
 
       const { r: ar, g: ag, b: ab } = accentRGB();
 
-      // Sky wash
       const sky = ctx.createLinearGradient(0, 0, 0, H * 0.9);
       sky.addColorStop(0, `rgba(${ar},${ag},${ab},0.10)`);
       sky.addColorStop(0.35, `rgba(${ar},${ag},${ab},0.04)`);
@@ -479,7 +300,6 @@ export function HeroBackground({
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, W, H);
 
-      // Cloud-like atmospheric gradient
       const cloudY = H * 0.18 + Math.sin(t * 0.05) * 14 * dpr;
       const cloud = ctx.createRadialGradient(W * 0.55, cloudY, 0, W * 0.55, cloudY, W * 0.55);
       cloud.addColorStop(0, "rgba(255,250,242,0.045)");
@@ -488,7 +308,6 @@ export function HeroBackground({
       ctx.fillStyle = cloud;
       ctx.fillRect(0, 0, W, H * 0.6);
 
-      // Atmospheric glows
       const g1x = W * 0.75 + Math.cos(t * 0.05) * 30 * dpr;
       const g1y = H * 0.2 + Math.sin(t * 0.04) * 15 * dpr;
       const g1 = ctx.createRadialGradient(g1x, g1y, 0, g1x, g1y, W * 0.45);
@@ -506,7 +325,6 @@ export function HeroBackground({
       ctx.fillStyle = g2;
       ctx.fillRect(0, 0, W, H);
 
-      // Floating shapes
       for (let i = 0; i < SHAPES.length; i++) {
         const s = SHAPES[i];
         const phase = t * s.speed * speed + i;
@@ -589,7 +407,6 @@ export function HeroBackground({
         ctx.restore();
       }
 
-      // Faint dot grid wash (lower 45%)
       ctx.fillStyle = `rgba(${ar},${ag},${ab},0.18)`;
       const step = 36 * dpr;
       const yStart = H * 0.55;
@@ -631,14 +448,6 @@ export function HeroBackground({
               className="space-bg__planet space-bg__planet--rocky"
               src="/space-bg/planet-rocky.png"
               alt=""
-            />
-          )}
-          {isHome && (
-            <canvas
-              ref={earthCanvasRef}
-              className="space-bg__planet space-bg__planet--earth"
-              width={400}
-              height={400}
             />
           )}
           <img
