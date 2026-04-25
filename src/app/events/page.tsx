@@ -23,9 +23,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@vrdotorg",
     title: "VR & AR Events Calendar 2026-2027 | VR.org",
     description:
       "All the VR, AR, and XR conferences, expos, and showcases in 2026 and 2027.",
+    images: ["https://vr.org/og-image.png"],
   },
 };
 

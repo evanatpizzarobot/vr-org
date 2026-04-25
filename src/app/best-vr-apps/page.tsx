@@ -9,6 +9,8 @@ import {
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
   title: "Best VR Apps & Utilities 2026: Top 10 Must-Have Apps | VR.org",
@@ -307,6 +309,11 @@ export default function BestVRAppsPage() {
           generous enough for individual creators.
         </p>
 
+        {/* Ad: between #5 (Gravity Sketch) and #6 (Wander) */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
+
         {/* 6. Wander */}
         <h2 id="wander" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           6. Wander
@@ -484,6 +491,11 @@ export default function BestVRAppsPage() {
           the space forward. SideQuest is essential for Quest owners who want
           to access experimental and indie apps outside the official store.
         </p>
+
+        {/* Ad: after honorable mentions, before related articles */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="auto" />
+        </div>
 
         {/* Related */}
         <hr

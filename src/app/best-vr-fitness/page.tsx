@@ -9,6 +9,8 @@ import {
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
   title: "Best VR Fitness Apps 2026: Top 10 VR Workout Games | VR.org",
@@ -173,6 +175,11 @@ export default function BestVRFitnessPage() {
           subscription or two, and you have a gym that lives in a drawer.
         </p>
 
+        {/* Ad: after Is VR Fitness Worth It, before app #1 */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="auto" />
+        </div>
+
         {/* 1. Supernatural */}
         <h2 id="supernatural" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           1. Supernatural
@@ -305,6 +312,11 @@ export default function BestVRFitnessPage() {
           rounds, Thrill of the Fight 2 delivers. Not for the faint of heart.
           Expect to be sore.
         </p>
+
+        {/* Ad: between #5 (Thrill of the Fight 2) and #6 (Pistol Whip) */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
 
         {/* 6. Pistol Whip */}
         <h2 id="pistol-whip" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">

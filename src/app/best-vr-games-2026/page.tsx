@@ -4,9 +4,12 @@ import {
   StructuredData,
   breadcrumbSchema,
   faqPageSchema,
+  itemListSchema,
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata = {
   title: "Best VR Games of 2026: New Releases & Must-Play Titles | VR.org",
@@ -67,6 +70,17 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Best VR Games 2026", url: "https://vr.org/best-vr-games-2026" },
 ]);
 
+const games2026List = itemListSchema("Best VR Games of 2026", [
+  { name: "Resident Evil Requiem", url: "https://vr.org/best-vr-games-2026" },
+  { name: "Batman: Arkham Shadow", url: "https://vr.org/best-vr-games-2026" },
+  { name: "Little Nightmares VR: Altered Echoes", url: "https://vr.org/best-vr-games-2026" },
+  { name: "Whatever Valve ships with Steam Frame", url: "https://vr.org/best-vr-games-2026" },
+  { name: "Star Trek: Infection", url: "https://vr.org/best-vr-games-2026" },
+  { name: "TMNT VR", url: "https://vr.org/best-vr-games-2026" },
+  { name: "Aces of Thunder", url: "https://vr.org/best-vr-games-2026" },
+  { name: "Microsoft Flight Simulator (PSVR 2)", url: "https://vr.org/best-vr-games-2026" },
+]);
+
 const games2026Faq = faqPageSchema([
   {
     question: "What are the best VR games of 2026?",
@@ -100,6 +114,7 @@ export default function BestVRGames2026Page() {
     <>
       <StructuredData data={articleSchema} />
       <StructuredData data={breadcrumbs} />
+      <StructuredData data={games2026List} />
       <StructuredData data={games2026Faq} />
       <Header articleCount={0} lastUpdated="" />
 
@@ -253,6 +268,11 @@ export default function BestVRGames2026Page() {
           this could be a standout horror experience.
         </p>
 
+        {/* Ad: after New Releases, before Most Anticipated */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
+
         {/* Most anticipated VR games for the rest of 2026 */}
         <h2 className="font-display text-2xl font-semibold mb-4">
           Most anticipated VR games for the rest of 2026
@@ -363,6 +383,11 @@ export default function BestVRGames2026Page() {
           ever made. In VR, the sense of flight and scale should be
           extraordinary. This could be a system-seller for PSVR 2.
         </p>
+
+        {/* Ad: after the last anticipated game, before related articles */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="auto" />
+        </div>
 
         {/* What to watch for */}
         <h2 className="font-display text-2xl font-semibold mb-4">

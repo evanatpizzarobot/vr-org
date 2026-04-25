@@ -9,6 +9,8 @@ import {
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
   title:
@@ -184,6 +186,11 @@ export default function ARGlassesPage() {
           is still in a class of its own.
         </p>
 
+        {/* Ad: after quick recommendation, before product reviews */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="auto" />
+        </div>
+
         {/* Ray-Ban Meta */}
         <h2 id="ray-ban-meta" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
           Ray-Ban Meta (Gen 2): Best mainstream smart glasses
@@ -290,6 +297,11 @@ export default function ARGlassesPage() {
           XR mode so the glasses can run without a tethered device. A great
           alternative to Xreal if glasses ergonomics matter to you.
         </p>
+
+        {/* Ad: between Viture Pro (4th) and Meta Orion (5th) */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
 
         {/* Meta Orion */}
         <h2 id="meta-orion" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
