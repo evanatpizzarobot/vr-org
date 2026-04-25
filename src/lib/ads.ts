@@ -18,8 +18,7 @@ export const AD_SLOTS = {
   feed: "5007277106",
   article: "3311052050",
   rail: "1380479557",
-  // TODO: replace once "VR.org Pillar Page" ad unit is created in AdSense console.
-  pillar: "PILLAR_TBD",
+  pillar: "7314799681",
 };
 
 // In-Feed ads are "fluid" format and require a layout key that AdSense
