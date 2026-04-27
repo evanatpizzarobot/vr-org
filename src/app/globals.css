@@ -1217,6 +1217,20 @@ nav::-webkit-scrollbar {
   margin-bottom: 4px;
 }
 
+/* Bordered card variant: visually groups the "Advertisement" label with the
+   ad slot below it, so it cannot be misread as a caption for whatever sits
+   above (e.g. the NetActuate sponsor banner in the sidebar). */
+.ad-container.ad-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+}
+
+.ad-container.ad-card .ad-label {
+  margin-bottom: 8px;
+  opacity: 0.5;
+}
+
 /* Side rail ads: only on very wide screens */
 .side-rail {
   display: none;

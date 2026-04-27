@@ -40,7 +40,7 @@ export function Sidebar({ sourceStats, trending }: SidebarProps) {
       <AdSlot
         slot={AD_SLOTS.sidebar}
         format="rectangle"
-        className="rounded-lg"
+        className="ad-card rounded-lg"
         minHeight={250}
       />
       <TrendingTopics topics={trending} />
