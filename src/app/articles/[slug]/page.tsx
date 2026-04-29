@@ -60,14 +60,25 @@ export default async function ArticlePage({ params }: PageProps) {
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
+  const ogImage = extractFirstImage(article.body) || "https://vr.org/og-image.png";
+
+  const authorSameAs: Record<string, string[]> = {
+    "Evan Marcus": ["https://x.com/vrdotorg"],
+  };
+
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "NewsArticle",
     headline: article.title,
     description: article.snippet,
     url: `https://vr.org/articles/${article.slug}`,
     datePublished: article.publishDate,
     ...(article.updatedDate && { dateModified: article.updatedDate }),
+    image: [ogImage],
+    articleSection:
+      article.category.charAt(0).toUpperCase() + article.category.slice(1),
+    keywords: article.tags.join(", "),
+    inLanguage: "en-US",
     author: {
       "@type": "Person",
       name: article.author,
@@ -77,12 +88,18 @@ export default async function ArticlePage({ params }: PageProps) {
         name: "VR.org",
         url: "https://vr.org",
       },
+      ...(authorSameAs[article.author] && {
+        sameAs: authorSameAs[article.author],
+      }),
     },
     publisher: {
       "@type": "Organization",
       name: "VR.org",
       url: "https://vr.org",
-      logo: "https://vr.org/logo.png",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://vr.org/logo.png",
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",

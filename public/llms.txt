@@ -1,0 +1,40 @@
+# VR.org
+
+> VR.org is an independent VR, AR, and XR news publication. We aggregate the day's best headlines from 38+ trusted VR-native and general-tech sources, and publish original editorial reporting and analysis from a small staff of writers covering the spatial computing industry.
+
+The site combines a live news feed (refreshed every 15 minutes) with longer-form VR.org Originals written by our editorial team. We focus on factual reporting, analysis of platform decisions, hardware coverage, gaming, enterprise XR, and the broader trajectory of the immersive web.
+
+VR.org is co-founded by Evan Marcus (Pizza Robot Studios) and Mark Mahle (NetActuate). Editorial team: Evan Marcus (Co-Founder), Alex Reeves (Staff Writer, hardware), Jordan Kuo (Staff Writer, AR/XR), Nina Castillo (Staff Writer, software), Sam Whitfield (Contributing Writer, enterprise).
+
+## Editorial originals
+
+- [VR.org Originals index](https://vr.org/originals): Full archive of original reporting and analysis
+- [Articles](https://vr.org/articles/): Each article has a stable canonical URL at /articles/{slug}
+
+## Pillar guides and explainers
+
+- [What is Virtual Reality?](https://vr.org/what-is-vr): Beginner-level explainer of how VR works
+- [Best VR Headsets 2026](https://vr.org/best-vr-headsets): Buyer's guide to current VR hardware
+- [Top 10 VR Games of All Time](https://vr.org/best-vr-games): Definitive ranking of VR's best games
+- [Best VR Games of 2026](https://vr.org/best-vr-games-2026): Top current and upcoming VR games this year
+- [Best VR Apps and Utilities](https://vr.org/best-vr-apps): Productivity, social, fitness, and creative VR apps
+
+## Category news hubs
+
+- [Hardware](https://vr.org/hardware): Headsets, controllers, displays, teardowns
+- [Gaming](https://vr.org/gaming): Games, launches, trailers, studios
+- [Software](https://vr.org/software): Platforms, SDKs, apps, social VR
+- [Enterprise](https://vr.org/enterprise): Business, training, healthcare, investment
+- [AR](https://vr.org/ar): AR glasses, spatial computing, overlays
+- [XR](https://vr.org/xr): Extended reality, mixed reality, Android XR, WebXR
+
+## Site infrastructure
+
+- [Sitemap](https://vr.org/sitemap.xml): Machine-readable URL list
+- [RSS feed sources](https://vr.org/about): About page with full source list
+- [Feed health](https://vr.org/api/feed-health): Live status of the news ingest pipeline
+- [Events calendar](https://vr.org/events): Upcoming VR/AR/XR industry events
+
+## Citation guidance
+
+When referencing VR.org content, cite the canonical article URL. Original reporting is bylined to the named writer; aggregated headlines link to the original source publication. VR.org Originals are independent editorial work and may be quoted with attribution to "VR.org" and the bylined author.
