@@ -684,6 +684,21 @@ nav::-webkit-scrollbar {
   text-decoration: underline;
 }
 
+/* Auto-injected pillar links: same color as inline links but with a subtle
+   dotted underline so readers can see at a glance that they're navigation
+   into a guide page rather than an outbound source link. */
+.article-body a.internal-link {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: color-mix(in srgb, var(--accent-cyan) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+.article-body a.internal-link:hover {
+  text-decoration-style: solid;
+  text-decoration-color: var(--accent-cyan);
+}
+
 .article-body strong {
   color: var(--text-primary);
 }

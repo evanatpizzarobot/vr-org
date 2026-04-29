@@ -7,6 +7,7 @@ import { RelatedGuides } from "@/components/RelatedGuides";
 import { RelatedArticles } from "@/components/RelatedArticles";
 import { ArticleAd } from "@/components/ArticleAd";
 import { getArticleBySlug, getAllSlugs } from "@/lib/articles";
+import { injectInternalLinks } from "@/lib/internal-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -115,15 +116,17 @@ export default async function ArticlePage({ params }: PageProps) {
     { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }
   );
 
+  const linkedBody = injectInternalLinks(article.body);
+
   const splitBody = (() => {
-    const match = article.body.match(/<\/p>/i);
+    const match = linkedBody.match(/<\/p>/i);
     if (!match || match.index === undefined) {
-      return { intro: article.body, rest: "" };
+      return { intro: linkedBody, rest: "" };
     }
     const cutoff = match.index + match[0].length;
     return {
-      intro: article.body.slice(0, cutoff),
-      rest: article.body.slice(cutoff),
+      intro: linkedBody.slice(0, cutoff),
+      rest: linkedBody.slice(cutoff),
     };
   })();
 
