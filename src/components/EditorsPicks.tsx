@@ -33,12 +33,12 @@ export function EditorsPicks() {
         style={{ borderColor: "var(--border)", background: "var(--bg-secondary)" }}
       >
         <div className="flex items-center gap-2">
-          <span
-            className="font-display text-[12px] font-semibold uppercase tracking-[1.5px]"
+          <h2
+            className="font-display text-[12px] font-semibold uppercase tracking-[1.5px] m-0"
             style={{ color: "var(--accent-cyan)" }}
           >
             Editor&apos;s Picks
-          </span>
+          </h2>
         </div>
       </div>
       <div className="flex flex-col">

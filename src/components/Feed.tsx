@@ -23,12 +23,12 @@ export function Feed({ articles, loading }: FeedProps) {
       <div className="section-divider-animated mb-2 rounded-full" />
       {/* Feed header */}
       <div className="flex items-center justify-between py-4 pb-3">
-        <span
-          className="font-display text-[13px] font-semibold uppercase tracking-[2px]"
+        <h2
+          className="font-display text-[13px] font-semibold uppercase tracking-[2px] m-0"
           style={{ color: "var(--text-secondary)" }}
         >
           Latest Headlines
-        </span>
+        </h2>
         <div
           className="flex gap-1 rounded-md p-0.5 border"
           style={{ background: "var(--bg-secondary)", borderColor: "var(--border)" }}

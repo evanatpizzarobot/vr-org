@@ -37,12 +37,14 @@ export function Sidebar({ sourceStats, trending }: SidebarProps) {
         <TopListWidget list={topLists["top-vr-apps"]} />
       )}
       <NetActuateBanner />
-      <AdSlot
-        slot={AD_SLOTS.sidebar}
-        format="rectangle"
-        className="ad-card rounded-lg"
-        minHeight={250}
-      />
+      <div className="sidebar-sticky-ad">
+        <AdSlot
+          slot={AD_SLOTS.sidebar}
+          format="rectangle"
+          className="ad-card rounded-lg"
+          minHeight={250}
+        />
+      </div>
       <TrendingTopics topics={trending} />
       <SourceStats stats={sourceStats} />
     </div>

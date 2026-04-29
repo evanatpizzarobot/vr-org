@@ -147,12 +147,12 @@ export default function Home() {
           {editorials.length > 0 && (
             <div className="mb-8 fade-up" style={{ animationDelay: "100ms" }}>
               <div className="flex items-center gap-3 mb-4">
-                <span
-                  className="font-display text-[13px] font-semibold uppercase tracking-[2px]"
+                <h2
+                  className="font-display text-[13px] font-semibold uppercase tracking-[2px] m-0"
                   style={{ color: "var(--accent-cyan)" }}
                 >
                   From Our Editors
-                </span>
+                </h2>
                 <div
                   className="flex-1 h-px"
                   style={{ background: "linear-gradient(to right, var(--accent-cyan), var(--accent-magenta), transparent)" }}
@@ -256,12 +256,12 @@ export default function Home() {
           {/* Guides & Resources section */}
           <div className="mb-8 fade-up" style={{ animationDelay: "200ms" }}>
             <div className="flex items-center gap-3 mb-4">
-              <span
-                className="font-display text-[13px] font-semibold uppercase tracking-[2px]"
+              <h2
+                className="font-display text-[13px] font-semibold uppercase tracking-[2px] m-0"
                 style={{ color: "var(--text-secondary)" }}
               >
                 Guides &amp; Resources
-              </span>
+              </h2>
               <div
                 className="flex-1 h-px"
                 style={{ background: "linear-gradient(to right, var(--text-muted), transparent)" }}

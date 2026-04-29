@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 import { RelatedGuides } from "@/components/RelatedGuides";
+import { RelatedArticles } from "@/components/RelatedArticles";
 import { ArticleAd } from "@/components/ArticleAd";
 import { getArticleBySlug, getAllSlugs } from "@/lib/articles";
 
@@ -97,6 +98,18 @@ export default async function ArticlePage({ params }: PageProps) {
     { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }
   );
 
+  const splitBody = (() => {
+    const match = article.body.match(/<\/p>/i);
+    if (!match || match.index === undefined) {
+      return { intro: article.body, rest: "" };
+    }
+    const cutoff = match.index + match[0].length;
+    return {
+      intro: article.body.slice(0, cutoff),
+      rest: article.body.slice(cutoff),
+    };
+  })();
+
   return (
     <>
       <StructuredData data={articleSchema} />
@@ -154,14 +167,28 @@ export default async function ArticlePage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Article body */}
+        {/* Article body, opening paragraph */}
         <div
           className="article-body"
-          dangerouslySetInnerHTML={{ __html: article.body }}
+          dangerouslySetInnerHTML={{ __html: splitBody.intro }}
         />
+
+        {/* Mid-article ad after first paragraph */}
+        {splitBody.rest && <ArticleAd />}
+
+        {/* Article body, remainder */}
+        {splitBody.rest && (
+          <div
+            className="article-body"
+            dangerouslySetInnerHTML={{ __html: splitBody.rest }}
+          />
+        )}
 
         {/* Ad after article body */}
         <ArticleAd />
+
+        {/* Related VR.org Originals */}
+        <RelatedArticles current={article} />
 
         {/* Related Guides */}
         <RelatedGuides tags={[article.category, ...article.tags]} />

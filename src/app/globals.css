@@ -1468,3 +1468,12 @@ nav::-webkit-scrollbar {
   max-width: 820px;
   margin: 0 auto;
 }
+
+/* Sticky sidebar ad: stays in viewport while feed scrolls (desktop only). */
+@media (min-width: 1024px) {
+  .sidebar-sticky-ad {
+    position: sticky;
+    top: 88px;
+    z-index: 1;
+  }
+}
