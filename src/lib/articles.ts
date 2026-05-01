@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { withImageFailsafe } from "./article-images";
 
 export interface EditorialArticle {
   id: string;
@@ -23,6 +24,9 @@ export function getAllArticles(): EditorialArticle[] {
     if (!fs.existsSync(ARTICLES_PATH)) return [];
     const raw = fs.readFileSync(ARTICLES_PATH, "utf-8");
     const articles: EditorialArticle[] = JSON.parse(raw);
+    for (const article of articles) {
+      article.body = withImageFailsafe(article.body);
+    }
     return articles.sort(
       (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
     );

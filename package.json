@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check:images": "node scripts/check-article-images.mjs"
   },
   "dependencies": {
     "next": "15.5.14",
