@@ -43,7 +43,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Apps & Utilities 2026: Top 10 Must-Have Apps",
   datePublished: "2026-03-23",
-  dateModified: "2026-04-20",
+  dateModified: "2026-05-02",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -135,7 +135,7 @@ export default function BestVRAppsPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: March 2026
+          Last updated: May 2026
         </p>
 
         <p
@@ -499,12 +499,26 @@ export default function BestVRAppsPage() {
           style={{ color: "var(--text-secondary)" }}
         >
           Tilt Brush / Open Brush remains one of the most joyful creative
-          tools in VR, letting you paint in 3D space with glowing brushstrokes.
-          Supernatural offers premium fitness classes with high production
-          values and licensed music. AltspaceVR (now shuttered) paved the
-          way for social VR, and its spiritual successors continue to push
-          the space forward. SideQuest is essential for Quest owners who want
-          to access experimental and indie apps outside the official store.
+          tools in VR, letting you paint in 3D space with glowing
+          brushstrokes. Supernatural offers premium fitness classes with high
+          production values and licensed music (covered in our{" "}
+          <a
+            href="/best-vr-fitness"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Best VR Fitness Apps 2026
+          </a>{" "}
+          guide). SideQuest is essential for Quest owners who want to access
+          experimental and indie apps outside the official store, and the
+          built-in Quest <strong style={{ color: "var(--text-primary)" }}>
+          Move tracker</strong> finally got a long-overdue refresh in 2026
+          with better workout history and integration with Apple Health and
+          Google Fit. For Vision Pro owners, the visionOS app catalog has
+          quietly grown past the point where you can spend a full work week
+          inside the headset on real apps. The category to watch is
+          spatial-aware AI assistants, where Gemini, Meta AI, and Apple
+          Intelligence are all converging on the headset.
         </p>
 
         {/* Ad: after honorable mentions, before related articles */}

@@ -46,7 +46,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Fitness Apps 2026: Top 10 VR Workout Games",
   datePublished: "2026-04-20",
-  dateModified: "2026-04-20",
+  dateModified: "2026-05-02",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -143,7 +143,7 @@ export default function BestVRFitnessPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: April 2026
+          Last updated: May 2026
         </p>
 
         <p
@@ -470,7 +470,10 @@ export default function BestVRFitnessPage() {
           headset. Plan 3 to 4 workouts per week and mix an instructor-led
           app (Supernatural or FitXR) with a rhythm game (Beat Saber or
           Synth Riders) to avoid burnout. Start with 20 minute sessions and
-          build up.
+          build up. The 2026 update to Quest&apos;s built-in Move tracker
+          finally added Apple Health and Google Fit syncing, so your VR
+          workouts now show up next to runs and gym sessions in your fitness
+          history.
         </p>
 
         {/* Latest fitness / software articles */}

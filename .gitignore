@@ -54,6 +54,7 @@ data/*
 !data/top-lists.json
 !data/events.json
 !data/deals.json
+!data/page-maintenance.json
 !data/article-draft-*.json
 !data/drafts-published/
 !data/drafts-published/*.json

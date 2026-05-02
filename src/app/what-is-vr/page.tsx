@@ -94,7 +94,7 @@ export default function WhatIsVRPage() {
       "Everything you need to know about Virtual Reality: how it works, types of headsets, use cases, history, and the future of VR technology.",
     url: "https://vr.org/what-is-vr",
     datePublished: "2026-03-23",
-    dateModified: "2026-04-20",
+    dateModified: "2026-05-02",
     author: {
       "@type": "Organization",
       name: "VR.org",

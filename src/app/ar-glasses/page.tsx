@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best AR Glasses 2026: Smart Glasses Comparison & Buyer's Guide",
   datePublished: "2026-04-20",
-  dateModified: "2026-04-20",
+  dateModified: "2026-05-02",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -142,7 +142,7 @@ export default function ARGlassesPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: April 2026
+          Last updated: May 2026
         </p>
 
         <p
@@ -407,12 +407,17 @@ export default function ARGlassesPage() {
           style={{ color: "var(--text-secondary)" }}
         >
           The next two years are going to reset the smart glasses market.
-          Google and Samsung will push Android XR glasses into retail, Meta
-          is expected to ship a consumer Orion successor in the 2027 to 2028
-          window, and Apple is widely reported to be working on a lighter,
-          more affordable Vision device. The current state of the market
-          (display vs display-free, tethered vs standalone) will consolidate
-          quickly once these platforms land.
+          Google I/O on May 19 to 20, 2026 is expected to be the biggest
+          public moment for Android XR yet, with a likely first hardware
+          unveil for the Samsung Galaxy Glasses (the consumer Android XR
+          smart glasses that have been showing up in leaks and FCC filings
+          for months). Meta is expected to ship a consumer Orion successor
+          in the 2027 to 2028 window, and Apple is widely reported to be
+          working on a lighter, more affordable Vision device. Pico&apos;s
+          Project Swan, a Vision Pro competitor with reportedly 4,000 PPI
+          displays at potentially half the price, is the wildcard. The
+          current state of the market (display vs display-free, tethered vs
+          standalone) will consolidate quickly once these platforms land.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"

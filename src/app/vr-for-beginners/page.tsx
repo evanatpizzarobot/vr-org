@@ -42,7 +42,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "VR for Beginners 2026: How to Get Started with Virtual Reality",
   datePublished: "2026-04-20",
-  dateModified: "2026-04-20",
+  dateModified: "2026-05-02",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -135,7 +135,7 @@ export default function VRForBeginnersPage() {
           className="text-sm mb-10"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: April 2026
+          Last updated: May 2026
         </p>
 
         <p

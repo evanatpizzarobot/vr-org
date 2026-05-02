@@ -1,0 +1,138 @@
+{
+  "_comment": "Page refresh registry for the VR.org maintenance audit. Each page lists its file path, refresh cadence in days, and a one-line refresh checklist. Run `npm run audit:pages` to see what is overdue.",
+  "policy": "Best-of and pillar pages drive the majority of vr.org traffic. They must be refreshed on the cadence below. Real content edits required, not just dateModified bumps (Google's freshness signals discount unchanged content).",
+  "pages": [
+    {
+      "path": "/best-vr-headsets",
+      "file": "src/app/best-vr-headsets/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-05-02",
+      "checklist": [
+        "Verify each headset's price and availability in deals.json",
+        "Update 'What's Coming in 2026' section with confirmed launches",
+        "Refresh FAQ if a major release shifts the buyer recommendation"
+      ]
+    },
+    {
+      "path": "/best-vr-games",
+      "file": "src/app/best-vr-games/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 60,
+      "lastRefreshed": "2026-05-02",
+      "checklist": [
+        "Top 10 all-time list rarely changes; review for new instant classics",
+        "Refresh Honorable Mentions with the year's standout titles",
+        "Update FAQ if a new game enters the must-play conversation"
+      ]
+    },
+    {
+      "path": "/best-vr-games-2026",
+      "file": "src/app/best-vr-games-2026/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-05-02",
+      "checklist": [
+        "Move shipped games from 'anticipated' to 'released so far' with launch dates",
+        "Add internal links to VR.org launch articles for each",
+        "Refresh FAQ to reflect the released-not-anticipated lineup",
+        "Tighten the 'What to watch for' close based on the latest hardware news"
+      ]
+    },
+    {
+      "path": "/best-vr-apps",
+      "file": "src/app/best-vr-apps/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-05-02",
+      "checklist": [
+        "Verify each app is still actively maintained (kill anything shuttered)",
+        "Refresh the Honorable Mentions section with new apps gaining traction",
+        "Update the visionOS / Meta AI / spatial-AI commentary"
+      ]
+    },
+    {
+      "path": "/best-vr-fitness",
+      "file": "src/app/best-vr-fitness/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-05-02",
+      "checklist": [
+        "Verify subscription pricing for each app (Supernatural, FitXR, Les Mills)",
+        "Add new fitness titles that have launched since last refresh",
+        "Refresh the 'How to get started' tips with the latest accessory recs"
+      ]
+    },
+    {
+      "path": "/vr-for-beginners",
+      "file": "src/app/vr-for-beginners/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 60,
+      "lastRefreshed": "2026-05-02",
+      "checklist": [
+        "Verify the recommended first headset is still the right call",
+        "Update 'What to play first' list if a new beginner-perfect title shipped",
+        "Keep accessory pricing within ~20% of current retail"
+      ]
+    },
+    {
+      "path": "/ar-glasses",
+      "file": "src/app/ar-glasses/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-05-02",
+      "checklist": [
+        "AR moves fast. Refresh 'What is coming' with confirmed Android XR / Meta / Apple news",
+        "Update Ray-Ban Meta, Rokid, Xreal, Viture pricing and feature notes",
+        "Add any new entrant that has captured > 5% of category share"
+      ]
+    },
+    {
+      "path": "/what-is-vr",
+      "file": "src/app/what-is-vr/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 90,
+      "lastRefreshed": "2026-05-02",
+      "checklist": [
+        "Evergreen explainer; only update when the technology landscape shifts meaningfully",
+        "Verify the 'history' and 'future' sections still reflect current state",
+        "Update headset pricing references"
+      ]
+    },
+    {
+      "path": "/best-of",
+      "file": "src/app/best-of/page.tsx",
+      "category": "hub",
+      "cadenceDays": 60,
+      "lastRefreshed": "2026-05-02",
+      "checklist": [
+        "Hub page; verify card grid links match the live pillar pages",
+        "Update card descriptions if a pillar page shifts focus"
+      ]
+    },
+    {
+      "path": "/deals",
+      "file": "src/app/deals/page.tsx",
+      "category": "commercial",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-04-24",
+      "checklist": [
+        "Source of truth is data/deals.json, not the page",
+        "Verify every product is still in stock and price is within ~10% of listed",
+        "Add new launches (e.g. Steam Controller after May 4) and remove EOL items"
+      ]
+    },
+    {
+      "path": "/events",
+      "file": "src/app/events/page.tsx",
+      "category": "schedule",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-04-17",
+      "checklist": [
+        "Source of truth is data/events.json",
+        "Add upcoming VR / AR conferences and game launches",
+        "Mark or remove past events"
+      ]
+    }
+  ]
+}

@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headsets 2026: The Complete Buyer's Guide",
   datePublished: "2026-03-23",
-  dateModified: "2026-04-20",
+  dateModified: "2026-05-02",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -137,6 +137,13 @@ export default function BestVRHeadsetsPage() {
         >
           Best VR Headsets 2026: The Complete Buyer&apos;s Guide
         </h1>
+
+        <p
+          className="text-sm mb-3"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Last updated: May 2026
+        </p>
 
         <p
           className="text-[13px] mb-8"
@@ -720,15 +727,21 @@ export default function BestVRHeadsetsPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The second half of 2026 promises several major launches. Valve has
-          confirmed the{" "}
+          Valve&apos;s hardware lineup is finally moving from rumor to
+          reality. The new{" "}
+          <strong style={{ color: "var(--text-primary)" }}>
+            Steam Controller
+          </strong>{" "}
+          ships May 4, 2026 for $99 as the first piece of the new lineup,
+          and the{" "}
           <strong style={{ color: "var(--text-primary)" }}>
             Steam Frame
-          </strong>
-          , its next-generation PC VR headset expected to feature lighthouse
-          tracking compatibility, significantly higher resolution displays,
-          and tight integration with SteamVR. It is the most anticipated
-          headset in the enthusiast community.
+          </strong>{" "}
+          headset is expected to follow later this year, paired with a
+          first-party Valve VR title. The on-time controller launch is the
+          first concrete signal that the Frame is real and shipping in 2026.
+          Lighthouse-compatible tracking, significantly higher resolution
+          displays, and deep SteamVR integration are all expected.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
@@ -736,21 +749,36 @@ export default function BestVRHeadsetsPage() {
         >
           Meta is widely expected to announce the{" "}
           <strong style={{ color: "var(--text-primary)" }}>Quest 4</strong>{" "}
-          later this year, likely powered by a next-generation Snapdragon XR
-          chipset with meaningful gains in GPU performance and AI
-          capabilities. Improved passthrough, thinner optics, and enhanced
-          mixed-reality features are all rumored.
+          later this year, powered by a next-generation Snapdragon XR
+          chipset with meaningful gains in GPU performance and on-device AI.
+          Improved passthrough, thinner optics, and enhanced mixed-reality
+          features are all rumored.
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-4"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Pico has been quietly building a Vision Pro competitor under the
+          codename{" "}
+          <strong style={{ color: "var(--text-primary)" }}>Project Swan</strong>
+          , reportedly with 4,000 PPI displays and a target price near half
+          of Apple&apos;s headset. Samsung&apos;s{" "}
+          <strong style={{ color: "var(--text-primary)" }}>
+            Galaxy Glasses
+          </strong>{" "}
+          (the consumer Android XR smart glasses) keep showing up in leaks
+          and certifications, with Google I/O on May 19 to 20 likely to
+          provide the first real public demo of the Android XR roadmap.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Samsung and Google are also developing a mixed-reality headset
-          running Android XR, which could introduce meaningful competition to
-          the Quest ecosystem. If you are not in a rush, waiting for these
-          launches may be worthwhile, but the current crop of headsets is
+          If you are not in a rush, waiting for these launches may be
+          worthwhile. But the current crop of headsets is genuinely
           excellent, and there will always be something new around the
-          corner.
+          corner. The Quest 3 at $499 is not going to feel obsolete in 2026
+          regardless of what ships next.
         </p>
 
         {/* FAQ */}

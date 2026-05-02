@@ -40,7 +40,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Top 10 VR Games of All Time",
   datePublished: "2026-03-24",
-  dateModified: "2026-04-20",
+  dateModified: "2026-05-02",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -118,7 +118,7 @@ export default function BestVRGamesPage() {
           Top 10 VR Games of All Time
         </h1>
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: March 2026
+          Last updated: May 2026
         </p>
 
         <p
@@ -486,6 +486,18 @@ export default function BestVRGamesPage() {
           hardcore survival itch. Batman: Arkham Shadow brings
           Rocksteady-quality combat to Quest. Walkabout Mini Golf is proof that
           the simplest ideas can become the most played VR games in your library.
+          Three 2026 standouts that are climbing fast and may make this list
+          permanently if their staying power holds: Microsoft Flight Simulator
+          on PSVR 2, the indie surprise One More Delve, and TMNT: Empire City.
+          Catch up on all three in our{" "}
+          <a
+            href="/best-vr-games-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Best VR Games of 2026
+          </a>{" "}
+          guide.
         </p>
 
         {/* Latest gaming articles */}
