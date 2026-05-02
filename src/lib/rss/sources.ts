@@ -27,12 +27,6 @@ export const RSS_SOURCES: RSSSource[] = [
     priority: "primary",
   },
   {
-    key: "virtualrealitynews",
-    name: "Virtual Reality News",
-    url: "https://virtual.reality.news/rss",
-    priority: "secondary",
-  },
-  {
     key: "skarredghost",
     name: "The Ghost Howls",
     url: "https://skarredghost.com/feed/",
@@ -42,12 +36,6 @@ export const RSS_SOURCES: RSSSource[] = [
     key: "arinsider",
     name: "AR Insider",
     url: "https://arinsider.co/feed/",
-    priority: "primary",
-  },
-  {
-    key: "nextreality",
-    name: "Next Reality",
-    url: "https://next.reality.news/rss",
     priority: "primary",
   },
 

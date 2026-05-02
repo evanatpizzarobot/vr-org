@@ -64,12 +64,36 @@ function extractTag(xml: string, tag: string): string {
 
 function extractItems(xml: string): string[] {
   const items: string[] = [];
-  const pattern = /<item[\s>]([\s\S]*?)<\/item>/gi;
+  const itemPattern = /<item[\s>]([\s\S]*?)<\/item>/gi;
   let match;
-  while ((match = pattern.exec(xml)) !== null) {
+  while ((match = itemPattern.exec(xml)) !== null) {
     items.push(match[0]);
   }
+  if (items.length === 0) {
+    // Atom feeds use <entry> instead of <item>. The Verge and a handful
+    // of other publishers ship Atom, so fall back when no RSS items found.
+    const entryPattern = /<entry[\s>]([\s\S]*?)<\/entry>/gi;
+    while ((match = entryPattern.exec(xml)) !== null) {
+      items.push(match[0]);
+    }
+  }
   return items;
+}
+
+function extractAtomLink(itemXml: string): string {
+  // Atom links are self-closing: <link href="..." rel="alternate" />
+  // Prefer rel="alternate" (the canonical article URL); fall back to
+  // the first <link> with an href attribute.
+  const altA = itemXml.match(
+    /<link[^>]*rel=["']alternate["'][^>]*href=["']([^"']+)["']/i
+  );
+  if (altA) return altA[1];
+  const altB = itemXml.match(
+    /<link[^>]*href=["']([^"']+)["'][^>]*rel=["']alternate["']/i
+  );
+  if (altB) return altB[1];
+  const any = itemXml.match(/<link[^>]*href=["']([^"']+)["']/i);
+  return any ? any[1] : "";
 }
 
 function extractImageUrl(itemXml: string): string | null {
@@ -94,7 +118,12 @@ function extractImageUrl(itemXml: string): string | null {
   return null;
 }
 
-export async function fetchSource(source: RSSSource): Promise<Article[]> {
+export interface FetchResult {
+  articles: Article[];
+  rawItemCount: number;
+}
+
+export async function fetchSource(source: RSSSource): Promise<FetchResult> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10000);
 
@@ -109,7 +138,7 @@ export async function fetchSource(source: RSSSource): Promise<Article[]> {
 
     if (!response.ok) {
       console.error(`Failed to fetch ${source.name}: ${response.status}`);
-      return [];
+      return { articles: [], rawItemCount: 0 };
     }
 
     const xml = await response.text();
@@ -118,10 +147,18 @@ export async function fetchSource(source: RSSSource): Promise<Article[]> {
 
     for (const itemXml of items) {
       const title = stripHtml(extractTag(itemXml, "title"));
-      const link = extractTag(itemXml, "link");
-      const pubDateStr = extractTag(itemXml, "pubDate");
+      // Atom uses <link href="..."/>; RSS uses <link>...</link>.
+      const link = extractTag(itemXml, "link") || extractAtomLink(itemXml);
+      // Atom uses <published> (or <updated> as fallback) instead of <pubDate>.
+      const pubDateStr =
+        extractTag(itemXml, "pubDate") ||
+        extractTag(itemXml, "published") ||
+        extractTag(itemXml, "updated");
       const description = extractTag(itemXml, "description");
       const contentEncoded = extractTag(itemXml, "content:encoded");
+      // Atom feeds put the body in <content> or <summary>.
+      const atomContent =
+        extractTag(itemXml, "content") || extractTag(itemXml, "summary");
       const author =
         extractTag(itemXml, "dc:creator") ||
         extractTag(itemXml, "author") ||
@@ -130,7 +167,7 @@ export async function fetchSource(source: RSSSource): Promise<Article[]> {
       if (!title || !link) continue;
 
       const id = hashString(link);
-      const rawSnippet = stripHtml(contentEncoded || description);
+      const rawSnippet = stripHtml(contentEncoded || description || atomContent);
 
       if (source.relevanceFilter && !isVRRelevant(title, rawSnippet)) {
         continue;
@@ -165,10 +202,10 @@ export async function fetchSource(source: RSSSource): Promise<Article[]> {
       });
     }
 
-    return articles;
+    return { articles, rawItemCount: items.length };
   } catch (err) {
     console.error(`Error fetching ${source.name}:`, err);
-    return [];
+    return { articles: [], rawItemCount: 0 };
   } finally {
     clearTimeout(timeout);
   }

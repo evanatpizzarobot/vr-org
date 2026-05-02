@@ -196,13 +196,25 @@ export async function refreshFeed(): Promise<void> {
       }
 
       try {
-        const articles = await fetchSource(source);
-        if (articles.length === 0) {
-          // Zero articles is suspicious but not a hard failure; count it as
-          // a soft error so we don't trip the breaker on a single empty page.
+        const { articles, rawItemCount } = await fetchSource(source);
+        // A source returning zero raw <item>/<entry> tags is the real
+        // failure signal (HTTP error, dead feed, malformed XML).
+        // A source that returned items but had all of them filtered out
+        // by relevanceFilter is a normal day, not a failure.
+        if (rawItemCount === 0) {
           sourceFailures[source.key] =
             (sourceFailures[source.key] || 0) + 1;
           sourceLastError[source.key] = "empty response";
+
+          // Trip the breaker on sustained zero-item responses too,
+          // so genuinely dead feeds get auto-disabled instead of
+          // being polled forever.
+          if (sourceFailures[source.key] >= CIRCUIT_BREAKER_THRESHOLD) {
+            sourceDisabledUntil[source.key] = now + CIRCUIT_BREAKER_COOLDOWN;
+            console.error(
+              `[VR.org] Circuit breaker OPEN for ${source.name}: ${sourceFailures[source.key]} consecutive empty responses, disabled until ${new Date(sourceDisabledUntil[source.key]).toISOString()}`
+            );
+          }
         } else {
           sourceFailures[source.key] = 0;
           sourceLastError[source.key] = null;
@@ -211,9 +223,11 @@ export async function refreshFeed(): Promise<void> {
           name: source.name,
           count: articles.length,
           lastFetched: new Date().toISOString(),
-          status: articles.length > 0 ? "ok" : "error",
+          status: rawItemCount > 0 ? "ok" : "error",
           consecutiveFailures: sourceFailures[source.key],
-          disabledUntil: null,
+          disabledUntil: sourceDisabledUntil[source.key]
+            ? new Date(sourceDisabledUntil[source.key]).toISOString()
+            : null,
           lastError: sourceLastError[source.key],
         };
         return articles;
