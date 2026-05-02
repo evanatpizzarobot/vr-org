@@ -42,7 +42,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Games of 2026: New Releases and Must-Play Titles",
   datePublished: "2026-03-24",
-  dateModified: "2026-04-20",
+  dateModified: "2026-05-02",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -74,38 +74,39 @@ const games2026List = itemListSchema("Best VR Games of 2026", [
   { name: "Resident Evil Requiem", url: "https://vr.org/best-vr-games-2026" },
   { name: "Batman: Arkham Shadow", url: "https://vr.org/best-vr-games-2026" },
   { name: "Little Nightmares VR: Altered Echoes", url: "https://vr.org/best-vr-games-2026" },
+  { name: "Microsoft Flight Simulator (PSVR 2)", url: "https://vr.org/best-vr-games-2026" },
+  { name: "TMNT: Empire City", url: "https://vr.org/best-vr-games-2026" },
+  { name: "One More Delve", url: "https://vr.org/best-vr-games-2026" },
   { name: "Whatever Valve ships with Steam Frame", url: "https://vr.org/best-vr-games-2026" },
   { name: "Star Trek: Infection", url: "https://vr.org/best-vr-games-2026" },
-  { name: "TMNT VR", url: "https://vr.org/best-vr-games-2026" },
   { name: "Aces of Thunder", url: "https://vr.org/best-vr-games-2026" },
-  { name: "Microsoft Flight Simulator (PSVR 2)", url: "https://vr.org/best-vr-games-2026" },
 ]);
 
 const games2026Faq = faqPageSchema([
   {
     question: "What are the best VR games of 2026?",
     answer:
-      "The best VR games released in 2026 so far include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, and Little Nightmares VR: Altered Echoes. The year is still young, with major releases like Microsoft Flight Simulator on PSVR2, Star Trek: Infection, and Aces of Thunder still on the way.",
+      "Through April 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, and the breakout indie One More Delve. Star Trek: Infection, Aces of Thunder, and whatever Valve launches alongside the Steam Frame are still on the way.",
   },
   {
-    question: "What VR games are coming in 2026?",
+    question: "What VR games are coming in the rest of 2026?",
     answer:
-      "Major VR releases expected in 2026 include Little Nightmares VR: Altered Echoes, Star Trek: Infection, TMNT VR, Aces of Thunder, Microsoft Flight Simulator for PSVR 2, and whatever launch title Valve ships alongside the Steam Frame headset.",
+      "Major VR releases still expected in 2026 include Star Trek: Infection, Aces of Thunder, and whatever launch title Valve ships alongside the Steam Frame headset. Several PSVR 2 ports and Quest exclusives remain on publishers' roadmaps for the second half of the year.",
   },
   {
     question: "When does the Steam Frame release?",
     answer:
-      "Valve has confirmed the Steam Frame is in development but has not announced a release date. It is expected to launch sometime in 2026, likely bundled with a first-party Valve VR title. The Steam Frame is the most anticipated headset in the VR enthusiast community.",
+      "Valve has not announced a release date for the Steam Frame headset, but the new Steam Controller launches May 4, 2026 for $99 as the first piece of Valve's hardware lineup. The Frame is expected to follow later in 2026, likely bundled with a first-party Valve VR title. The on-time controller launch increases confidence that the Frame is real and shipping this year.",
   },
   {
     question: "Are there new PSVR 2 games in 2026?",
     answer:
-      "Yes. Microsoft Flight Simulator is coming to PSVR 2 in 2026, which could be a system-seller. Sony continues to support PSVR 2 with first-party and third-party AAA ports, and the headset now supports PC VR via an official adapter, opening the SteamVR library.",
+      "Yes. Microsoft Flight Simulator launched on PSVR 2 in late April 2026 and is one of the biggest VR releases of the year so far. Sony continues to support PSVR 2 with first-party and third-party AAA ports, and the headset now supports PC VR via an official adapter, opening the SteamVR library.",
   },
   {
     question: "What is the best VR game in 2026 so far?",
     answer:
-      "Batman: Arkham Shadow is arguably the best VR game available in early 2026, translating Rocksteady's freeflow combat into physical VR punches, counters, and gadget use. It stands out as one of the strongest Quest exclusives to date.",
+      "Microsoft Flight Simulator on PSVR 2 is the most ambitious release of the year through April. Batman: Arkham Shadow remains the strongest Quest-native title, and One More Delve is the surprise of the year, a polished three-player co-op dungeon crawler built largely by a single student developer that outperformed several big-studio releases.",
   },
 ]);
 
@@ -133,7 +134,7 @@ export default function BestVRGames2026Page() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: March 2026
+          Last updated: May 2026
         </p>
 
         <p
@@ -156,11 +157,13 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          2026 is shaping up to be one of the biggest years for VR gaming.
-          With Valve&apos;s Steam Frame on the horizon and studios pushing
-          standalone hardware further than ever, the lineup of new releases
-          and upcoming titles is stacked. Here are the best VR games of 2026
-          so far, plus the most anticipated titles still on the way.
+          Four months in, 2026 is delivering on its promise as one of the
+          biggest years for VR gaming. Microsoft Flight Simulator hit PSVR 2,
+          TMNT: Empire City brought the turtles to VR, and a solo student
+          developer dropped one of the most surprising indie hits of the year.
+          Valve&apos;s Steam Controller ships May 4, with the Steam Frame
+          headset still expected later this year. Here are the best VR games
+          of 2026 so far, plus the titles still ahead.
         </p>
 
         <a
@@ -283,6 +286,113 @@ export default function BestVRGames2026Page() {
           this could be a standout horror experience.
         </p>
 
+        {/* Microsoft Flight Simulator (PSVR 2) */}
+        <h3 className="font-display text-xl font-semibold mb-2">
+          Microsoft Flight Simulator (PSVR 2)
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2537590/header.jpg"
+            alt="Microsoft Flight Simulator 2024 cockpit and aircraft key art"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[13px] mb-4"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Developer: Asobo Studio | Platform: PSVR 2 | Released: April 29, 2026
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          The biggest thing to happen to PlayStation VR in a year. Microsoft
+          Flight Simulator finally landed on PSVR 2 in late April, bringing
+          one of the most visually impressive games ever made into stereoscopic
+          VR. The sense of scale at altitude is genuinely staggering, and the
+          PSVR 2 OLED panels handle the lighting beautifully. Read our{" "}
+          <a
+            href="/articles/microsoft-flight-simulator-psvr2-biggest-vr-game-on-playstation"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            full launch coverage
+          </a>{" "}
+          for the complete breakdown.
+        </p>
+
+        {/* TMNT: Empire City */}
+        <h3 className="font-display text-xl font-semibold mb-2">
+          TMNT: Empire City
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713650/b90ef5253a5ed86410cbbe2915e4286d46d7d9f6/header.jpg"
+            alt="Teenage Mutant Ninja Turtles: Empire City VR key art with the four turtles"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[13px] mb-4"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Developer: nDreams | Platform: Quest, PC VR | Released: April 30, 2026
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          The turtles arrived in VR. Empire City is a physics-driven beat
+          &lsquo;em up where you can play as any of the four turtles, with
+          two-handed weapons that actually feel weighty in your grip. The
+          co-op delivers the cartoon energy fans wanted. Read our{" "}
+          <a
+            href="/articles/tmnt-empire-city-vr-launch-day-first-impressions"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            launch-day impressions
+          </a>{" "}
+          for our full take.
+        </p>
+
+        {/* One More Delve */}
+        <h3 className="font-display text-xl font-semibold mb-2">
+          One More Delve
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://img.youtube.com/vi/EPcCWR3DTIw/maxresdefault.jpg"
+            alt="One More Delve indie VR dungeon crawler co-op gameplay"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[13px] mb-4"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Developer: Solo dev (with friends) | Platform: Quest, PC VR | Released: April 28, 2026
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          The surprise of the year. A largely solo-developed three-player
+          co-op dungeon crawler with real physics, hand-made levels, and a
+          polish level that embarrassed several big-studio releases this
+          spring. Proof that one developer with the right idea can still
+          carve out a real moment in VR. Our full{" "}
+          <a
+            href="/articles/one-more-delve-launch-solo-student-vr-dungeon-crawler"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            launch coverage and review
+          </a>{" "}
+          has the details.
+        </p>
+
         {/* Ad: after New Releases, before Most Anticipated */}
         <div className="my-8">
           <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
@@ -308,11 +418,14 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Nobody knows for certain what Valve is planning to launch alongside
-          the Steam Frame headset, but the VR community is hoping for
-          something in the Half-Life universe. Even if it&apos;s not
-          Half-Life 3, a first-party Valve VR title bundled with new hardware
-          could be the biggest VR gaming moment since Alyx.
+          The new Steam Controller ships May 4, 2026 for $99, the first
+          piece of Valve&apos;s hardware lineup to actually leave the lab.
+          Steam Frame is still TBA, but the on-time controller launch is
+          a real signal that the headset is shipping this year. Nobody
+          knows what Valve plans to launch alongside it, but the community
+          is hoping for something in the Half-Life universe. A first-party
+          Valve VR title bundled with new hardware could be the biggest
+          VR gaming moment since Alyx.
         </p>
 
         {/* Star Trek: Infection */}
@@ -336,27 +449,6 @@ export default function BestVRGames2026Page() {
           beloved franchise with immersive VR gameplay has serious potential.
         </p>
 
-        {/* TMNT VR */}
-        <h3 className="font-display text-xl font-semibold mb-2">
-          TMNT VR
-        </h3>
-        <figure className="fitness-figure">
-          <img
-            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713650/b90ef5253a5ed86410cbbe2915e4286d46d7d9f6/header.jpg"
-            alt="Teenage Mutant Ninja Turtles: Empire City VR key art with the four turtles"
-            loading="lazy"
-          />
-        </figure>
-        <p
-          className="text-[15px] leading-[1.7] mb-8"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          Teenage Mutant Ninja Turtles is coming to VR. Play as all four
-          turtles in what promises to be an action-packed brawler set after
-          the fall of Shredder. If the melee combat is physics-driven and the
-          co-op works well, this could be a huge crowd pleaser.
-        </p>
-
         {/* Aces of Thunder */}
         <h3 className="font-display text-xl font-semibold mb-2">
           Aces of Thunder
@@ -378,27 +470,6 @@ export default function BestVRGames2026Page() {
           this is one of the most anticipated VR titles of the year.
         </p>
 
-        {/* Microsoft Flight Simulator (PSVR 2) */}
-        <h3 className="font-display text-xl font-semibold mb-2">
-          Microsoft Flight Simulator (PSVR 2)
-        </h3>
-        <figure className="fitness-figure">
-          <img
-            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2537590/header.jpg"
-            alt="Microsoft Flight Simulator 2024 cockpit and aircraft key art"
-            loading="lazy"
-          />
-        </figure>
-        <p
-          className="text-[15px] leading-[1.7] mb-8"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          Microsoft Flight Simulator is coming to PSVR 2 in 2026. The flat
-          screen version is already one of the most visually impressive games
-          ever made. In VR, the sense of flight and scale should be
-          extraordinary. This could be a system-seller for PSVR 2.
-        </p>
-
         {/* Ad: after the last anticipated game, before related articles */}
         <div className="my-8">
           <AdSlot slot={AD_SLOTS.pillar} format="auto" />
@@ -412,13 +483,16 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Steam Frame launch is the wild card for 2026. If Valve delivers
-          a strong standalone headset with a compelling launch title, it
-          could expand the VR gaming audience significantly and give
-          developers a reason to invest more heavily in VR exclusive content.
-          The Quest platform continues to dominate in install base, but
-          SteamVR&apos;s library depth and the enthusiast PC VR audience
-          remain critical for pushing the medium forward.
+          The Steam Frame launch is still the wild card for the back half
+          of 2026. With the new Steam Controller now shipping on May 4, the
+          path to a Frame launch later this year looks more credible than
+          it did a few months ago. If Valve delivers a strong standalone
+          headset with a compelling launch title, it could expand the VR
+          gaming audience significantly and give developers a reason to
+          invest more heavily in VR exclusive content. Quest continues to
+          dominate in install base, but SteamVR&apos;s library depth and
+          the enthusiast PC VR audience remain critical for pushing the
+          medium forward.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
