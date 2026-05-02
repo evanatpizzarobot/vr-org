@@ -147,12 +147,6 @@ ${articleUrls}
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://vr.org/agent-fair-trade</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://vr.org/privacy</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
