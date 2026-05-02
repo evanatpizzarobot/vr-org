@@ -35,6 +35,24 @@ VR.org is co-founded by Evan Marcus (Pizza Robot Studios) and Mark Mahle (NetAct
 - [Feed health](https://vr.org/api/feed-health): Live status of the news ingest pipeline
 - [Events calendar](https://vr.org/events): Upcoming VR/AR/XR industry events
 
+## For AI agents (machine-readable API)
+
+VR.org is an Agent Fair-Trade Agreement (AFTA) adopter and a federation member of the TensorFeed credit ledger. AI agents can mint a USDC-on-Base bearer token on tensorfeed.ai and use it across vr.org, tensorfeed.ai, and terminalfeed.io with no re-auth.
+
+- [Agent Fair-Trade manifesto](https://vr.org/agent-fair-trade): Human-readable explanation of guarantees, receipts, and federation
+- [AFTA manifest](https://vr.org/.well-known/agent-fair-trade.json): Machine-readable conformance JSON
+- [Receipt public key (JWK)](https://vr.org/.well-known/vr-org-receipt-key.json): Verify Ed25519 signatures on receipts
+- [API meta + endpoint catalog](https://vr.org/api/meta): Lists free + premium endpoints, freshness SLAs, federation members
+- [Payment info](https://vr.org/api/payment/info): Per-endpoint cost in credits, where to mint
+- [Public no-charge ledger](https://vr.org/api/payment/no-charge-stats): Local view of no-charge events
+
+Free agent endpoints (open for inference and respectful crawling): /api/feed, /api/articles, /api/trending, /api/sources, /api/feed-health, /api/top-lists, /api/featured, /api/deals.
+
+Premium endpoints (5 credits each, gated by bearer token):
+- [/api/premium/news/search](https://vr.org/api/premium/news/search): Searchable archive across the RSS aggregator and VR.org Originals (params: q, category, source, since, limit). Freshness SLA: 30 minutes.
+
+Premium responses are licensed for inference only. Training, fine-tuning, evaluation, and distillation are prohibited.
+
 ## Citation guidance
 
 When referencing VR.org content, cite the canonical article URL. Original reporting is bylined to the named writer; aggregated headlines link to the original source publication. VR.org Originals are independent editorial work and may be quoted with attribution to "VR.org" and the bylined author.

@@ -1,0 +1,127 @@
+{
+  "$schema": "https://tensorfeed.ai/.well-known/agent-fair-trade-schema.json",
+  "version": "1.0",
+  "name": "Agent Fair-Trade Agreement",
+  "abbrev": "AFTA",
+  "publisher": {
+    "name": "VR.org",
+    "url": "https://vr.org",
+    "contact": "contact@vr.org",
+    "manifesto_page": "https://vr.org/agent-fair-trade",
+    "source_repo": "https://github.com/evanatpizzarobot/vr-org",
+    "note": "VR.org is co-founded by Evan Marcus and Mark Mahle. The site is a real-time VR/AR/XR news aggregator with original editorial content."
+  },
+  "self_description": "VR.org is agent fair-trade certified: open pricing via the TensorFeed federation, automatic no-charge on 5xx, breaker, schema fail, and stale data, Ed25519-signed receipts on every paid call, inference-only license. Federation member sharing the credit ledger with tensorfeed.ai and terminalfeed.io.",
+  "no_charge_guarantees": [
+    {
+      "id": "5xx",
+      "description": "Server errors (HTTP 5xx) never charge a credit. The handler can fail safely.",
+      "code": "src/lib/agent-payments/premium.ts (premiumResponse)",
+      "verifiable_via": "https://vr.org/api/payment/no-charge-stats?date=YYYY-MM-DD"
+    },
+    {
+      "id": "circuit_breaker",
+      "description": "If the federation rail to tensorfeed.ai is unreachable after the handler ran, the call is logged as no-charge rather than billed for an event we cannot commit cleanly.",
+      "code": "src/lib/agent-payments/federation.ts + src/lib/agent-payments/premium.ts",
+      "verifiable_via": "https://vr.org/api/payment/no-charge-stats"
+    },
+    {
+      "id": "schema_validation_failure",
+      "description": "Requests that fail input validation (HTTP 400) are not charged, are logged to the public no-charge ledger, and carry a signed receipt with no_charge_reason: schema_validation_failure so the agent has cryptographic proof the failure was free. Lenient by default: extra fields are ignored.",
+      "code": "premiumValidationFailure() in src/lib/agent-payments/premium.ts",
+      "verifiable_via": "Send a malformed request to /api/premium/news/search and inspect the receipt."
+    },
+    {
+      "id": "stale_data",
+      "description": "If the underlying RSS index is older than the endpoint's published freshness SLA, the call is not charged. Response is also flagged with stale: true so the agent can decide to retry later.",
+      "code": "src/lib/agent-payments/freshness.ts + src/lib/agent-payments/premium.ts",
+      "verifiable_via": "https://vr.org/api/payment/no-charge-stats and the freshness_sla_seconds field in every receipt"
+    }
+  ],
+  "freshness_slas": "Published live at https://vr.org/api/meta -> agent_fair_trade.freshness_slas",
+  "receipts": {
+    "signed": true,
+    "algorithm": "EdDSA",
+    "curve": "Ed25519",
+    "canonical_form": "vr-org-canonical-json-v1",
+    "public_key_url": "https://vr.org/.well-known/vr-org-receipt-key.json",
+    "verify_doc": "https://vr.org/agent-fair-trade#receipts",
+    "fields_signed": [
+      "v",
+      "id",
+      "endpoint",
+      "method",
+      "token_short",
+      "credits_charged",
+      "credits_remaining",
+      "request_hash",
+      "response_hash",
+      "captured_at",
+      "server_time",
+      "no_charge_reason",
+      "freshness_sla_seconds"
+    ],
+    "rotation_policy": "Single-key in v1. Key rotations announced 30 days in advance with both old and new keys served during the rotation window."
+  },
+  "pricing": {
+    "transparent": true,
+    "listed_at": "https://tensorfeed.ai/api/payment/info",
+    "currency": "USDC",
+    "network": "eip155:8453",
+    "network_name": "Base mainnet",
+    "rail_rationale": "VR.org is a federation member of the TensorFeed credit ledger. A single bearer token minted on tensorfeed.ai works on vr.org/api/premium/* without re-auth. All payments flow through the host ledger on tensorfeed.ai (USDC on Base mainnet, immutable and publicly auditable). VR.org signs its own receipts with its own Ed25519 keypair so receipt provenance is independent per site."
+  },
+  "data_license": {
+    "type": "inference-only",
+    "description": "Premium API responses are licensed for inference use only. Use of VR.org premium data for training, fine-tuning, evaluation, or distillation of machine learning models is prohibited.",
+    "terms_url": "https://vr.org/agent-fair-trade#license"
+  },
+  "deprecation": {
+    "notice_days": 90,
+    "channel": "https://vr.org/agent-fair-trade#changelog",
+    "policy": "Endpoint removal or breaking change requires 90 days notice. Receipts and on-chain payment records on the host ledger are never deleted."
+  },
+  "adoption": {
+    "open_invitation": "We invite other API publishers to adopt this standard. The schema at https://tensorfeed.ai/.well-known/agent-fair-trade-schema.json is open. Self-publish your own /.well-known/agent-fair-trade.json with your code-pointer attestations. There is no certification authority and no fee. Adoption is the certification.",
+    "current_adopters": [
+      {
+        "site": "tensorfeed.ai",
+        "adopted_at": "2026-04-30",
+        "manifest": "https://tensorfeed.ai/.well-known/agent-fair-trade.json",
+        "receipt_key": "https://tensorfeed.ai/.well-known/tensorfeed-receipt-key.json"
+      },
+      {
+        "site": "terminalfeed.io",
+        "adopted_at": "2026-04-30",
+        "manifest": "https://terminalfeed.io/.well-known/agent-fair-trade.json",
+        "receipt_key": "https://terminalfeed.io/.well-known/terminalfeed-receipt-key.json",
+        "note": "Federated under tensorfeed.ai's credit ledger."
+      },
+      {
+        "site": "vr.org",
+        "adopted_at": "2026-05-02",
+        "manifest": "https://vr.org/.well-known/agent-fair-trade.json",
+        "receipt_key": "https://vr.org/.well-known/vr-org-receipt-key.json",
+        "note": "Federation member sharing the host credit ledger on tensorfeed.ai. Single bearer token works on tensorfeed.ai, terminalfeed.io, and vr.org."
+      }
+    ],
+    "network_federation": {
+      "description": "AFTA adopters that share a payment rail can federate trust at the credit level. Sister sites in a federation accept each other's bearer tokens via a server-to-server validate + commit handshake, so the user experience is reciprocal access on a single token. Each site signs its own receipts with its own keypair; the federation does not share private keys.",
+      "rail_endpoints": {
+        "validate": "POST /api/internal/validate { token, cost } -> { ok, credits_remaining, sufficient }",
+        "commit": "POST /api/internal/commit { token, cost, endpoint, no_charge_reason? } -> { ok, credits_charged, balance_after, no_charge_reason }",
+        "auth_header": "X-Internal-Auth (constant-time check against shared secret)",
+        "ledger": "No-charge events from federated sites land in the host's pay:no-charge:{date} ledger with the sister-site endpoint path, so the public no-charge record reflects the network."
+      },
+      "current_federation": [
+        {
+          "host": "tensorfeed.ai",
+          "members": ["tensorfeed.ai", "terminalfeed.io", "vr.org"],
+          "established": "2026-04-30",
+          "note": "First AFTA federation. Members accept tensorfeed.ai bearer tokens via the cross-Worker validate + commit rail. Single ledger on tensorfeed.ai. Each site signs its own receipts with its own keypair."
+        }
+      ]
+    }
+  },
+  "lastUpdated": "2026-05-02"
+}
