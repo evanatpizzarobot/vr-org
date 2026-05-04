@@ -75,7 +75,7 @@ export default function PrivacyPage() {
           <a href="/deals" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
             deals page
           </a>
-          {" "}and make a qualifying purchase, we may earn a small commission at no additional cost to you. Other retailer links (B&amp;H Photo, Bigscreen, direct manufacturer sites) are provided as a convenience and do not currently generate commissions for VR.org.
+          {" "}and make a qualifying purchase, we may earn a small commission at no additional cost to you. Other retailer links (Bigscreen, direct manufacturer sites) are provided as a convenience and do not currently generate commissions for VR.org.
         </p>
         <p className="text-[15px] leading-[1.7] mb-8" style={{ color: "var(--text-secondary)" }}>
           Affiliate relationships do not influence our editorial coverage. Product recommendations are made by our editors based on hands-on testing, research, and industry expertise. Articles on VR.org do not contain affiliate links; all affiliate links live on the dedicated /deals page.

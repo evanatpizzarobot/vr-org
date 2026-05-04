@@ -1451,7 +1451,6 @@ nav::-webkit-scrollbar {
 }
 
 .deal-btn-amazon { background: #ff9900; color: #111; }
-.deal-btn-bh { background: #0066cc; }
 .deal-btn-meta { background: #0081fb; }
 .deal-btn-zybervr { background: #22c55e; color: #111; }
 .deal-btn-direct { background: var(--accent-cyan); color: var(--bg-ink); }

@@ -33,7 +33,6 @@ export const metadata: Metadata = {
 function buttonClassForKey(key: string): string {
   switch (key) {
     case "amazon": return "deal-btn deal-btn-amazon";
-    case "bh": return "deal-btn deal-btn-bh";
     case "meta": return "deal-btn deal-btn-meta";
     case "zybervr": return "deal-btn deal-btn-zybervr";
     case "direct": return "deal-btn deal-btn-direct";
