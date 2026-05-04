@@ -583,7 +583,7 @@ export default function BestVRHeadsetsPage() {
         </h3>
         <figure className="fitness-figure">
           <img
-            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1010210/header.jpg"
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1271440/header.jpg"
             alt="HP Reverb G2 PC VR headset official product image"
             loading="lazy"
           />
