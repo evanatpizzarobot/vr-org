@@ -62,3 +62,19 @@ data/*
 
 # duplicate nested dir
 vr-org/
+
+# Local-only docs and specs (Pizza Robot Studios public-repo rule)
+# This is a PUBLIC repo: markdown and spec/design/plan files stay local only.
+*.md
+*.markdown
+CLAUDE.md
+README.md
+NOTES.md
+ROADMAP.md
+CHANGELOG.md
+SPEC/
+specs/
+spec/
+docs/
+design/
+plans/
