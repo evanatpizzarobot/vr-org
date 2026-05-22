@@ -1,6 +1,6 @@
 {
   "_comment": "Page refresh registry for the VR.org maintenance audit. Each page lists its file path, refresh cadence in days, and a one-line refresh checklist. Run `npm run audit:pages` to see what is overdue.",
-  "policy": "Best-of and pillar pages drive the majority of vr.org traffic. They must be refreshed on the cadence below. Real content edits required, not just dateModified bumps (Google's freshness signals discount unchanged content).",
+  "policy": "Best-of and pillar pages drive the majority of vr.org traffic. They must be refreshed on the cadence below. Real content edits required, not just dateModified bumps (Google's freshness signals discount unchanged content). Category hubs auto-fill from articles.json, but featured pins in data/featured.json, on-page descriptions, and CATEGORY_GUIDES links in src/components/CategoryHub.tsx all rot independently and need weekly verification.",
   "pages": [
     {
       "path": "/best-vr-headsets",
@@ -103,35 +103,154 @@
       "path": "/best-of",
       "file": "src/app/best-of/page.tsx",
       "category": "hub",
-      "cadenceDays": 60,
-      "lastRefreshed": "2026-05-02",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
       "checklist": [
         "Hub page; verify card grid links match the live pillar pages",
-        "Update card descriptions if a pillar page shifts focus"
+        "Update card descriptions if a pillar page shifts focus",
+        "Scan for new VR products (headsets, accessories, AR glasses) that could displace a current pillar pick"
       ]
     },
     {
       "path": "/deals",
       "file": "src/app/deals/page.tsx",
       "category": "commercial",
-      "cadenceDays": 14,
-      "lastRefreshed": "2026-04-24",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
       "checklist": [
         "Source of truth is data/deals.json, not the page",
         "Verify every product is still in stock and price is within ~10% of listed",
-        "Add new launches (e.g. Steam Controller after May 4) and remove EOL items"
+        "Scan for new VR product launches in the last 7d (headsets, AR glasses, controllers, accessories) and add the worthwhile ones",
+        "GPU prices are volatile through the DRAM cycle; spot-check Newegg / Amazon listings",
+        "Remove EOL or out-of-stock items"
       ]
     },
     {
       "path": "/events",
       "file": "src/app/events/page.tsx",
       "category": "schedule",
-      "cadenceDays": 14,
-      "lastRefreshed": "2026-04-17",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
       "checklist": [
-        "Source of truth is data/events.json",
+        "Source of truth is data/events.json (EventsCalendar auto-buckets past vs upcoming)",
         "Add upcoming VR / AR conferences and game launches",
-        "Mark or remove past events"
+        "Prune events older than ~90 days from the JSON to keep the file small",
+        "Verify featured: true is set on the marquee events (CES, GDC, WWDC, Connect, AWE, Gamescom)"
+      ]
+    },
+    {
+      "path": "/hardware",
+      "file": "src/app/hardware/page.tsx",
+      "category": "category-hub",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
+      "checklist": [
+        "Verify hardware-category featured pins in data/featured.json are not expired (expiresAt > today)",
+        "Sanity-check the on-page description (HardwarePage in page.tsx) still names the right headset families",
+        "Confirm CATEGORY_GUIDES['hardware'] in src/components/CategoryHub.tsx links to current pillar pages",
+        "Spot-check the live feed; if no new hardware articles in 7d, investigate bot/source health"
+      ]
+    },
+    {
+      "path": "/gaming",
+      "file": "src/app/gaming/page.tsx",
+      "category": "category-hub",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
+      "checklist": [
+        "Verify gaming-category featured pins in data/featured.json are not expired",
+        "Sanity-check the on-page description in src/app/gaming/page.tsx",
+        "Confirm CATEGORY_GUIDES['gaming'] in src/components/CategoryHub.tsx still points at the best-vr-games pillars",
+        "Spot-check the live feed for gaps in coverage of a major release week"
+      ]
+    },
+    {
+      "path": "/software",
+      "file": "src/app/software/page.tsx",
+      "category": "category-hub",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
+      "checklist": [
+        "Verify software-category featured pins in data/featured.json are not expired",
+        "Sanity-check the on-page description in src/app/software/page.tsx",
+        "Confirm CATEGORY_GUIDES['software'] in src/components/CategoryHub.tsx (best-vr-apps, best-vr-fitness) is current",
+        "If visionOS / Horizon OS / Android XR has shipped a major release, reflect it in the description"
+      ]
+    },
+    {
+      "path": "/enterprise",
+      "file": "src/app/enterprise/page.tsx",
+      "category": "category-hub",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
+      "checklist": [
+        "Verify enterprise-category featured pins in data/featured.json are not expired (currently rotating slowly)",
+        "Sanity-check the on-page description in src/app/enterprise/page.tsx",
+        "GAP: CATEGORY_GUIDES has no 'enterprise' entry in src/components/CategoryHub.tsx; add one when a relevant pillar page exists",
+        "Spot-check the live feed; enterprise has lower article volume so a sparse week is normal"
+      ]
+    },
+    {
+      "path": "/ar",
+      "file": "src/app/ar/page.tsx",
+      "category": "category-hub",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
+      "checklist": [
+        "Verify AR-category featured pins in data/featured.json are not expired",
+        "Sanity-check the on-page description in src/app/ar/page.tsx",
+        "Confirm CATEGORY_GUIDES['ar'] in src/components/CategoryHub.tsx points at ar-glasses and a relevant headset pillar",
+        "AR moves fast; if a major device shipped this week (Ray-Ban, Rokid, Xreal, Samsung), make sure coverage landed"
+      ]
+    },
+    {
+      "path": "/xr",
+      "file": "src/app/xr/page.tsx",
+      "category": "category-hub",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
+      "checklist": [
+        "Verify XR-category featured pins in data/featured.json are not expired",
+        "Sanity-check the on-page description in src/app/xr/page.tsx",
+        "Confirm CATEGORY_GUIDES['xr'] in src/components/CategoryHub.tsx is still relevant",
+        "Spot-check the live feed; XR overlaps heavily with AR so volume should be steady"
+      ]
+    },
+    {
+      "path": "/originals",
+      "file": "src/app/originals/page.tsx",
+      "category": "category-hub",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-05-21",
+      "checklist": [
+        "Verify at least one new VR.org original has published in the last 7d (originals is the editorial differentiator)",
+        "If the last original is > 14d old, treat as overdue and queue a piece",
+        "Sanity-check the on-page description in src/app/originals/page.tsx",
+        "Confirm featured original articles are routing through the editorial pin path (not RSS featured)"
+      ]
+    },
+    {
+      "path": "/about",
+      "file": "src/app/about/page.tsx",
+      "category": "static",
+      "cadenceDays": 180,
+      "lastRefreshed": "2026-05-21",
+      "checklist": [
+        "Verify team / contributor list is current (no departed staff still listed)",
+        "Confirm contact info, social links, and editorial-policy statement still match reality",
+        "Update mission / about copy only when the publication's positioning meaningfully shifts"
+      ]
+    },
+    {
+      "path": "/privacy",
+      "file": "src/app/privacy/page.tsx",
+      "category": "static",
+      "cadenceDays": 365,
+      "lastRefreshed": "2026-05-21",
+      "checklist": [
+        "Annual legal review; verify Amazon Associates disclosure language matches the program agreement",
+        "Verify analytics / ad-network vendors listed match what is actually loaded in src/components",
+        "Update the 'last updated' line on the page itself when the policy substantively changes"
       ]
     }
   ]

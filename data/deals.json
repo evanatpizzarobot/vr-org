@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-24",
+  "lastUpdated": "2026-05-21",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -11,17 +11,26 @@
           "name": "Meta Quest 3S (128GB)",
           "price": "$349",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Meta_Quest_3S_Display_Unit.jpg/1280px-Meta_Quest_3S_Display_Unit.jpg",
-          "description": "The best entry-level VR headset. Great mixed reality, solid game library, no PC required.",
-          "badge": "Best Value",
+          "description": "The best entry-level standalone VR headset. Great mixed reality, solid game library, no PC required. Up $50 since April's memory-driven price adjustment.",
+          "badge": "Best Standalone Value",
           "links": {
             "amazon": { "url": "https://amazon.com/dp/B0DG79992W?tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "Meta Quest 3S (256GB)",
+          "price": "$449",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Meta_Quest_3S_Display_Unit.jpg/1280px-Meta_Quest_3S_Display_Unit.jpg",
+          "description": "Same Quest 3S hardware with double the storage. Worth the upgrade if you keep more than a handful of games installed.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3s+256gb&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
           "name": "Meta Quest 3 (512GB)",
           "price": "$599",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Meta_Quest_3_display_unit.jpg/1280px-Meta_Quest_3_display_unit.jpg",
-          "description": "The full-featured Quest. Better lenses, more storage, best standalone VR experience available.",
+          "description": "The full-featured Quest. Better lenses, more storage, best standalone VR experience available. Up $100 after Meta's April memory-driven price adjustment.",
           "badge": "Editor's Pick",
           "links": {
             "amazon": { "url": "https://amazon.com/dp/B0CHBMVP8Q?tag=vrorg00-20", "label": "Amazon" }
@@ -29,11 +38,21 @@
         },
         {
           "name": "PlayStation VR2",
-          "price": "$549",
+          "price": "$399",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/PSVR2.png/1280px-PSVR2.png",
-          "description": "Best console VR. Eye tracking, haptic feedback, and incredible PS5 exclusives like Horizon Call of the Mountain.",
+          "description": "The best VR hardware value after Meta's April hike. OLED, eye tracking, foveated rendering, headset rumble, adaptive-trigger controllers. Needs a PS5; if you already own one, this is the deal of the year.",
+          "badge": "Best VR Value",
           "links": {
             "amazon": { "url": "https://amazon.com/dp/B0BNR3KTLL?tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "Samsung Galaxy XR",
+          "price": "$1,799",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Samsung-Mobile-XR-Project-Moohan-Android-XR-platform-Google_main1.jpg/960px-Samsung-Mobile-XR-Project-Moohan-Android-XR-platform-Google_main1.jpg",
+          "description": "Samsung's premium Android XR headset and Google's flagship for the platform. Eye tracking, hand tracking, Gemini-powered spatial AI. The most credible Vision Pro alternative in the Android ecosystem.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=samsung+galaxy+xr&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
@@ -193,8 +212,18 @@
     {
       "id": "gaming-hardware",
       "title": "Gaming Hardware",
-      "description": "VR-ready GPU recommendations for PC VR gaming.",
+      "description": "VR-ready GPUs and Steam-platform peripherals for PC VR gaming. GPU prices reflect retail averages and have been volatile through the 2025-2026 DRAM cycle.",
       "items": [
+        {
+          "name": "Valve Steam Controller (2026)",
+          "price": "$99",
+          "image": "https://img.youtube.com/vi/a55UIaiTE-A/maxresdefault.jpg",
+          "description": "Valve's new flagship controller. TMR magnetic thumbsticks that eliminate stick drift, dual haptic trackpads, 6-axis gyro, Grip Sense, 35+ hour battery. Paired natively with the upcoming Steam Frame headset. Steam store exclusive, no retail.",
+          "badge": "New",
+          "links": {
+            "direct": { "url": "https://store.steampowered.com/sale/steamcontroller", "label": "Steam" }
+          }
+        },
         {
           "name": "NVIDIA RTX 5090",
           "price": "~$1,999",

@@ -94,7 +94,7 @@ const CARDS: BestOfCard[] = [
   {
     title: "Best VR Headsets 2026",
     description:
-      "Our picks for the top VR headsets you can buy today. Quest 3, PSVR2, Vision Pro, and more.",
+      "Our picks for the top VR headsets you can buy today. Quest 3, PSVR2, Vision Pro, Galaxy XR, Bigscreen Beyond 2, and what's next.",
     href: "/best-vr-headsets",
     badge: "Hardware",
     badgeColor: "var(--accent-cyan)",
@@ -142,7 +142,7 @@ const CARDS: BestOfCard[] = [
   {
     title: "VR Gear We Recommend",
     description:
-      "Curated picks for headsets, accessories, and gaming PCs with the best prices.",
+      "Curated picks for headsets, accessories, GPUs, and Steam peripherals at current prices.",
     href: "/deals",
     badge: "Deals",
     badgeColor: "var(--accent-orange)",

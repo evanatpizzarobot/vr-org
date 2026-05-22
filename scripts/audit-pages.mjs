@@ -14,8 +14,13 @@ import fs from "node:fs";
 import path from "node:path";
 
 const REGISTRY_PATH = path.join(process.cwd(), "data", "page-maintenance.json");
-const DUE_SOON_BUFFER_DAYS = 7;
+const DUE_SOON_BUFFER_CAP_DAYS = 7;
 const onlyDue = process.argv.includes("--due");
+
+// Warn proportionally to cadence: weekly pages get ~2d notice, monthly+ get 7d.
+function dueSoonBuffer(cadenceDays) {
+  return Math.min(DUE_SOON_BUFFER_CAP_DAYS, Math.max(1, Math.ceil(cadenceDays / 4)));
+}
 
 const registry = JSON.parse(fs.readFileSync(REGISTRY_PATH, "utf-8"));
 const today = new Date();
@@ -41,9 +46,10 @@ for (const page of registry.pages) {
   const refreshed = new Date(sourceDate + "T00:00:00Z");
   const ageDays = daysBetween(today, refreshed);
   const overdueBy = ageDays - page.cadenceDays;
+  const buffer = dueSoonBuffer(page.cadenceDays);
   let status;
   if (overdueBy > 0) status = "OVERDUE";
-  else if (overdueBy >= -DUE_SOON_BUFFER_DAYS) status = "DUE SOON";
+  else if (overdueBy >= -buffer) status = "DUE SOON";
   else status = "fresh";
   rows.push({
     path: page.path,
@@ -89,7 +95,7 @@ if (overdue.length > 0) {
 }
 
 if (dueSoon.length > 0) {
-  console.log("DUE SOON  (within " + DUE_SOON_BUFFER_DAYS + " days)");
+  console.log("DUE SOON  (warn window scales with cadence)");
   console.log("-".repeat(70));
   for (const r of dueSoon) console.log("  " + fmt(r));
   console.log("");
