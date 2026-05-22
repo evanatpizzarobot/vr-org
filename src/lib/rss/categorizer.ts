@@ -21,6 +21,8 @@ const CATEGORY_RULES: Record<string, string[]> = {
     "education", "manufacturing", "retail", "architecture", "simulation",
     "digital twin", "remote", "collaboration", "productivity", "investment",
     "funding", "acquisition", "market", "revenue", "earnings", "report", "analyst",
+    "workplace", "deployment", "rollout", "pilot", "b2b", "roi", "vendor",
+    "case study", "fortune 500", "logistics", "defense", "aerospace",
   ],
   ar: [
     "augmented reality", "ar ", "ar,", "smart glasses", "hologram",
@@ -31,6 +33,10 @@ const CATEGORY_RULES: Record<string, string[]> = {
     "xr", "extended reality", "mixed reality", "spatial computing",
     "android xr", "webxr", "openxr", "xr headset", "xr development",
     "xr platform", "immersive", "passthrough", "pass-through",
+    "vision pro", "visionos", "galaxy xr", "horizon os", "horizon worlds",
+    "meta quest", "quest pro", "quest 3", "spatial", "vr headset",
+    "mr headset", "vr/ar", "ar/vr", "ar/xr", "vr and ar", "ar and vr",
+    "steam frame", "steamvr", "pico", "bigscreen beyond",
   ],
 };
 
