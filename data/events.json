@@ -1,29 +1,5 @@
 [
   {
-    "id": "ces-2026",
-    "name": "CES 2026",
-    "description": "The world's largest consumer technology trade show. Major venue for XR headset reveals, AR glasses, spatial computing hardware, and immersive display innovations.",
-    "startDate": "2026-01-06",
-    "endDate": "2026-01-09",
-    "location": "Las Vegas, NV",
-    "venue": "Las Vegas Convention Center",
-    "url": "https://www.ces.tech/",
-    "category": "expo",
-    "featured": true
-  },
-  {
-    "id": "spie-ar-vr-mr-2026",
-    "name": "SPIE AR/VR/MR 2026",
-    "description": "Exhibition and conference focused on optics and photonics for augmented, virtual, and mixed reality. Part of SPIE Photonics West, covering displays, waveguides, sensors, and optical components for XR hardware.",
-    "startDate": "2026-01-20",
-    "endDate": "2026-01-22",
-    "location": "San Francisco, CA",
-    "venue": "Moscone Center",
-    "url": "https://spie.org/conferences-and-exhibitions/photonics-west",
-    "category": "expo",
-    "featured": false
-  },
-  {
     "id": "mwc-barcelona-2026",
     "name": "MWC Barcelona 2026",
     "description": "Mobile World Congress showcasing XR devices, 5G-powered immersive experiences, AR smart glasses, and enterprise spatial computing from global telcos and tech companies.",
@@ -308,18 +284,6 @@
     "location": "Lisbon, Portugal",
     "venue": "MEO Arena",
     "url": "https://websummit.com/",
-    "category": "conference",
-    "featured": false
-  },
-  {
-    "id": "awe-asia-2026",
-    "name": "AWE Asia 2026",
-    "description": "Asia-Pacific edition of the Augmented World Expo, covering enterprise XR, spatial computing, and immersive technology across the APAC market.",
-    "startDate": "2026-02-02",
-    "endDate": "2026-02-04",
-    "location": "Singapore",
-    "venue": "Singapore Expo",
-    "url": "https://www.aweasia.com/",
     "category": "conference",
     "featured": false
   },

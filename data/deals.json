@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-21",
+  "lastUpdated": "2026-05-24",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -82,6 +82,17 @@
       "title": "AR / XR Glasses",
       "description": "Smart glasses and wearable displays for mixed reality, media, and on-the-go computing.",
       "items": [
+        {
+          "name": "ROG Xreal R1",
+          "price": "$849",
+          "image": "https://us.shop.xreal.com/cdn/shop/files/XREAL_ROG___2400x2400_01_db14182b-1e05-4107-8e97-56dc97d0f14f.jpg?v=1778653953",
+          "description": "The first 240Hz micro-OLED AR glasses, built for gamers. 171-inch virtual screen, Sony micro-OLED panels, Bose-tuned audio, and a control dock that hot-swaps between PC, Xbox, and PlayStation. Preorders open, ships June 1.",
+          "badge": "Just Launched",
+          "links": {
+            "bestbuy": { "url": "https://www.bestbuy.com/", "label": "Best Buy" },
+            "direct": { "url": "https://us.shop.xreal.com/products/rog-xreal-r1", "label": "Xreal" }
+          }
+        },
         {
           "name": "Ray-Ban Meta (Gen 2)",
           "price": "$379",
