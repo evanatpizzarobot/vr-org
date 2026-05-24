@@ -22,26 +22,33 @@ export async function GET(request: NextRequest) {
       : articles.filter((a) => a.featured);
   }
 
-  // Mix mode: pick articles that maximize writer + category diversity
+  // Mix mode: prioritize all articles from today (so a busy publish day
+  // never hides a piece), then fill remaining slots with the
+  // diversity-maximizing algorithm against older content.
   if (mix === "true" && limit > 0) {
-    const picked: typeof articles = [];
-    const usedAuthors = new Set<string>();
-    const usedCategories = new Set<string>();
+    const todayIso = new Date().toISOString().slice(0, 10);
+    const todayArticles = articles.filter((a) => a.publishDate === todayIso);
+    const olderArticles = articles.filter((a) => a.publishDate !== todayIso);
 
-    // Pass 1: one article per unique author (newest first, already sorted)
-    for (const a of articles) {
+    const picked: typeof articles = todayArticles.slice(0, limit);
+    const pickedIds = new Set(picked.map((p) => p.id));
+    const usedAuthors = new Set(picked.map((p) => p.author));
+    const usedCategories = new Set(picked.map((p) => p.category));
+
+    // Pass 1: one older article per unique author
+    for (const a of olderArticles) {
       if (picked.length >= limit) break;
       if (!usedAuthors.has(a.author)) {
         usedAuthors.add(a.author);
         usedCategories.add(a.category);
         picked.push(a);
+        pickedIds.add(a.id);
       }
     }
 
     // Pass 2: fill remaining slots preferring unseen categories
     if (picked.length < limit) {
-      const pickedIds = new Set(picked.map((p) => p.id));
-      for (const a of articles) {
+      for (const a of olderArticles) {
         if (picked.length >= limit) break;
         if (!pickedIds.has(a.id) && !usedCategories.has(a.category)) {
           usedCategories.add(a.category);
@@ -49,8 +56,11 @@ export async function GET(request: NextRequest) {
           pickedIds.add(a.id);
         }
       }
-      // Pass 3: fill any remaining with newest unused
-      for (const a of articles) {
+    }
+
+    // Pass 3: fill any remaining with newest unused
+    if (picked.length < limit) {
+      for (const a of olderArticles) {
         if (picked.length >= limit) break;
         if (!pickedIds.has(a.id)) {
           picked.push(a);
