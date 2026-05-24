@@ -97,8 +97,9 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
         </div>
 
         <div className="flex items-center gap-4 flex-shrink-0 ml-auto">
-          {/* Live dot with pulse ring */}
-          <span className="live-dot-wrapper hidden sm:block">
+          {/* Live dot with pulse ring. Hidden until xl (1280px) so it never
+              overlaps the absolutely-centered nav on portrait monitors. */}
+          <span className="live-dot-wrapper hidden xl:block">
             <span
               className="block w-2 h-2 rounded-full relative"
               style={{
@@ -109,14 +110,14 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
             />
           </span>
           <span
-            className="font-mono text-[11px] uppercase tracking-[1.5px] hidden sm:inline"
+            className="font-mono text-[11px] uppercase tracking-[1.5px] hidden xl:inline"
             style={{ color: "var(--accent-green)" }}
           >
             Live
           </span>
           {articleCount > 0 && (
             <span
-              className="font-mono text-xs hidden lg:inline"
+              className="font-mono text-xs hidden min-[1700px]:inline"
               style={{ color: "var(--text-muted)" }}
             >
               {articleCount} articles
@@ -124,7 +125,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
           )}
           {timeStr && (
             <span
-              className="font-mono text-[11px] hidden lg:inline"
+              className="font-mono text-[11px] hidden min-[1700px]:inline"
               style={{ color: "var(--text-muted)" }}
             >
               Updated {timeStr}
