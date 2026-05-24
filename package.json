@@ -8,8 +8,7 @@
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint",
     "check:images": "node scripts/check-article-images.mjs",
-    "audit:pages": "node scripts/audit-pages.mjs",
-    "prepare": "husky"
+    "audit:pages": "node scripts/audit-pages.mjs"
   },
   "dependencies": {
     "next": "15.5.14",
@@ -24,7 +23,6 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9.0.0",
     "eslint-config-next": "15.5.14",
-    "husky": "^9.1.7",
     "postcss": "^8.5.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.7.0"
