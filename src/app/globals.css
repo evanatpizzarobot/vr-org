@@ -650,6 +650,13 @@ nav::-webkit-scrollbar {
   }
 }
 
+/* ===== SHARE BUTTONS ===== */
+.share-btn:hover {
+  border-color: var(--accent-cyan) !important;
+  color: var(--accent-cyan) !important;
+  background: color-mix(in srgb, var(--accent-cyan) 8%, transparent);
+}
+
 /* ===== ARTICLE BODY TYPOGRAPHY ===== */
 .article-body p {
   font-size: 16px;

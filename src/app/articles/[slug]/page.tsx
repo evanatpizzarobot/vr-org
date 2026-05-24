@@ -6,6 +6,7 @@ import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { RelatedArticles } from "@/components/RelatedArticles";
 import { ArticleAd } from "@/components/ArticleAd";
+import { ShareButtons } from "@/components/ShareButtons";
 import { getArticleBySlug, getAllSlugs } from "@/lib/articles";
 import { injectInternalLinks } from "@/lib/internal-links";
 
@@ -175,7 +176,7 @@ export default async function ArticlePage({ params }: PageProps) {
         </h1>
 
         {/* Byline */}
-        <div className="mb-8 pb-8" style={{ borderBottom: "1px solid var(--border)" }}>
+        <div className="mb-6">
           <div className="text-[15px] font-medium">
             By {article.author}
           </div>
@@ -185,6 +186,14 @@ export default async function ArticlePage({ params }: PageProps) {
           >
             {article.authorRole}
           </div>
+        </div>
+
+        {/* Share buttons */}
+        <div className="pb-8" style={{ borderBottom: "1px solid var(--border)" }}>
+          <ShareButtons
+            url={`https://vr.org/articles/${article.slug}`}
+            title={article.title}
+          />
         </div>
 
         {/* Article body, opening paragraph */}
@@ -203,6 +212,17 @@ export default async function ArticlePage({ params }: PageProps) {
             dangerouslySetInnerHTML={{ __html: splitBody.rest }}
           />
         )}
+
+        {/* Share buttons (post-read) */}
+        <div
+          className="mt-10 pt-6"
+          style={{ borderTop: "1px solid var(--border)" }}
+        >
+          <ShareButtons
+            url={`https://vr.org/articles/${article.slug}`}
+            title={article.title}
+          />
+        </div>
 
         {/* Ad after article body */}
         <ArticleAd />
