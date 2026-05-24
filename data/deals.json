@@ -66,6 +66,24 @@
           }
         },
         {
+          "name": "Pimax Crystal Light",
+          "price": "$899",
+          "image": "https://pimax.com/cdn/shop/files/product_pimaxcrystallight_headsetwithcontrollers_2405_00537d9f-5f8a-4ca0-ba20-07de3b678991.webp?v=1754989215&width=1280",
+          "description": "Native 4K per-eye QLED with glass aspheric lenses and 35 PPD. The best PC VR clarity you can buy without going custom. Sim racers and flight sim diehards swear by it.",
+          "links": {
+            "direct": { "url": "https://pimax.com/products/pimax-crystal-light", "label": "Pimax" }
+          }
+        },
+        {
+          "name": "HTC Vive XR Elite",
+          "price": "$899",
+          "image": "https://www.knoxlabs.com/cdn/shop/files/xr-elite-business-edition_1280x.jpg?v=1689718946",
+          "description": "Standalone and PC VR in one compact, glasses-like form factor. Color passthrough mixed reality, 110 degree FOV, and a foldable design that travels well. Now ships with the Deluxe Pack.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/dp/B0D6D5Q5M2?tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
           "name": "Apple Vision Pro (M5)",
           "price": "$3,499",
           "image": "https://www.apple.com/newsroom/images/2025/10/apple-vision-pro-upgraded-with-the-m5-chip-and-dual-knit-band/article/Apple-Vision-Pro-hero-251015.jpg",
@@ -91,6 +109,16 @@
           "links": {
             "bestbuy": { "url": "https://www.bestbuy.com/", "label": "Best Buy" },
             "direct": { "url": "https://us.shop.xreal.com/products/rog-xreal-r1", "label": "Xreal" }
+          }
+        },
+        {
+          "name": "Xreal One Pro",
+          "price": "$599",
+          "image": "https://us.shop.xreal.com/cdn/shop/files/XREAL_One_Pro.jpg?v=1756965858&width=1946",
+          "description": "Xreal's everyday flagship. 120Hz micro-OLED, X1 chip with 3DoF spatial anchoring, Bose-tuned speakers, and Real 3D for stereoscopic 2D conversion. Permanent price drop made these the AR glasses sweet spot.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=xreal+one+pro&tag=vrorg00-20", "label": "Amazon" },
+            "direct": { "url": "https://us.shop.xreal.com/products/xreal-one-pro", "label": "Xreal" }
           }
         },
         {
@@ -149,6 +177,16 @@
           "links": {
             "zybervr": { "url": "https://zybervr.com/", "label": "ZyberVR" },
             "amazon": { "url": "https://amazon.com/s?k=zybervr+battery+head+strap&tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "BoboVR M3 Pro Battery Strap",
+          "price": "$60",
+          "image": "https://www.bobovr.com/cdn/shop/files/20240927-145353.png?v=1727425146&width=2048",
+          "description": "Suspended-design strap with a hot-swappable magnetic battery pack. The reviewer favorite for Quest 3 sessions longer than the stock battery can handle.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/dp/B0CJLG9SBR?tag=vrorg00-20", "label": "Amazon" },
+            "direct": { "url": "https://www.bobovr.com/products/bobovr-m3-pro", "label": "BoboVR" }
           }
         },
         {
@@ -256,12 +294,12 @@
           }
         },
         {
-          "name": "NVIDIA RTX 4080 Super",
-          "price": "~$799",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/ITX_4080S_Expert.jpg/1280px-ITX_4080S_Expert.jpg",
-          "description": "Still a fantastic PC VR card if you can find one in stock. Handles the Beyond 2 at near-native resolution on most titles.",
+          "name": "AMD Radeon RX 9070 XT",
+          "price": "~$629",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Sapphire_Pulse_Radeon_RX_9070_XT_-_L%C3%BCfter_1.jpg/1280px-Sapphire_Pulse_Radeon_RX_9070_XT_-_L%C3%BCfter_1.jpg",
+          "description": "AMD's flagship RDNA 4 card. 16GB of GDDR6, strong ray tracing for the price, and the best non-NVIDIA option for PC VR in 2026. Pairs cleanly with SteamVR and Quest Link.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=rtx+4080+super&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": { "url": "https://amazon.com/s?k=radeon+rx+9070+xt&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
