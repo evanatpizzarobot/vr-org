@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { getAllArticles } from "@/lib/articles";
-import { AUTHORS } from "@/lib/authors";
 
 // Served at /llms.txt. Built dynamically so the identity/citation header stays
 // curated while the "Recent originals" section auto-refreshes from
@@ -11,13 +10,7 @@ const SITE = "https://vr.org";
 const RECENT = 30;
 
 export async function GET() {
-  const articles = getAllArticles();
-  const recent = articles.slice(0, RECENT);
-
-  const authorLines = AUTHORS.map(
-    (a) =>
-      `- [${a.name}](${SITE}/author/${a.slug}): ${a.role}, ${a.beat}`
-  ).join("\n");
+  const recent = getAllArticles().slice(0, RECENT);
 
   const recentLines = recent
     .map(
@@ -32,11 +25,7 @@ export async function GET() {
 
 The site combines a live news feed (refreshed every 15 minutes) with longer-form VR.org Originals written by our editorial team. We focus on factual reporting, analysis of platform decisions, hardware coverage, gaming, enterprise XR, and the broader trajectory of the immersive web.
 
-VR.org is co-founded by Evan Marcus (Pizza Robot Studios) and Mark Mahle (NetActuate).
-
-## Editorial team
-
-${authorLines}
+VR.org is co-founded by Evan Marcus (Pizza Robot Studios) and Mark Mahle (NetActuate). Editorial team: Evan Marcus (Co-Founder), Alex Reeves (Staff Writer, hardware), Jordan Kuo (Staff Writer, AR/XR), Nina Castillo (Staff Writer, software), Sam Whitfield (Contributing Writer, enterprise).
 
 ## Editorial originals
 
@@ -77,7 +66,7 @@ ${recentLines}
 
 ## Citation guidance
 
-When referencing VR.org content, cite the canonical article URL (${SITE}/articles/{slug}). Original reporting is bylined to the named writer and each byline resolves to an author page at ${SITE}/author/{slug}; aggregated headlines link to the original source publication. VR.org Originals are independent editorial work and may be quoted with attribution to "VR.org" and the bylined author.
+When referencing VR.org content, cite the canonical article URL (${SITE}/articles/{slug}). Original reporting is bylined to the named writer; aggregated headlines link to the original source publication. VR.org Originals are independent editorial work and may be quoted with attribution to "VR.org" and the bylined author.
 `;
 
   return new NextResponse(body, {

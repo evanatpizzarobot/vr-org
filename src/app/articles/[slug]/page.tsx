@@ -8,7 +8,6 @@ import { RelatedArticles } from "@/components/RelatedArticles";
 import { ArticleAd } from "@/components/ArticleAd";
 import { ShareButtons } from "@/components/ShareButtons";
 import { getArticleBySlug, getAllSlugs } from "@/lib/articles";
-import { getAuthorByName } from "@/lib/authors";
 import { injectInternalLinks } from "@/lib/internal-links";
 
 interface PageProps {
@@ -85,7 +84,9 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const ogImage = extractFirstImage(article.body) || "https://vr.org/og-image.png";
 
-  const authorInfo = getAuthorByName(article.author);
+  const authorSameAs: Record<string, string[]> = {
+    "Evan Marcus": ["https://x.com/vrdotorg"],
+  };
   const videoId = extractYouTubeId(article.body);
 
   const articleSchema = {
@@ -105,18 +106,14 @@ export default async function ArticlePage({ params }: PageProps) {
       "@type": "Person",
       name: article.author,
       jobTitle: article.authorRole.split(", ")[0],
-      ...(authorInfo
-        ? {
-            "@id": `https://vr.org/author/${authorInfo.slug}#person`,
-            url: `https://vr.org/author/${authorInfo.slug}`,
-          }
-        : {}),
       worksFor: {
         "@type": "Organization",
         name: "VR.org",
         url: "https://vr.org",
       },
-      ...(authorInfo?.sameAs?.length ? { sameAs: authorInfo.sameAs } : {}),
+      ...(authorSameAs[article.author] && {
+        sameAs: authorSameAs[article.author],
+      }),
     },
     publisher: {
       "@type": "Organization",
@@ -219,18 +216,7 @@ export default async function ArticlePage({ params }: PageProps) {
         {/* Byline */}
         <div className="mb-6">
           <div className="text-[15px] font-medium">
-            By{" "}
-            {authorInfo ? (
-              <a
-                href={`/author/${authorInfo.slug}`}
-                className="no-underline hover:underline"
-                style={{ color: "var(--accent-cyan)" }}
-              >
-                {article.author}
-              </a>
-            ) : (
-              article.author
-            )}
+            By {article.author}
           </div>
           <div
             className="text-[13px]"
