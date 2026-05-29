@@ -1,16 +1,94 @@
 import { NextResponse } from "next/server";
+import fs from "fs";
+import path from "path";
 import { getAllArticles } from "@/lib/articles";
 
-const PILLAR_LASTMOD = "2026-04-20";
+// Sitemap with truthful per-page lastmod:
+//   - pillar / static / hub pages read their real lastRefreshed from the
+//     maintenance registry (data/page-maintenance.json), so a refresh there
+//     flows straight through instead of every page sharing one frozen date.
+//   - category hubs use the newest article actually tagged to that category,
+//     not the global newest, so a sparse hub reports its real recency.
+//   - articles use their own updatedDate || publishDate.
+
+const SITE = "https://vr.org";
+
+function registryDates(): Record<string, string> {
+  try {
+    const p = path.join(process.cwd(), "data", "page-maintenance.json");
+    const reg = JSON.parse(fs.readFileSync(p, "utf-8"));
+    const map: Record<string, string> = {};
+    for (const pg of reg.pages || []) {
+      if (pg.path && pg.lastRefreshed) map[pg.path] = pg.lastRefreshed;
+    }
+    return map;
+  } catch {
+    return {};
+  }
+}
 
 export async function GET() {
-  const now = new Date().toISOString().split("T")[0];
   const articles = getAllArticles();
+  const today = new Date().toISOString().split("T")[0];
+  const latest =
+    articles.length > 0
+      ? articles[0].updatedDate || articles[0].publishDate
+      : today;
+  const reg = registryDates();
+
+  // Newest article (category match OR tag match) per category hub.
+  const CATS = ["hardware", "gaming", "software", "enterprise", "ar", "xr"];
+  const catNewest: Record<string, string> = {};
+  for (const c of CATS) {
+    const dates = articles
+      .filter((a) => a.category === c || a.tags.includes(c))
+      .map((a) => a.updatedDate || a.publishDate)
+      .sort();
+    if (dates.length) catNewest[c] = dates[dates.length - 1];
+  }
+
+  const reg_or = (p: string) => reg[p] || latest;
+
+  // [loc, lastmod, changefreq, priority] — same URL set and freq/priority as before.
+  const pages: [string, string, string, string][] = [
+    ["/", latest, "hourly", "1.0"],
+    ["/hardware", catNewest.hardware || latest, "hourly", "0.9"],
+    ["/gaming", catNewest.gaming || latest, "hourly", "0.9"],
+    ["/software", catNewest.software || latest, "hourly", "0.9"],
+    ["/enterprise", catNewest.enterprise || latest, "hourly", "0.9"],
+    ["/ar", catNewest.ar || latest, "hourly", "0.9"],
+    ["/xr", catNewest.xr || latest, "hourly", "0.9"],
+    ["/originals", latest, "weekly", "0.9"],
+    ["/best-of", reg_or("/best-of"), "weekly", "0.9"],
+    ["/events", reg_or("/events"), "monthly", "0.8"],
+    ["/deals", reg_or("/deals"), "weekly", "0.7"],
+    ["/what-is-vr", reg_or("/what-is-vr"), "monthly", "0.85"],
+    ["/best-vr-headsets", reg_or("/best-vr-headsets"), "monthly", "0.85"],
+    ["/best-vr-games", reg_or("/best-vr-games"), "monthly", "0.85"],
+    ["/best-vr-games-2026", reg_or("/best-vr-games-2026"), "weekly", "0.85"],
+    ["/best-vr-apps", reg_or("/best-vr-apps"), "monthly", "0.85"],
+    ["/best-vr-fitness", reg_or("/best-vr-fitness"), "monthly", "0.85"],
+    ["/ar-glasses", reg_or("/ar-glasses"), "monthly", "0.85"],
+    ["/vr-for-beginners", reg_or("/vr-for-beginners"), "monthly", "0.85"],
+    ["/about", reg_or("/about"), "monthly", "0.5"],
+    ["/privacy", reg["/privacy"] || "2026-03-23", "monthly", "0.3"],
+  ];
+
+  const staticUrls = pages
+    .map(
+      ([loc, lastmod, changefreq, priority]) => `  <url>
+    <loc>${SITE}${loc}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`
+    )
+    .join("\n");
 
   const articleUrls = articles
     .map(
       (a) => `  <url>
-    <loc>https://vr.org/articles/${a.slug}</loc>
+    <loc>${SITE}/articles/${a.slug}</loc>
     <lastmod>${a.updatedDate || a.publishDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -18,140 +96,10 @@ export async function GET() {
     )
     .join("\n");
 
-  const latestArticleDate =
-    articles.length > 0
-      ? (articles[0].updatedDate || articles[0].publishDate)
-      : now;
-
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://vr.org/</loc>
-    <lastmod>${latestArticleDate}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/hardware</loc>
-    <lastmod>${latestArticleDate}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/gaming</loc>
-    <lastmod>${latestArticleDate}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/software</loc>
-    <lastmod>${latestArticleDate}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/enterprise</loc>
-    <lastmod>${latestArticleDate}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/ar</loc>
-    <lastmod>${latestArticleDate}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/xr</loc>
-    <lastmod>${latestArticleDate}</lastmod>
-    <changefreq>hourly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/originals</loc>
-    <lastmod>${latestArticleDate}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/best-of</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/events</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/deals</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/what-is-vr</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/best-vr-headsets</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/best-vr-games</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/best-vr-games-2026</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/best-vr-apps</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/best-vr-fitness</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/ar-glasses</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/vr-for-beginners</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
+${staticUrls}
 ${articleUrls}
-  <url>
-    <loc>https://vr.org/about</loc>
-    <lastmod>${PILLAR_LASTMOD}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://vr.org/privacy</loc>
-    <lastmod>2026-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
 </urlset>`;
 
   return new NextResponse(xml, {
