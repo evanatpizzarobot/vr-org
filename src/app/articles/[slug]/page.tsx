@@ -8,6 +8,7 @@ import { RelatedArticles } from "@/components/RelatedArticles";
 import { ArticleAd } from "@/components/ArticleAd";
 import { ShareButtons } from "@/components/ShareButtons";
 import { getArticleBySlug, getAllSlugs } from "@/lib/articles";
+import { getAuthorByName } from "@/lib/authors";
 import { injectInternalLinks } from "@/lib/internal-links";
 
 interface PageProps {
@@ -29,6 +30,20 @@ function extractFirstImage(html: string): string | null {
   if (!match) return null;
   const src = match[1];
   return src.startsWith("http") ? src : `https://vr.org${src}`;
+}
+
+function extractYouTubeId(html: string): string | null {
+  const patterns = [
+    /youtube\.com\/embed\/([A-Za-z0-9_-]{11})/,
+    /img\.youtube\.com\/vi\/([A-Za-z0-9_-]{11})/,
+    /youtu\.be\/([A-Za-z0-9_-]{11})/,
+    /youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})/,
+  ];
+  for (const re of patterns) {
+    const m = html.match(re);
+    if (m) return m[1];
+  }
+  return null;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -70,9 +85,8 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const ogImage = extractFirstImage(article.body) || "https://vr.org/og-image.png";
 
-  const authorSameAs: Record<string, string[]> = {
-    "Evan Marcus": ["https://x.com/vrdotorg"],
-  };
+  const authorInfo = getAuthorByName(article.author);
+  const videoId = extractYouTubeId(article.body);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -91,14 +105,18 @@ export default async function ArticlePage({ params }: PageProps) {
       "@type": "Person",
       name: article.author,
       jobTitle: article.authorRole.split(", ")[0],
+      ...(authorInfo
+        ? {
+            "@id": `https://vr.org/author/${authorInfo.slug}#person`,
+            url: `https://vr.org/author/${authorInfo.slug}`,
+          }
+        : {}),
       worksFor: {
         "@type": "Organization",
         name: "VR.org",
         url: "https://vr.org",
       },
-      ...(authorSameAs[article.author] && {
-        sameAs: authorSameAs[article.author],
-      }),
+      ...(authorInfo?.sameAs?.length ? { sameAs: authorInfo.sameAs } : {}),
     },
     publisher: {
       "@type": "Organization",
@@ -150,6 +168,22 @@ export default async function ArticlePage({ params }: PageProps) {
           },
         ])}
       />
+      {videoId && (
+        <StructuredData
+          data={{
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            name: article.title,
+            description: article.snippet,
+            thumbnailUrl: [
+              `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+            ],
+            uploadDate: article.publishDate,
+            embedUrl: `https://www.youtube.com/embed/${videoId}`,
+            contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
+          }}
+        />
+      )}
       <Header articleCount={0} lastUpdated="" />
 
       <main
@@ -185,7 +219,18 @@ export default async function ArticlePage({ params }: PageProps) {
         {/* Byline */}
         <div className="mb-6">
           <div className="text-[15px] font-medium">
-            By {article.author}
+            By{" "}
+            {authorInfo ? (
+              <a
+                href={`/author/${authorInfo.slug}`}
+                className="no-underline hover:underline"
+                style={{ color: "var(--accent-cyan)" }}
+              >
+                {article.author}
+              </a>
+            ) : (
+              article.author
+            )}
           </div>
           <div
             className="text-[13px]"

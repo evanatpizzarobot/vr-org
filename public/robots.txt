@@ -43,3 +43,4 @@ User-agent: Amazonbot
 Allow: /
 
 Sitemap: https://vr.org/sitemap.xml
+Sitemap: https://vr.org/news-sitemap.xml
