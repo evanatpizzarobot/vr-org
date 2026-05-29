@@ -18,6 +18,12 @@ export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
 
+// Render slugs not present at build time on demand instead of 404ing. The
+// article data is read at request time from the volume-mounted data/articles.json,
+// so a newly published article is reachable the instant the deploy syncs the file,
+// without waiting for the Docker rebuild to finish.
+export const dynamicParams = true;
+
 function extractFirstImage(html: string): string | null {
   const match = html.match(/<img\s[^>]*src=["']([^"']+)["']/);
   if (!match) return null;
@@ -75,7 +81,7 @@ export default async function ArticlePage({ params }: PageProps) {
     description: article.snippet,
     url: `https://vr.org/articles/${article.slug}`,
     datePublished: article.publishDate,
-    ...(article.updatedDate && { dateModified: article.updatedDate }),
+    dateModified: article.updatedDate || article.publishDate,
     image: [ogImage],
     articleSection:
       article.category.charAt(0).toUpperCase() + article.category.slice(1),
@@ -147,6 +153,7 @@ export default async function ArticlePage({ params }: PageProps) {
       <Header articleCount={0} lastUpdated="" />
 
       <main
+        id="main"
         className="max-w-[680px] mx-auto px-6 py-16"
         style={{ color: "var(--text-primary)" }}
       >

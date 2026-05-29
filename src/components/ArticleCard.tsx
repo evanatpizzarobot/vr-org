@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import type { Article } from "@/types";
 import { SOURCES } from "@/lib/constants";
 
@@ -25,6 +26,13 @@ export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
   const src = SOURCES[article.source];
   const accentColor = src?.color || "var(--accent-cyan)";
   const isOriginal = article.source === "vrorg";
+
+  // Relative time depends on the current clock, so compute it after mount to
+  // avoid a server/client hydration mismatch (React #418) on prerendered cards.
+  const [relativeLabel, setRelativeLabel] = useState("");
+  useEffect(() => {
+    setRelativeLabel(timeAgo(article.pubDate));
+  }, [article.pubDate]);
 
   return (
     <a
@@ -52,7 +60,7 @@ export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
         e.currentTarget.style.boxShadow = "var(--shadow-card)";
       }}
     >
-      {/* Left accent border — slides in from bottom on hover */}
+      {/* Left accent border, slides in from bottom on hover */}
       <div
         className="card-accent-bar"
         style={{ background: accentColor }}
@@ -84,7 +92,7 @@ export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
           className="font-mono text-[10px] ml-auto"
           style={{ color: "var(--text-muted)" }}
         >
-          {timeAgo(article.pubDate)}
+          {relativeLabel}
         </span>
       </div>
 

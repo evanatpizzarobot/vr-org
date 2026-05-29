@@ -66,12 +66,21 @@ export default function Home() {
   const [editorials, setEditorials] = useState<EditorialSummary[]>([]);
 
   const sourceCount = Object.keys(sourceStats).length || Object.keys(SOURCES).length;
-  const heroDate = new Date().toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "UTC",
-  }).toUpperCase();
+  // Computed after mount so the prerendered (build-time) date never mismatches
+  // the client date during hydration. Empty on first paint, filled on mount.
+  const [heroDate, setHeroDate] = useState("");
+  useEffect(() => {
+    setHeroDate(
+      new Date()
+        .toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          timeZone: "UTC",
+        })
+        .toUpperCase()
+    );
+  }, []);
 
   useEffect(() => {
     fetch("/api/articles?mix=true&limit=4")
@@ -86,6 +95,7 @@ export default function Home() {
       <Header articleCount={filtered.length} lastUpdated={lastUpdated} />
       <Ticker articles={articles} />
 
+      <main id="main">
       {/* ===== HOMEPAGE HERO ===== */}
       <section
         className="hero-wrap fade-up"
@@ -94,7 +104,7 @@ export default function Home() {
       >
         <div className="hero">
           <div className="hero-eyebrow">
-            <span>Spatial computing, daily &middot; {heroDate}</span>
+            <span>Spatial computing, daily{heroDate ? <> &middot; {heroDate}</> : null}</span>
           </div>
           <h1 className="hero-headline">
             All the news from<br />
@@ -322,6 +332,7 @@ export default function Home() {
           <Sidebar sourceStats={sourceStats} trending={trending} />
         </div>
       </div>
+      </main>
 
       <Footer />
     </>

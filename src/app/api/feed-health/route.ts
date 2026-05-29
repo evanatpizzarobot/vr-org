@@ -22,7 +22,7 @@ export async function GET() {
     status = "warning";
   } else if (hoursStale > 1) {
     status = "critical";
-    httpStatus = 500;
+    httpStatus = 503;
   } else if (hoursStale > 0.5) {
     status = "warning";
   } else {

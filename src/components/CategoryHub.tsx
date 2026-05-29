@@ -111,6 +111,7 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
       />
       <Header articleCount={categoryArticles.length} lastUpdated={lastUpdated} />
 
+      <main id="main">
       <div
         className="border-b category-header-wash"
         style={{
@@ -389,6 +390,7 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
           <Sidebar sourceStats={sourceStats} trending={trending} />
         </div>
       </div>
+      </main>
 
       <Footer />
     </>

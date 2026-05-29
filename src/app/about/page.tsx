@@ -63,7 +63,7 @@ export default function AboutPage() {
             <a href="/what-is-vr" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>&quot;What is Virtual Reality?&quot;</a> guide for newcomers to the space.
           </li>
           <li>
-            <strong style={{ color: "var(--text-primary)" }}>Industry news feed</strong> : A real-time aggregated feed pulling headlines from 11 trusted sources including Road to VR, UploadVR, TechCrunch, and XR Today. Every aggregated story credits and links directly to the original source.
+            <strong style={{ color: "var(--text-primary)" }}>Industry news feed</strong> : A real-time aggregated feed pulling headlines from 38+ trusted sources including Road to VR, UploadVR, Auganix, and AR Insider. Every aggregated story credits and links directly to the original source.
           </li>
           <li>
             <strong style={{ color: "var(--text-primary)" }}>Category coverage</strong> : Dedicated sections for{" "}
@@ -81,7 +81,7 @@ export default function AboutPage() {
           VR.org operates on two tracks. Our editorial team writes original content: long-form articles, buyer&apos;s guides, game rankings, and industry analysis. These pieces represent our own research, opinions, and expertise built over years in the VR space.
         </p>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          Alongside the original content, our live feed pulls headlines from 11 trusted publications across the VR and AR ecosystem. The feed updates automatically throughout the day, with articles categorized across six verticals. Every aggregated story credits and links directly to the original source. The feed is a supplement to our editorial work, not a replacement for it.
+          Alongside the original content, our live feed pulls headlines from 38+ trusted publications across the VR and AR ecosystem. The feed updates automatically throughout the day, with articles categorized across six verticals. Every aggregated story credits and links directly to the original source. The feed is a supplement to our editorial work, not a replacement for it.
         </p>
         <p className="text-[15px] leading-[1.7] mb-8" style={{ color: "var(--text-secondary)" }}>
           We believe the best way to serve readers is to combine original editorial perspective with comprehensive industry awareness. Our original articles give VR.org a voice. Our news feed makes sure nothing slips through the cracks.

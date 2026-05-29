@@ -18,7 +18,7 @@ export function TrendingTopics({ topics }: TrendingTopicsProps) {
         className="font-display text-xs font-semibold uppercase tracking-[2px] mb-4 flex items-center gap-2"
         style={{ color: "var(--text-secondary)" }}
       >
-        <span className="text-sm">🔥</span> Trending Topics
+        <span className="text-sm" aria-hidden="true">🔥</span> Trending Topics
       </div>
 
       {topics.map((t, i) => {

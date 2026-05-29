@@ -9,7 +9,12 @@ export function useTheme() {
 
   useEffect(() => {
     const stored = localStorage.getItem("vr-org-theme") as Theme | null;
-    setThemeState(stored === "light" ? "light" : "dark");
+    const next: Theme = stored === "light" ? "light" : "dark";
+    setThemeState(next);
+    // Keep the DOM attribute in sync with the stored preference on every load.
+    // Without this, a returning visitor who chose light mode renders dark
+    // because the inline ThemeScript and React state can drift apart.
+    document.documentElement.setAttribute("data-theme", next);
   }, []);
 
   const setTheme = useCallback((t: Theme) => {

@@ -33,6 +33,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://vr.org/",
+    types: {
+      "application/rss+xml": "https://vr.org/feed.xml",
+    },
   },
   icons: {
     icon: [
@@ -87,6 +90,7 @@ export default function RootLayout({
         <StructuredData data={WEBSITE_SCHEMA} />
       </head>
       <body>
+        <a href="#main" className="skip-link">Skip to content</a>
         <div className="ambient-bg" />
         <div className="scanline-overlay" />
         <HeroBackground mouse={false} />
