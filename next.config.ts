@@ -52,8 +52,11 @@ const REDIRECTS: { source: string; destination: string }[] = [
     source: "/articles/beat-saber-changed-vr-forever",
     destination: "/best-vr-games",
   },
-  // Legacy / orphan paths
+  // Legacy / orphan paths (old WordPress pages, nothing on the site links here)
   { source: "/applications", destination: "/best-vr-apps" },
+  { source: "/lg", destination: "/hardware" },
+  { source: "/os", destination: "/software" },
+  { source: "/kids-series", destination: "/best-vr-games" },
   // We do not run per-author archive pages. Anything under /author/* goes to
   // the originals index, which lists every editorial piece.
   { source: "/author/:slug*", destination: "/originals" },
