@@ -5,13 +5,13 @@
     "href": "/best-vr-games-2026",
     "items": [
       { "rank": 1, "title": "Batman: Arkham Shadow", "subtitle": "Quest" },
-      { "rank": 2, "title": "Metro Awakening", "subtitle": "Quest / PSVR2 / PC VR" },
-      { "rank": 3, "title": "Alien: Rogue Incursion", "subtitle": "Quest / PSVR2 / PC VR" },
-      { "rank": 4, "title": "Skydance's Behemoth", "subtitle": "Quest / PSVR2 / PC VR" },
-      { "rank": 5, "title": "Into the Radius 2", "subtitle": "PC VR / Quest" },
+      { "rank": 2, "title": "Microsoft Flight Simulator", "subtitle": "PSVR2" },
+      { "rank": 3, "title": "Metro Awakening", "subtitle": "Quest / PSVR2 / PC VR" },
+      { "rank": 4, "title": "Into the Radius 2", "subtitle": "PC VR / Quest" },
+      { "rank": 5, "title": "TMNT: Empire City", "subtitle": "Quest / PC VR" },
       { "rank": 6, "title": "Asgard's Wrath 2", "subtitle": "Quest" },
-      { "rank": 7, "title": "Ghosts of Tabor", "subtitle": "Quest / PC VR" },
-      { "rank": 8, "title": "Contractors Showdown", "subtitle": "Quest / PC VR" },
+      { "rank": 7, "title": "Little Nightmares: Altered Echoes", "subtitle": "Quest / PSVR2 / PC VR" },
+      { "rank": 8, "title": "Alien: Rogue Incursion", "subtitle": "Quest / PSVR2 / PC VR" },
       { "rank": 9, "title": "Beat Saber", "subtitle": "Quest / PSVR2 / PC VR" },
       { "rank": 10, "title": "Walkabout Mini Golf", "subtitle": "Quest / PSVR2 / PC VR" }
     ]
@@ -30,7 +30,7 @@
       { "rank": 7, "title": "Gravity Sketch", "subtitle": "3D design & modeling" },
       { "rank": 8, "title": "FitXR", "subtitle": "VR fitness workouts" },
       { "rank": 9, "title": "ShapesXR", "subtitle": "Spatial design prototyping" },
-      { "rank": 10, "title": "Rec Room", "subtitle": "Social creation platform" }
+      { "rank": 10, "title": "YouTube VR", "subtitle": "Immersive 360 and VR video" }
     ]
   }
 }

@@ -364,7 +364,7 @@ export default function BestVRGames2026Page() {
         </h3>
         <figure className="fitness-figure">
           <img
-            src="https://img.youtube.com/vi/EPcCWR3DTIw/maxresdefault.jpg"
+            src="https://img.youtube.com/vi/NDtClr-VjL0/maxresdefault.jpg"
             alt="One More Delve indie VR dungeon crawler co-op gameplay"
             loading="lazy"
           />

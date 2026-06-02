@@ -80,14 +80,14 @@ const appsList = itemListSchema("Best VR Apps & Utilities 2026", [
   { name: "Wander", url: "https://vr.org/best-vr-apps#wander" },
   { name: "ShapesXR", url: "https://vr.org/best-vr-apps#shapesxr" },
   { name: "FitXR", url: "https://vr.org/best-vr-apps#fitxr" },
-  { name: "Resolve", url: "https://vr.org/best-vr-apps#resolve" },
+  { name: "Guided Meditation VR", url: "https://vr.org/best-vr-apps#guided-meditation-vr" },
 ]);
 
 const appsFaq = faqPageSchema([
   {
     question: "What are the best VR apps in 2026?",
     answer:
-      "The best VR apps in 2026 span productivity (Virtual Desktop, Immersed), social (VRChat), fitness (FitXR, Supernatural), design (Gravity Sketch, ShapesXR), entertainment (Bigscreen), exploration (Wander), and wellness (Resolve). Virtual Desktop is the single most important app for any Quest owner with a gaming PC.",
+      "The best VR apps in 2026 span productivity (Virtual Desktop, Immersed), social (VRChat), fitness (FitXR, Supernatural), design (Gravity Sketch, ShapesXR), entertainment (Bigscreen), exploration (Wander), and wellness (Guided Meditation VR). Virtual Desktop is the single most important app for any Quest owner with a gaming PC.",
   },
   {
     question: "What is the best VR productivity app?",
@@ -425,14 +425,14 @@ export default function BestVRAppsPage() {
           are real. Subscription-based with a free trial.
         </p>
 
-        {/* 9. Resolve */}
-        <h2 id="resolve" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
-          9. Resolve
+        {/* 9. Guided Meditation VR */}
+        <h2 id="guided-meditation-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
+          9. Guided Meditation VR
         </h2>
         <figure className="fitness-figure">
           <img
-            src="https://img.youtube.com/vi/dmYCupz9mgE/maxresdefault.jpg"
-            alt="Resolve VR meditation app with immersive nature environments"
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/397750/header.jpg"
+            alt="Guided Meditation VR app with immersive nature environments"
             loading="lazy"
           />
         </figure>
@@ -440,22 +440,22 @@ export default function BestVRAppsPage() {
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
         >
-          Developer: Resolve XR | Platform: Quest | Category: Wellness & Meditation
+          Developer: Cubicle Ninjas | Platform: Quest, PC VR | Category: Wellness & Meditation
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Resolve is a VR meditation and mindfulness app that uses immersive
-          environments and guided sessions to help you decompress. The
-          environments range from serene mountain landscapes to underwater
-          scenes, and the spatial audio design makes each setting feel
-          convincingly real. Breathing exercises, body scans, and
-          progressive relaxation sessions are all available with varying
-          durations. VR is uniquely effective for meditation because it
-          eliminates visual distractions from your physical environment. If
-          you have ever struggled to focus during meditation, doing it in VR
-          might change your perspective.
+          Guided Meditation VR is a long-running mindfulness app with more than
+          150 guided sessions set across dozens of serene environments, from
+          mountain temples to underwater reefs. The spatial audio and calming
+          visuals make each setting feel convincingly real, and the mix of
+          breathing exercises, body scans, and progressive relaxation covers
+          everything from a two-minute reset to a long wind-down before sleep.
+          VR is uniquely effective for meditation because it shuts out the
+          visual distractions of your real environment. If you have ever
+          struggled to focus during meditation, doing it in a headset might
+          change your perspective.
         </p>
 
         {/* Honorable Mentions */}

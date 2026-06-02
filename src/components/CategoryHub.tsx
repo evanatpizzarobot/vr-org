@@ -45,6 +45,10 @@ const CATEGORY_GUIDES: Record<string, { label: string; href: string; description
     { label: "Best AR Glasses 2026", href: "/ar-glasses", description: "Smart glasses and Android XR devices ranked." },
     { label: "Best VR Apps & Utilities", href: "/best-vr-apps", description: "Top VR apps for productivity, social, and creativity." },
   ],
+  enterprise: [
+    { label: "Best VR Headsets 2026", href: "/best-vr-headsets", description: "The headsets businesses deploy for training, design, and collaboration." },
+    { label: "Best VR Apps & Utilities", href: "/best-vr-apps", description: "Productivity, collaboration, and training tools that scale to teams." },
+  ],
 };
 
 export function CategoryHub({ category, title, description }: CategoryHubProps) {
