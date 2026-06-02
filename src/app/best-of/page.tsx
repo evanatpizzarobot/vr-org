@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
+import { RecentArticles } from "@/components/RecentArticles";
 import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
 
@@ -242,6 +243,8 @@ export default function BestOfPage() {
           </a>
           .
         </p>
+
+        <RecentArticles heading="Latest VR News" limit={6} />
       </main>
 
       <Footer />

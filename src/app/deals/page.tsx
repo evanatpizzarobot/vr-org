@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
+import { RecentArticles } from "@/components/RecentArticles";
+import { AllPillarGuides } from "@/components/RelatedGuides";
 import { getDeals, type DealItem } from "@/lib/deals";
 
 export const metadata: Metadata = {
@@ -243,6 +245,13 @@ export default function DealsPage() {
             Last updated: {parseDateToIso(deals.lastUpdated)}
           </div>
         )}
+
+        <RecentArticles
+          tags={["hardware", "gaming"]}
+          heading="Latest VR Coverage"
+          limit={5}
+        />
+        <AllPillarGuides heading="VR.org Buyer's Guides" />
       </main>
 
       <Footer />

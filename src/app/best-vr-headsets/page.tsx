@@ -4,7 +4,7 @@ import {
   StructuredData,
   breadcrumbSchema,
   faqPageSchema,
-  itemListSchema,
+  productItemListSchema,
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
@@ -75,13 +75,58 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Best VR Headsets 2026", url: "https://vr.org/best-vr-headsets" },
 ]);
 
-const headsetList = itemListSchema("Best VR Headsets 2026", [
-  { name: "Meta Quest 3S", url: "https://vr.org/best-vr-headsets#meta-quest-3s" },
-  { name: "Meta Quest 3", url: "https://vr.org/best-vr-headsets#meta-quest-3" },
-  { name: "PlayStation VR2", url: "https://vr.org/best-vr-headsets#playstation-vr2" },
-  { name: "Apple Vision Pro", url: "https://vr.org/best-vr-headsets#apple-vision-pro" },
-  { name: "Valve Index", url: "https://vr.org/best-vr-headsets#valve-index" },
-  { name: "HP Reverb G2", url: "https://vr.org/best-vr-headsets#hp-reverb-g2" },
+// Product entities (brand, image, description) for each pick. No Offer/price
+// here: this is an editorial buyer's guide, not a store, so pricing schema
+// lives on /deals. No aggregateRating until VR.org assigns first-party scores.
+const headsetList = productItemListSchema("Best VR Headsets 2026", [
+  {
+    name: "Meta Quest 3S",
+    brand: "Meta",
+    image: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Meta_Quest_3S_Display_Unit.jpg",
+    description:
+      "The best budget VR headset, a standalone Quest with color passthrough and the full Quest library for $299.",
+    url: "https://vr.org/best-vr-headsets#meta-quest-3s",
+  },
+  {
+    name: "Meta Quest 3",
+    brand: "Meta",
+    image: "https://upload.wikimedia.org/wikipedia/commons/a/af/Meta_Quest_3_display_unit.jpg",
+    description:
+      "The best all-around VR headset, standalone plus PC VR with the largest content library of any platform, for $499.",
+    url: "https://vr.org/best-vr-headsets#meta-quest-3",
+  },
+  {
+    name: "PlayStation VR2",
+    brand: "Sony",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/74/PSVR2_%28Non-Stereoscopic%29.png",
+    description:
+      "The best VR headset for PlayStation gamers, with OLED HDR displays and eye tracking on PS5.",
+    url: "https://vr.org/best-vr-headsets#playstation-vr2",
+  },
+  {
+    name: "Apple Vision Pro",
+    brand: "Apple",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Apple_Vision_Pro_with_Solo_Knit_Band.jpg",
+    description:
+      "The best spatial computing headset, with the sharpest micro-OLED displays and the best passthrough available.",
+    url: "https://vr.org/best-vr-headsets#apple-vision-pro",
+  },
+  {
+    name: "Valve Index",
+    brand: "Valve",
+    image: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Air_Force_officer_using_Valve_Index.jpg",
+    description:
+      "The PC VR enthusiast pick, with finger-tracking controllers, a wide field of view, and a 120Hz refresh rate.",
+    url: "https://vr.org/best-vr-headsets#valve-index",
+  },
+  {
+    name: "HP Reverb G2",
+    brand: "HP",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1271440/header.jpg",
+    description:
+      "The best VR headset for sim racing and flight sim, with a high 2160 by 2160 per-eye resolution.",
+    url: "https://vr.org/best-vr-headsets#hp-reverb-g2",
+  },
 ]);
 
 const headsetFaq = faqPageSchema([

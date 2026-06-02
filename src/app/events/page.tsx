@@ -5,6 +5,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 import { EventsCalendar } from "@/components/EventsCalendar";
+import { RecentArticles } from "@/components/RecentArticles";
+import { AllPillarGuides } from "@/components/RelatedGuides";
 
 export const metadata: Metadata = {
   title:
@@ -184,6 +186,9 @@ export default function EventsPage() {
         </p>
 
         <EventsCalendar events={events} />
+
+        <RecentArticles heading="Latest VR News" limit={5} />
+        <AllPillarGuides heading="VR.org Guides" />
       </main>
 
       <Footer />

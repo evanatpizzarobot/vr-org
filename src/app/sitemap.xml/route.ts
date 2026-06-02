@@ -13,6 +13,22 @@ import { getAllArticles } from "@/lib/articles";
 
 const SITE = "https://vr.org";
 
+function xmlEscape(value: string): string {
+  return (value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+function firstImage(html: string): string | null {
+  const m = html.match(/<img\s[^>]*src=["']([^"']+)["']/i);
+  if (!m) return null;
+  const src = m[1];
+  return src.startsWith("http") ? src : `${SITE}${src}`;
+}
+
 function registryDates(): Record<string, string> {
   try {
     const p = path.join(process.cwd(), "data", "page-maintenance.json");
@@ -86,18 +102,25 @@ export async function GET() {
     .join("\n");
 
   const articleUrls = articles
-    .map(
-      (a) => `  <url>
+    .map((a) => {
+      const img = firstImage(a.body);
+      const imageBlock = img
+        ? `
+    <image:image>
+      <image:loc>${xmlEscape(img)}</image:loc>
+    </image:image>`
+        : "";
+      return `  <url>
     <loc>${SITE}/articles/${a.slug}</loc>
     <lastmod>${a.updatedDate || a.publishDate}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>`
-    )
+    <priority>0.7</priority>${imageBlock}
+  </url>`;
+    })
     .join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${staticUrls}
 ${articleUrls}
 </urlset>`;
