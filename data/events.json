@@ -1,17 +1,5 @@
 [
   {
-    "id": "mwc-barcelona-2026",
-    "name": "MWC Barcelona 2026",
-    "description": "Mobile World Congress showcasing XR devices, 5G-powered immersive experiences, AR smart glasses, and enterprise spatial computing from global telcos and tech companies.",
-    "startDate": "2026-03-02",
-    "endDate": "2026-03-05",
-    "location": "Barcelona, Spain",
-    "venue": "Fira de Barcelona Gran Via",
-    "url": "https://www.mwcbarcelona.com/",
-    "category": "expo",
-    "featured": false
-  },
-  {
     "id": "sxsw-2026",
     "name": "SXSW 2026",
     "description": "South by Southwest festival spanning tech, film, and music. Features dedicated XR showcases, immersive installations, and spatial computing panels alongside emerging technology programming.",
@@ -129,7 +117,7 @@
     "venue": "Nangang Exhibition Center",
     "url": "https://www.computex.biz/",
     "category": "expo",
-    "featured": false
+    "featured": true
   },
   {
     "id": "summer-game-fest-2026",
@@ -141,7 +129,7 @@
     "venue": "YouTube Theater",
     "url": "https://www.summergamefest.com/",
     "category": "showcase",
-    "featured": false
+    "featured": true
   },
   {
     "id": "apple-wwdc-2026",

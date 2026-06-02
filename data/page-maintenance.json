@@ -116,7 +116,7 @@
       "file": "src/app/deals/page.tsx",
       "category": "commercial",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-24",
+      "lastRefreshed": "2026-06-02",
       "checklist": [
         "Source of truth is data/deals.json, not the page",
         "Verify every product is still in stock and price is within ~10% of listed",
@@ -130,7 +130,7 @@
       "file": "src/app/events/page.tsx",
       "category": "schedule",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-24",
+      "lastRefreshed": "2026-06-02",
       "checklist": [
         "Source of truth is data/events.json (EventsCalendar auto-buckets past vs upcoming)",
         "Add upcoming VR / AR conferences and game launches",
