@@ -15,6 +15,20 @@
       ]
     },
     {
+      "path": "/best-budget-vr-headset",
+      "file": "src/app/best-budget-vr-headset/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-02",
+      "checklist": [
+        "Verify Quest 3S ($349) and PSVR2 ($399) new prices against data/deals.json",
+        "Re-check approximate used prices for Quest 3 (~$400) and Quest 2 (~$150); the secondary market moves",
+        "Confirm the Quest 2 still plays the current must-play titles (some new games drop Quest 2 support over time)",
+        "Update 'What to Avoid' if a notable cheap headset or display-glasses entrant appears",
+        "Keep the cross-link up to /best-vr-headsets and down from it intact"
+      ]
+    },
+    {
       "path": "/best-vr-games",
       "file": "src/app/best-vr-games/page.tsx",
       "category": "pillar",

@@ -52,6 +52,11 @@ const collectionSchema = {
     },
     {
       "@type": "Article",
+      name: "Best Budget VR Headset 2026",
+      url: "https://vr.org/best-budget-vr-headset",
+    },
+    {
+      "@type": "Article",
       name: "Best AR Glasses 2026",
       url: "https://vr.org/ar-glasses",
     },
@@ -97,6 +102,14 @@ const CARDS: BestOfCard[] = [
     description:
       "Our picks for the top VR headsets you can buy today. Quest 3, PSVR2, Vision Pro, Galaxy XR, Bigscreen Beyond 2, and what's next.",
     href: "/best-vr-headsets",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Best Budget VR Headset 2026",
+    description:
+      "The cheapest ways into VR under $400. The $349 Quest 3S, PSVR2, and the smartest used Quest buys, plus the bargains to skip.",
+    href: "/best-budget-vr-headset",
     badge: "Hardware",
     badgeColor: "var(--accent-cyan)",
   },

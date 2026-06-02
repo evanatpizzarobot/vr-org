@@ -759,7 +759,16 @@ export default function BestVRHeadsetsPage() {
           Index may still turn up at clearance prices. And at $3,499, the Vision Pro is a premium
           investment in spatial computing. Remember to budget for accessories
           too. A good head strap ($50-$80), carrying case ($30-$60), and
-          games add to the total cost of ownership.
+          games add to the total cost of ownership. If you are shopping at the
+          low end, our guide to the{" "}
+          <a
+            href="/best-budget-vr-headset"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            best budget VR headset
+          </a>{" "}
+          covers the cheapest new and used options under $400 in detail.
         </p>
 
         {/* Ad: after How to Choose, before What's Coming / FAQ */}

@@ -10,6 +10,11 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/best-vr-headsets",
     description: "Our complete buyer's guide to every major VR headset.",
   },
+  "best-budget-vr-headset": {
+    label: "Best Budget VR Headset 2026",
+    href: "/best-budget-vr-headset",
+    description: "The cheapest ways into VR under $400, new and used.",
+  },
   "best-vr-games": {
     label: "Top 10 VR Games of All Time",
     href: "/best-vr-games",
@@ -49,7 +54,7 @@ const PILLAR_GUIDES: Record<string, Guide> = {
 
 const TAG_TO_GUIDES: Record<string, string[]> = {
   gaming: ["best-vr-games-2026", "best-vr-games", "best-vr-headsets"],
-  hardware: ["best-vr-headsets", "ar-glasses", "vr-for-beginners"],
+  hardware: ["best-vr-headsets", "best-budget-vr-headset", "ar-glasses"],
   software: ["best-vr-apps", "best-vr-fitness", "best-vr-headsets"],
   xr: ["best-vr-apps", "ar-glasses", "best-vr-headsets"],
   ar: ["ar-glasses", "best-vr-headsets", "best-vr-apps"],

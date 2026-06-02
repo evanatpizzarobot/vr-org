@@ -80,6 +80,7 @@ export async function GET() {
     ["/deals", reg_or("/deals"), "weekly", "0.7"],
     ["/what-is-vr", reg_or("/what-is-vr"), "monthly", "0.85"],
     ["/best-vr-headsets", reg_or("/best-vr-headsets"), "monthly", "0.85"],
+    ["/best-budget-vr-headset", reg_or("/best-budget-vr-headset"), "monthly", "0.8"],
     ["/best-vr-games", reg_or("/best-vr-games"), "monthly", "0.85"],
     ["/best-vr-games-2026", reg_or("/best-vr-games-2026"), "weekly", "0.85"],
     ["/best-vr-apps", reg_or("/best-vr-apps"), "monthly", "0.85"],
