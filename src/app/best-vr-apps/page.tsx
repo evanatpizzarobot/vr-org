@@ -13,11 +13,11 @@ import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
-  title: "Best VR Apps & Utilities 2026: Top 10 Must-Have Apps | VR.org",
+  title: "Best VR Apps & Utilities 2026: Top Must-Have Apps | VR.org",
   description:
     "The 10 best VR apps and utilities for productivity, social, fitness, creativity, and more. Essential software for every VR headset owner in 2026.",
   openGraph: {
-    title: "Best VR Apps & Utilities 2026: Top 10 Must-Have Apps | VR.org",
+    title: "Best VR Apps & Utilities 2026: Top Must-Have Apps | VR.org",
     description:
       "The 10 best VR apps and utilities for productivity, social, fitness, creativity, and more.",
     url: "https://vr.org/best-vr-apps",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Best VR Apps & Utilities 2026: Top 10 Must-Have Apps",
+  headline: "Best VR Apps & Utilities 2026: Top Must-Have Apps",
   datePublished: "2026-03-23",
-  dateModified: "2026-05-02",
+  dateModified: "2026-06-01",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -79,7 +79,6 @@ const appsList = itemListSchema("Best VR Apps & Utilities 2026", [
   { name: "Gravity Sketch", url: "https://vr.org/best-vr-apps#gravity-sketch" },
   { name: "Wander", url: "https://vr.org/best-vr-apps#wander" },
   { name: "ShapesXR", url: "https://vr.org/best-vr-apps#shapesxr" },
-  { name: "Rec Room", url: "https://vr.org/best-vr-apps#rec-room" },
   { name: "FitXR", url: "https://vr.org/best-vr-apps#fitxr" },
   { name: "Resolve", url: "https://vr.org/best-vr-apps#resolve" },
 ]);
@@ -88,7 +87,7 @@ const appsFaq = faqPageSchema([
   {
     question: "What are the best VR apps in 2026?",
     answer:
-      "The best VR apps in 2026 span productivity (Virtual Desktop, Immersed), social (VRChat, Rec Room), fitness (FitXR, Supernatural), design (Gravity Sketch, ShapesXR), entertainment (Bigscreen), exploration (Wander), and wellness (Resolve). Virtual Desktop is the single most important app for any Quest owner with a gaming PC.",
+      "The best VR apps in 2026 span productivity (Virtual Desktop, Immersed), social (VRChat), fitness (FitXR, Supernatural), design (Gravity Sketch, ShapesXR), entertainment (Bigscreen), exploration (Wander), and wellness (Resolve). Virtual Desktop is the single most important app for any Quest owner with a gaming PC.",
   },
   {
     question: "What is the best VR productivity app?",
@@ -103,12 +102,12 @@ const appsFaq = faqPageSchema([
   {
     question: "What are the best free VR apps?",
     answer:
-      "VRChat, Rec Room, Bigscreen, and Wander's basic tier are among the best free VR apps. Most Quest headsets also include a free YouTube VR app, a free Meta Horizon Worlds client, and various free demos and browser-based VR experiences.",
+      "VRChat and Bigscreen are among the best free VR apps. Wander is a paid app (about $9.99) but goes on sale often. Most Quest headsets also include a free YouTube VR app, various free demos and browser-based VR experiences, and a Horizon Worlds client, though Meta has shifted that platform's development toward mobile.",
   },
   {
     question: "What is the best VR fitness app?",
     answer:
-      "FitXR and Supernatural are the two leading VR fitness apps, both offering structured workout classes with instructors, music, and progression systems. For game-like fitness, Beat Saber and Les Mills Bodycombat deliver serious cardio in a more gamified format.",
+      "FitXR is the leading VR fitness app, offering structured workout classes with instructors, music, and progression. Supernatural is still available, but Meta stopped adding new content in January 2026. For game-like fitness, Beat Saber and Les Mills Bodycombat deliver serious cardio in a more gamified format.",
   },
 ]);
 
@@ -135,7 +134,7 @@ export default function BestVRAppsPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: May 2026
+          Last updated: June 2026
         </p>
 
         <p
@@ -161,7 +160,7 @@ export default function BestVRAppsPage() {
           tools for productivity, creativity, fitness, and social connection.
           These ten apps and utilities are essential software for anyone who
           owns a VR headset in 2026, whether you use it for work, play, or
-          both.
+          both. We refresh this list as apps launch, evolve, and shut down.
         </p>
 
         {/* 1. Virtual Desktop */}
@@ -255,9 +254,9 @@ export default function BestVRAppsPage() {
           creative showcases. The community is massive and diverse. You can
           attend live comedy shows, visit art galleries, play mini-games, or
           just sit around a virtual campfire and talk. For many people,
-          VRChat is the primary reason they use VR. The Quest version runs
-          standalone with cross-play to PC, making it accessible to the
-          widest audience.
+          VRChat is the primary reason they use VR. It runs on Quest
+          standalone with cross-play to PC, and is now also on iOS and Android,
+          giving it the widest audience of any social VR platform.
         </p>
 
         {/* 4. Bigscreen */}
@@ -390,44 +389,13 @@ export default function BestVRAppsPage() {
           together in the same virtual space in real time. As spatial
           computing grows, tools like ShapesXR are becoming essential for
           anyone designing experiences that live in 3D space rather than on
-          flat screens.
+          flat screens. It now runs on Apple Vision Pro and Pico in addition to
+          Quest, making it a cross-platform standard for spatial UX work.
         </p>
 
-        {/* 8. Rec Room */}
-        <h2 id="rec-room" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
-          8. Rec Room
-        </h2>
-        <figure className="fitness-figure">
-          <img
-            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/471710/header.jpg"
-            alt="Rec Room cross-platform social game Steam header"
-            loading="lazy"
-          />
-        </figure>
-        <p
-          className="text-[13px] mb-4"
-          style={{ color: "var(--text-muted)" }}
-        >
-          Developer: Rec Room Inc. | Platform: Quest, PC VR, PSVR, mobile, console | Category: Social & Gaming
-        </p>
-        <p
-          className="text-[15px] leading-[1.7] mb-8"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          Rec Room is a cross-platform social space with millions of
-          user-created games and experiences. Paintball, escape rooms,
-          obstacle courses, RPG quests. The amount of community content is
-          staggering. The creation tools are accessible enough that anyone
-          can build a room, and the best community creations rival
-          standalone games in scope and polish. Rec Room works across VR,
-          console, mobile, and PC, giving it one of the largest cross-play
-          communities in gaming. It is free to play and remains one of the
-          most actively used social platforms in VR.
-        </p>
-
-        {/* 9. FitXR */}
+        {/* 8. FitXR */}
         <h2 id="fitxr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
-          9. FitXR
+          8. FitXR
         </h2>
         <figure className="fitness-figure">
           <img
@@ -457,9 +425,9 @@ export default function BestVRAppsPage() {
           are real. Subscription-based with a free trial.
         </p>
 
-        {/* 10. Resolve */}
+        {/* 9. Resolve */}
         <h2 id="resolve" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
-          10. Resolve
+          9. Resolve
         </h2>
         <figure className="fitness-figure">
           <img

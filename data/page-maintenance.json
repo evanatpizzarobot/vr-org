@@ -7,7 +7,7 @@
       "file": "src/app/best-vr-headsets/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-05-02",
+      "lastRefreshed": "2026-06-01",
       "checklist": [
         "Verify each headset's price and availability in deals.json",
         "Update 'What's Coming in 2026' section with confirmed launches",
@@ -31,7 +31,7 @@
       "file": "src/app/best-vr-games-2026/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-05-02",
+      "lastRefreshed": "2026-06-01",
       "checklist": [
         "Move shipped games from 'anticipated' to 'released so far' with launch dates",
         "Add internal links to VR.org launch articles for each",
@@ -44,7 +44,7 @@
       "file": "src/app/best-vr-apps/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-05-02",
+      "lastRefreshed": "2026-06-01",
       "checklist": [
         "Verify each app is still actively maintained (kill anything shuttered)",
         "Refresh the Honorable Mentions section with new apps gaining traction",
@@ -56,7 +56,7 @@
       "file": "src/app/best-vr-fitness/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-05-02",
+      "lastRefreshed": "2026-06-01",
       "checklist": [
         "Verify subscription pricing for each app (Supernatural, FitXR, Les Mills)",
         "Add new fitness titles that have launched since last refresh",
@@ -80,7 +80,7 @@
       "file": "src/app/ar-glasses/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-05-02",
+      "lastRefreshed": "2026-06-01",
       "checklist": [
         "AR moves fast. Refresh 'What is coming' with confirmed Android XR / Meta / Apple news",
         "Update Ray-Ban Meta, Rokid, Xreal, Viture pricing and feature notes",

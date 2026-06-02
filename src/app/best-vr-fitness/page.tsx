@@ -46,7 +46,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Fitness Apps 2026: Top 10 VR Workout Games",
   datePublished: "2026-04-20",
-  dateModified: "2026-05-02",
+  dateModified: "2026-06-01",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -82,7 +82,7 @@ const fitnessList = itemListSchema("Best VR Fitness Apps 2026", [
   { name: "Thrill of the Fight 2", url: "https://vr.org/best-vr-fitness#thrill-of-the-fight-2" },
   { name: "Pistol Whip", url: "https://vr.org/best-vr-fitness#pistol-whip" },
   { name: "Holofit", url: "https://vr.org/best-vr-fitness#holofit" },
-  { name: "Liteboxer VR", url: "https://vr.org/best-vr-fitness#liteboxer-vr" },
+  { name: "Litesport (formerly Liteboxer)", url: "https://vr.org/best-vr-fitness#liteboxer-vr" },
   { name: "Synth Riders", url: "https://vr.org/best-vr-fitness#synth-riders" },
   { name: "Creed: Rise to Glory", url: "https://vr.org/best-vr-fitness#creed-rise-to-glory" },
 ]);
@@ -101,7 +101,7 @@ const fitnessFaq = faqPageSchema([
   {
     question: "What is the best VR fitness app?",
     answer:
-      "Supernatural and FitXR are the two leading VR fitness apps for structured, instructor-led workouts. Beat Saber remains the best gamified fitness app for high-intensity sessions. For boxing specifically, Les Mills Bodycombat and Thrill of the Fight 2 are outstanding.",
+      "FitXR is the leading VR fitness app for structured, instructor-led workouts. Supernatural's library is still available, but Meta ended new content development in January 2026, so it is effectively in maintenance mode. Beat Saber remains the best gamified fitness app for high-intensity sessions, and for boxing specifically Les Mills Bodycombat and Thrill of the Fight 2 are outstanding.",
   },
   {
     question: "How many calories do you burn in VR?",
@@ -111,7 +111,7 @@ const fitnessFaq = faqPageSchema([
   {
     question: "Do I need a subscription for VR fitness?",
     answer:
-      "Some VR fitness apps require subscriptions (Supernatural, FitXR, Les Mills Bodycombat) while others are one-time purchases (Beat Saber, Thrill of the Fight 2, Pistol Whip). Most subscription apps offer free trials. A single game like Beat Saber can provide years of workouts without any recurring fees.",
+      "Some VR fitness apps require subscriptions (Supernatural, though its new content has ended, and FitXR) while others are one-time purchases (Beat Saber, Thrill of the Fight 2, Pistol Whip, and Les Mills Bodycombat). Most subscription apps offer free trials. A single game like Beat Saber can provide years of workouts without any recurring fees.",
   },
   {
     question: "What is the best free VR fitness app?",
@@ -143,7 +143,7 @@ export default function BestVRFitnessPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: May 2026
+          Last updated: June 2026
         </p>
 
         <p
@@ -186,7 +186,7 @@ export default function BestVRFitnessPage() {
           ducking punches, or chasing a top score that you forget you are
           exercising. Most serious VR users burn between 400 and 600 calories
           per hour in active games, which is comparable to running. The
-          barrier to entry is a Meta Quest 3 or Quest 3S (from $299) plus a
+          barrier to entry is a Meta Quest 3 or Quest 3S (from $349) plus a
           subscription or two, and you have a gym that lives in a drawer.
         </p>
 
@@ -219,9 +219,11 @@ export default function BestVRFitnessPage() {
           filmed in stunning real-world locations like Machu Picchu and the
           Grand Canyon. The production value is what separates Supernatural
           from everything else in this list. If you want a VR workout that
-          feels like a premium gym experience, this is it. The subscription
-          (around $20/month) is pricey but justified by the sheer volume of
-          new content.
+          feels like a premium gym experience, this is it. One important
+          caveat: Meta announced in January 2026 that Supernatural will no
+          longer get new workouts or feature updates. The existing library of
+          more than 3,000 sessions stays available to subscribers at $9.99 a
+          month (or $99.99 a year), but the daily new classes have stopped.
         </p>
 
         {/* 2. FitXR */}
@@ -246,9 +248,9 @@ export default function BestVRFitnessPage() {
           of instructors and class lengths that fit any schedule. The boxing
           programs in particular deliver genuinely intense sessions. The app
           has been iterated on for years and remains one of the most polished
-          VR fitness experiences. More affordable than Supernatural at roughly
-          $10/month, with a free trial that covers enough workouts to see if
-          the format works for you.
+          VR fitness experiences. More affordable than Supernatural at $12.99 a
+          month (or $107.99 a year, about $9 a month), with a free trial that
+          covers enough workouts to see if the format works for you.
         </p>
 
         {/* 3. Beat Saber */}
@@ -299,8 +301,9 @@ export default function BestVRFitnessPage() {
           Les Mills brought their massively popular gym class to VR, and it
           works beautifully. Mixed martial arts choreography with punches,
           kicks, and elbows, set to energetic music and coached by actual Les
-          Mills instructors. One-time purchase with free DLC updates, which
-          makes it a great value compared to subscription apps.
+          Mills instructors. A one-time purchase ($29.99) with optional paid
+          DLC packs like Power Strike, which still makes it a strong value
+          compared to subscription apps.
         </p>
 
         {/* 5. Thrill of the Fight 2 */}
@@ -384,7 +387,7 @@ export default function BestVRFitnessPage() {
 
         {/* 8. Liteboxer VR */}
         <h2 id="liteboxer-vr" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
-          8. Liteboxer VR
+          8. Litesport (formerly Liteboxer)
         </h2>
         <figure className="fitness-figure">
           <img
@@ -394,13 +397,13 @@ export default function BestVRFitnessPage() {
           />
         </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
-          Developer: Liteboxer | Platform: Quest | Category: Boxing fitness
+          Developer: Litesport | Platform: Quest | Category: Boxing fitness
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Liteboxer brings the popular at-home boxing platform to VR. Punch
+          Litesport (formerly Liteboxer) brings the popular at-home boxing platform to VR. Punch
           combinations sync to music with flashing target cues, and the app
           tracks your accuracy, speed, and power. A solid alternative to FitXR
           if boxing is your primary focus.
@@ -463,7 +466,7 @@ export default function BestVRFitnessPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Meta Quest 3S at $299 is the most accessible entry point.
+          The Meta Quest 3S at $349 is the most accessible entry point.
           Before you start, pick up a sweat-friendly face cover and a better
           head strap because the default Quest face interface is not built
           for actual sweat. Silicone covers cost $15 to $25 and protect the

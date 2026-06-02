@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headsets 2026: The Complete Buyer's Guide",
   datePublished: "2026-03-23",
-  dateModified: "2026-05-02",
+  dateModified: "2026-06-01",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -84,7 +84,7 @@ const headsetList = productItemListSchema("Best VR Headsets 2026", [
     brand: "Meta",
     image: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Meta_Quest_3S_Display_Unit.jpg",
     description:
-      "The best budget VR headset, a standalone Quest with color passthrough and the full Quest library for $299.",
+      "The best budget VR headset, a standalone Quest with color passthrough and the full Quest library for $349.",
     url: "https://vr.org/best-vr-headsets#meta-quest-3s",
   },
   {
@@ -92,7 +92,7 @@ const headsetList = productItemListSchema("Best VR Headsets 2026", [
     brand: "Meta",
     image: "https://upload.wikimedia.org/wikipedia/commons/a/af/Meta_Quest_3_display_unit.jpg",
     description:
-      "The best all-around VR headset, standalone plus PC VR with the largest content library of any platform, for $499.",
+      "The best all-around VR headset, standalone plus PC VR with the largest content library of any platform, for $599.",
     url: "https://vr.org/best-vr-headsets#meta-quest-3",
   },
   {
@@ -133,12 +133,12 @@ const headsetFaq = faqPageSchema([
   {
     question: "Which VR headset should you buy in 2026?",
     answer:
-      "For most buyers, the Meta Quest 3 at $499 is the best VR headset to buy in 2026. It balances price, performance, a massive content library, and PC VR compatibility. If you want the cheapest way into VR, the Meta Quest 3S at $299 is the best budget pick. PlayStation gamers should get the PSVR2, and buyers focused on spatial computing and premium media should consider the Apple Vision Pro.",
+      "For most buyers, the Meta Quest 3 at $599 is the best VR headset to buy in 2026. It balances price, performance, a massive content library, and PC VR compatibility. If you want the cheapest way into VR, the Meta Quest 3S at $349 is the best budget pick. PlayStation gamers should get the PSVR2, and buyers focused on spatial computing and premium media should consider the Apple Vision Pro.",
   },
   {
     question: "What is the best VR headset for beginners?",
     answer:
-      "The Meta Quest 3S at $299 is the best VR headset for beginners. It requires no PC, no external sensors, and no complicated setup. The Quest software library has hundreds of games and apps, and the onboarding experience is well designed for first-time VR users.",
+      "The Meta Quest 3S at $349 is the best VR headset for beginners. It requires no PC, no external sensors, and no complicated setup. The Quest software library has hundreds of games and apps, and the onboarding experience is well designed for first-time VR users.",
   },
   {
     question: "Do I need a gaming PC for VR?",
@@ -148,7 +148,7 @@ const headsetFaq = faqPageSchema([
   {
     question: "Is VR worth it in 2026?",
     answer:
-      "Yes. VR in 2026 is a significant leap from where it was even two years ago. Display clarity has improved, standalone performance is strong enough for polished games, and mixed-reality passthrough has opened up entirely new use cases. At $299 for the Quest 3S, the barrier to entry has never been lower.",
+      "Yes. VR in 2026 is a significant leap from where it was even two years ago. Display clarity has improved, standalone performance is strong enough for polished games, and mixed-reality passthrough has opened up entirely new use cases. At $349 for the Quest 3S, the barrier to entry has never been lower.",
   },
   {
     question: "Can I wear glasses with a VR headset?",
@@ -158,7 +158,7 @@ const headsetFaq = faqPageSchema([
   {
     question: "What is the difference between Meta Quest 3 and Quest 3S?",
     answer:
-      "The Quest 3 ($499) has higher-resolution pancake lenses, better passthrough, and slimmer optics. The Quest 3S ($299) uses Fresnel lenses and a slightly lower-resolution display but runs the same Snapdragon XR2 Gen 2 chip and the same game library. Most buyers will be happy with the Quest 3S unless mixed reality quality is a priority.",
+      "The Quest 3 ($599) has higher-resolution pancake lenses, better passthrough, and slimmer optics. The Quest 3S ($349) uses Fresnel lenses and a slightly lower-resolution display but runs the same Snapdragon XR2 Gen 2 chip and the same game library. Most buyers will be happy with the Quest 3S unless mixed reality quality is a priority.",
   },
 ]);
 
@@ -187,7 +187,7 @@ export default function BestVRHeadsetsPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: May 2026
+          Last updated: June 2026
         </p>
 
         <p
@@ -262,11 +262,11 @@ export default function BestVRHeadsetsPage() {
           Short answer: if you are new to VR and want the best VR headset to buy
           in 2026, get the{" "}
           <strong style={{ color: "var(--text-primary)" }}>Meta Quest 3</strong>{" "}
-          at $499. It is the best all-around VR headset on the market, works
+          at $599. It is the best all-around VR headset on the market, works
           standalone or tethered to a gaming PC, and has the largest content
-          library of any VR platform. If $499 is out of reach, the{" "}
+          library of any VR platform. If $599 is out of reach, the{" "}
           <strong style={{ color: "var(--text-primary)" }}>Meta Quest 3S</strong>{" "}
-          at $299 is the best cheap VR headset you can buy. For PS5 owners, the{" "}
+          at $349 is the best cheap VR headset you can buy. For PS5 owners, the{" "}
           <strong style={{ color: "var(--text-primary)" }}>PlayStation VR2</strong>{" "}
           is the clear pick. And if you want the best mixed reality and spatial
           computing experience money can buy, the{" "}
@@ -317,7 +317,7 @@ export default function BestVRHeadsetsPage() {
             <tbody>
               <tr style={{ borderBottom: "1px solid var(--border)" }}>
                 <td className="py-3 px-4 font-medium" style={{ color: "var(--text-primary)" }}>Meta Quest 3S</td>
-                <td className="py-3 px-4">$299</td>
+                <td className="py-3 px-4">$349</td>
                 <td className="py-3 px-4">Standalone</td>
                 <td className="py-3 px-4">1832 x 1920 per eye</td>
                 <td className="py-3 px-4">Best budget option</td>
@@ -329,14 +329,14 @@ export default function BestVRHeadsetsPage() {
                 }}
               >
                 <td className="py-3 px-4 font-medium" style={{ color: "var(--text-primary)" }}>Meta Quest 3</td>
-                <td className="py-3 px-4">$499</td>
+                <td className="py-3 px-4">$599</td>
                 <td className="py-3 px-4">Standalone / PC VR</td>
                 <td className="py-3 px-4">2064 x 2208 per eye</td>
                 <td className="py-3 px-4">Best all-around</td>
               </tr>
               <tr style={{ borderBottom: "1px solid var(--border)" }}>
                 <td className="py-3 px-4 font-medium" style={{ color: "var(--text-primary)" }}>PlayStation VR2</td>
-                <td className="py-3 px-4">$549</td>
+                <td className="py-3 px-4">$399</td>
                 <td className="py-3 px-4">PS5 / PC tethered</td>
                 <td className="py-3 px-4">2000 x 2040 per eye</td>
                 <td className="py-3 px-4">Best for PlayStation gamers</td>
@@ -355,7 +355,7 @@ export default function BestVRHeadsetsPage() {
               </tr>
               <tr style={{ borderBottom: "1px solid var(--border)" }}>
                 <td className="py-3 px-4 font-medium" style={{ color: "var(--text-primary)" }}>Valve Index</td>
-                <td className="py-3 px-4">$999</td>
+                <td className="py-3 px-4">Discontinued</td>
                 <td className="py-3 px-4">PC VR tethered</td>
                 <td className="py-3 px-4">1440 x 1600 per eye</td>
                 <td className="py-3 px-4">Best for PC VR enthusiasts</td>
@@ -367,7 +367,7 @@ export default function BestVRHeadsetsPage() {
                 }}
               >
                 <td className="py-3 px-4 font-medium" style={{ color: "var(--text-primary)" }}>HP Reverb G2</td>
-                <td className="py-3 px-4">$599</td>
+                <td className="py-3 px-4">Discontinued</td>
                 <td className="py-3 px-4">PC VR</td>
                 <td className="py-3 px-4">2160 x 2160 per eye</td>
                 <td className="py-3 px-4">Best for sim racing / flight sim</td>
@@ -383,7 +383,7 @@ export default function BestVRHeadsetsPage() {
 
         {/* Meta Quest 3S */}
         <h3 id="meta-quest-3s" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
-          Meta Quest 3S: Best Budget VR Headset ($299)
+          Meta Quest 3S: Best Budget VR Headset ($349)
         </h3>
         <figure className="fitness-figure">
           <img
@@ -401,7 +401,7 @@ export default function BestVRHeadsetsPage() {
           library, supports color mixed-reality passthrough, and delivers
           smooth standalone performance powered by the Snapdragon XR2 Gen 2
           chipset, the same chip found in the more expensive Quest 3. At
-          $299, it has effectively replaced the Quest 2 as Meta&apos;s entry-level
+          $349, it has effectively replaced the Quest 2 as Meta&apos;s entry-level
           headset and is the device we recommend for anyone trying VR for the
           first time.
         </p>
@@ -414,7 +414,7 @@ export default function BestVRHeadsetsPage() {
           media) and Fresnel lenses instead of pancake optics, which adds a
           small amount of weight. Passthrough quality is noticeably lower
           than the Quest 3 but still functional for mixed-reality apps. For
-          most buyers, these compromises are well worth the $200 savings.
+          most buyers, these compromises are well worth the $250 savings.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
@@ -422,14 +422,13 @@ export default function BestVRHeadsetsPage() {
         >
           <strong style={{ color: "var(--text-primary)" }}>Verdict:</strong>{" "}
           If you want to try VR without a big investment, the Quest 3S is the
-          clear choice. It offers 90% of the Quest 3 experience at 60% of
-          the price, backed by the largest standalone VR game library
-          available.
+          clear choice. It offers 90% of the Quest 3 experience for $250 less,
+          backed by the largest standalone VR game library available.
         </p>
 
         {/* Meta Quest 3 */}
         <h3 id="meta-quest-3" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
-          Meta Quest 3: Best All-Around VR Headset ($499)
+          Meta Quest 3: Best All-Around VR Headset ($599)
         </h3>
         <figure className="fitness-figure">
           <img
@@ -469,13 +468,13 @@ export default function BestVRHeadsetsPage() {
           <strong style={{ color: "var(--text-primary)" }}>Verdict:</strong>{" "}
           The Quest 3 is the Swiss Army knife of VR. Standalone convenience,
           PC VR capability, solid mixed reality, and a massive game library
-          All for $499. It is the headset we recommend unless you have a
+          All for $599. It is the headset we recommend unless you have a
           specific reason to look elsewhere.
         </p>
 
         {/* PlayStation VR2 */}
         <h3 id="playstation-vr2" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
-          PlayStation VR2: Best for PlayStation Gamers ($549)
+          PlayStation VR2: Best for PlayStation Gamers ($399)
         </h3>
         <figure className="fitness-figure">
           <img
@@ -576,7 +575,7 @@ export default function BestVRHeadsetsPage() {
 
         {/* Valve Index */}
         <h3 id="valve-index" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
-          Valve Index: Best for PC VR Enthusiasts ($999)
+          Valve Index: Best for PC VR Enthusiasts (Discontinued)
         </h3>
         <figure className="fitness-figure">
           <img
@@ -618,13 +617,15 @@ export default function BestVRHeadsetsPage() {
           <strong style={{ color: "var(--text-primary)" }}>Verdict:</strong>{" "}
           The Valve Index is for PC VR purists who value tracking fidelity,
           wide FOV, and high refresh rate over resolution and convenience.
-          With Valve&apos;s next headset on the horizon, some buyers may want to
-          wait, but the Index remains an excellent PC VR experience today.
+          Valve has now discontinued the Index as its standalone successor, the
+          Steam Frame, moves toward launch (Steam lists it as coming soon).
+          Remaining stock may still sell at clearance prices, but most buyers
+          should wait for the Frame.
         </p>
 
         {/* HP Reverb G2 */}
         <h3 id="hp-reverb-g2" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
-          HP Reverb G2: Best for Sim Racing &amp; Flight Sim ($599)
+          HP Reverb G2: Best for Sim Racing &amp; Flight Sim (Discontinued)
         </h3>
         <figure className="fitness-figure">
           <img
@@ -664,10 +665,11 @@ export default function BestVRHeadsetsPage() {
           style={{ color: "var(--text-secondary)" }}
         >
           <strong style={{ color: "var(--text-primary)" }}>Verdict:</strong>{" "}
-          A purpose-built headset for sim enthusiasts. If you play Microsoft
-          Flight Simulator, iRacing, or Assetto Corsa Competizione, the
-          Reverb G2 delivers the sharpest visuals in its price class. For
-          general VR gaming, look at the Quest 3 instead.
+          A purpose-built headset for sim enthusiasts, now discontinued and
+          dependent on Windows Mixed Reality, which Microsoft has retired. If
+          you can still find one it remains capable for Microsoft Flight
+          Simulator or iRacing, but new sim buyers should look at the Bigscreen
+          Beyond 2 or the Quest 3 instead.
         </p>
 
         {/* How to Choose */}
@@ -750,10 +752,11 @@ export default function BestVRHeadsetsPage() {
           style={{ color: "var(--text-secondary)" }}
         >
           The best VR headset is the one that fits your budget and use case.
-          At $299, the Quest 3S gives you access to the full Quest ecosystem
-          with no additional hardware required. At $499, the Quest 3 is the
-          sweet spot for most buyers. The $549-$999 range covers enthusiast
-          and specialized options. And at $3,499, the Vision Pro is a premium
+          At $349, the Quest 3S gives you access to the full Quest ecosystem
+          with no additional hardware required. At $599, the Quest 3 is the
+          sweet spot for most buyers. The $399-$599 range covers the PSVR2 and
+          the Quest 3, while discontinued enthusiast options like the Valve
+          Index may still turn up at clearance prices. And at $3,499, the Vision Pro is a premium
           investment in spatial computing. Remember to budget for accessories
           too. A good head strap ($50-$80), carrying case ($30-$60), and
           games add to the total cost of ownership.
@@ -777,43 +780,44 @@ export default function BestVRHeadsetsPage() {
           <strong style={{ color: "var(--text-primary)" }}>
             Steam Controller
           </strong>{" "}
-          ships May 4, 2026 for $99 as the first piece of the new lineup,
-          and the{" "}
+          sold out within the hour after shipping May 4, 2026 for $99, and
+          the{" "}
           <strong style={{ color: "var(--text-primary)" }}>
             Steam Frame
           </strong>{" "}
-          headset is expected to follow later this year, paired with a
-          first-party Valve VR title. The on-time controller launch is the
-          first concrete signal that the Frame is real and shipping in 2026.
-          Lighthouse-compatible tracking, significantly higher resolution
-          displays, and deep SteamVR integration are all expected.
+          headset is now listed as coming soon on Steam, paired with a
+          first-party Valve VR title. A RAM supply shortage tied to AI demand
+          has clouded the exact launch window, but the controller selling out
+          confirms real appetite for the new lineup. Lighthouse-compatible
+          tracking, significantly higher resolution displays, and deep SteamVR
+          integration are all expected.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Meta is widely expected to announce the{" "}
+          Meta has pushed the{" "}
           <strong style={{ color: "var(--text-primary)" }}>Quest 4</strong>{" "}
-          later this year, powered by a next-generation Snapdragon XR
-          chipset with meaningful gains in GPU performance and on-device AI.
-          Improved passthrough, thinner optics, and enhanced mixed-reality
-          features are all rumored.
+          to 2027 after reworking its prototype lineup. Meta Connect 2026
+          (September 23 to 24) is now expected to center on smart glasses
+          rather than a new headset, so the Quest 3 and Quest 3S remain
+          Meta&apos;s current headsets through this year.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Pico has been quietly building a Vision Pro competitor under the
-          codename{" "}
+          Pico is still developing a high-end headset under the codename{" "}
           <strong style={{ color: "var(--text-primary)" }}>Project Swan</strong>
-          , reportedly with 4,000 PPI displays and a target price near half
-          of Apple&apos;s headset. Samsung&apos;s{" "}
+          , reportedly with very high-resolution displays at a price well below
+          Apple&apos;s. Samsung&apos;s{" "}
           <strong style={{ color: "var(--text-primary)" }}>
             Galaxy Glasses
           </strong>{" "}
-          (the consumer Android XR smart glasses) keep showing up in leaks
-          and certifications, with Google I/O on May 19 to 20 likely to
-          provide the first real public demo of the Android XR roadmap.
+          (the consumer Android XR smart glasses) were officially unveiled
+          alongside Google at I/O in May, with a fall 2026 launch window.
+          Samsung&apos;s Galaxy XR headset is already on sale as the Android XR
+          flagship.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
@@ -822,7 +826,7 @@ export default function BestVRHeadsetsPage() {
           If you are not in a rush, waiting for these launches may be
           worthwhile. But the current crop of headsets is genuinely
           excellent, and there will always be something new around the
-          corner. The Quest 3 at $499 is not going to feel obsolete in 2026
+          corner. The Quest 3 at $599 is not going to feel obsolete in 2026
           regardless of what ships next.
         </p>
 
@@ -838,12 +842,12 @@ export default function BestVRHeadsetsPage() {
           className="text-[15px] leading-[1.7] mb-6"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Meta Quest 3S at $299 is the best VR headset for beginners. It
+          The Meta Quest 3S at $349 is the best VR headset for beginners. It
           requires no PC, no external sensors, and no complicated setup.
           you charge it, put it on, and start playing. The Quest software
           library has hundreds of games and apps, and the onboarding
           experience is well-designed for first-time VR users. If you can
-          stretch to $499, the Quest 3 is an even better long-term
+          stretch to $599, the Quest 3 is an even better long-term
           investment.
         </p>
 
@@ -875,7 +879,7 @@ export default function BestVRHeadsetsPage() {
           performance is strong enough for polished games, and mixed-reality
           passthrough has opened up entirely new use cases. The game library
           is deeper than ever, with both AAA titles and a thriving indie
-          scene. At $299 for the Quest 3S, the barrier to entry has never
+          scene. At $349 for the Quest 3S, the barrier to entry has never
           been lower.
         </p>
 

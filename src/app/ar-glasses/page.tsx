@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best AR Glasses 2026: Smart Glasses Comparison & Buyer's Guide",
   datePublished: "2026-04-20",
-  dateModified: "2026-05-02",
+  dateModified: "2026-06-01",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -90,7 +90,7 @@ const glassesFaq = faqPageSchema([
   {
     question: "What are the best AR glasses in 2026?",
     answer:
-      "The Ray-Ban Meta (Gen 2) is the best AR smart glasses you can buy off the shelf in 2026 for the mainstream user. For buyers who want a visible display, the Rokid Glasses currently lead the display-AI smart glasses category in global sales. Xreal One Pro and Viture Pro are the top picks for a large virtual screen tethered to a phone or console. Apple Vision Pro remains the most powerful mixed-reality device but is not strictly glasses-form-factor.",
+      "The Ray-Ban Meta (Gen 2) is the best mainstream smart glasses you can buy off the shelf in 2026 if you do not need a display. For a visible display in a fashion frame, the Meta Ray-Ban Display ($799) and the Rokid Glasses lead the category. Xreal One Pro and the Viture line are the top picks for a large virtual screen tethered to a phone or console. Apple Vision Pro remains the most powerful mixed-reality device but is not strictly glasses-form-factor.",
   },
   {
     question: "What is the difference between AR glasses and VR headsets?",
@@ -110,12 +110,12 @@ const glassesFaq = faqPageSchema([
   {
     question: "When are Google's Android XR glasses coming out?",
     answer:
-      "Google has announced Android XR as the platform for its upcoming smart glasses, with partner devices from Samsung and others expected throughout 2026 and 2027. Google's own branded smart glasses have not yet shipped as of April 2026, though the Rokid Glasses already natively run Gemini via a software update.",
+      "Google and Samsung revealed their joint Android XR smart glasses at Google I/O in May 2026. The first-generation glasses are audio-only (no display) and are confirmed for a fall 2026 launch in styles from Gentle Monster and Warby Parker. Xreal's Project Aura, the first Android XR display glasses, is also due before the end of 2026, with display-only Samsung models expected in 2027.",
   },
   {
     question: "How much do AR glasses cost?",
     answer:
-      "AR glasses prices in 2026 range from $299 (Ray-Ban Meta) to $499 (Rokid Glasses, Xreal One Pro, Viture Pro) to $3,499 (Apple Vision Pro). Most mainstream smart glasses sit in the $299 to $500 range. Developer-grade AR prototypes like Meta Orion are not priced for consumers yet.",
+      "AR glasses prices in 2026 range from about $269 (RayNeo Air) and $379 (Ray-Ban Meta) up through $499 to $599 (Rokid Glasses, Xreal One Pro, Viture) and $799 (Meta Ray-Ban Display), to $2,500 (Snap Specs) and $3,499 (Apple Vision Pro). Most mainstream smart glasses sit in the $300 to $600 range. Developer-grade prototypes like Meta Orion are not priced for consumers yet.",
   },
 ]);
 
@@ -142,7 +142,7 @@ export default function ARGlassesPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: May 2026
+          Last updated: June 2026
         </p>
 
         <p
@@ -218,7 +218,7 @@ export default function ARGlassesPage() {
           />
         </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
-          Made by Meta and EssilorLuxottica | Price: ~$329 | Display: None
+          Made by Meta and EssilorLuxottica | Price: ~$379 | Display: None
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
@@ -230,7 +230,11 @@ export default function ARGlassesPage() {
           integrates Meta AI for hands-free queries. There is no visible
           display, which is the trade-off that keeps the form factor normal.
           If you want glasses you can wear to dinner without anyone noticing
-          they are smart, this is the obvious pick.
+          they are smart, this is the obvious pick. Meta has since added a
+          separate, pricier product, the Meta Ray-Ban Display ($799), which
+          builds in a small in-lens display and a Neural Band wristband for
+          input. It is a different device from the standard Ray-Ban Meta, but
+          it is Meta&apos;s first fashion-frame glasses with a real display.
         </p>
 
         {/* Rokid Glasses */}
@@ -257,7 +261,9 @@ export default function ARGlassesPage() {
           smart glasses to natively run Google Gemini, ahead of Google's own
           branded glasses. If you want a real-time info overlay (notifications,
           translations, navigation cues) without committing to a full headset,
-          Rokid is the current champion.
+          Rokid is the current champion. Rokid also offers a screenless model,
+          the AI Glasses Style ($299), that drops the display for a lighter
+          38.5-gram frame aimed squarely at Ray-Ban Meta.
         </p>
 
         {/* Xreal One Pro */}
@@ -310,7 +316,10 @@ export default function ARGlassesPage() {
           extra for custom inserts. The form factor is slightly slimmer than
           Xreal, and the Mobile Dock accessory adds a self-contained Android
           XR mode so the glasses can run without a tethered device. A great
-          alternative to Xreal if glasses ergonomics matter to you.
+          alternative to Xreal if glasses ergonomics matter to you. Viture&apos;s
+          2026 lineup has since expanded with the Beast XR ($549), which adds a
+          brighter Sony micro-OLED panel and a 174-inch virtual screen, plus
+          the more affordable Luma line starting at $399.
         </p>
 
         {/* Ad: between Viture Pro (4th) and Meta Orion (5th) */}
@@ -394,8 +403,9 @@ export default function ARGlassesPage() {
           include it. The passthrough AR experience is the best in consumer
           hardware by a wide margin, the micro-OLED displays are the sharpest
           available, and visionOS is purpose-built for spatial computing
-          workflows. The price keeps it in early-adopter territory. A smaller,
-          cheaper Vision is rumored for 2026 or 2027.
+          workflows. The price keeps it in early-adopter territory. A lighter,
+          cheaper Vision successor is now reported for no earlier than 2028,
+          with Apple shifting focus toward its own smart glasses.
         </p>
 
         {/* What's coming in AR */}
@@ -407,17 +417,19 @@ export default function ARGlassesPage() {
           style={{ color: "var(--text-secondary)" }}
         >
           The next two years are going to reset the smart glasses market.
-          Google I/O on May 19 to 20, 2026 is expected to be the biggest
-          public moment for Android XR yet, with a likely first hardware
-          unveil for the Samsung Galaxy Glasses (the consumer Android XR
-          smart glasses that have been showing up in leaks and FCC filings
-          for months). Meta is expected to ship a consumer Orion successor
-          in the 2027 to 2028 window, and Apple is widely reported to be
-          working on a lighter, more affordable Vision device. Pico&apos;s
-          Project Swan, a Vision Pro competitor with reportedly 4,000 PPI
-          displays at potentially half the price, is the wildcard. The
-          current state of the market (display vs display-free, tethered vs
-          standalone) will consolidate quickly once these platforms land.
+          Google I/O on May 19 to 20, 2026 delivered the biggest public moment
+          for Android XR yet. Samsung and Google gave the first official look
+          at their joint Android XR smart glasses, shown in two styles made
+          with Gentle Monster and Warby Parker, with an audio-and-camera first
+          generation (no display) confirmed for a fall 2026 launch and a
+          display version on the 2027 roadmap. Xreal also revealed Project
+          Aura, the first Android XR display glasses, due before the end of
+          2026. Meta is expected to ship a consumer Orion successor in the 2027
+          to 2028 window, while Apple has reportedly pushed its lighter, cheaper
+          Vision device toward 2028 and shifted resources to its own smart
+          glasses. Snap has confirmed its standalone Specs for fall 2026 at
+          around $2,500. Pico&apos;s Project Swan remains the wildcard. The
+          market will consolidate quickly once these platforms land.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"

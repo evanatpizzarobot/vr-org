@@ -42,7 +42,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Games of 2026: New Releases and Must-Play Titles",
   datePublished: "2026-03-24",
-  dateModified: "2026-05-02",
+  dateModified: "2026-06-01",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -86,17 +86,17 @@ const games2026Faq = faqPageSchema([
   {
     question: "What are the best VR games of 2026?",
     answer:
-      "Through April 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, and the breakout indie One More Delve. Star Trek: Infection, Aces of Thunder, and whatever Valve launches alongside the Steam Frame are still on the way.",
+      "Through May 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Aces of Thunder, Star Trek: Infection, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, the breakout indie One More Delve, and the open-world hunting sim Virtual Hunter. Whatever Valve launches alongside the Steam Frame remains the biggest wildcard for the back half of the year.",
   },
   {
     question: "What VR games are coming in the rest of 2026?",
     answer:
-      "Major VR releases still expected in 2026 include Star Trek: Infection, Aces of Thunder, and whatever launch title Valve ships alongside the Steam Frame headset. Several PSVR 2 ports and Quest exclusives remain on publishers' roadmaps for the second half of the year.",
+      "The biggest remaining wildcard for 2026 is whatever launch title Valve ships alongside the Steam Frame headset. Several PSVR 2 ports and Quest exclusives remain on publishers' roadmaps for the second half of the year, following a busy spring that delivered Aces of Thunder, Star Trek: Infection, and Virtual Hunter.",
   },
   {
     question: "When does the Steam Frame release?",
     answer:
-      "Valve has not announced a release date for the Steam Frame headset, but the new Steam Controller launches May 4, 2026 for $99 as the first piece of Valve's hardware lineup. The Frame is expected to follow later in 2026, likely bundled with a first-party Valve VR title. The on-time controller launch increases confidence that the Frame is real and shipping this year.",
+      "Valve has not announced a release date for the Steam Frame headset. The new Steam Controller launched May 4, 2026 at $99 and sold out within the hour, confirming demand, but a RAM supply shortage tied to AI chip demand has introduced uncertainty around the exact Frame window. Valve now lists the headset as coming soon, likely bundled with a first-party VR title.",
   },
   {
     question: "Are there new PSVR 2 games in 2026?",
@@ -106,7 +106,7 @@ const games2026Faq = faqPageSchema([
   {
     question: "What is the best VR game in 2026 so far?",
     answer:
-      "Microsoft Flight Simulator on PSVR 2 is the most ambitious release of the year through April. Batman: Arkham Shadow remains the strongest Quest-native title, and One More Delve is the surprise of the year, a polished three-player co-op dungeon crawler built largely by a single student developer that outperformed several big-studio releases.",
+      "Microsoft Flight Simulator on PSVR 2 is the most ambitious release of the year through May. Batman: Arkham Shadow remains the strongest Quest-native title, and One More Delve is the surprise of the year, a polished three-player co-op dungeon crawler built largely by a single student developer that outperformed several big-studio releases.",
   },
 ]);
 
@@ -134,7 +134,7 @@ export default function BestVRGames2026Page() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: May 2026
+          Last updated: June 2026
         </p>
 
         <p
@@ -157,13 +157,13 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Four months in, 2026 is delivering on its promise as one of the
+          Five months in, 2026 is delivering on its promise as one of the
           biggest years for VR gaming. Microsoft Flight Simulator hit PSVR 2,
           TMNT: Empire City brought the turtles to VR, and a solo student
           developer dropped one of the most surprising indie hits of the year.
-          Valve&apos;s Steam Controller ships May 4, with the Steam Frame
-          headset still expected later this year. Here are the best VR games
-          of 2026 so far, plus the titles still ahead.
+          Valve&apos;s Steam Controller sold out in under an hour on May 4, and
+          the Steam Frame headset is now listed as coming soon. Here are the
+          best VR games of 2026 so far, plus the titles still ahead.
         </p>
 
         <a
@@ -273,17 +273,18 @@ export default function BestVRGames2026Page() {
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
         >
-          Developer: Bandai Namco | Platform: TBA | Released: April 2026 (announced)
+          Developer: Bandai Namco | Platform: PSVR2, Quest, PC VR | Released: April 24, 2026
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          One of the most anticipated VR releases of the year. Bandai
-          Namco&apos;s acclaimed puzzle-platformer franchise is making the
-          jump to VR with a new standalone story. If they nail the sense of
-          scale and creeping dread that defined the flat screen versions,
-          this could be a standout horror experience.
+          Bandai Namco&apos;s acclaimed puzzle-platformer franchise made the
+          jump to VR on April 24 with a new standalone story following Dark
+          Six through a deeply unsettling world of outsized threats and
+          intricate puzzles. It is out now on PSVR2, Quest, and PC VR, and the
+          sense of scale and creeping dread carries over from the flat-screen
+          originals.
         </p>
 
         {/* Microsoft Flight Simulator (PSVR 2) */}
@@ -400,7 +401,7 @@ export default function BestVRGames2026Page() {
 
         {/* Most anticipated VR games for the rest of 2026 */}
         <h2 className="font-display text-2xl font-semibold mb-4">
-          Most anticipated VR games for the rest of 2026
+          Recently released, and what is still ahead
         </h2>
 
         {/* Whatever Valve ships with Steam Frame */}
@@ -418,14 +419,14 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          The new Steam Controller ships May 4, 2026 for $99, the first
-          piece of Valve&apos;s hardware lineup to actually leave the lab.
-          Steam Frame is still TBA, but the on-time controller launch is
-          a real signal that the headset is shipping this year. Nobody
-          knows what Valve plans to launch alongside it, but the community
-          is hoping for something in the Half-Life universe. A first-party
-          Valve VR title bundled with new hardware could be the biggest
-          VR gaming moment since Alyx.
+          The new Steam Controller sold out in under an hour on May 4, 2026
+          at $99, confirming real appetite for Valve&apos;s new hardware.
+          Steam Frame is now listed as coming soon, though a RAM supply
+          shortage tied to AI demand has put pressure on the exact timing.
+          Nobody knows what Valve plans to launch alongside it, but the
+          community is hoping for something in the Half-Life universe. A
+          first-party Valve VR title bundled with new hardware could be the
+          biggest VR gaming moment since Alyx.
         </p>
 
         {/* Star Trek: Infection */}
@@ -443,10 +444,13 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          A narrative survival VR game set in the Star Trek universe. Players
-          take on the role of a Vulcan Starfleet officer on a mission aboard
-          the U.S.S. Lumen that goes sideways fast. The combination of a
-          beloved franchise with immersive VR gameplay has serious potential.
+          Released March 31 on Quest 3 and PC VR, this narrative survival
+          horror is set in the Star Trek universe. You play a Vulcan Starfleet
+          officer aboard the U.S.S. Lumen as the mission collapses into
+          something darker. Reception has been mixed: critics praised the
+          atmosphere and franchise authenticity while flagging finicky controls
+          and a short, roughly six to seven hour runtime. Worth it for Trek
+          fans who can tolerate the rough edges.
         </p>
 
         {/* Aces of Thunder */}
@@ -464,10 +468,12 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          A World War I and II flight combat game with a focus on
-          cockpit-only VR gameplay. The flight model is derived from War
-          Thunder, and it supports full HOTAS controls. For sim enthusiasts,
-          this is one of the most anticipated VR titles of the year.
+          Released February 3 on PSVR2 and PC VR, this World War I and II
+          flight combat game focuses on cockpit-only VR gameplay with physics
+          derived from War Thunder. It supports full HOTAS controls, ships with
+          24 aircraft, and won praise for its physical accuracy and audio while
+          drawing criticism for a steep learning curve. Sim enthusiasts have
+          embraced it.
         </p>
 
         {/* Ad: after the last anticipated game, before related articles */}
@@ -484,9 +490,9 @@ export default function BestVRGames2026Page() {
           style={{ color: "var(--text-secondary)" }}
         >
           The Steam Frame launch is still the wild card for the back half
-          of 2026. With the new Steam Controller now shipping on May 4, the
-          path to a Frame launch later this year looks more credible than
-          it did a few months ago. If Valve delivers a strong standalone
+          of 2026. The new Steam Controller sold out on launch day, confirming
+          demand, but a RAM supply shortage tied to AI chip demand has made the
+          exact Frame window less certain than it looked in April. If Valve delivers a strong standalone
           headset with a compelling launch title, it could expand the VR
           gaming audience significantly and give developers a reason to
           invest more heavily in VR exclusive content. Quest continues to
