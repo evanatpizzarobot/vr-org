@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-24",
+  "lastUpdated": "2026-06-02",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -104,7 +104,7 @@
           "name": "ROG Xreal R1",
           "price": "$849",
           "image": "https://us.shop.xreal.com/cdn/shop/files/XREAL_ROG___2400x2400_01_db14182b-1e05-4107-8e97-56dc97d0f14f.jpg?v=1778653953",
-          "description": "The first 240Hz micro-OLED AR glasses, built for gamers. 171-inch virtual screen, Sony micro-OLED panels, Bose-tuned audio, and a control dock that hot-swaps between PC, Xbox, and PlayStation. Preorders open, ships June 1.",
+          "description": "The first 240Hz micro-OLED AR glasses, built for gamers. 171-inch virtual screen, Sony micro-OLED panels, Bose-tuned audio, and a control dock that hot-swaps between PC, Xbox, and PlayStation. Now shipping as of June 1 through Best Buy and Xreal direct.",
           "badge": "Just Launched",
           "links": {
             "bestbuy": { "url": "https://www.bestbuy.com/", "label": "Best Buy" },
@@ -261,7 +261,7 @@
     {
       "id": "gaming-hardware",
       "title": "Gaming Hardware",
-      "description": "VR-ready GPUs and Steam-platform peripherals for PC VR gaming. GPU prices reflect retail averages and have been volatile through the 2025-2026 DRAM cycle.",
+      "description": "VR-ready GPUs and Steam-platform peripherals for PC VR gaming. GPU prices reflect current retail street averages and now sit well above MSRP, as AI demand for memory squeezes consumer card supply through the 2025-2026 crunch.",
       "items": [
         {
           "name": "Valve Steam Controller (2026)",
@@ -275,9 +275,9 @@
         },
         {
           "name": "NVIDIA RTX 5090",
-          "price": "~$1,999",
+          "price": "~$2,899",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Palit_GeForce_RTX_5090_Gamerock_20250530_HOF3873_RAW-Export_cens.png/1280px-Palit_GeForce_RTX_5090_Gamerock_20250530_HOF3873_RAW-Export_cens.png",
-          "description": "The absolute top of the stack. 32GB of GDDR7, DLSS 4, and the only card that drives the Bigscreen Beyond 2 at full resolution without compromise.",
+          "description": "The absolute top of the stack. 32GB of GDDR7, DLSS 4, and the only card that drives the Bigscreen Beyond 2 at full resolution without compromise. Street prices have blown well past the $1,999 MSRP during the memory crunch, so expect to pay a premium.",
           "badge": "Premium",
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=rtx+5090&tag=vrorg00-20", "label": "Amazon" }
@@ -285,9 +285,9 @@
         },
         {
           "name": "NVIDIA RTX 5070 Ti",
-          "price": "~$749",
+          "price": "~$979",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/PNY_RTX_5070_Ti_at_Computex_2025.jpg/1280px-PNY_RTX_5070_Ti_at_Computex_2025.jpg",
-          "description": "Blackwell's sweet spot. Roughly 4080 Super performance with DLSS 4, and the best price-per-frame in PC VR right now.",
+          "description": "Blackwell's sweet spot. Roughly 4080 Super performance with DLSS 4, and still one of the strongest all-around PC VR cards, even with memory-crunch pricing pushing it past its $749 launch MSRP.",
           "badge": "Editor's Pick",
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=rtx+5070+ti&tag=vrorg00-20", "label": "Amazon" }
@@ -295,19 +295,19 @@
         },
         {
           "name": "AMD Radeon RX 9070 XT",
-          "price": "~$629",
+          "price": "~$669",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Sapphire_Pulse_Radeon_RX_9070_XT_-_L%C3%BCfter_1.jpg/1280px-Sapphire_Pulse_Radeon_RX_9070_XT_-_L%C3%BCfter_1.jpg",
-          "description": "AMD's flagship RDNA 4 card. 16GB of GDDR6, strong ray tracing for the price, and the best non-NVIDIA option for PC VR in 2026. Pairs cleanly with SteamVR and Quest Link.",
+          "description": "AMD's flagship RDNA 4 card. 16GB of GDDR6, strong ray tracing for the price, and the best price-per-frame in PC VR right now. It undercuts the slower 4070 Super while staying faster, which makes it the value pick of the lineup. Pairs cleanly with SteamVR and Quest Link, and dips to around $629 on sale.",
+          "badge": "Best Value",
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=radeon+rx+9070+xt&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
           "name": "NVIDIA RTX 4070 Super",
-          "price": "~$549",
+          "price": "~$729",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/2023_Gigabyte_GeForce_RTX_4070_Aero_OC_12GB_%286%29.jpg/1280px-2023_Gigabyte_GeForce_RTX_4070_Aero_OC_12GB_%286%29.jpg",
-          "description": "The best budget GPU for PC VR. Handles Quest Link and SteamVR at high settings with plenty of headroom.",
-          "badge": "Best Value",
+          "description": "A capable PC VR card that handles Quest Link and SteamVR at high settings with headroom to spare. The memory crunch has pushed it well above its $599 launch price, so the RX 9070 XT is the stronger value today unless you find the 4070 Super on a genuine discount.",
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=rtx+4070+super&tag=vrorg00-20", "label": "Amazon" }
           }
