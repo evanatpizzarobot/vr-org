@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -24,12 +25,21 @@ interface HeaderProps {
 
 export function Header({ articleCount, lastUpdated }: HeaderProps) {
   const pathname = usePathname();
-  const timeStr = lastUpdated
-    ? new Date(lastUpdated).toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    : "";
+  // Compute the localized "updated at" time after mount only. toLocaleTimeString
+  // uses the runtime timezone, which differs between the server render and the
+  // browser, so doing it during render causes a React #418 hydration mismatch
+  // now that the homepage seeds lastUpdated server-side.
+  const [timeStr, setTimeStr] = useState("");
+  useEffect(() => {
+    setTimeStr(
+      lastUpdated
+        ? new Date(lastUpdated).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          })
+        : ""
+    );
+  }, [lastUpdated]);
 
   return (
     <header
