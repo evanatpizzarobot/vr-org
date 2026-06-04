@@ -1078,6 +1078,26 @@ export default function BestVRHeadsetsPage() {
                 label: "Upcoming VR Headsets 2026",
                 desc: "New releases and what's coming next.",
               },
+              {
+                href: "/best-vr-headset-for-gaming",
+                label: "Best VR Headset for Gaming",
+                desc: "Quest 3, Quest 3S, PSVR2, and PC VR ranked for players.",
+              },
+              {
+                href: "/highest-resolution-vr-headset",
+                label: "Highest Resolution VR Headset",
+                desc: "The sharpest displays, and why PPD beats raw pixels.",
+              },
+              {
+                href: "/best-vr-headset-for-movies",
+                label: "Best VR Headset for Movies",
+                desc: "A giant personal cinema in VR, top picks for films.",
+              },
+              {
+                href: "/best-vr-headset-for-sim-racing",
+                label: "Best VR Headset for Sim Racing",
+                desc: "Clarity and FOV picks for iRacing and ACC.",
+              },
             ].map((c) => (
               <a
                 key={c.href}

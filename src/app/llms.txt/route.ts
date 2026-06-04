@@ -52,6 +52,10 @@ VR.org is co-founded by Evan Marcus (Pizza Robot Studios) and Mark Mahle (NetAct
 - [Best PC VR Headset 2026](${SITE}/best-pc-vr-headset): Ranked PC VR headsets for SteamVR and PC gaming, wired and wireless
 - [Best Standalone VR Headset 2026](${SITE}/best-standalone-vr-headset): All-in-one VR headsets that need no PC or console
 - [Upcoming VR Headsets 2026](${SITE}/upcoming-vr-headsets-2026): New releases and upcoming headsets, updated as they are announced
+- [Best VR Headset for Gaming 2026](${SITE}/best-vr-headset-for-gaming): Quest 3, Quest 3S, PSVR2, and PC VR ranked for gaming
+- [Highest Resolution VR Headset 2026](${SITE}/highest-resolution-vr-headset): The sharpest VR displays ranked, with the pixels-per-degree caveat explained
+- [Best VR Headset for Watching Movies 2026](${SITE}/best-vr-headset-for-movies): Top headsets for a giant personal cinema in VR
+- [Best VR Headset for Sim Racing 2026](${SITE}/best-vr-headset-for-sim-racing): Clarity and field-of-view picks for iRacing, ACC, and Assetto Corsa
 - [Top 10 VR Games of All Time](${SITE}/best-vr-games): Definitive ranking of VR's best games
 - [Best VR Games of 2026](${SITE}/best-vr-games-2026): Top current and upcoming VR games this year
 - [Best VR Apps and Utilities](${SITE}/best-vr-apps): Productivity, social, fitness, and creative VR apps

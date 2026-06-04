@@ -371,6 +371,58 @@
         "Update the narrative if any headline finding has flipped (e.g., a platform overtakes Android XR for #2); every number must remain real and computed, never estimated",
         "Keep the methodology, CC BY 4.0 citation block, and internal links from /about and /originals intact"
       ]
+    },
+    {
+      "path": "/best-vr-headset-for-gaming",
+      "file": "src/app/best-vr-headset-for-gaming/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Verify prices: Quest 3 ($599), Quest 3S ($349), PSVR2 ($399) against data/deals.json",
+        "Update the SpecTable if Meta or Sony ship a new headset or change specs",
+        "Keep this distinct from /best-vr-games (this is the headset, that is the games)",
+        "Keep cross-links to /best-vr-games-2026, /quest-3-vs-quest-3s, /psvr2-vs-quest-3, /best-pc-vr-headset intact"
+      ]
+    },
+    {
+      "path": "/highest-resolution-vr-headset",
+      "file": "src/app/highest-resolution-vr-headset/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Re-verify per-eye resolution figures in the SpecTable against manufacturer specs (Galaxy XR, Vision Pro, Pimax Crystal Super/Light, Bigscreen Beyond 2, Quest 3, PSVR2)",
+        "Update the ranking if a new higher-resolution headset ships",
+        "Keep the pixels-per-degree caveat prominent; do not overclaim a single 'highest' winner",
+        "Verify the Apple Vision Pro schema image URL still returns 200"
+      ]
+    },
+    {
+      "path": "/best-vr-headset-for-movies",
+      "file": "src/app/best-vr-headset-for-movies/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Verify prices: Vision Pro ($3,499), Quest 3 ($599) against data/deals.json",
+        "Confirm media-app availability (Bigscreen, Skybox, Netflix, Apple TV, Google TV) is still accurate",
+        "Keep the PSVR2 'not great for movies' caveat unless Sony ships a real media app",
+        "Keep cross-links to /quest-3-vs-vision-pro, /best-vr-apps, /best-vr-headsets intact"
+      ]
+    },
+    {
+      "path": "/best-vr-headset-for-sim-racing",
+      "file": "src/app/best-vr-headset-for-sim-racing/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Verify prices: Quest 3 ($599), Pimax Crystal Light ($899), Bigscreen Beyond 2 ($1,019)",
+        "Update GPU recommendation (currently RTX 4070 class) as new cards ship",
+        "Confirm the headset picks still match what the sim-racing community recommends",
+        "Keep cross-links to /best-pc-vr-headset and /best-vr-headsets intact"
+      ]
     }
   ]
 }

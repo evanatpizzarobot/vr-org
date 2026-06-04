@@ -85,6 +85,26 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/upcoming-vr-headsets-2026",
     description: "New releases and what's coming next, tracked.",
   },
+  "best-vr-headset-for-gaming": {
+    label: "Best VR Headset for Gaming",
+    href: "/best-vr-headset-for-gaming",
+    description: "Quest 3, Quest 3S, PSVR2, and PC VR ranked for players.",
+  },
+  "highest-resolution-vr-headset": {
+    label: "Highest Resolution VR Headset",
+    href: "/highest-resolution-vr-headset",
+    description: "The sharpest displays ranked, and why PPD beats raw pixels.",
+  },
+  "best-vr-headset-for-movies": {
+    label: "Best VR Headset for Movies",
+    href: "/best-vr-headset-for-movies",
+    description: "A giant personal cinema in VR, top picks for films.",
+  },
+  "best-vr-headset-for-sim-racing": {
+    label: "Best VR Headset for Sim Racing",
+    href: "/best-vr-headset-for-sim-racing",
+    description: "Clarity and field of view picks for iRacing and ACC.",
+  },
 };
 
 const TAG_TO_GUIDES: Record<string, string[]> = {
