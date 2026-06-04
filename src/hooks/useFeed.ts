@@ -7,12 +7,22 @@ interface SourceStats {
   [key: string]: { name: string; count: number };
 }
 
-export function useFeed() {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [trending, setTrending] = useState<TrendingTopic[]>([]);
-  const [sourceStats, setSourceStats] = useState<SourceStats>({});
-  const [lastUpdated, setLastUpdated] = useState<string>("");
-  const [loading, setLoading] = useState(true);
+export interface InitialFeed {
+  articles: Article[];
+  trending: TrendingTopic[];
+  sourceStats: SourceStats;
+  lastUpdated: string;
+}
+
+// `initial` lets a server component seed the first render so the feed is present
+// in the SSR HTML (and there is no empty-then-populate flash). When omitted the
+// hook behaves exactly as before: empty state, loading=true, then client fetch.
+export function useFeed(initial?: InitialFeed) {
+  const [articles, setArticles] = useState<Article[]>(initial?.articles ?? []);
+  const [trending, setTrending] = useState<TrendingTopic[]>(initial?.trending ?? []);
+  const [sourceStats, setSourceStats] = useState<SourceStats>(initial?.sourceStats ?? {});
+  const [lastUpdated, setLastUpdated] = useState<string>(initial?.lastUpdated ?? "");
+  const [loading, setLoading] = useState(!initial);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {
