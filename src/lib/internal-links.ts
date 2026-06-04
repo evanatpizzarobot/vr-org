@@ -84,6 +84,15 @@ const RULES: LinkRule[] = [
   { pattern: /\bvirtual reality\b/i, href: "/what-is-vr" },
 ];
 
+// Floor rule: if no RULE above matched in unprotected prose, link the first
+// VR/headset mention to the explainer so no article ships with zero in-body
+// pillar links. Broader than the rules so it catches articles that only use
+// generic terms ("the headset", bare "VR").
+const FLOOR_RULE: LinkRule = {
+  pattern: /\bvirtual reality\b|\bVR headsets?\b|\bheadsets?\b|\bVR\b/i,
+  href: "/what-is-vr",
+};
+
 const PROTECTED_BLOCK =
   /<a\b[^>]*>[\s\S]*?<\/a>|<h[1-6]\b[^>]*>[\s\S]*?<\/h[1-6]>|<figure\b[^>]*>[\s\S]*?<\/figure>/gi;
 
@@ -119,6 +128,19 @@ export function injectInternalLinks(
       return placeholder(idx);
     });
     if (replaced) usedHrefs.add(rule.href);
+  }
+
+  // Floor: some articles only mention linkable terms inside headings/figures
+  // (which are protected), so no rule fires and the body would ship with zero
+  // in-body links to a pillar page. Guarantee at least one by linking the first
+  // unprotected VR/headset mention to the explainer.
+  if (usedHrefs.size === 0 && FLOOR_RULE.href !== currentPath) {
+    working = working.replace(FLOOR_RULE.pattern, (match) => {
+      const wrapped = `<a class="internal-link" href="${FLOOR_RULE.href}">${match}</a>`;
+      const idx = protectedBlocks.length;
+      protectedBlocks.push(wrapped);
+      return placeholder(idx);
+    });
   }
 
   return working.replace(

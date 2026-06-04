@@ -31,20 +31,6 @@ function extractFirstImage(html: string): string | null {
   return src.startsWith("http") ? src : `https://vr.org${src}`;
 }
 
-function extractYouTubeId(html: string): string | null {
-  const patterns = [
-    /youtube\.com\/embed\/([A-Za-z0-9_-]{11})/,
-    /img\.youtube\.com\/vi\/([A-Za-z0-9_-]{11})/,
-    /youtu\.be\/([A-Za-z0-9_-]{11})/,
-    /youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})/,
-  ];
-  for (const re of patterns) {
-    const m = html.match(re);
-    if (m) return m[1];
-  }
-  return null;
-}
-
 // Google truncates meta descriptions past ~160 chars. Trim on a word boundary
 // for the description tags; the full snippet still shows in on-page cards.
 function clampMeta(text: string, max = 160): string {
@@ -97,8 +83,6 @@ export default async function ArticlePage({ params }: PageProps) {
   const authorSameAs: Record<string, string[]> = {
     "Evan Marcus": ["https://x.com/vrdotorg"],
   };
-  const videoId = extractYouTubeId(article.body);
-
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -175,22 +159,6 @@ export default async function ArticlePage({ params }: PageProps) {
           },
         ])}
       />
-      {videoId && (
-        <StructuredData
-          data={{
-            "@context": "https://schema.org",
-            "@type": "VideoObject",
-            name: article.title,
-            description: article.snippet,
-            thumbnailUrl: [
-              `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
-            ],
-            uploadDate: article.publishDate,
-            embedUrl: `https://www.youtube.com/embed/${videoId}`,
-            contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
-          }}
-        />
-      )}
       <Header articleCount={0} lastUpdated="" />
 
       <main

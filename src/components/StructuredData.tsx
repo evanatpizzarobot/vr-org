@@ -44,14 +44,9 @@ export const WEBSITE_SCHEMA = {
     name: "VR.org",
     url: "https://vr.org",
   },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://vr.org/?q={search_term_string}",
-    },
-    "query-input": "required name=search_term_string",
-  },
+  // No SearchAction: VR.org has no /search endpoint that consumes ?q=, and
+  // Google requires the sitelinks searchbox target to actually perform a search.
+  // Re-add this (pointing at a real /search route) if/when search ships.
 };
 
 export function breadcrumbSchema(items: { name: string; url: string }[]) {
