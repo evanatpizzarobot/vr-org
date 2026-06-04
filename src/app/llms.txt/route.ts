@@ -7,7 +7,9 @@ import { getAllArticles } from "@/lib/articles";
 // surfaced the latest reporting). See also /llms-full.txt for full bodies.
 
 const SITE = "https://vr.org";
-const RECENT = 30;
+// List the full originals catalog (not just the latest few) so AI crawlers can
+// discover and cite every article; ceiling caps size as the library grows.
+const RECENT = 200;
 
 export async function GET() {
   const recent = getAllArticles().slice(0, RECENT);

@@ -33,6 +33,10 @@ export const metadata: Metadata = {
   },
 };
 
+// Regenerate daily so the past-event schema filter below stays current between
+// deploys: an event whose endDate has passed should stop emitting Event JSON-LD.
+export const revalidate = 86400;
+
 interface VREvent {
   id: string;
   name: string;
@@ -156,9 +160,11 @@ export default function EventsPage() {
 
   return (
     <>
-      {events.map((e) => (
-        <StructuredData key={e.id} data={eventSchema(e)} />
-      ))}
+      {events
+        .filter((e) => e.endDate >= new Date().toISOString().slice(0, 10))
+        .map((e) => (
+          <StructuredData key={e.id} data={eventSchema(e)} />
+        ))}
       <StructuredData
         data={breadcrumbSchema([
           { name: "VR.org", url: "https://vr.org" },

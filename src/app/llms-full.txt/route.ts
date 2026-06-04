@@ -7,7 +7,9 @@ import { getAllArticles } from "@/lib/articles";
 // response a reasonable size.
 
 const SITE = "https://vr.org";
-const MAX = 60;
+// Cover the full originals catalog so answer engines can ingest every piece,
+// with a generous ceiling to cap response size as the library keeps growing.
+const MAX = 250;
 
 function toPlainText(html: string): string {
   return (html || "")

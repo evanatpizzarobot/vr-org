@@ -76,6 +76,14 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
     );
   }, []);
 
+  // relativeTime() reads Date.now(), which differs between the server render and
+  // the client, so compute the "Last update" label after mount to avoid a React
+  // hydration mismatch (same deferral pattern as heroDate above).
+  const [lastUpdateLabel, setLastUpdateLabel] = useState("now");
+  useEffect(() => {
+    setLastUpdateLabel(lastUpdated ? relativeTime(lastUpdated) : "now");
+  }, [lastUpdated]);
+
   useEffect(() => {
     fetch("/api/articles?mix=true&limit=4")
       .then((r) => r.json())
@@ -139,7 +147,7 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
             </div>
             <div className="stat">
               <span className="stat-label">Last update</span>
-              <span className="stat-value">{lastUpdated ? relativeTime(lastUpdated) : "now"}</span>
+              <span className="stat-value">{lastUpdateLabel}</span>
             </div>
             <div className="stat">
               <span className="stat-label">Categories</span>

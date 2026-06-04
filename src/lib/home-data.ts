@@ -30,6 +30,10 @@ export interface HomeInitialData {
 }
 
 const FEED_LIMIT = 50;
+// Cap the server-rendered homepage feed so the SSR HTML stays lean on the
+// 1-CPU VPS. The client still hydrates and polls /api/feed for the full live
+// feed afterward, so nothing is lost; this only trims the initial render.
+const HOME_FEED_MAX = 70;
 
 // Replica of the /api/articles?mix=true logic: all of today's originals first,
 // then one per unused author, then fill by unused category, then newest.
@@ -114,11 +118,13 @@ export function getHomeInitialData(): HomeInitialData {
     (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
   );
   const seen = new Set<string>();
-  const feedArticles = merged.filter((a) => {
-    if (seen.has(a.id)) return false;
-    seen.add(a.id);
-    return true;
-  });
+  const feedArticles = merged
+    .filter((a) => {
+      if (seen.has(a.id)) return false;
+      seen.add(a.id);
+      return true;
+    })
+    .slice(0, HOME_FEED_MAX);
 
   // Trending, with the same not-ready fallback the /api/trending route uses.
   const trending: TrendingTopic[] =

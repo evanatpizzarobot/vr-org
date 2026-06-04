@@ -45,22 +45,32 @@ function extractYouTubeId(html: string): string | null {
   return null;
 }
 
+// Google truncates meta descriptions past ~160 chars. Trim on a word boundary
+// for the description tags; the full snippet still shows in on-page cards.
+function clampMeta(text: string, max = 160): string {
+  if (!text || text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > 80 ? cut.slice(0, lastSpace) : cut).trimEnd() + "…";
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) return { title: "Article Not Found | VR.org" };
 
   const ogImage = extractFirstImage(article.body) || "https://vr.org/og-image.png";
+  const metaDescription = clampMeta(article.snippet);
 
   return {
     title: `${article.title} | VR.org`,
-    description: article.snippet,
+    description: metaDescription,
     alternates: {
       canonical: `https://vr.org/articles/${article.slug}`,
     },
     openGraph: {
       title: article.title,
-      description: article.snippet,
+      description: metaDescription,
       url: `https://vr.org/articles/${article.slug}`,
       type: "article",
       publishedTime: article.publishDate,
@@ -71,7 +81,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     twitter: {
       card: "summary_large_image",
       title: article.title,
-      description: article.snippet,
+      description: metaDescription,
       images: [ogImage],
     },
   };
