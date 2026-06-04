@@ -57,6 +57,26 @@ const collectionSchema = {
     },
     {
       "@type": "Article",
+      name: "Quest 3 vs Quest 3S",
+      url: "https://vr.org/quest-3-vs-quest-3s",
+    },
+    {
+      "@type": "Article",
+      name: "Quest 3 vs Apple Vision Pro",
+      url: "https://vr.org/quest-3-vs-vision-pro",
+    },
+    {
+      "@type": "Article",
+      name: "PSVR2 vs Quest 3",
+      url: "https://vr.org/psvr2-vs-quest-3",
+    },
+    {
+      "@type": "Article",
+      name: "Best VR Headset for Kids 2026",
+      url: "https://vr.org/best-vr-headset-for-kids",
+    },
+    {
+      "@type": "Article",
       name: "Best AR Glasses 2026",
       url: "https://vr.org/ar-glasses",
     },
@@ -110,6 +130,38 @@ const CARDS: BestOfCard[] = [
     description:
       "The cheapest ways into VR under $400. The $349 Quest 3S, PSVR2, and the smartest used Quest buys, plus the bargains to skip.",
     href: "/best-budget-vr-headset",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Quest 3 vs Quest 3S",
+    description:
+      "Same chip, same games, $250 apart. Which Meta Quest to buy, with lenses, resolution, and passthrough compared.",
+    href: "/quest-3-vs-quest-3s",
+    badge: "Comparison",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Quest 3 vs Apple Vision Pro",
+    description:
+      "A $599 VR gaming headset versus a $3,499 spatial computer. Displays, input, content, and who each one is for.",
+    href: "/quest-3-vs-vision-pro",
+    badge: "Comparison",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "PSVR2 vs Quest 3",
+    description:
+      "OLED, eye tracking, and haptics that need a PS5, versus standalone freedom and the biggest VR library.",
+    href: "/psvr2-vs-quest-3",
+    badge: "Comparison",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Best VR Headset for Kids",
+    description:
+      "Age-appropriate VR picks, the safety and IPD factors that matter, parental controls, and what to avoid.",
+    href: "/best-vr-headset-for-kids",
     badge: "Hardware",
     badgeColor: "var(--accent-cyan)",
   },

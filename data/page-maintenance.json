@@ -266,6 +266,58 @@
         "Verify analytics / ad-network vendors listed match what is actually loaded in src/components",
         "Update the 'last updated' line on the page itself when the policy substantively changes"
       ]
+    },
+    {
+      "path": "/quest-3-vs-quest-3s",
+      "file": "src/app/quest-3-vs-quest-3s/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Verify Quest 3 ($599) and Quest 3S ($349) prices against data/deals.json",
+        "Confirm the spec table (lenses, resolution, FOV, storage) still matches current models",
+        "Update if Meta ships a new Quest or changes either headset's price or storage tiers",
+        "Keep the cross-links to /best-vr-headsets and /best-budget-vr-headset intact"
+      ]
+    },
+    {
+      "path": "/quest-3-vs-vision-pro",
+      "file": "src/app/quest-3-vs-vision-pro/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Verify Quest 3 ($599) and Apple Vision Pro ($3,499) prices",
+        "Confirm the Vision Pro model and chip generation are current",
+        "Update if either device gets a successor or a price change",
+        "Keep the cross-links to /best-vr-headsets and /quest-3-vs-quest-3s intact"
+      ]
+    },
+    {
+      "path": "/psvr2-vs-quest-3",
+      "file": "src/app/psvr2-vs-quest-3/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Verify PSVR2 ($399) and Quest 3 ($599) prices against data/deals.json",
+        "Confirm the PSVR2 PC adapter status and feature caveats are still accurate",
+        "Update library and exclusives notes if the PSVR2 lineup shifts",
+        "Keep the cross-links to /best-vr-headsets and /best-budget-vr-headset intact"
+      ]
+    },
+    {
+      "path": "/best-vr-headset-for-kids",
+      "file": "src/app/best-vr-headset-for-kids/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Re-verify manufacturer age guidance (Meta 10+ with parent accounts, Sony 12+, Apple 13+)",
+        "Confirm parental-control feature names (Family Center, parent-managed accounts) are accurate",
+        "Update picks or prices if a better kid-friendly headset or a price change appears",
+        "Keep the 'What to Avoid' block and the cross-links intact"
+      ]
     }
   ]
 }

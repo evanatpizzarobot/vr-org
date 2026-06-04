@@ -50,6 +50,26 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/what-is-vr",
     description: "A plain-English explainer on how VR actually works.",
   },
+  "quest-3-vs-quest-3s": {
+    label: "Quest 3 vs Quest 3S",
+    href: "/quest-3-vs-quest-3s",
+    description: "Same chip and games, $250 apart. Which Quest to buy.",
+  },
+  "quest-3-vs-vision-pro": {
+    label: "Quest 3 vs Apple Vision Pro",
+    href: "/quest-3-vs-vision-pro",
+    description: "A $599 gaming headset versus a $3,499 spatial computer.",
+  },
+  "psvr2-vs-quest-3": {
+    label: "PSVR2 vs Quest 3",
+    href: "/psvr2-vs-quest-3",
+    description: "OLED that needs a PS5 versus standalone freedom.",
+  },
+  "best-vr-headset-for-kids": {
+    label: "Best VR Headset for Kids",
+    href: "/best-vr-headset-for-kids",
+    description: "Safe, age-appropriate VR picks and what to avoid.",
+  },
 };
 
 const TAG_TO_GUIDES: Record<string, string[]> = {

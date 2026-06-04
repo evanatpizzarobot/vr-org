@@ -943,6 +943,64 @@ export default function BestVRHeadsetsPage() {
           need to wear glasses entirely and improving comfort and clarity.
         </p>
 
+        {/* Hub -> spoke: popular comparisons + use-case guides */}
+        <div className="mt-12 pt-8" style={{ borderTop: "1px solid var(--border)" }}>
+          <h2
+            className="font-display text-[13px] font-semibold uppercase tracking-[2px] mb-4"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Popular Comparisons &amp; Guides
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              {
+                href: "/quest-3-vs-quest-3s",
+                label: "Quest 3 vs Quest 3S",
+                desc: "Same chip and games, $250 apart. Which Quest to buy.",
+              },
+              {
+                href: "/quest-3-vs-vision-pro",
+                label: "Quest 3 vs Apple Vision Pro",
+                desc: "A $599 gaming headset versus a $3,499 spatial computer.",
+              },
+              {
+                href: "/psvr2-vs-quest-3",
+                label: "PSVR2 vs Quest 3",
+                desc: "OLED that needs a PS5 versus standalone freedom.",
+              },
+              {
+                href: "/best-vr-headset-for-kids",
+                label: "Best VR Headset for Kids",
+                desc: "Safe, age-appropriate VR picks and what to avoid.",
+              },
+            ].map((c) => (
+              <a
+                key={c.href}
+                href={c.href}
+                className="block rounded-[10px] border no-underline transition-all group hover:translate-y-[-1px]"
+                style={{
+                  background: "var(--bg-card)",
+                  borderColor: "var(--border)",
+                  padding: "16px 20px",
+                }}
+              >
+                <div
+                  className="font-display font-semibold text-[15px] leading-[1.4] mb-1 group-hover:!text-[var(--accent-cyan)] transition-colors"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  {c.label}
+                </div>
+                <div
+                  className="text-[12px] leading-[1.5]"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  {c.desc}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* Latest hardware articles */}
         <RecentArticles
           tags={["hardware", "xr", "ar"]}
