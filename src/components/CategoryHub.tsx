@@ -16,7 +16,7 @@ import type { OriginalSummary } from "@/lib/articles";
 import {
   StructuredData,
   breadcrumbSchema,
-  categoryPageSchema,
+  newsCollectionSchema,
 } from "@/components/StructuredData";
 
 interface CategoryHubProps {
@@ -95,10 +95,11 @@ export function CategoryHub({ category, title, description, initialEditorial }: 
         ])}
       />
       <StructuredData
-        data={categoryPageSchema(
+        data={newsCollectionSchema(
           `${title} | VR & AR News`,
           description,
-          `https://vr.org/${category}`
+          `https://vr.org/${category}`,
+          editorialArticles
         )}
       />
       <Header articleCount={categoryArticles.length} lastUpdated={lastUpdated} />

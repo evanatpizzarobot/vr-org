@@ -126,6 +126,66 @@ export function itemListSchema(
   };
 }
 
+// A CollectionPage whose mainEntity is an ItemList of the page's own NewsArticles
+// (newest first). Used on the homepage and the category hubs so the
+// server-rendered article lists are machine-readable for Google Top Stories and
+// AI answer engines. Image is intentionally omitted until the article hero-image
+// cleanup lands, so we never reference a known-dead thumbnail in schema.
+export interface ArticleListItem {
+  slug: string;
+  title: string;
+  publishDate: string;
+  author?: string;
+}
+
+export function newsCollectionSchema(
+  name: string,
+  description: string,
+  url: string,
+  articles: ArticleListItem[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url,
+    isPartOf: { "@type": "WebSite", name: "VR.org", url: "https://vr.org" },
+    publisher: {
+      "@type": "Organization",
+      name: "VR.org",
+      url: "https://vr.org",
+      logo: "https://vr.org/logo.png",
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListOrder: "https://schema.org/ItemListOrderDescending",
+      numberOfItems: articles.length,
+      itemListElement: articles.map((a, i) => {
+        const articleUrl = `https://vr.org/articles/${a.slug}`;
+        return {
+          "@type": "ListItem",
+          position: i + 1,
+          url: articleUrl,
+          item: {
+            "@type": "NewsArticle",
+            headline: a.title,
+            url: articleUrl,
+            datePublished: a.publishDate,
+            ...(a.author && { author: { "@type": "Person", name: a.author } }),
+            publisher: {
+              "@type": "Organization",
+              name: "VR.org",
+              url: "https://vr.org",
+              logo: { "@type": "ImageObject", url: "https://vr.org/logo.png" },
+            },
+          },
+        };
+      }),
+    },
+  };
+}
+
 // Product schema, reusable across buyer guides (entity-only, no price) and
 // future /reviews pages (with offers + a genuine first-party reviewRating).
 // IMPORTANT: only attach aggregateRating or review when the score is a real
