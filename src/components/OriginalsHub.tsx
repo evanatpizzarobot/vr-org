@@ -65,6 +65,31 @@ export function OriginalsHub({ initialArticles }: { initialArticles?: ArticleSum
           </p>
         </div>
 
+        {/* Featured research callout */}
+        <a
+          href="/state-of-vr-2026"
+          className="block max-w-[800px] mb-8 rounded-[12px] border p-5 no-underline transition-colors"
+          style={{ background: "var(--bg-card)", borderColor: "var(--border)" }}
+        >
+          <div
+            className="font-mono text-[10px] font-bold uppercase tracking-[1.5px] mb-1.5"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            VR.org Data Study
+          </div>
+          <div
+            className="font-display text-[18px] font-bold mb-1"
+            style={{ color: "var(--text-primary)" }}
+          >
+            The State of VR &amp; AR 2026
+          </div>
+          <div className="text-[13.5px] leading-[1.55]" style={{ color: "var(--text-secondary)" }}>
+            We analyzed 130 stories across 36 sources. Meta still leads 40% of VR
+            coverage, but 44% of the conversation has already moved to AR and
+            smart glasses. Read the data &rarr;
+          </div>
+        </a>
+
         {/* Articles list */}
         <div className="flex flex-col gap-3 max-w-[800px]">
           {loading ? (

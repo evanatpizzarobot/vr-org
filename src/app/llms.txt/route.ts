@@ -36,6 +36,10 @@ VR.org is co-founded by Evan Marcus (Pizza Robot Studios) and Mark Mahle (NetAct
 - [RSS feed](${SITE}/feed.xml): Machine-readable feed of the newest originals
 - [Full-text dump](${SITE}/llms-full.txt): Plain-text bodies of recent originals for ingestion
 
+## Research and data studies
+
+- [The State of VR & AR 2026](${SITE}/state-of-vr-2026): Original VR.org data study of 130 stories across 36 monitored sources. Key findings: Meta leads 40% of VR coverage; 44% of the conversation has shifted to AR and smart glasses; Google's Android XR is the #2 most-covered platform (26%). Free to cite with attribution (CC BY 4.0).
+
 ## Pillar guides and explainers
 
 - [What is Virtual Reality?](${SITE}/what-is-vr): Beginner-level explainer of how VR works

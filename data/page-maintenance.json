@@ -357,6 +357,20 @@
         "Add newly announced headsets; remove anything cancelled",
         "Bump dateModified + 'Last updated' on every refresh; keep claims hedged where unconfirmed"
       ]
+    },
+    {
+      "path": "/state-of-vr-2026",
+      "file": "src/app/state-of-vr-2026/page.tsx",
+      "category": "research",
+      "cadenceDays": 90,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Recompute all figures from data/articles.json (share of voice, AR/glasses share, category mix) over the trailing 3 months; do NOT hand-edit numbers",
+        "Recompute the live-pulse snapshot from data/feed-cache.json (read as utf-8): story count, Meta %, AR/glasses %, most-active sources",
+        "Bump the 'Data through' date, datePublished/dateModified in Article + Dataset schema, and temporalCoverage to the new window",
+        "Update the narrative if any headline finding has flipped (e.g., a platform overtakes Android XR for #2); every number must remain real and computed, never estimated",
+        "Keep the methodology, CC BY 4.0 citation block, and internal links from /about and /originals intact"
+      ]
     }
   ]
 }

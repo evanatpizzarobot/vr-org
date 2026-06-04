@@ -59,6 +59,10 @@ export default function AboutPage() {
             <a href="/best-vr-apps" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>Best VR Apps</a>.
           </li>
           <li>
+            <strong style={{ color: "var(--text-primary)" }}>Original research</strong> : Data studies drawn from our own coverage and the sources we monitor, including{" "}
+            <a href="/state-of-vr-2026" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>The State of VR &amp; AR 2026</a>, an analysis of who is winning the VR conversation. Free to cite with attribution.
+          </li>
+          <li>
             <strong style={{ color: "var(--text-primary)" }}>Educational resources</strong> : Explainers like our comprehensive{" "}
             <a href="/what-is-vr" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>&quot;What is Virtual Reality?&quot;</a> guide for newcomers to the space.
           </li>

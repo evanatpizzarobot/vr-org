@@ -75,6 +75,7 @@ export async function GET() {
     ["/ar", catNewest.ar || latest, "hourly", "0.9"],
     ["/xr", catNewest.xr || latest, "hourly", "0.9"],
     ["/originals", latest, "weekly", "0.9"],
+    ["/state-of-vr-2026", reg_or("/state-of-vr-2026"), "monthly", "0.8"],
     ["/best-of", reg_or("/best-of"), "weekly", "0.9"],
     ["/events", reg_or("/events"), "monthly", "0.8"],
     ["/deals", reg_or("/deals"), "weekly", "0.7"],
