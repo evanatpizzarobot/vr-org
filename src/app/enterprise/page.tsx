@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
+import { getCategoryOriginalSummaries } from "@/lib/articles";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Enterprise XR News - Business, Training & Industry | VR.org",
@@ -22,11 +25,13 @@ export const metadata: Metadata = {
 };
 
 export default function EnterprisePage() {
+  const initialEditorial = getCategoryOriginalSummaries("enterprise", 8);
   return (
     <CategoryHub
       category="enterprise"
       title="Enterprise"
       description="How businesses are adopting VR, AR, and XR technology. Training simulations, healthcare applications, manufacturing workflows, investment trends, and enterprise strategy in the spatial computing industry. We follow the money and the deployments shaping how organizations use immersive tech at scale."
+      initialEditorial={initialEditorial}
     />
   );
 }

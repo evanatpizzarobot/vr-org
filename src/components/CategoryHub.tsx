@@ -12,6 +12,7 @@ import { AD_SLOTS, AD_LAYOUT_KEYS } from "@/lib/ads";
 import { LoadingSkeleton } from "@/components/LoadingSkeleton";
 import { useFeed } from "@/hooks/useFeed";
 import type { Article } from "@/types";
+import type { OriginalSummary } from "@/lib/articles";
 import {
   StructuredData,
   breadcrumbSchema,
@@ -22,6 +23,9 @@ interface CategoryHubProps {
   category: string;
   title: string;
   description: string;
+  // Recent originals for this category, seeded by the server so the topical
+  // cluster of /articles/ links is in the HTML for crawlers and AI agents.
+  initialEditorial?: OriginalSummary[];
 }
 
 const CATEGORY_GUIDES: Record<string, { label: string; href: string; description: string }[]> = {
@@ -51,39 +55,23 @@ const CATEGORY_GUIDES: Record<string, { label: string; href: string; description
   ],
 };
 
-export function CategoryHub({ category, title, description }: CategoryHubProps) {
+export function CategoryHub({ category, title, description, initialEditorial }: CategoryHubProps) {
   const { articles, trending, sourceStats, lastUpdated, loading } = useFeed();
   const [view, setView] = useState<"full" | "compact">("full");
   const [featured, setFeatured] = useState<Article[]>([]);
-  const [editorialArticles, setEditorialArticles] = useState<
-    { id: string; slug: string; title: string; author: string; authorRole: string; snippet: string; publishDate: string; category: string; tags: string[] }[]
-  >([]);
-  const [featuredLoading, setFeaturedLoading] = useState(true);
+  // Seeded server-side and not refetched, so the server-rendered originals list
+  // is never replaced after mount.
+  const [editorialArticles] = useState<OriginalSummary[]>(initialEditorial ?? []);
   const compact = view === "compact";
 
-  // Fetch pinned/featured articles and editorial articles
+  // RSS "featured" picks are live, so they are still fetched client-side.
   useEffect(() => {
-    async function fetchFeatured() {
-      try {
-        const [featuredRes, editorialRes] = await Promise.all([
-          fetch(`/api/featured?category=${category}`),
-          fetch(`/api/articles?category=${category}&featured=true`),
-        ]);
-        if (featuredRes.ok) {
-          const data = await featuredRes.json();
-          setFeatured(data.featured);
-        }
-        if (editorialRes.ok) {
-          const data = await editorialRes.json();
-          setEditorialArticles(data.articles);
-        }
-      } catch {
-        // Featured section is optional, fail silently
-      } finally {
-        setFeaturedLoading(false);
-      }
-    }
-    fetchFeatured();
+    fetch(`/api/featured?category=${category}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.featured) setFeatured(data.featured);
+      })
+      .catch(() => {});
   }, [category]);
 
   const categoryArticles = useMemo(() => {
@@ -160,24 +148,24 @@ export function CategoryHub({ category, title, description }: CategoryHubProps) 
 
       <div className="max-w-[1400px] mx-auto px-6 pb-16 pt-6 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 relative z-10">
         <div>
-          {/* Featured / Pinned section */}
-          {featuredLoading && <LoadingSkeleton count={3} />}
-          {!featuredLoading && (featured.length > 0 || editorialArticles.length > 0) && (
+          {/* VR.org Originals for this category (server-rendered) + live RSS picks */}
+          {(editorialArticles.length > 0 || featured.length > 0) && (
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
                 <span
                   className="font-display text-[13px] font-semibold uppercase tracking-[2px]"
                   style={{ color: "var(--accent-cyan)" }}
                 >
-                  Featured
+                  VR.org Originals
                 </span>
                 <div className="flex-1 h-px" style={{ background: "var(--border)" }} />
-                <span
-                  className="font-mono text-[10px]"
+                <a
+                  href="/originals"
+                  className="font-mono text-[10px] no-underline hover:underline"
                   style={{ color: "var(--text-muted)" }}
                 >
-                  Pinned articles
-                </span>
+                  All originals &rarr;
+                </a>
               </div>
               <div className="flex flex-col gap-0.5">
                 {/* Editorial / Original articles */}

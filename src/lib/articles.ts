@@ -54,3 +54,38 @@ export function getFeaturedArticles(category: string): EditorialArticle[] {
 export function getAllSlugs(): string[] {
   return getAllArticles().map((a) => a.slug);
 }
+
+export interface OriginalSummary {
+  id: string;
+  slug: string;
+  title: string;
+  author: string;
+  authorRole: string;
+  snippet: string;
+  publishDate: string;
+  category: string;
+  tags: string[];
+}
+
+// Recent originals for a category (category match OR tag match), newest first.
+// Server-rendered into the category hubs so each hub exposes its topical cluster
+// of originals to crawlers and AI agents instead of a single client-fetched pin.
+export function getCategoryOriginalSummaries(
+  category: string,
+  limit: number
+): OriginalSummary[] {
+  return getAllArticles()
+    .filter((a) => a.category === category || a.tags.includes(category))
+    .slice(0, limit)
+    .map((a) => ({
+      id: a.id,
+      slug: a.slug,
+      title: a.title,
+      author: a.author,
+      authorRole: a.authorRole,
+      snippet: a.snippet,
+      publishDate: a.publishDate,
+      category: a.category,
+      tags: a.tags,
+    }));
+}

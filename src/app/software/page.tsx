@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
+import { getCategoryOriginalSummaries } from "@/lib/articles";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "VR & AR Software News - Platforms, Apps & Tools | VR.org",
@@ -22,11 +25,13 @@ export const metadata: Metadata = {
 };
 
 export default function SoftwarePage() {
+  const initialEditorial = getCategoryOriginalSummaries("software", 8);
   return (
     <CategoryHub
       category="software"
       title="Software"
       description="Platforms, apps, developer tools, and the software ecosystem powering virtual and augmented reality. From social VR platforms to creative tools and enterprise applications, we cover the software layer that brings hardware to life. SDK updates, platform policy changes, and new app launches all land here."
+      initialEditorial={initialEditorial}
     />
   );
 }

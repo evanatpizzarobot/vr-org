@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
+import { getCategoryOriginalSummaries } from "@/lib/articles";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Augmented Reality News - AR Glasses & Spatial Computing | VR.org",
@@ -22,11 +25,13 @@ export const metadata: Metadata = {
 };
 
 export default function ARPage() {
+  const initialEditorial = getCategoryOriginalSummaries("ar", 8);
   return (
     <CategoryHub
       category="ar"
       title="AR / Spatial Computing"
       description="Augmented reality news and analysis. Smart glasses, AR wearables, spatial computing, and the technology blending digital content with the physical world. From Apple Vision Pro updates to lightweight AR glasses from Meta and Snap, we track the devices and platforms making AR part of daily life."
+      initialEditorial={initialEditorial}
     />
   );
 }
