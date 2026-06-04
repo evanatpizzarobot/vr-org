@@ -107,20 +107,6 @@ export function Footer() {
           </span>
         </div>
         <div
-          className="w-full pt-2 text-[11px] leading-[1.5]"
-          style={{ color: "var(--text-muted)" }}
-        >
-          We earn from qualifying purchases through affiliate links on{" "}
-          <a
-            href="/deals"
-            className="no-underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            our deals page
-          </a>
-          . Our recommendations are editorially independent.
-        </div>
-        <div
           className="w-full pt-2 font-mono text-[10px] tracking-[0.5px] flex flex-wrap gap-x-1"
           style={{ color: "var(--text-muted)" }}
         >
