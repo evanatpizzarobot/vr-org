@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-02",
+  "lastUpdated": "2026-06-04",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -151,6 +151,25 @@
             "amazon": { "url": "https://amazon.com/s?k=rayneo+air+3s&tag=vrorg00-20", "label": "Amazon" },
             "direct": { "url": "https://www.rayneo.com/", "label": "RayNeo" }
           }
+        },
+        {
+          "name": "Even Realities G1",
+          "price": "$599",
+          "image": "https://cdn.shopify.com/s/files/1/0600/4513/1891/files/Grey1-Front_6d6944fc-846d-4585-b02b-d7d1218ff21e.png?v=1760067228",
+          "description": "Everyday smart glasses that look like ordinary frames. A discreet green micro-LED display floats turn-by-turn navigation, notifications, live translation, and a teleprompter into your field of view. No camera, no bulk, and a battery that lasts all day. The closest thing yet to a pair you would actually wear out of the house.",
+          "links": {
+            "direct": { "url": "https://www.evenrealities.com/", "label": "Even Realities" }
+          }
+        },
+        {
+          "name": "Rokid AI Glasses",
+          "price": "$299",
+          "image": "https://cdn.shopify.com/s/files/1/0704/2759/files/Rokid_AI_Glasses_Style_01.jpg?v=1774027568",
+          "description": "Open-platform AI camera glasses and a genuine Ray-Ban Meta alternative. Built-in camera, a voice assistant, open-ear audio, and an SDK that lets developers ship their own apps. Lightweight enough for all-day wear at well under the cost of a headset.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=rokid+ai+glasses&tag=vrorg00-20", "label": "Amazon" },
+            "direct": { "url": "https://www.rokid.com/", "label": "Rokid" }
+          }
         }
       ]
     },
@@ -254,6 +273,16 @@
           "links": {
             "zybervr": { "url": "https://zybervr.com/", "label": "ZyberVR" },
             "amazon": { "url": "https://amazon.com/s?k=zybervr+quest+3+charging+dock&tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "Reloptix Prescription Lens Inserts",
+          "price": "From $49",
+          "image": "https://cdn.shopify.com/s/files/1/0489/1259/7153/files/Reloptix_Product_Render_Scene.142.png?v=1719958280",
+          "description": "Snap-in magnetic lenses so glasses wearers can ditch the specs inside the headset and stop scratching the built-in optics. Reloptix makes kits for Quest 3, Quest 3S, PSVR2, and most PC VR headsets in prescription, blue-light, and zero-power options. Non-prescription kits start around $49, prescription kits run about $70.",
+          "links": {
+            "direct": { "url": "https://reloptix.com/", "label": "Reloptix" },
+            "amazon": { "url": "https://amazon.com/s?k=reloptix+prescription+lens+inserts&tag=vrorg00-20", "label": "Amazon" }
           }
         }
       ]

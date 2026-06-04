@@ -130,7 +130,7 @@
       "file": "src/app/deals/page.tsx",
       "category": "commercial",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-06-02",
+      "lastRefreshed": "2026-06-04",
       "checklist": [
         "Source of truth is data/deals.json, not the page",
         "Verify every product is still in stock and price is within ~10% of listed",
