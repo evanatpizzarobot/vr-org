@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { OriginalsHub } from "@/components/OriginalsHub";
 import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
+import { getAllArticles } from "@/lib/articles";
+
+// Regenerate every 5 min so the server-rendered archive picks up newly published
+// originals (articles.json is volume-mounted and can change without a rebuild).
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "VR.org Originals - In-Depth VR & AR Articles | VR.org",
@@ -25,6 +30,16 @@ export const metadata: Metadata = {
 };
 
 export default function OriginalsPage() {
+  const articles = getAllArticles().map((a) => ({
+    id: a.id,
+    slug: a.slug,
+    title: a.title,
+    snippet: a.snippet,
+    category: a.category,
+    author: a.author,
+    publishDate: a.publishDate,
+  }));
+
   return (
     <>
       <StructuredData
@@ -33,7 +48,7 @@ export default function OriginalsPage() {
           { name: "Originals", url: "https://vr.org/originals" },
         ])}
       />
-      <OriginalsHub />
+      <OriginalsHub initialArticles={articles} />
     </>
   );
 }

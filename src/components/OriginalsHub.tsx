@@ -15,9 +15,13 @@ interface ArticleSummary {
   publishDate: string;
 }
 
-export function OriginalsHub() {
-  const [articles, setArticles] = useState<ArticleSummary[]>([]);
-  const [loading, setLoading] = useState(true);
+// `initialArticles` lets the server seed the full list so the originals archive
+// is server-rendered (all article links in the HTML) for crawlers and AI agents,
+// instead of shipping a "Loading articles" shell. The client still refetches to
+// stay live. When omitted the component behaves as before.
+export function OriginalsHub({ initialArticles }: { initialArticles?: ArticleSummary[] }) {
+  const [articles, setArticles] = useState<ArticleSummary[]>(initialArticles ?? []);
+  const [loading, setLoading] = useState(!initialArticles);
 
   useEffect(() => {
     fetch("/api/articles")
