@@ -77,6 +77,21 @@ const collectionSchema = {
     },
     {
       "@type": "Article",
+      name: "Best PC VR Headset 2026",
+      url: "https://vr.org/best-pc-vr-headset",
+    },
+    {
+      "@type": "Article",
+      name: "Best Standalone VR Headset 2026",
+      url: "https://vr.org/best-standalone-vr-headset",
+    },
+    {
+      "@type": "Article",
+      name: "Upcoming VR Headsets 2026",
+      url: "https://vr.org/upcoming-vr-headsets-2026",
+    },
+    {
+      "@type": "Article",
       name: "Best AR Glasses 2026",
       url: "https://vr.org/ar-glasses",
     },
@@ -162,6 +177,30 @@ const CARDS: BestOfCard[] = [
     description:
       "Age-appropriate VR picks, the safety and IPD factors that matter, parental controls, and what to avoid.",
     href: "/best-vr-headset-for-kids",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Best PC VR Headset 2026",
+    description:
+      "Top headsets for SteamVR and PC gaming. The wireless Quest 3, the ultralight Bigscreen Beyond 2, and the Pimax Crystal Light.",
+    href: "/best-pc-vr-headset",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Best Standalone VR Headset 2026",
+    description:
+      "All-in-one VR with no PC or console. Quest 3, Quest 3S, Apple Vision Pro, and Samsung Galaxy XR ranked.",
+    href: "/best-standalone-vr-headset",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Upcoming VR Headsets 2026",
+    description:
+      "New releases and what's coming next, from the Samsung Galaxy XR to Valve's Steam Frame and the Meta Quest 4.",
+    href: "/upcoming-vr-headsets-2026",
     badge: "Hardware",
     badgeColor: "var(--accent-cyan)",
   },

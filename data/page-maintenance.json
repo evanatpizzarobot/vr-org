@@ -318,6 +318,45 @@
         "Update picks or prices if a better kid-friendly headset or a price change appears",
         "Keep the 'What to Avoid' block and the cross-links intact"
       ]
+    },
+    {
+      "path": "/best-pc-vr-headset",
+      "file": "src/app/best-pc-vr-headset/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Verify prices: Quest 3 ($599), Bigscreen Beyond 2 ($1019), Pimax Crystal Light ($899), PSVR2 ($399)",
+        "Confirm Valve Index / HP Reverb G2 remain discontinued; update if a successor ships",
+        "Update the Steam Frame note when Valve confirms specs/price/date",
+        "Keep cross-links to /best-vr-headsets, /best-budget-vr-headset, /psvr2-vs-quest-3 intact"
+      ]
+    },
+    {
+      "path": "/best-standalone-vr-headset",
+      "file": "src/app/best-standalone-vr-headset/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "Verify prices: Quest 3 ($599), Quest 3S ($349), Vision Pro ($3499), Galaxy XR ($1799)",
+        "Add a verified Samsung Galaxy XR Offer URL if one becomes available (currently Product-only, no Offer)",
+        "Update picks if a notable standalone (Pico, Play For Dream) enters the US market",
+        "Keep cross-links to /best-vr-headsets, /quest-3-vs-quest-3s, /best-pc-vr-headset intact"
+      ]
+    },
+    {
+      "path": "/upcoming-vr-headsets-2026",
+      "file": "src/app/upcoming-vr-headsets-2026/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-06-04",
+      "checklist": [
+        "NEWS-SENSITIVE, refresh often: move launched headsets from 'On the horizon' to 'Just launched'",
+        "Update Steam Frame and Quest 4 status as Valve/Meta announce specs, price, and dates",
+        "Add newly announced headsets; remove anything cancelled",
+        "Bump dateModified + 'Last updated' on every refresh; keep claims hedged where unconfirmed"
+      ]
     }
   ]
 }

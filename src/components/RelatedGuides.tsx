@@ -70,6 +70,21 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/best-vr-headset-for-kids",
     description: "Safe, age-appropriate VR picks and what to avoid.",
   },
+  "best-pc-vr-headset": {
+    label: "Best PC VR Headset 2026",
+    href: "/best-pc-vr-headset",
+    description: "Top headsets for SteamVR and PC gaming, wired and wireless.",
+  },
+  "best-standalone-vr-headset": {
+    label: "Best Standalone VR Headset 2026",
+    href: "/best-standalone-vr-headset",
+    description: "All-in-one VR with no PC or console required.",
+  },
+  "upcoming-vr-headsets-2026": {
+    label: "Upcoming VR Headsets 2026",
+    href: "/upcoming-vr-headsets-2026",
+    description: "New releases and what's coming next, tracked.",
+  },
 };
 
 const TAG_TO_GUIDES: Record<string, string[]> = {

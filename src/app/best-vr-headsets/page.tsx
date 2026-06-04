@@ -973,6 +973,21 @@ export default function BestVRHeadsetsPage() {
                 label: "Best VR Headset for Kids",
                 desc: "Safe, age-appropriate VR picks and what to avoid.",
               },
+              {
+                href: "/best-pc-vr-headset",
+                label: "Best PC VR Headset 2026",
+                desc: "Top headsets for SteamVR and PC gaming.",
+              },
+              {
+                href: "/best-standalone-vr-headset",
+                label: "Best Standalone VR Headset 2026",
+                desc: "All-in-one VR, no PC or console required.",
+              },
+              {
+                href: "/upcoming-vr-headsets-2026",
+                label: "Upcoming VR Headsets 2026",
+                desc: "New releases and what's coming next.",
+              },
             ].map((c) => (
               <a
                 key={c.href}

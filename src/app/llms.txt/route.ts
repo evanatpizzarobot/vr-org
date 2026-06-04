@@ -45,6 +45,9 @@ VR.org is co-founded by Evan Marcus (Pizza Robot Studios) and Mark Mahle (NetAct
 - [Quest 3 vs Apple Vision Pro](${SITE}/quest-3-vs-vision-pro): The $599 gaming headset versus the $3,499 spatial computer
 - [PSVR2 vs Quest 3](${SITE}/psvr2-vs-quest-3): PlayStation VR2 versus the standalone Quest 3, compared
 - [Best VR Headset for Kids](${SITE}/best-vr-headset-for-kids): Age-appropriate VR picks, safety factors, and parental controls
+- [Best PC VR Headset 2026](${SITE}/best-pc-vr-headset): Ranked PC VR headsets for SteamVR and PC gaming, wired and wireless
+- [Best Standalone VR Headset 2026](${SITE}/best-standalone-vr-headset): All-in-one VR headsets that need no PC or console
+- [Upcoming VR Headsets 2026](${SITE}/upcoming-vr-headsets-2026): New releases and upcoming headsets, updated as they are announced
 - [Top 10 VR Games of All Time](${SITE}/best-vr-games): Definitive ranking of VR's best games
 - [Best VR Games of 2026](${SITE}/best-vr-games-2026): Top current and upcoming VR games this year
 - [Best VR Apps and Utilities](${SITE}/best-vr-apps): Productivity, social, fitness, and creative VR apps
