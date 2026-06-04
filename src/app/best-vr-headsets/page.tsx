@@ -75,9 +75,12 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Best VR Headsets 2026", url: "https://vr.org/best-vr-headsets" },
 ]);
 
-// Product entities (brand, image, description) for each pick. No Offer/price
-// here: this is an editorial buyer's guide, not a store, so pricing schema
-// lives on /deals. No aggregateRating until VR.org assigns first-party scores.
+// Product entities for each pick. Currently-sold models carry an Offer whose
+// price matches the on-page copy (priceCurrency USD, InStock, official product
+// URL verified 200) so they are eligible for Google product rich results.
+// Discontinued picks (Valve Index, HP Reverb G2) get no Offer: claiming InStock
+// for a discontinued product is a false signal. No aggregateRating until VR.org
+// assigns first-party scores.
 const headsetList = productItemListSchema("Best VR Headsets 2026", [
   {
     name: "Meta Quest 3S",
@@ -86,6 +89,14 @@ const headsetList = productItemListSchema("Best VR Headsets 2026", [
     description:
       "The best budget VR headset, a standalone Quest with color passthrough and the full Quest library for $349.",
     url: "https://vr.org/best-vr-headsets#meta-quest-3s",
+    offers: [
+      {
+        price: 349,
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: "https://www.meta.com/quest/quest-3s/",
+      },
+    ],
   },
   {
     name: "Meta Quest 3",
@@ -94,6 +105,14 @@ const headsetList = productItemListSchema("Best VR Headsets 2026", [
     description:
       "The best all-around VR headset, standalone plus PC VR with the largest content library of any platform, for $599.",
     url: "https://vr.org/best-vr-headsets#meta-quest-3",
+    offers: [
+      {
+        price: 599,
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: "https://www.meta.com/quest/quest-3/",
+      },
+    ],
   },
   {
     name: "PlayStation VR2",
@@ -102,6 +121,14 @@ const headsetList = productItemListSchema("Best VR Headsets 2026", [
     description:
       "The best VR headset for PlayStation gamers, with OLED HDR displays and eye tracking on PS5.",
     url: "https://vr.org/best-vr-headsets#playstation-vr2",
+    offers: [
+      {
+        price: 399,
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: "https://www.playstation.com/en-us/ps-vr2/",
+      },
+    ],
   },
   {
     name: "Apple Vision Pro",
@@ -110,6 +137,14 @@ const headsetList = productItemListSchema("Best VR Headsets 2026", [
     description:
       "The best spatial computing headset, with the sharpest micro-OLED displays and the best passthrough available.",
     url: "https://vr.org/best-vr-headsets#apple-vision-pro",
+    offers: [
+      {
+        price: 3499,
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: "https://www.apple.com/apple-vision-pro/",
+      },
+    ],
   },
   {
     name: "Valve Index",
