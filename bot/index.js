@@ -7,6 +7,7 @@ const { postTweet } = require("./twitter");
 const content = require("./content");
 const formatter = require("./formatter");
 const tracker = require("./tracker");
+const health = require("./health");
 
 const LOG_PATH = path.join(__dirname, "bot.log");
 const DRY_RUN = process.env.DRY_RUN === "true";
@@ -39,6 +40,7 @@ async function tryPost(text, label) {
   try {
     const result = await postTweet(text);
     log(`[POSTED] (${label}) id=${result.id}`);
+    health.recordSuccess();
     return true;
   } catch (err) {
     if (err.code === 402) {
@@ -50,6 +52,7 @@ async function tryPost(text, label) {
     } else {
       log(`[ERROR] Failed to post (${label}): ${err.message}`);
     }
+    health.recordFailure(err.code, err.message);
     return false;
   }
 }
@@ -61,6 +64,10 @@ function recordPost(posted, type) {
 }
 
 async function checkAndPost() {
+  // Heartbeat first, before any early return, so the health endpoint can tell a
+  // stopped/crashed process (stale heartbeat) apart from a legitimately quiet day.
+  health.recordHeartbeat();
+
   const ptHour = getPtHour();
 
   // Active hours: 6 AM - 10 PM PT (no posting 11 PM - 5 AM)
