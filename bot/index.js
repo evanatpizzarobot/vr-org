@@ -81,13 +81,13 @@ async function checkAndPost() {
   }
 
   const daily = tracker.getDailyCounts(posted);
-  if (daily.total >= DAILY_MAX) {
-    log(`[SKIP] Daily limit reached (${daily.total}/${DAILY_MAX})`);
+  if ((daily.total || 0) >= DAILY_MAX) {
+    log(`[SKIP] Daily limit reached (${daily.total || 0}/${DAILY_MAX})`);
     return;
   }
 
   // --- Slot 1: new original article (once per day) ---
-  if (daily.originals < 1) {
+  if ((daily.originals || 0) < 1) {
     const newArticles = content.getNewOriginals(posted);
     if (newArticles.length > 0) {
       const article = newArticles[0];
@@ -103,7 +103,7 @@ async function checkAndPost() {
   }
 
   // --- Slot 2: notable news headline (once per day, only if it clears the bar) ---
-  if (daily.news < 1) {
+  if ((daily.news || 0) < 1) {
     const headline = await content.getNotableHeadline(posted);
     if (headline) {
       const tweet = formatter.formatRssTweet(headline);
@@ -117,7 +117,7 @@ async function checkAndPost() {
     }
   }
 
-  log(`[SKIP] Nothing to post (originals=${daily.originals}, news=${daily.news})`);
+  log(`[SKIP] Nothing to post (originals=${daily.originals || 0}, news=${daily.news || 0})`);
 }
 
 // Prune old tracking entries daily at midnight PT (7 AM UTC)
