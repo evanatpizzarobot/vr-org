@@ -39,7 +39,7 @@ function markPosted(tracker, key, section) {
 function getDailyCounts(data) {
   const today = new Date().toISOString().split("T")[0];
   if (!data.dailyCounts || data.dailyCounts.date !== today) {
-    data.dailyCounts = { date: today, originals: 0, rss: 0, engagement: 0, total: 0 };
+    data.dailyCounts = { date: today, originals: 0, news: 0, total: 0 };
     save(data);
   }
   return data.dailyCounts;

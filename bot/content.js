@@ -5,6 +5,15 @@ const tracker = require("./tracker");
 const DATA_DIR = path.join(__dirname, "..", "data");
 const API_BASE = "http://localhost:3000/api";
 
+// A "new" original is one published within this many hours that we have not tweeted yet.
+const NEW_ORIGINAL_WINDOW_H = 48;
+
+// A news headline only posts as the optional 2nd tweet if it scores at least this high.
+// Scoring (in getRssHeadlines): +3 if under 6h old (else +1), +2 if it matches a trending topic.
+// 5 = fresh AND trending (intentionally strict). Lower to 3 to also allow "fresh OR trending"
+// if the 2nd slot turns out too quiet.
+const NOTABLE_SCORE = 5;
+
 function readJson(filename) {
   try {
     const filepath = path.join(DATA_DIR, filename);
@@ -25,38 +34,16 @@ async function fetchApi(endpoint) {
   }
 }
 
-// Engagement post templates (rotated)
-const ENGAGEMENT_TEMPLATES = [
-  "What VR game are you playing this week? Drop your picks below.",
-  "Quest 3, PSVR 2, or waiting for Steam Frame? Where are you playing VR right now?",
-  "What's the one VR game you'd recommend to someone who just got a headset?",
-  "Unpopular opinion time: what's an overrated VR game? (Don't say Beat Saber, that's too easy.)",
-  "If you could only play one VR game for the rest of the year, what would it be?",
-  "VR fitness players: what's your go-to workout game?",
-  "What VR feature do you wish existed but doesn't yet?",
-  "Best VR game you played in the last month? Go.",
-  "Would you rather have perfect eye tracking or full body tracking in VR?",
-  "Hot take: standalone VR will always be limited. Agree or disagree?",
-];
-
+// Returns recently-published originals (newest first) that have not been tweeted yet.
+// Empty array on a day with nothing new, which keeps the account silent rather than posting filler.
 function getNewOriginals(posted) {
   const articles = readJson("articles.json");
   if (!articles) return [];
+  const windowStart = Date.now() - NEW_ORIGINAL_WINDOW_H * 60 * 60 * 1000;
   return articles
+    .filter((a) => new Date(a.publishDate).getTime() >= windowStart)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
     .filter((a) => !tracker.wasPostedRecently(posted, a.slug, "articles", 48));
-}
-
-function getRotationOriginal(posted) {
-  const articles = readJson("articles.json");
-  if (!articles) return null;
-  // Pick the oldest-posted (or never-posted) article not tweeted in the last 7 days
-  const candidates = articles.filter(
-    (a) => !tracker.wasPostedRecently(posted, a.slug, "articles", 168)
-  );
-  if (candidates.length === 0) return null;
-  // Pick randomly from candidates for variety
-  return candidates[Math.floor(Math.random() * candidates.length)];
 }
 
 async function getRssHeadlines(posted) {
@@ -118,17 +105,13 @@ async function getRssHeadlines(posted) {
   return selected;
 }
 
-function getEngagementPost(posted) {
-  const lastTime = posted.lastEngagementPost
-    ? new Date(posted.lastEngagementPost).getTime()
-    : 0;
-  const hoursSince = (Date.now() - lastTime) / (1000 * 60 * 60);
-
-  // Only allow one engagement post per 12 hours
-  if (hoursSince < 12) return null;
-
-  const idx = Math.floor(Math.random() * ENGAGEMENT_TEMPLATES.length);
-  return ENGAGEMENT_TEMPLATES[idx];
+// Returns the single top-scored headline only if it clears the notability bar, else null.
+// This is the gate for the optional 2nd "bigger news worth posting" tweet.
+async function getNotableHeadline(posted) {
+  const headlines = await getRssHeadlines(posted);
+  if (!headlines.length) return null;
+  const top = headlines[0];
+  return (top.score || 0) >= NOTABLE_SCORE ? top : null;
 }
 
-module.exports = { getNewOriginals, getRotationOriginal, getRssHeadlines, getEngagementPost };
+module.exports = { getNewOriginals, getRssHeadlines, getNotableHeadline };
