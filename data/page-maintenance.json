@@ -118,7 +118,7 @@
       "file": "src/app/best-of/page.tsx",
       "category": "hub",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-21",
+      "lastRefreshed": "2026-06-08",
       "checklist": [
         "Hub page; verify card grid links match the live pillar pages",
         "Update card descriptions if a pillar page shifts focus",
@@ -157,7 +157,7 @@
       "file": "src/app/hardware/page.tsx",
       "category": "category-hub",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-21",
+      "lastRefreshed": "2026-06-08",
       "checklist": [
         "Verify hardware-category featured pins in data/featured.json are not expired (expiresAt > today)",
         "Sanity-check the on-page description (HardwarePage in page.tsx) still names the right headset families",
@@ -170,7 +170,7 @@
       "file": "src/app/gaming/page.tsx",
       "category": "category-hub",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-21",
+      "lastRefreshed": "2026-06-08",
       "checklist": [
         "Verify gaming-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/gaming/page.tsx",
@@ -183,7 +183,7 @@
       "file": "src/app/software/page.tsx",
       "category": "category-hub",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-21",
+      "lastRefreshed": "2026-06-08",
       "checklist": [
         "Verify software-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/software/page.tsx",
@@ -196,11 +196,11 @@
       "file": "src/app/enterprise/page.tsx",
       "category": "category-hub",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-21",
+      "lastRefreshed": "2026-06-08",
       "checklist": [
         "Verify enterprise-category featured pins in data/featured.json are not expired (currently rotating slowly)",
         "Sanity-check the on-page description in src/app/enterprise/page.tsx",
-        "GAP: CATEGORY_GUIDES has no 'enterprise' entry in src/components/CategoryHub.tsx; add one when a relevant pillar page exists",
+        "Confirm CATEGORY_GUIDES['enterprise'] in src/components/CategoryHub.tsx links to current pillar pages (best-vr-headsets, best-vr-apps)",
         "Spot-check the live feed; enterprise has lower article volume so a sparse week is normal"
       ]
     },
@@ -209,7 +209,7 @@
       "file": "src/app/ar/page.tsx",
       "category": "category-hub",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-21",
+      "lastRefreshed": "2026-06-08",
       "checklist": [
         "Verify AR-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/ar/page.tsx",
@@ -222,7 +222,7 @@
       "file": "src/app/xr/page.tsx",
       "category": "category-hub",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-21",
+      "lastRefreshed": "2026-06-08",
       "checklist": [
         "Verify XR-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/xr/page.tsx",
@@ -235,7 +235,7 @@
       "file": "src/app/originals/page.tsx",
       "category": "category-hub",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-05-21",
+      "lastRefreshed": "2026-06-08",
       "checklist": [
         "Verify at least one new VR.org original has published in the last 7d (originals is the editorial differentiator)",
         "If the last original is > 14d old, treat as overdue and queue a piece",

@@ -87,6 +87,26 @@ const collectionSchema = {
     },
     {
       "@type": "Article",
+      name: "Best VR Headset for Gaming 2026",
+      url: "https://vr.org/best-vr-headset-for-gaming",
+    },
+    {
+      "@type": "Article",
+      name: "Best VR Headset for Sim Racing 2026",
+      url: "https://vr.org/best-vr-headset-for-sim-racing",
+    },
+    {
+      "@type": "Article",
+      name: "Best VR Headset for Movies 2026",
+      url: "https://vr.org/best-vr-headset-for-movies",
+    },
+    {
+      "@type": "Article",
+      name: "Highest Resolution VR Headset 2026",
+      url: "https://vr.org/highest-resolution-vr-headset",
+    },
+    {
+      "@type": "Article",
       name: "Upcoming VR Headsets 2026",
       url: "https://vr.org/upcoming-vr-headsets-2026",
     },
@@ -193,6 +213,38 @@ const CARDS: BestOfCard[] = [
     description:
       "All-in-one VR with no PC or console. Quest 3, Quest 3S, Apple Vision Pro, and Samsung Galaxy XR ranked.",
     href: "/best-standalone-vr-headset",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Best VR Headset for Gaming",
+    description:
+      "The headsets built for playing. Quest 3 for wireless freedom, PSVR2 for PS5 exclusives, and the PC picks that push the most frames.",
+    href: "/best-vr-headset-for-gaming",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Best VR Headset for Sim Racing",
+    description:
+      "Cockpit-ready picks for iRacing, ACC, and Assetto Corsa, with the clarity, refresh rate, and GPU horsepower they demand.",
+    href: "/best-vr-headset-for-sim-racing",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Best VR Headset for Movies",
+    description:
+      "A personal big screen on your face. Vision Pro's pixel density, Quest 3's app library, and the media apps worth installing.",
+    href: "/best-vr-headset-for-movies",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Highest Resolution VR Headset",
+    description:
+      "The sharpest displays in VR ranked by real per-eye resolution, from Galaxy XR and Vision Pro to the Pimax Crystal Super.",
+    href: "/highest-resolution-vr-headset",
     badge: "Hardware",
     badgeColor: "var(--accent-cyan)",
   },
