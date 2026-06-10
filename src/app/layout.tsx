@@ -38,10 +38,13 @@ export const metadata: Metadata = {
     },
   },
   icons: {
+    // iOS does not support SVG touch icons, so Apple devices get a real PNG.
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: "/favicon.svg",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
   other: {

@@ -85,7 +85,10 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
 
   useEffect(() => {
     fetch("/api/articles?mix=true&limit=4")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`articles fetch failed: ${r.status}`);
+        return r.json();
+      })
       .then((data) => {
         if (Array.isArray(data.articles) && data.articles.length > 0) {
           setEditorials(data.articles);

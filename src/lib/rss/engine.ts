@@ -172,6 +172,25 @@ export async function refreshFeed(): Promise<void> {
   isRefreshing = true;
   refreshStartedAt = Date.now();
 
+  try {
+    await runRefresh();
+  } finally {
+    // Always release the lock, even if a refresh step throws, so a single
+    // bad cycle can't stall the scheduler until the 5-minute lock rescue.
+    isRefreshing = false;
+    initialFetchDone = true;
+  }
+
+  // Fire stale alert if last success was too long ago
+  if (lastSuccessfulFetch > 0) {
+    const hoursStale = (Date.now() - lastSuccessfulFetch) / (60 * 60 * 1000);
+    if (hoursStale >= STALE_ALERT_THRESHOLD / (60 * 60 * 1000)) {
+      maybeFireStaleAlert(hoursStale).catch(() => {});
+    }
+  }
+}
+
+async function runRefresh(): Promise<void> {
   console.log(`[VR.org] Refreshing feed from ${RSS_SOURCES.length} sources...`);
 
   const sourceStatuses: Record<string, SourceMeta> = {};
@@ -307,17 +326,6 @@ export async function refreshFeed(): Promise<void> {
     if (trimmed.length > 0) refreshFeatured(trimmed);
   } catch (err) {
     console.error("[VR.org] Failed to refresh featured articles:", err);
-  }
-
-  isRefreshing = false;
-  initialFetchDone = true;
-
-  // Fire stale alert if last success was too long ago
-  if (lastSuccessfulFetch > 0) {
-    const hoursStale = (Date.now() - lastSuccessfulFetch) / (60 * 60 * 1000);
-    if (hoursStale >= STALE_ALERT_THRESHOLD / (60 * 60 * 1000)) {
-      maybeFireStaleAlert(hoursStale).catch(() => {});
-    }
   }
 }
 

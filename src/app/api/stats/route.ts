@@ -32,6 +32,10 @@ interface StatsResponse {
   status3xx: number;
   status4xx: number;
   status5xx: number;
+  // cacheHitRatio and topCountry are contract placeholders required by the
+  // WebTraffic Tracker ingestion worker (VR_ORG_STATS_SPEC.md): nginx access
+  // logs carry neither cache status nor geo data, so per the spec v1 sends
+  // 0 and "unknown" rather than fabricated numbers.
   cacheHitRatio: number;
   topPath: string;
   topCountry: string;
@@ -208,9 +212,9 @@ function generateStatsFromEntries(entries: LogEntry[]): StatsResponse {
     status3xx,
     status4xx,
     status5xx,
-    cacheHitRatio: 0.85,
+    cacheHitRatio: 0,
     topPath,
-    topCountry: "United States",
+    topCountry: "unknown",
     hourly,
   };
 }

@@ -31,6 +31,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image" as const,
+    images: ["https://vr.org/og-image.png"],
   },
   alternates: {
     canonical: "https://vr.org/best-vr-games-2026",

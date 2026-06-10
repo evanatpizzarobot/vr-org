@@ -9,6 +9,12 @@ import { ArticleAd } from "@/components/ArticleAd";
 import { ShareButtons } from "@/components/ShareButtons";
 import { getArticleBySlug, getAllSlugs } from "@/lib/articles";
 import { injectInternalLinks } from "@/lib/internal-links";
+import { CATEGORIES } from "@/lib/constants";
+
+// Category hub routes that a tag pill can deep-link to directly.
+const CATEGORY_ROUTES = new Set<string>(
+  CATEGORIES.map((c) => c.key).filter((k) => k !== "all")
+);
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -257,7 +263,7 @@ export default async function ArticlePage({ params }: PageProps) {
           {article.tags.map((tag) => (
             <a
               key={tag}
-              href={`/${article.category}`}
+              href={`/${CATEGORY_ROUTES.has(tag) ? tag : article.category}`}
               className="text-[11px] font-mono px-3 py-1 rounded-full border no-underline transition-colors hover:border-[var(--accent-cyan)]"
               style={{
                 borderColor: "var(--border)",

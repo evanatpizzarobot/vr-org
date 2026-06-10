@@ -3,7 +3,9 @@
   "short_name": "VR.org",
   "description": "Real-time VR, AR, and XR news aggregated from the world's top sources.",
   "icons": [
-    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" }
   ],
   "theme_color": "#0891B2",
   "background_color": "#0a0e17",
