@@ -144,7 +144,7 @@
       "file": "src/app/events/page.tsx",
       "category": "schedule",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-06-02",
+      "lastRefreshed": "2026-06-10",
       "checklist": [
         "Source of truth is data/events.json (EventsCalendar auto-buckets past vs upcoming)",
         "Add upcoming VR / AR conferences and game launches",

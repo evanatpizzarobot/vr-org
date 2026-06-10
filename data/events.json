@@ -134,13 +134,25 @@
   {
     "id": "apple-wwdc-2026",
     "name": "Apple WWDC 2026",
-    "description": "Apple's annual developer conference. Expected updates to visionOS, Vision Pro, and spatial computing frameworks.",
+    "description": "Apple's annual developer conference. The June 8 keynote unveiled visionOS 27 for Vision Pro alongside Apple's other platform updates, with developer sessions running through the week.",
     "startDate": "2026-06-08",
     "endDate": "2026-06-12",
     "location": "Cupertino, CA",
     "venue": "Apple Park",
     "url": "https://developer.apple.com/wwdc26/",
     "category": "conference",
+    "featured": true
+  },
+  {
+    "id": "uploadvr-showcase-summer-2026",
+    "name": "The UploadVR Showcase: Summer 2026",
+    "description": "UploadVR's digital showcase of VR world premieres, new game announcements, and updates, streaming on the UploadVR and IGN YouTube channels at 10 AM PT.",
+    "startDate": "2026-06-12",
+    "endDate": "2026-06-12",
+    "location": "Online",
+    "venue": "YouTube",
+    "url": "https://www.uploadvr.com/showcase/",
+    "category": "showcase",
     "featured": true
   },
   {
@@ -154,6 +166,18 @@
     "url": "https://www.awexr.com/usa-2026",
     "category": "conference",
     "featured": true
+  },
+  {
+    "id": "vivatech-2026",
+    "name": "VivaTech 2026",
+    "description": "Europe's biggest startup and technology event marks its 10th edition with around 180,000 attendees and thousands of exhibitors, including XR, spatial computing, and immersive tech startups.",
+    "startDate": "2026-06-17",
+    "endDate": "2026-06-20",
+    "location": "Paris, France",
+    "venue": "Paris Expo Porte de Versailles",
+    "url": "https://vivatech.com/",
+    "category": "expo",
+    "featured": false
   },
   {
     "id": "immersive-tech-week-2026",
@@ -278,7 +302,7 @@
   {
     "id": "unitedxr-europe-2026",
     "name": "UnitedXR Europe 2026",
-    "description": "European XR industry event bringing together developers, creators, and enterprise adopters.",
+    "description": "The merger of AWE Europe and Stereopsia under one brand. Europe's premier AR/VR conference and expo, bringing together developers, creators, and enterprise adopters.",
     "startDate": "2026-12-07",
     "endDate": "2026-12-09",
     "location": "Brussels, Belgium",
