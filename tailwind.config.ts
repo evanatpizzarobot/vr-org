@@ -7,9 +7,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Space Grotesk", "Outfit", "sans-serif"],
-        body: ["Outfit", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        display: ["var(--font-space-grotesk)", "var(--font-outfit)", "sans-serif"],
+        body: ["var(--font-outfit)", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "monospace"],
       },
     },
   },

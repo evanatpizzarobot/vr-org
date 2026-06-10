@@ -1,6 +1,29 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import localFont from "next/font/local";
 import "./globals.css";
+
+// Self-hosted variable fonts (latin subsets, OFL licensed). next/font/local
+// keeps the Docker build free of any Google Fonts network dependency and
+// removes the render-blocking fonts.googleapis.com stylesheet from <head>.
+const outfit = localFont({
+  src: "../fonts/outfit-latin-var.woff2",
+  display: "swap",
+  weight: "300 800",
+  variable: "--font-outfit",
+});
+const spaceGrotesk = localFont({
+  src: "../fonts/space-grotesk-latin-var.woff2",
+  display: "swap",
+  weight: "300 700",
+  variable: "--font-space-grotesk",
+});
+const jetbrainsMono = localFont({
+  src: "../fonts/jetbrains-mono-latin-var.woff2",
+  display: "swap",
+  weight: "100 800",
+  variable: "--font-jetbrains-mono",
+});
 import { ThemeScript } from "@/components/ThemeScript";
 import { HeroBackground } from "@/components/HeroBackground";
 import {
@@ -61,7 +84,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html
+      lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
+      className={`${outfit.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZNNJ4FV2XN"
@@ -82,16 +110,6 @@ export default function RootLayout({
         />
         <ThemeScript />
         <meta name="google-site-verification" content="cfkAakzduCtr-941_j8S-6S9ZGXylJLE1r9kn1HU1F8" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
         <StructuredData data={ORGANIZATION_SCHEMA} />
         <StructuredData data={WEBSITE_SCHEMA} />
       </head>
