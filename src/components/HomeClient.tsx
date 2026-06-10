@@ -7,6 +7,7 @@ import { FilterBar } from "@/components/FilterBar";
 import { Feed } from "@/components/Feed";
 import { Sidebar } from "@/components/Sidebar";
 import { Footer } from "@/components/Footer";
+import { SideRailAds } from "@/components/SideRailAds";
 import { useFeed } from "@/hooks/useFeed";
 import { useFilters } from "@/hooks/useFilters";
 import { SOURCES } from "@/lib/constants";
@@ -99,6 +100,7 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
 
   return (
     <>
+      <SideRailAds />
       <Header articleCount={filtered.length} lastUpdated={lastUpdated} />
       <Ticker articles={articles} />
 

@@ -1280,6 +1280,40 @@ nav::-webkit-scrollbar {
   opacity: 0.5;
 }
 
+/* Side rail ads: only on very wide screens */
+.side-rail {
+  display: none;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 176px;
+  padding: 10px;
+  border-radius: var(--r-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+.side-rail-left {
+  left: calc((100vw - 1400px) / 2 - 216px);
+}
+
+.side-rail-right {
+  right: calc((100vw - 1400px) / 2 - 216px);
+}
+
+.side-rail .ad-label {
+  display: block;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+@media (min-width: 1900px) {
+  .side-rail {
+    display: block;
+  }
+}
+
 /* ===== /deals page ===== */
 .deals-hero {
   max-width: 920px;
