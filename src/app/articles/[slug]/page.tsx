@@ -51,9 +51,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = getArticleBySlug(slug);
   if (!article) return { title: "Article Not Found | VR.org" };
 
-  const ogImage = extractFirstImage(article.body) || "https://vr.org/og-image.png";
   const metaDescription = clampMeta(article.snippet);
 
+  // og:image and twitter:image come from the opengraph-image.tsx file
+  // convention in this segment (a branded card with the headline), so no
+  // explicit images here; declaring them would override the generated one.
   return {
     title: `${article.title} | VR.org`,
     description: metaDescription,
@@ -68,13 +70,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: article.publishDate,
       authors: [article.author],
       siteName: "VR.org",
-      images: [{ url: ogImage, width: 1200, height: 630, alt: article.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description: metaDescription,
-      images: [ogImage],
     },
   };
 }

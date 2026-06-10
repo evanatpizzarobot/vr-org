@@ -10,6 +10,9 @@ import {
 } from "@/components/StructuredData";
 
 export const metadata: Metadata = {
+  // Resolves relative metadata URLs (like the generated per-article
+  // opengraph-image paths) to the production origin instead of localhost.
+  metadataBase: new URL("https://vr.org"),
   title: "VR.org | VR News, AR News & XR News Today",
   description:
     "VR news, AR news, and XR news updated in real time. Original articles plus headlines from 38+ trusted sources covering VR hardware, gaming, software, enterprise, and spatial computing.",

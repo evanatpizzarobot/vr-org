@@ -73,7 +73,7 @@ export async function GET() {
               letterSpacing: "0.5px",
             }}
           >
-            Virtual Reality & Augmented Reality News
+            Real-Time VR, AR & XR News
           </div>
 
           <div
@@ -97,6 +97,8 @@ export async function GET() {
             <span>Enterprise</span>
             <span style={{ color: "#1e293b" }}>•</span>
             <span>AR</span>
+            <span style={{ color: "#1e293b" }}>•</span>
+            <span>XR</span>
           </div>
         </div>
       </div>
