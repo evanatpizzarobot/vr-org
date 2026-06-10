@@ -13,12 +13,14 @@ export const metadata: Metadata = {
     description: "Breaking VR gaming news. New game announcements, trailers, release dates, reviews, and updates.",
     url: "https://vr.org/gaming",
     siteName: "VR.org",
+    images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
   alternates: {
     canonical: "https://vr.org/gaming",
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://vr.org/og-image.png"],
     title: "VR Gaming News | VR.org",
     description: "Breaking VR gaming news - launches, trailers, studios, and reviews.",
   },

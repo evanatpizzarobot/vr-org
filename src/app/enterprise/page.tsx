@@ -13,12 +13,14 @@ export const metadata: Metadata = {
     description: "Enterprise VR and AR news. XR adoption in business, training, healthcare, and industry analysis.",
     url: "https://vr.org/enterprise",
     siteName: "VR.org",
+    images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
   alternates: {
     canonical: "https://vr.org/enterprise",
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://vr.org/og-image.png"],
     title: "Enterprise XR News | VR.org",
     description: "Enterprise VR and AR news - business adoption, training, and investment.",
   },

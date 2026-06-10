@@ -14,12 +14,14 @@ export const metadata: Metadata = {
       "Extended reality news covering XR platforms, mixed reality, spatial computing, and the convergence of immersive technologies.",
     url: "https://vr.org/xr",
     siteName: "VR.org",
+    images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
   alternates: {
     canonical: "https://vr.org/xr",
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://vr.org/og-image.png"],
     title: "XR & Mixed Reality News | VR.org",
     description:
       "Extended reality news - XR platforms, mixed reality, spatial computing, and immersive tech.",

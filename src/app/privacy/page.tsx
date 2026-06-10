@@ -13,6 +13,7 @@ export const metadata = {
     description: "VR.org privacy policy. How we handle data, cookies, and third-party services.",
     url: "https://vr.org/privacy",
     siteName: "VR.org",
+    images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
 };
 

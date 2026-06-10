@@ -13,6 +13,7 @@ export const metadata = {
     description: "VR.org is a real-time news aggregator for virtual reality, augmented reality, and spatial computing.",
     url: "https://vr.org/about",
     siteName: "VR.org",
+    images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
 };
 

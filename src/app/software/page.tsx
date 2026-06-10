@@ -13,12 +13,14 @@ export const metadata: Metadata = {
     description: "Virtual reality and augmented reality software news. Platform updates, SDK releases, and spatial computing applications.",
     url: "https://vr.org/software",
     siteName: "VR.org",
+    images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
   alternates: {
     canonical: "https://vr.org/software",
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://vr.org/og-image.png"],
     title: "VR & AR Software News | VR.org",
     description: "VR and AR software news - platforms, SDKs, apps, and tools.",
   },

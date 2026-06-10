@@ -13,12 +13,14 @@ export const metadata: Metadata = {
     description: "Latest virtual reality and augmented reality hardware news. Headset reviews, specs, launches, and teardowns.",
     url: "https://vr.org/hardware",
     siteName: "VR.org",
+    images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
   alternates: {
     canonical: "https://vr.org/hardware",
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://vr.org/og-image.png"],
     title: "VR & AR Hardware News | VR.org",
     description: "Latest VR and AR hardware news - headsets, displays, controllers, and specs.",
   },

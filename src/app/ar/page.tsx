@@ -13,12 +13,14 @@ export const metadata: Metadata = {
     description: "Augmented reality and spatial computing news. Smart glasses, mixed reality, and the future of AR.",
     url: "https://vr.org/ar",
     siteName: "VR.org",
+    images: [{ url: "https://vr.org/og-image.png", width: 1200, height: 630 }],
   },
   alternates: {
     canonical: "https://vr.org/ar",
   },
   twitter: {
     card: "summary_large_image",
+    images: ["https://vr.org/og-image.png"],
     title: "AR & Spatial Computing News | VR.org",
     description: "Augmented reality news - smart glasses, spatial computing, and mixed reality.",
   },
