@@ -29,6 +29,7 @@ let refreshStartedAt = 0;
 let initialFetchDone = false;
 let lastSuccessfulFetch = 0;
 let lastAlertSentAt = 0;
+let engineStartedAt = 0;
 
 // Per-source circuit breaker state
 const sourceFailures: Record<string, number> = {};
@@ -45,6 +46,10 @@ export function isReady(): boolean {
 
 export function getLastSuccessfulFetch(): number {
   return lastSuccessfulFetch;
+}
+
+export function getEngineStartedAt(): number {
+  return engineStartedAt;
 }
 
 function deduplicateArticles(articles: Article[]): Article[] {
@@ -69,6 +74,17 @@ function loadCacheFromDisk(): boolean {
       sources: parsed.sources || {},
       lastUpdated: parsed.lastUpdated || "",
     };
+    // Seed the staleness clock from the snapshot's age. Without this, a
+    // container restart with all sources down would report "warning" forever
+    // (lastSuccessfulFetch 0 means hoursStale null) and never trip the
+    // /api/feed-health 503 that UptimeRobot alerts on.
+    const seedIso = parsed.savedAt || parsed.lastUpdated;
+    if (seedIso) {
+      const seedMs = Date.parse(seedIso);
+      if (!Number.isNaN(seedMs)) {
+        lastSuccessfulFetch = seedMs;
+      }
+    }
     initialFetchDone = true;
     console.log(
       `[VR.org] Warm-started from feed-cache.json: ${cache.articles.length} articles (saved ${parsed.savedAt || "unknown"})`
@@ -331,9 +347,18 @@ async function runRefresh(): Promise<void> {
 
 export function startFeedEngine(): void {
   if (refreshTimer) return;
+  engineStartedAt = Date.now();
 
   // Warm-start from persistent cache so the homepage isn't empty on boot
   loadCacheFromDisk();
+
+  // No snapshot to seed from (fresh provision, deleted or corrupt cache):
+  // start the staleness clock now instead of leaving it at 0. Otherwise a
+  // feed that never succeeds would sit at "warning" with no 503 and no
+  // stale alert, forever. The health route's boot grace covers startup.
+  if (lastSuccessfulFetch === 0) {
+    lastSuccessfulFetch = engineStartedAt;
+  }
 
   // Initial fetch
   refreshFeed().catch(console.error);
