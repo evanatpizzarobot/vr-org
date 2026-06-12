@@ -14,7 +14,7 @@
           "description": "The best entry-level standalone VR headset. Great mixed reality, solid game library, no PC required. Up $50 since April's memory-driven price adjustment.",
           "badge": "Best Standalone Value",
           "links": {
-            "amazon": { "url": "https://amazon.com/dp/B0DG79992W?tag=vrorg00-20", "label": "Amazon" }
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3s+128gb&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
@@ -43,7 +43,7 @@
           "description": "The best VR hardware value after Meta's April hike. OLED, eye tracking, foveated rendering, headset rumble, adaptive-trigger controllers. Needs a PS5; if you already own one, this is the deal of the year.",
           "badge": "Best VR Value",
           "links": {
-            "amazon": { "url": "https://amazon.com/dp/B0BNR3KTLL?tag=vrorg00-20", "label": "Amazon" }
+            "amazon": { "url": "https://amazon.com/s?k=playstation+vr2&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
