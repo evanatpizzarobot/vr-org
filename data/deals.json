@@ -80,7 +80,7 @@
           "image": "https://www.knoxlabs.com/cdn/shop/files/xr-elite-business-edition_1280x.jpg?v=1689718946",
           "description": "Standalone and PC VR in one compact, glasses-like form factor. Color passthrough mixed reality, 110 degree FOV, and a foldable design that travels well. Now ships with the Deluxe Pack.",
           "links": {
-            "amazon": { "url": "https://amazon.com/dp/B0D6D5Q5M2?tag=vrorg00-20", "label": "Amazon" }
+            "amazon": { "url": "https://amazon.com/s?k=htc+vive+xr+elite&tag=vrorg00-20", "label": "Amazon" }
           }
         },
         {
@@ -204,7 +204,7 @@
           "image": "https://www.bobovr.com/cdn/shop/files/20240927-145353.png?v=1727425146&width=2048",
           "description": "Suspended-design strap with a hot-swappable magnetic battery pack. The reviewer favorite for Quest 3 sessions longer than the stock battery can handle.",
           "links": {
-            "amazon": { "url": "https://amazon.com/dp/B0CJLG9SBR?tag=vrorg00-20", "label": "Amazon" },
+            "amazon": { "url": "https://amazon.com/s?k=bobovr+m3+pro+battery+strap&tag=vrorg00-20", "label": "Amazon" },
             "direct": { "url": "https://www.bobovr.com/products/bobovr-m3-pro", "label": "BoboVR" }
           }
         },
