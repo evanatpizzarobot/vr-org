@@ -43,7 +43,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Games of 2026: New Releases and Must-Play Titles",
   datePublished: "2026-03-24",
-  dateModified: "2026-06-01",
+  dateModified: "2026-06-20",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -78,16 +78,18 @@ const games2026List = itemListSchema("Best VR Games of 2026", [
   { name: "Microsoft Flight Simulator (PSVR 2)", url: "https://vr.org/best-vr-games-2026" },
   { name: "TMNT: Empire City", url: "https://vr.org/best-vr-games-2026" },
   { name: "One More Delve", url: "https://vr.org/best-vr-games-2026" },
+  { name: "Into the Radius 2", url: "https://vr.org/best-vr-games-2026" },
   { name: "Whatever Valve ships with Steam Frame", url: "https://vr.org/best-vr-games-2026" },
   { name: "Star Trek: Infection", url: "https://vr.org/best-vr-games-2026" },
   { name: "Aces of Thunder", url: "https://vr.org/best-vr-games-2026" },
+  { name: "Virtual Hunter", url: "https://vr.org/best-vr-games-2026" },
 ]);
 
 const games2026Faq = faqPageSchema([
   {
     question: "What are the best VR games of 2026?",
     answer:
-      "Through May 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Aces of Thunder, Star Trek: Infection, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, the breakout indie One More Delve, and the open-world hunting sim Virtual Hunter. Whatever Valve launches alongside the Steam Frame remains the biggest wildcard for the back half of the year.",
+      "Through June 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Aces of Thunder, Star Trek: Infection, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, the breakout indie One More Delve, the S.T.A.L.K.E.R.-style survival shooter Into the Radius 2 (now a full 1.0 release), and the open-world hunting sim Virtual Hunter. Whatever Valve launches alongside the Steam Frame remains the biggest wildcard for the back half of the year.",
   },
   {
     question: "What VR games are coming in the rest of 2026?",
@@ -135,7 +137,7 @@ export default function BestVRGames2026Page() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: June 2026
+          Last updated: June 20, 2026
         </p>
 
         <p
@@ -160,8 +162,9 @@ export default function BestVRGames2026Page() {
         >
           Five months in, 2026 is delivering on its promise as one of the
           biggest years for VR gaming. Microsoft Flight Simulator hit PSVR 2,
-          TMNT: Empire City brought the turtles to VR, and a solo student
-          developer dropped one of the most surprising indie hits of the year.
+          TMNT: Empire City brought the turtles to VR, a solo student
+          developer dropped one of the most surprising indie hits of the year,
+          and Into the Radius 2 left Early Access as a full game.
           Valve&apos;s Steam Controller sold out in under an hour on May 4, and
           the Steam Frame headset is now listed as coming soon. Here are the
           best VR games of 2026 so far, plus the titles still ahead.
@@ -395,6 +398,45 @@ export default function BestVRGames2026Page() {
           has the details.
         </p>
 
+        {/* Into the Radius 2 */}
+        <h3 className="font-display text-xl font-semibold mb-2">
+          Into the Radius 2
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2307350/ef5e8a9f96d6ace7c79340c5df625eeb4a25f4a2/header_alt_assets_4.jpg?t=1781882958"
+            alt="Into the Radius 2 key art with a lone explorer beneath the anomaly eclipse"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[13px] mb-4"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Developer: CM Games | Platform: PC VR, Quest | Released: April 23, 2026 (1.0)
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          The closest thing VR has to S.T.A.L.K.E.R. left Early Access on
+          April 23 with its full 1.0 release. CM Games&apos; survival shooter
+          drops you alone into a surreal anomaly zone where you manually rack
+          your slide, count every round, and maintain your guns by hand. The
+          1.0 launch added a full story campaign, new weapons, and night
+          vision, and a later update brought the multiplayer co-op players had
+          been waiting for. It is one of the best hardcore VR games most people
+          still have not heard of. Our{" "}
+          <a
+            href="/articles/into-the-radius-2-full-release-april-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            full release coverage
+          </a>{" "}
+          has the breakdown.
+        </p>
+
         {/* Ad: after New Releases, before Most Anticipated */}
         <div className="my-8">
           <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
@@ -475,6 +517,38 @@ export default function BestVRGames2026Page() {
           24 aircraft, and won praise for its physical accuracy and audio while
           drawing criticism for a steep learning curve. Sim enthusiasts have
           embraced it.
+        </p>
+
+        {/* Virtual Hunter */}
+        <h3 className="font-display text-xl font-semibold mb-2">
+          Virtual Hunter
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1549850/74407f4d2cc61225833c9231d5bb1a30d1b22a37/header.jpg?t=1778837658"
+            alt="Virtual Hunter VR key art showing deer, a pheasant, and hunters in the field"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Released May 27 on PSVR2 and Quest at $24.99 after a stretch on
+          Steam, Korpi Games&apos; realistic hunting sim is the most serious
+          attempt the genre has seen in VR. It is built around 64 square
+          kilometer open worlds with solo play or six-player co-op, and it
+          leans hard on each headset&apos;s hardware. If you have wanted a
+          patient, tracking-focused hunting game in VR rather than an arcade
+          shooting gallery, this is the one to watch. Our{" "}
+          <a
+            href="/articles/virtual-hunter-psvr2-quest-launch-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            launch coverage
+          </a>{" "}
+          breaks down the platform differences.
         </p>
 
         {/* Ad: after the last anticipated game, before related articles */}
