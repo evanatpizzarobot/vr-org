@@ -11,7 +11,8 @@
     "check:images": "node scripts/check-article-images.mjs",
     "check:deals": "node scripts/check-deal-links.mjs",
     "check:rotation": "node scripts/check-author-rotation.mjs",
-    "audit:pages": "node scripts/audit-pages.mjs"
+    "audit:pages": "node scripts/audit-pages.mjs",
+    "gsc:mine": "node scripts/gsc-striking-distance.mjs"
   },
   "dependencies": {
     "next": "15.5.14",
