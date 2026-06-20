@@ -10,6 +10,7 @@ import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
+import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 
 export const metadata = {
   title: "Best VR Headset for Kids 2026: Safe, Age-Appropriate Picks | VR.org",
@@ -47,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Kids 2026: Safe, Age-Appropriate Picks",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-06-20",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -152,7 +153,7 @@ export default function BestVRHeadsetForKidsPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: June 20, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -265,6 +266,22 @@ export default function BestVRHeadsetForKidsPage() {
           that bypasses the age and content controls that keep VR appropriate.
           Spend the money on a standalone Quest 3S with a child account instead.
         </p>
+
+        <h2 className="font-display text-2xl font-bold mt-10 mb-3">
+          Kids&apos; VR headsets compared
+        </h2>
+        <ComparisonTable
+          caption="Family-friendly VR headsets compared, with prices from the VR.org deals tracker."
+          columns={["Headset", "Price", "Best for"]}
+          rows={[
+            ["Meta Quest 3S (128GB)", "$349", "Most families and first-time kids, parent controls built in"],
+            ["PlayStation VR2", "$399", "PlayStation homes with kids 12 and up, supervised play"],
+            ["Meta Quest 3S (256GB)", "$449", "Kids who keep many games installed at once"],
+            ["Meta Quest 3 (512GB)", "$599", "Younger kids who need the continuous IPD fit"],
+          ]}
+        />
+
+        <FaqSection schema={faq} />
 
         <RecentArticles heading="Latest Hardware News" limit={4} tag="hardware" />
         <AllPillarGuides exclude="best-vr-headset-for-kids" />

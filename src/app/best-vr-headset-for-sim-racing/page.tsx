@@ -10,6 +10,7 @@ import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
+import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 
 export const metadata = {
   title: "Best VR Headset for Sim Racing 2026: iRacing & ACC Picks | VR.org",
@@ -47,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Sim Racing 2026: iRacing & ACC Picks",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-06-20",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -152,7 +153,7 @@ export default function BestVRHeadsetForSimRacingPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: June 20, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -264,6 +265,22 @@ export default function BestVRHeadsetForSimRacingPage() {
           comfortable. Budget for the PC as much as the headset, and you will have a
           setup that makes flat-screen racing hard to go back to.
         </p>
+
+        <h2 className="font-display text-2xl font-bold mt-10 mb-3">
+          Sim racing headsets compared
+        </h2>
+        <ComparisonTable
+          caption="VR headsets for sim racing and flight sim, with prices from the VR.org deals tracker. All need a gaming PC, so budget for a strong GPU too."
+          columns={["Headset", "Price", "Best for"]}
+          rows={[
+            ["Meta Quest 3 (512GB)", "$599", "Best starting point, sharp lenses, easy PC link"],
+            ["Pimax Crystal Light", "$899", "Enthusiast clarity and a wide field of view"],
+            ["Bigscreen Beyond 2", "$1,019", "Comfort over long stints, ultralight at 107 grams"],
+            ["PlayStation VR2", "$399", "Best value OLED if you race on PS5 or via the PC adapter"],
+          ]}
+        />
+
+        <FaqSection schema={faq} />
 
         <RecentArticles heading="Latest Gaming News" limit={4} tags={["gaming", "hardware"]} />
         <AllPillarGuides exclude="best-vr-headset-for-sim-racing" />

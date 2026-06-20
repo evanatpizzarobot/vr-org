@@ -10,6 +10,7 @@ import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
+import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 
 export const metadata = {
   title: "Upcoming VR Headsets 2026: New Releases & What's Coming Next | VR.org",
@@ -47,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Upcoming VR Headsets 2026: New Releases and What's Coming Next",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-06-20",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -126,7 +127,7 @@ export default function UpcomingVRHeadsets2026Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: June 20, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -263,6 +264,23 @@ export default function UpcomingVRHeadsets2026Page() {
           picks. We update this page as new headsets are announced, so check back
           for the latest.
         </p>
+
+        <h2 className="font-display text-2xl font-bold mt-10 mb-3">
+          New 2026 headsets at a glance
+        </h2>
+        <ComparisonTable
+          caption="New 2026 headsets you can buy today, with prices from our live VR.org deals tracker. The most anticipated upcoming models (Valve Steam Frame, Meta Quest 4) are left off until their pricing is confirmed."
+          columns={["Headset", "Price", "Best for"]}
+          rows={[
+            ["Samsung Galaxy XR", "$1,799", "Flagship Android XR, a Vision Pro alternative"],
+            ["Apple Vision Pro (M5)", "$3,499", "Premium spatial computing and media"],
+            ["Bigscreen Beyond 2", "$1,019", "Ultralight enthusiast PC VR"],
+            ["Meta Quest 3 (512GB)", "$599", "Best all-around standalone to buy now"],
+            ["Meta Quest 3S (128GB)", "$349", "Cheapest way into standalone VR today"],
+          ]}
+        />
+
+        <FaqSection schema={faq} />
 
         <RecentArticles heading="Latest Hardware News" limit={5} tag="hardware" />
         <AllPillarGuides exclude="upcoming-vr-headsets-2026" />

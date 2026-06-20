@@ -10,6 +10,7 @@ import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
+import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 
 export const metadata = {
   title: "Best VR Headset for Watching Movies 2026: Top Picks | VR.org",
@@ -47,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Watching Movies 2026: Top Picks",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-06-20",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -149,7 +150,7 @@ export default function BestVRHeadsetForMoviesPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: June 20, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -267,6 +268,27 @@ export default function BestVRHeadsetForMoviesPage() {
           </a>{" "}
           guide.
         </p>
+
+        <h2 className="font-display text-2xl font-bold mt-10 mb-3">
+          Movie headsets compared
+        </h2>
+        <ComparisonTable
+          caption="Headsets and display glasses for watching movies, with current VR.org deals prices."
+          columns={["Headset / Glasses", "Price", "Best for"]}
+          rows={[
+            ["Apple Vision Pro (M5)", "$3,499", "Best overall picture, micro-OLED, 3D and spatial video"],
+            ["Samsung Galaxy XR", "$1,799", "Micro-OLED with native Google TV and YouTube"],
+            ["Bigscreen Beyond 2", "$1,019", "Lightweight PC VR cinema for long sessions"],
+            ["Meta Quest 3 (512GB)", "$599", "Best all-around value cinema, standalone"],
+            ["Xreal One Pro", "$599", "AR display glasses, big virtual screen on the go"],
+            ["VITURE Beast", "$549", "XR display glasses for console and Steam Deck media"],
+            ["PlayStation VR2", "$399", "OLED picture if you already own a PS5"],
+            ["Meta Quest 3S (128GB)", "$349", "Cheapest way into a standalone virtual theater"],
+            ["RayNeo Air 3s", "$269", "Budget micro-OLED display glasses for video"],
+          ]}
+        />
+
+        <FaqSection schema={faq} />
 
         <RecentArticles heading="Latest Hardware News" limit={4} tag="hardware" />
         <AllPillarGuides exclude="best-vr-headset-for-movies" />
