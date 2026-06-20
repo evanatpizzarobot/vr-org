@@ -5,7 +5,7 @@ import {
   StructuredData,
   breadcrumbSchema,
   faqPageSchema,
-  itemListSchema,
+  productItemListSchema,
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title:
     "Best AR Glasses 2026: Smart Glasses Comparison & Buyer's Guide | VR.org",
   description:
-    "The best AR glasses and smart glasses of 2026 compared. Ray-Ban Meta, Rokid, Xreal, Viture, Android XR devices, and more. Which AR smart glasses are worth buying today.",
+    "Best AR glasses 2026: Ray-Ban Meta ($379) for camera and audio, Rokid ($499) for a display, Xreal One Pro ($599) for a big screen. Every smart glasses pick compared.",
   openGraph: {
     title:
       "Best AR Glasses 2026: Smart Glasses Comparison & Buyer's Guide | VR.org",
@@ -76,14 +76,75 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Best AR Glasses", url: "https://vr.org/ar-glasses" },
 ]);
 
-const glassesList = itemListSchema("Best AR Glasses 2026", [
-  { name: "Ray-Ban Meta (Gen 2)", url: "https://vr.org/ar-glasses#ray-ban-meta" },
-  { name: "Rokid Glasses", url: "https://vr.org/ar-glasses#rokid-glasses" },
-  { name: "Xreal One Pro", url: "https://vr.org/ar-glasses#xreal-one-pro" },
-  { name: "Viture Pro", url: "https://vr.org/ar-glasses#viture-pro" },
-  { name: "Meta Orion (developer preview)", url: "https://vr.org/ar-glasses#meta-orion" },
-  { name: "Google Android XR Glasses", url: "https://vr.org/ar-glasses#android-xr-glasses" },
-  { name: "Apple Vision Pro", url: "https://vr.org/ar-glasses#apple-vision-pro" },
+const glassesList = productItemListSchema("Best AR Glasses 2026", [
+  {
+    name: "Ray-Ban Meta (Gen 2)",
+    brand: "Meta",
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Ray-Ban_Stories.jpg",
+    description:
+      "The best mainstream smart glasses, camera and audio built into Ray-Ban frames with Meta AI and no visible display.",
+    url: "https://vr.org/ar-glasses#ray-ban-meta",
+    offers: [
+      { price: 379, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://www.meta.com/smart-glasses/" },
+    ],
+  },
+  {
+    name: "Rokid Glasses",
+    brand: "Rokid",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/COP30_-_Rokid_01.jpg/1280px-COP30_-_Rokid_01.jpg",
+    description:
+      "The best display smart glasses, 49 grams with a micro-LED monocular display and native Google Gemini.",
+    url: "https://vr.org/ar-glasses#rokid-glasses",
+    offers: [
+      { price: 499, priceCurrency: "USD", availability: "https://schema.org/InStock" },
+    ],
+  },
+  {
+    name: "Xreal One Pro",
+    brand: "Xreal",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Tokyo-Game-Show-2024-Day4---2024-09-29_252.jpg/1280px-Tokyo-Game-Show-2024-Day4---2024-09-29_252.jpg",
+    description:
+      "The best AR glasses for media and gaming, a tethered 1080p micro-OLED display with a 57 degree field of view.",
+    url: "https://vr.org/ar-glasses#xreal-one-pro",
+    offers: [
+      { price: 599, priceCurrency: "USD", availability: "https://schema.org/InStock" },
+    ],
+  },
+  {
+    name: "Viture Pro",
+    brand: "Viture",
+    description:
+      "Best for prescription wearers and portability, 1080p micro-OLED glasses with built-in myopia adjustment.",
+    url: "https://vr.org/ar-glasses#viture-pro",
+    offers: [
+      { price: 499, priceCurrency: "USD", availability: "https://schema.org/InStock" },
+    ],
+  },
+  {
+    name: "Apple Vision Pro",
+    brand: "Apple",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Apple_Vision_Pro_with_Solo_Knit_Band.jpg",
+    description:
+      "The benchmark for passthrough mixed reality, dual 4K micro-OLED displays running visionOS. Not glasses form factor.",
+    url: "https://vr.org/ar-glasses#apple-vision-pro",
+    offers: [
+      { price: 3499, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://www.apple.com/apple-vision-pro/" },
+    ],
+  },
+  {
+    name: "Meta Orion",
+    brand: "Meta",
+    description:
+      "A developer preview of true holographic AR, 70 degree field of view with a wireless compute puck and neural wristband. Not for sale.",
+    url: "https://vr.org/ar-glasses#meta-orion",
+  },
+  {
+    name: "Google Android XR Glasses",
+    brand: "Google",
+    description:
+      "The Android platform for smart glasses, with first audio-and-camera models from Gentle Monster and Warby Parker due fall 2026.",
+    url: "https://vr.org/ar-glasses#android-xr-glasses",
+  },
 ]);
 
 const glassesFaq = faqPageSchema([

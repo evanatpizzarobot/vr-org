@@ -12,11 +12,11 @@ import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata = {
-  title: "Best VR Headsets 2026: Buyer's Guide & Comparison | VR.org",
+  title: "Best VR Headset 2026: Top Picks, Prices & Comparison | VR.org",
   description:
     "The best VR headset in 2026 is the Meta Quest 3 ($599), with the $349 Quest 3S the best value. We compare every major headset, Quest, PSVR2, and Vision Pro.",
   openGraph: {
-    title: "Best VR Headsets 2026: Buyer's Guide & Comparison | VR.org",
+    title: "Best VR Headset 2026: Top Picks, Prices & Comparison | VR.org",
     description:
       "Our top VR headset pick for 2026 is the Meta Quest 3 ($599), with the Quest 3S ($349) the best budget buy. Every major headset compared.",
     url: "https://vr.org/best-vr-headsets",
@@ -32,7 +32,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image" as const,
-    title: "Best VR Headsets 2026: Buyer's Guide & Comparison | VR.org",
+    title: "Best VR Headset 2026: Top Picks, Prices & Comparison | VR.org",
     description:
       "The best VR headsets of 2026 compared. Find out which VR headset to buy for gaming, productivity, and mixed reality.",
     images: ["https://vr.org/og-image.png"],

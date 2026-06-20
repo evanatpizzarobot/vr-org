@@ -14,7 +14,30 @@ interface LinkRule {
 // Each pattern is tried in order; the first one that finds an unprotected
 // match wins for that destination.
 const RULES: LinkRule[] = [
-  // Headsets -> /best-vr-headsets (most specific names first)
+  // Headset comparisons -> dedicated /x-vs-y pages (literal "vs" phrasing, most specific first)
+  { pattern: /\b(?:Meta )?Quest 3S? vs\.? (?:the |Meta )?Quest 3S?\b/i, href: "/quest-3-vs-quest-3s" },
+  { pattern: /\b(?:Meta )?Quest 3 vs\.? (?:the |Apple )?Vision Pro\b/i, href: "/quest-3-vs-vision-pro" },
+  { pattern: /\b(?:Apple )?Vision Pro vs\.? (?:the |Meta )?Quest 3\b/i, href: "/quest-3-vs-vision-pro" },
+  { pattern: /\bPSVR ?2 vs\.? (?:the |Meta )?Quest 3\b/i, href: "/psvr2-vs-quest-3" },
+  { pattern: /\b(?:Meta )?Quest 3 vs\.? (?:the )?PSVR ?2\b/i, href: "/psvr2-vs-quest-3" },
+
+  // Headset spokes by segment / intent -> specific spoke pages (BEFORE the generic hub rule)
+  { pattern: /\bBigscreen Beyond\b/i, href: "/best-pc-vr-headset" },
+  { pattern: /\bPimax\b/i, href: "/best-pc-vr-headset" },
+  { pattern: /\bPC ?VR headsets?\b/i, href: "/best-pc-vr-headset" },
+  { pattern: /\bSteam Frame\b/i, href: "/upcoming-vr-headsets-2026" },
+  { pattern: /\bupcoming VR headsets?\b/i, href: "/upcoming-vr-headsets-2026" },
+  { pattern: /\bProject Swan\b/i, href: "/highest-resolution-vr-headset" },
+  { pattern: /\bmicro-?OLED\b/i, href: "/highest-resolution-vr-headset" },
+  { pattern: /\bsim[ -]?racing\b/i, href: "/best-vr-headset-for-sim-racing" },
+  { pattern: /\biRacing\b/i, href: "/best-vr-headset-for-sim-racing" },
+  { pattern: /\bstandalone (?:VR )?headsets?\b/i, href: "/best-standalone-vr-headset" },
+  { pattern: /\bbudget VR headsets?\b/i, href: "/best-budget-vr-headset" },
+  { pattern: /\bVR headsets? for kids\b/i, href: "/best-vr-headset-for-kids" },
+  { pattern: /\bVR headsets? for (?:movies|watching)\b/i, href: "/best-vr-headset-for-movies" },
+  { pattern: /\bVR headset for gaming\b/i, href: "/best-vr-headset-for-gaming" },
+
+  // Flagship headsets + generic -> /best-vr-headsets (hub)
   { pattern: /\bMeta Quest 3 Pro\b/i, href: "/best-vr-headsets" },
   { pattern: /\bMeta Quest 3S\b/i, href: "/best-vr-headsets" },
   { pattern: /\bMeta Quest 3\b/i, href: "/best-vr-headsets" },
@@ -25,8 +48,6 @@ const RULES: LinkRule[] = [
   { pattern: /\bPSVR ?2\b/i, href: "/best-vr-headsets" },
   { pattern: /\bPlayStation VR2\b/i, href: "/best-vr-headsets" },
   { pattern: /\bValve Index\b/i, href: "/best-vr-headsets" },
-  { pattern: /\bSteam Frame\b/i, href: "/best-vr-headsets" },
-  { pattern: /\bBigscreen Beyond\b/i, href: "/best-vr-headsets" },
   { pattern: /\bPico 4(?: Ultra)?\b/i, href: "/best-vr-headsets" },
   { pattern: /\bbest VR headsets?\b/i, href: "/best-vr-headsets" },
 
@@ -115,7 +136,11 @@ export function injectInternalLinks(
   });
 
   const usedHrefs = new Set<string>();
+  // Cap total auto-injected links per article so listicle-style originals that
+  // match many rules are not over-linked. Most articles only match a few.
+  const MAX_LINKS = 6;
   for (const rule of RULES) {
+    if (usedHrefs.size >= MAX_LINKS) break;
     if (currentPath && rule.href === currentPath) continue;
     if (usedHrefs.has(rule.href)) continue;
 

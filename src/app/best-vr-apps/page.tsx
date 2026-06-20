@@ -15,7 +15,7 @@ import { AD_SLOTS } from "@/lib/ads";
 export const metadata: Metadata = {
   title: "Best VR Apps & Utilities 2026: Top Must-Have Apps | VR.org",
   description:
-    "The 10 best VR apps and utilities for productivity, social, fitness, creativity, and more. Essential software for every VR headset owner in 2026.",
+    "Best VR apps 2026: Virtual Desktop for wireless PC VR, Immersed for work, VRChat for social, plus the essential utilities every VR headset owner needs.",
   openGraph: {
     title: "Best VR Apps & Utilities 2026: Top Must-Have Apps | VR.org",
     description:
