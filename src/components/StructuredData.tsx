@@ -271,3 +271,43 @@ export function productItemListSchema(name: string, products: ProductInput[]) {
     })),
   };
 }
+
+// ItemList of SoftwareApplication nodes, the correct type for an apps roundup.
+// price: omit when unknown or subscription; 0 marks a genuinely free app. No
+// aggregateRating is ever synthesized (Google policy), so this is for accurate
+// machine-readability and AI ingestion rather than a star-rated rich result.
+export interface SoftwareAppInput {
+  name: string;
+  applicationCategory: string;
+  operatingSystem: string;
+  url?: string;
+  price?: number;
+}
+
+export function softwareAppListSchema(name: string, apps: SoftwareAppInput[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: apps.length,
+    itemListElement: apps.map((a, i) => {
+      const node: Record<string, unknown> = {
+        "@type": "SoftwareApplication",
+        name: a.name,
+        applicationCategory: a.applicationCategory,
+        operatingSystem: a.operatingSystem,
+      };
+      if (a.url) node.url = a.url;
+      if (a.price !== undefined) {
+        node.offers = {
+          "@type": "Offer",
+          price: String(a.price),
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+        };
+      }
+      return { "@type": "ListItem", position: i + 1, item: node };
+    }),
+  };
+}

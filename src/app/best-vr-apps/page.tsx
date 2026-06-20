@@ -5,7 +5,7 @@ import {
   StructuredData,
   breadcrumbSchema,
   faqPageSchema,
-  itemListSchema,
+  softwareAppListSchema,
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
@@ -43,7 +43,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Apps & Utilities 2026: Top Must-Have Apps",
   datePublished: "2026-03-23",
-  dateModified: "2026-06-01",
+  dateModified: "2026-06-20",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -71,16 +71,16 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Best VR Apps 2026", url: "https://vr.org/best-vr-apps" },
 ]);
 
-const appsList = itemListSchema("Best VR Apps & Utilities 2026", [
-  { name: "Virtual Desktop", url: "https://vr.org/best-vr-apps#virtual-desktop" },
-  { name: "Immersed", url: "https://vr.org/best-vr-apps#immersed" },
-  { name: "VRChat", url: "https://vr.org/best-vr-apps#vrchat" },
-  { name: "Bigscreen", url: "https://vr.org/best-vr-apps#bigscreen" },
-  { name: "Gravity Sketch", url: "https://vr.org/best-vr-apps#gravity-sketch" },
-  { name: "Wander", url: "https://vr.org/best-vr-apps#wander" },
-  { name: "ShapesXR", url: "https://vr.org/best-vr-apps#shapesxr" },
-  { name: "FitXR", url: "https://vr.org/best-vr-apps#fitxr" },
-  { name: "Guided Meditation VR", url: "https://vr.org/best-vr-apps#guided-meditation-vr" },
+const appsList = softwareAppListSchema("Best VR Apps & Utilities 2026", [
+  { name: "Virtual Desktop", applicationCategory: "UtilitiesApplication", operatingSystem: "Meta Quest, Pico", url: "https://vr.org/best-vr-apps#virtual-desktop" },
+  { name: "Immersed", applicationCategory: "BusinessApplication", operatingSystem: "Meta Quest", url: "https://vr.org/best-vr-apps#immersed", price: 0 },
+  { name: "VRChat", applicationCategory: "SocialNetworkingApplication", operatingSystem: "Meta Quest, SteamVR, iOS, Android", url: "https://vr.org/best-vr-apps#vrchat", price: 0 },
+  { name: "Bigscreen", applicationCategory: "EntertainmentApplication", operatingSystem: "Meta Quest, SteamVR", url: "https://vr.org/best-vr-apps#bigscreen", price: 0 },
+  { name: "Gravity Sketch", applicationCategory: "DesignApplication", operatingSystem: "Meta Quest, SteamVR", url: "https://vr.org/best-vr-apps#gravity-sketch", price: 0 },
+  { name: "Wander", applicationCategory: "TravelApplication", operatingSystem: "Meta Quest", url: "https://vr.org/best-vr-apps#wander", price: 9.99 },
+  { name: "ShapesXR", applicationCategory: "DesignApplication", operatingSystem: "Meta Quest, visionOS, Pico", url: "https://vr.org/best-vr-apps#shapesxr", price: 0 },
+  { name: "FitXR", applicationCategory: "HealthApplication", operatingSystem: "Meta Quest", url: "https://vr.org/best-vr-apps#fitxr" },
+  { name: "Guided Meditation VR", applicationCategory: "HealthApplication", operatingSystem: "Meta Quest, SteamVR", url: "https://vr.org/best-vr-apps#guided-meditation-vr" },
 ]);
 
 const appsFaq = faqPageSchema([
@@ -134,7 +134,7 @@ export default function BestVRAppsPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: June 2026
+          Last updated: June 20, 2026
         </p>
 
         <p
