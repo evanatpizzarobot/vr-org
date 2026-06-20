@@ -4,7 +4,7 @@ import {
   StructuredData,
   breadcrumbSchema,
   faqPageSchema,
-  itemListSchema,
+  productItemListSchema,
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
@@ -71,18 +71,83 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Best VR Games 2026", url: "https://vr.org/best-vr-games-2026" },
 ]);
 
-const games2026List = itemListSchema("Best VR Games of 2026", [
-  { name: "Resident Evil Requiem", url: "https://vr.org/best-vr-games-2026" },
-  { name: "Batman: Arkham Shadow", url: "https://vr.org/best-vr-games-2026" },
-  { name: "Little Nightmares VR: Altered Echoes", url: "https://vr.org/best-vr-games-2026" },
-  { name: "Microsoft Flight Simulator (PSVR 2)", url: "https://vr.org/best-vr-games-2026" },
-  { name: "TMNT: Empire City", url: "https://vr.org/best-vr-games-2026" },
-  { name: "One More Delve", url: "https://vr.org/best-vr-games-2026" },
-  { name: "Into the Radius 2", url: "https://vr.org/best-vr-games-2026" },
-  { name: "Whatever Valve ships with Steam Frame", url: "https://vr.org/best-vr-games-2026" },
-  { name: "Star Trek: Infection", url: "https://vr.org/best-vr-games-2026" },
-  { name: "Aces of Thunder", url: "https://vr.org/best-vr-games-2026" },
-  { name: "Virtual Hunter", url: "https://vr.org/best-vr-games-2026" },
+const games2026List = productItemListSchema("Best VR Games of 2026", [
+  {
+    name: "Resident Evil Requiem",
+    brand: "Capcom",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3764200/ce5437442768e38eb575f205ab9397d0264017b0/header.jpg",
+    description: "Capcom's latest Resident Evil, with a community PC VR mod available within a week of its March 2026 launch.",
+    url: "https://vr.org/best-vr-games-2026",
+    offers: [{ price: 69.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/3764200/" }],
+  },
+  {
+    name: "Batman: Arkham Shadow",
+    brand: "Camouflaj",
+    image: "https://img.youtube.com/vi/EPcCWR3DTIw/maxresdefault.jpg",
+    description: "The best superhero game in VR, a Quest-exclusive Arkham entry translating freeflow combat into physical punches and gadget use.",
+    url: "https://vr.org/best-vr-games-2026",
+  },
+  {
+    name: "Little Nightmares VR: Altered Echoes",
+    brand: "Bandai Namco",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2482940/d452a2c46f521825dead1bd5fda5a2b6a31d6379/header.jpg",
+    description: "The acclaimed puzzle-platformer franchise's standalone VR story, out on PSVR2, Quest, and PC VR.",
+    url: "https://vr.org/best-vr-games-2026",
+    offers: [{ price: 29.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/2482940/" }],
+  },
+  {
+    name: "Microsoft Flight Simulator (PSVR 2)",
+    brand: "Asobo Studio",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2537590/header.jpg",
+    description: "One of the most visually ambitious games ever made, now in stereoscopic VR on PSVR 2.",
+    url: "https://vr.org/best-vr-games-2026",
+    offers: [{ price: 69.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/2537590/" }],
+  },
+  {
+    name: "TMNT: Empire City",
+    brand: "nDreams",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713650/b90ef5253a5ed86410cbbe2915e4286d46d7d9f6/header.jpg",
+    description: "A physics-driven VR beat 'em up where you play as any of the four turtles with weighty two-handed weapons.",
+    url: "https://vr.org/best-vr-games-2026",
+    offers: [{ price: 24.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/3713650/" }],
+  },
+  {
+    name: "One More Delve",
+    image: "https://img.youtube.com/vi/NDtClr-VjL0/maxresdefault.jpg",
+    description: "The surprise of the year, a largely solo-developed three-player co-op dungeon crawler with real physics on Quest and PC VR.",
+    url: "https://vr.org/best-vr-games-2026",
+  },
+  {
+    name: "Into the Radius 2",
+    brand: "CM Games",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2307350/ef5e8a9f96d6ace7c79340c5df625eeb4a25f4a2/header_alt_assets_4.jpg?t=1781882958",
+    description: "The closest thing VR has to S.T.A.L.K.E.R., a hardcore survival shooter that left Early Access for 1.0 in April 2026.",
+    url: "https://vr.org/best-vr-games-2026",
+    offers: [{ price: 27.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/2307350/" }],
+  },
+  {
+    name: "Star Trek: Infection",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3954580/56bc2d41e38178545b45c2b79262e146e7c628ff/header.jpg",
+    description: "A narrative survival horror set in the Star Trek universe aboard the U.S.S. Lumen, on Quest 3 and PC VR.",
+    url: "https://vr.org/best-vr-games-2026",
+    offers: [{ price: 29.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/3954580/" }],
+  },
+  {
+    name: "Aces of Thunder",
+    brand: "Gaijin Entertainment",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2754090/header.jpg",
+    description: "Cockpit-only WWI and WWII VR flight combat with War Thunder physics, full HOTAS support, and 24 aircraft.",
+    url: "https://vr.org/best-vr-games-2026",
+    offers: [{ price: 29.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/2754090/" }],
+  },
+  {
+    name: "Virtual Hunter",
+    brand: "Korpi Games",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1549850/74407f4d2cc61225833c9231d5bb1a30d1b22a37/header.jpg?t=1778837658",
+    description: "The most serious VR hunting sim yet, 64 square kilometer open worlds with six-player co-op on PSVR2, Quest, and PC VR.",
+    url: "https://vr.org/best-vr-games-2026",
+    offers: [{ price: 24.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/1549850/" }],
+  },
 ]);
 
 const games2026Faq = faqPageSchema([
