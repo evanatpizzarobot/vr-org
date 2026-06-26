@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-04",
+  "lastUpdated": "2026-06-26",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -100,6 +100,16 @@
       "title": "AR / XR Glasses",
       "description": "Smart glasses and wearable displays for mixed reality, media, and on-the-go computing.",
       "items": [
+        {
+          "name": "Snap Specs",
+          "price": "$2,195",
+          "image": "https://images.ctfassets.net/fdtlyqzgdb9e/6JgrgTWB7FjfqtXU82Sk8B/57eb39af80b208beaa5b25ba5d21df8f/2605023_52_3_4_view__3_.png?w=1280",
+          "description": "Snap's first true AR glasses built for everyone, not just developers. Fully standalone with two Qualcomm Snapdragon chips (no phone, no puck), see-through LCoS displays with a 51 degree field of view and 16 million colors, and an AI assistant from OpenAI and Google that sees what you see and answers in real time. Around 132 grams, with up to 20 hours of battery using the charging case. Preorder now with a $200 refundable deposit; ships this fall in the US, UK, and France.",
+          "badge": "Just Launched",
+          "links": {
+            "direct": { "url": "https://www.specs.com/smart-glasses/specs-27", "label": "Snap Specs" }
+          }
+        },
         {
           "name": "ROG Xreal R1",
           "price": "$849",
