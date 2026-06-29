@@ -1,6 +1,6 @@
 {
   "_comment": "Page refresh registry for the VR.org maintenance audit. Each page lists its file path, refresh cadence in days, and a one-line refresh checklist. Run `npm run audit:pages` to see what is overdue.",
-  "policy": "Best-of and pillar pages drive the majority of vr.org traffic. They must be refreshed on the cadence below. Real content edits required, not just dateModified bumps (Google's freshness signals discount unchanged content). Category hubs auto-fill from articles.json, but featured pins in data/featured.json, on-page descriptions, and CATEGORY_GUIDES links in src/components/CategoryHub.tsx all rot independently and need weekly verification.",
+  "policy": "Best-of and pillar pages drive the majority of vr.org traffic. They must be refreshed on the cadence below. Real content edits required, not just dateModified bumps (Google's freshness signals discount unchanged content). Category hubs auto-fill from articles.json, but featured pins in data/featured.json, on-page descriptions, and CATEGORY_GUIDES links in src/components/CategoryHub.tsx all rot independently and get a monthly verification pass (they auto-populate, so a weekly manual cadence just produced false-overdue noise).",
   "pages": [
     {
       "path": "/best-vr-headsets",
@@ -117,8 +117,8 @@
       "path": "/best-of",
       "file": "src/app/best-of/page.tsx",
       "category": "hub",
-      "cadenceDays": 7,
-      "lastRefreshed": "2026-06-08",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-29",
       "checklist": [
         "Hub page; verify card grid links match the live pillar pages",
         "Update card descriptions if a pillar page shifts focus",
@@ -143,8 +143,8 @@
       "path": "/events",
       "file": "src/app/events/page.tsx",
       "category": "schedule",
-      "cadenceDays": 7,
-      "lastRefreshed": "2026-06-10",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-06-29",
       "checklist": [
         "Source of truth is data/events.json (EventsCalendar auto-buckets past vs upcoming)",
         "Add upcoming VR / AR conferences and game launches",
@@ -156,8 +156,8 @@
       "path": "/hardware",
       "file": "src/app/hardware/page.tsx",
       "category": "category-hub",
-      "cadenceDays": 7,
-      "lastRefreshed": "2026-06-08",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-29",
       "checklist": [
         "Verify hardware-category featured pins in data/featured.json are not expired (expiresAt > today)",
         "Sanity-check the on-page description (HardwarePage in page.tsx) still names the right headset families",
@@ -169,8 +169,8 @@
       "path": "/gaming",
       "file": "src/app/gaming/page.tsx",
       "category": "category-hub",
-      "cadenceDays": 7,
-      "lastRefreshed": "2026-06-08",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-29",
       "checklist": [
         "Verify gaming-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/gaming/page.tsx",
@@ -182,8 +182,8 @@
       "path": "/software",
       "file": "src/app/software/page.tsx",
       "category": "category-hub",
-      "cadenceDays": 7,
-      "lastRefreshed": "2026-06-08",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-29",
       "checklist": [
         "Verify software-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/software/page.tsx",
@@ -195,8 +195,8 @@
       "path": "/enterprise",
       "file": "src/app/enterprise/page.tsx",
       "category": "category-hub",
-      "cadenceDays": 7,
-      "lastRefreshed": "2026-06-08",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-29",
       "checklist": [
         "Verify enterprise-category featured pins in data/featured.json are not expired (currently rotating slowly)",
         "Sanity-check the on-page description in src/app/enterprise/page.tsx",
@@ -208,8 +208,8 @@
       "path": "/ar",
       "file": "src/app/ar/page.tsx",
       "category": "category-hub",
-      "cadenceDays": 7,
-      "lastRefreshed": "2026-06-08",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-29",
       "checklist": [
         "Verify AR-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/ar/page.tsx",
@@ -221,8 +221,8 @@
       "path": "/xr",
       "file": "src/app/xr/page.tsx",
       "category": "category-hub",
-      "cadenceDays": 7,
-      "lastRefreshed": "2026-06-08",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-29",
       "checklist": [
         "Verify XR-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/xr/page.tsx",
@@ -234,8 +234,8 @@
       "path": "/originals",
       "file": "src/app/originals/page.tsx",
       "category": "category-hub",
-      "cadenceDays": 7,
-      "lastRefreshed": "2026-06-08",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-06-29",
       "checklist": [
         "Verify at least one new VR.org original has published in the last 7d (originals is the editorial differentiator)",
         "If the last original is > 14d old, treat as overdue and queue a piece",
