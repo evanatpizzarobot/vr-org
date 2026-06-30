@@ -70,6 +70,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return REDIRECTS.map((r) => ({ ...r, permanent: true }));
   },
+  // Clean public alias for the remote MCP endpoint. The handler lives at
+  // /api/[transport] (mcp-handler convention); this serves it at /mcp too.
+  async rewrites() {
+    return [{ source: "/mcp", destination: "/api/mcp" }];
+  },
 };
 
 export default nextConfig;
