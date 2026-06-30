@@ -68,12 +68,13 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   async redirects() {
-    return REDIRECTS.map((r) => ({ ...r, permanent: true }));
-  },
-  // Clean public alias for the remote MCP endpoint. The handler lives at
-  // /api/[transport] (mcp-handler convention); this serves it at /mcp too.
-  async rewrites() {
-    return [{ source: "/mcp", destination: "/api/mcp" }];
+    return [
+      ...REDIRECTS.map((r) => ({ ...r, permanent: true })),
+      // Clean public alias for the remote MCP endpoint. A 308 redirect (not a
+      // rewrite) so mcp-handler sees its own /api/mcp path; 308 preserves the
+      // POST method and body, which the MCP client's fetch follows.
+      { source: "/mcp", destination: "/api/mcp", permanent: true },
+    ];
   },
 };
 
