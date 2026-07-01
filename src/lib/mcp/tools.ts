@@ -401,7 +401,7 @@ export function listVrSources() {
 }
 
 interface Explainer { keys: string[]; title: string; path: string; summary: string; }
-const EXPLAINERS: Explainer[] = [
+export const EXPLAINERS: Explainer[] = [
   { keys: ["what is vr", "virtual reality", "vr basics", "vr meaning"], title: "What Is Virtual Reality?", path: "/what-is-vr", summary: "Virtual reality is a computer-generated, fully immersive environment experienced through a head-mounted display that tracks your head and hands, replacing your view of the real world with a simulated one. Standalone headsets like the Meta Quest run VR with no PC." },
   { keys: ["best headset", "which headset", "best vr headset", "what headset", "buy a headset"], title: "Best VR Headsets", path: "/best-vr-headsets", summary: "The best all-around VR headset for most people is the Meta Quest 3, with the cheaper Quest 3S as the value pick. The PlayStation VR2 stands out for PS5 owners, and the Apple Vision Pro and Samsung Galaxy XR sit at the premium spatial-computing end." },
   { keys: ["best games", "best vr games", "what to play", "top vr games", "vr games"], title: "Best VR Games", path: "/best-vr-games", summary: "VR's must-play canon includes Half-Life: Alyx, Beat Saber, the Resident Evil titles, Asgard's Wrath 2, and Walkabout Mini Golf. VR.org keeps both an all-time top ten and a current best-of-2026 list." },

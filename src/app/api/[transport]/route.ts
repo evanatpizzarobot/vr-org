@@ -9,6 +9,7 @@
 // Read-only. No keys, no writes. mcp-handler runs stateless (no Redis).
 
 import { createMcpHandler } from "mcp-handler";
+import { ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { startFeedEngine } from "@/lib/rss/engine";
 import {
@@ -25,6 +26,23 @@ import {
   listVrSources,
   vrExplain,
 } from "@/lib/mcp/tools";
+import {
+  newsLatestResource,
+  originalsLatestResource,
+  eventsUpcomingResource,
+  guidesResource,
+  articleResource,
+  articleList,
+} from "@/lib/mcp/resources";
+import {
+  recommendHeadsetPrompt,
+  thisWeekInVrPrompt,
+  explainVrTopicPrompt,
+} from "@/lib/mcp/prompts";
+
+function resContents(uri: string, mimeType: string, text: string) {
+  return { contents: [{ uri, mimeType, text }] };
+}
 
 // Make sure the in-memory RSS engine is running so the feed tools have data.
 startFeedEngine();
@@ -179,6 +197,115 @@ const handler = createMcpHandler(
         annotations: { ...READ_ONLY, title: "Explain a VR / AR / XR topic" },
       },
       async (args) => formatResult(vrExplain(args)),
+    );
+
+    // ---- Resources: browsable VR.org content the host can attach ----
+    server.registerResource(
+      "vr-news-latest",
+      "vrorg://news/latest",
+      {
+        title: "Latest VR / AR / XR headlines",
+        description: "Live aggregated VR, AR, and XR headlines from VR.org, as a markdown list.",
+        mimeType: "text/markdown",
+      },
+      async (uri) => resContents(uri.href, "text/markdown", newsLatestResource()),
+    );
+
+    server.registerResource(
+      "vr-originals-latest",
+      "vrorg://originals/latest",
+      {
+        title: "Latest VR.org original articles",
+        description: "Index of VR.org's newest original articles with links and snippets.",
+        mimeType: "text/markdown",
+      },
+      async (uri) => resContents(uri.href, "text/markdown", originalsLatestResource()),
+    );
+
+    server.registerResource(
+      "vr-events-upcoming",
+      "vrorg://events/upcoming",
+      {
+        title: "Upcoming VR / AR / XR events",
+        description: "VR.org's calendar of upcoming VR, AR, and XR industry events, soonest first.",
+        mimeType: "text/markdown",
+      },
+      async (uri) => resContents(uri.href, "text/markdown", eventsUpcomingResource()),
+    );
+
+    server.registerResource(
+      "vr-guides",
+      "vrorg://guides",
+      {
+        title: "VR.org guides: canonical answers",
+        description: "VR.org's short authoritative answers to common VR / AR / XR questions, with guide links.",
+        mimeType: "text/markdown",
+      },
+      async (uri) => resContents(uri.href, "text/markdown", guidesResource()),
+    );
+
+    server.registerResource(
+      "vr-article",
+      new ResourceTemplate("vrorg://article/{slug}", {
+        list: async () => ({
+          resources: articleList().map((it) => ({
+            uri: `vrorg://article/${it.slug}`,
+            name: it.slug,
+            title: it.title,
+            mimeType: "text/html",
+          })),
+        }),
+      }),
+      {
+        title: "VR.org article (full text)",
+        description: "Full HTML body of any VR.org original article, addressed by its slug.",
+        mimeType: "text/html",
+      },
+      async (uri, variables) => {
+        const slugVar = variables.slug;
+        const slug = Array.isArray(slugVar) ? slugVar[0] ?? "" : String(slugVar ?? "");
+        return resContents(uri.href, "text/html", articleResource(slug));
+      },
+    );
+
+    // ---- Prompts: templates that steer the model to use the tools/resources ----
+    server.registerPrompt(
+      "recommend_a_headset",
+      {
+        title: "Recommend a VR headset",
+        description: "Recommend a headset from VR.org's current picks, grounded in live deals and the buyer guide.",
+        argsSchema: {
+          budget: z.string().optional().describe("Your budget, e.g. '$400' or 'under $1000'."),
+          use_case: z.string().optional().describe("Main use, e.g. 'PC VR gaming', 'fitness', 'movies'."),
+        },
+      },
+      ({ budget, use_case }) => ({
+        messages: [{ role: "user", content: { type: "text", text: recommendHeadsetPrompt({ budget, use_case }) } }],
+      }),
+    );
+
+    server.registerPrompt(
+      "this_week_in_vr",
+      {
+        title: "This Week in VR",
+        description: "Draft a concise weekly VR / AR / XR roundup from VR.org's news and originals.",
+        argsSchema: { category: z.string().optional().describe(CATEGORY_DESC) },
+      },
+      ({ category }) => ({
+        messages: [{ role: "user", content: { type: "text", text: thisWeekInVrPrompt({ category }) } }],
+      }),
+    );
+
+    server.registerPrompt(
+      "explain_vr_topic",
+      {
+        title: "Explain a VR / AR / XR topic",
+        description: "Explain a VR topic for a newcomer, grounded in VR.org's canonical answer and pillar page.",
+        argsSchema: { topic: z.string().describe("The topic, e.g. 'what is vr' or 'passthrough'.") },
+      },
+      ({ topic }) => ({
+        messages: [{ role: "user", content: { type: "text", text: explainVrTopicPrompt({ topic }) } }],
+      }),
     );
   },
   {
