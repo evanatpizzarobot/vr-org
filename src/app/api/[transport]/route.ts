@@ -17,6 +17,7 @@ import {
   getVrTrending,
   listVrOriginals,
   getVrArticle,
+  getVrEvents,
   getVrDeals,
   compareVrHeadsets,
   getTopVrGames,
@@ -87,6 +88,25 @@ const handler = createMcpHandler(
         annotations: { ...READ_ONLY, title: "Get a VR.org article by slug" },
       },
       async (args) => formatResult(getVrArticle(args)),
+    );
+
+    server.registerTool(
+      "get_vr_events",
+      {
+        title: "Get upcoming VR / AR / XR events",
+        description:
+          "Returns upcoming VR, AR, and XR industry events (conferences, expos, launches) from VR.org's events calendar, soonest first. Set include_past to also include events that have already ended.",
+        inputSchema: {
+          limit: z.number().optional().describe("Max results, 1-50 (default 10)."),
+          include_past: z
+            .boolean()
+            .optional()
+            .describe("Include events that have already ended (default false)."),
+        },
+        annotations: { ...READ_ONLY, title: "Get upcoming VR / AR / XR events" },
+      },
+      async (args) =>
+        formatResult(getVrEvents({ limit: args.limit, includePast: args.include_past })),
     );
 
     server.registerTool(

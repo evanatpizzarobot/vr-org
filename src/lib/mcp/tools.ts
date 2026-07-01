@@ -219,6 +219,52 @@ export function getVrArticle(args: { slug: string }) {
   };
 }
 
+interface RawEvent {
+  id?: string;
+  name?: string;
+  description?: string;
+  startDate?: string;
+  endDate?: string;
+  location?: string;
+  venue?: string;
+  url?: string;
+  category?: string;
+  featured?: boolean;
+}
+
+export function getVrEvents(args: { limit?: number; includePast?: boolean }) {
+  const limit = clampLimit(args.limit, 10, 50);
+  const includePast = args.includePast === true;
+  const raw = readJson("events.json") as RawEvent[] | null;
+  const events = Array.isArray(raw) ? raw : [];
+  const today = new Date().toISOString().slice(0, 10);
+  let list = events.filter((e) => e && typeof e.startDate === "string");
+  if (!includePast) {
+    // Keep events that end today or later (ongoing multi-day events included).
+    list = list.filter((e) => String(e.endDate ?? e.startDate) >= today);
+  }
+  list.sort((a, b) => String(a.startDate).localeCompare(String(b.startDate)));
+  const items = list.slice(0, limit).map((e) => ({
+    name: e.name ?? null,
+    description: e.description ?? null,
+    start_date: e.startDate ?? null,
+    end_date: e.endDate ?? null,
+    location: e.location ?? null,
+    venue: e.venue ?? null,
+    url: e.url ?? null,
+    category: e.category ?? null,
+    featured: e.featured ?? false,
+  }));
+  return {
+    ok: true,
+    count: items.length,
+    total: list.length,
+    include_past: includePast,
+    events: items,
+    source: `${BASE}/events`,
+  };
+}
+
 interface DealItem {
   name?: string;
   price?: string;

@@ -1,13 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAllArticles, getFeaturedArticles } from "@/lib/articles";
+import { getAllArticles, getArticleBySlug, getFeaturedArticles } from "@/lib/articles";
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = request.nextUrl;
+    const slug = searchParams.get("slug");
     const category = searchParams.get("category");
     const featured = searchParams.get("featured");
     const mix = searchParams.get("mix");
     const limit = parseInt(searchParams.get("limit") || "0", 10);
+
+    // Single-article request: return the full article INCLUDING body so MCP
+    // clients (and any consumer) can read the piece without scraping the HTML
+    // page. The list form below stays body-stripped to keep responses light.
+    if (slug) {
+      const article = getArticleBySlug(slug);
+      if (!article) {
+        return NextResponse.json(
+          { error: "Article not found", slug },
+          { status: 404 }
+        );
+      }
+      return NextResponse.json({ article });
+    }
 
     let articles = getAllArticles();
 
