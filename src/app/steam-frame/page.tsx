@@ -24,10 +24,10 @@ export const metadata = {
     siteName: "VR.org",
     images: [
       {
-        url: "https://vr.org/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Valve Steam Frame tracker - VR.org",
+        url: "https://vr.org/article-images/steam-frame/steam-frame-headset.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "Valve Steam Frame standalone VR headset",
       },
     ],
   },
@@ -36,7 +36,7 @@ export const metadata = {
     title: "Valve Steam Frame: Release Date, Price, Specs & Everything We Know",
     description:
       "Confirmed for summer 2026 with reservations imminent. Every Steam Frame development, tracked by VR.org.",
-    images: ["https://vr.org/og-image.png"],
+    images: ["https://vr.org/article-images/steam-frame/steam-frame-headset.jpg"],
   },
   alternates: {
     canonical: "https://vr.org/steam-frame",
@@ -62,7 +62,7 @@ const articleSchema = {
     "@type": "WebPage",
     "@id": "https://vr.org/steam-frame",
   },
-  image: "https://vr.org/og-image.png",
+  image: "https://vr.org/article-images/steam-frame/steam-frame-headset.jpg",
 };
 
 const breadcrumbs = breadcrumbSchema([
@@ -78,6 +78,7 @@ const frameProduct = productSchema({
   description:
     "Standalone SteamOS VR headset with a dedicated 6GHz wireless dongle for PC VR streaming. Confirmed for a summer 2026 release; pricing not yet announced.",
   url: "https://vr.org/steam-frame",
+  image: "https://vr.org/article-images/steam-frame/steam-frame-headset.jpg",
 });
 
 const faq = faqPageSchema([
@@ -260,6 +261,17 @@ export default function SteamFramePage() {
           to all of our reporting, and is updated on every beat until launch.
         </p>
 
+        <figure className="pillar-figure">
+          <img
+            src="/article-images/steam-frame/steam-frame-headset.jpg"
+            alt="Valve Steam Frame standalone VR headset shown at a three-quarter angle with the Valve logo on the head strap"
+            width={1920}
+            height={1080}
+            loading="lazy"
+          />
+          <figcaption>Image: Valve</figcaption>
+        </figure>
+
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
           Release date: summer 2026, reservations imminent
         </h2>
@@ -336,6 +348,21 @@ export default function SteamFramePage() {
             ["Accessories", "Enthusiast Kit with hot-swappable battery (FCC confirmed); $99 Steam Controller for non-VR mode"],
           ]}
         />
+
+        <figure className="pillar-figure">
+          <img
+            src="/article-images/steam-frame/steam-frame-controllers.jpg"
+            alt="The two Steam Frame motion controllers, showing the D-pad on the left controller and the A, B, X, and Y face buttons on the right for gamepad compatibility"
+            width={1920}
+            height={1080}
+            loading="lazy"
+          />
+          <figcaption>
+            The Steam Frame controllers put a D-pad on the left and face buttons
+            on the right, so they double as a gamepad for non-VR play. Image:
+            Valve
+          </figcaption>
+        </figure>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
           The streaming dongle is the whole thesis

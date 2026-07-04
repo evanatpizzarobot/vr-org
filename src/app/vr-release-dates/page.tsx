@@ -277,6 +277,22 @@ export default function VRReleaseDatesPage() {
           ))}
         </p>
 
+        <figure className="pillar-figure">
+          <a href="/steam-frame">
+            <img
+              src="/article-images/steam-frame/steam-frame-headset.jpg"
+              alt="Valve Steam Frame standalone VR headset, the headline entry on the 2026 VR release calendar"
+              width={1920}
+              height={1080}
+              loading="lazy"
+            />
+          </a>
+          <figcaption>
+            The headline release of 2026: Valve&apos;s Steam Frame, confirmed for
+            summer with reservations imminent. Image: Valve
+          </figcaption>
+        </figure>
+
         {SECTIONS.map((section, idx) => {
           const items = sortReleaseItems(
             data.items.filter((i) => i.category === section.key)

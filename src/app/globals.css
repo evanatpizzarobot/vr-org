@@ -798,6 +798,45 @@ nav::-webkit-scrollbar {
 }
 
 /* ============================================================
+   PILLAR FIGURES (generic inline images for TSX pillar pages
+   like /steam-frame). Rounded framed image + italic caption,
+   matching the article-body figure look.
+   ============================================================ */
+.pillar-figure {
+  margin: 1.5rem 0 1.75rem;
+  padding: 0;
+}
+
+.pillar-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  display: block;
+}
+
+.pillar-figure a {
+  display: block;
+  cursor: pointer;
+}
+
+.pillar-figure a img {
+  transition: opacity 0.2s ease;
+}
+
+.pillar-figure a:hover img {
+  opacity: 0.9;
+}
+
+.pillar-figure figcaption {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* ============================================================
    HERO BACKGROUND CANVAS (cosmic + wireframe grid)
    Fixed full-viewport layer behind the whole homepage. Content
    sits above via z-index hoisting. Vignette fades the lower
