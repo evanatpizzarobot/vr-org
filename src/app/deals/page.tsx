@@ -5,6 +5,7 @@ import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { getDeals, type DealItem } from "@/lib/deals";
+import { getComingSoon } from "@/lib/release-dates";
 
 export const metadata: Metadata = {
   title: "Best VR Deals 2026: Headsets, Accessories & Gaming PCs | VR.org",
@@ -114,6 +115,7 @@ function parseDateToIso(last?: string): string {
 export default function DealsPage() {
   const deals = getDeals();
   const allItems = deals.sections.flatMap((s) => s.items);
+  const comingSoon = getComingSoon(5);
 
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -232,6 +234,40 @@ export default function DealsPage() {
             </div>
           </section>
         ))}
+
+        {/* Coming Soon: nearest upcoming releases from the tracker */}
+        {comingSoon.length > 0 && (
+          <section className="mb-16" aria-labelledby="heading-coming-soon">
+            <h2 id="heading-coming-soon" className="deals-section-title">
+              Coming Soon
+            </h2>
+            <p className="deals-section-desc">
+              The next VR hardware and game releases on the calendar. Full list
+              on our{" "}
+              <a
+                href="/vr-release-dates"
+                className="no-underline hover:underline"
+                style={{ color: "var(--accent-cyan)" }}
+              >
+                VR release dates tracker
+              </a>
+              .
+            </p>
+            <div>
+              {comingSoon.map((item) => (
+                <div key={item.id} className="release-row">
+                  <span className="release-name">
+                    {item.link ? <a href={item.link}>{item.name}</a> : item.name}
+                  </span>
+                  <span className={`release-badge release-badge-${item.status}`}>
+                    {item.status}
+                  </span>
+                  <span className="release-date">{item.dateText}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Last updated */}
         {deals.lastUpdated && (

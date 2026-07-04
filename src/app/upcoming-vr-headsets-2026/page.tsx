@@ -152,7 +152,16 @@ export default function UpcomingVRHeadsets2026Page() {
           the horizon are Valve&apos;s much-anticipated Steam Frame, a wave of
           smart glasses, and the Meta Quest 4, which is expected around 2027. This
           is our running guide to the newest and upcoming VR headsets, updated as
-          they are announced and released.
+          they are announced and released. For exact dates across every category,
+          including games and accessories, see our{" "}
+          <a
+            href="/vr-release-dates"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            VR release dates tracker
+          </a>
+          .
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">

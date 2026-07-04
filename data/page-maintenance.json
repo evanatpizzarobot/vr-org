@@ -423,6 +423,34 @@
         "Confirm the headset picks still match what the sim-racing community recommends",
         "Keep cross-links to /best-pc-vr-headset and /best-vr-headsets intact"
       ]
+    },
+    {
+      "path": "/vr-release-dates",
+      "file": "src/app/vr-release-dates/page.tsx",
+      "category": "tracker",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-07-04",
+      "checklist": [
+        "Source of truth is data/release-dates.json, not the page",
+        "Verify every date/status against the latest news; promote rumored to expected/confirmed as signals firm up",
+        "Move shipped items to status released (they sort to the bottom); prune anything released more than ~60 days ago",
+        "Add newly announced headsets, games, and accessories with a link to our deepest coverage",
+        "Bump lastUpdated in release-dates.json AND dateModified in the page JSON-LD only with real edits"
+      ]
+    },
+    {
+      "path": "/steam-frame",
+      "file": "src/app/steam-frame/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-07-04",
+      "checklist": [
+        "Refresh on EVERY Steam Frame news beat until launch, not just on cadence",
+        "Update the release-date and price signal sections with the newest reporting",
+        "Append new articles to the dated timeline with links",
+        "Keep the FAQ answers in sync with the latest status (no stale windows)",
+        "After launch: convert to a review/spec hub and relax cadence to 30d"
+      ]
     }
   ]
 }

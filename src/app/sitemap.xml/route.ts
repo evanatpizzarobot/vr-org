@@ -89,6 +89,8 @@ export async function GET() {
     ["/best-pc-vr-headset", reg_or("/best-pc-vr-headset"), "monthly", "0.8"],
     ["/best-standalone-vr-headset", reg_or("/best-standalone-vr-headset"), "monthly", "0.8"],
     ["/upcoming-vr-headsets-2026", reg_or("/upcoming-vr-headsets-2026"), "weekly", "0.8"],
+    ["/vr-release-dates", reg_or("/vr-release-dates"), "weekly", "0.85"],
+    ["/steam-frame", reg_or("/steam-frame"), "weekly", "0.85"],
     ["/best-vr-headset-for-gaming", reg_or("/best-vr-headset-for-gaming"), "monthly", "0.8"],
     ["/highest-resolution-vr-headset", reg_or("/highest-resolution-vr-headset"), "monthly", "0.8"],
     ["/best-vr-headset-for-movies", reg_or("/best-vr-headset-for-movies"), "monthly", "0.8"],

@@ -112,6 +112,16 @@ const collectionSchema = {
     },
     {
       "@type": "Article",
+      name: "VR Release Dates 2026",
+      url: "https://vr.org/vr-release-dates",
+    },
+    {
+      "@type": "Article",
+      name: "Valve Steam Frame: Everything We Know",
+      url: "https://vr.org/steam-frame",
+    },
+    {
+      "@type": "Article",
       name: "Best AR Glasses 2026",
       url: "https://vr.org/ar-glasses",
     },
@@ -253,6 +263,22 @@ const CARDS: BestOfCard[] = [
     description:
       "New releases and what's coming next, from the Samsung Galaxy XR to Valve's Steam Frame and the Meta Quest 4.",
     href: "/upcoming-vr-headsets-2026",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "VR Release Dates 2026",
+    description:
+      "Every upcoming VR headset, game, and accessory in one live tracker, with confirmed, expected, and rumored dates.",
+    href: "/vr-release-dates",
+    badge: "Tracker",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
+    title: "Valve Steam Frame: Everything We Know",
+    description:
+      "The most anticipated headset in VR. Release date signals, price expectations, specs, and every development tracked.",
+    href: "/steam-frame",
     badge: "Hardware",
     badgeColor: "var(--accent-cyan)",
   },

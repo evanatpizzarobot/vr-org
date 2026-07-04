@@ -25,8 +25,14 @@ const RULES: LinkRule[] = [
   { pattern: /\bBigscreen Beyond\b/i, href: "/best-pc-vr-headset" },
   { pattern: /\bPimax\b/i, href: "/best-pc-vr-headset" },
   { pattern: /\bPC ?VR headsets?\b/i, href: "/best-pc-vr-headset" },
-  { pattern: /\bSteam Frame\b/i, href: "/upcoming-vr-headsets-2026" },
+  { pattern: /\bSteam Frame\b/i, href: "/steam-frame" },
   { pattern: /\bupcoming VR headsets?\b/i, href: "/upcoming-vr-headsets-2026" },
+
+  // Release-date intent -> /vr-release-dates tracker
+  { pattern: /\bVR release dates?\b/i, href: "/vr-release-dates" },
+  { pattern: /\brelease dates? (?:for|of) (?:VR|upcoming)\b/i, href: "/vr-release-dates" },
+  { pattern: /\b(?:VR|XR) (?:games?|headsets?|hardware) coming (?:out|in|to)\b/i, href: "/vr-release-dates" },
+  { pattern: /\bupcoming (?:VR|XR) (?:games?|releases?|launches)\b/i, href: "/vr-release-dates" },
   { pattern: /\bProject Swan\b/i, href: "/highest-resolution-vr-headset" },
   { pattern: /\bmicro-?OLED\b/i, href: "/highest-resolution-vr-headset" },
   { pattern: /\bsim[ -]?racing\b/i, href: "/best-vr-headset-for-sim-racing" },

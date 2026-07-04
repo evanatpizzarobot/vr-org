@@ -85,6 +85,16 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/upcoming-vr-headsets-2026",
     description: "New releases and what's coming next, tracked.",
   },
+  "vr-release-dates": {
+    label: "VR Release Dates 2026",
+    href: "/vr-release-dates",
+    description: "Every upcoming headset, game, and accessory, dated and tracked.",
+  },
+  "steam-frame": {
+    label: "Valve Steam Frame: Everything We Know",
+    href: "/steam-frame",
+    description: "Release date signals, price expectations, and specs, updated.",
+  },
   "best-vr-headset-for-gaming": {
     label: "Best VR Headset for Gaming",
     href: "/best-vr-headset-for-gaming",
