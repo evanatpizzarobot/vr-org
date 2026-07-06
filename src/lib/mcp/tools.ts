@@ -81,6 +81,57 @@ export function formatResult(value: unknown) {
   return { content: [{ type: "text" as const, text: serialized }] };
 }
 
+const MAX_ERROR_CHARS = 4000;
+
+// Credential-shaped substrings to mask if they ever surface in an error string.
+// This endpoint reads local data and attaches no auth token to anything, so there
+// is no secret to leak; this mirrors the npm server's scrub purely as defense in
+// depth before any error text reaches the calling model. Patterns cover the key
+// shapes the studio guards against (Anthropic, Google, Resend) plus bearer tokens.
+const TOKEN_PATTERNS: Array<[RegExp, string]> = [
+  [/\bBearer\s+[A-Za-z0-9._~+/-]{16,}={0,2}/gi, "Bearer [redacted]"],
+  [/sk-ant-[A-Za-z0-9_-]{20,}/g, "sk-ant-[redacted]"],
+  [/AIza[0-9A-Za-z_-]{35}/g, "AIza[redacted]"],
+  [/re_[A-Za-z0-9_-]{20,}/g, "re_[redacted]"],
+];
+
+/**
+ * Scrub text destined for the model on the error path. A thrown error's message
+ * can carry attacker-controlled input, so it runs through the same control /
+ * zero-width scrub as a tool result, with any passed secret and any credential
+ * shaped substring redacted first, and the whole thing capped so a huge message
+ * cannot flood the agent. Kept identical to vr-org-mcp's sanitizeErrorText.
+ */
+export function sanitizeErrorText(input: unknown, secrets: unknown[] = []): string {
+  if (typeof input !== "string" || input.length === 0) return "";
+  let s = input;
+  for (const secret of secrets) {
+    if (typeof secret === "string" && secret.length >= 8) s = s.split(secret).join("[redacted]");
+  }
+  for (const [pattern, replacement] of TOKEN_PATTERNS) s = s.replace(pattern, replacement);
+  // Strip only (pass an unbounded cap); sanitizeErrorText owns the length cap.
+  s = sanitizeString(s, Number.MAX_SAFE_INTEGER);
+  return s.length > MAX_ERROR_CHARS ? s.slice(0, MAX_ERROR_CHARS - 15) + "\n...[truncated]" : s;
+}
+
+/**
+ * Run a tool implementation and format its result; if it throws, return the error
+ * through the same output scrub as a tool result, flagged isError, rather than
+ * leaking a raw message. The success path still sanitizes and 50KB-caps via
+ * formatResult. Every tool callback in the /mcp route routes through this.
+ */
+export function safeResult(produce: () => unknown) {
+  try {
+    return formatResult(produce());
+  } catch (err) {
+    const raw = err instanceof Error ? err.message : String(err);
+    return {
+      content: [{ type: "text" as const, text: sanitizeErrorText(raw) }],
+      isError: true as const,
+    };
+  }
+}
+
 const MAX_REFLECTED_LEN = 120;
 
 /**

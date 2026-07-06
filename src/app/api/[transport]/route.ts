@@ -13,7 +13,7 @@ import { ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { startFeedEngine } from "@/lib/rss/engine";
 import {
-  formatResult,
+  safeResult,
   searchVrNews,
   getVrTrending,
   listVrOriginals,
@@ -44,6 +44,17 @@ function resContents(uri: string, mimeType: string, text: string) {
   return { contents: [{ uri, mimeType, text }] };
 }
 
+// Resource text producers read the same local data as the tools and could throw
+// (missing file, malformed JSON). Degrade to a short notice rather than letting a
+// raw error reach the client, mirroring the npm server's resource read guard.
+function safeText(produce: () => string): string {
+  try {
+    return produce();
+  } catch {
+    return "VR.org resource is temporarily unavailable. Retry shortly.";
+  }
+}
+
 // Make sure the in-memory RSS engine is running so the feed tools have data.
 startFeedEngine();
 
@@ -61,13 +72,13 @@ const handler = createMcpHandler(
         description:
           "Returns the latest VR, AR, and XR headlines from VR.org's live aggregated feed plus VR.org originals. Optionally filter by category and match a keyword.",
         inputSchema: {
-          query: z.string().optional().describe("Optional keyword to match in the title or snippet."),
-          category: z.string().optional().describe(CATEGORY_DESC),
+          query: z.string().max(500).optional().describe("Optional keyword to match in the title or snippet."),
+          category: z.string().max(100).optional().describe(CATEGORY_DESC),
           limit: z.number().optional().describe("Max results, 1-50 (default 20)."),
         },
         annotations: { ...READ_ONLY, title: "Search VR / AR / XR news" },
       },
-      async (args) => formatResult(searchVrNews(args)),
+      async (args) => safeResult(() => searchVrNews(args)),
     );
 
     server.registerTool(
@@ -78,7 +89,7 @@ const handler = createMcpHandler(
         inputSchema: {},
         annotations: { ...READ_ONLY, title: "Get trending VR topics" },
       },
-      async () => formatResult(getVrTrending()),
+      async () => safeResult(() => getVrTrending()),
     );
 
     server.registerTool(
@@ -88,12 +99,12 @@ const handler = createMcpHandler(
         description:
           "Returns summaries of VR.org's own editorial articles (reporting, opinion, retrospectives, guides), newest first. Optionally filter by category.",
         inputSchema: {
-          category: z.string().optional().describe(CATEGORY_DESC),
+          category: z.string().max(100).optional().describe(CATEGORY_DESC),
           limit: z.number().optional().describe("Max results, 1-50 (default 15)."),
         },
         annotations: { ...READ_ONLY, title: "List VR.org original articles" },
       },
-      async (args) => formatResult(listVrOriginals(args)),
+      async (args) => safeResult(() => listVrOriginals(args)),
     );
 
     server.registerTool(
@@ -102,10 +113,10 @@ const handler = createMcpHandler(
         title: "Get a VR.org article by slug",
         description:
           "Returns the full content (title, author, date, tags, and the article body HTML) of one VR.org original article identified by its slug.",
-        inputSchema: { slug: z.string().describe("The article slug, e.g. 'why-vr-is-the-perfect-horror-machine'.") },
+        inputSchema: { slug: z.string().max(200).describe("The article slug, e.g. 'why-vr-is-the-perfect-horror-machine'.") },
         annotations: { ...READ_ONLY, title: "Get a VR.org article by slug" },
       },
-      async (args) => formatResult(getVrArticle(args)),
+      async (args) => safeResult(() => getVrArticle(args)),
     );
 
     server.registerTool(
@@ -124,7 +135,7 @@ const handler = createMcpHandler(
         annotations: { ...READ_ONLY, title: "Get upcoming VR / AR / XR events" },
       },
       async (args) =>
-        formatResult(getVrEvents({ limit: args.limit, includePast: args.include_past })),
+        safeResult(() => getVrEvents({ limit: args.limit, includePast: args.include_past })),
     );
 
     server.registerTool(
@@ -133,10 +144,10 @@ const handler = createMcpHandler(
         title: "Get VR product deals and prices",
         description:
           "Returns VR.org's current curated product picks (headsets, accessories, AR glasses) with prices, badges, and retailer links. Optionally filter to one section.",
-        inputSchema: { section: z.string().optional().describe("Optional section filter, e.g. 'headsets'.") },
+        inputSchema: { section: z.string().max(200).optional().describe("Optional section filter, e.g. 'headsets'.") },
         annotations: { ...READ_ONLY, title: "Get VR product deals and prices" },
       },
-      async (args) => formatResult(getVrDeals(args)),
+      async (args) => safeResult(() => getVrDeals(args)),
     );
 
     server.registerTool(
@@ -146,12 +157,12 @@ const handler = createMcpHandler(
         description:
           "Returns a side-by-side of two headsets (price, badge, description, retailer links) from VR.org's curated catalog. Accepts partial names like 'Quest 3' or 'PSVR2'.",
         inputSchema: {
-          a: z.string().describe("First headset name (partial match allowed)."),
-          b: z.string().describe("Second headset name (partial match allowed)."),
+          a: z.string().max(200).describe("First headset name (partial match allowed)."),
+          b: z.string().max(200).describe("Second headset name (partial match allowed)."),
         },
         annotations: { ...READ_ONLY, title: "Compare two VR headsets" },
       },
-      async (args) => formatResult(compareVrHeadsets(args)),
+      async (args) => safeResult(() => compareVrHeadsets(args)),
     );
 
     server.registerTool(
@@ -162,7 +173,7 @@ const handler = createMcpHandler(
         inputSchema: {},
         annotations: { ...READ_ONLY, title: "Get the top VR games list" },
       },
-      async () => formatResult(getTopVrGames()),
+      async () => safeResult(() => getTopVrGames()),
     );
 
     server.registerTool(
@@ -173,7 +184,7 @@ const handler = createMcpHandler(
         inputSchema: {},
         annotations: { ...READ_ONLY, title: "Get the top VR apps list" },
       },
-      async () => formatResult(getTopVrApps()),
+      async () => safeResult(() => getTopVrApps()),
     );
 
     server.registerTool(
@@ -184,7 +195,7 @@ const handler = createMcpHandler(
         inputSchema: {},
         annotations: { ...READ_ONLY, title: "List VR.org news sources" },
       },
-      async () => formatResult(listVrSources()),
+      async () => safeResult(() => listVrSources()),
     );
 
     server.registerTool(
@@ -193,10 +204,10 @@ const handler = createMcpHandler(
         title: "Explain a VR / AR / XR topic",
         description:
           "Returns a canonical VR.org answer and the authoritative pillar-page link for a common VR / AR / XR question (for example 'what is vr', 'best headset', 'ar glasses').",
-        inputSchema: { topic: z.string().describe("The topic or question, e.g. 'what is vr' or 'best vr headset'.") },
+        inputSchema: { topic: z.string().max(500).describe("The topic or question, e.g. 'what is vr' or 'best vr headset'.") },
         annotations: { ...READ_ONLY, title: "Explain a VR / AR / XR topic" },
       },
-      async (args) => formatResult(vrExplain(args)),
+      async (args) => safeResult(() => vrExplain(args)),
     );
 
     // ---- Resources: browsable VR.org content the host can attach ----
@@ -208,7 +219,7 @@ const handler = createMcpHandler(
         description: "Live aggregated VR, AR, and XR headlines from VR.org, as a markdown list.",
         mimeType: "text/markdown",
       },
-      async (uri) => resContents(uri.href, "text/markdown", newsLatestResource()),
+      async (uri) => resContents(uri.href, "text/markdown", safeText(newsLatestResource)),
     );
 
     server.registerResource(
@@ -219,7 +230,7 @@ const handler = createMcpHandler(
         description: "Index of VR.org's newest original articles with links and snippets.",
         mimeType: "text/markdown",
       },
-      async (uri) => resContents(uri.href, "text/markdown", originalsLatestResource()),
+      async (uri) => resContents(uri.href, "text/markdown", safeText(originalsLatestResource)),
     );
 
     server.registerResource(
@@ -230,7 +241,7 @@ const handler = createMcpHandler(
         description: "VR.org's calendar of upcoming VR, AR, and XR industry events, soonest first.",
         mimeType: "text/markdown",
       },
-      async (uri) => resContents(uri.href, "text/markdown", eventsUpcomingResource()),
+      async (uri) => resContents(uri.href, "text/markdown", safeText(eventsUpcomingResource)),
     );
 
     server.registerResource(
@@ -241,7 +252,7 @@ const handler = createMcpHandler(
         description: "VR.org's short authoritative answers to common VR / AR / XR questions, with guide links.",
         mimeType: "text/markdown",
       },
-      async (uri) => resContents(uri.href, "text/markdown", guidesResource()),
+      async (uri) => resContents(uri.href, "text/markdown", safeText(guidesResource)),
     );
 
     server.registerResource(
@@ -264,7 +275,7 @@ const handler = createMcpHandler(
       async (uri, variables) => {
         const slugVar = variables.slug;
         const slug = Array.isArray(slugVar) ? slugVar[0] ?? "" : String(slugVar ?? "");
-        return resContents(uri.href, "text/html", articleResource(slug));
+        return resContents(uri.href, "text/html", safeText(() => articleResource(slug)));
       },
     );
 
@@ -275,8 +286,8 @@ const handler = createMcpHandler(
         title: "Recommend a VR headset",
         description: "Recommend a headset from VR.org's current picks, grounded in live deals and the buyer guide.",
         argsSchema: {
-          budget: z.string().optional().describe("Your budget, e.g. '$400' or 'under $1000'."),
-          use_case: z.string().optional().describe("Main use, e.g. 'PC VR gaming', 'fitness', 'movies'."),
+          budget: z.string().max(200).optional().describe("Your budget, e.g. '$400' or 'under $1000'."),
+          use_case: z.string().max(200).optional().describe("Main use, e.g. 'PC VR gaming', 'fitness', 'movies'."),
         },
       },
       ({ budget, use_case }) => ({
@@ -289,7 +300,7 @@ const handler = createMcpHandler(
       {
         title: "This Week in VR",
         description: "Draft a concise weekly VR / AR / XR roundup from VR.org's news and originals.",
-        argsSchema: { category: z.string().optional().describe(CATEGORY_DESC) },
+        argsSchema: { category: z.string().max(100).optional().describe(CATEGORY_DESC) },
       },
       ({ category }) => ({
         messages: [{ role: "user", content: { type: "text", text: thisWeekInVrPrompt({ category }) } }],
@@ -301,7 +312,7 @@ const handler = createMcpHandler(
       {
         title: "Explain a VR / AR / XR topic",
         description: "Explain a VR topic for a newcomer, grounded in VR.org's canonical answer and pillar page.",
-        argsSchema: { topic: z.string().describe("The topic, e.g. 'what is vr' or 'passthrough'.") },
+        argsSchema: { topic: z.string().max(500).describe("The topic, e.g. 'what is vr' or 'passthrough'.") },
       },
       ({ topic }) => ({
         messages: [{ role: "user", content: { type: "text", text: explainVrTopicPrompt({ topic }) } }],
