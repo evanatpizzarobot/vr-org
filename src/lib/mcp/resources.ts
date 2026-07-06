@@ -5,7 +5,7 @@
 // src/resources.ts so both surfaces return the same text.
 
 import { getAllArticles, getArticleBySlug } from "@/lib/articles";
-import { searchVrNews, getVrEvents, EXPLAINERS } from "./tools";
+import { searchVrNews, getVrEvents, EXPLAINERS, sanitizeReflectedValue } from "./tools";
 
 const BASE = "https://vr.org";
 const MAX_RESPONSE_BYTES = 50_000;
@@ -157,7 +157,7 @@ export function guidesResource(): string {
 export function articleResource(slug: string): string {
   const a = getArticleBySlug(slug);
   if (!a) {
-    return `<p>Article "${slug}" was not found. List available articles via the vrorg://originals/latest resource.</p>`;
+    return `<p>Article "${sanitizeReflectedValue(slug)}" was not found. List available articles via the vrorg://originals/latest resource.</p>`;
   }
   return clean(
     formatArticle({

@@ -81,6 +81,23 @@ export function formatResult(value: unknown) {
   return { content: [{ type: "text" as const, text: serialized }] };
 }
 
+const MAX_REFLECTED_LEN = 120;
+
+/**
+ * Narrow hygiene for a caller-supplied identifier that gets echoed back into a
+ * tool message, resource text, or prompt (a query, slug, topic, or headset name
+ * that did not match). Strips angle brackets so no caller markup is reflected
+ * verbatim, and caps the echo length. Runs in addition to sanitizeValue above;
+ * a valid identifier passes through unchanged.
+ */
+export function sanitizeReflectedValue(input: unknown): string {
+  if (typeof input !== "string") return "";
+  const stripped = input.replace(/[<>]/g, "");
+  return stripped.length > MAX_REFLECTED_LEN
+    ? stripped.slice(0, MAX_REFLECTED_LEN - 1) + "\u2026"
+    : stripped;
+}
+
 // ---------- helpers ----------
 
 function absoluteUrl(link: unknown): string | null {
@@ -151,7 +168,7 @@ export function searchVrNews(args: { query?: string; category?: string; limit?: 
 
   return {
     ok: true,
-    query: query || null,
+    query: query ? sanitizeReflectedValue(query) : null,
     category: category ?? "all",
     count: Math.min(items.length, limit),
     last_updated: cache.lastUpdated ?? null,
@@ -361,7 +378,7 @@ export function compareVrHeadsets(args: { a: string; b: string }) {
     return {
       ok: false,
       error: "headset_not_found",
-      missing: [!hitA ? a : null, !hitB ? b : null].filter(Boolean),
+      missing: [!hitA ? sanitizeReflectedValue(a) : null, !hitB ? sanitizeReflectedValue(b) : null].filter(Boolean),
       available: names.filter(Boolean),
       hint: "Use one of the available names (partial match is allowed).",
     };
@@ -427,7 +444,7 @@ export function vrExplain(args: { topic: string }) {
     }
   }
   if (!best) {
-    return { ok: false, error: "no_explainer", topic, available_topics: EXPLAINERS.map((e) => e.title), hint: "Try 'what is vr', 'best headset', or 'ar glasses'." };
+    return { ok: false, error: "no_explainer", topic: sanitizeReflectedValue(topic), available_topics: EXPLAINERS.map((e) => e.title), hint: "Try 'what is vr', 'best headset', or 'ar glasses'." };
   }
-  return { ok: true, topic, title: best.e.title, summary: best.e.summary, url: `${BASE}${best.e.path}`, source: BASE };
+  return { ok: true, topic: sanitizeReflectedValue(topic), title: best.e.title, summary: best.e.summary, url: `${BASE}${best.e.path}`, source: BASE };
 }
