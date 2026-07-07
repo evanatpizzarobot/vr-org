@@ -1664,3 +1664,62 @@ nav::-webkit-scrollbar {
     z-index: 1;
   }
 }
+
+/* Category page "Most Popular" strip */
+.category-popular {
+  display: grid;
+  grid-template-columns: 1fr;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 640px) {
+  .category-popular {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
+}
+.category-popular-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+}
+.category-popular-rank {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-cyan);
+  width: 16px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.category-popular-link {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+  text-decoration: none;
+}
+.category-popular-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.15s ease;
+}
+.category-popular-link:hover .category-popular-name {
+  color: var(--accent-cyan);
+}
+.category-popular-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-left: auto;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Extra out-link button colors for store links */
+.deal-btn-steam { background: #1b2838; color: #c7d5e0; }
+.deal-btn-quest { background: #1c2b3a; color: #e8f0ff; }
