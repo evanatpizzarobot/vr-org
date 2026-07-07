@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
-import { getDeals, type DealItem } from "@/lib/deals";
+import { getDeals } from "@/lib/deals";
 import { getComingSoon } from "@/lib/release-dates";
 import { productSchema } from "@/lib/product-schema";
 
