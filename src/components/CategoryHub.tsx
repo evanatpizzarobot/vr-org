@@ -7,6 +7,8 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { Sidebar } from "@/components/Sidebar";
 import { CategoryMascot, CATEGORY_MASCOT_KIND } from "@/components/CategoryMascot";
 import { AdSlot } from "@/components/AdSlot";
+import { CategoryProducts } from "@/components/CategoryProducts";
+import type { CategoryProductsResult } from "@/lib/category-products";
 import { AD_SLOTS, AD_LAYOUT_KEYS } from "@/lib/ads";
 
 import { LoadingSkeleton } from "@/components/LoadingSkeleton";
@@ -26,6 +28,8 @@ interface CategoryHubProps {
   // Recent originals for this category, seeded by the server so the topical
   // cluster of /articles/ links is in the HTML for crawlers and AI agents.
   initialEditorial?: OriginalSummary[];
+  // Server-seeded curated products for this category, rendered above Originals.
+  products?: CategoryProductsResult | null;
 }
 
 const CATEGORY_GUIDES: Record<string, { label: string; href: string; description: string }[]> = {
@@ -55,7 +59,7 @@ const CATEGORY_GUIDES: Record<string, { label: string; href: string; description
   ],
 };
 
-export function CategoryHub({ category, title, description, initialEditorial }: CategoryHubProps) {
+export function CategoryHub({ category, title, description, initialEditorial, products }: CategoryHubProps) {
   const { articles, trending, sourceStats, lastUpdated, loading } = useFeed();
   const [view, setView] = useState<"full" | "compact">("full");
   const [featured, setFeatured] = useState<Article[]>([]);
@@ -149,6 +153,7 @@ export function CategoryHub({ category, title, description, initialEditorial }: 
 
       <div className="max-w-[1400px] mx-auto px-6 pb-16 pt-6 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 relative z-10">
         <div>
+          {products && <CategoryProducts data={products} />}
           {/* VR.org Originals for this category (server-rendered) + live RSS picks */}
           {(editorialArticles.length > 0 || featured.length > 0) && (
             <div className="mb-8">

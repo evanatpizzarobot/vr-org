@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
 import { getCategoryOriginalSummaries } from "@/lib/articles";
+import { getCategoryProducts } from "@/lib/category-products";
 
 export const revalidate = 300;
 
@@ -28,12 +29,14 @@ export const metadata: Metadata = {
 
 export default function HardwarePage() {
   const initialEditorial = getCategoryOriginalSummaries("hardware", 8);
+  const products = getCategoryProducts("hardware");
   return (
     <CategoryHub
       category="hardware"
       title="Hardware"
       description="The latest in VR and AR hardware, from headset launches and spec breakdowns to controller innovations and display technology. We track every major device release and provide in-depth coverage of the hardware shaping spatial computing. Whether it's a new Quest update, a PSVR2 accessory, or a prototype nobody saw coming, you'll find it here first."
       initialEditorial={initialEditorial}
+      products={products}
     />
   );
 }
