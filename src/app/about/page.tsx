@@ -167,35 +167,50 @@ export default function AboutPage() {
         <div className="flex flex-col gap-5 mb-10">
           <div>
             <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Evan Marcus</div>
-            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Co-Founder</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>
+              Co-Founder{" · "}
+              <a href="mailto:evan@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>evan@vr.org</a>
+            </div>
             <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
               Covers VR gaming, hardware, and industry trends. Has been following VR since the Oculus DK1 era.
             </p>
           </div>
           <div>
             <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Alex Reeves</div>
-            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Staff Writer</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>
+              Staff Writer{" · "}
+              <a href="mailto:alex@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>alex@vr.org</a>
+            </div>
             <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
               Covers hardware launches, platform news, and the business side of VR.
             </p>
           </div>
           <div>
             <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Jordan Kuo</div>
-            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Staff Writer</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>
+              Staff Writer{" · "}
+              <a href="mailto:jordan@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>jordan@vr.org</a>
+            </div>
             <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
               Covers augmented reality, spatial computing, and the XR developer ecosystem.
             </p>
           </div>
           <div>
             <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Nina Castillo</div>
-            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Staff Writer</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>
+              Staff Writer{" · "}
+              <a href="mailto:nina@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>nina@vr.org</a>
+            </div>
             <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
               Covers VR and AR software, developer tools, and emerging platforms.
             </p>
           </div>
           <div>
             <div className="text-[15px] font-semibold" style={{ color: "var(--text-primary)" }}>Sam Whitfield</div>
-            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>Contributing Writer</div>
+            <div className="text-[13px] font-mono mb-1" style={{ color: "var(--accent-cyan)" }}>
+              Contributing Writer{" · "}
+              <a href="mailto:sam@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>sam@vr.org</a>
+            </div>
             <p className="text-[14px] leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
               Covers enterprise XR, VR training, and industry analysis.
             </p>

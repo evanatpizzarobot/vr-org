@@ -223,7 +223,7 @@
         { "name": "Apple Vision Pro", "subtitle": "visionOS for business", "href": "https://www.apple.com/apple-vision-pro/" },
         { "name": "Varjo XR-4", "subtitle": "Photorealistic pro XR", "href": "https://varjo.com/products/xr-4/" },
         { "name": "HTC VIVE Business", "subtitle": "Enterprise standalone", "href": "https://business.vive.com/" },
-        { "name": "Meta for Work", "subtitle": "Quest fleet management", "href": "https://forwork.meta.com/" },
+        { "name": "Magic Leap 2", "subtitle": "Enterprise AR", "href": "https://www.magicleap.com/" },
         { "name": "PICO Enterprise", "subtitle": "Training & simulation", "href": "https://www.picoxr.com/" },
         { "name": "Strivr", "subtitle": "Immersive training", "href": "https://www.strivr.com/" }
       ],
@@ -249,13 +249,13 @@
           }
         },
         {
-          "name": "Meta Quest 3 for Business",
-          "price": "$599",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Meta_Quest_3_display_unit.jpg/1280px-Meta_Quest_3_display_unit.jpg",
-          "description": "The most widely deployed enterprise VR headset. Meta for Work adds fleet provisioning, shared device mode, and a managed app catalog for training and collaboration at scale.",
-          "badge": "Best Value",
+          "name": "Varjo XR-4",
+          "price": "$3,990",
+          "image": "https://varjo.com/hubfs/Gaia%20images/1920x1080%20(5)-min.png",
+          "description": "The highest-fidelity enterprise headset made. Human-eye-resolution visuals and photorealistic mixed reality make it the standard for pilot training, simulation, and design review.",
+          "badge": "Best Fidelity",
           "links": {
-            "direct": { "url": "https://forwork.meta.com/", "label": "Meta for Work" }
+            "direct": { "url": "https://varjo.com/products/xr-4/", "label": "Varjo" }
           }
         }
       ]
