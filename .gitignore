@@ -57,6 +57,7 @@ data/*
 !data/deals.json
 !data/page-maintenance.json
 !data/release-dates.json
+!data/category-products.json
 
 # duplicate nested dir
 vr-org/

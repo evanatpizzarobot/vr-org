@@ -1,0 +1,135 @@
+{
+  "disclosure": "VR.org earns a commission from qualifying Amazon purchases at no extra cost to you. Store and company links are provided as a convenience. Our picks are editorially independent.",
+  "categories": {
+    "hardware": {
+      "heading": "Most Popular VR & AR Hardware",
+      "seeAll": { "href": "/deals", "label": "All gear we recommend" },
+      "mostPopular": [
+        { "name": "Meta Quest 3", "subtitle": "Best standalone", "href": "/best-vr-headsets" },
+        { "name": "PlayStation VR2", "subtitle": "Best value", "href": "/best-vr-headsets" },
+        { "name": "Bigscreen Beyond 2", "subtitle": "Lightest PC VR", "href": "/best-vr-headsets" },
+        { "name": "Apple Vision Pro", "subtitle": "Premium spatial", "href": "/best-vr-headsets" },
+        { "name": "Meta Quest 3S", "subtitle": "Entry level", "href": "/best-vr-headsets" },
+        { "name": "Samsung Galaxy XR", "subtitle": "Android XR flagship", "href": "/best-vr-headsets" }
+      ],
+      "picks": [
+        {
+          "name": "Meta Quest 3 (512GB)",
+          "price": "$599",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Meta_Quest_3_display_unit.jpg/1280px-Meta_Quest_3_display_unit.jpg",
+          "description": "The full-featured standalone Quest and the best all-around VR headset you can buy without a PC.",
+          "badge": "Editor's Pick",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+512gb&tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "PlayStation VR2",
+          "price": "$399",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/PSVR2.png/1280px-PSVR2.png",
+          "description": "OLED, eye tracking, and adaptive-trigger controllers. Unbeatable value if you already own a PS5.",
+          "badge": "Best VR Value",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=playstation+vr2&tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "Bigscreen Beyond 2",
+          "price": "$1,019",
+          "image": "https://cdn.shopify.com/s/files/1/0643/5169/9161/files/BigScreenStudio-BS2_LAUNCH_RC14_Max.00_01_14_17.Still003.jpg?v=1745344722",
+          "description": "107 grams of custom-fit, razor-sharp PC VR. The enthusiast's headset.",
+          "badge": "Premium",
+          "links": {
+            "direct": { "url": "https://www.bigscreenvr.com/", "label": "Bigscreen" }
+          }
+        }
+      ]
+    },
+    "ar": {
+      "heading": "Most Popular AR & Smart Glasses",
+      "seeAll": { "href": "/ar-glasses", "label": "Every AR glasses device compared" },
+      "mostPopular": [
+        { "name": "Ray-Ban Meta (Gen 2)", "subtitle": "Best all-rounder", "href": "/ar-glasses" },
+        { "name": "Xreal One Pro", "subtitle": "Best display glasses", "href": "/ar-glasses" },
+        { "name": "Snap Specs", "subtitle": "True AR", "href": "/ar-glasses" },
+        { "name": "Even Realities G1", "subtitle": "Everyday, no camera", "href": "/ar-glasses" },
+        { "name": "VITURE Beast", "subtitle": "Big-screen media", "href": "/ar-glasses" },
+        { "name": "Rokid AI Glasses", "subtitle": "Open-platform AI", "href": "/ar-glasses" }
+      ],
+      "picks": [
+        {
+          "name": "Ray-Ban Meta (Gen 2)",
+          "price": "$379",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Ray_Ban_Meta_at_the_2025_Bild_Expo_Presented_by_B%26H_Photo.jpg/1280px-Ray_Ban_Meta_at_the_2025_Bild_Expo_Presented_by_B%26H_Photo.jpg",
+          "description": "The runaway hit of 2026 smart glasses. Meta AI, open-ear audio, and genuine all-day wearability.",
+          "badge": "Editor's Pick",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=ray-ban+meta&tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "Xreal One Pro",
+          "price": "$599",
+          "image": "https://us.shop.xreal.com/cdn/shop/files/XREAL_One_Pro.jpg?v=1756965858&width=1946",
+          "description": "120Hz micro-OLED display glasses with on-board spatial anchoring and Bose-tuned audio. The AR sweet spot.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=xreal+one+pro&tag=vrorg00-20", "label": "Amazon" },
+            "direct": { "url": "https://us.shop.xreal.com/products/xreal-one-pro", "label": "Xreal" }
+          }
+        },
+        {
+          "name": "Even Realities G1",
+          "price": "$599",
+          "image": "https://cdn.shopify.com/s/files/1/0600/4513/1891/files/Grey1-Front_6d6944fc-846d-4585-b02b-d7d1218ff21e.png?v=1760067228",
+          "description": "Everyday frames with a discreet display for navigation, notifications, and live translation. No camera, no bulk.",
+          "links": {
+            "direct": { "url": "https://www.evenrealities.com/", "label": "Even Realities" }
+          }
+        }
+      ]
+    },
+    "xr": {
+      "heading": "Most Popular XR Headsets & Glasses",
+      "seeAll": { "href": "/best-vr-headsets", "label": "Full headset buyer's guide" },
+      "mostPopular": [
+        { "name": "Samsung Galaxy XR", "subtitle": "Android XR flagship", "href": "/best-vr-headsets" },
+        { "name": "Apple Vision Pro", "subtitle": "Premium spatial", "href": "/best-vr-headsets" },
+        { "name": "Meta Quest 3", "subtitle": "Best all-around", "href": "/best-vr-headsets" },
+        { "name": "HTC Vive XR Elite", "subtitle": "Compact hybrid", "href": "/best-vr-headsets" },
+        { "name": "Snap Specs", "subtitle": "True AR glasses", "href": "/ar-glasses" }
+      ],
+      "picks": [
+        {
+          "name": "Samsung Galaxy XR",
+          "price": "$1,799",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Samsung-Mobile-XR-Project-Moohan-Android-XR-platform-Google_main1.jpg/960px-Samsung-Mobile-XR-Project-Moohan-Android-XR-platform-Google_main1.jpg",
+          "description": "Google and Samsung's flagship Android XR headset, with eye tracking, hand tracking, and Gemini-powered spatial AI.",
+          "badge": "New",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=samsung+galaxy+xr&tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "Apple Vision Pro (M5)",
+          "price": "$3,499",
+          "image": "https://www.apple.com/newsroom/images/2025/10/apple-vision-pro-upgraded-with-the-m5-chip-and-dual-knit-band/article/Apple-Vision-Pro-hero-251015.jpg",
+          "description": "The most advanced spatial computer, now faster with the M5 chip and the visionOS ecosystem.",
+          "badge": "Premium",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=apple+vision+pro&tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "Meta Quest 3 (512GB)",
+          "price": "$599",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Meta_Quest_3_display_unit.jpg/1280px-Meta_Quest_3_display_unit.jpg",
+          "description": "The standalone mixed reality headset most people should buy. Great passthrough and the deepest content library.",
+          "badge": "Editor's Pick",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+512gb&tag=vrorg00-20", "label": "Amazon" }
+          }
+        }
+      ]
+    }
+  }
+}
