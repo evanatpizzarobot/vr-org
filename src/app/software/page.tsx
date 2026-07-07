@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
 import { getCategoryOriginalSummaries } from "@/lib/articles";
+import { getCategoryProducts } from "@/lib/category-products";
 
 export const revalidate = 300;
 
@@ -28,12 +29,14 @@ export const metadata: Metadata = {
 
 export default function SoftwarePage() {
   const initialEditorial = getCategoryOriginalSummaries("software", 8);
+  const products = getCategoryProducts("software");
   return (
     <CategoryHub
       category="software"
       title="Software"
       description="Platforms, apps, developer tools, and the software ecosystem powering virtual and augmented reality. From social VR platforms to creative tools and enterprise applications, we cover the software layer that brings hardware to life. SDK updates, platform policy changes, and new app launches all land here."
       initialEditorial={initialEditorial}
+      products={products}
     />
   );
 }

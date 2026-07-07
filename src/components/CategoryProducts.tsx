@@ -130,12 +130,6 @@ export function CategoryProducts({ data }: { data: CategoryProductsResult }) {
           </article>
         ))}
       </div>
-
-      {data.disclosure && (
-        <p className="deals-disclosure" style={{ marginTop: 14 }}>
-          {data.disclosure}
-        </p>
-      )}
     </section>
   );
 }

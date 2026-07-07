@@ -1,5 +1,4 @@
 {
-  "disclosure": "VR.org earns a commission from qualifying Amazon purchases at no extra cost to you. Store and company links are provided as a convenience. Our picks are editorially independent.",
   "categories": {
     "hardware": {
       "heading": "Most Popular VR & AR Hardware",
@@ -127,6 +126,136 @@
           "badge": "Editor's Pick",
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+512gb&tag=vrorg00-20", "label": "Amazon" }
+          }
+        }
+      ]
+    },
+    "gaming": {
+      "heading": "Most Popular VR Games 2026",
+      "seeAll": { "href": "/best-vr-games-2026", "label": "Full best VR games guide" },
+      "mostPopular": [
+        { "name": "Microsoft Flight Simulator", "subtitle": "PSVR2", "href": "/best-vr-games-2026" },
+        { "name": "Batman: Arkham Shadow", "subtitle": "Quest exclusive", "href": "/best-vr-games-2026" },
+        { "name": "Into the Radius 2", "subtitle": "PC VR / Quest", "href": "/best-vr-games-2026" },
+        { "name": "Resident Evil Requiem", "subtitle": "PC VR mod", "href": "/best-vr-games-2026" },
+        { "name": "TMNT: Empire City", "subtitle": "Quest / PC VR", "href": "/best-vr-games-2026" },
+        { "name": "Little Nightmares: Altered Echoes", "subtitle": "PSVR2 / Quest / PC VR", "href": "/best-vr-games-2026" }
+      ],
+      "picks": [
+        {
+          "name": "Into the Radius 2",
+          "price": "$27.99",
+          "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2307350/ef5e8a9f96d6ace7c79340c5df625eeb4a25f4a2/header_alt_assets_4.jpg?t=1781882958",
+          "description": "The closest thing VR has to S.T.A.L.K.E.R. Manually rack your slide, count every round, and survive the anomaly zone. Left Early Access for its full 1.0 release in April 2026.",
+          "badge": "Editor's Pick",
+          "links": {
+            "steam": { "url": "https://store.steampowered.com/app/2307350/", "label": "Steam" }
+          }
+        },
+        {
+          "name": "Batman: Arkham Shadow",
+          "price": "$49.99",
+          "image": "https://img.youtube.com/vi/EPcCWR3DTIw/maxresdefault.jpg",
+          "description": "The best superhero game in VR. A Quest-exclusive Arkham entry that turns Rocksteady's freeflow combat into physical punches, counters, and gadget work.",
+          "badge": "Quest Exclusive",
+          "links": {
+            "quest": { "url": "https://www.meta.com/experiences/batman-arkham-shadow/7443114275799785/", "label": "Meta Quest" }
+          }
+        },
+        {
+          "name": "TMNT: Empire City",
+          "price": "$24.99",
+          "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713650/b90ef5253a5ed86410cbbe2915e4286d46d7d9f6/header.jpg",
+          "description": "A physics-driven beat 'em up where you play as any of the four turtles, with two-handed weapons that feel weighty in your grip. The co-op delivers the cartoon energy fans wanted.",
+          "links": {
+            "steam": { "url": "https://store.steampowered.com/app/3713650/", "label": "Steam" }
+          }
+        }
+      ]
+    },
+    "software": {
+      "heading": "Most Popular VR Apps & Utilities",
+      "seeAll": { "href": "/best-vr-apps", "label": "Full best VR apps guide" },
+      "mostPopular": [
+        { "name": "Virtual Desktop", "subtitle": "Wireless PC VR", "href": "/best-vr-apps" },
+        { "name": "Immersed", "subtitle": "Multi-monitor workspace", "href": "/best-vr-apps" },
+        { "name": "VRChat", "subtitle": "Social VR", "href": "/best-vr-apps" },
+        { "name": "Bigscreen", "subtitle": "Virtual cinema", "href": "/best-vr-apps" },
+        { "name": "Gravity Sketch", "subtitle": "3D design", "href": "/best-vr-apps" },
+        { "name": "ShapesXR", "subtitle": "Spatial prototyping", "href": "/best-vr-apps" }
+      ],
+      "picks": [
+        {
+          "name": "Virtual Desktop",
+          "price": "$19.99",
+          "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/382110/header.jpg",
+          "description": "The single most important app for any Quest owner with a gaming PC. Streams your entire desktop and SteamVR library into the headset wirelessly, with remarkably low latency.",
+          "badge": "Editor's Pick",
+          "links": {
+            "direct": { "url": "https://www.vrdesktop.net/", "label": "Virtual Desktop" }
+          }
+        },
+        {
+          "name": "VRChat",
+          "price": "Free",
+          "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/438100/header.jpg",
+          "description": "The largest social VR platform. Build a custom avatar and explore thousands of community-built worlds across Quest, PC VR, and now mobile. Free to play.",
+          "links": {
+            "steam": { "url": "https://store.steampowered.com/app/438100/", "label": "Steam" },
+            "direct": { "url": "https://vrchat.com/", "label": "VRChat" }
+          }
+        },
+        {
+          "name": "Immersed",
+          "price": "Free",
+          "image": "https://img.youtube.com/vi/HQQ8E0bcC0Q/maxresdefault.jpg",
+          "description": "Turns your headset into a multi-monitor workstation with up to five virtual screens and passthrough so you can still see your keyboard. A remote-work favorite, with a free tier plus paid plans.",
+          "links": {
+            "direct": { "url": "https://immersed.com/", "label": "Immersed" }
+          }
+        }
+      ]
+    },
+    "enterprise": {
+      "heading": "Enterprise VR & XR Platforms",
+      "seeAll": { "href": "/state-of-vr-2026", "label": "The state of VR in 2026" },
+      "mostPopular": [
+        { "name": "Apple Vision Pro", "subtitle": "visionOS for business", "href": "https://www.apple.com/apple-vision-pro/" },
+        { "name": "Varjo XR-4", "subtitle": "Photorealistic pro XR", "href": "https://varjo.com/products/xr-4/" },
+        { "name": "HTC VIVE Business", "subtitle": "Enterprise standalone", "href": "https://business.vive.com/" },
+        { "name": "Meta for Work", "subtitle": "Quest fleet management", "href": "https://forwork.meta.com/" },
+        { "name": "PICO Enterprise", "subtitle": "Training & simulation", "href": "https://www.picoxr.com/" },
+        { "name": "Strivr", "subtitle": "Immersive training", "href": "https://www.strivr.com/" }
+      ],
+      "picks": [
+        {
+          "name": "Apple Vision Pro (M5)",
+          "price": "$3,499",
+          "image": "https://www.apple.com/newsroom/images/2025/10/apple-vision-pro-upgraded-with-the-m5-chip-and-dual-knit-band/article/Apple-Vision-Pro-hero-251015.jpg",
+          "description": "The most advanced spatial computer, now on the M5 chip. visionOS supports mobile device management, so IT teams can deploy and secure fleets for design review, training, and remote collaboration.",
+          "badge": "Premium",
+          "links": {
+            "direct": { "url": "https://www.apple.com/apple-vision-pro/", "label": "Apple" }
+          }
+        },
+        {
+          "name": "HTC VIVE XR Elite",
+          "price": "$1,099",
+          "image": "https://www.knoxlabs.com/cdn/shop/files/xr-elite-business-edition_1280x.jpg?v=1689718946",
+          "description": "A compact, glasses-like headset that runs both standalone and PC VR. The Business Edition adds device management, a commercial warranty, and kiosk mode for training deployments.",
+          "badge": "Editor's Pick",
+          "links": {
+            "direct": { "url": "https://business.vive.com/", "label": "VIVE Business" }
+          }
+        },
+        {
+          "name": "Meta Quest 3 for Business",
+          "price": "$599",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Meta_Quest_3_display_unit.jpg/1280px-Meta_Quest_3_display_unit.jpg",
+          "description": "The most widely deployed enterprise VR headset. Meta for Work adds fleet provisioning, shared device mode, and a managed app catalog for training and collaboration at scale.",
+          "badge": "Best Value",
+          "links": {
+            "direct": { "url": "https://forwork.meta.com/", "label": "Meta for Work" }
           }
         }
       ]

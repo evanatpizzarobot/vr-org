@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CategoryHub } from "@/components/CategoryHub";
 import { getCategoryOriginalSummaries } from "@/lib/articles";
+import { getCategoryProducts } from "@/lib/category-products";
 
 export const revalidate = 300;
 
@@ -28,12 +29,14 @@ export const metadata: Metadata = {
 
 export default function EnterprisePage() {
   const initialEditorial = getCategoryOriginalSummaries("enterprise", 8);
+  const products = getCategoryProducts("enterprise");
   return (
     <CategoryHub
       category="enterprise"
       title="Enterprise"
       description="How businesses are adopting VR, AR, and XR technology. Training simulations, healthcare applications, manufacturing workflows, investment trends, and enterprise strategy in the spatial computing industry. We follow the money and the deployments shaping how organizations use immersive tech at scale."
       initialEditorial={initialEditorial}
+      products={products}
     />
   );
 }

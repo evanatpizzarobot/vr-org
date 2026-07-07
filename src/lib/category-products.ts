@@ -15,12 +15,9 @@ export interface CategoryProductGroup {
   picks: DealItem[];
 }
 
-export interface CategoryProductsResult extends CategoryProductGroup {
-  disclosure: string;
-}
+export type CategoryProductsResult = CategoryProductGroup;
 
 interface CategoryProductsFile {
-  disclosure: string;
   categories: Record<string, CategoryProductGroup>;
 }
 
@@ -34,7 +31,7 @@ export function getCategoryProducts(category: string): CategoryProductsResult | 
     if (!group) return null;
     const hasContent = (group.picks?.length ?? 0) > 0 || (group.mostPopular?.length ?? 0) > 0;
     if (!hasContent) return null;
-    return { ...group, disclosure: data.disclosure ?? "" };
+    return group;
   } catch {
     return null;
   }
