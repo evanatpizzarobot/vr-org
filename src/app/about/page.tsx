@@ -53,7 +53,7 @@ const WRITERS = [
 const OWNERS = [
   { name: "Evan Marcus", email: "evan@vr.org" },
   { name: "Mark Mahle", email: "mark@vr.org" },
-  { name: "Sandy", email: "sandy@vr.org" },
+  { name: "Sandy Mahle", email: "sandy@vr.org" },
 ];
 
 export default function AboutPage() {
