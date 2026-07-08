@@ -30,6 +30,13 @@ export async function generateStaticParams() {
 // without waiting for the Docker rebuild to finish.
 export const dynamicParams = true;
 
+// Revalidate the Full Route Cache so an on-demand render is never pinned forever.
+// Without this, a request that hits a brand-new slug BEFORE the deploy syncs
+// articles.json caches a notFound() 404 that sticks until the container is
+// recreated (data-only deploys are a no-op build and do not recreate it). 300s
+// matches the site-wide ISR window used on the category hubs, /originals, /deals.
+export const revalidate = 300;
+
 function extractFirstImage(html: string): string | null {
   const match = html.match(/<img\s[^>]*src=["']([^"']+)["']/);
   if (!match) return null;
