@@ -1,0 +1,29 @@
+# Enforce LF line endings for all text files, both in the repository and on
+# checkout, so no environment (a Windows editor, core.autocrlf=true, or a
+# scheduled routine) can commit CRLF and break the Docker build or the shell
+# scripts. gitattributes overrides core.autocrlf everywhere, which is why this
+# is the durable fix.
+* text=auto eol=lf
+
+# Build-critical files: always LF, no exceptions. A CRLF shebang becomes
+# "/bin/bash\r" (bad interpreter) and CRLF in a Dockerfile breaks RUN steps.
+*.sh        text eol=lf
+Dockerfile  text eol=lf
+*.mjs       text eol=lf
+*.ts        text eol=lf
+*.tsx       text eol=lf
+*.js        text eol=lf
+*.json      text eol=lf
+*.css       text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+
+# Binary assets: leave untouched (never apply EOL normalization).
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.ico   binary
+*.gif   binary
+*.woff  binary
+*.woff2 binary
