@@ -8,6 +8,12 @@ import { getDeals } from "@/lib/deals";
 import { getComingSoon } from "@/lib/release-dates";
 import { productSchema } from "@/lib/product-schema";
 
+// ISR: re-render from the current data/deals.json every 5 minutes. Without
+// this the page renders once at build time, so data-only deploys (which skip
+// the Docker rebuild) would never surface deals.json edits. Matches the
+// category hub pages (revalidate = 300).
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Best VR Deals 2026: Headsets, Accessories & Gaming PCs | VR.org",
   description:
