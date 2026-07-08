@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-26",
+  "lastUpdated": "2026-07-07",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -129,6 +129,16 @@
           "links": {
             "amazon": { "url": "https://amazon.com/s?k=xreal+one+pro&tag=vrorg00-20", "label": "Amazon" },
             "direct": { "url": "https://us.shop.xreal.com/products/xreal-one-pro", "label": "Xreal" }
+          }
+        },
+        {
+          "name": "Xreal One",
+          "price": "$399",
+          "image": "https://us.shop.xreal.com/cdn/shop/files/XREAL_One_AR_Glasses.jpg?v=1755511322",
+          "description": "The everyday entry point into Xreal's lineup and the most affordable glasses to carry the in-house X1 spatial computing chip. 120Hz micro-OLED, a rock-steady 3DoF anchored screen with no phone or compute puck required, and Bose-tuned open-ear sound. If the One Pro is more than you need, this is the pair to buy.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=xreal+one+ar+glasses&tag=vrorg00-20", "label": "Amazon" },
+            "direct": { "url": "https://us.shop.xreal.com/products/xreal-one", "label": "Xreal" }
           }
         },
         {
@@ -283,6 +293,16 @@
           "links": {
             "zybervr": { "url": "https://zybervr.com/", "label": "ZyberVR" },
             "amazon": { "url": "https://amazon.com/s?k=zybervr+quest+3+charging+dock&tag=vrorg00-20", "label": "Amazon" }
+          }
+        },
+        {
+          "name": "Sony PlayStation VR2 PC Adapter",
+          "price": "$60",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Psvr2_usb_adapter.png",
+          "description": "The official adapter that unlocks thousands of SteamVR games on a PSVR2. Plug it in, add a DisplayPort 1.4 cable, and your PS5 headset becomes a capable PC VR display with its OLED panels and eye tracking intact. The cheapest way to give a PSVR2 a second life on PC, and restocks tend to sell out fast.",
+          "links": {
+            "amazon": { "url": "https://amazon.com/s?k=playstation+vr2+pc+adapter&tag=vrorg00-20", "label": "Amazon" },
+            "direct": { "url": "https://direct.playstation.com/en-us/buy-accessories/playstationvr2-pc-adapter", "label": "PlayStation" }
           }
         },
         {
