@@ -384,7 +384,11 @@ export function CategoryHub({ category, title, description, initialEditorial, pr
           </div>
         </div>
 
-        <div className="order-first lg:order-last">
+        {/* No order override: on mobile the sidebar stacks BELOW the main
+            content (source order); on desktop the grid places it in the
+            right-hand column. Previously order-first forced all the sidebar
+            widgets above the category content on mobile. */}
+        <div>
           <Sidebar sourceStats={sourceStats} trending={trending} />
         </div>
       </div>
