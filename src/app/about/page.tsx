@@ -145,6 +145,40 @@ export default function AboutPage() {
           (netactuate.com), a global edge network spanning 45+ locations. We are proud to sit on one of the world&apos;s largest peered networks.
         </p>
 
+        <h2 className="font-display text-2xl font-semibold mb-4">Connect with us</h2>
+        <ul className="text-[15px] leading-[1.7] list-none flex flex-col gap-2 mb-10" style={{ color: "var(--text-secondary)" }}>
+          <li>
+            General Inquiries:{" "}
+            <a href="mailto:contact@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              contact@vr.org
+            </a>
+          </li>
+          <li>
+            Advertising &amp; Sponsorships:{" "}
+            <a href="mailto:advertise@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              advertise@vr.org
+            </a>
+          </li>
+          <li>
+            Press &amp; Media:{" "}
+            <a href="mailto:press@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              press@vr.org
+            </a>
+          </li>
+          <li>
+            Twitter / X:{" "}
+            <a href="https://x.com/vrdotorg" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              @vrdotorg
+            </a>
+          </li>
+          <li>
+            YouTube:{" "}
+            <a href="https://www.youtube.com/channel/UCTKqC49lw-HF1NxlquRoc0Q" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
+              VR.org
+            </a>
+          </li>
+        </ul>
+
         <h2 className="font-display text-2xl font-semibold mb-4">Our Writers</h2>
         <p className="text-[15px] leading-[1.7] mb-6" style={{ color: "var(--text-secondary)" }}>
           Our editorial team publishes original content daily, covering every corner of the VR, AR, and XR industry.
@@ -179,40 +213,6 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
-
-        <h2 className="font-display text-2xl font-semibold mb-4">Connect with us</h2>
-        <ul className="text-[15px] leading-[1.7] list-none flex flex-col gap-2" style={{ color: "var(--text-secondary)" }}>
-          <li>
-            General Inquiries:{" "}
-            <a href="mailto:contact@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-              contact@vr.org
-            </a>
-          </li>
-          <li>
-            Advertising &amp; Sponsorships:{" "}
-            <a href="mailto:advertise@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-              advertise@vr.org
-            </a>
-          </li>
-          <li>
-            Press &amp; Media:{" "}
-            <a href="mailto:press@vr.org" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-              press@vr.org
-            </a>
-          </li>
-          <li>
-            Twitter / X:{" "}
-            <a href="https://x.com/vrdotorg" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-              @vrdotorg
-            </a>
-          </li>
-          <li>
-            YouTube:{" "}
-            <a href="https://www.youtube.com/channel/UCTKqC49lw-HF1NxlquRoc0Q" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>
-              VR.org
-            </a>
-          </li>
-        </ul>
       </main>
 
       <Footer />
