@@ -45,7 +45,19 @@ function load(): Record<string, DayCounts> {
   if (days) return days;
   try {
     const parsed = JSON.parse(fs.readFileSync(STATS_PATH, "utf-8")) as StatsFile;
-    days = parsed.days && typeof parsed.days === "object" ? parsed.days : {};
+    const raw = parsed.days && typeof parsed.days === "object" ? parsed.days : {};
+    // Normalize each day defensively: a hand-edited or partially written file
+    // must never be able to crash a reader downstream.
+    const clean: Record<string, DayCounts> = {};
+    for (const [key, value] of Object.entries(raw)) {
+      const v = value as Partial<DayCounts> | null;
+      clean[key] = {
+        requests: typeof v?.requests === "number" ? v.requests : 0,
+        tools: v?.tools && typeof v.tools === "object" ? v.tools : {},
+        clients: v?.clients && typeof v.clients === "object" ? v.clients : {},
+      };
+    }
+    days = clean;
   } catch {
     days = {};
   }
@@ -127,31 +139,44 @@ export function recordToolCall(tool: string): void {
 }
 
 export function getMcpStats(): McpStatsSnapshot {
-  const all = load();
-  const dates = Object.keys(all).sort().slice(-30);
-  const cutoff7 = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
-    .toISOString()
-    .slice(0, 10);
-  let total7 = 0;
-  let total30 = 0;
-  const tools: Record<string, number> = {};
-  const clients: Record<string, number> = {};
-  const dayRows: { date: string; requests: number }[] = [];
-  for (const d of dates) {
-    const day = all[d];
-    total30 += day.requests;
-    if (d >= cutoff7) total7 += day.requests;
-    for (const [k, v] of Object.entries(day.tools)) tools[k] = (tools[k] || 0) + v;
-    for (const [k, v] of Object.entries(day.clients)) clients[k] = (clients[k] || 0) + v;
-    dayRows.push({ date: d, requests: day.requests });
+  try {
+    const all = load();
+    const dates = Object.keys(all).sort().slice(-30);
+    const cutoff7 = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .slice(0, 10);
+    let total7 = 0;
+    let total30 = 0;
+    const tools: Record<string, number> = {};
+    const clients: Record<string, number> = {};
+    const dayRows: { date: string; requests: number }[] = [];
+    for (const d of dates) {
+      const day = all[d];
+      total30 += day.requests;
+      if (d >= cutoff7) total7 += day.requests;
+      for (const [k, v] of Object.entries(day.tools)) tools[k] = (tools[k] || 0) + v;
+      for (const [k, v] of Object.entries(day.clients)) clients[k] = (clients[k] || 0) + v;
+      dayRows.push({ date: d, requests: day.requests });
+    }
+    return {
+      version: "1.0",
+      generatedAt: new Date().toISOString(),
+      totalRequests7d: total7,
+      totalRequests30d: total30,
+      tools30d: tools,
+      clients30d: clients,
+      days: dayRows,
+    };
+  } catch {
+    // Aggregation must never throw into an HTTP route; degrade to an empty snapshot.
+    return {
+      version: "1.0",
+      generatedAt: new Date().toISOString(),
+      totalRequests7d: 0,
+      totalRequests30d: 0,
+      tools30d: {},
+      clients30d: {},
+      days: [],
+    };
   }
-  return {
-    version: "1.0",
-    generatedAt: new Date().toISOString(),
-    totalRequests7d: total7,
-    totalRequests30d: total30,
-    tools30d: tools,
-    clients30d: clients,
-    days: dayRows,
-  };
 }
