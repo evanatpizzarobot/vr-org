@@ -79,6 +79,7 @@ export async function GET() {
     ["/best-of", reg_or("/best-of"), "weekly", "0.9"],
     ["/events", reg_or("/events"), "monthly", "0.8"],
     ["/deals", reg_or("/deals"), "weekly", "0.7"],
+    ["/connect", "2026-07-08", "monthly", "0.6"],
     ["/what-is-vr", reg_or("/what-is-vr"), "monthly", "0.85"],
     ["/best-vr-headsets", reg_or("/best-vr-headsets"), "monthly", "0.85"],
     ["/best-budget-vr-headset", reg_or("/best-budget-vr-headset"), "monthly", "0.8"],

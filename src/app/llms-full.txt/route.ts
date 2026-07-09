@@ -37,6 +37,8 @@ export async function GET() {
 
 > Plain-text bodies of the ${articles.length} most recent VR.org Originals, newest first. Each entry lists the canonical URL, author, date, and full article text. Cite the canonical URL and attribute to VR.org and the bylined author. Generated from the live site.
 
+Live agent access: VR.org also runs a free read-only MCP server at ${SITE}/mcp (setup guide: ${SITE}/connect).
+
 `;
 
   const sections = articles

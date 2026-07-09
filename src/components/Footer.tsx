@@ -59,6 +59,7 @@ export function Footer() {
             { label: "Events", href: "/events" },
             { label: "Best Of", href: "/best-of" },
             { label: "Deals", href: "/deals" },
+            { label: "MCP", href: "/connect" },
             { label: "About", href: "/about" },
             { label: "Privacy", href: "/privacy" },
           ].map(({ label, href }) => (

@@ -1,0 +1,14 @@
+{
+  "name": "org.vr/vr-mcp",
+  "title": "VR.org VR / AR / XR Reader",
+  "description": "Read-only MCP server for VR.org: live VR, AR, and XR news search, full-text original articles, events calendar, curated headset deals, comparisons, and buyer-guide answers.",
+  "endpoint": "https://vr.org/mcp",
+  "transport": "streamable-http",
+  "authentication": "none",
+  "registry": "https://registry.modelcontextprotocol.io",
+  "npm": "https://www.npmjs.com/package/vr-org-mcp",
+  "repository": "https://github.com/evanatpizzarobot/vr-org-mcp",
+  "documentation": "https://vr.org/connect",
+  "homepage": "https://vr.org",
+  "contact": "contact@vr.org"
+}

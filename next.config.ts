@@ -70,6 +70,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       ...REDIRECTS.map((r) => ({ ...r, permanent: true })),
+      // Humans pasting vr.org/mcp into a browser send Accept: text/html and
+      // land on the human connection guide. MCP clients never ask for
+      // text/html (they send application/json, text/event-stream), so they
+      // fall through to the protocol redirect below. Order matters: first
+      // match wins. Temporary (307) so the browser UX can change later.
+      {
+        source: "/mcp",
+        has: [{ type: "header", key: "accept", value: ".*text/html.*" }],
+        destination: "/connect",
+        permanent: false,
+      },
       // Clean public alias for the remote MCP endpoint. A 308 redirect (not a
       // rewrite) so mcp-handler sees its own /api/mcp path; 308 preserves the
       // POST method and body, which the MCP client's fetch follows.

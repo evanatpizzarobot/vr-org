@@ -78,6 +78,16 @@ VR.org was co-founded in 2018 by Evan Marcus and Mark Mahle (NetActuate). Editor
 
 ${recentLines}
 
+## AI agent access (MCP)
+
+VR.org runs a free, read-only Model Context Protocol server. Agents can query the live feed, full-text originals, events, deals, and headset comparisons directly instead of scraping.
+
+- [MCP endpoint](${SITE}/mcp): Streamable-HTTP MCP server. 11 tools, 5 resources, 3 prompts
+- [Connection guide](${SITE}/connect): Setup for Claude, ChatGPT, Cursor, VS Code, and any MCP client
+- [npm package](https://www.npmjs.com/package/vr-org-mcp): Local stdio install, npx -y vr-org-mcp
+- [Discovery manifest](${SITE}/.well-known/mcp.json): Machine-readable server descriptor
+- Registry listing: published as org.vr/vr-mcp on the official MCP Registry
+
 ## Site infrastructure
 
 - [Sitemap](${SITE}/sitemap.xml): Machine-readable URL list
