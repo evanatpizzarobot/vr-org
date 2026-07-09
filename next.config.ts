@@ -60,6 +60,16 @@ const REDIRECTS: { source: string; destination: string }[] = [
   // We do not run per-author archive pages. Anything under /author/* goes to
   // the originals index, which lists every editorial piece.
   { source: "/author/:slug*", destination: "/originals" },
+  // The RSS feed lives at /feed.xml. Readers and users keep trying the common
+  // WordPress-style /feed (and /rss) paths, which were dead-ending on a 404.
+  { source: "/feed", destination: "/feed.xml" },
+  { source: "/rss", destination: "/feed.xml" },
+  { source: "/rss.xml", destination: "/feed.xml" },
+  // iOS auto-requests the -precomposed apple-touch-icon variant even when a
+  // page does not reference it; point it at the icon we actually ship.
+  { source: "/apple-touch-icon-precomposed.png", destination: "/apple-touch-icon.png" },
+  // No /articles index page exists; the editorial list is /originals.
+  { source: "/articles", destination: "/originals" },
 ];
 
 const nextConfig: NextConfig = {
