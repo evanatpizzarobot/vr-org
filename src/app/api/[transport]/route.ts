@@ -39,6 +39,7 @@ import {
   thisWeekInVrPrompt,
   explainVrTopicPrompt,
 } from "@/lib/mcp/prompts";
+import { classifyUa, recordRequest, recordToolCall } from "@/lib/mcp/stats";
 
 function resContents(uri: string, mimeType: string, text: string) {
   return { contents: [{ uri, mimeType, text }] };
@@ -53,6 +54,13 @@ function safeText(produce: () => string): string {
   } catch {
     return "VR.org resource is temporarily unavailable. Retry shortly.";
   }
+}
+
+// Counts the tool call, then runs the normal guarded tool path. Stats never
+// throw (guarded inside the stats module), so tool behavior is unchanged.
+function withStats(tool: string, fn: Parameters<typeof safeResult>[0]) {
+  recordToolCall(tool);
+  return safeResult(fn);
 }
 
 // Make sure the in-memory RSS engine is running so the feed tools have data.
@@ -78,7 +86,7 @@ const handler = createMcpHandler(
         },
         annotations: { ...READ_ONLY, title: "Search VR / AR / XR news" },
       },
-      async (args) => safeResult(() => searchVrNews(args)),
+      async (args) => withStats("search_vr_news", () => searchVrNews(args)),
     );
 
     server.registerTool(
@@ -89,7 +97,7 @@ const handler = createMcpHandler(
         inputSchema: {},
         annotations: { ...READ_ONLY, title: "Get trending VR topics" },
       },
-      async () => safeResult(() => getVrTrending()),
+      async () => withStats("get_vr_trending", () => getVrTrending()),
     );
 
     server.registerTool(
@@ -104,7 +112,7 @@ const handler = createMcpHandler(
         },
         annotations: { ...READ_ONLY, title: "List VR.org original articles" },
       },
-      async (args) => safeResult(() => listVrOriginals(args)),
+      async (args) => withStats("list_vr_originals", () => listVrOriginals(args)),
     );
 
     server.registerTool(
@@ -116,7 +124,7 @@ const handler = createMcpHandler(
         inputSchema: { slug: z.string().max(200).describe("The article slug, e.g. 'why-vr-is-the-perfect-horror-machine'.") },
         annotations: { ...READ_ONLY, title: "Get a VR.org article by slug" },
       },
-      async (args) => safeResult(() => getVrArticle(args)),
+      async (args) => withStats("get_vr_article", () => getVrArticle(args)),
     );
 
     server.registerTool(
@@ -135,7 +143,7 @@ const handler = createMcpHandler(
         annotations: { ...READ_ONLY, title: "Get upcoming VR / AR / XR events" },
       },
       async (args) =>
-        safeResult(() => getVrEvents({ limit: args.limit, includePast: args.include_past })),
+        withStats("get_vr_events", () => getVrEvents({ limit: args.limit, includePast: args.include_past })),
     );
 
     server.registerTool(
@@ -147,7 +155,7 @@ const handler = createMcpHandler(
         inputSchema: { section: z.string().max(200).optional().describe("Optional section filter, e.g. 'headsets'.") },
         annotations: { ...READ_ONLY, title: "Get VR product deals and prices" },
       },
-      async (args) => safeResult(() => getVrDeals(args)),
+      async (args) => withStats("get_vr_deals", () => getVrDeals(args)),
     );
 
     server.registerTool(
@@ -162,7 +170,7 @@ const handler = createMcpHandler(
         },
         annotations: { ...READ_ONLY, title: "Compare two VR headsets" },
       },
-      async (args) => safeResult(() => compareVrHeadsets(args)),
+      async (args) => withStats("compare_vr_headsets", () => compareVrHeadsets(args)),
     );
 
     server.registerTool(
@@ -173,7 +181,7 @@ const handler = createMcpHandler(
         inputSchema: {},
         annotations: { ...READ_ONLY, title: "Get the top VR games list" },
       },
-      async () => safeResult(() => getTopVrGames()),
+      async () => withStats("get_top_vr_games", () => getTopVrGames()),
     );
 
     server.registerTool(
@@ -184,7 +192,7 @@ const handler = createMcpHandler(
         inputSchema: {},
         annotations: { ...READ_ONLY, title: "Get the top VR apps list" },
       },
-      async () => safeResult(() => getTopVrApps()),
+      async () => withStats("get_top_vr_apps", () => getTopVrApps()),
     );
 
     server.registerTool(
@@ -195,7 +203,7 @@ const handler = createMcpHandler(
         inputSchema: {},
         annotations: { ...READ_ONLY, title: "List VR.org news sources" },
       },
-      async () => safeResult(() => listVrSources()),
+      async () => withStats("list_vr_sources", () => listVrSources()),
     );
 
     server.registerTool(
@@ -207,7 +215,7 @@ const handler = createMcpHandler(
         inputSchema: { topic: z.string().max(500).describe("The topic or question, e.g. 'what is vr' or 'best vr headset'.") },
         annotations: { ...READ_ONLY, title: "Explain a VR / AR / XR topic" },
       },
-      async (args) => safeResult(() => vrExplain(args)),
+      async (args) => withStats("vr_explain", () => vrExplain(args)),
     );
 
     // ---- Resources: browsable VR.org content the host can attach ----
@@ -325,4 +333,10 @@ const handler = createMcpHandler(
   { basePath: "/api", maxDuration: 60, verboseLogs: false },
 );
 
-export { handler as GET, handler as POST, handler as DELETE };
+// Count each request's client class (from the UA) before handing to mcp-handler.
+const tracked = (req: Request) => {
+  recordRequest(classifyUa(req.headers.get("user-agent")));
+  return handler(req);
+};
+
+export { tracked as GET, tracked as POST, tracked as DELETE };
