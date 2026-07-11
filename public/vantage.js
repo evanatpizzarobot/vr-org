@@ -245,6 +245,30 @@ const CSS = `
     .callout { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  /* ---------- color-coded tabs (Overview / Regular / AI) ---------- */
+  .tab-btn[data-tab="overview"] { --tc: #22d3ee; }
+  .tab-btn[data-tab="regular"]  { --tc: #22c55e; }
+  .tab-btn[data-tab="ai"]       { --tc: #a78bfa; }
+  @media (prefers-color-scheme: light) {
+    .tab-btn[data-tab="overview"] { --tc: #0891b2; }
+    .tab-btn[data-tab="regular"]  { --tc: #15803d; }
+    .tab-btn[data-tab="ai"]       { --tc: #7c3aed; }
+  }
+  :root[data-theme="dark"] .tab-btn[data-tab="overview"] { --tc: #22d3ee; }
+  :root[data-theme="dark"] .tab-btn[data-tab="regular"]  { --tc: #22c55e; }
+  :root[data-theme="dark"] .tab-btn[data-tab="ai"]       { --tc: #a78bfa; }
+  :root[data-theme="light"] .tab-btn[data-tab="overview"] { --tc: #0891b2; }
+  :root[data-theme="light"] .tab-btn[data-tab="regular"]  { --tc: #15803d; }
+  :root[data-theme="light"] .tab-btn[data-tab="ai"]       { --tc: #7c3aed; }
+  .tab-btn::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto;
+    background: var(--tc); opacity: 0.5; transition: opacity .15s, box-shadow .15s;
+  }
+  .tab-btn:hover::before { opacity: 0.85; }
+  .tab-btn[aria-selected="true"]::before { opacity: 1; box-shadow: 0 0 0 3px color-mix(in srgb, var(--tc) 24%, transparent); }
+  .tab-btn[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--tc); }
+  .tab-btn[aria-selected="true"] .cnt { color: var(--tc); }
 `;
 const MARKUP = `<div class="wrap">
   <header class="topbar">
