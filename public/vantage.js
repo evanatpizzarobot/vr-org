@@ -255,8 +255,6 @@ const MARKUP = `<div class="wrap">
     <span class="spacer"></span>
     <span class="prop">
       <span class="dot"></span> vr.org
-      <span class="sep">/</span>
-      <span class="soon">NetActuate · soon</span>
     </span>
     <span class="updated"><span class="live"></span> <span id="updated">updated …</span></span>
     <button class="tbtn" id="themeBtn" type="button">Theme</button>
@@ -396,7 +394,7 @@ const MARKUP = `<div class="wrap">
     </div>
   </section>
 
-  <footer><div><b>Vantage</b> · live console for the VR.org team. Reads nginx access logs on the VPS: <b>/api/stats</b> (regular traffic) and <b>/api/ai-stats</b> (AI bots + referrals, <b>?trend=N</b>). 60-second server cache; refresh to update.</div><div>Access is per-account. Use <b>Sign out</b> to end your session.</div></footer>
+  <footer><div><b>Vantage</b> · live console for the VR.org team. Reads nginx access logs on the VPS: <b>/api/stats</b> (regular traffic) and <b>/api/ai-stats</b> (AI bots + referrals, <b>?trend=N</b>). 60-second server cache; refresh to update.</div></footer>
 </div>`;
 const st=document.createElement("style"); st.textContent=CSS; document.head.appendChild(st);
 document.body.insertAdjacentHTML("afterbegin", MARKUP);
