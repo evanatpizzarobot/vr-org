@@ -19,14 +19,16 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     email = String(form.get("email") || "");
     password = String(form.get("password") || "");
   } catch {
-    return NextResponse.redirect(new URL("/console/login?e=1", req.url), 303);
+    return new NextResponse(null, { status: 303, headers: { Location: "/console/login?e=1" } });
   }
 
   if (!verifyCredentials(email, password)) {
-    return NextResponse.redirect(new URL("/console/login?e=1", req.url), 303);
+    return new NextResponse(null, { status: 303, headers: { Location: "/console/login?e=1" } });
   }
 
-  const res = NextResponse.redirect(new URL("/console", req.url), 303);
+  // Relative Location so the browser resolves it against vr.org (an absolute
+  // URL from req.url would carry the internal Docker host behind nginx).
+  const res = new NextResponse(null, { status: 303, headers: { Location: "/console" } });
   res.cookies.set(COOKIE_NAME, createSession(email), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",

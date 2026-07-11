@@ -25,7 +25,12 @@ const SHELL = `<!doctype html>
 export async function GET(req: NextRequest): Promise<NextResponse> {
   const email = verifySession(req.cookies.get(COOKIE_NAME)?.value);
   if (!email) {
-    return NextResponse.redirect(new URL("/console/login", req.url), 302);
+    // Relative Location so the browser resolves it against vr.org. An absolute
+    // URL built from req.url would carry the internal Docker host behind nginx.
+    return new NextResponse(null, {
+      status: 302,
+      headers: { Location: "/console/login", "Cache-Control": "no-store" },
+    });
   }
   return new NextResponse(SHELL, {
     headers: {

@@ -76,7 +76,10 @@ function loginPage(showError: boolean): string {
 
 export async function GET(req: NextRequest): Promise<NextResponse> {
   if (verifySession(req.cookies.get(COOKIE_NAME)?.value)) {
-    return NextResponse.redirect(new URL("/console", req.url), 302);
+    return new NextResponse(null, {
+      status: 302,
+      headers: { Location: "/console", "Cache-Control": "no-store" },
+    });
   }
   const showError = req.nextUrl.searchParams.get("e") === "1";
   return new NextResponse(loginPage(showError), {
