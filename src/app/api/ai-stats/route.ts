@@ -339,10 +339,13 @@ function generateAiStats(contents: string[]): AiStatsResponse {
       if (!isPageview(pathNoQuery)) continue;
       const host = refererHost(referer);
       pvHost[host || "(direct)"] = (pvHost[host || "(direct)"] || 0) + 1;
-      // Top pages = successful pageviews only. Without this, a heavily-probed
-      // non-existent path (e.g. a scanner hammering /datacenters/hong-kong-vps)
-      // would rank as a "top page" while also showing under Broken paths.
-      if (status < 400) pvPath[pathNoQuery] = (pvPath[pathNoQuery] || 0) + 1;
+      // Top pages = pages the server actually served: 2xx, or 304 (cached copy
+      // revalidated). Redirect hops (3xx) and errors (4xx/5xx) are not pageviews
+      // of the target, so a scanner hammering a non-existent path, or an
+      // http->https / trailing-slash redirect, never inflates a "top page".
+      if ((status >= 200 && status < 300) || status === 304) {
+        pvPath[pathNoQuery] = (pvPath[pathNoQuery] || 0) + 1;
+      }
       if (country && country !== "-") {
         (countryIps[country] ||= new Set<string>()).add(ip);
       }
