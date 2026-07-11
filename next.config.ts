@@ -97,6 +97,25 @@ const nextConfig: NextConfig = {
       { source: "/mcp", destination: "/api/mcp", permanent: true },
     ];
   },
+  async headers() {
+    return [
+      // The gated /console (Vantage) is internal-only. Keep it out of every
+      // index even though it is auth-gated (the route handlers also send this
+      // header; this is belt-and-suspenders, and covers /vantage.js).
+      {
+        source: "/console/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/console",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/vantage.js",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -4,6 +4,8 @@
 
 User-agent: *
 Allow: /
+# Internal, auth-gated team console. Not for indexing.
+Disallow: /console
 
 # Explicit welcome for AI / LLM crawlers and answer engines.
 User-agent: GPTBot
