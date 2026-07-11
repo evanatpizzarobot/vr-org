@@ -41,27 +41,31 @@ interface BotDef {
   name: string;
   label: string;
   vendor: string;
+  // "live" = fetched a page to answer a user's question right now (cited now);
+  // "crawl" = indexing or training for later (ingested for later). Only set on
+  // AI_BOTS; SEARCH_BOTS omit it.
+  mode?: "live" | "crawl";
 }
 
 const AI_BOTS: BotDef[] = [
-  { token: "chatgpt-user", name: "chatgpt-user", label: "ChatGPT (live answers)", vendor: "OpenAI" },
-  { token: "oai-searchbot", name: "oai-searchbot", label: "OpenAI SearchBot", vendor: "OpenAI" },
-  { token: "gptbot", name: "gptbot", label: "GPTBot (training)", vendor: "OpenAI" },
-  { token: "claude-user", name: "claude-user", label: "Claude (live answers)", vendor: "Anthropic" },
-  { token: "claude-web", name: "claude-web", label: "Claude-Web", vendor: "Anthropic" },
-  { token: "claudebot", name: "claudebot", label: "ClaudeBot (crawler)", vendor: "Anthropic" },
-  { token: "anthropic-ai", name: "anthropic-ai", label: "anthropic-ai", vendor: "Anthropic" },
-  { token: "perplexitybot", name: "perplexitybot", label: "PerplexityBot", vendor: "Perplexity" },
-  { token: "perplexity-user", name: "perplexity-user", label: "Perplexity (live)", vendor: "Perplexity" },
-  { token: "bytespider", name: "bytespider", label: "Bytespider", vendor: "ByteDance" },
-  { token: "amazonbot", name: "amazonbot", label: "Amazonbot", vendor: "Amazon" },
-  { token: "duckassistbot", name: "duckassistbot", label: "DuckAssist", vendor: "DuckDuckGo" },
-  { token: "meta-externalagent", name: "meta-ai", label: "Meta AI", vendor: "Meta" },
-  { token: "google-extended", name: "google-extended", label: "Google-Extended", vendor: "Google" },
-  { token: "applebot-extended", name: "applebot-extended", label: "Applebot-Extended", vendor: "Apple" },
-  { token: "cohere-ai", name: "cohere-ai", label: "cohere-ai", vendor: "Cohere" },
-  { token: "ccbot", name: "ccbot", label: "CCBot (Common Crawl)", vendor: "Common Crawl" },
-  { token: "youbot", name: "youbot", label: "YouBot", vendor: "You.com" },
+  { token: "chatgpt-user", name: "chatgpt-user", label: "ChatGPT (live answers)", vendor: "OpenAI", mode: "live" },
+  { token: "oai-searchbot", name: "oai-searchbot", label: "OpenAI SearchBot", vendor: "OpenAI", mode: "crawl" },
+  { token: "gptbot", name: "gptbot", label: "GPTBot (training)", vendor: "OpenAI", mode: "crawl" },
+  { token: "claude-user", name: "claude-user", label: "Claude (live answers)", vendor: "Anthropic", mode: "live" },
+  { token: "claude-web", name: "claude-web", label: "Claude-Web", vendor: "Anthropic", mode: "live" },
+  { token: "claudebot", name: "claudebot", label: "ClaudeBot (crawler)", vendor: "Anthropic", mode: "crawl" },
+  { token: "anthropic-ai", name: "anthropic-ai", label: "anthropic-ai", vendor: "Anthropic", mode: "crawl" },
+  { token: "perplexitybot", name: "perplexitybot", label: "PerplexityBot", vendor: "Perplexity", mode: "crawl" },
+  { token: "perplexity-user", name: "perplexity-user", label: "Perplexity (live)", vendor: "Perplexity", mode: "live" },
+  { token: "bytespider", name: "bytespider", label: "Bytespider", vendor: "ByteDance", mode: "crawl" },
+  { token: "amazonbot", name: "amazonbot", label: "Amazonbot", vendor: "Amazon", mode: "crawl" },
+  { token: "duckassistbot", name: "duckassistbot", label: "DuckAssist", vendor: "DuckDuckGo", mode: "live" },
+  { token: "meta-externalagent", name: "meta-ai", label: "Meta AI", vendor: "Meta", mode: "live" },
+  { token: "google-extended", name: "google-extended", label: "Google-Extended", vendor: "Google", mode: "crawl" },
+  { token: "applebot-extended", name: "applebot-extended", label: "Applebot-Extended", vendor: "Apple", mode: "crawl" },
+  { token: "cohere-ai", name: "cohere-ai", label: "cohere-ai", vendor: "Cohere", mode: "crawl" },
+  { token: "ccbot", name: "ccbot", label: "CCBot (Common Crawl)", vendor: "Common Crawl", mode: "crawl" },
+  { token: "youbot", name: "youbot", label: "YouBot", vendor: "You.com", mode: "crawl" },
 ];
 
 // Traditional search crawlers, kept for AI-vs-search context. Checked only
@@ -94,6 +98,16 @@ function isPageview(pathNoQuery: string): boolean {
   return !/\.(js|css|png|jpe?g|webp|avif|gif|svg|ico|woff2?|xml|txt|json|map|webmanifest|mp4)$/i.test(
     pathNoQuery,
   );
+}
+
+// A 404 worth surfacing on the console: a real page-ish path, not obvious
+// scanner noise (/.env, /wp-login.php, /vendor/..., *.php, dotfiles) and not a
+// static asset. Keeps the "broken links" report actionable instead of drowning
+// it in bot probes.
+const SCANNER_404 =
+  /\.(php|aspx?|asp|jsp|cgi|env|git|ya?ml|ini|bak|sql|sh)$|(^|\/)\.[^/]|wp-|xmlrpc|phpmyadmin|\/vendor\/|\/admin/i;
+function isPageLike404(pathNoQuery: string): boolean {
+  return isPageview(pathNoQuery) && !SCANNER_404.test(pathNoQuery);
 }
 
 function refererHost(ref: string): string {
@@ -158,6 +172,16 @@ interface AiStatsResponse {
   };
   topReferrers: Array<{ host: string; pageviews: number }>;
   searchReference: Record<string, number>;
+  // Top pages by human pageview (non-bot, non-asset), 24h.
+  humanTopPages: PageStat[];
+  // Page-like paths returning 404 in 24h (scanner noise filtered out).
+  notFound: PageStat[];
+  // AI reads split by intent: live answers (cited now) vs crawl/training
+  // (ingested for later).
+  aiModes: {
+    live: { hits: number; uniqueIps: number };
+    crawl: { hits: number; uniqueIps: number };
+  };
 }
 
 async function readLast24hContents(): Promise<string[]> {
@@ -196,6 +220,11 @@ function generateAiStats(contents: string[]): AiStatsResponse {
   const chatgptRefIps = new Set<string>();
   let referralTotal = 0;
 
+  const pvPath: Record<string, number> = {};
+  const notFoundCounts: Record<string, number> = {};
+  const modeHits = { live: 0, crawl: 0 };
+  const modeIps = { live: new Set<string>(), crawl: new Set<string>() };
+
   for (const content of contents) {
     for (const line of content.split("\n")) {
       if (!line) continue;
@@ -213,11 +242,20 @@ function generateAiStats(contents: string[]): AiStatsResponse {
       const uaLower = ua.toLowerCase();
       const pathNoQuery = rawPath.split("?")[0];
 
+      // Broken-path report: page-like 404s from anyone (humans or bots).
+      if (status === 404 && isPageLike404(pathNoQuery)) {
+        notFoundCounts[pathNoQuery] = (notFoundCounts[pathNoQuery] || 0) + 1;
+      }
+
       const bot = classify(uaLower, AI_BOTS);
       if (bot) {
         botHits[bot.name] = (botHits[bot.name] || 0) + 1;
         (botIps[bot.name] ||= new Set<string>()).add(ip);
         vendorTotals[bot.vendor] = (vendorTotals[bot.vendor] || 0) + 1;
+        if (bot.mode) {
+          modeHits[bot.mode] += 1;
+          modeIps[bot.mode].add(ip);
+        }
 
         if (bot.name === "chatgpt-user") {
           cguHits++;
@@ -241,6 +279,7 @@ function generateAiStats(contents: string[]): AiStatsResponse {
       if (!isPageview(pathNoQuery)) continue;
       const host = refererHost(referer);
       pvHost[host || "(direct)"] = (pvHost[host || "(direct)"] || 0) + 1;
+      pvPath[pathNoQuery] = (pvPath[pathNoQuery] || 0) + 1;
 
       const src = aiReferralSource(host, utmSource(rawPath));
       if (src) {
@@ -274,6 +313,16 @@ function generateAiStats(contents: string[]): AiStatsResponse {
     .sort((a, b) => b.pageviews - a.pageviews)
     .slice(0, 15);
 
+  const humanTopPages: PageStat[] = Object.entries(pvPath)
+    .map(([path, hits]) => ({ path, hits }))
+    .sort((a, b) => b.hits - a.hits)
+    .slice(0, 15);
+
+  const notFound: PageStat[] = Object.entries(notFoundCounts)
+    .map(([path, hits]) => ({ path, hits }))
+    .sort((a, b) => b.hits - a.hits)
+    .slice(0, 12);
+
   return {
     version: "1.0",
     fetchedAt: now,
@@ -297,6 +346,12 @@ function generateAiStats(contents: string[]): AiStatsResponse {
     },
     topReferrers,
     searchReference,
+    humanTopPages,
+    notFound,
+    aiModes: {
+      live: { hits: modeHits.live, uniqueIps: modeIps.live.size },
+      crawl: { hits: modeHits.crawl, uniqueIps: modeIps.crawl.size },
+    },
   };
 }
 

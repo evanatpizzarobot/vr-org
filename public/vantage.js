@@ -128,11 +128,13 @@ const CSS = `
   .snap .k { font-family: var(--font-mono); color: var(--accent-line); }
 
   /* ---------- tabs ---------- */
-  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 22px; }
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 22px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .tabs::-webkit-scrollbar { display: none; }
   .tab-btn {
     font: inherit; font-size: 14px; font-weight: 600; color: var(--muted);
     background: none; border: none; border-bottom: 2px solid transparent;
     padding: 10px 14px; margin-bottom: -1px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+    white-space: nowrap; flex: 0 0 auto;
   }
   .tab-btn:hover { color: var(--ink-2); }
   .tab-btn[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
@@ -340,6 +342,20 @@ const MARKUP = `<div class="wrap">
 
     <div class="grid g2" style="margin-bottom:14px;">
       <div class="panel">
+        <div class="panel-h"><h3>Top pages</h3><span class="note">human pageviews · 24h</span></div>
+        <div class="panel-b"><div class="bars" id="regTopPages"></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-h"><h3>Broken paths</h3><span class="note">page 404s · 24h</span></div>
+        <div class="panel-b">
+          <div class="bars" id="regNotFound"></div>
+          <div class="empty" id="regNotFoundEmpty" style="margin-top:12px;display:none;"><span class="ic">✓</span><span>No page-level 404s in the window. Scanner probes (<code>.php</code>, <code>.env</code>, <code>wp-*</code>) are filtered out, so this only surfaces real broken links worth fixing.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:14px;">
+      <div class="panel">
         <div class="panel-h"><h3>Response health</h3><span class="note">status codes · 24h</span></div>
         <div class="panel-b">
           <div class="stack" id="regStack"></div>
@@ -371,6 +387,18 @@ const MARKUP = `<div class="wrap">
   <!-- ============ AI TRAFFIC ============ -->
   <section class="tab" id="tab-ai">
     <div class="kpis" id="aiKpis"></div>
+
+    <div class="panel" style="margin-bottom:14px;">
+      <div class="panel-h"><h3>Cited now vs. ingested for later</h3><span class="note">live answers vs. crawlers · 24h</span></div>
+      <div class="panel-b">
+        <div class="stack" id="aiModeStack"></div>
+        <div class="cmp">
+          <div class="cb"><div class="cl">Cited now · live answers</div><div class="cv" id="aiModeLive">…</div><div class="ct" style="background:var(--series-cyan);"></div><div class="csub" id="aiModeLiveSub" style="font-size:11.5px;color:var(--muted);margin-top:6px;">…</div></div>
+          <div class="cb"><div class="cl">Ingested for later · crawlers</div><div class="cv" id="aiModeCrawl">…</div><div class="ct" style="background:var(--series-violet);"></div><div class="csub" id="aiModeCrawlSub" style="font-size:11.5px;color:var(--muted);margin-top:6px;">…</div></div>
+        </div>
+        <p class="lead" style="padding:12px 0 0;"><b>Live-answer bots</b> (ChatGPT, Claude, and Perplexity fetching a page to answer someone right now) drive the citations you can see today. <b>Crawlers and training bots</b> (GPTBot, ClaudeBot, Google-Extended, CCBot) are stocking the models that will answer tomorrow. One is visible, the other compounds.</p>
+      </div>
+    </div>
 
     <div class="panel" style="margin-bottom:14px;">
       <div class="panel-h"><h3>AI reads · 7-day trend</h3><span class="note">daily, from rotated logs</span></div>
@@ -619,6 +647,18 @@ function trendChart(sel){
 
 /* ============================ RENDER ALL ============================ */
 function classTag(t){ return t==="internal"?"internal": t==="other"?"other": ""; }
+function renderAiModes(){
+  const m = AI.modes || {live:{hits:0,ips:0}, crawl:{hits:0,ips:0}};
+  const tot = Math.max(1, m.live.hits + m.crawl.hits);
+  const stk = $("#aiModeStack"); stk.innerHTML="";
+  [["--series-cyan", m.live.hits, "Cited now"], ["--series-violet", m.crawl.hits, "Ingested for later"]].forEach(([c,v,lab])=>{
+    if(v>0){ const sp=document.createElement("span"); sp.style.width=(100*v/tot)+"%"; sp.style.background=cssv(c); sp.title=`${lab}: ${fmt(v)}`; stk.appendChild(sp); }
+  });
+  $("#aiModeLive").textContent = fmt(m.live.hits);
+  $("#aiModeCrawl").textContent = fmt(m.crawl.hits);
+  $("#aiModeLiveSub").textContent = `${fmt(m.live.ips)} sessions · ${pct(m.live.hits,tot).toFixed(0)}% of AI reads`;
+  $("#aiModeCrawlSub").textContent = `${fmt(m.crawl.ips)} crawler IPs · ${pct(m.crawl.hits,tot).toFixed(0)}% of AI reads`;
+}
 function renderStatic(){ if(!STATS||!AI||!TREND) return;
   const SEARCH_TOTAL = AI.search.reduce((s,x)=>s+x[1],0);
   // overview
@@ -636,11 +676,20 @@ function renderStatic(){ if(!STATS||!AI||!TREND) return;
   // regular
   renderRegularKpis();
   renderStatus();
+  barList("#regTopPages", (AI.humanTopPages||[]).slice(0,12).map(p=>({label:p[0], value:p[1], mono:true})));
+  const nf = AI.notFound||[];
+  if(nf.length){
+    barList("#regNotFound", nf.map(p=>({label:p[0], value:p[1], mono:true})));
+    $("#regNotFound").style.display=""; $("#regNotFoundEmpty").style.display="none";
+  } else {
+    $("#regNotFound").innerHTML=""; $("#regNotFoundEmpty").style.display="flex";
+  }
   barList("#regReferrers", AI.topReferrers.slice(0,12).map(r=>({label:r[0]==="(direct)"?"Direct":r[0], value:r[1], mono:r[0]!=="(direct)", tag:classTag(r[2])})));
   barList("#regCrawlers", AI.search.map(s=>({label:s[0], value:s[1], mono:true})));
 
   // ai
   renderAiKpis();
+  renderAiModes();
   barList("#aiVendors", AI.vendors.map(v=>({label:v[0], value:v[1], sub: pct(v[1],AI.botsTotalHits).toFixed(0)+"%"})));
   barList("#aiBots", AI.bots.slice(0,12).map(b=>({label:b[0], value:b[1]})));
   barList("#aiPages", AI.chatgpt.topPages.map(p=>({label:p[0], value:p[1], mono:true})));
@@ -715,7 +764,11 @@ function adapt(stats, ai){
     referrals:{ total:ai.referrals.total, chatgptUniqueVisitors:ai.referrals.chatgptUniqueVisitors,
       chatgptClicks:(ai.referrals.bySource&&ai.referrals.bySource.chatgpt)||0, bySource:bySource },
     topReferrers:(ai.topReferrers||[]).map(r=>[r.host,r.pageviews,classifyHost(r.host)]),
-    search:Object.entries(ai.searchReference||{}).sort((a,b)=>b[1]-a[1]) };
+    search:Object.entries(ai.searchReference||{}).sort((a,b)=>b[1]-a[1]),
+    modes:{ live:{ hits:(ai.aiModes&&ai.aiModes.live.hits)||0, ips:(ai.aiModes&&ai.aiModes.live.uniqueIps)||0 },
+            crawl:{ hits:(ai.aiModes&&ai.aiModes.crawl.hits)||0, ips:(ai.aiModes&&ai.aiModes.crawl.uniqueIps)||0 } },
+    humanTopPages:(ai.humanTopPages||[]).map(p=>[p.path,p.hits]),
+    notFound:(ai.notFound||[]).map(p=>[p.path,p.hits]) };
   TREND=(ai.trend||[]).slice().reverse().map(d=>[d.date.slice(5).replace("-","/"), d.aiTotal, d.chatgptUser]);
 }
 async function initVantage(){
