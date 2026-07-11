@@ -369,17 +369,29 @@ const MARKUP = `<div class="wrap">
       </div>
     </div>
 
-    <div class="grid g2">
+    <div class="grid g2" style="margin-bottom:14px;">
       <div class="panel">
         <div class="panel-h"><h3>Search-engine crawlers</h3><span class="note">indexing bots · 24h</span></div>
         <div class="panel-b"><div class="bars" id="regCrawlers"></div></div>
       </div>
       <div class="panel">
-        <div class="panel-h"><h3>Not wired yet</h3><span class="note">roadmap</span></div>
+        <div class="panel-h"><h3>Top countries</h3><span class="note">unique visitors · 24h</span></div>
         <div class="panel-b">
-          <div class="empty" style="margin-bottom:10px;"><span class="ic">◷</span><span><b style="color:var(--ink-2)">Geo / country breakdown.</b> Nginx access logs carry no geo data. Add the GeoIP module (or read Cloudflare's country header) and this becomes a live map.</span></div>
-          <div class="empty"><span class="ic">◷</span><span><b style="color:var(--ink-2)">Cache hit ratio.</b> Not in the current log format. Add <code>$upstream_cache_status</code> to the nginx log and it reports here.</span></div>
+          <div class="bars" id="regCountries"></div>
+          <div class="empty" id="regCountriesWait" style="display:none;"><span class="ic">◷</span><span><b style="color:var(--ink-2)">Waiting on nginx GeoIP.</b> Access logs carry no country yet. One <code>cc=</code> field in the nginx log format lights this up; the snippet is with Mark.</span></div>
         </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-h"><h3>Server performance</h3><span class="note">response time · cache · 24h</span></div>
+      <div class="panel-b">
+        <div class="cmp" id="regPerfCmp">
+          <div class="cb"><div class="cl">Median response</div><div class="cv" id="regP50">…</div><div class="csub" id="regP50Sub" style="font-size:11.5px;color:var(--muted);margin-top:6px;">…</div></div>
+          <div class="cb"><div class="cl">95th percentile</div><div class="cv" id="regP95">…</div><div class="csub" id="regP95Sub" style="font-size:11.5px;color:var(--muted);margin-top:6px;">…</div></div>
+          <div class="cb"><div class="cl">Cache hit ratio</div><div class="cv" id="regCacheRatio">…</div><div class="csub" id="regCacheSub" style="font-size:11.5px;color:var(--muted);margin-top:6px;">…</div></div>
+        </div>
+        <div class="empty" id="regPerfWait" style="margin-top:14px;display:none;"><span class="ic">◷</span><span><b style="color:var(--ink-2)">Waiting on nginx.</b> <code>rt=$request_time</code> (response time, a one-line log change) and <code>cache=$upstream_cache_status</code> (needs proxy_cache) fill these in automatically once added. The snippet is with Mark.</span></div>
       </div>
     </div>
   </section>
@@ -647,6 +659,46 @@ function trendChart(sel){
 
 /* ============================ RENDER ALL ============================ */
 function classTag(t){ return t==="internal"?"internal": t==="other"?"other": ""; }
+const CC_NAMES = { US:"United States", GB:"United Kingdom", CA:"Canada", DE:"Germany", IN:"India",
+  AU:"Australia", FR:"France", NL:"Netherlands", BR:"Brazil", JP:"Japan", SE:"Sweden", ES:"Spain",
+  IT:"Italy", MX:"Mexico", KR:"South Korea", PL:"Poland", RU:"Russia", CN:"China", ID:"Indonesia",
+  PH:"Philippines", TR:"Turkey", SG:"Singapore", CH:"Switzerland", BE:"Belgium", AT:"Austria",
+  NO:"Norway", DK:"Denmark", FI:"Finland", IE:"Ireland", PT:"Portugal", NZ:"New Zealand",
+  ZA:"South Africa", AE:"United Arab Emirates", SA:"Saudi Arabia", IL:"Israel", HK:"Hong Kong",
+  TW:"Taiwan", TH:"Thailand", VN:"Vietnam", MY:"Malaysia", UA:"Ukraine", RO:"Romania", CZ:"Czechia",
+  GR:"Greece", HU:"Hungary", CL:"Chile", AR:"Argentina", CO:"Colombia", EG:"Egypt", NG:"Nigeria" };
+function countryName(cc){ return CC_NAMES[String(cc).toUpperCase()] || String(cc).toUpperCase(); }
+function fmtMs(v){ return v>=1000 ? (v/1000).toFixed(2)+" s" : (Math.round(v*10)/10)+" ms"; }
+function renderRegionalAndPerf(){
+  const geo = AI.geo || {available:false, top:[]};
+  if(geo.available && geo.top && geo.top.length){
+    barList("#regCountries", geo.top.map(c=>({label:countryName(c[0]), value:c[1], tag:String(c[0]).toUpperCase()})));
+    $("#regCountries").style.display=""; $("#regCountriesWait").style.display="none";
+  } else {
+    $("#regCountries").innerHTML=""; $("#regCountries").style.display="none"; $("#regCountriesWait").style.display="flex";
+  }
+  const lat = AI.latency || {available:false};
+  const cache = AI.cache || {available:false};
+  const anyPerf = lat.available || cache.available;
+  $("#regPerfCmp").style.display = anyPerf ? "" : "none";
+  $("#regPerfWait").style.display = anyPerf ? "none" : "flex";
+  if(lat.available){
+    $("#regP50").textContent = fmtMs(lat.p50Ms);
+    $("#regP95").textContent = fmtMs(lat.p95Ms);
+    $("#regP50Sub").textContent = "avg "+fmtMs(lat.avgMs)+" · "+fmt(lat.samples)+" requests";
+    $("#regP95Sub").textContent = "slowest 5% of requests";
+  } else {
+    $("#regP50").textContent="n/a"; $("#regP95").textContent="n/a";
+    $("#regP50Sub").textContent="needs rt= in nginx log"; $("#regP95Sub").textContent="";
+  }
+  if(cache.available){
+    $("#regCacheRatio").textContent = cache.hitRatio.toFixed(1)+"%";
+    $("#regCacheSub").textContent = fmt(cache.hits)+" hits of "+fmt(cache.total)+" cacheable";
+  } else {
+    $("#regCacheRatio").textContent="n/a";
+    $("#regCacheSub").textContent="needs proxy_cache + cache= field";
+  }
+}
 function renderAiModes(){
   const m = AI.modes || {live:{hits:0,ips:0}, crawl:{hits:0,ips:0}};
   const tot = Math.max(1, m.live.hits + m.crawl.hits);
@@ -686,6 +738,7 @@ function renderStatic(){ if(!STATS||!AI||!TREND) return;
   }
   barList("#regReferrers", AI.topReferrers.slice(0,12).map(r=>({label:r[0]==="(direct)"?"Direct":r[0], value:r[1], mono:r[0]!=="(direct)", tag:classTag(r[2])})));
   barList("#regCrawlers", AI.search.map(s=>({label:s[0], value:s[1], mono:true})));
+  renderRegionalAndPerf();
 
   // ai
   renderAiKpis();
@@ -768,7 +821,10 @@ function adapt(stats, ai){
     modes:{ live:{ hits:(ai.aiModes&&ai.aiModes.live.hits)||0, ips:(ai.aiModes&&ai.aiModes.live.uniqueIps)||0 },
             crawl:{ hits:(ai.aiModes&&ai.aiModes.crawl.hits)||0, ips:(ai.aiModes&&ai.aiModes.crawl.uniqueIps)||0 } },
     humanTopPages:(ai.humanTopPages||[]).map(p=>[p.path,p.hits]),
-    notFound:(ai.notFound||[]).map(p=>[p.path,p.hits]) };
+    notFound:(ai.notFound||[]).map(p=>[p.path,p.hits]),
+    geo:{ available:!!(ai.geo&&ai.geo.available), top:((ai.geo&&ai.geo.topCountries)||[]).map(c=>[c.code,c.visitors]) },
+    latency:(ai.latency||{available:false, avgMs:0, p50Ms:0, p95Ms:0, samples:0}),
+    cache:(ai.cache||{available:false, hitRatio:0, hits:0, total:0, byStatus:{}}) };
   TREND=(ai.trend||[]).slice().reverse().map(d=>[d.date.slice(5).replace("-","/"), d.aiTotal, d.chatgptUser]);
 }
 async function initVantage(){

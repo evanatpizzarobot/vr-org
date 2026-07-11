@@ -182,6 +182,29 @@ interface AiStatsResponse {
     live: { hits: number; uniqueIps: number };
     crawl: { hits: number; uniqueIps: number };
   };
+  // Instrumentation-ready fields. These stay `available:false` / empty until the
+  // nginx log_format carries the trailing `rt=` / `cache=` / `cc=` fields (see the
+  // ops note handed to Mark). Parsing auto-activates the moment they appear; no
+  // code change needed. Sourced here (not /api/stats) so the frozen stats contract
+  // is untouched.
+  latency: {
+    available: boolean;
+    avgMs: number;
+    p50Ms: number;
+    p95Ms: number;
+    samples: number;
+  };
+  cache: {
+    available: boolean;
+    hitRatio: number;
+    hits: number;
+    total: number;
+    byStatus: Record<string, number>;
+  };
+  geo: {
+    available: boolean;
+    topCountries: Array<{ code: string; visitors: number }>;
+  };
 }
 
 async function readLast24hContents(): Promise<string[]> {
@@ -225,6 +248,15 @@ function generateAiStats(contents: string[]): AiStatsResponse {
   const modeHits = { live: 0, crawl: 0 };
   const modeIps = { live: new Set<string>(), crawl: new Set<string>() };
 
+  // Instrumentation-ready accumulators (dormant until nginx emits the trailing fields).
+  const cacheByStatus: Record<string, number> = {};
+  let cacheSeen = false;
+  const latSamples: number[] = [];
+  let latSum = 0;
+  let latSeen = false;
+  const countryIps: Record<string, Set<string>> = {};
+  let geoSeen = false;
+
   for (const content of contents) {
     for (const line of content.split("\n")) {
       if (!line) continue;
@@ -241,6 +273,34 @@ function generateAiStats(contents: string[]): AiStatsResponse {
       const ua = m[7];
       const uaLower = ua.toLowerCase();
       const pathNoQuery = rawPath.split("?")[0];
+
+      // Trailing nginx fields, parsed only from the segment AFTER the user-agent's
+      // closing quote so referer/UA text (which can contain cache=/rt=/cc=) never
+      // false-matches. All optional and independent: any subset can be present.
+      let country = "";
+      const tailIdx = line.lastIndexOf('"');
+      if (tailIdx >= 0) {
+        const tail = line.slice(tailIdx + 1);
+        const cM = tail.match(/cache=(\S+)/);
+        if (cM) {
+          cacheSeen = true;
+          if (cM[1] !== "-") cacheByStatus[cM[1]] = (cacheByStatus[cM[1]] || 0) + 1;
+        }
+        const rM = tail.match(/rt=([\d.]+)/);
+        if (rM) {
+          latSeen = true;
+          const ms = parseFloat(rM[1]) * 1000;
+          if (isFinite(ms)) {
+            latSum += ms;
+            if (latSamples.length < 250000) latSamples.push(ms);
+          }
+        }
+        const gM = tail.match(/cc=([A-Za-z-]+)/);
+        if (gM) {
+          geoSeen = true;
+          country = gM[1].toUpperCase();
+        }
+      }
 
       // Broken-path report: page-like 404s from anyone (humans or bots).
       if (status === 404 && isPageLike404(pathNoQuery)) {
@@ -280,6 +340,9 @@ function generateAiStats(contents: string[]): AiStatsResponse {
       const host = refererHost(referer);
       pvHost[host || "(direct)"] = (pvHost[host || "(direct)"] || 0) + 1;
       pvPath[pathNoQuery] = (pvPath[pathNoQuery] || 0) + 1;
+      if (country && country !== "-") {
+        (countryIps[country] ||= new Set<string>()).add(ip);
+      }
 
       const src = aiReferralSource(host, utmSource(rawPath));
       if (src) {
@@ -323,6 +386,28 @@ function generateAiStats(contents: string[]): AiStatsResponse {
     .sort((a, b) => b.hits - a.hits)
     .slice(0, 12);
 
+  // Latency percentiles from request-time samples (empty until nginx emits rt=).
+  const latSorted = latSamples.slice().sort((a, b) => a - b);
+  const pctl = (p: number): number =>
+    latSorted.length ? latSorted[Math.min(latSorted.length - 1, Math.floor(p * latSorted.length))] : 0;
+  const round1 = (n: number): number => Math.round(n * 10) / 10;
+
+  // Cache hit ratio over cacheable outcomes only (BYPASS / "-" excluded).
+  const CACHEABLE = ["HIT", "MISS", "EXPIRED", "STALE", "REVALIDATED", "UPDATING"];
+  let cacheHits = 0;
+  let cacheable = 0;
+  for (const [k, v] of Object.entries(cacheByStatus)) {
+    if (CACHEABLE.includes(k)) {
+      cacheable += v;
+      if (k === "HIT") cacheHits += v;
+    }
+  }
+
+  const topCountries = Object.entries(countryIps)
+    .map(([code, ips]) => ({ code, visitors: ips.size }))
+    .sort((a, b) => b.visitors - a.visitors)
+    .slice(0, 12);
+
   return {
     version: "1.0",
     fetchedAt: now,
@@ -351,6 +436,24 @@ function generateAiStats(contents: string[]): AiStatsResponse {
     aiModes: {
       live: { hits: modeHits.live, uniqueIps: modeIps.live.size },
       crawl: { hits: modeHits.crawl, uniqueIps: modeIps.crawl.size },
+    },
+    latency: {
+      available: latSeen,
+      avgMs: latSamples.length ? round1(latSum / latSamples.length) : 0,
+      p50Ms: round1(pctl(0.5)),
+      p95Ms: round1(pctl(0.95)),
+      samples: latSamples.length,
+    },
+    cache: {
+      available: cacheSeen,
+      hitRatio: cacheable ? round1((cacheHits / cacheable) * 100) : 0,
+      hits: cacheHits,
+      total: cacheable,
+      byStatus: cacheByStatus,
+    },
+    geo: {
+      available: geoSeen,
+      topCountries,
     },
   };
 }
