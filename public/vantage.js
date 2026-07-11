@@ -929,23 +929,34 @@ function adapt(stats, ai){
     cache:(ai.cache||{available:false, hitRatio:0, hits:0, total:0, byStatus:{}}) };
   TREND=(ai.trend||[]).slice().reverse().map(d=>[d.date.slice(5).replace("-","/"), d.aiTotal, d.chatgptUser]);
 }
+async function loadVantageData(){
+  const [stats, ai] = await Promise.all([
+    fetch("/api/stats",{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error("stats "+r.status); return r.json(); }),
+    fetch("/api/ai-stats?trend=7",{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error("ai-stats "+r.status); return r.json(); })
+  ]);
+  adapt(stats, ai);
+  renderStatic();
+  renderCharts();
+}
 async function initVantage(){
   const u=document.getElementById("updated"); if(u) u.textContent="loading live data…";
-  try{
-    const [stats, ai] = await Promise.all([
-      fetch("/api/stats",{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error("stats "+r.status); return r.json(); }),
-      fetch("/api/ai-stats?trend=7",{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error("ai-stats "+r.status); return r.json(); })
-    ]);
-    adapt(stats, ai);
-    renderStatic();
-    renderCharts();
-  }catch(err){
-    if(u) u.textContent="data unavailable";
-    const wrap=document.querySelector(".wrap");
-    if(wrap){
-      const e=document.createElement("div"); e.className="snap"; e.style.borderColor="var(--crit)";
-      e.innerHTML='<span>⚠ <b>Could not load live data.</b> '+String(err&&err.message||err)+'. The stats endpoints may be warming up after a deploy; refresh in a moment.</span>';
-      const nav=wrap.querySelector(".tabs"); wrap.insertBefore(e, nav||wrap.firstChild);
+  // Deploy restarts take the app down for ~15-25s (docker compose up --build), so
+  // nginx returns 502 briefly. Retry with backoff (up to ~24s) before surfacing an
+  // error, so a deploy blip is invisible instead of a scary banner on refresh.
+  const delays=[0,4000,8000,12000];
+  for(let i=0;i<delays.length;i++){
+    if(delays[i]){ if(u) u.textContent="reconnecting… (endpoints warming up)"; await new Promise(r=>setTimeout(r,delays[i])); }
+    try{ await loadVantageData(); return; }
+    catch(err){
+      if(i===delays.length-1){
+        if(u) u.textContent="data unavailable";
+        const wrap=document.querySelector(".wrap");
+        if(wrap && !document.getElementById("vantageErr")){
+          const e=document.createElement("div"); e.id="vantageErr"; e.className="snap"; e.style.borderColor="var(--crit)";
+          e.innerHTML='<span>⚠ <b>Could not load live data.</b> '+esc(String(err&&err.message||err))+'. The stats endpoints may be warming up after a deploy; refresh in a moment.</span>';
+          const nav=wrap.querySelector(".tabs"); wrap.insertBefore(e, nav||wrap.firstChild);
+        }
+      }
     }
   }
 }
