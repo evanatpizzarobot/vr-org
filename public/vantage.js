@@ -162,6 +162,37 @@ const CSS = `
   .pill.flat { color: var(--ink-2); background: var(--surface-2); }
   .kpi.hot { background: linear-gradient(0deg, var(--accent-soft), var(--accent-soft)), var(--surface); }
 
+  /* ---------- KPI sparkline ---------- */
+  .sparkwrap { margin-top: 9px; display: flex; align-items: flex-end; gap: 8px; }
+  .spark { flex: 1 1 auto; display: block; width: 100%; height: 34px; min-width: 0; }
+  .spark-delta { font-family: var(--font-mono); font-size: 10px; font-weight: 600; white-space: nowrap; padding-bottom: 2px; }
+  .spark-delta.up { color: var(--good); }
+  .spark-delta.down { color: var(--serious); }
+
+  /* ---------- KPI rise-in on (re)render ---------- */
+  @keyframes kpiRise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+  .kpi { animation: kpiRise .5s both; }
+  .kpis .kpi:nth-child(1) { animation-delay: .03s; }
+  .kpis .kpi:nth-child(2) { animation-delay: .09s; }
+  .kpis .kpi:nth-child(3) { animation-delay: .15s; }
+  .kpis .kpi:nth-child(4) { animation-delay: .21s; }
+  .kpis .kpi:nth-child(5) { animation-delay: .27s; }
+  .kpis .kpi:nth-child(6) { animation-delay: .33s; }
+
+  /* ---------- machines-vs-search race ---------- */
+  .vs { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; }
+  .vs-ratio { text-align: center; flex: 0 0 auto; }
+  .vs-ratio .big { font-size: 42px; font-weight: 700; letter-spacing: -0.03em; color: var(--accent-line); font-variant-numeric: tabular-nums; line-height: 1; }
+  .vs-ratio-cap { font-size: 10px; color: var(--muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 7px; line-height: 1.35; }
+  .vs-rows { display: flex; flex-direction: column; gap: 13px; min-width: 0; }
+  .vs-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 5px; }
+  .vs-name { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--ink-2); }
+  .vs-dot { width: 9px; height: 9px; border-radius: 3px; flex: 0 0 auto; }
+  .vs-val { font-family: var(--font-mono); font-size: 14px; font-weight: 650; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .vs-track { height: 12px; background: var(--surface-2); border-radius: 6px; overflow: hidden; }
+  .vs-fill { height: 100%; border-radius: 6px; width: 0; transition: width .9s cubic-bezier(.2,.7,.2,1); }
+  @media (max-width: 560px) { .vs { grid-template-columns: 1fr; gap: 14px; } .vs-ratio { text-align: left; } }
+
   /* ---------- panels ---------- */
   .grid { display: grid; gap: 14px; }
   .g2 { grid-template-columns: 1fr 1fr; }
@@ -180,7 +211,7 @@ const CSS = `
   .bar .bl code { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink); }
   .bar .bl .tag { font-family: var(--font-mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; padding: 0 4px; margin-left: 6px; }
   .bar .track { height: 9px; background: var(--surface-2); border-radius: 5px; overflow: hidden; }
-  .bar .fill { height: 100%; border-radius: 5px; background: var(--accent); min-width: 3px; transition: width .6s cubic-bezier(.2,.7,.2,1); }
+  .bar .fill { height: 100%; border-radius: 5px; background: var(--accent); min-width: 3px; transition: width .75s cubic-bezier(.2,.7,.2,1); }
   .bar .fill.violet { background: var(--series-violet); }
   .bar .bv { text-align: right; font-family: var(--font-mono); font-size: 12px; color: var(--ink); font-variant-numeric: tabular-nums; }
   .bar .bv i { color: var(--muted); font-style: normal; font-size: 10.5px; }
@@ -307,14 +338,23 @@ const MARKUP = `<div class="wrap">
       <div class="panel">
         <div class="panel-h"><h3>Machines vs. search</h3><span class="note">24h reads</span></div>
         <div class="panel-b">
-          <div class="callout" style="border:none;padding:0;background:none;">
-            <div class="big" id="ovRatio">…</div>
-            <div class="txt"><b>AI assistants now out-fetch every traditional search crawler combined.</b> Your content is being read into answers more than it is being indexed for links.</div>
+          <div class="vs">
+            <div class="vs-ratio">
+              <div class="big" id="ovRatio">…</div>
+              <div class="vs-ratio-cap">AI reads per<br>search crawl</div>
+            </div>
+            <div class="vs-rows">
+              <div class="vs-row">
+                <div class="vs-top"><span class="vs-name"><span class="vs-dot" style="background:var(--series-cyan)"></span>AI assistants</span><span class="vs-val" id="ovAi">…</span></div>
+                <div class="vs-track"><div class="vs-fill" id="ovAiBar" style="background:var(--series-cyan)"></div></div>
+              </div>
+              <div class="vs-row">
+                <div class="vs-top"><span class="vs-name"><span class="vs-dot" style="background:var(--muted)"></span>Search crawlers</span><span class="vs-val" id="ovSearch">…</span></div>
+                <div class="vs-track"><div class="vs-fill" id="ovSearchBar" style="background:var(--muted)"></div></div>
+              </div>
+            </div>
           </div>
-          <div class="cmp">
-            <div class="cb"><div class="cl">AI assistants</div><div class="cv" id="ovAi">…</div><div class="ct" id="ovAiBar" style="background:var(--accent);"></div></div>
-            <div class="cb"><div class="cl">Search crawlers</div><div class="cv" id="ovSearch">…</div><div class="ct" id="ovSearchBar" style="background:var(--muted);"></div></div>
-          </div>
+          <p class="lead" style="padding:14px 0 0;"><b style="color:var(--ink)">AI assistants now out-fetch every traditional search crawler combined.</b> Your content is being read into answers more than it is being indexed for links.</p>
         </div>
       </div>
     </div>
@@ -476,11 +516,62 @@ const pct = (a,b) => (100*a/b);
 function gb(bytes){ return (bytes/1e9).toFixed(2)+" GB"; }
 
 
+/* ============================ ANIMATION HELPERS ============================ */
+const REDUCE = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+let INITIAL = true;
+const easeOutCubic = p => 1 - Math.pow(1-p, 3);
+function animateNumber(node, target, o={}){
+  if(!node) return;
+  const decimals=o.decimals||0, suffix=o.suffix||"", prefix=o.prefix||"", comma=o.comma, dur=o.dur||700;
+  const out = v => prefix + (comma ? v.toLocaleString("en-US",{minimumFractionDigits:decimals,maximumFractionDigits:decimals}) : v.toFixed(decimals)) + suffix;
+  if(REDUCE || !INITIAL){ node.textContent = out(target); return; }
+  const t0 = performance.now();
+  (function f(now){ const p=Math.min(1,(now-t0)/dur); node.textContent=out(target*easeOutCubic(p)); if(p<1) requestAnimationFrame(f); else node.textContent=out(target); })(performance.now());
+}
+function setBarWidth(node, pct, delay){
+  if(!node) return;
+  if(REDUCE || !INITIAL){ node.style.width = pct + "%"; return; }
+  node.style.width = "0%";
+  requestAnimationFrame(()=> setTimeout(()=>{ node.style.width = pct + "%"; }, delay||0));
+}
+function sparkline(data, o={}){
+  if(!data || data.length < 2) return "";
+  const w=100, h=26, p=2, n=data.length;
+  const max=Math.max(...data), min=Math.min(...data), rng=(max-min)||1;
+  const X=i=> p+(w-2*p)*i/(n-1), Y=v=> p+(h-2*p)*(1-(v-min)/rng);
+  let d=`M ${X(0).toFixed(1)} ${Y(data[0]).toFixed(1)}`;
+  for(let i=1;i<n;i++) d+=` L ${X(i).toFixed(1)} ${Y(data[i]).toFixed(1)}`;
+  const area=d+` L ${X(n-1).toFixed(1)} ${(h-p)} L ${X(0).toFixed(1)} ${(h-p)} Z`;
+  const col=o.color||"var(--accent-line)";
+  const gid="sp"+Math.random().toString(36).slice(2,8);
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="${gid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity="0.30"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs><path d="${area}" fill="url(#${gid})"/><path d="${d}" fill="none" stroke="${col}" stroke-width="1.9" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
+}
+function countUpAll(){
+  document.querySelectorAll(".kpi .val").forEach(node=>{
+    const raw=node.textContent;
+    const m=raw.match(/^(\D*)([\d,]*\.?\d+)(.*)$/);
+    if(!m) return;
+    const numStr=m[2], target=parseFloat(numStr.replace(/,/g,""));
+    if(!isFinite(target) || target===0) return;
+    const decimals=(numStr.split(".")[1]||"").length;
+    const comma=numStr.indexOf(",")>=0;
+    animateNumber(node, target, {decimals, comma, prefix:m[1], suffix:m[3], dur:1100});
+  });
+}
+
 /* ============================ KPI TILES ============================ */
 function kpi(lab, val, ctxHTML, opts={}) {
   const e = el("div","kpi"+(opts.hot?" hot":""));
   e.appendChild(el("div","lab",lab));
   e.appendChild(el("div","val",val));
+  if(opts.spark){
+    const s=opts.spark, first=s[0], last=s[s.length-1];
+    const dpct = first ? ((last-first)/first*100) : 0;
+    const up = dpct>=0;
+    const wrap=el("div","sparkwrap");
+    wrap.innerHTML = sparkline(s,{color:opts.sparkColor}) + `<span class="spark-delta ${up?'up':'down'}">${up?'▲':'▼'} ${Math.abs(dpct).toFixed(0)}%</span>`;
+    e.appendChild(wrap);
+  }
   if(ctxHTML) e.appendChild(el("div","ctx",ctxHTML));
   return e;
 }
@@ -489,26 +580,26 @@ function renderOverviewKpis(){
   const d = STATS.requests24h - STATS.requests24hPrev;
   const dp = (100*d/STATS.requests24hPrev);
   const delta = `<span class="pill ${d<0?'down':'up'}">${d<0?'▼':'▲'} ${Math.abs(dp).toFixed(1)}%</span> vs prev 24h`;
-  c.appendChild(kpi("Requests · 24h", fmt(STATS.requests24h), delta));
+  c.appendChild(kpi("Requests · 24h", fmt(STATS.requests24h), delta, {spark:STATS.hourly}));
   c.appendChild(kpi("Unique visitors", fmt(STATS.uniqueVisitors24h), "distinct IPs incl. crawlers"));
-  c.appendChild(kpi("AI bot reads", fmt(AI.botsTotalHits), `<span class="pill good">${fmt(AI.chatgpt.uniqueIps)} ChatGPT sessions</span>`, {hot:true}));
-  c.appendChild(kpi("Bandwidth · 24h", gb(STATS.bandwidth24h), "served to all clients"));
+  c.appendChild(kpi("AI bot reads", fmt(AI.botsTotalHits), `<span class="pill good">${fmt(AI.chatgpt.uniqueIps)} ChatGPT sessions</span>`, {hot:true, spark:TREND.map(r=>r[1]), sparkColor:"var(--series-violet)"}));
+  c.appendChild(kpi("Bandwidth · 24h", gb(STATS.bandwidth24h), "served to all clients", {spark:STATS.hourly}));
   c.appendChild(kpi("AI referral clicks", fmt(AI.referrals.total), "humans arriving from AI"));
   c.appendChild(kpi("Server errors", "0", `<span class="pill good">100% availability</span>`));
 }
 function renderRegularKpis(){
   const c=$("#regKpis"); c.innerHTML="";
-  c.appendChild(kpi("Requests · 24h", fmt(STATS.requests24h), "all HTTP requests"));
+  c.appendChild(kpi("Requests · 24h", fmt(STATS.requests24h), "all HTTP requests", {spark:STATS.hourly}));
   c.appendChild(kpi("Unique visitors", fmt(STATS.uniqueVisitors24h), "distinct IPs"));
   c.appendChild(kpi("Requests · last hour", fmt(STATS.requests1h), `≈ ${fmt(Math.round(STATS.requests24h/24))}/hr avg`));
-  c.appendChild(kpi("Bandwidth · 24h", gb(STATS.bandwidth24h), "≈ "+ (STATS.bandwidth24h/STATS.requests24h/1024).toFixed(1) +" KB/req"));
+  c.appendChild(kpi("Bandwidth · 24h", gb(STATS.bandwidth24h), "≈ "+ (STATS.bandwidth24h/STATS.requests24h/1024).toFixed(1) +" KB/req", {spark:STATS.hourly}));
   c.appendChild(kpi("Success rate", pct(STATS.status.s2,STATS.requests24h).toFixed(1)+"%", `<span class="pill good">2xx responses</span>`));
   c.appendChild(kpi("Client errors", fmt(STATS.status.s4), `<span class="pill flat">${pct(STATS.status.s4,STATS.requests24h).toFixed(1)}% · 4xx</span>`));
 }
 function renderAiKpis(){
   const c=$("#aiKpis"); c.innerHTML="";
   const ratio = (AI.referrals.chatgptClicks ? AI.chatgpt.hits/AI.referrals.chatgptClicks : AI.chatgpt.hits);
-  c.appendChild(kpi("AI reads · 24h", fmt(AI.botsTotalHits), `across ${AI.bots.length} assistants`, {hot:true}));
+  c.appendChild(kpi("AI reads · 24h", fmt(AI.botsTotalHits), `across ${AI.bots.length} assistants`, {hot:true, spark:TREND.map(r=>r[1]), sparkColor:"var(--series-violet)"}));
   c.appendChild(kpi("ChatGPT sessions", fmt(AI.chatgpt.uniqueIps), "unique IPs, 24h"));
   c.appendChild(kpi("Pages ChatGPT read", fmt(AI.chatgpt.distinctPages), "distinct URLs"));
   c.appendChild(kpi("Read : click ratio", Math.round(ratio)+":1", "ChatGPT reads vs clicks"));
@@ -521,14 +612,16 @@ function barList(sel, items, opts={}){
   const host=$(sel); host.innerHTML="";
   const max = opts.max || Math.max(...items.map(i=>i.value));
   const violet = opts.violet;
-  items.forEach(it=>{
+  items.forEach((it,idx)=>{
     const row=el("div","bar");
     const lab = it.mono ? ("<code>"+esc(it.label)+"</code>") : esc(it.label);
     const tag = it.tag ? `<span class="tag">${it.tag}</span>` : "";
     row.appendChild(el("div","bl",lab+tag));
     const track=el("div","track");
     const fill=el("div","fill"+(violet?" violet":""));
-    fill.style.width = Math.max(2, 100*it.value/max)+"%";
+    const targetPct = Math.max(2, 100*it.value/max);
+    if(REDUCE || !INITIAL){ fill.style.width = targetPct+"%"; }
+    else { fill.style.width="0%"; const delay=idx*55; requestAnimationFrame(()=> setTimeout(()=>{ fill.style.width=targetPct+"%"; }, delay)); }
     track.appendChild(fill); row.appendChild(track);
     const sub = it.sub!=null ? ` <i>${it.sub}</i>` : "";
     row.appendChild(el("div","bv", fmt(it.value)+sub));
@@ -715,12 +808,12 @@ function renderStatic(){ if(!STATS||!AI||!TREND) return;
   const SEARCH_TOTAL = AI.search.reduce((s,x)=>s+x[1],0);
   // overview
   renderOverviewKpis();
-  $("#ovRatio").textContent = (AI.botsTotalHits/SEARCH_TOTAL).toFixed(1)+"×";
-  $("#ovAi").textContent = fmt(AI.botsTotalHits);
-  $("#ovSearch").textContent = fmt(SEARCH_TOTAL);
-  const mx=Math.max(AI.botsTotalHits,SEARCH_TOTAL);
-  $("#ovAiBar").style.width=(100*AI.botsTotalHits/mx)+"%";
-  $("#ovSearchBar").style.width=(100*SEARCH_TOTAL/mx)+"%";
+  const aiTot=AI.botsTotalHits, seaTot=SEARCH_TOTAL, mx=Math.max(aiTot,seaTot);
+  animateNumber($("#ovRatio"), aiTot/seaTot, {decimals:1, suffix:"×", dur:1200});
+  $("#ovAi").textContent = fmt(aiTot);
+  $("#ovSearch").textContent = fmt(seaTot);
+  setBarWidth($("#ovAiBar"), 100*aiTot/mx, 120);
+  setBarWidth($("#ovSearchBar"), 100*seaTot/mx, 240);
   barList("#ovReferrers", AI.topReferrers.filter(r=>r[2]!=="internal").slice(0,7).map(r=>({label:r[0]==="(direct)"?"Direct":r[0], value:r[1], mono:r[0]!=="(direct)", tag:classTag(r[2])})));
   barList("#ovVendors", AI.vendors.slice(0,7).map(v=>({label:v[0], value:v[1], sub: v[0]==="OpenAI"?pct(v[1],AI.botsTotalHits).toFixed(0)+"%":null})));
   $("#aiCnt").textContent = fmt(AI.botsTotalHits);
@@ -749,7 +842,7 @@ function renderStatic(){ if(!STATS||!AI||!TREND) return;
   const hmin=Math.min(...AI.chatgpt.hourlyUtc), hmax=Math.max(...AI.chatgpt.hourlyUtc);
   $("#aiHourlyRange").textContent = hmin+"-"+hmax;
   const gap = AI.referrals.chatgptClicks ? AI.chatgpt.hits/AI.referrals.chatgptClicks : AI.chatgpt.hits;
-  $("#aiGap").textContent = Math.round(gap)+":1";
+  animateNumber($("#aiGap"), Math.round(gap), {suffix:":1", dur:1200});
   $("#aiGapWord").textContent = Math.round(gap);
   $("#aiReads").textContent = fmt(AI.chatgpt.hits);
   $("#aiClicks").textContent = fmt(AI.referrals.chatgptClicks);
@@ -781,7 +874,12 @@ document.querySelectorAll(".tab-btn").forEach(b=>{
     b.setAttribute("aria-selected","true");
     document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
     $("#tab-"+b.dataset.tab).classList.add("active");
+    // replay entrance animations for the entered tab
+    INITIAL = true;
+    renderStatic();
     renderCharts();
+    countUpAll();
+    INITIAL = false;
   });
 });
 function applyTheme(t){ document.documentElement.setAttribute("data-theme",t); try{localStorage.setItem("vantage-theme",t);}catch(e){} }
@@ -792,6 +890,10 @@ $("#themeBtn").addEventListener("click",()=>{
 (function initTheme(){ let t="dark"; try{ t=localStorage.getItem("vantage-theme")||"dark"; }catch(e){} document.documentElement.setAttribute("data-theme",t); })();
 
 let rz; window.addEventListener("resize",()=>{ clearTimeout(rz); rz=setTimeout(renderCharts,150); });
+renderStatic();
+renderCharts();
+countUpAll();
+INITIAL = false;
 
 
 /* ============================ LIVE DATA ADAPTER ============================ */
