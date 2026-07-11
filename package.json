@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "node scripts/check-author-rotation.mjs --recent 12",
+    "prebuild": "node scripts/validate-articles.mjs && node scripts/check-author-rotation.mjs --recent 12",
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint",
@@ -12,6 +12,7 @@
     "check:deals": "node scripts/check-deal-links.mjs",
     "check:category-products": "node scripts/check-category-products.mjs",
     "check:rotation": "node scripts/check-author-rotation.mjs",
+    "check:articles": "node scripts/validate-articles.mjs",
     "deals:publish": "node scripts/refresh-deals.mjs",
     "audit:pages": "node scripts/audit-pages.mjs",
     "gsc:mine": "node scripts/gsc-striking-distance.mjs"

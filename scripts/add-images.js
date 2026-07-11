@@ -113,6 +113,14 @@ for (const article of articles) {
   updatedCount++;
 }
 
-fs.writeFileSync('data/articles.json', JSON.stringify(articles, null, 2));
+// Atomic write: serialize, prove it parses back, write to a temp file on the same
+// filesystem, then rename over the real file. A crash or interrupted/truncated
+// write can never leave a half-written data/articles.json on disk (which would
+// otherwise silently deploy an article-less site).
+const out = JSON.stringify(articles, null, 2);
+JSON.parse(out); // guard: never stage something that will not parse
+const tmpPath = 'data/articles.json.tmp';
+fs.writeFileSync(tmpPath, out);
+fs.renameSync(tmpPath, 'data/articles.json'); // atomic replace (POSIX and Windows)
 console.log(`Done! Updated ${updatedCount} articles with images.`);
 console.log(`Total image insertions: ${Object.values(imageMap).reduce((sum, arr) => sum + arr.length, 0)}`);
