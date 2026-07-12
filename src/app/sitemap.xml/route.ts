@@ -65,7 +65,7 @@ export async function GET() {
 
   const reg_or = (p: string) => reg[p] || latest;
 
-  // [loc, lastmod, changefreq, priority] — same URL set and freq/priority as before.
+  // [loc, lastmod, changefreq, priority]: same URL set and freq/priority as before.
   const pages: [string, string, string, string][] = [
     ["/", latest, "hourly", "1.0"],
     ["/hardware", catNewest.hardware || latest, "hourly", "0.9"],

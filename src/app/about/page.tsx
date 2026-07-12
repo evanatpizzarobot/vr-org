@@ -97,7 +97,7 @@ export default function AboutPage() {
           </li>
           <li>
             <strong style={{ color: "var(--text-primary)" }}>Original research:</strong> Data studies built from our own coverage, including{" "}
-            <a href="/state-of-vr-2026" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>The State of VR &amp; AR 2026</a>. Free to cite with attribution.
+            <a href="/state-of-vr-2026" className="no-underline hover:underline" style={{ color: "var(--accent-cyan)" }}>The State of VR, AR &amp; XR 2026</a>. Free to cite with attribution.
           </li>
           <li>
             <strong style={{ color: "var(--text-primary)" }}>Explainers:</strong> Plain-language guides like{" "}

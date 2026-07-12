@@ -81,12 +81,12 @@ export function OriginalsHub({ initialArticles }: { initialArticles?: ArticleSum
             className="font-display text-[18px] font-bold mb-1"
             style={{ color: "var(--text-primary)" }}
           >
-            The State of VR &amp; AR 2026
+            The State of VR, AR &amp; XR 2026
           </div>
           <div className="text-[13.5px] leading-[1.55]" style={{ color: "var(--text-secondary)" }}>
-            We analyzed 130 stories across 36 sources. Meta still leads 40% of VR
-            coverage, but 44% of the conversation has already moved to AR and
-            smart glasses. Read the data &rarr;
+            We analyzed 195 stories across 36 sources. Meta still leads 38% of
+            coverage, but 42% of the conversation now touches AR and smart
+            glasses. Read the data &rarr;
           </div>
         </a>
 

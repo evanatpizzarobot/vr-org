@@ -38,7 +38,7 @@ VR.org was co-founded in 2018 by Evan Marcus and Mark Mahle (NetActuate). Editor
 
 ## Research and data studies
 
-- [The State of VR & AR 2026](${SITE}/state-of-vr-2026): Original VR.org data study of 130 stories across 36 monitored sources. Key findings: Meta leads 40% of VR coverage; 44% of the conversation has shifted to AR and smart glasses; Google's Android XR is the #2 most-covered platform (26%). Free to cite with attribution (CC BY 4.0).
+- [The State of VR, AR & XR 2026](${SITE}/state-of-vr-2026): Original VR.org data study of 195 stories across 36 monitored sources (updated July 12, 2026). Key findings: Meta leads 38% of coverage; 42% of the conversation touches AR and smart glasses; Google's Android XR is the #2 most-covered platform (24%). Free to cite with attribution (CC BY 4.0).
 
 ## Pillar guides and explainers
 
