@@ -389,7 +389,11 @@ export function CategoryHub({ category, title, description, initialEditorial, pr
             right-hand column. Previously order-first forced all the sidebar
             widgets above the category content on mobile. */}
         <div>
-          <Sidebar sourceStats={sourceStats} trending={trending} />
+          <Sidebar
+            sourceStats={sourceStats}
+            trending={trending}
+            topListPriority={category === "software" ? "apps" : "games"}
+          />
         </div>
       </div>
       </main>

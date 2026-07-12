@@ -15,9 +15,13 @@ import { AD_SLOTS } from "@/lib/ads";
 interface SidebarProps {
   sourceStats: Record<string, { name: string; count: number }>;
   trending: TrendingTopic[];
+  // Which top-list leads the sidebar. Same widgets everywhere, only the order
+  // changes, so pages whose content is apps-first (like /software) do not lead
+  // with a games list.
+  topListPriority?: "games" | "apps";
 }
 
-export function Sidebar({ sourceStats, trending }: SidebarProps) {
+export function Sidebar({ sourceStats, trending, topListPriority = "games" }: SidebarProps) {
   const [topLists, setTopLists] = useState<Record<string, TopList>>({});
 
   useEffect(() => {
@@ -27,15 +31,16 @@ export function Sidebar({ sourceStats, trending }: SidebarProps) {
       .catch(() => {});
   }, []);
 
+  const [leadKey, trailKey] =
+    topListPriority === "apps"
+      ? (["top-vr-apps", "top-vr-games-2026"] as const)
+      : (["top-vr-games-2026", "top-vr-apps"] as const);
+
   return (
     <div className="flex flex-col gap-5">
-      {topLists["top-vr-games-2026"] && (
-        <TopListWidget list={topLists["top-vr-games-2026"]} />
-      )}
+      {topLists[leadKey] && <TopListWidget list={topLists[leadKey]} />}
       <EditorsPicks />
-      {topLists["top-vr-apps"] && (
-        <TopListWidget list={topLists["top-vr-apps"]} />
-      )}
+      {topLists[trailKey] && <TopListWidget list={topLists[trailKey]} />}
       <NetActuateBanner />
       <div className="sidebar-sticky-ad">
         <AdSlot
