@@ -59,6 +59,19 @@ const CATEGORY_GUIDES: Record<string, { label: string; href: string; description
   ],
 };
 
+// Which two top-list widgets each hub's sidebar carries, in order. The lead
+// list should match the hub's beat; the second is the closest adjacent list so
+// the sidebar still cross-sells. Hubs not listed here fall back to the
+// site-wide default (games, then apps).
+const CATEGORY_TOP_LISTS: Record<string, [string, string]> = {
+  gaming: ["top-vr-games-2026", "top-vr-apps"],
+  software: ["top-vr-apps", "top-vr-games-2026"],
+  hardware: ["top-vr-headsets", "top-vr-games-2026"],
+  ar: ["top-ar-glasses", "top-vr-headsets"],
+  xr: ["top-vr-headsets", "top-ar-glasses"],
+  enterprise: ["top-vr-headsets", "top-vr-apps"],
+};
+
 export function CategoryHub({ category, title, description, initialEditorial, products }: CategoryHubProps) {
   const { articles, trending, sourceStats, lastUpdated, loading } = useFeed();
   const [view, setView] = useState<"full" | "compact">("full");
@@ -392,7 +405,8 @@ export function CategoryHub({ category, title, description, initialEditorial, pr
           <Sidebar
             sourceStats={sourceStats}
             trending={trending}
-            topListPriority={category === "software" ? "apps" : "games"}
+            topListKeys={CATEGORY_TOP_LISTS[category]}
+            editorialCategory={category}
           />
         </div>
       </div>

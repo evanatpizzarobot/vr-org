@@ -16,6 +16,32 @@
       { "rank": 10, "title": "Aces of Thunder", "subtitle": "PSVR2 / PC VR" }
     ]
   },
+  "top-vr-headsets": {
+    "title": "Top VR Headsets 2026",
+    "icon": "🥽",
+    "href": "/best-vr-headsets",
+    "items": [
+      { "rank": 1, "title": "Meta Quest 3S", "subtitle": "$349 / best budget pick" },
+      { "rank": 2, "title": "Meta Quest 3", "subtitle": "$599 / best all-around" },
+      { "rank": 3, "title": "PlayStation VR2", "subtitle": "$399 / best for PS5" },
+      { "rank": 4, "title": "Apple Vision Pro", "subtitle": "$3,499 / spatial computing" },
+      { "rank": 5, "title": "Valve Index", "subtitle": "PC VR enthusiasts" },
+      { "rank": 6, "title": "HP Reverb G2", "subtitle": "Sim racing and flight" }
+    ]
+  },
+  "top-ar-glasses": {
+    "title": "Top AR Glasses 2026",
+    "icon": "🕶️",
+    "href": "/ar-glasses",
+    "items": [
+      { "rank": 1, "title": "Ray-Ban Meta (Gen 2)", "subtitle": "$379 / best mainstream pair" },
+      { "rank": 2, "title": "Rokid Glasses", "subtitle": "$499 / best display glasses" },
+      { "rank": 3, "title": "Xreal One Pro", "subtitle": "$599 / best for media" },
+      { "rank": 4, "title": "Viture Pro", "subtitle": "$499 / best for prescriptions" },
+      { "rank": 5, "title": "Meta Orion", "subtitle": "Developer preview, not for sale" },
+      { "rank": 6, "title": "Android XR Glasses", "subtitle": "Google, coming soon" }
+    ]
+  },
   "top-vr-apps": {
     "title": "Top VR Apps & Utilities",
     "icon": "🛠️",

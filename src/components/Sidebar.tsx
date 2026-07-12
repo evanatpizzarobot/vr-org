@@ -15,13 +15,22 @@ import { AD_SLOTS } from "@/lib/ads";
 interface SidebarProps {
   sourceStats: Record<string, { name: string; count: number }>;
   trending: TrendingTopic[];
-  // Which top-list leads the sidebar. Same widgets everywhere, only the order
-  // changes, so pages whose content is apps-first (like /software) do not lead
-  // with a games list.
-  topListPriority?: "games" | "apps";
+  // The two top-list widgets, in order: the first leads the sidebar, the second
+  // sits under Editor's Picks. Same widget count and layout on every page, only
+  // the pairing changes, so each hub leads with the list that matches its beat.
+  topListKeys?: [string, string];
+  // Scopes the Editor's Picks widget to a category's originals.
+  editorialCategory?: string;
 }
 
-export function Sidebar({ sourceStats, trending, topListPriority = "games" }: SidebarProps) {
+const DEFAULT_TOP_LISTS: [string, string] = ["top-vr-games-2026", "top-vr-apps"];
+
+export function Sidebar({
+  sourceStats,
+  trending,
+  topListKeys = DEFAULT_TOP_LISTS,
+  editorialCategory,
+}: SidebarProps) {
   const [topLists, setTopLists] = useState<Record<string, TopList>>({});
 
   useEffect(() => {
@@ -31,15 +40,12 @@ export function Sidebar({ sourceStats, trending, topListPriority = "games" }: Si
       .catch(() => {});
   }, []);
 
-  const [leadKey, trailKey] =
-    topListPriority === "apps"
-      ? (["top-vr-apps", "top-vr-games-2026"] as const)
-      : (["top-vr-games-2026", "top-vr-apps"] as const);
+  const [leadKey, trailKey] = topListKeys;
 
   return (
     <div className="flex flex-col gap-5">
       {topLists[leadKey] && <TopListWidget list={topLists[leadKey]} />}
-      <EditorsPicks />
+      <EditorsPicks category={editorialCategory} />
       {topLists[trailKey] && <TopListWidget list={topLists[trailKey]} />}
       <NetActuateBanner />
       <div className="sidebar-sticky-ad">

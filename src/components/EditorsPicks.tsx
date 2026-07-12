@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface EditorialSummary {
   id: string;
@@ -9,17 +9,39 @@ interface EditorialSummary {
   author: string;
   snippet: string;
   category: string;
+  tags?: string[];
 }
 
-export function EditorsPicks() {
-  const [articles, setArticles] = useState<EditorialSummary[]>([]);
+interface EditorsPicksProps {
+  // When set, the widget leads with originals from this category and only tops
+  // up with site-wide originals if the category cannot fill all four slots.
+  category?: string;
+}
+
+const PICK_COUNT = 4;
+
+export function EditorsPicks({ category }: EditorsPicksProps) {
+  const [allArticles, setAllArticles] = useState<EditorialSummary[]>([]);
 
   useEffect(() => {
     fetch("/api/articles")
       .then((r) => r.json())
-      .then((data) => setArticles((data.articles || []).slice(0, 4)))
+      .then((data) => setAllArticles(data.articles || []))
       .catch(() => {});
   }, []);
+
+  const articles = useMemo(() => {
+    if (!category) return allArticles.slice(0, PICK_COUNT);
+
+    const inCategory = allArticles.filter(
+      (a) => a.category === category || a.tags?.includes(category)
+    );
+    if (inCategory.length >= PICK_COUNT) return inCategory.slice(0, PICK_COUNT);
+
+    const picked = new Set(inCategory.map((a) => a.id));
+    const topUp = allArticles.filter((a) => !picked.has(a.id));
+    return [...inCategory, ...topUp].slice(0, PICK_COUNT);
+  }, [allArticles, category]);
 
   if (articles.length === 0) return null;
 
