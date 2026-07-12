@@ -33,14 +33,19 @@ export function EditorsPicks({ category }: EditorsPicksProps) {
   const articles = useMemo(() => {
     if (!category) return allArticles.slice(0, PICK_COUNT);
 
-    const inCategory = allArticles.filter(
-      (a) => a.category === category || a.tags?.includes(category)
+    // Three tiers, newest-first within each: pieces actually written for this
+    // category, then pieces merely tagged with it, then anything else. Without
+    // the split, a tag-only match outranks a true category piece and the widget
+    // reads as unfiltered.
+    const primary = allArticles.filter((a) => a.category === category);
+    const tagged = allArticles.filter(
+      (a) => a.category !== category && a.tags?.includes(category)
     );
-    if (inCategory.length >= PICK_COUNT) return inCategory.slice(0, PICK_COUNT);
+    const rest = allArticles.filter(
+      (a) => a.category !== category && !a.tags?.includes(category)
+    );
 
-    const picked = new Set(inCategory.map((a) => a.id));
-    const topUp = allArticles.filter((a) => !picked.has(a.id));
-    return [...inCategory, ...topUp].slice(0, PICK_COUNT);
+    return [...primary, ...tagged, ...rest].slice(0, PICK_COUNT);
   }, [allArticles, category]);
 
   if (articles.length === 0) return null;
