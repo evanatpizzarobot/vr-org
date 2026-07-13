@@ -112,7 +112,7 @@ const collectionSchema = {
     },
     {
       "@type": "Article",
-      name: "VR Release Dates 2026",
+      name: "VR, AR & XR Release Dates 2026",
       url: "https://vr.org/vr-release-dates",
     },
     {
@@ -267,9 +267,9 @@ const CARDS: BestOfCard[] = [
     badgeColor: "var(--accent-cyan)",
   },
   {
-    title: "VR Release Dates 2026",
+    title: "VR, AR & XR Release Dates 2026",
     description:
-      "Every upcoming VR headset, game, and accessory in one live tracker, with confirmed, expected, and rumored dates.",
+      "Every upcoming VR headset, pair of AR glasses, game, and accessory in one live tracker, with confirmed, expected, and rumored dates.",
     href: "/vr-release-dates",
     badge: "Tracker",
     badgeColor: "var(--accent-cyan)",

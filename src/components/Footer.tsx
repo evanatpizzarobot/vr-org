@@ -93,7 +93,7 @@ export function Footer() {
               { label: "Best VR Games 2026", href: "/best-vr-games-2026" },
               { label: "Best VR Apps", href: "/best-vr-apps" },
               { label: "Best VR Fitness Apps", href: "/best-vr-fitness" },
-              { label: "VR Release Dates 2026", href: "/vr-release-dates" },
+              { label: "VR, AR & XR Release Dates 2026", href: "/vr-release-dates" },
               { label: "Events Calendar", href: "/events" },
             ].map(({ label, href }, i) => (
               <span key={href}>

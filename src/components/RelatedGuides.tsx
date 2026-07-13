@@ -86,7 +86,7 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     description: "New releases and what's coming next, tracked.",
   },
   "vr-release-dates": {
-    label: "VR Release Dates 2026",
+    label: "VR, AR & XR Release Dates 2026",
     href: "/vr-release-dates",
     description: "Every upcoming headset, game, and accessory, dated and tracked.",
   },

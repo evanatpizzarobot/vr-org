@@ -24,11 +24,11 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "VR Release Dates 2026: Every Headset, Game & Accessory Coming Out | VR.org",
+  title: "VR, AR & XR Release Dates 2026: Every Headset, Game & Accessory Coming Out | VR.org",
   description:
-    "Live tracker of every upcoming VR and AR release. Valve Steam Frame, Pico Project Swan, Android XR glasses, and the VR games coming in 2026, with confirmed, expected, and rumored dates.",
+    "Live tracker of every upcoming VR, AR, and XR release. Valve Steam Frame, Pico Project Swan, Android XR glasses, and the VR games coming in 2026, with confirmed, expected, and rumored dates.",
   openGraph: {
-    title: "VR Release Dates 2026: Every Headset, Game & Accessory Coming Out | VR.org",
+    title: "VR, AR & XR Release Dates 2026: Every Headset, Game & Accessory Coming Out | VR.org",
     description:
       "Every upcoming VR headset, game, and accessory in one live tracker, with confirmed, expected, and rumored dates.",
     url: "https://vr.org/vr-release-dates",
@@ -38,13 +38,13 @@ export const metadata = {
         url: "https://vr.org/og-image.png",
         width: 1200,
         height: 630,
-        alt: "VR Release Dates 2026 - VR.org",
+        alt: "VR, AR & XR Release Dates 2026 - VR.org",
       },
     ],
   },
   twitter: {
     card: "summary_large_image" as const,
-    title: "VR Release Dates 2026: Every Headset, Game & Accessory | VR.org",
+    title: "VR, AR & XR Release Dates 2026: Every Headset, Game & Accessory | VR.org",
     description:
       "Every upcoming VR headset, game, and accessory in one live tracker.",
     images: ["https://vr.org/og-image.png"],
@@ -141,7 +141,7 @@ export default function VRReleaseDatesPage() {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "VR Release Dates 2026: Every Headset, Game, and Accessory Coming Out",
+    headline: "VR, AR & XR Release Dates 2026: Every Headset, Game, and Accessory Coming Out",
     datePublished: "2026-07-04",
     dateModified: data.lastUpdated || "2026-07-04",
     author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
@@ -161,14 +161,14 @@ export default function VRReleaseDatesPage() {
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", url: "https://vr.org" },
     { name: "Hardware", url: "https://vr.org/hardware" },
-    { name: "VR Release Dates 2026", url: "https://vr.org/vr-release-dates" },
+    { name: "VR, AR & XR Release Dates 2026", url: "https://vr.org/vr-release-dates" },
   ]);
 
   const upcoming = sortReleaseItems(
     data.items.filter((i) => i.status !== "released")
   );
   const trackerList = itemListSchema(
-    "Upcoming VR and AR Releases 2026",
+    "Upcoming VR, AR & XR Releases 2026",
     upcoming.map((i) => ({
       name: i.name,
       ...(i.link && {
@@ -221,7 +221,7 @@ export default function VRReleaseDatesPage() {
           className="font-display text-4xl font-bold mb-3"
           style={{ letterSpacing: "-0.5px" }}
         >
-          VR Release Dates 2026: Every Headset, Game, and Accessory Coming Out
+          VR, AR & XR Release Dates 2026: Every Headset, Game, and Accessory Coming Out
         </h1>
 
         {updated && (
