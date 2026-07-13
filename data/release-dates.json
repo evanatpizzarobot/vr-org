@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-04",
+  "lastUpdated": "2026-07-13",
   "items": [
     {
       "id": "valve-steam-frame",
@@ -225,6 +225,21 @@
       "link": "/articles/uploadvr-summer-showcase-2026-everything-announced-recap",
       "officialUrl": null,
       "lastVerified": "2026-07-04"
+    },
+    {
+      "id": "amelias-escape",
+      "name": "Amelia's Escape",
+      "category": "game",
+      "status": "expected",
+      "dateText": "July 2026, date TBC",
+      "isoDate": null,
+      "sortDate": "2026-07-31",
+      "platforms": ["Quest", "SteamVR"],
+      "price": null,
+      "summary": "A VR escape room with an interwoven time travel narrative from indie studio Reality Syndrome Symphony. Play as Amelia and puzzle your way out of an obsessed scientist's room. A free demo is live on Steam now.",
+      "link": null,
+      "officialUrl": "https://store.steampowered.com/app/3263090/Amelias_Escape/",
+      "lastVerified": "2026-07-13"
     },
     {
       "id": "guardians-planetfall-steamvr",
