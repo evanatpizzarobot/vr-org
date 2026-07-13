@@ -1557,6 +1557,12 @@ nav::-webkit-scrollbar {
 }
 
 /* Release-dates tracker (/vr-release-dates + the /deals Coming Soon strip) */
+/* Jump-chip anchor targets clear the sticky 64px header instead of landing
+   underneath it. */
+#out-now,
+[id^="heading-"] {
+  scroll-margin-top: 5rem;
+}
 .release-row {
   display: flex;
   flex-wrap: wrap;

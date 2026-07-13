@@ -250,6 +250,34 @@ export default function VRReleaseDatesPage() {
           .
         </p>
 
+        {/* Quick-jump chips, directly under the title block: the page is long
+            and ~90% of readers are on mobile, so someone who only wants VR
+            games gets there in one tap instead of a long scroll. */}
+        <nav
+          aria-label="Jump to section"
+          className="flex flex-wrap gap-2 mb-8"
+        >
+          {[
+            ...(outNow.length > 0 ? [{ label: "Out now", id: "out-now" }] : []),
+            ...SECTIONS.map((s) => ({
+              label: s.title,
+              id: `heading-${s.key}`,
+            })),
+          ].map(({ label, id }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className="font-mono text-[11px] uppercase tracking-[0.5px] no-underline px-3 py-1.5 rounded-full border transition-colors hover:!text-[var(--accent-cyan)] hover:!border-[var(--accent-cyan)]"
+              style={{
+                color: "var(--text-secondary)",
+                borderColor: "var(--border)",
+              }}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
         {/* Definitional lede for AI Overview capture */}
         <p
           className="text-[15px] leading-[1.7] mb-6"
@@ -286,33 +314,6 @@ export default function VRReleaseDatesPage() {
             </span>
           ))}
         </p>
-
-        {/* Quick-jump chips: the page is long and ~90% of readers are on
-            mobile, so give them one-tap section access up top. */}
-        <nav
-          aria-label="Jump to section"
-          className="flex flex-wrap gap-2 mb-8"
-        >
-          {[
-            ...(outNow.length > 0 ? [{ label: "Out now", id: "out-now" }] : []),
-            ...SECTIONS.map((s) => ({
-              label: s.title,
-              id: `heading-${s.key}`,
-            })),
-          ].map(({ label, id }) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              className="font-mono text-[11px] uppercase tracking-[0.5px] no-underline px-3 py-1.5 rounded-full border transition-colors hover:!text-[var(--accent-cyan)] hover:!border-[var(--accent-cyan)]"
-              style={{
-                color: "var(--text-secondary)",
-                borderColor: "var(--border)",
-              }}
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
 
         <figure className="pillar-figure">
           <a href="/steam-frame">
