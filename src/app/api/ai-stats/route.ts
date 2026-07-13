@@ -312,7 +312,13 @@ function generateAiStats(contents: string[]): AiStatsResponse {
       }
 
       // Broken-path report: page-like 404s from anyone (humans or bots).
-      if (status === 404 && isPageLike404(pathNoQuery)) {
+      // GET/HEAD only: bots POSTing forms at "/" are not broken links.
+      const method = m[3];
+      if (
+        status === 404 &&
+        (method === "GET" || method === "HEAD") &&
+        isPageLike404(pathNoQuery)
+      ) {
         notFoundCounts[pathNoQuery] = (notFoundCounts[pathNoQuery] || 0) + 1;
       }
 

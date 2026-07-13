@@ -70,6 +70,23 @@ const REDIRECTS: { source: string; destination: string }[] = [
   { source: "/apple-touch-icon-precomposed.png", destination: "/apple-touch-icon.png" },
   // No /articles index page exists; the editorial list is /originals.
   { source: "/articles", destination: "/originals" },
+  // Some agents request /favicon.png even though pages reference .ico/.svg;
+  // point it at a PNG we actually ship.
+  { source: "/favicon.png", destination: "/favicon-32x32.png" },
+  // Legacy WordPress-era pages. The VR-history page maps to the explainer;
+  // everything else under /about-us goes to the live about page.
+  { source: "/about-us/history-of-vr", destination: "/what-is-vr" },
+  { source: "/about-us/:path*", destination: "/about" },
+  // Old WordPress category archives. Entertainment was the gaming-adjacent
+  // category; anything else goes to the homepage feed.
+  { source: "/category/entertainment", destination: "/gaming" },
+  { source: "/category/:slug*", destination: "/" },
+  // Old WordPress date permalinks (/2018/08/17/post-slug). Those posts are
+  // gone; the originals index is the closest living analog.
+  { source: "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug*", destination: "/originals" },
+  // vr.org's pre-2018 hosting-sales pages (VPS and datacenter products).
+  // NetActuate is where that business lives now.
+  { source: "/datacenters/:path*", destination: "https://netactuate.com" },
 ];
 
 const nextConfig: NextConfig = {
