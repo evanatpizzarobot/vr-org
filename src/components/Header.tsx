@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
 
-const NAV_ITEMS = [
+// isNew renders the magenta NEW badge; give it to a freshly launched page for
+// a few weeks, then remove (Deals had it first, then Releases).
+const NAV_ITEMS: { label: string; href: string; isNew?: boolean }[] = [
   { label: "Feed", href: "/" },
   { label: "Hardware", href: "/hardware" },
   { label: "Gaming", href: "/gaming" },
@@ -13,7 +15,7 @@ const NAV_ITEMS = [
   { label: "AR", href: "/ar" },
   { label: "XR", href: "/xr" },
   { label: "Events", href: "/events" },
-  { label: "Releases", href: "/vr-release-dates", isNew: true },
+  { label: "Releases", href: "/vr-release-dates" },
   { label: "Originals", href: "/originals" },
   { label: "Best Of", href: "/best-of" },
   { label: "Deals", href: "/deals" },
