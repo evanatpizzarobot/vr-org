@@ -20,16 +20,16 @@
       "id": "samsung-galaxy-xr-uk",
       "name": "Samsung Galaxy XR (UK launch)",
       "category": "headset",
-      "status": "confirmed",
-      "dateText": "July 8, 2026",
+      "status": "released",
+      "dateText": "Released July 8, 2026",
       "isoDate": "2026-07-08",
       "sortDate": null,
       "platforms": ["Android XR"],
       "price": "£1,699",
-      "summary": "Samsung's flagship Android XR headset reaches the UK with the Explorer Pack software bundle. It launched in the US and Korea in November 2025 at $1,799.",
+      "summary": "Samsung's flagship Android XR headset reached the UK with the Explorer Pack software bundle. It launched in the US and Korea in November 2025 at $1,799.",
       "link": "/articles/galaxy-xr-uk-launch-explorer-pack-software-bundle",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-07-13"
     },
     {
       "id": "pico-project-swan",

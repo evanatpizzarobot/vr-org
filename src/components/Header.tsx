@@ -13,9 +13,10 @@ const NAV_ITEMS = [
   { label: "AR", href: "/ar" },
   { label: "XR", href: "/xr" },
   { label: "Events", href: "/events" },
+  { label: "Releases", href: "/vr-release-dates", isNew: true },
   { label: "Originals", href: "/originals" },
   { label: "Best Of", href: "/best-of" },
-  { label: "Deals", href: "/deals", isNew: true },
+  { label: "Deals", href: "/deals" },
 ];
 
 interface HeaderProps {
@@ -70,7 +71,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
     >
       <div className="px-6 h-16 flex items-center relative">
         {/* Mobile logo (desktop logo lives inside the centered cluster) */}
-        <a href="/" className="flex items-center gap-1 no-underline flex-shrink-0 md:hidden">
+        <a href="/" className="flex items-center gap-1 no-underline flex-shrink-0 lg:hidden">
           <img
             src="/logo.png"
             alt="VR.org"
@@ -79,7 +80,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
         </a>
 
         {/* Desktop: logo + nav, absolutely centered */}
-        <div className="hidden md:flex items-center gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="hidden lg:flex items-center gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <a href="/" className="flex items-center gap-1 no-underline flex-shrink-0">
             <img
               src="/logo.png"
@@ -87,7 +88,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
               className="h-10 w-auto dark-logo-invert"
             />
           </a>
-          <nav className="flex items-center gap-5">
+          <nav className="flex items-center gap-4">
             {NAV_ITEMS.map(({ label, href, isNew }) => {
               const isActive = pathname === href;
               return (
@@ -169,7 +170,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMenuOpen((o) => !o)}
-            className="md:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 rounded-md"
+            className="lg:hidden inline-flex items-center justify-center w-11 h-11 -mr-2 rounded-md"
             style={{ color: "var(--text-secondary)" }}
           >
             {menuOpen ? (
@@ -195,14 +196,14 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
       {menuOpen && (
         <>
           <div
-            className="md:hidden fixed inset-0 top-16 z-40"
+            className="lg:hidden fixed inset-0 top-16 z-40"
             style={{ background: "rgba(0, 0, 0, 0.35)" }}
             onClick={() => setMenuOpen(false)}
             aria-hidden="true"
           />
           <nav
             id="mobile-menu"
-            className="md:hidden absolute left-0 right-0 top-full z-50 border-b"
+            className="lg:hidden absolute left-0 right-0 top-full z-50 border-b"
             style={{
               background: "var(--bg-primary)",
               borderColor: "var(--border)",

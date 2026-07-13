@@ -59,7 +59,7 @@ const SECTIONS: { key: ReleaseCategory; title: string; blurb: string }[] = [
     key: "headset",
     title: "VR headsets",
     blurb:
-      "Full headsets, from the imminent Valve Steam Frame to the 2027 wave. Released models drop to the bottom of the list.",
+      "Full headsets, from the imminent Valve Steam Frame to the 2027 wave. Shipped models move up to the Out now section.",
   },
   {
     key: "glasses",
@@ -85,8 +85,15 @@ const STATUS_NOTE: Record<string, string> = {
   confirmed: "an exact date or month stated by the maker",
   expected: "an official window like a quarter or season, or a stated target",
   rumored: "leaks, filings, and supply-chain reporting the maker has not confirmed",
-  released: "shipped recently and kept here briefly for reference",
+  released: "shipped within roughly the last month, listed under Out now",
 };
+
+// Out now: shipped items, newest first. Undated released items (rare) sink to
+// the end rather than faking a recency they cannot back up.
+function sortReleasedDesc(items: ReleaseItem[]): ReleaseItem[] {
+  const key = (i: ReleaseItem) => i.isoDate || i.sortDate || "";
+  return [...items].sort((a, b) => key(b).localeCompare(key(a)));
+}
 
 function formatUpdated(iso: string): string {
   if (!iso) return "";
@@ -127,6 +134,9 @@ function ReleaseRow({ item }: { item: ReleaseItem }) {
 export default function VRReleaseDatesPage() {
   const data = getReleaseDates();
   const updated = formatUpdated(data.lastUpdated);
+  const outNow = sortReleasedDesc(
+    data.items.filter((i) => i.status === "released")
+  );
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -277,6 +287,33 @@ export default function VRReleaseDatesPage() {
           ))}
         </p>
 
+        {/* Quick-jump chips: the page is long and ~90% of readers are on
+            mobile, so give them one-tap section access up top. */}
+        <nav
+          aria-label="Jump to section"
+          className="flex flex-wrap gap-2 mb-8"
+        >
+          {[
+            ...(outNow.length > 0 ? [{ label: "Out now", id: "out-now" }] : []),
+            ...SECTIONS.map((s) => ({
+              label: s.title,
+              id: `heading-${s.key}`,
+            })),
+          ].map(({ label, id }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className="font-mono text-[11px] uppercase tracking-[0.5px] no-underline px-3 py-1.5 rounded-full border transition-colors hover:!text-[var(--accent-cyan)] hover:!border-[var(--accent-cyan)]"
+              style={{
+                color: "var(--text-secondary)",
+                borderColor: "var(--border)",
+              }}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
         <figure className="pillar-figure">
           <a href="/steam-frame">
             <img
@@ -293,9 +330,34 @@ export default function VRReleaseDatesPage() {
           </figcaption>
         </figure>
 
+        {outNow.length > 0 && (
+          <section aria-labelledby="out-now">
+            <h2
+              id="out-now"
+              className="font-display text-2xl font-bold mt-10 mb-2"
+            >
+              Out now
+            </h2>
+            <p
+              className="text-[13.5px] mb-4"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Shipped within roughly the last month, newest first. Entries
+              rotate off as they stop being news.
+            </p>
+            <div className="mb-6">
+              {outNow.map((item) => (
+                <ReleaseRow key={item.id} item={item} />
+              ))}
+            </div>
+          </section>
+        )}
+
         {SECTIONS.map((section, idx) => {
           const items = sortReleaseItems(
-            data.items.filter((i) => i.category === section.key)
+            data.items.filter(
+              (i) => i.category === section.key && i.status !== "released"
+            )
           );
           if (items.length === 0) return null;
           return (
@@ -336,9 +398,9 @@ export default function VRReleaseDatesPage() {
           Every entry is sourced from VR.org reporting, and the link on each
           product goes to our deepest coverage of it. We re-verify dates weekly
           and on every major news beat: statuses move from rumored to expected
-          to confirmed as the signals firm up, shipped products briefly show a
-          released badge before rotating off, and nothing gets a date this page
-          cannot back up. For the full story on the biggest entry, see our{" "}
+          to confirmed as the signals firm up, shipped products move to the Out
+          now section for about a month before rotating off, and nothing gets a
+          date this page cannot back up. For the full story on the biggest entry, see our{" "}
           <a
             href="/steam-frame"
             className="no-underline hover:underline"
