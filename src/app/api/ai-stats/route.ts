@@ -110,6 +110,14 @@ function isPageLike404(pathNoQuery: string): boolean {
   return isPageview(pathNoQuery) && !SCANNER_404.test(pathNoQuery);
 }
 
+// Uptime monitors ping fixed URLs on a fixed cadence, so they are neither
+// readers nor crawlers: a single UptimeRobot monitor left pointed at the
+// legacy /datacenters/hong-kong-vps page produced a constant ~282 404s/day in
+// the broken-path report and ~568 www.vr.org rows/day in Top Referrers.
+// Dropped before any tally so monitor noise never reaches the console.
+const MONITOR_UA =
+  /uptimerobot|pingdom|statuscake|site24x7|betteruptime|better stack|hetrixtools|freshping|updown\.io|checkly/i;
+
 function refererHost(ref: string): string {
   if (!ref || ref === "-") return "";
   const m = ref.match(/^https?:\/\/([^/]+)/i);
@@ -272,6 +280,7 @@ function generateAiStats(contents: string[]): AiStatsResponse {
       const referer = m[6];
       const ua = m[7];
       const uaLower = ua.toLowerCase();
+      if (MONITOR_UA.test(uaLower)) continue;
       const pathNoQuery = rawPath.split("?")[0];
 
       // Trailing nginx fields, parsed only from the segment AFTER the user-agent's
