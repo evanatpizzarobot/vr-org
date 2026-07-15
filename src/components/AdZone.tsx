@@ -23,22 +23,36 @@ function loadPlacements(): Promise<AdPlacementMap> {
   return placementsPromise;
 }
 
+// Only allow http(s) or site-relative URLs. Blocks javascript:, data:, and
+// other dangerous schemes from reaching href/src, even though this config is
+// admin-edited (defense in depth at the trust boundary).
+function safeUrl(raw: string | undefined): string | null {
+  if (!raw) return null;
+  const v = raw.trim();
+  if (v.startsWith("/") && !v.startsWith("//")) return v; // site-relative
+  return /^https?:\/\//i.test(v) ? v : null;
+}
+
 function Creative({ placement }: { placement: AdPlacement }) {
-  if (!placement.imageUrl) return null;
+  const src = safeUrl(placement.imageUrl);
+  if (!src) return null;
+
+  const href = safeUrl(placement.linkUrl);
+  const image = (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={placement.alt || placement.advertiser || "Sponsor"}
+      loading="lazy"
+      className="block w-full h-auto rounded-[10px]"
+    />
+  );
+
+  // Render the creative without a link if the destination is missing or unsafe.
+  if (!href) return image;
   return (
-    <a
-      href={placement.linkUrl || "#"}
-      target="_blank"
-      rel="sponsored noopener"
-      className="block"
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={placement.imageUrl}
-        alt={placement.alt || placement.advertiser || "Sponsor"}
-        loading="lazy"
-        className="block w-full h-auto rounded-[10px]"
-      />
+    <a href={href} target="_blank" rel="sponsored noopener noreferrer" className="block">
+      {image}
     </a>
   );
 }
