@@ -9,6 +9,7 @@ import {
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
+import { AdZone } from "@/components/AdZone";
 import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata = {
@@ -234,6 +235,9 @@ export default function BestVRGames2026Page() {
           the Steam Frame headset is now listed as coming soon. Here are the
           best VR games of 2026 so far, plus the titles still ahead.
         </p>
+
+        {/* Direct-sold buyer-guide banner. Dormant until activated in data/ad-placements.json. */}
+        <AdZone slot="buyer-guide-banner" variant="banner" />
 
         <a
           href="/deals#gaming-pcs"

@@ -9,6 +9,7 @@ import {
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
+import { AdZone } from "@/components/AdZone";
 import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata = {
@@ -274,6 +275,9 @@ export default function BestVRHeadsetsPage() {
           this guide breaks down every major headset available today, with
           honest recommendations for each use case.
         </p>
+
+        {/* Direct-sold buyer-guide banner. Dormant until activated in data/ad-placements.json. */}
+        <AdZone slot="buyer-guide-banner" variant="banner" />
 
         {/* Shop CTA */}
         <a

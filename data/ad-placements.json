@@ -1,0 +1,41 @@
+{
+  "_comment": "Direct-sold ad placements for VR.org. All slots ship inactive: with active=false a slot renders NOTHING on the live site (no DOM, no layout change). To run a real placement, set active=true and fill imageUrl (creative, min 2x pixel density recommended), linkUrl (click destination), and alt. Optional: imageUrlDark for a dark-theme-specific creative, label to override the 'Sponsored' tag. This file is volume-mounted on the VPS and read at request time, so activating an ad is a data edit + git push, no Docker rebuild needed. Slots map to: homepage-hero (flagship banner, top of homepage), homepage-in-feed (native card in the homepage feed), sidebar-rectangle (300x250 in the sidebar, site-wide), buyer-guide-banner (leaderboard on the best-of / pillar pages).",
+  "placements": {
+    "homepage-hero": {
+      "active": false,
+      "advertiser": "",
+      "label": "Sponsored",
+      "linkUrl": "",
+      "imageUrl": "",
+      "imageUrlDark": "",
+      "alt": ""
+    },
+    "homepage-in-feed": {
+      "active": false,
+      "advertiser": "",
+      "label": "Sponsored",
+      "linkUrl": "",
+      "imageUrl": "",
+      "imageUrlDark": "",
+      "alt": ""
+    },
+    "sidebar-rectangle": {
+      "active": false,
+      "advertiser": "",
+      "label": "Sponsored",
+      "linkUrl": "",
+      "imageUrl": "",
+      "imageUrlDark": "",
+      "alt": ""
+    },
+    "buyer-guide-banner": {
+      "active": false,
+      "advertiser": "",
+      "label": "Sponsored",
+      "linkUrl": "",
+      "imageUrl": "",
+      "imageUrlDark": "",
+      "alt": ""
+    }
+  }
+}

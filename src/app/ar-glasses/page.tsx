@@ -10,6 +10,7 @@ import {
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
+import { AdZone } from "@/components/AdZone";
 import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
@@ -236,6 +237,9 @@ export default function ARGlassesPage() {
           breaks down which AR smart glasses are actually worth your money
           right now, plus what is coming next.
         </p>
+
+        {/* Direct-sold buyer-guide banner. Dormant until activated in data/ad-placements.json. */}
+        <AdZone slot="buyer-guide-banner" variant="banner" />
 
         <h2 className="font-display text-2xl font-semibold mb-4">
           Which AR glasses should you buy?

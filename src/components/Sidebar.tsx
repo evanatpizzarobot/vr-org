@@ -9,6 +9,7 @@ import { TrendingTopics } from "./TrendingTopics";
 import { NetActuateBanner } from "./NetActuateBanner";
 import { EditorsPicks } from "./EditorsPicks";
 import { AdSlot } from "./AdSlot";
+import { AdZone } from "./AdZone";
 import { AD_SLOTS } from "@/lib/ads";
 
 
@@ -47,6 +48,8 @@ export function Sidebar({
       {topLists[leadKey] && <TopListWidget list={topLists[leadKey]} />}
       <EditorsPicks category={editorialCategory} />
       {topLists[trailKey] && <TopListWidget list={topLists[trailKey]} />}
+      {/* Direct-sold sidebar rectangle. Dormant until activated. */}
+      <AdZone slot="sidebar-rectangle" variant="rectangle" />
       <NetActuateBanner />
       <div className="sidebar-sticky-ad">
         <AdSlot

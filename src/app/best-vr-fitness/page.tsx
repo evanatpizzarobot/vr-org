@@ -10,6 +10,7 @@ import {
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
+import { AdZone } from "@/components/AdZone";
 import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
@@ -172,6 +173,9 @@ export default function BestVRFitnessPage() {
           knock out in your living room. Below are the ten VR workout apps
           worth your time, ranked by how consistently they get us moving.
         </p>
+
+        {/* Direct-sold buyer-guide banner. Dormant until activated in data/ad-placements.json. */}
+        <AdZone slot="buyer-guide-banner" variant="banner" />
 
         <h2 className="font-display text-2xl font-semibold mb-4">
           Is VR fitness worth it?

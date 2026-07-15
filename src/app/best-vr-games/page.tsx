@@ -10,6 +10,7 @@ import {
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
+import { AdZone } from "@/components/AdZone";
 import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
@@ -148,6 +149,9 @@ export default function BestVRGamesPage() {
           you&apos;ve been in VR since the DK1 days, these are the games that
           define what Virtual Reality gaming can be.
         </p>
+
+        {/* Direct-sold buyer-guide banner. Dormant until activated in data/ad-placements.json. */}
+        <AdZone slot="buyer-guide-banner" variant="banner" />
 
         {/* 1. Half-Life: Alyx */}
         <h2 id="half-life-alyx" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">

@@ -8,6 +8,7 @@ import {
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
+import { AdZone } from "@/components/AdZone";
 
 export const metadata: Metadata = {
   title:
@@ -149,6 +150,9 @@ export default function WhatIsVRPage() {
           transformative technologies of the 21st century, reshaping how we play,
           learn, work, and connect.
         </p>
+
+        {/* Direct-sold buyer-guide banner. Dormant until activated in data/ad-placements.json. */}
+        <AdZone slot="buyer-guide-banner" variant="banner" />
 
         {/* ── Virtual Reality Defined ── */}
         <h2 className="font-display text-2xl font-semibold mb-4">

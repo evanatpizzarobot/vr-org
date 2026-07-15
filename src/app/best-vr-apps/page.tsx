@@ -10,6 +10,7 @@ import {
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
+import { AdZone } from "@/components/AdZone";
 import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
@@ -162,6 +163,9 @@ export default function BestVRAppsPage() {
           owns a VR headset in 2026, whether you use it for work, play, or
           both. We refresh this list as apps launch, evolve, and shut down.
         </p>
+
+        {/* Direct-sold buyer-guide banner. Dormant until activated in data/ad-placements.json. */}
+        <AdZone slot="buyer-guide-banner" variant="banner" />
 
         {/* 1. Virtual Desktop */}
         <h2 id="virtual-desktop" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">

@@ -5,6 +5,7 @@ import type { Article } from "@/types";
 import { ArticleCard } from "./ArticleCard";
 import { AdSlot } from "./AdSlot";
 import { AD_SLOTS, AD_LAYOUT_KEYS } from "@/lib/ads";
+import { AdZone } from "./AdZone";
 
 import { LoadingSkeleton } from "./LoadingSkeleton";
 
@@ -64,6 +65,10 @@ export function Feed({ articles, loading }: FeedProps) {
         articles.map((article, i) => (
           <div key={article.id}>
             <ArticleCard article={article} compact={compact} index={i} />
+            {/* Direct-sold native card. Dormant until activated. */}
+            {i === 2 && articles.length > 3 && (
+              <AdZone slot="homepage-in-feed" variant="in-feed" />
+            )}
             {(i + 1) % 8 === 0 && i < articles.length - 1 && (
               <div className="my-4">
                 <AdSlot

@@ -8,6 +8,7 @@ import { Feed } from "@/components/Feed";
 import { Sidebar } from "@/components/Sidebar";
 import { Footer } from "@/components/Footer";
 import { SideRailAds } from "@/components/SideRailAds";
+import { AdZone } from "@/components/AdZone";
 import { useFeed } from "@/hooks/useFeed";
 import { useFilters } from "@/hooks/useFilters";
 import { SOURCES } from "@/lib/constants";
@@ -159,6 +160,10 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
           </div>
         </div>
       </section>
+
+      {/* Direct-sold flagship banner. Dormant (renders nothing) until a
+          placement is activated in data/ad-placements.json. */}
+      <AdZone slot="homepage-hero" variant="hero" />
 
       <div id="feed" className="max-w-[1400px] mx-auto px-6 pb-16 pt-5 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 relative z-10">
         <div>
