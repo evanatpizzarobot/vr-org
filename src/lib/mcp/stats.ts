@@ -10,7 +10,20 @@
 import fs from "fs";
 import path from "path";
 
-export type UaClass = "claude" | "openai" | "cursor" | "vscode" | "perplexity" | "other";
+// Assistants: claude, openai, perplexity, cursor, vscode.
+// Non-assistant automated traffic: directory (MCP registries/catalog crawlers),
+// monitor (uptime monitors + security scanners), sdk (generic HTTP clients / CLIs).
+// other: genuine residual (empty UA, random browsers, incidental crawlers).
+export type UaClass =
+  | "claude"
+  | "openai"
+  | "cursor"
+  | "vscode"
+  | "perplexity"
+  | "directory"
+  | "monitor"
+  | "sdk"
+  | "other";
 
 interface DayCounts {
   requests: number;
@@ -109,11 +122,52 @@ function scheduleFlush(): void {
 
 export function classifyUa(ua: string | null): UaClass {
   const s = (ua || "").toLowerCase();
-  if (s.includes("claude")) return "claude";
-  if (s.includes("openai") || s.includes("chatgpt")) return "openai";
+  // Assistants (named AI clients and their bots). OpenAI first so GPTBot /
+  // OAI-SearchBot count as OpenAI rather than falling through to "other".
+  if (s.includes("openai") || s.includes("chatgpt") || s.includes("gptbot") || s.includes("oai-searchbot")) return "openai";
+  if (s.includes("claude")) return "claude"; // Claude-User (live sessions), ClaudeBot
+  if (s.includes("perplexity")) return "perplexity";
   if (s.includes("cursor")) return "cursor";
   if (s.includes("vscode") || s.includes("visual studio code")) return "vscode";
-  if (s.includes("perplexity")) return "perplexity";
+  // MCP directories / registries / catalog crawlers indexing the server.
+  if (
+    s.includes("smithery") ||
+    s.includes("mcpregistry") ||
+    s.includes("mcp-registry") ||
+    s.includes("agent-tools") ||
+    s.includes("glama") ||
+    s.includes("pulsemcp") ||
+    s.includes("modelcontextprotocol")
+  )
+    return "directory";
+  // Uptime monitors + security scanners probing the endpoint.
+  if (
+    s.includes("infrawatch") ||
+    s.includes("uptimerobot") ||
+    s.includes("pingdom") ||
+    s.includes("betteruptime") ||
+    s.includes("scanner") ||
+    s.includes("virustotal") ||
+    s.includes("censys") ||
+    s.includes("shodan")
+  )
+    return "monitor";
+  // Generic programmatic HTTP clients / CLIs (real callers, just unlabeled).
+  if (
+    s.includes("curl") ||
+    s.includes("httpx") ||
+    s.includes("python-requests") ||
+    s.includes("go-http-client") ||
+    s.includes("okhttp") ||
+    s.includes("undici") ||
+    s.includes("node-fetch") ||
+    s === "node" ||
+    s.includes("axios") ||
+    s.includes("postman") ||
+    s.includes("wget") ||
+    s.includes("libwww")
+  )
+    return "sdk";
   return "other";
 }
 

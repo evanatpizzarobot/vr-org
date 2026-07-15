@@ -598,7 +598,8 @@ function pageUrl(p){
     return u.href;
   }catch(e){ return null; }
 }
-const MCPCLIENT = { claude:"Claude", openai:"OpenAI (ChatGPT)", cursor:"Cursor", vscode:"VS Code", perplexity:"Perplexity", other:"Other / unlabeled" };
+const MCPCLIENT = { claude:"Claude", openai:"OpenAI (ChatGPT)", cursor:"Cursor", vscode:"VS Code", perplexity:"Perplexity", directory:"MCP directories", monitor:"Monitors & scanners", sdk:"SDK & scripts", other:"Other / unlabeled" };
+const MCP_ASSISTANTS = ["claude","openai","perplexity","cursor","vscode"];
 const TABTITLE = { overview:"Overview", regular:"Regular Traffic", ai:"AI Traffic", mcp:"API / MCP" };
 
 
@@ -906,15 +907,16 @@ function renderMcp(){
   const spark = MCP.days.map(d=>d[1]);
   // Headline the top *identified* client ("other" is the residual bucket, not one client);
   // the full breakdown incl. Other / unlabeled stays honest in the bar list below.
-  const named = MCP.clients.filter(cl=>cl[0]!=="other");
-  const top = named[0] || MCP.clients[0];
+  // Headline the top *assistant* (real AI consumer); directories/monitors/sdk are
+  // infrastructure, shown in the bar list below but never as the headline client.
+  const top = MCP.clients.filter(cl=>MCP_ASSISTANTS.includes(cl[0]))[0] || null;
   const totC = MCP.clients.reduce((s,x)=>s+x[1],0)||1;
   const topShare = top ? Math.round(100*top[1]/totC) : 0;
   const avgDay = MCP.days.length ? Math.round(MCP.requests30d/MCP.days.length) : 0;
   c.appendChild(kpi("MCP requests · 7d", fmt(MCP.requests7d), "protocol + tool traffic", {hot:true, spark: spark.length>1?spark:null, sparkColor:"var(--series-violet)"}));
   c.appendChild(kpi("MCP requests · 30d", fmt(MCP.requests30d), "rolling 30-day window"));
   c.appendChild(kpi("Tool invocations · 30d", fmt(MCP.toolCalls), "actual tool calls logged"));
-  c.appendChild(kpi("Top client", top?(MCPCLIENT[top[0]]||top[0]):"—", top?`<span class="pill good">${topShare}% of connections</span>`:""));
+  c.appendChild(kpi("Top assistant", top?(MCPCLIENT[top[0]]||top[0]):"—", top?`<span class="pill good">${topShare}% of connections</span>`:"none in window"));
   c.appendChild(kpi("Distinct tools used", fmt(MCP.tools.length), "of 11 available"));
   c.appendChild(kpi("Avg requests · day", fmt(avgDay), `over ${MCP.days.length} day${MCP.days.length===1?"":"s"}`));
   // callout: reach vs usage
@@ -1096,10 +1098,10 @@ function buildCsvRows(tab){
     sec(rows,"AI referral sources",["Source","Clicks"], AI.referrals.bySource.map(x=>[x[0],x[1]]));
   } else if(tab==="mcp"){
     if(!MCP){ rows.push(["# MCP data unavailable"]); return rows; }
-    const top=MCP.clients.filter(c=>c[0]!=="other")[0]||MCP.clients[0], totC=MCP.clients.reduce((s,x)=>s+x[1],0)||1;
+    const top=MCP.clients.filter(c=>MCP_ASSISTANTS.includes(c[0]))[0]||null, totC=MCP.clients.reduce((s,x)=>s+x[1],0)||1;
     sec(rows,"KPIs",["Metric","Value"],[
       ["MCP requests 7d",MCP.requests7d],["MCP requests 30d",MCP.requests30d],
-      ["Tool invocations 30d",MCP.toolCalls],["Top client", top?(MCPCLIENT[top[0]]||top[0]):"—"],
+      ["Tool invocations 30d",MCP.toolCalls],["Top assistant", top?(MCPCLIENT[top[0]]||top[0]):"—"],
       ["Distinct tools used",MCP.tools.length],["Avg requests/day", MCP.days.length? Math.round(MCP.requests30d/MCP.days.length):0]]);
     sec(rows,"MCP requests - daily",["Date","Requests"], MCP.days.map(d=>[d[0],d[1]]));
     sec(rows,"Tool invocations by tool",["Tool","Calls"], MCP.tools.map(t=>[t[0],t[1]]));
