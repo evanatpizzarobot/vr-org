@@ -61,6 +61,7 @@ export function Footer() {
             { label: "Best Of", href: "/best-of" },
             { label: "Deals", href: "/deals" },
             { label: "MCP", href: "/connect" },
+            { label: "Advertise", href: "/advertise" },
             { label: "About", href: "/about" },
             { label: "Privacy", href: "/privacy" },
           ].map(({ label, href }) => (

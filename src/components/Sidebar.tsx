@@ -7,6 +7,7 @@ import { SourceStats } from "./SourceStats";
 import { TopListWidget } from "./TopListWidget";
 import { TrendingTopics } from "./TrendingTopics";
 import { NetActuateBanner } from "./NetActuateBanner";
+import { AdvertiseCTA } from "./AdvertiseCTA";
 import { EditorsPicks } from "./EditorsPicks";
 import { AdSlot } from "./AdSlot";
 import { AdZone } from "./AdZone";
@@ -51,6 +52,7 @@ export function Sidebar({
       {/* Direct-sold sidebar rectangle. Dormant until activated. */}
       <AdZone slot="sidebar-rectangle" variant="rectangle" />
       <NetActuateBanner />
+      <AdvertiseCTA />
       <div className="sidebar-sticky-ad">
         <AdSlot
           slot={AD_SLOTS.sidebar}
