@@ -302,8 +302,37 @@ const CSS = `
   .tab-btn[aria-selected="true"]::before { opacity: 1; box-shadow: 0 0 0 3px color-mix(in srgb, var(--tc) 24%, transparent); }
   .tab-btn[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--tc); }
   .tab-btn[aria-selected="true"] .cnt { color: var(--tc); }
+
+  /* API / MCP tab (pink/magenta, distinct from cyan/green/violet) */
+  .tab-btn[data-tab="mcp"] { --tc: #f472b6; }
+  @media (prefers-color-scheme: light) { .tab-btn[data-tab="mcp"] { --tc: #db2777; } }
+  :root[data-theme="dark"]  .tab-btn[data-tab="mcp"] { --tc: #f472b6; }
+  :root[data-theme="light"] .tab-btn[data-tab="mcp"] { --tc: #db2777; }
+
+  /* ---------- linked + full-path bar rows ---------- */
+  .bar .bl a { color: var(--accent-line); text-decoration: none; }
+  .bar .bl a:hover { text-decoration: underline; }
+  .bar .bl a code { color: inherit; }
+  .bar.rows { grid-template-columns: 1fr auto; grid-template-areas: "label value" "track track"; row-gap: 6px; align-items: center; }
+  .bar.rows .bl { grid-area: label; white-space: normal; overflow: visible; overflow-wrap: anywhere; line-height: 1.4; }
+  .bar.rows .track { grid-area: track; }
+  .bar.rows .bv { grid-area: value; }
+
+  /* ---------- print / PDF ---------- */
+  .printhead { display: none; }
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: var(--plane); }
+    .wrap { max-width: none; padding: 0 10px 10px; }
+    #csvBtn, #pdfBtn, #themeBtn, .updated, .topbar a.tbtn, .tabs { display: none !important; }
+    .printhead { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--ink); margin: 6px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .tab { display: none !important; }
+    .tab.active { display: block !important; }
+    .panel, .kpi, .callout, .snap, .vs { break-inside: avoid; }
+    @page { margin: 12mm; }
+  }
 `;
 const MARKUP = `<div class="wrap">
+  <div id="printHead" class="printhead"></div>
   <header class="topbar">
     <div class="brand">
       <span class="mark">VAN<b>TAGE</b></span>
@@ -314,16 +343,19 @@ const MARKUP = `<div class="wrap">
       <span class="dot"></span> vr.org
     </span>
     <span class="updated"><span class="live"></span> <span id="updated">updated …</span></span>
+    <button class="tbtn" id="csvBtn" type="button">Export CSV</button>
+    <button class="tbtn" id="pdfBtn" type="button">PDF</button>
     <button class="tbtn" id="themeBtn" type="button">Theme</button>
       <a class="tbtn" href="/api/console/logout" style="text-decoration:none;">Sign out</a>
   </header>
 
-  <div class="snap"><span>🟢 <b>Live</b> · reading <span class="k">/api/stats</span> + <span class="k">/api/ai-stats</span> from the VR.org VPS.</span><span>nginx logs, 60s server cache. Data as of <span class="k" id="snapDate">…</span>, refresh for the latest.</span></div>
+  <div class="snap"><span>🟢 <b>Live</b> · reading <span class="k">/api/stats</span> + <span class="k">/api/ai-stats</span> + <span class="k">/api/mcp-stats</span> from the VR.org VPS.</span><span>nginx logs + MCP counters, 60s server cache. Data as of <span class="k" id="snapDate">…</span>, refresh for the latest.</span></div>
 
   <nav class="tabs" role="tablist">
     <button class="tab-btn" role="tab" aria-selected="true" data-tab="overview">Overview <span class="cnt">general</span></button>
     <button class="tab-btn" role="tab" aria-selected="false" data-tab="regular">Regular Traffic</button>
     <button class="tab-btn" role="tab" aria-selected="false" data-tab="ai">AI Traffic <span class="cnt" id="aiCnt">…</span></button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="mcp">API / MCP <span class="cnt" id="mcpCnt">…</span></button>
   </nav>
 
   <!-- ============ OVERVIEW ============ -->
@@ -498,13 +530,53 @@ const MARKUP = `<div class="wrap">
     </div>
   </section>
 
-  <footer><div><b>Vantage</b> · live console for the VR.org team. Reads nginx access logs on the VPS: <b>/api/stats</b> (regular traffic) and <b>/api/ai-stats</b> (AI bots + referrals, <b>?trend=N</b>). 60-second server cache; refresh to update.</div></footer>
+  <!-- ============ API / MCP ============ -->
+  <section class="tab" id="tab-mcp">
+    <div class="kpis" id="mcpKpis"></div>
+
+    <div class="empty" id="mcpWait" style="display:none;margin-bottom:16px;"><span class="ic">◷</span><span><b style="color:var(--ink-2)">MCP stats warming up.</b> The <code>/api/mcp-stats</code> endpoint did not respond. It returns once the app finishes booting; refresh in a moment.</span></div>
+
+    <div class="panel" style="margin-bottom:14px;">
+      <div class="panel-h"><h3>Reach vs. real usage</h3><span class="note">connections vs. tool calls · 30d</span></div>
+      <div class="panel-b">
+        <div class="callout" style="border:none;padding:0;background:none;">
+          <div class="big" id="mcpRatio">…</div>
+          <div class="txt"><b>Most MCP traffic is discovery, not tool calls.</b> Agents connect, list the tools and resources VR.org exposes, then invoke a tool only when they actually need data. Connections show reach; tool calls show use.</div>
+        </div>
+        <div class="cmp">
+          <div class="cb"><div class="cl">Protocol requests · 30d</div><div class="cv" id="mcpProtoVal">…</div><div class="ct" style="background:var(--accent);"></div><div class="csub" style="font-size:11.5px;color:var(--muted);margin-top:6px;">connect · list · handshakes</div></div>
+          <div class="cb"><div class="cl">Tool invocations · 30d</div><div class="cv" id="mcpToolVal">…</div><div class="ct" style="background:var(--series-violet);"></div><div class="csub" style="font-size:11.5px;color:var(--muted);margin-top:6px;">actual tool calls logged</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:14px;">
+      <div class="panel-h"><h3>MCP requests · daily</h3><span class="note" id="mcpAreaNote">…</span></div>
+      <div class="panel-b"><div class="chart" id="mcpArea"></div></div>
+    </div>
+
+    <div class="grid g2">
+      <div class="panel">
+        <div class="panel-h"><h3>Tool invocations by tool</h3><span class="note">calls · 30d</span></div>
+        <div class="panel-b">
+          <div class="bars" id="mcpToolBars"></div>
+          <div class="empty" id="mcpToolEmpty" style="margin-top:12px;display:none;"><span class="ic">◷</span><span>No individual tool calls logged in this window yet. Tool calls are counted per invocation and are far rarer than the connection traffic above; they populate here as agents actually call the tools.</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-h"><h3>Clients connecting</h3><span class="note">by client · 30d</span></div>
+        <div class="panel-b"><div class="bars" id="mcpClientBars"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer><div><b>Vantage</b> · live console for the VR.org team. Reads nginx access logs on the VPS: <b>/api/stats</b> (regular traffic), <b>/api/ai-stats</b> (AI bots + referrals, <b>?trend=N</b>), and <b>/api/mcp-stats</b> (remote MCP server adoption). 60-second server cache; refresh to update. Export CSV or PDF per tab from the top bar.</div></footer>
 </div>`;
 const st=document.createElement("style"); st.textContent=CSS; document.head.appendChild(st);
 document.body.insertAdjacentHTML("afterbegin", MARKUP);
 const tipEl=document.createElement("div"); tipEl.id="tip"; tipEl.className="tip"; document.body.appendChild(tipEl);
 
-let STATS=null, AI=null, TREND=null;
+let STATS=null, AI=null, TREND=null, MCP=null;
 
 /* ============================ HELPERS ============================ */
 const $ = s => document.querySelector(s);
@@ -514,6 +586,20 @@ const fmt = n => n.toLocaleString("en-US");
 const fmtK = n => n>=1000 ? (n/1000).toFixed(n>=10000?0:1).replace(/\.0$/,'')+"k" : ""+n;
 const pct = (a,b) => (100*a/b);
 function gb(bytes){ return (bytes/1e9).toFixed(2)+" GB"; }
+// Absolute URL for a logged path, so a top-page row can link straight to the live page.
+// Paths come from nginx access logs (visitor-controlled), so only ever emit a
+// same-origin http(s) link; anything else (javascript:, //host, cross-origin) => no link.
+function pageUrl(p){
+  const s=String(p==null?"":p);
+  if(s.charAt(0)!=="/") return null;
+  try{
+    const u=new URL(s, location.origin);
+    if(u.origin!==location.origin || !/^https?:$/.test(u.protocol)) return null;
+    return u.href;
+  }catch(e){ return null; }
+}
+const MCPCLIENT = { claude:"Claude", openai:"OpenAI (ChatGPT)", cursor:"Cursor", vscode:"VS Code", perplexity:"Perplexity", other:"Other / unlabeled" };
+const TABTITLE = { overview:"Overview", regular:"Regular Traffic", ai:"AI Traffic", mcp:"API / MCP" };
 
 
 /* ============================ ANIMATION HELPERS ============================ */
@@ -611,10 +697,11 @@ function renderAiKpis(){
 function barList(sel, items, opts={}){
   const host=$(sel); host.innerHTML="";
   const max = opts.max || Math.max(...items.map(i=>i.value));
-  const violet = opts.violet;
+  const violet = opts.violet, stacked = opts.stacked;
   items.forEach((it,idx)=>{
-    const row=el("div","bar");
-    const lab = it.mono ? ("<code>"+esc(it.label)+"</code>") : esc(it.label);
+    const row=el("div","bar"+(stacked?" rows":""));
+    let lab = it.mono ? ("<code>"+esc(it.label)+"</code>") : esc(it.label);
+    if(it.href) lab = `<a href="${esc(it.href)}" target="_blank" rel="noopener">${lab}</a>`;
     const tag = it.tag ? `<span class="tag">${it.tag}</span>` : "";
     row.appendChild(el("div","bl",lab+tag));
     const track=el("div","track");
@@ -804,6 +891,46 @@ function renderAiModes(){
   $("#aiModeLiveSub").textContent = `${fmt(m.live.ips)} sessions · ${pct(m.live.hits,tot).toFixed(0)}% of AI reads`;
   $("#aiModeCrawlSub").textContent = `${fmt(m.crawl.ips)} crawler IPs · ${pct(m.crawl.hits,tot).toFixed(0)}% of AI reads`;
 }
+function renderMcp(){
+  const cnt=$("#mcpCnt"), wait=$("#mcpWait");
+  if(!MCP){
+    if(cnt) cnt.textContent="…";
+    $("#mcpKpis").innerHTML="";
+    if(wait) wait.style.display="flex";
+    return;
+  }
+  if(wait) wait.style.display="none";
+  if(cnt) cnt.textContent=fmt(MCP.requests7d);
+  // KPIs
+  const c=$("#mcpKpis"); c.innerHTML="";
+  const spark = MCP.days.map(d=>d[1]);
+  // Headline the top *identified* client ("other" is the residual bucket, not one client);
+  // the full breakdown incl. Other / unlabeled stays honest in the bar list below.
+  const named = MCP.clients.filter(cl=>cl[0]!=="other");
+  const top = named[0] || MCP.clients[0];
+  const totC = MCP.clients.reduce((s,x)=>s+x[1],0)||1;
+  const topShare = top ? Math.round(100*top[1]/totC) : 0;
+  const avgDay = MCP.days.length ? Math.round(MCP.requests30d/MCP.days.length) : 0;
+  c.appendChild(kpi("MCP requests · 7d", fmt(MCP.requests7d), "protocol + tool traffic", {hot:true, spark: spark.length>1?spark:null, sparkColor:"var(--series-violet)"}));
+  c.appendChild(kpi("MCP requests · 30d", fmt(MCP.requests30d), "rolling 30-day window"));
+  c.appendChild(kpi("Tool invocations · 30d", fmt(MCP.toolCalls), "actual tool calls logged"));
+  c.appendChild(kpi("Top client", top?(MCPCLIENT[top[0]]||top[0]):"—", top?`<span class="pill good">${topShare}% of connections</span>`:""));
+  c.appendChild(kpi("Distinct tools used", fmt(MCP.tools.length), "of 11 available"));
+  c.appendChild(kpi("Avg requests · day", fmt(avgDay), `over ${MCP.days.length} day${MCP.days.length===1?"":"s"}`));
+  // callout: reach vs usage
+  const ratio = MCP.toolCalls ? Math.round(MCP.requests30d/MCP.toolCalls) : MCP.requests30d;
+  animateNumber($("#mcpRatio"), ratio, {suffix:":1", dur:1200});
+  $("#mcpProtoVal").textContent = fmt(MCP.requests30d);
+  $("#mcpToolVal").textContent = fmt(MCP.toolCalls);
+  // bars
+  if(MCP.tools.length){
+    barList("#mcpToolBars", MCP.tools.map(t=>({label:t[0], value:t[1], mono:true})));
+    $("#mcpToolBars").style.display=""; $("#mcpToolEmpty").style.display="none";
+  } else {
+    $("#mcpToolBars").innerHTML=""; $("#mcpToolBars").style.display="none"; $("#mcpToolEmpty").style.display="flex";
+  }
+  barList("#mcpClientBars", MCP.clients.map(cl=>({label:MCPCLIENT[cl[0]]||cl[0], value:cl[1], sub:pct(cl[1],totC).toFixed(0)+"%"})));
+}
 function renderStatic(){ if(!STATS||!AI||!TREND) return;
   const SEARCH_TOTAL = AI.search.reduce((s,x)=>s+x[1],0);
   // overview
@@ -821,10 +948,10 @@ function renderStatic(){ if(!STATS||!AI||!TREND) return;
   // regular
   renderRegularKpis();
   renderStatus();
-  barList("#regTopPages", (AI.humanTopPages||[]).slice(0,12).map(p=>({label:p[0], value:p[1], mono:true})));
+  barList("#regTopPages", (AI.humanTopPages||[]).slice(0,12).map(p=>({label:p[0], value:p[1], mono:true, href:pageUrl(p[0])})), {stacked:true});
   const nf = AI.notFound||[];
   if(nf.length){
-    barList("#regNotFound", nf.map(p=>({label:p[0], value:p[1], mono:true})));
+    barList("#regNotFound", nf.map(p=>({label:p[0], value:p[1], mono:true, href:pageUrl(p[0])})), {stacked:true});
     $("#regNotFound").style.display=""; $("#regNotFoundEmpty").style.display="none";
   } else {
     $("#regNotFound").innerHTML=""; $("#regNotFoundEmpty").style.display="flex";
@@ -838,7 +965,7 @@ function renderStatic(){ if(!STATS||!AI||!TREND) return;
   renderAiModes();
   barList("#aiVendors", AI.vendors.map(v=>({label:v[0], value:v[1], sub: pct(v[1],AI.botsTotalHits).toFixed(0)+"%"})));
   barList("#aiBots", AI.bots.slice(0,12).map(b=>({label:b[0], value:b[1]})));
-  barList("#aiPages", AI.chatgpt.topPages.map(p=>({label:p[0], value:p[1], mono:true})));
+  barList("#aiPages", AI.chatgpt.topPages.map(p=>({label:p[0], value:p[1], mono:true, href:pageUrl(p[0])})), {stacked:true});
   const hmin=Math.min(...AI.chatgpt.hourlyUtc), hmax=Math.max(...AI.chatgpt.hourlyUtc);
   $("#aiHourlyRange").textContent = hmin+"-"+hmax;
   const gap = AI.referrals.chatgptClicks ? AI.chatgpt.hits/AI.referrals.chatgptClicks : AI.chatgpt.hits;
@@ -848,6 +975,9 @@ function renderStatic(){ if(!STATS||!AI||!TREND) return;
   $("#aiClicks").textContent = fmt(AI.referrals.chatgptClicks);
   $("#aiClicksBar")?.style && ($("#aiClicksBar").style.width="");
   barList("#aiReferralSrc", AI.referrals.bySource.map(s=>({label:s[0]+" → click-through", value:s[1]})), {violet:true, max:(AI.referrals.bySource[0]&&AI.referrals.bySource[0][1])||1});
+
+  // api / mcp (additive: never let it break the other tabs)
+  try{ renderMcp(); }catch(e){}
 
   // timestamps
   const d=new Date(STATS.fetchedAt);
@@ -865,6 +995,16 @@ function renderCharts(){ if(!STATS||!AI||!TREND) return;
   trendChart("#aiTrend");
   areaChart("#aiHourly", AI.chatgpt.hourlyUtc, {h:170, bars:true, name:"ChatGPT fetches", unit:"fetches",
     xlabels:[[0,"00"],[6,"06"],[12,"12"],[18,"18"],[23,"23 UTC"]], tiplabels:AI.chatgpt.hourlyUtc.map((_,i)=> String(i).padStart(2,"0")+":00 UTC")});
+  try{ if(MCP && MCP.days.length){
+    const vals=MCP.days.map(d=>d[1]), dates=MCP.days.map(d=>d[0]), n=vals.length;
+    const shortD = s => { const p=String(s).split("-"); return p.length===3 ? (p[1]+"/"+p[2]) : String(s); };
+    const xl=[[0, shortD(dates[0])]];
+    if(n>2) xl.push([Math.floor((n-1)/2), shortD(dates[Math.floor((n-1)/2)])]);
+    xl.push([n-1, "today"]);
+    areaChart("#mcpArea", vals, {h:200, name:"MCP requests", unit:"requests", hi:n-1,
+      xlabels:xl, tiplabels:dates.map((d,i)=> i===n-1 ? "today ("+shortD(d)+")" : shortD(d))});
+    const note=$("#mcpAreaNote"); if(note) note.textContent = n>1 ? ("peak "+fmt(Math.max(...vals))+"/day") : "single day so far";
+  } }catch(e){}
 }
 
 /* ============================ TABS + THEME ============================ */
@@ -887,6 +1027,8 @@ $("#themeBtn").addEventListener("click",()=>{
   const cur=document.documentElement.getAttribute("data-theme")||"dark";
   applyTheme(cur==="dark"?"light":"dark"); renderStatic(); renderCharts();
 });
+if($("#csvBtn")) $("#csvBtn").addEventListener("click", exportCsv);
+if($("#pdfBtn")) $("#pdfBtn").addEventListener("click", exportPdf);
 (function initTheme(){ let t="dark"; try{ t=localStorage.getItem("vantage-theme")||"dark"; }catch(e){} document.documentElement.setAttribute("data-theme",t); })();
 
 let rz; window.addEventListener("resize",()=>{ clearTimeout(rz); rz=setTimeout(renderCharts,150); });
@@ -895,6 +1037,103 @@ renderCharts();
 countUpAll();
 INITIAL = false;
 
+
+/* ============================ EXPORT (CSV / PDF) ============================ */
+function activeTab(){ const b=document.querySelector('.tab-btn[aria-selected="true"]'); return (b&&b.dataset.tab)||"overview"; }
+// fetchedAt is an epoch-ms number; generatedAt is already ISO. Normalize either to an ISO string.
+function asIso(t){ try{ const d=new Date(t); return isNaN(d.getTime()) ? String(t) : d.toISOString(); }catch(e){ return String(t); } }
+function csvEsc(v){ v=String(v==null?"":v); return /[",\n\r]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
+function toCsv(rows){ return rows.map(r=> (r&&r.length ? r.map(csvEsc).join(",") : "")).join("\r\n"); }
+function sec(rows,title,header,data){ rows.push(["# "+title]); if(header) rows.push(header); (data||[]).forEach(d=> rows.push(d)); rows.push([]); }
+function buildCsvRows(tab){
+  const rows=[];
+  rows.push(["VR.org Vantage", TABTITLE[tab]||tab]);
+  rows.push(["Generated", new Date().toISOString()]);
+  if(STATS&&STATS.fetchedAt) rows.push(["Traffic data as of", asIso(STATS.fetchedAt)]);
+  if(tab==="mcp"&&MCP&&MCP.generatedAt) rows.push(["MCP data as of", asIso(MCP.generatedAt)]);
+  rows.push([]);
+  if(tab==="overview"&&STATS&&AI){
+    const searchTot=AI.search.reduce((s,x)=>s+x[1],0);
+    sec(rows,"KPIs",["Metric","Value"],[
+      ["Requests 24h",STATS.requests24h],["Requests prev 24h",STATS.requests24hPrev],
+      ["Unique visitors 24h",STATS.uniqueVisitors24h],["AI bot reads 24h",AI.botsTotalHits],
+      ["Bandwidth 24h (GB)",(STATS.bandwidth24h/1e9).toFixed(2)],["AI referral clicks",AI.referrals.total]]);
+    sec(rows,"Machines vs search (24h)",["Segment","Hits"],[["AI assistants",AI.botsTotalHits],["Search crawlers",searchTot]]);
+    sec(rows,"Where humans arrive from",["Referrer","Pageviews"], AI.topReferrers.filter(r=>r[2]!=="internal").map(r=>[r[0],r[1]]));
+    sec(rows,"Which AIs are reading you",["Vendor","Hits"], AI.vendors.map(v=>[v[0],v[1]]));
+  } else if(tab==="regular"&&STATS&&AI){
+    const s=STATS.status, tot=STATS.requests24h||1;
+    sec(rows,"KPIs",["Metric","Value"],[
+      ["Requests 24h",STATS.requests24h],["Unique visitors 24h",STATS.uniqueVisitors24h],
+      ["Requests last hour",STATS.requests1h],["Bandwidth 24h (GB)",(STATS.bandwidth24h/1e9).toFixed(2)],
+      ["Success rate %",pct(s.s2,tot).toFixed(1)],["Client errors 4xx",s.s4]]);
+    sec(rows,"Hourly requests (last 24h)",["Bucket","Requests"], (STATS.hourly||[]).map((v,i,a)=>[ i===a.length-1?"current hour":(a.length-1-i)+"h ago", v]));
+    sec(rows,"Top pages",["Path","Pageviews"], (AI.humanTopPages||[]).map(p=>[p[0],p[1]]));
+    sec(rows,"Broken paths (404s)",["Path","Hits"], (AI.notFound||[]).map(p=>[p[0],p[1]]));
+    sec(rows,"Status codes (24h)",["Code","Count","Percent"],[
+      ["2xx",s.s2,pct(s.s2,tot).toFixed(1)],["3xx",s.s3,pct(s.s3,tot).toFixed(1)],
+      ["4xx",s.s4,pct(s.s4,tot).toFixed(1)],["5xx",s.s5,pct(s.s5,tot).toFixed(1)]]);
+    sec(rows,"Top referrers",["Referrer","Pageviews"], AI.topReferrers.map(r=>[r[0],r[1]]));
+    sec(rows,"Search crawlers",["Bot","Hits"], AI.search.map(x=>[x[0],x[1]]));
+    if(AI.geo&&AI.geo.available) sec(rows,"Top countries",["Country","Visitors"], AI.geo.top.map(c=>[countryName(c[0]),c[1]]));
+    if(AI.latency&&AI.latency.available) sec(rows,"Server performance",["Metric","Value"],[
+      ["Median response ms",AI.latency.p50Ms],["p95 response ms",AI.latency.p95Ms],["Samples",AI.latency.samples],
+      ["Cache hit ratio %", AI.cache&&AI.cache.available? AI.cache.hitRatio.toFixed(1):"n/a"]]);
+  } else if(tab==="ai"&&AI){
+    const ratio=(AI.referrals.chatgptClicks? AI.chatgpt.hits/AI.referrals.chatgptClicks : AI.chatgpt.hits);
+    sec(rows,"KPIs",["Metric","Value"],[
+      ["AI reads 24h",AI.botsTotalHits],["ChatGPT sessions",AI.chatgpt.uniqueIps],
+      ["Pages ChatGPT read",AI.chatgpt.distinctPages],["Read:click ratio",Math.round(ratio)+":1"],
+      ["AI referral clicks",AI.referrals.total]]);
+    sec(rows,"Cited vs ingested (24h)",["Mode","Hits","Unique IPs"],[
+      ["Cited now (live answers)",AI.modes.live.hits,AI.modes.live.ips],
+      ["Ingested for later (crawlers)",AI.modes.crawl.hits,AI.modes.crawl.ips]]);
+    sec(rows,"AI reads - 7-day trend",["Date","All AI reads","ChatGPT reads"], (TREND||[]).map(r=>[r[0],r[1],r[2]]));
+    sec(rows,"By vendor",["Vendor","Hits"], AI.vendors.map(v=>[v[0],v[1]]));
+    sec(rows,"By bot",["Bot","Hits"], AI.bots.map(b=>[b[0],b[1]]));
+    sec(rows,"What ChatGPT reads most",["Path","Hits"], AI.chatgpt.topPages.map(p=>[p[0],p[1]]));
+    sec(rows,"ChatGPT demand by hour (UTC)",["Hour","Fetches"], (AI.chatgpt.hourlyUtc||[]).map((v,i)=>[String(i).padStart(2,"0")+":00",v]));
+    sec(rows,"AI referral sources",["Source","Clicks"], AI.referrals.bySource.map(x=>[x[0],x[1]]));
+  } else if(tab==="mcp"){
+    if(!MCP){ rows.push(["# MCP data unavailable"]); return rows; }
+    const top=MCP.clients.filter(c=>c[0]!=="other")[0]||MCP.clients[0], totC=MCP.clients.reduce((s,x)=>s+x[1],0)||1;
+    sec(rows,"KPIs",["Metric","Value"],[
+      ["MCP requests 7d",MCP.requests7d],["MCP requests 30d",MCP.requests30d],
+      ["Tool invocations 30d",MCP.toolCalls],["Top client", top?(MCPCLIENT[top[0]]||top[0]):"—"],
+      ["Distinct tools used",MCP.tools.length],["Avg requests/day", MCP.days.length? Math.round(MCP.requests30d/MCP.days.length):0]]);
+    sec(rows,"MCP requests - daily",["Date","Requests"], MCP.days.map(d=>[d[0],d[1]]));
+    sec(rows,"Tool invocations by tool",["Tool","Calls"], MCP.tools.map(t=>[t[0],t[1]]));
+    sec(rows,"Clients connecting",["Client","Requests","Percent"], MCP.clients.map(c=>[MCPCLIENT[c[0]]||c[0],c[1],pct(c[1],totC).toFixed(1)]));
+  } else {
+    rows.push(["# No data loaded for this tab yet"]);
+  }
+  return rows;
+}
+function downloadFile(name,text,mime){
+  try{
+    const blob=new Blob([text],{type:mime});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a"); a.href=url; a.download=name; a.style.display="none";
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{ a.remove(); URL.revokeObjectURL(url); }, 800);
+  }catch(e){ /* export must never throw into the UI */ }
+}
+function exportCsv(){
+  const tab=activeTab();
+  const csv="﻿"+toCsv(buildCsvRows(tab));
+  const stampSrc=(tab==="mcp"&&MCP&&MCP.generatedAt) || (STATS&&STATS.fetchedAt) || Date.now();
+  const stamp=asIso(stampSrc).slice(0,10);
+  downloadFile("vantage-"+tab+"-"+stamp+".csv", csv, "text/csv;charset=utf-8;");
+}
+function exportPdf(){
+  const tab=activeTab();
+  const head=$("#printHead");
+  if(head) head.textContent = "VR.org Vantage — "+(TABTITLE[tab]||tab)+" — "+new Date().toLocaleString("en-US");
+  const prev=document.title;
+  document.title = "vantage-"+tab+"-"+new Date().toISOString().slice(0,10);
+  window.addEventListener("afterprint", function once(){ document.title=prev; window.removeEventListener("afterprint",once); });
+  window.print();
+}
 
 /* ============================ LIVE DATA ADAPTER ============================ */
 function esc(x){ x=String(x==null?"":x); var m={38:"&amp;",60:"&lt;",62:"&gt;",34:"&quot;",39:"&#39;"}; return x.replace(/[&<>"']/g,function(c){return m[c.charCodeAt(0)];}); }
@@ -929,12 +1168,23 @@ function adapt(stats, ai){
     cache:(ai.cache||{available:false, hitRatio:0, hits:0, total:0, byStatus:{}}) };
   TREND=(ai.trend||[]).slice().reverse().map(d=>[d.date.slice(5).replace("-","/"), d.aiTotal, d.chatgptUser]);
 }
+function adaptMcp(mcp){
+  if(!mcp){ MCP=null; return; }
+  const tools=Object.entries(mcp.tools30d||{}).sort((a,b)=>b[1]-a[1]);
+  const clients=Object.entries(mcp.clients30d||{}).sort((a,b)=>b[1]-a[1]);
+  const days=(mcp.days||[]).map(d=>[d.date, d.requests]);
+  MCP={ generatedAt:mcp.generatedAt, requests7d:mcp.totalRequests7d||0, requests30d:mcp.totalRequests30d||0,
+    tools, clients, days, toolCalls:tools.reduce((s,t)=>s+t[1],0) };
+}
 async function loadVantageData(){
-  const [stats, ai] = await Promise.all([
+  const [stats, ai, mcp] = await Promise.all([
     fetch("/api/stats",{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error("stats "+r.status); return r.json(); }),
-    fetch("/api/ai-stats?trend=7",{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error("ai-stats "+r.status); return r.json(); })
+    fetch("/api/ai-stats?trend=7",{cache:"no-store"}).then(r=>{ if(!r.ok) throw new Error("ai-stats "+r.status); return r.json(); }),
+    // MCP stats are additive: never let this one fail the whole dashboard.
+    fetch("/api/mcp-stats",{cache:"no-store"}).then(r=> r.ok ? r.json() : null).catch(()=>null)
   ]);
   adapt(stats, ai);
+  adaptMcp(mcp);
   renderStatic();
   renderCharts();
 }
