@@ -61,8 +61,19 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
   const [editorials, setEditorials] = useState<EditorialSummary[]>(initial.editorials);
 
   const sourceCount = Object.keys(sourceStats).length || Object.keys(SOURCES).length;
-  // Computed after mount so the prerendered date never mismatches the client
-  // date during hydration. Empty on first paint, filled on mount.
+  // Hero masthead date: the LIVE current date pinned to Pacific (the VR.org
+  // newsroom timezone), computed after mount so the prerendered HTML never
+  // mismatches the client during hydration (empty on first paint, filled on
+  // mount).
+  //
+  // timeZone MUST be "America/Los_Angeles", never "UTC". This is a full "now"
+  // timestamp: formatting it in UTC rolls the masthead a day AHEAD for anyone
+  // whose local clock is already past UTC midnight (after ~5pm PT), which was
+  // the "shows tomorrow's date" bug on 2026-07-15. "America/Los_Angeles" tracks
+  // PST/PDT automatically (do NOT hardcode a PST offset, that breaks under
+  // daylight time), so every reader sees the same LA date. The separate UTC
+  // rule only applies to stored publishDate "YYYY-MM-DD" strings, which parse
+  // as UTC midnight.
   const [heroDate, setHeroDate] = useState("");
   useEffect(() => {
     setHeroDate(
@@ -71,7 +82,7 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
           month: "short",
           day: "numeric",
           year: "numeric",
-          timeZone: "UTC",
+          timeZone: "America/Los_Angeles",
         })
         .toUpperCase()
     );
