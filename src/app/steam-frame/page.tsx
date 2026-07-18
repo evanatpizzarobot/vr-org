@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-07-04";
+const LAST_UPDATED = "2026-07-17";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -85,7 +85,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Valve Steam Frame come out?",
     answer:
-      "Valve has confirmed a summer 2026 window for the Steam Frame, alongside the Steam Machine that shipped June 30. As of early July 2026 the reservation window is expected imminently. Roughly 35 tons of VR hardware cleared customs into Valve's US warehouses in June and the FCC filings are public, so the hardware is ready; Valve just has not named the day.",
+      "Valve has confirmed a summer 2026 window for the Steam Frame, alongside the Steam Machine that shipped June 30. As of mid July 2026 the reservation window is expected imminently. Roughly 35 tons of VR hardware cleared customs into Valve's US warehouses in June, the FCC filings are public, and the Great on Frame store section went live in mid July, so the hardware is ready and the merchandising has started; Valve just has not named the day.",
   },
   {
     question: "How much will the Steam Frame cost?",
@@ -105,12 +105,12 @@ const faq = faqPageSchema([
   {
     question: "What games will the Steam Frame launch with?",
     answer:
-      "No first-party launch game has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. The launch story is the Steam library itself via streaming and Proton, plus the Steam Frame Verified program. Payday: Aces High was the first third-party title to list Steam Frame as a target platform, and candidates like H3VR2 and Into the Radius 2 are in the window.",
+      "No first-party launch game has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. The launch story is the Steam library itself via streaming and Proton, plus the certified catalog on the Great on Frame page, which listed eight titles as of July 17 including Portal 2, The Lab, Into Black, and Underdogs. Payday: Aces High was the first third-party title to list Steam Frame as a target platform, and candidates like H3VR2 and Into the Radius 2 are in the window.",
   },
   {
     question: "What is Steam Frame Verified?",
     answer:
-      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold 90 FPS on-device, stricter than the 72Hz baselines Meta and Pico accept, and standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt.",
+      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold 90 FPS on-device, stricter than the 72Hz baselines Meta and Pico accept, and standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt. Certified games are collected on the Great on Frame storefront page, which went live in mid July 2026 and listed eight titles within two days.",
   },
 ]);
 
@@ -201,6 +201,16 @@ const TIMELINE: TimelineEntry[] = [
     slug: "this-week-in-vr-2026-07-03",
     text: "Status check: reservations still imminent, no official price.",
   },
+  {
+    date: "Jul 13, 2026",
+    slug: "valve-great-on-frame-steam-page-steam-frame-launch-signal",
+    text: "The Great on Frame storefront section goes live on Steam, the clearest launch signal yet.",
+  },
+  {
+    date: "Jul 14, 2026",
+    slug: "valve-great-on-frame-steam-page-steam-frame-launch-signal",
+    text: "The verified list grows to eight titles in a day: Underdogs, Ancient Dungeon, and Slots & Diapers join.",
+  },
 ];
 
 export default function SteamFramePage() {
@@ -224,11 +234,35 @@ export default function SteamFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 4, 2026
+          Last updated: July 17, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
-          Part of our{" "}
+          Deep dives:{" "}
+          <a
+            href="/steam-frame-release-date"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            release date tracker
+          </a>
+          ,{" "}
+          <a
+            href="/steam-frame-price"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            price tracker
+          </a>
+          , and the{" "}
+          <a
+            href="/great-on-frame"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Great on Frame verified games list
+          </a>
+          . Part of our{" "}
           <a
             href="/vr-release-dates"
             className="no-underline hover:underline"
@@ -254,11 +288,12 @@ export default function SteamFramePage() {
         >
           The Steam Frame is Valve&apos;s standalone SteamOS VR headset with a
           dedicated 6GHz wireless dongle for PC VR streaming, confirmed for a
-          summer 2026 release. As of July 4, 2026 there is no official price and
-          no reservation date, but the hardware has cleared US customs, the FCC
-          filings are public, and Valve has confirmed the window, so the
-          announcement could land any day. This page tracks every signal, links
-          to all of our reporting, and is updated on every beat until launch.
+          summer 2026 release. As of July 17, 2026 there is no official price
+          and no reservation date, but the hardware has cleared US customs, the
+          FCC filings are public, and the Great on Frame store section is live
+          and filling with certified games, so the announcement could land any
+          day. This page tracks every signal, links to all of our reporting,
+          and is updated on every beat until launch.
         </p>
 
         <figure className="pillar-figure">

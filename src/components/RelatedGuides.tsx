@@ -95,6 +95,21 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/steam-frame",
     description: "Release date signals, price expectations, and specs, updated.",
   },
+  "great-on-frame": {
+    label: "Great on Frame: Verified Games List",
+    href: "/great-on-frame",
+    description: "Every Steam Frame certified game, tracked as the list grows.",
+  },
+  "steam-frame-price": {
+    label: "Steam Frame Price Tracker",
+    href: "/steam-frame-price",
+    description: "Every leak, estimate, and signal on what the Frame will cost.",
+  },
+  "steam-frame-release-date": {
+    label: "Steam Frame Release Date Tracker",
+    href: "/steam-frame-release-date",
+    description: "Summer 2026 confirmed. Every launch signal, dated.",
+  },
   "best-vr-headset-for-gaming": {
     label: "Best VR Headset for Gaming",
     href: "/best-vr-headset-for-gaming",

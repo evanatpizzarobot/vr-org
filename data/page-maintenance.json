@@ -443,13 +443,53 @@
       "file": "src/app/steam-frame/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-07-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Refresh on EVERY Steam Frame news beat until launch, not just on cadence",
         "Update the release-date and price signal sections with the newest reporting",
         "Append new articles to the dated timeline with links",
         "Keep the FAQ answers in sync with the latest status (no stale windows)",
+        "Keep the deep-dive links to /great-on-frame, /steam-frame-price, /steam-frame-release-date intact",
         "After launch: convert to a review/spec hub and relax cadence to 30d"
+      ]
+    },
+    {
+      "path": "/great-on-frame",
+      "file": "src/app/great-on-frame/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-07-17",
+      "checklist": [
+        "Check store.steampowered.com/greatonframe for new titles on EVERY Steam Frame beat",
+        "Append additions to VERIFIED_GAMES (in page order) AND the CHANGELOG with dates",
+        "Update the count in the lede, FAQ answers, and ComparisonTable caption",
+        "After launch: this becomes the highest-value page in the cluster, tighten to every-few-days during launch month"
+      ]
+    },
+    {
+      "path": "/steam-frame-price",
+      "file": "src/app/steam-frame-price/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-07-17",
+      "checklist": [
+        "Append new leaks/estimates to PRICE_SIGNALS with dates",
+        "Keep the lede's 'as of' date and dollar figures matched to the newest signal",
+        "THE MOMENT Valve announces the price: rewrite lede to lead with the official number, keep signal history below",
+        "After launch: relax cadence to 30d, page becomes 'Steam Frame price and where to buy'"
+      ]
+    },
+    {
+      "path": "/steam-frame-release-date",
+      "file": "src/app/steam-frame-release-date/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-07-17",
+      "checklist": [
+        "Append new signals to DATE_SIGNALS with dates",
+        "Keep the lede's 'as of' date current on every touch",
+        "THE MOMENT Valve names a date or opens reservations: rewrite lede to lead with it",
+        "After launch: convert to 'Steam Frame launch: how it went' record, relax cadence to 60d"
       ]
     }
   ]
