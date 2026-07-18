@@ -122,6 +122,11 @@ const collectionSchema = {
     },
     {
       "@type": "Article",
+      name: "Great on Frame: Every Verified Steam Frame Game",
+      url: "https://vr.org/great-on-frame",
+    },
+    {
+      "@type": "Article",
       name: "Best AR Glasses 2026",
       url: "https://vr.org/ar-glasses",
     },
@@ -253,7 +258,7 @@ const CARDS: BestOfCard[] = [
   {
     title: "Highest Resolution VR Headset",
     description:
-      "The sharpest displays in VR ranked by real per-eye resolution, from Galaxy XR and Vision Pro to the Pimax Crystal Super.",
+      "The sharpest displays in VR ranked by real per-eye resolution, from Galaxy XR and Vision Pro to the Bigscreen Beyond 2.",
     href: "/highest-resolution-vr-headset",
     badge: "Hardware",
     badgeColor: "var(--accent-cyan)",
@@ -325,7 +330,7 @@ const CARDS: BestOfCard[] = [
   {
     title: "Best VR Fitness Apps 2026",
     description:
-      "The best VR workout games and fitness apps. Supernatural, FitXR, Beat Saber, and beyond.",
+      "The best VR workout games and fitness apps. FitXR, Beat Saber, Les Mills, and what the Supernatural shutdown means for subscribers.",
     href: "/best-vr-fitness",
     badge: "Software",
     badgeColor: "var(--accent-blue)",
