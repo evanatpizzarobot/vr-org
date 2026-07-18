@@ -93,6 +93,10 @@
           "image": "https://pimax.com/cdn/shop/files/product_pimaxcrystallight_headsetwithcontrollers_2405_00537d9f-5f8a-4ca0-ba20-07de3b678991.webp?v=1754989215&width=1280",
           "description": "Native 4K per-eye QLED with glass aspheric lenses and 35 PPD. The best PC VR clarity you can buy without going custom. Sim racers and flight sim diehards swear by it.",
           "links": {
+            "amazon": {
+              "url": "https://amazon.com/s?k=pimax+crystal+light&tag=vrorg00-20",
+              "label": "Amazon"
+            },
             "direct": {
               "url": "https://pimax.com/products/pimax-crystal-light",
               "label": "Pimax"
