@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Upcoming VR Headsets 2026: New Releases and What's Coming Next",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-20",
+  dateModified: "2026-07-17",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -73,7 +73,9 @@ const headsetList = itemListSchema("New and Upcoming VR Headsets 2026", [
   { name: "Samsung Galaxy XR", url: "https://vr.org/best-standalone-vr-headset#samsung-galaxy-xr" },
   { name: "Bigscreen Beyond 2", url: "https://vr.org/best-pc-vr-headset#bigscreen-beyond-2" },
   { name: "Apple Vision Pro (M5)", url: "https://vr.org/quest-3-vs-vision-pro" },
-  { name: "Valve Steam Frame" },
+  { name: "Valve Steam Frame", url: "https://vr.org/steam-frame" },
+  { name: "Pico Project Swan" },
+  { name: "Pimax Dream Air" },
   { name: "Meta Quest 4" },
   { name: "Samsung Galaxy Glasses" },
 ]);
@@ -82,17 +84,17 @@ const faq = faqPageSchema([
   {
     question: "What new VR headsets are coming in 2026?",
     answer:
-      "2026 has already brought the Samsung Galaxy XR, the flagship Android XR headset, and the ultralight Bigscreen Beyond 2 for PC VR, alongside an M5-chip refresh of the Apple Vision Pro. Still to come are Valve's much-anticipated Steam Frame and a wave of smart glasses including Samsung's Galaxy Glasses. The Meta Quest 4 is expected later, around 2027.",
+      "2026 has already brought the Samsung Galaxy XR, the flagship Android XR headset, and the ultralight Bigscreen Beyond 2 for PC VR, alongside an M5-chip refresh of the Apple Vision Pro. The big one still to come is Valve's Steam Frame, confirmed for summer 2026 with launch signals stacking up fast, plus Pico's Project Swan and a wave of smart glasses including Samsung's Galaxy Glasses. The Meta Quest 4 is expected in 2027 or later.",
   },
   {
     question: "When is the Valve Steam Frame coming out?",
     answer:
-      "Valve's Steam Frame is the most anticipated VR headset on the horizon, expected to blend standalone and wireless PC VR within the Steam ecosystem and pair with Valve's new controllers. Valve has not finalized full specifications, pricing, or a firm release date, so treat any specifics as unconfirmed. It is the headset PC VR enthusiasts are watching most closely.",
+      "Valve has confirmed summer 2026 and every signal says the date is close: the hardware has cleared US customs, the FCC filings are public, and the Great on Frame store section is live and filling with certified games. There is no official price yet; retailer leaks and analyst estimates cluster between $899 and $1,199. Our Steam Frame hub and release date tracker follow every development.",
   },
   {
     question: "When is the Meta Quest 4 coming out?",
     answer:
-      "The Meta Quest 4 is expected around 2027 rather than 2026. Reports indicate Meta is focused on making it significantly lighter and more glasses-like than the Quest 3. Until it arrives, the Quest 3 and Quest 3S remain Meta's current standalone headsets, and there is no reason to wait if you want a headset now.",
+      "Not in 2026. Credible reporting now points the gaming-focused Quest 4 to H2 2027 or later, with a separate ultralight tethered headset penciled in around H1 2027. Meta is focused on making the next Quest significantly lighter and more glasses-like than the Quest 3. Until it arrives, the Quest 3 and Quest 3S remain Meta's current standalone headsets, and there is no reason to wait if you want a headset now.",
   },
   {
     question: "Should I wait for an upcoming VR headset or buy now?",
@@ -127,7 +129,7 @@ export default function UpcomingVRHeadsets2026Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 20, 2026
+          Last updated: July 17, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -148,9 +150,10 @@ export default function UpcomingVRHeadsets2026Page() {
           style={{ color: "var(--text-secondary)" }}
         >
           2026 has already delivered the Samsung Galaxy XR and the ultralight
-          Bigscreen Beyond 2, plus an M5 refresh of the Apple Vision Pro. Still on
-          the horizon are Valve&apos;s much-anticipated Steam Frame, a wave of
-          smart glasses, and the Meta Quest 4, which is expected around 2027. This
+          Bigscreen Beyond 2, plus an M5 refresh of the Apple Vision Pro. Next up
+          is Valve&apos;s Steam Frame, confirmed for summer 2026 with launch
+          signals stacking up by the week, followed by Pico&apos;s Project Swan, a
+          wave of smart glasses, and the Meta Quest 4 in 2027 or later. This
           is our running guide to the newest and upcoming VR headsets, updated as
           they are announced and released. For exact dates across every category,
           including games and accessories, see our{" "}
@@ -210,18 +213,79 @@ export default function UpcomingVRHeadsets2026Page() {
           On the horizon
         </h2>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          <strong>Valve Steam Frame.</strong> The most anticipated headset
-          coming, Valve&apos;s Steam Frame is expected to bridge standalone and
-          wireless PC VR inside the Steam ecosystem and pair with Valve&apos;s new
-          controllers. Full specifications, pricing, and a firm date are not
-          confirmed, so treat details as rumor for now, but it is the one PC VR
-          fans are watching most.
+          <strong>Valve Steam Frame.</strong> The most anticipated headset of
+          the year, and no longer a rumor: Valve has confirmed summer 2026, the
+          full spec sheet is public (dual 2160x2160 panels, Snapdragon 8 Gen 3,
+          16GB RAM, a bundled 6GHz wireless dongle for lag-free PC streaming),
+          the hardware has cleared US customs, and the Great on Frame store
+          section is live. Only the price and the day are missing; estimates
+          cluster between $899 and $1,199. Our{" "}
+          <a
+            href="/steam-frame"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam Frame hub
+          </a>
+          ,{" "}
+          <a
+            href="/steam-frame-release-date"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            release date tracker
+          </a>
+          , and{" "}
+          <a
+            href="/great-on-frame"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            verified games list
+          </a>{" "}
+          follow every beat.
         </p>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          <strong>Meta Quest 4.</strong> Meta&apos;s next mainstream headset is
-          expected around 2027, with reports pointing to a much lighter,
-          glasses-like design. Until then, the Quest 3 and Quest 3S are the current
-          Meta headsets, and there is no need to wait if you want one now.
+          <strong>Pico Project Swan.</strong> Pico&apos;s next flagship is
+          shaping up as a direct Vision Pro competitor, headlined by reported
+          4,000 PPI micro-OLED displays. We broke down{" "}
+          <a
+            href="/articles/pico-project-swan-4000-ppi-vision-pro-competitor-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            what Project Swan is aiming at
+          </a>
+          ; specs and timing remain reported rather than confirmed.
+        </p>
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          <strong>Pimax Dream Air.</strong> Pimax&apos;s compact micro-OLED PC
+          VR headset is now reaching buyers, with Pimax saying{" "}
+          <a
+            href="/articles/pimax-dream-air-preorder-backlog-cleared-august-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            every preorder ships by August
+          </a>
+          . One for enthusiasts watching the ultralight PC VR race alongside the
+          Bigscreen Beyond 2.
+        </p>
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          <strong>Meta Quest 4.</strong> Not a 2026 device. Credible reporting
+          points the gaming-focused Quest 4 to H2 2027 or later, with a much
+          lighter, glasses-like design, and a separate ultralight tethered
+          headset around H1 2027. Our{" "}
+          <a
+            href="/articles/meta-quest-4-everything-we-know"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Quest 4 tracker
+          </a>{" "}
+          sorts every claim into confirmed, reported, or rumor. Until then, the
+          Quest 3 and Quest 3S are the current Meta headsets, and there is no
+          need to wait if you want one now.
         </p>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           <strong>Samsung Galaxy Glasses and the smart-glasses wave.</strong>

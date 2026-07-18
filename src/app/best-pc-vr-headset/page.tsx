@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best PC VR Headset 2026: Top Headsets for SteamVR and PC Gaming",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-07-17",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -168,7 +168,7 @@ const faq = faqPageSchema([
   {
     question: "Is the Steam Frame a PC VR headset?",
     answer:
-      "Valve's upcoming Steam Frame is the most anticipated headset on the PC VR horizon. It is expected to bridge standalone and wireless PC VR within the Steam ecosystem, pairing with Valve's new controllers. Full specifications and pricing are not finalized, so it is not yet a buy, but it is the headset PC VR enthusiasts are watching most closely heading into 2026 and beyond.",
+      "Yes, and Valve calls PC streaming the primary experience. The Steam Frame ships with a dedicated 6GHz wireless dongle that streams your Steam library with no perceptible lag in hands-on reports, plus standalone SteamOS play on-device. Valve has confirmed summer 2026; the price is not announced, with estimates between $899 and $1,199. It is not yet a buy because you cannot buy it, but if you are shopping for wireless PC VR it is the launch to wait a few weeks for. Our Steam Frame hub tracks every signal.",
   },
 ]);
 
@@ -193,7 +193,7 @@ export default function BestPCVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -288,10 +288,25 @@ export default function BestPCVRHeadsetPage() {
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           The classic PC VR enthusiast headsets, the Valve Index and HP Reverb G2,
           are effectively discontinued, so avoid paying inflated prices for new
-          stock and only consider them used. On the horizon, Valve&apos;s upcoming
-          Steam Frame is the headset to watch, expected to blend standalone and
-          wireless PC VR in the Steam ecosystem, though it is not yet a buy. For
-          the cheapest entry overall, see our{" "}
+          stock and only consider them used. The headset to watch is Valve&apos;s{" "}
+          <a
+            href="/steam-frame"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam Frame
+          </a>
+          , confirmed for summer 2026 with a bundled 6GHz dongle for wireless PC
+          streaming and every launch signal now flashing; if your budget can
+          stretch to the expected $899 to $1,199 and you are not in a hurry,{" "}
+          <a
+            href="/steam-frame-release-date"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            waiting for the reservation window
+          </a>{" "}
+          is a defensible call. For the cheapest entry overall, see our{" "}
           <a
             href="/best-budget-vr-headset"
             className="no-underline hover:underline"

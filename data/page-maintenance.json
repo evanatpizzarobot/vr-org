@@ -324,7 +324,7 @@
       "file": "src/app/best-pc-vr-headset/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify prices: Quest 3 ($599), Bigscreen Beyond 2 ($1019), Pimax Crystal Light ($899), PSVR2 ($399)",
         "Confirm Valve Index / HP Reverb G2 remain discontinued; update if a successor ships",
@@ -350,7 +350,7 @@
       "file": "src/app/upcoming-vr-headsets-2026/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "NEWS-SENSITIVE, refresh often: move launched headsets from 'On the horizon' to 'Just launched'",
         "Update Steam Frame and Quest 4 status as Valve/Meta announce specs, price, and dates",
