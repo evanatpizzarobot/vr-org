@@ -67,6 +67,10 @@
             "amazon": {
               "url": "https://amazon.com/s?k=samsung+galaxy+xr&tag=vrorg00-20",
               "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://www.samsung.com/us/xr/galaxy-xr/galaxy-xr/",
+              "label": "Samsung"
             }
           }
         },
@@ -111,12 +115,12 @@
           "name": "Apple Vision Pro (M5)",
           "price": "$3,699",
           "image": "https://www.apple.com/newsroom/images/2025/10/apple-vision-pro-upgraded-with-the-m5-chip-and-dual-knit-band/article/Apple-Vision-Pro-hero-251015.jpg",
-          "description": "The most advanced spatial computer. Incredible display, eye and hand tracking, visionOS ecosystem. Up $200 since Apple's June price increase.",
+          "description": "The most advanced spatial computer. Incredible display, eye and hand tracking, visionOS ecosystem. Up $200 since Apple's June price increase. Sold by Apple only, not on Amazon.",
           "badge": "Premium",
           "links": {
-            "amazon": {
-              "url": "https://amazon.com/s?k=apple+vision+pro&tag=vrorg00-20",
-              "label": "Amazon"
+            "direct": {
+              "url": "https://www.apple.com/apple-vision-pro/",
+              "label": "Apple"
             }
           }
         },
@@ -178,7 +182,7 @@
           "badge": "Just Launched",
           "links": {
             "bestbuy": {
-              "url": "https://www.bestbuy.com/",
+              "url": "https://www.bestbuy.com/site/searchpage.jsp?st=rog+xreal+r1",
               "label": "Best Buy"
             },
             "direct": {
@@ -476,8 +480,21 @@
     {
       "id": "gaming-hardware",
       "title": "Gaming Hardware",
-      "description": "VR-ready GPUs and Steam-platform peripherals for PC VR gaming. GPU prices reflect current retail street averages and now sit well above MSRP, as AI demand for memory squeezes consumer card supply through the 2025-2026 crunch.",
+      "description": "VR-ready GPUs, Steam hardware, and big-ticket VR gaming rigs for PC VR. GPU prices reflect current retail street averages and now sit well above MSRP, as AI demand for memory squeezes consumer card supply through the 2025-2026 crunch.",
       "items": [
+        {
+          "name": "Valve Steam Machine",
+          "price": "From $1,049",
+          "image": "https://img.youtube.com/vi/ov-XrojBA50/maxresdefault.jpg",
+          "description": "Valve's living-room gaming cube, shipped June 30. Starts at $1,049 for 512GB, $1,349 for 2TB, after memory costs pushed pricing above the rumored $799. Runs the full Steam library on SteamOS and pairs natively with the Steam Controller and the upcoming Steam Frame.",
+          "badge": "New",
+          "links": {
+            "direct": {
+              "url": "https://store.steampowered.com/steammachine",
+              "label": "Steam"
+            }
+          }
+        },
         {
           "name": "Valve Steam Controller (2026)",
           "price": "$99",
@@ -539,6 +556,18 @@
             "amazon": {
               "url": "https://amazon.com/s?k=rtx+4070+super&tag=vrorg00-20",
               "label": "Amazon"
+            }
+          }
+        },
+        {
+          "name": "Virtuix Omni One",
+          "price": "$2,595",
+          "image": "https://img.youtube.com/vi/Zi8rjwtZ_cs/maxresdefault.jpg",
+          "description": "The omnidirectional VR treadmill, now officially Made for Meta and working with Quest 3 out of the box. Full-body locomotion for shooters and fitness, with the support harness and a dedicated game library included. The ultimate VR flex purchase.",
+          "links": {
+            "direct": {
+              "url": "https://www.virtuix.com/",
+              "label": "Virtuix"
             }
           }
         }
