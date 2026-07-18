@@ -189,7 +189,7 @@ const CARDS: BestOfCard[] = [
   {
     title: "Quest 3 vs Apple Vision Pro",
     description:
-      "A $599 VR gaming headset versus a $3,499 spatial computer. Displays, input, content, and who each one is for.",
+      "A $599 VR gaming headset versus a $3,699 spatial computer. Displays, input, content, and who each one is for.",
     href: "/quest-3-vs-vision-pro",
     badge: "Comparison",
     badgeColor: "var(--accent-cyan)",

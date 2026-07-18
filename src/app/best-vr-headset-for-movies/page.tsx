@@ -74,10 +74,10 @@ const productList = productItemListSchema("Best VR Headsets for Watching Movies 
     name: "Apple Vision Pro",
     brand: "Apple",
     description:
-      "The best headset for movies: a micro-OLED display with deep blacks, immersive cinema environments, and 3D and spatial video, for $3,499.",
+      "The best headset for movies: a micro-OLED display with deep blacks, immersive cinema environments, and 3D and spatial video, for $3,699.",
     url: "https://vr.org/best-vr-headset-for-movies#apple-vision-pro",
     offers: [
-      { price: 3499, url: "https://www.apple.com/apple-vision-pro/", seller: "Apple" },
+      { price: 3699, url: "https://www.apple.com/apple-vision-pro/", seller: "Apple" },
     ],
   },
   {
@@ -201,7 +201,7 @@ export default function BestVRHeadsetForMoviesPage() {
           drop a cinema-sized screen into a virtual theater or a mountaintop at
           sunset. It plays Apple TV, Disney+, and 3D and spatial video, and the
           near-retina clarity means no visible pixels between you and the picture.
-          The catch is the $3,499 price. If money is no object and movies are the
+          The catch is the $3,699 price. If money is no object and movies are the
           point, this is the one. Compare it to the value pick in our{" "}
           <a
             href="/quest-3-vs-vision-pro"
@@ -276,7 +276,7 @@ export default function BestVRHeadsetForMoviesPage() {
           caption="Headsets and display glasses for watching movies, with current VR.org deals prices."
           columns={["Headset / Glasses", "Price", "Best for"]}
           rows={[
-            ["Apple Vision Pro (M5)", "$3,499", "Best overall picture, micro-OLED, 3D and spatial video"],
+            ["Apple Vision Pro (M5)", "$3,699", "Best overall picture, micro-OLED, 3D and spatial video"],
             ["Samsung Galaxy XR", "$1,799", "Micro-OLED with native Google TV and YouTube"],
             ["Bigscreen Beyond 2", "$1,019", "Lightweight PC VR cinema for long sessions"],
             ["Meta Quest 3 (512GB)", "$599", "Best all-around value cinema, standalone"],

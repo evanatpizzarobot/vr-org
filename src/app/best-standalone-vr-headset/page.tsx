@@ -14,7 +14,7 @@ import { AD_SLOTS } from "@/lib/ads";
 export const metadata = {
   title: "Best Standalone VR Headset 2026: No PC, No Console Required | VR.org",
   description:
-    "The best standalone VR headsets of 2026 ranked. From the $349 Quest 3S to the $3,499 Apple Vision Pro, these all-in-one headsets need no PC and no console. Here is which to buy.",
+    "The best standalone VR headsets of 2026 ranked. From the $349 Quest 3S to the $3,699 Apple Vision Pro, these all-in-one headsets need no PC and no console. Here is which to buy.",
   openGraph: {
     title: "Best Standalone VR Headset 2026: No PC, No Console Required | VR.org",
     description:
@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best Standalone VR Headset 2026: No PC, No Console Required",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-07-17",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -109,11 +109,11 @@ const productList = productItemListSchema("Best Standalone VR Headsets 2026", [
     image:
       "https://upload.wikimedia.org/wikipedia/commons/5/51/Apple_Vision_Pro_with_Solo_Knit_Band.jpg",
     description:
-      "The premium standalone spatial computer, with the sharpest micro-OLED displays and visionOS, built for media and productivity at $3,499.",
+      "The premium standalone spatial computer, with the sharpest micro-OLED displays and visionOS, built for media and productivity at $3,699.",
     url: "https://vr.org/best-standalone-vr-headset#apple-vision-pro",
     offers: [
       {
-        price: 3499,
+        price: 3699,
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: "https://www.apple.com/apple-vision-pro/",
@@ -155,7 +155,7 @@ const faq = faqPageSchema([
   {
     question: "Is the Apple Vision Pro a standalone headset?",
     answer:
-      "Yes. The Apple Vision Pro is a standalone spatial computer that runs visionOS on board, controlled by your eyes and hands rather than gaming controllers. It has the best displays in any headset, but it is built for media, productivity, and spatial apps more than VR gaming, and it costs $3,499. If gaming is your goal, a standalone Quest is the better fit.",
+      "Yes. The Apple Vision Pro is a standalone spatial computer that runs visionOS on board, controlled by your eyes and hands rather than gaming controllers. It has the best displays in any headset, but it is built for media, productivity, and spatial apps more than VR gaming, and it costs $3,699. If gaming is your goal, a standalone Quest is the better fit.",
   },
   {
     question: "Do I need anything else to use a standalone VR headset?",
@@ -185,7 +185,7 @@ export default function BestStandaloneVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -208,7 +208,7 @@ export default function BestStandaloneVRHeadsetPage() {
           The best standalone VR headset in 2026 is the Meta Quest 3 at $599. It
           runs everything on board with no PC or console, with pancake lenses,
           color mixed reality, and the biggest library in VR. The $349 Quest 3S is
-          the best value, and the $3,499 Apple Vision Pro is the premium spatial
+          the best value, and the $3,699 Apple Vision Pro is the premium spatial
           computer. This guide ranks the all-in-one headsets that need nothing but
           the headset itself.
         </p>
@@ -254,7 +254,7 @@ export default function BestStandaloneVRHeadsetPage() {
           The Vision Pro is the premium standalone option, with the sharpest
           micro-OLED displays of any headset and visionOS controlled by your eyes
           and hands. It is built for media, productivity, and spatial apps more
-          than gaming, and at $3,499 it is a different class of purchase. If you
+          than gaming, and at $3,699 it is a different class of purchase. If you
           want the best displays and a computer you wear, it is unmatched; if you
           want VR gaming value, a Quest is the better fit, as our{" "}
           <a
@@ -304,6 +304,31 @@ export default function BestStandaloneVRHeadsetPage() {
             best VR headsets guide
           </a>
           .
+        </p>
+
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          One more thing to watch before you decide: Valve&apos;s Steam Frame
+          is a standalone SteamOS headset too, confirmed for summer 2026 with
+          on-device Proton play plus a bundled wireless dongle for PC
+          streaming. There is no official price yet, with estimates between
+          $899 and $1,199, so it is aiming above the Quest line rather than at
+          it. Our{" "}
+          <a
+            href="/steam-frame"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam Frame hub
+          </a>{" "}
+          and{" "}
+          <a
+            href="/steam-frame-release-date"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            release date tracker
+          </a>{" "}
+          follow every signal if you are tempted to wait.
         </p>
 
         <RecentArticles heading="Latest Hardware News" limit={4} tag="hardware" />

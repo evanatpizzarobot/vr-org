@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Highest Resolution VR Headset 2026: Sharpest Displays Ranked",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-07-17",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -86,7 +86,7 @@ const productList = productItemListSchema("Highest Resolution VR Headsets 2026",
       "Apple's micro-OLED headset packs roughly 23 million pixels across both eyes, about 3,660 by 3,200 per eye, with class-leading pixel density.",
     url: "https://vr.org/highest-resolution-vr-headset#apple-vision-pro",
     offers: [
-      { price: 3499, url: "https://www.apple.com/apple-vision-pro/", seller: "Apple" },
+      { price: 3699, url: "https://www.apple.com/apple-vision-pro/", seller: "Apple" },
     ],
   },
   {
@@ -150,7 +150,7 @@ export default function HighestResolutionVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -221,7 +221,7 @@ export default function HighestResolutionVRHeadsetPage() {
           across both eyes, about 3,660 by 3,200 per eye, and around 34 pixels per
           degree. The result is near-retina clarity where individual pixels
           disappear, which is why it remains the headset to beat for reading,
-          working, and watching. At $3,499 it is the most expensive option here,
+          working, and watching. At $3,699 it is the most expensive option here,
           and its strengths lie in productivity and media more than gaming. See our{" "}
           <a
             href="/quest-3-vs-vision-pro"
@@ -272,6 +272,30 @@ export default function HighestResolutionVRHeadsetPage() {
             best VR headsets
           </a>{" "}
           guide.
+        </p>
+
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          The resolution race is not standing still either. Pico&apos;s Project
+          Swan is{" "}
+          <a
+            href="/articles/pico-project-swan-4000-ppi-vision-pro-competitor-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            reportedly targeting 4,000 PPI micro-OLED displays
+          </a>{" "}
+          aimed straight at the Vision Pro, and Valve&apos;s summer-bound Steam
+          Frame pairs dual 2160x2160 panels with eye-tracked foveated
+          rendering, which spends its pixels where you are actually looking.
+          Our{" "}
+          <a
+            href="/steam-frame"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam Frame hub
+          </a>{" "}
+          tracks the latter&apos;s launch.
         </p>
 
         <RecentArticles heading="Latest Hardware News" limit={4} tag="hardware" />

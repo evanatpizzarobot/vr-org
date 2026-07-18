@@ -7,7 +7,7 @@
       "file": "src/app/best-vr-headsets/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify each headset's price and availability in deals.json",
         "Update 'What's Coming in 2026' section with confirmed launches",
@@ -272,7 +272,7 @@
       "file": "src/app/quest-3-vs-quest-3s/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify Quest 3 ($599) and Quest 3S ($349) prices against data/deals.json",
         "Confirm the spec table (lenses, resolution, FOV, storage) still matches current models",
@@ -285,7 +285,7 @@
       "file": "src/app/quest-3-vs-vision-pro/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify Quest 3 ($599) and Apple Vision Pro ($3,499) prices",
         "Confirm the Vision Pro model and chip generation are current",
@@ -298,7 +298,7 @@
       "file": "src/app/psvr2-vs-quest-3/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify PSVR2 ($399) and Quest 3 ($599) prices against data/deals.json",
         "Confirm the PSVR2 PC adapter status and feature caveats are still accurate",
@@ -337,7 +337,7 @@
       "file": "src/app/best-standalone-vr-headset/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify prices: Quest 3 ($599), Quest 3S ($349), Vision Pro ($3499), Galaxy XR ($1799)",
         "Add a verified Samsung Galaxy XR Offer URL if one becomes available (currently Product-only, no Offer)",
@@ -377,7 +377,7 @@
       "file": "src/app/best-vr-headset-for-gaming/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify prices: Quest 3 ($599), Quest 3S ($349), PSVR2 ($399) against data/deals.json",
         "Update the SpecTable if Meta or Sony ship a new headset or change specs",
@@ -390,7 +390,7 @@
       "file": "src/app/highest-resolution-vr-headset/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Re-verify per-eye resolution figures in the SpecTable against manufacturer specs (Galaxy XR, Vision Pro, Pimax Crystal Super/Light, Bigscreen Beyond 2, Quest 3, PSVR2)",
         "Update the ranking if a new higher-resolution headset ships",

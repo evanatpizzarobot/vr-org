@@ -129,7 +129,7 @@ const glassesList = productItemListSchema("Best AR Glasses 2026", [
       "The benchmark for passthrough mixed reality, dual 4K micro-OLED displays running visionOS. Not glasses form factor.",
     url: "https://vr.org/ar-glasses#apple-vision-pro",
     offers: [
-      { price: 3499, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://www.apple.com/apple-vision-pro/" },
+      { price: 3699, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://www.apple.com/apple-vision-pro/" },
     ],
   },
   {
@@ -177,7 +177,7 @@ const glassesFaq = faqPageSchema([
   {
     question: "How much do AR glasses cost?",
     answer:
-      "AR glasses prices in 2026 range from about $269 (RayNeo Air) and $379 (Ray-Ban Meta) up through $499 to $599 (Rokid Glasses, Xreal One Pro, Viture) and $799 (Meta Ray-Ban Display), to $2,500 (Snap Specs) and $3,499 (Apple Vision Pro). Most mainstream smart glasses sit in the $300 to $600 range. Developer-grade prototypes like Meta Orion are not priced for consumers yet.",
+      "AR glasses prices in 2026 range from about $269 (RayNeo Air) and $379 (Ray-Ban Meta) up through $499 to $599 (Rokid Glasses, Xreal One Pro, Viture) and $799 (Meta Ray-Ban Display), to $2,500 (Snap Specs) and $3,699 (Apple Vision Pro). Most mainstream smart glasses sit in the $300 to $600 range. Developer-grade prototypes like Meta Orion are not priced for consumers yet.",
   },
 ]);
 
@@ -458,7 +458,7 @@ export default function ARGlassesPage() {
           />
         </figure>
         <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
-          Made by Apple | Price: $3,499 | Display: Dual 4K+ micro-OLED
+          Made by Apple | Price: $3,699 | Display: Dual 4K+ micro-OLED
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"

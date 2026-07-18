@@ -58,7 +58,7 @@ const PILLAR_GUIDES: Record<string, Guide> = {
   "quest-3-vs-vision-pro": {
     label: "Quest 3 vs Apple Vision Pro",
     href: "/quest-3-vs-vision-pro",
-    description: "A $599 gaming headset versus a $3,499 spatial computer.",
+    description: "A $599 gaming headset versus a $3,699 spatial computer.",
   },
   "psvr2-vs-quest-3": {
     label: "PSVR2 vs Quest 3",

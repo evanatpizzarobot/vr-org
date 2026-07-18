@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Gaming 2026: Top Picks Ranked",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-07-17",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -157,7 +157,7 @@ export default function BestVRHeadsetForGamingPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -294,6 +294,30 @@ export default function BestVRHeadsetForGamingPage() {
             best PC VR headset guide
           </a>
           .
+        </p>
+
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          The wildcard for the second half of 2026 is Valve&apos;s Steam Frame,
+          confirmed for summer with a bundled 6GHz dongle that streams your
+          Steam library wirelessly and a strict 90 FPS{" "}
+          <a
+            href="/great-on-frame"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Great on Frame
+          </a>{" "}
+          certification for on-device games. Expected pricing of $899 to
+          $1,199 puts it in enthusiast territory rather than against the
+          Quest 3S, but if PC VR gaming is your endgame, check our{" "}
+          <a
+            href="/steam-frame"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam Frame hub
+          </a>{" "}
+          before spending anywhere near that much on anything else.
         </p>
 
         <RecentArticles heading="Latest Gaming News" limit={4} tags={["gaming", "hardware"]} />

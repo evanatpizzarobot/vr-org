@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Quest 3 vs Quest 3S: Which Meta Quest Should You Buy in 2026?",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-07-17",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -160,7 +160,7 @@ export default function Quest3VsQuest3SPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -285,6 +285,21 @@ export default function Quest3VsQuest3SPage() {
             full headset guide
           </a>{" "}
           covers the whole field.
+        </p>
+
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          One question worth answering before you buy either: should you wait
+          for the Quest 4? No. Credible reporting puts it in 2027 or later, and
+          Meta&apos;s April price hike moved both current headsets up, not down,
+          so there is no discount wave coming. Our{" "}
+          <a
+            href="/articles/meta-quest-4-everything-we-know"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Quest 4 tracker
+          </a>{" "}
+          sorts every claim if you want the full picture.
         </p>
 
         <RecentArticles heading="Latest Hardware News" limit={4} tag="hardware" />

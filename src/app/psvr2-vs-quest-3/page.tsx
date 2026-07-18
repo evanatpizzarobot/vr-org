@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "PSVR2 vs Quest 3: Which VR Headset Should You Buy in 2026?",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-07-17",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -160,7 +160,7 @@ export default function Psvr2VsQuest3Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -271,6 +271,28 @@ export default function Psvr2VsQuest3Page() {
             best VR headsets guide
           </a>
           .
+        </p>
+
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          And 2026 has quietly been the PSVR2&apos;s best year in a while. At
+          $399 it became{" "}
+          <a
+            href="/articles/psvr2-best-deal-after-meta-price-hike-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            the best deal in VR
+          </a>{" "}
+          after Meta&apos;s April price hike pushed the Quest 3 to $599, and{" "}
+          <a
+            href="/articles/microsoft-flight-simulator-psvr2-biggest-vr-game-on-playstation"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Microsoft Flight Simulator landing on PSVR2
+          </a>{" "}
+          gave it the biggest VR game on PlayStation. If you already own a
+          PS5, the value math has never leaned harder toward Sony.
         </p>
 
         <RecentArticles heading="Latest Hardware News" limit={4} tag="hardware" />

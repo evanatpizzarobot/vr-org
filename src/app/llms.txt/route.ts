@@ -46,7 +46,7 @@ VR.org was co-founded in 2018 by Evan Marcus and Mark Mahle (NetActuate). Editor
 - [Best VR Headsets 2026](${SITE}/best-vr-headsets): Buyer's guide to current VR hardware
 - [Best Budget VR Headset 2026](${SITE}/best-budget-vr-headset): Cheapest ways into VR under $400, new and used
 - [Quest 3 vs Quest 3S](${SITE}/quest-3-vs-quest-3s): Comparison of Meta's two current standalone headsets
-- [Quest 3 vs Apple Vision Pro](${SITE}/quest-3-vs-vision-pro): The $599 gaming headset versus the $3,499 spatial computer
+- [Quest 3 vs Apple Vision Pro](${SITE}/quest-3-vs-vision-pro): The $599 gaming headset versus the $3,699 spatial computer
 - [PSVR2 vs Quest 3](${SITE}/psvr2-vs-quest-3): PlayStation VR2 versus the standalone Quest 3, compared
 - [Best VR Headset for Kids](${SITE}/best-vr-headset-for-kids): Age-appropriate VR picks, safety factors, and parental controls
 - [Best PC VR Headset 2026](${SITE}/best-pc-vr-headset): Ranked PC VR headsets for SteamVR and PC gaming, wired and wireless

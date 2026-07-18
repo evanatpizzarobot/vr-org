@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headsets 2026: The Complete Buyer's Guide",
   datePublished: "2026-03-23",
-  dateModified: "2026-06-04",
+  dateModified: "2026-07-17",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -140,7 +140,7 @@ const headsetList = productItemListSchema("Best VR Headsets 2026", [
     url: "https://vr.org/best-vr-headsets#apple-vision-pro",
     offers: [
       {
-        price: 3499,
+        price: 3699,
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: "https://www.apple.com/apple-vision-pro/",
@@ -204,7 +204,7 @@ const headsetFaq = faqPageSchema([
   {
     question: "What is the best standalone VR headset?",
     answer:
-      "The Meta Quest 3 ($599) is the best standalone VR headset, with the Quest 3S ($349) the best value. Standalone means the headset runs everything on its own with no PC or console attached. The Apple Vision Pro is the premium standalone option at $3,499, built for media and productivity more than gaming.",
+      "The Meta Quest 3 ($599) is the best standalone VR headset, with the Quest 3S ($349) the best value. Standalone means the headset runs everything on its own with no PC or console attached. The Apple Vision Pro is the premium standalone option at $3,699, built for media and productivity more than gaming.",
   },
   {
     question: "What is the best VR headset for PC?",
@@ -243,7 +243,7 @@ export default function BestVRHeadsetsPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p
@@ -407,7 +407,7 @@ export default function BestVRHeadsetsPage() {
                 }}
               >
                 <td className="py-3 px-4 font-medium" style={{ color: "var(--text-primary)" }}>Apple Vision Pro</td>
-                <td className="py-3 px-4">$3,499</td>
+                <td className="py-3 px-4">$3,699</td>
                 <td className="py-3 px-4">Standalone</td>
                 <td className="py-3 px-4">3660 x 3200 per eye</td>
                 <td className="py-3 px-4">Best spatial computing</td>
@@ -585,7 +585,7 @@ export default function BestVRHeadsetsPage() {
 
         {/* Apple Vision Pro */}
         <h3 id="apple-vision-pro" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
-          Apple Vision Pro: Best Spatial Computing Device ($3,499)
+          Apple Vision Pro: Best Spatial Computing Device ($3,699)
         </h3>
         <figure className="fitness-figure">
           <img
@@ -615,7 +615,7 @@ export default function BestVRHeadsetsPage() {
           app ecosystem has grown but remains limited compared to Quest or
           SteamVR, and there is no controller support. Everything is driven
           by eye and hand gestures, which works well for UI interaction but
-          poorly for fast-paced games. The $3,499 price tag puts it firmly in
+          poorly for fast-paced games. The $3,699 price tag puts it firmly in
           early-adopter and professional territory. It is also heavier than
           most headsets, and extended sessions require the dual-loop
           headband.
@@ -677,7 +677,7 @@ export default function BestVRHeadsetsPage() {
           The Valve Index is for PC VR purists who value tracking fidelity,
           wide FOV, and high refresh rate over resolution and convenience.
           Valve has now discontinued the Index as its standalone successor, the
-          Steam Frame, moves toward launch (Steam lists it as coming soon).
+          Steam Frame, closes in on its confirmed summer 2026 launch.
           Remaining stock may still sell at clearance prices, but most buyers
           should wait for the Frame.
         </p>
@@ -815,7 +815,7 @@ export default function BestVRHeadsetsPage() {
           with no additional hardware required. At $599, the Quest 3 is the
           sweet spot for most buyers. The $399-$599 range covers the PSVR2 and
           the Quest 3, while discontinued enthusiast options like the Valve
-          Index may still turn up at clearance prices. And at $3,499, the Vision Pro is a premium
+          Index may still turn up at clearance prices. And at $3,699, the Vision Pro is a premium
           investment in spatial computing. Remember to budget for accessories
           too. A good head strap ($50-$80), carrying case ($30-$60), and
           games add to the total cost of ownership. If you are shopping at the
@@ -843,22 +843,38 @@ export default function BestVRHeadsetsPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve&apos;s hardware lineup is finally moving from rumor to
-          reality. The new{" "}
+          Valve&apos;s hardware lineup has moved from rumor to reality. The
+          $99{" "}
           <strong style={{ color: "var(--text-primary)" }}>
             Steam Controller
           </strong>{" "}
-          sold out within the hour after shipping May 4, 2026 for $99, and
-          the{" "}
+          sold out within the hour on May 4, the $1,049 Steam Machine shipped
+          June 30, and the{" "}
           <strong style={{ color: "var(--text-primary)" }}>
             Steam Frame
           </strong>{" "}
-          headset is now listed as coming soon on Steam, paired with a
-          first-party Valve VR title. A RAM supply shortage tied to AI demand
-          has clouded the exact launch window, but the controller selling out
-          confirms real appetite for the new lineup. Lighthouse-compatible
-          tracking, significantly higher resolution displays, and deep SteamVR
-          integration are all expected.
+          headset is confirmed for summer 2026, with the hardware through US
+          customs, FCC filings public, and the Great on Frame store section
+          live. Dual 2160x2160 displays, a bundled 6GHz wireless dongle for
+          lag-free PC streaming, and standalone SteamOS play are all locked;
+          only the price is unannounced, with estimates between $899 and
+          $1,199. Our{" "}
+          <a
+            href="/steam-frame"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam Frame hub
+          </a>{" "}
+          and{" "}
+          <a
+            href="/steam-frame-release-date"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            release date tracker
+          </a>{" "}
+          follow every signal.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
@@ -998,7 +1014,7 @@ export default function BestVRHeadsetsPage() {
           </a>
           , with the Quest 3S ($349) the best value. Standalone means the headset
           runs everything on its own with no PC or console attached. The Apple
-          Vision Pro is the premium standalone option at $3,499, built for media
+          Vision Pro is the premium standalone option at $3,699, built for media
           and productivity more than gaming.
         </p>
 
@@ -1055,7 +1071,7 @@ export default function BestVRHeadsetsPage() {
               {
                 href: "/quest-3-vs-vision-pro",
                 label: "Quest 3 vs Apple Vision Pro",
-                desc: "A $599 gaming headset versus a $3,499 spatial computer.",
+                desc: "A $599 gaming headset versus a $3,699 spatial computer.",
               },
               {
                 href: "/psvr2-vs-quest-3",

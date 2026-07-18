@@ -72,7 +72,7 @@ const whatIsVrFaq = faqPageSchema([
   {
     question: "How much does VR cost?",
     answer:
-      "The Meta Quest 3S starts at around $300, making it the most accessible entry point for high-quality VR. The Quest 3 is about $500. PlayStation VR2 is $550 and requires a PS5. PC VR headsets range from $400 to $1,000 plus a capable gaming PC. At the high end, Apple Vision Pro starts at $3,499.",
+      "The Meta Quest 3S starts at $349, making it the most accessible entry point for high-quality VR. The Quest 3 is $599. PlayStation VR2 is $399 and requires a PS5. PC VR headsets range from $400 to $1,000 plus a capable gaming PC. At the high end, Apple Vision Pro starts at $3,699.",
   },
   {
     question: "What is the difference between VR, AR, MR, and XR?",
@@ -678,7 +678,7 @@ export default function WhatIsVRPage() {
           from $400 to $1,000+ for the headset alone, plus the cost of a capable
           gaming PC ($800-$1,500+). The PlayStation VR2 is available for around
           $550 and requires a PS5. At the high end, Apple Vision Pro starts at
-          $3,499. For most people, a standalone Quest headset offers the best
+          $3,699. For most people, a standalone Quest headset offers the best
           balance of price, quality, and content library.
         </p>
 

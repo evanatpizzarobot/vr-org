@@ -14,7 +14,10 @@
           "description": "The best entry-level standalone VR headset. Great mixed reality, solid game library, no PC required. Up $50 since April's memory-driven price adjustment.",
           "badge": "Best Standalone Value",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3s+128gb&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=meta+quest+3s+128gb&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -23,7 +26,10 @@
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Meta_Quest_3S_Display_Unit.jpg/1280px-Meta_Quest_3S_Display_Unit.jpg",
           "description": "Same Quest 3S hardware with double the storage. Worth the upgrade if you keep more than a handful of games installed.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3s+256gb&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=meta+quest+3s+256gb&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -33,7 +39,10 @@
           "description": "The full-featured Quest. Better lenses, more storage, best standalone VR experience available. Up $100 after Meta's April memory-driven price adjustment.",
           "badge": "Editor's Pick",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+512gb&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=meta+quest+3+512gb&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -43,7 +52,10 @@
           "description": "The best VR hardware value after Meta's April hike. OLED, eye tracking, foveated rendering, headset rumble, adaptive-trigger controllers. Needs a PS5; if you already own one, this is the deal of the year.",
           "badge": "Best VR Value",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=playstation+vr2&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=playstation+vr2&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -52,7 +64,10 @@
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Samsung-Mobile-XR-Project-Moohan-Android-XR-platform-Google_main1.jpg/960px-Samsung-Mobile-XR-Project-Moohan-Android-XR-platform-Google_main1.jpg",
           "description": "Samsung's premium Android XR headset and Google's flagship for the platform. Eye tracking, hand tracking, Gemini-powered spatial AI. The most credible Vision Pro alternative in the Android ecosystem.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=samsung+galaxy+xr&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=samsung+galaxy+xr&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -62,7 +77,10 @@
           "description": "107 grams. The lightest, sharpest PC VR headset ever made. Enthusiast-grade and custom-fit.",
           "badge": "Premium",
           "links": {
-            "direct": { "url": "https://www.bigscreenvr.com/", "label": "Bigscreen" }
+            "direct": {
+              "url": "https://www.bigscreenvr.com/",
+              "label": "Bigscreen"
+            }
           }
         },
         {
@@ -71,7 +89,10 @@
           "image": "https://pimax.com/cdn/shop/files/product_pimaxcrystallight_headsetwithcontrollers_2405_00537d9f-5f8a-4ca0-ba20-07de3b678991.webp?v=1754989215&width=1280",
           "description": "Native 4K per-eye QLED with glass aspheric lenses and 35 PPD. The best PC VR clarity you can buy without going custom. Sim racers and flight sim diehards swear by it.",
           "links": {
-            "direct": { "url": "https://pimax.com/products/pimax-crystal-light", "label": "Pimax" }
+            "direct": {
+              "url": "https://pimax.com/products/pimax-crystal-light",
+              "label": "Pimax"
+            }
           }
         },
         {
@@ -80,17 +101,23 @@
           "image": "https://www.knoxlabs.com/cdn/shop/files/xr-elite-business-edition_1280x.jpg?v=1689718946",
           "description": "Standalone and PC VR in one compact, glasses-like form factor. Color passthrough mixed reality, 110 degree FOV, and a foldable design that travels well. Now ships with the Deluxe Pack.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=htc+vive+xr+elite&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=htc+vive+xr+elite&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
           "name": "Apple Vision Pro (M5)",
-          "price": "$3,499",
+          "price": "$3,699",
           "image": "https://www.apple.com/newsroom/images/2025/10/apple-vision-pro-upgraded-with-the-m5-chip-and-dual-knit-band/article/Apple-Vision-Pro-hero-251015.jpg",
           "description": "The most advanced spatial computer. Incredible display, eye and hand tracking, visionOS ecosystem.",
           "badge": "Premium",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=apple+vision+pro&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=apple+vision+pro&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         }
       ]
@@ -107,7 +134,10 @@
           "description": "Snap's first true AR glasses built for everyone, not just developers. Fully standalone with two Qualcomm Snapdragon chips (no phone, no puck), see-through LCoS displays with a 51 degree field of view and 16 million colors, and an AI assistant from OpenAI and Google that sees what you see and answers in real time. Around 132 grams, with up to 20 hours of battery using the charging case. Preorder now with a $200 refundable deposit; ships this fall in the US, UK, and France.",
           "badge": "Just Launched",
           "links": {
-            "direct": { "url": "https://www.specs.com/smart-glasses/specs-27", "label": "Snap Specs" }
+            "direct": {
+              "url": "https://www.specs.com/smart-glasses/specs-27",
+              "label": "Snap Specs"
+            }
           }
         },
         {
@@ -117,8 +147,14 @@
           "description": "The first 240Hz micro-OLED AR glasses, built for gamers. 171-inch virtual screen, Sony micro-OLED panels, Bose-tuned audio, and a control dock that hot-swaps between PC, Xbox, and PlayStation. Now shipping as of June 1 through Best Buy and Xreal direct.",
           "badge": "Just Launched",
           "links": {
-            "bestbuy": { "url": "https://www.bestbuy.com/", "label": "Best Buy" },
-            "direct": { "url": "https://us.shop.xreal.com/products/rog-xreal-r1", "label": "Xreal" }
+            "bestbuy": {
+              "url": "https://www.bestbuy.com/",
+              "label": "Best Buy"
+            },
+            "direct": {
+              "url": "https://us.shop.xreal.com/products/rog-xreal-r1",
+              "label": "Xreal"
+            }
           }
         },
         {
@@ -127,8 +163,14 @@
           "image": "https://us.shop.xreal.com/cdn/shop/files/XREAL_One_Pro.jpg?v=1756965858&width=1946",
           "description": "Xreal's everyday flagship. 120Hz micro-OLED, X1 chip with 3DoF spatial anchoring, Bose-tuned speakers, and Real 3D for stereoscopic 2D conversion. Permanent price drop made these the AR glasses sweet spot.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=xreal+one+pro&tag=vrorg00-20", "label": "Amazon" },
-            "direct": { "url": "https://us.shop.xreal.com/products/xreal-one-pro", "label": "Xreal" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=xreal+one+pro&tag=vrorg00-20",
+              "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://us.shop.xreal.com/products/xreal-one-pro",
+              "label": "Xreal"
+            }
           }
         },
         {
@@ -137,8 +179,14 @@
           "image": "https://us.shop.xreal.com/cdn/shop/files/XREAL_One_AR_Glasses.jpg?v=1755511322",
           "description": "The everyday entry point into Xreal's lineup and the most affordable glasses to carry the in-house X1 spatial computing chip. 120Hz micro-OLED, a rock-steady 3DoF anchored screen with no phone or compute puck required, and Bose-tuned open-ear sound. If the One Pro is more than you need, this is the pair to buy.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=xreal+one+ar+glasses&tag=vrorg00-20", "label": "Amazon" },
-            "direct": { "url": "https://us.shop.xreal.com/products/xreal-one", "label": "Xreal" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=xreal+one+ar+glasses&tag=vrorg00-20",
+              "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://us.shop.xreal.com/products/xreal-one",
+              "label": "Xreal"
+            }
           }
         },
         {
@@ -148,7 +196,10 @@
           "description": "The runaway hit of 2026 smart glasses. Meta AI, open-ear audio, 12MP camera, and genuine all-day wearability.",
           "badge": "Editor's Pick",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=ray-ban+meta&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=ray-ban+meta&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -157,8 +208,14 @@
           "image": "https://cdn.shopify.com/s/files/1/0762/8760/7065/files/R6_01.jpg?v=1751881380",
           "description": "XR display glasses with a 174-inch virtual screen. Works with PS5, Switch, Steam Deck, and phones.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=viture+beast&tag=vrorg00-20", "label": "Amazon" },
-            "direct": { "url": "https://www.viture.com/", "label": "VITURE" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=viture+beast&tag=vrorg00-20",
+              "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://www.viture.com/",
+              "label": "VITURE"
+            }
           }
         },
         {
@@ -168,8 +225,14 @@
           "description": "Lightweight 1080p Micro-OLED display glasses. A budget-friendly gateway into wearable big-screen video.",
           "badge": "Best Value",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=rayneo+air+3s&tag=vrorg00-20", "label": "Amazon" },
-            "direct": { "url": "https://www.rayneo.com/", "label": "RayNeo" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=rayneo+air+3s&tag=vrorg00-20",
+              "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://www.rayneo.com/",
+              "label": "RayNeo"
+            }
           }
         },
         {
@@ -178,7 +241,10 @@
           "image": "https://cdn.shopify.com/s/files/1/0600/4513/1891/files/Grey1-Front_6d6944fc-846d-4585-b02b-d7d1218ff21e.png?v=1760067228",
           "description": "Everyday smart glasses that look like ordinary frames. A discreet green micro-LED display floats turn-by-turn navigation, notifications, live translation, and a teleprompter into your field of view. No camera, no bulk, and a battery that lasts all day. The closest thing yet to a pair you would actually wear out of the house.",
           "links": {
-            "direct": { "url": "https://www.evenrealities.com/", "label": "Even Realities" }
+            "direct": {
+              "url": "https://www.evenrealities.com/",
+              "label": "Even Realities"
+            }
           }
         },
         {
@@ -187,8 +253,14 @@
           "image": "https://cdn.shopify.com/s/files/1/0704/2759/files/Rokid_AI_Glasses_Style_01.jpg?v=1774027568",
           "description": "Open-platform AI camera glasses and a genuine Ray-Ban Meta alternative. Built-in camera, a voice assistant, open-ear audio, and an SDK that lets developers ship their own apps. Lightweight enough for all-day wear at well under the cost of a headset.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=rokid+ai+glasses&tag=vrorg00-20", "label": "Amazon" },
-            "direct": { "url": "https://www.rokid.com/", "label": "Rokid" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=rokid+ai+glasses&tag=vrorg00-20",
+              "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://www.rokid.com/",
+              "label": "Rokid"
+            }
           }
         }
       ]
@@ -204,7 +276,10 @@
           "image": "https://www.knoxlabs.com/cdn/shop/files/MetaQuest3EliteStrap01.webp?v=1696252275",
           "description": "Official comfort upgrade. Better weight distribution and dial-fit adjustment for long sessions.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=meta+quest+3+elite+strap&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=meta+quest+3+elite+strap&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -214,8 +289,14 @@
           "description": "Extended battery life and improved comfort in one. The best third-party Quest strap.",
           "badge": "Best Value",
           "links": {
-            "zybervr": { "url": "https://zybervr.com/", "label": "ZyberVR" },
-            "amazon": { "url": "https://amazon.com/s?k=zybervr+battery+head+strap&tag=vrorg00-20", "label": "Amazon" }
+            "zybervr": {
+              "url": "https://zybervr.com/",
+              "label": "ZyberVR"
+            },
+            "amazon": {
+              "url": "https://amazon.com/s?k=zybervr+battery+head+strap&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -224,8 +305,14 @@
           "image": "https://www.bobovr.com/cdn/shop/files/20240927-145353.png?v=1727425146&width=2048",
           "description": "Suspended-design strap with a hot-swappable magnetic battery pack. The reviewer favorite for Quest 3 sessions longer than the stock battery can handle.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=bobovr+m3+pro+battery+strap&tag=vrorg00-20", "label": "Amazon" },
-            "direct": { "url": "https://www.bobovr.com/products/bobovr-m3-pro", "label": "BoboVR" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=bobovr+m3+pro+battery+strap&tag=vrorg00-20",
+              "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://www.bobovr.com/products/bobovr-m3-pro",
+              "label": "BoboVR"
+            }
           }
         },
         {
@@ -234,7 +321,10 @@
           "image": "https://www.kiwidesign.com/cdn/shop/files/KIWIdesign_K4_Comfort_Head_Strap_for_Quest3_0.png?v=1749814244",
           "description": "Budget-friendly comfort strap. Solid build quality for the price.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+quest+3+head+strap&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=kiwi+design+quest+3+head+strap&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -243,7 +333,10 @@
           "image": "https://www.kiwidesign.com/cdn/shop/files/KIWIdesign_Face_Cushion_Pad_0.png?v=1749814248",
           "description": "Breathable replacement cushion for Quest 3. Blocks light leaks and keeps sweat off the lenses during long sessions.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+quest+3+facial+interface&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=kiwi+design+quest+3+facial+interface&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -252,8 +345,14 @@
           "image": "https://zybervr.com/cdn/shop/files/31.jpg?v=1706500459",
           "description": "Washable skin-friendly face cover with magnetic attachment. A sanity-saving upgrade if you share your Quest with family.",
           "links": {
-            "zybervr": { "url": "https://zybervr.com/", "label": "ZyberVR" },
-            "amazon": { "url": "https://amazon.com/s?k=zybervr+face+cover+quest+3&tag=vrorg00-20", "label": "Amazon" }
+            "zybervr": {
+              "url": "https://zybervr.com/",
+              "label": "ZyberVR"
+            },
+            "amazon": {
+              "url": "https://amazon.com/s?k=zybervr+face+cover+quest+3&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -263,7 +362,10 @@
           "description": "Non-slip silicone grip covers for Quest 3 controllers. Essential for sweaty sessions of Beat Saber, Supernatural, or Gorilla Tag.",
           "badge": "Staff Favorite",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+quest+3+grip+covers&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=kiwi+design+quest+3+grip+covers&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -272,7 +374,10 @@
           "image": "https://www.kiwidesign.com/cdn/shop/files/KIWIdesign-P4-Portable-Carrying-Case-1.jpg?v=1749814258",
           "description": "Hard shell travel case built for Quest 3. Fits the headset, controllers, and a charging cable with room for one accessory strap.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+quest+3+carrying+case&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=kiwi+design+quest+3+carrying+case&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -281,7 +386,10 @@
           "image": "https://cdn.shopify.com/s/files/1/0033/6547/0321/files/KIWIdesignL1PlusLinkCablewithCharging13FT-USB3.0toUSB-C.jpg?v=1780036653",
           "description": "USB 3.0 to USB-C cable for Quest PC VR. Works identically to Meta's official cable at a fraction of the price, with passthrough charging built in.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=kiwi+design+link+cable+quest+3&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=kiwi+design+link+cable+quest+3&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -291,8 +399,14 @@
           "description": "Magnetic dock that charges the headset and both controllers at once. The nicest quality-of-life upgrade you can make for $60.",
           "badge": "Editor's Pick",
           "links": {
-            "zybervr": { "url": "https://zybervr.com/", "label": "ZyberVR" },
-            "amazon": { "url": "https://amazon.com/s?k=zybervr+quest+3+charging+dock&tag=vrorg00-20", "label": "Amazon" }
+            "zybervr": {
+              "url": "https://zybervr.com/",
+              "label": "ZyberVR"
+            },
+            "amazon": {
+              "url": "https://amazon.com/s?k=zybervr+quest+3+charging+dock&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -301,8 +415,14 @@
           "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Psvr2_usb_adapter.png",
           "description": "The official adapter that unlocks thousands of SteamVR games on a PSVR2. Plug it in, add a DisplayPort 1.4 cable, and your PS5 headset becomes a capable PC VR display with its OLED panels and eye tracking intact. The cheapest way to give a PSVR2 a second life on PC, and restocks tend to sell out fast.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=playstation+vr2+pc+adapter&tag=vrorg00-20", "label": "Amazon" },
-            "direct": { "url": "https://direct.playstation.com/en-us/buy-accessories/playstationvr2-pc-adapter", "label": "PlayStation" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=playstation+vr2+pc+adapter&tag=vrorg00-20",
+              "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://direct.playstation.com/en-us/buy-accessories/playstationvr2-pc-adapter",
+              "label": "PlayStation"
+            }
           }
         },
         {
@@ -311,8 +431,14 @@
           "image": "https://cdn.shopify.com/s/files/1/0489/1259/7153/files/Reloptix_Product_Render_Scene.142.png?v=1719958280",
           "description": "Snap-in magnetic lenses so glasses wearers can ditch the specs inside the headset and stop scratching the built-in optics. Reloptix makes kits for Quest 3, Quest 3S, PSVR2, and most PC VR headsets in prescription, blue-light, and zero-power options. Non-prescription kits start around $49, prescription kits run about $70.",
           "links": {
-            "direct": { "url": "https://reloptix.com/", "label": "Reloptix" },
-            "amazon": { "url": "https://amazon.com/s?k=reloptix+prescription+lens+inserts&tag=vrorg00-20", "label": "Amazon" }
+            "direct": {
+              "url": "https://reloptix.com/",
+              "label": "Reloptix"
+            },
+            "amazon": {
+              "url": "https://amazon.com/s?k=reloptix+prescription+lens+inserts&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         }
       ]
@@ -329,7 +455,10 @@
           "description": "Valve's new flagship controller. TMR magnetic thumbsticks that eliminate stick drift, dual haptic trackpads, 6-axis gyro, Grip Sense, 35+ hour battery. Paired natively with the upcoming Steam Frame headset. Steam store exclusive, no retail.",
           "badge": "New",
           "links": {
-            "direct": { "url": "https://store.steampowered.com/sale/steamcontroller", "label": "Steam" }
+            "direct": {
+              "url": "https://store.steampowered.com/sale/steamcontroller",
+              "label": "Steam"
+            }
           }
         },
         {
@@ -339,7 +468,10 @@
           "description": "The absolute top of the stack. 32GB of GDDR7, DLSS 4, and the only card that drives the Bigscreen Beyond 2 at full resolution without compromise. Street prices have blown well past the $1,999 MSRP during the memory crunch, so expect to pay a premium.",
           "badge": "Premium",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=rtx+5090&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=rtx+5090&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -349,7 +481,10 @@
           "description": "Blackwell's sweet spot. Roughly 4080 Super performance with DLSS 4, and still one of the strongest all-around PC VR cards, even with memory-crunch pricing pushing it past its $749 launch MSRP.",
           "badge": "Editor's Pick",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=rtx+5070+ti&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=rtx+5070+ti&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -359,7 +494,10 @@
           "description": "AMD's flagship RDNA 4 card. 16GB of GDDR6, strong ray tracing for the price, and the best price-per-frame in PC VR right now. It undercuts the slower 4070 Super while staying faster, which makes it the value pick of the lineup. Pairs cleanly with SteamVR and Quest Link, and dips to around $629 on sale.",
           "badge": "Best Value",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=radeon+rx+9070+xt&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=radeon+rx+9070+xt&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         },
         {
@@ -368,7 +506,10 @@
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/2023_Gigabyte_GeForce_RTX_4070_Aero_OC_12GB_%286%29.jpg/1280px-2023_Gigabyte_GeForce_RTX_4070_Aero_OC_12GB_%286%29.jpg",
           "description": "A capable PC VR card that handles Quest Link and SteamVR at high settings with headroom to spare. The memory crunch has pushed it well above its $599 launch price, so the RX 9070 XT is the stronger value today unless you find the 4070 Super on a genuine discount.",
           "links": {
-            "amazon": { "url": "https://amazon.com/s?k=rtx+4070+super&tag=vrorg00-20", "label": "Amazon" }
+            "amazon": {
+              "url": "https://amazon.com/s?k=rtx+4070+super&tag=vrorg00-20",
+              "label": "Amazon"
+            }
           }
         }
       ]

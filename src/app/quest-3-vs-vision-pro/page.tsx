@@ -15,11 +15,11 @@ import { AD_SLOTS } from "@/lib/ads";
 export const metadata = {
   title: "Quest 3 vs Apple Vision Pro: Is the Vision Pro Worth 6x the Price? | VR.org",
   description:
-    "Meta Quest 3 vs Apple Vision Pro compared. The $599 Quest 3 is the better VR gaming headset; the $3,499 Vision Pro is a premium spatial computer. Here is which one is right for you.",
+    "Meta Quest 3 vs Apple Vision Pro compared. The $599 Quest 3 is the better VR gaming headset; the $3,699 Vision Pro is a premium spatial computer. Here is which one is right for you.",
   openGraph: {
     title: "Quest 3 vs Apple Vision Pro: Is the Vision Pro Worth 6x the Price? | VR.org",
     description:
-      "A $599 gaming headset versus a $3,499 spatial computer. Displays, input, content, and price, broken down.",
+      "A $599 gaming headset versus a $3,699 spatial computer. Displays, input, content, and price, broken down.",
     url: "https://vr.org/quest-3-vs-vision-pro",
     siteName: "VR.org",
     images: [
@@ -35,7 +35,7 @@ export const metadata = {
     card: "summary_large_image" as const,
     title: "Quest 3 vs Apple Vision Pro: Is the Vision Pro Worth 6x the Price? | VR.org",
     description:
-      "A $599 gaming headset versus a $3,499 spatial computer. The differences that decide it.",
+      "A $599 gaming headset versus a $3,699 spatial computer. The differences that decide it.",
     images: ["https://vr.org/og-image.png"],
   },
   alternates: {
@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Quest 3 vs Apple Vision Pro: Is the Vision Pro Worth 6x the Price?",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  dateModified: "2026-07-17",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -93,11 +93,11 @@ const productList = productItemListSchema("Meta Quest 3 vs Apple Vision Pro", [
     image:
       "https://upload.wikimedia.org/wikipedia/commons/5/51/Apple_Vision_Pro_with_Solo_Knit_Band.jpg",
     description:
-      "The most advanced spatial computer: dual micro-OLED displays, eye and hand tracking, and visionOS, built for media and productivity at $3,499.",
+      "The most advanced spatial computer: dual micro-OLED displays, eye and hand tracking, and visionOS, built for media and productivity at $3,699.",
     url: "https://vr.org/quest-3-vs-vision-pro#apple-vision-pro",
     offers: [
       {
-        price: 3499,
+        price: 3699,
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: "https://www.apple.com/apple-vision-pro/",
@@ -110,7 +110,7 @@ const faq = faqPageSchema([
   {
     question: "Is the Apple Vision Pro better than the Quest 3?",
     answer:
-      "It depends on what you want. The Vision Pro has far better displays, with sharp micro-OLED panels that the $599 Quest 3 cannot match, and it is a more capable device for media, productivity, and spatial computing. But it costs $3,499, has a small game library, and is not really a VR gaming headset. For VR gaming and the best value, the Quest 3 is better. For premium spatial computing and you have the budget, the Vision Pro is better.",
+      "It depends on what you want. The Vision Pro has far better displays, with sharp micro-OLED panels that the $599 Quest 3 cannot match, and it is a more capable device for media, productivity, and spatial computing. But it costs $3,699, has a small game library, and is not really a VR gaming headset. For VR gaming and the best value, the Quest 3 is better. For premium spatial computing and you have the budget, the Vision Pro is better.",
   },
   {
     question: "Why is the Vision Pro so much more expensive than the Quest 3?",
@@ -135,7 +135,7 @@ const faq = faqPageSchema([
   {
     question: "Should I buy a Quest 3 or wait and save for a Vision Pro?",
     answer:
-      "For most people, buy the Quest 3. It does the core VR experience, gaming, fitness, social, and mixed reality, extremely well for $599, and the Vision Pro does not replace it for those uses. Only choose the Vision Pro if your priority is premium media, productivity, and spatial computing, and the $3,499 price is comfortable for you. They serve different needs more than they compete.",
+      "For most people, buy the Quest 3. It does the core VR experience, gaming, fitness, social, and mixed reality, extremely well for $599, and the Vision Pro does not replace it for those uses. Only choose the Vision Pro if your priority is premium media, productivity, and spatial computing, and the $3,699 price is comfortable for you. They serve different needs more than they compete.",
   },
 ]);
 
@@ -160,7 +160,7 @@ export default function Quest3VsVisionProPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -182,7 +182,7 @@ export default function Quest3VsVisionProPage() {
         >
           The Quest 3 and the Apple Vision Pro are not really rivals. The $599
           Quest 3 is the best VR gaming headset, with the largest game library,
-          controllers, and standalone freedom. The $3,499 Vision Pro is a premium
+          controllers, and standalone freedom. The $3,699 Vision Pro is a premium
           spatial computer with far better micro-OLED displays, built for media,
           productivity, and spatial apps rather than gaming. Buy the Quest 3 for
           VR; buy the Vision Pro for premium spatial computing if budget allows.
@@ -191,7 +191,7 @@ export default function Quest3VsVisionProPage() {
         <SpecTable
           headers={["", "Meta Quest 3", "Apple Vision Pro"]}
           rows={[
-            { label: "Price", a: "$599", b: "$3,499" },
+            { label: "Price", a: "$599", b: "$3,699" },
             { label: "Displays", a: "Dual LCD", b: "Dual micro-OLED" },
             { label: "Resolution", a: "~2064 x 2208 per eye", b: "~23 million pixels combined" },
             { label: "Chip", a: "Snapdragon XR2 Gen 2", b: "Apple M-series + R1" },
@@ -260,7 +260,7 @@ export default function Quest3VsVisionProPage() {
             best VR headsets guide
           </a>
           . Buy the Vision Pro if your priority is premium media and productivity,
-          you want the best displays money can buy, and the $3,499 price is
+          you want the best displays money can buy, and the $3,699 price is
           comfortable. If you are choosing between the Quest 3 and the more
           affordable{" "}
           <a
@@ -271,6 +271,21 @@ export default function Quest3VsVisionProPage() {
             Quest 3S
           </a>
           , that is the more relevant comparison for most buyers.
+        </p>
+
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          One 2026 update that sharpens the whole comparison: Apple raised the
+          Vision Pro to $3,699 on June 25, widening the gap to a full $3,100,
+          and it did so with no consumer successor in sight. We read that as{" "}
+          <a
+            href="/articles/vision-pro-price-increase-3699-enterprise-signal-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            an enterprise signal
+          </a>,
+          which only strengthens the case that these two devices serve
+          different buyers rather than competing for the same one.
         </p>
 
         <RecentArticles heading="Latest Hardware News" limit={4} tag="hardware" />

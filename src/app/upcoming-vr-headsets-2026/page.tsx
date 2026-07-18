@@ -202,7 +202,7 @@ export default function UpcomingVRHeadsets2026Page() {
           <strong>Apple Vision Pro (M5).</strong> Apple refreshed its spatial
           computer with the faster M5 chip, keeping the class-leading micro-OLED
           displays and visionOS. It remains a premium media and productivity
-          device at $3,499 rather than a gaming headset.
+          device at $3,699 rather than a gaming headset.
         </p>
 
         <div className="my-8">
@@ -346,7 +346,7 @@ export default function UpcomingVRHeadsets2026Page() {
           columns={["Headset", "Price", "Best for"]}
           rows={[
             ["Samsung Galaxy XR", "$1,799", "Flagship Android XR, a Vision Pro alternative"],
-            ["Apple Vision Pro (M5)", "$3,499", "Premium spatial computing and media"],
+            ["Apple Vision Pro (M5)", "$3,699", "Premium spatial computing and media"],
             ["Bigscreen Beyond 2", "$1,019", "Ultralight enthusiast PC VR"],
             ["Meta Quest 3 (512GB)", "$599", "Best all-around standalone to buy now"],
             ["Meta Quest 3S (128GB)", "$349", "Cheapest way into standalone VR today"],
