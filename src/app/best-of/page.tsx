@@ -283,6 +283,14 @@ const CARDS: BestOfCard[] = [
     badgeColor: "var(--accent-cyan)",
   },
   {
+    title: "Great on Frame: Verified Games List",
+    description:
+      "Every game certified for the Steam Frame, tracked as Valve stocks the shelves ahead of launch. The launch lineup, live.",
+    href: "/great-on-frame",
+    badge: "Hardware",
+    badgeColor: "var(--accent-cyan)",
+  },
+  {
     title: "Best AR Glasses 2026",
     description:
       "Smart glasses and AR displays ranked. Ray-Ban Meta, Rokid, XREAL, VITURE, and the next wave.",

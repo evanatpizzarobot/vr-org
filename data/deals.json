@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-17",
+  "lastUpdated": "2026-07-18",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -119,6 +119,19 @@
               "label": "Amazon"
             }
           }
+        },
+        {
+          "name": "Pimax Dream Air SE",
+          "price": "From $899",
+          "image": "https://pimax.com/cdn/shop/articles/dream_se_fcaca184-7b7e-4609-95e5-ca25f4facf81.jpg?v=1778767315&width=1280",
+          "description": "Pimax's compact micro-OLED PC VR headset at around 140 grams. Preorder backlog is clearing, with Pimax committing to ship every outstanding order by August.",
+          "badge": "Shipping Now",
+          "links": {
+            "direct": {
+              "url": "https://pimax.com",
+              "label": "Pimax"
+            }
+          }
         }
       ]
     },
@@ -137,6 +150,23 @@
             "direct": {
               "url": "https://www.specs.com/smart-glasses/specs-27",
               "label": "Snap Specs"
+            }
+          }
+        },
+        {
+          "name": "XREAL A01 Plus",
+          "price": "$299",
+          "image": "/article-images/xreal-a01-plus.jpg",
+          "description": "A 147-inch private screen on your face for the price of a game console accessory. The affordable display-glasses category is the part of AR that actually sells, and this is its new benchmark.",
+          "badge": "New",
+          "links": {
+            "amazon": {
+              "url": "https://amazon.com/s?k=xreal+a01+plus+ar+glasses&tag=vrorg00-20",
+              "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://us.shop.xreal.com",
+              "label": "Xreal"
             }
           }
         },
@@ -250,7 +280,7 @@
         {
           "name": "Rokid AI Glasses",
           "price": "$299",
-          "image": "https://cdn.shopify.com/s/files/1/0704/2759/files/Rokid_AI_Glasses_Style_01.jpg?v=1774027568",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/COP30_-_Rokid_01.jpg/1280px-COP30_-_Rokid_01.jpg",
           "description": "Open-platform AI camera glasses and a genuine Ray-Ban Meta alternative. Built-in camera, a voice assistant, open-ear audio, and an SDK that lets developers ship their own apps. Lightweight enough for all-day wear at well under the cost of a headset.",
           "links": {
             "amazon": {

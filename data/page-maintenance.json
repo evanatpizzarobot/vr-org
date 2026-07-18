@@ -118,7 +118,7 @@
       "file": "src/app/best-of/page.tsx",
       "category": "hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-29",
+      "lastRefreshed": "2026-07-18",
       "checklist": [
         "Hub page; verify card grid links match the live pillar pages",
         "Update card descriptions if a pillar page shifts focus",
@@ -130,7 +130,7 @@
       "file": "src/app/deals/page.tsx",
       "category": "commercial",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-07-17",
+      "lastRefreshed": "2026-07-18",
       "checklist": [
         "Source of truth is data/deals.json, not the page",
         "Verify every product is still in stock and price is within ~10% of listed",
