@@ -19,7 +19,7 @@
       "file": "src/app/best-budget-vr-headset/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-02",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify Quest 3S ($349) and PSVR2 ($399) new prices against data/deals.json",
         "Re-check approximate used prices for Quest 3 (~$400) and Quest 2 (~$150); the secondary market moves",

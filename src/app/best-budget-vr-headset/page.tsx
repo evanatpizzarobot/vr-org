@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best Budget VR Headset 2026: The Cheapest Ways Into VR Under $400",
   datePublished: "2026-06-02",
-  dateModified: "2026-06-02",
+  dateModified: "2026-07-17",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -168,7 +168,7 @@ export default function BestBudgetVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -536,8 +536,18 @@ export default function BestBudgetVRHeadsetPage() {
           glasses like the RayNeo Air or Xreal line show up in budget searches,
           but they are personal big-screen displays, not true VR. They project a
           flat virtual monitor in front of you with no positional tracking and no
-          VR games. They are great for watching video on a plane, but if you want
-          actual virtual reality, put the money toward a used Quest instead.
+          VR games. The temptation got real in July when{" "}
+          <a
+            href="/articles/xreal-a01-plus-299-display-glasses-ar-that-sells-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            XREAL&apos;s A01 Plus landed at $299
+          </a>
+          , fifty dollars under a Quest 3S. It is a genuinely good product for
+          watching video on a plane, but it plays zero VR games. If you want
+          actual virtual reality, put the money toward the Quest 3S or a used
+          Quest instead.
         </p>
 
         {/* How to choose */}
