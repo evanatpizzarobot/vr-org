@@ -130,7 +130,7 @@
       "file": "src/app/deals/page.tsx",
       "category": "commercial",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-06-26",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Source of truth is data/deals.json, not the page",
         "Verify every product is still in stock and price is within ~10% of listed",
@@ -144,7 +144,7 @@
       "file": "src/app/events/page.tsx",
       "category": "schedule",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-06-29",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Source of truth is data/events.json (EventsCalendar auto-buckets past vs upcoming)",
         "Add upcoming VR / AR conferences and game launches",
@@ -429,7 +429,7 @@
       "file": "src/app/vr-release-dates/page.tsx",
       "category": "tracker",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-07-04",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Source of truth is data/release-dates.json, not the page",
         "Verify every date/status against the latest news; promote rumored to expected/confirmed as signals firm up",
