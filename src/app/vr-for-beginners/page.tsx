@@ -42,7 +42,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "VR for Beginners 2026: How to Get Started with Virtual Reality",
   datePublished: "2026-04-20",
-  dateModified: "2026-05-02",
+  dateModified: "2026-07-17",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -74,7 +74,7 @@ const beginnersFaq = faqPageSchema([
   {
     question: "What is the best first VR headset?",
     answer:
-      "The Meta Quest 3S at $299 is the best first VR headset for most beginners. It is standalone (no PC or phone needed), has the largest app library in VR, and the onboarding experience is designed for first-time users. If you can stretch to $499, the Quest 3 is a better long-term pick with sharper optics and better passthrough.",
+      "The Meta Quest 3S at $349 is the best first VR headset for most beginners. It is standalone (no PC or phone needed), has the largest app library in VR, and the onboarding experience is designed for first-time users. If you can stretch to $599, the Quest 3 is a better long-term pick with sharper optics and better passthrough.",
   },
   {
     question: "How do I start with VR?",
@@ -109,7 +109,7 @@ const beginnersFaq = faqPageSchema([
   {
     question: "Is VR expensive?",
     answer:
-      "Not anymore. $299 gets you a complete Meta Quest 3S with no additional hardware required. Many games cost $10 to $30, and free apps like VRChat, Rec Room, and Gorilla Tag provide hundreds of hours of content. Compared to a console plus games, VR is competitively priced.",
+      "Not anymore. $349 gets you a complete Meta Quest 3S with no additional hardware required. Many games cost $10 to $30, and free apps like VRChat, Rec Room, and Gorilla Tag provide hundreds of hours of content. Compared to a console plus games, VR is competitively priced.",
   },
 ]);
 
@@ -135,7 +135,7 @@ export default function VRForBeginnersPage() {
           className="text-sm mb-10"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: May 2026
+          Last updated: July 2026
         </p>
 
         <p
@@ -160,7 +160,7 @@ export default function VRForBeginnersPage() {
         >
           Get the{" "}
           <strong style={{ color: "var(--text-primary)" }}>Meta Quest 3S</strong>
-          . It is $299, standalone (no PC, no phone, no wires), and has the
+          . It is $349, standalone (no PC, no phone, no wires), and has the
           largest library of any VR platform. Every demo, every benchmark
           game, and almost every VR YouTube video is made with Quest users in
           mind. As a first headset, Quest 3S is effectively the default
@@ -172,7 +172,7 @@ export default function VRForBeginnersPage() {
         >
           If you can afford the{" "}
           <strong style={{ color: "var(--text-primary)" }}>Meta Quest 3</strong>{" "}
-          at $499, get that instead. You get sharper optics (pancake lenses),
+          at $599, get that instead. You get sharper optics (pancake lenses),
           better mixed reality passthrough, and a slightly slimmer form
           factor. Both run the same apps. For the full comparison, see our{" "}
           <a

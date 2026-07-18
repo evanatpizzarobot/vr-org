@@ -49,7 +49,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best AR Glasses 2026: Smart Glasses Comparison & Buyer's Guide",
   datePublished: "2026-04-20",
-  dateModified: "2026-06-01",
+  dateModified: "2026-07-17",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -177,7 +177,7 @@ const glassesFaq = faqPageSchema([
   {
     question: "How much do AR glasses cost?",
     answer:
-      "AR glasses prices in 2026 range from about $269 (RayNeo Air) and $379 (Ray-Ban Meta) up through $499 to $599 (Rokid Glasses, Xreal One Pro, Viture) and $799 (Meta Ray-Ban Display), to $2,500 (Snap Specs) and $3,699 (Apple Vision Pro). Most mainstream smart glasses sit in the $300 to $600 range. Developer-grade prototypes like Meta Orion are not priced for consumers yet.",
+      "AR glasses prices in 2026 range from about $269 (RayNeo Air) and $379 (Ray-Ban Meta) up through $499 to $599 (Rokid Glasses, Xreal One Pro, Viture) and $799 (Meta Ray-Ban Display), to $2,195 (Snap Specs) and $3,699 (Apple Vision Pro). Most mainstream smart glasses sit in the $300 to $600 range. Developer-grade prototypes like Meta Orion are not priced for consumers yet.",
   },
 ]);
 
@@ -204,7 +204,7 @@ export default function ARGlassesPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p
@@ -489,18 +489,29 @@ export default function ARGlassesPage() {
           generation (no display) confirmed for a fall 2026 launch and a
           display version on the 2027 roadmap. Xreal also revealed Project
           Aura, the first Android XR display glasses, due before the end of
-          2026. Meta is expected to ship a consumer Orion successor in the 2027
+          2026, with reservations already open under $1,500, undercutting
+          Snap. Meta is expected to ship a consumer Orion successor in the 2027
           to 2028 window, while Apple has reportedly pushed its lighter, cheaper
           Vision device toward 2028 and shifted resources to its own smart
-          glasses. Snap has confirmed its standalone Specs for fall 2026 at
-          around $2,500. Pico&apos;s Project Swan remains the wildcard. The
+          glasses. Snap opened Specs preorders at AWE at $2,195: fully standalone
+          true AR with a 51 degree field of view at 132 grams, shipping this
+          fall. Pico&apos;s Project Swan remains the wildcard. The
           market will consolidate quickly once these platforms land.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          In the meantime, the smart play in 2026 is to pick one of the
+          Meanwhile the affordable end keeps proving it is the part of AR that
+          actually sells: XREAL&apos;s new A01 Plus{" "}
+          <a
+            href="/articles/xreal-a01-plus-299-display-glasses-ar-that-sells-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            puts a 147-inch private screen on your face for $299
+          </a>
+          . In the meantime, the smart play in 2026 is to pick one of the
           current mature devices (Ray-Ban Meta for camera-and-audio, Rokid for
           a display, Xreal or Viture for a big virtual screen) and enjoy it
           without trying to future-proof. The technology is moving too fast to

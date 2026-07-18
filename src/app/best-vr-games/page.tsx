@@ -42,7 +42,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Top 10 VR Games of All Time",
   datePublished: "2026-03-24",
-  dateModified: "2026-05-02",
+  dateModified: "2026-07-17",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -120,7 +120,7 @@ export default function BestVRGamesPage() {
           Top 10 VR Games of All Time
         </h1>
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: May 2026
+          Last updated: July 2026
         </p>
 
         <p
@@ -494,6 +494,16 @@ export default function BestVRGamesPage() {
           Three 2026 standouts that are climbing fast and may make this list
           permanently if their staying power holds: Microsoft Flight Simulator
           on PSVR 2, the indie surprise One More Delve, and TMNT: Empire City.
+          And one milestone that deserves its own sentence: Hot Dogs,
+          Horseshoes &amp; Hand Grenades{" "}
+          <a
+            href="/articles/h3vr-1-0-leaves-early-access-ten-years-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            hit 1.0 in July after a full decade in Early Access
+          </a>
+          , the longest and arguably most beloved development marathon in VR.
           Catch up on all three in our{" "}
           <a
             href="/best-vr-games-2026"

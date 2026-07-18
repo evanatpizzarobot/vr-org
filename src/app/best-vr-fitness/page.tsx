@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Fitness Apps 2026: Top 10 VR Workout Games",
   datePublished: "2026-04-20",
-  dateModified: "2026-06-01",
+  dateModified: "2026-07-17",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -102,7 +102,7 @@ const fitnessFaq = faqPageSchema([
   {
     question: "What is the best VR fitness app?",
     answer:
-      "FitXR is the leading VR fitness app for structured, instructor-led workouts. Supernatural's library is still available, but Meta ended new content development in January 2026, so it is effectively in maintenance mode. Beat Saber remains the best gamified fitness app for high-intensity sessions, and for boxing specifically Les Mills Bodycombat and Thrill of the Fight 2 are outstanding.",
+      "FitXR is the leading VR fitness app for structured, instructor-led workouts. Supernatural's current app shuts down December 3, 2026 ahead of a relaunch under the independent Supernatural Health, with the subscription doubling to $20 a month. Beat Saber remains the best gamified fitness app for high-intensity sessions, and for boxing specifically Les Mills Bodycombat and Thrill of the Fight 2 are outstanding.",
   },
   {
     question: "How many calories do you burn in VR?",
@@ -112,12 +112,12 @@ const fitnessFaq = faqPageSchema([
   {
     question: "Do I need a subscription for VR fitness?",
     answer:
-      "Some VR fitness apps require subscriptions (Supernatural, though its new content has ended, and FitXR) while others are one-time purchases (Beat Saber, Thrill of the Fight 2, Pistol Whip, and Les Mills Bodycombat). Most subscription apps offer free trials. A single game like Beat Saber can provide years of workouts without any recurring fees.",
+      "Some VR fitness apps require subscriptions (FitXR, and the relaunching Supernatural Health at $20 a month) while others are one-time purchases (Beat Saber, Thrill of the Fight 2, Pistol Whip, and Les Mills Bodycombat). Most subscription apps offer free trials. A single game like Beat Saber can provide years of workouts without any recurring fees.",
   },
   {
     question: "What is the best free VR fitness app?",
     answer:
-      "Meta's built-in Move tracker is free and works across every Quest app. For free workouts, try the YouTube VR app and follow along with fitness channels. FitXR and Supernatural both offer free trials that give several workouts before requiring a subscription.",
+      "Meta's built-in Move tracker is free and works across every Quest app. For free workouts, try the YouTube VR app and follow along with fitness channels. FitXR offers a free trial that gives several workouts before requiring a subscription.",
   },
 ]);
 
@@ -144,7 +144,7 @@ export default function BestVRFitnessPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
 
         <p
@@ -223,11 +223,20 @@ export default function BestVRFitnessPage() {
           filmed in stunning real-world locations like Machu Picchu and the
           Grand Canyon. The production value is what separates Supernatural
           from everything else in this list. If you want a VR workout that
-          feels like a premium gym experience, this is it. One important
-          caveat: Meta announced in January 2026 that Supernatural will no
-          longer get new workouts or feature updates. The existing library of
-          more than 3,000 sessions stays available to subscribers at $9.99 a
-          month (or $99.99 a year), but the daily new classes have stopped.
+          feels like a premium gym experience, this is it. One critical
+          caveat before you subscribe: the current app is shutting down
+          December 3, 2026. Meta is{" "}
+          <a
+            href="/articles/meta-spins-out-supernatural-health-independent-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            spinning Supernatural out into an independent company
+          </a>
+          , Supernatural Health, with the original founders and coaches
+          returning and the subscription doubling to $20 a month on relaunch.
+          Do not start a new annual subscription now; ride it monthly until
+          the handover shakes out, or put the money on FitXR.
         </p>
 
         {/* 2. FitXR */}

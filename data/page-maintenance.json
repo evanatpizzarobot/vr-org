@@ -33,7 +33,7 @@
       "file": "src/app/best-vr-games/page.tsx",
       "category": "pillar",
       "cadenceDays": 60,
-      "lastRefreshed": "2026-05-02",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Top 10 all-time list rarely changes; review for new instant classics",
         "Refresh Honorable Mentions with the year's standout titles",
@@ -70,7 +70,7 @@
       "file": "src/app/best-vr-fitness/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-01",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify subscription pricing for each app (Supernatural, FitXR, Les Mills)",
         "Add new fitness titles that have launched since last refresh",
@@ -82,7 +82,7 @@
       "file": "src/app/vr-for-beginners/page.tsx",
       "category": "pillar",
       "cadenceDays": 60,
-      "lastRefreshed": "2026-05-02",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify the recommended first headset is still the right call",
         "Update 'What to play first' list if a new beginner-perfect title shipped",
@@ -94,7 +94,7 @@
       "file": "src/app/ar-glasses/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-01",
+      "lastRefreshed": "2026-07-17",
       "checklist": [
         "AR moves fast. Refresh 'What is coming' with confirmed Android XR / Meta / Apple news",
         "Update Ray-Ban Meta, Rokid, Xreal, Viture pricing and feature notes",
