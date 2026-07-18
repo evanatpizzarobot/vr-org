@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Watching Movies 2026: Top Picks",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-20",
+  dateModified: "2026-07-18",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -150,7 +150,7 @@ export default function BestVRHeadsetForMoviesPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 20, 2026
+          Last updated: July 18, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -201,8 +201,17 @@ export default function BestVRHeadsetForMoviesPage() {
           drop a cinema-sized screen into a virtual theater or a mountaintop at
           sunset. It plays Apple TV, Disney+, and 3D and spatial video, and the
           near-retina clarity means no visible pixels between you and the picture.
-          The catch is the $3,699 price. If money is no object and movies are the
-          point, this is the one. Compare it to the value pick in our{" "}
+          The catch is the $3,699 price, which Apple actually{" "}
+          <a
+            href="/articles/vision-pro-price-increase-3699-enterprise-signal-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            raised by $200 on June 25
+          </a>{" "}
+          as memory costs pushed prices up across its lineup, so do not wait
+          for a discount that is not coming. If money is no object and movies
+          are the point, this is the one. Compare it to the value pick in our{" "}
           <a
             href="/quest-3-vs-vision-pro"
             className="no-underline hover:underline"
@@ -248,7 +257,17 @@ export default function BestVRHeadsetForMoviesPage() {
           runs Android XR it has native Google TV and YouTube, including a growing
           catalog of immersive content. It sits between the Quest 3 and Vision Pro
           on price, and it is the natural choice if you are invested in Google and
-          Samsung services.
+          Samsung services. Samsung has been pushing it harder as a media device
+          too: the June{" "}
+          <a
+            href="/articles/galaxy-xr-uk-launch-explorer-pack-software-bundle"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            UK launch shipped with an Explorer Pack
+          </a>{" "}
+          software bundle built around exactly this kind of big-screen
+          streaming.
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">

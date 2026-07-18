@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Sim Racing 2026: iRacing & ACC Picks",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-20",
+  dateModified: "2026-07-18",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -113,7 +113,7 @@ const faq = faqPageSchema([
   {
     question: "Do you need a PC for sim racing in VR?",
     answer:
-      "Yes. Sim racing titles like iRacing, Assetto Corsa Competizione, and Automobilista 2 run on a gaming PC, so you need a PC VR setup. A standalone headset like the Quest 3 connects to that PC over Link, Air Link, or Virtual Desktop, while dedicated headsets like the Pimax Crystal Light and Bigscreen Beyond 2 plug straight in. Because VR is demanding, a strong graphics card, ideally an RTX 4070 or better, makes a big difference.",
+      "Yes. Sim racing titles like iRacing, Assetto Corsa Competizione, and Automobilista 2 run on a gaming PC, so you need a PC VR setup. A standalone headset like the Quest 3 connects to that PC over Link, Air Link, or Virtual Desktop, while dedicated headsets like the Pimax Crystal Light and Bigscreen Beyond 2 plug straight in. Because VR is demanding, a strong graphics card makes a big difference: an RTX 4070 Super is the practical floor, with the RTX 5070 Ti or Radeon RX 9070 XT the current sweet spots.",
   },
   {
     question: "What matters most in a sim racing VR headset?",
@@ -153,7 +153,7 @@ export default function BestVRHeadsetForSimRacingPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 20, 2026
+          Last updated: July 18, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -254,16 +254,41 @@ export default function BestVRHeadsetForSimRacingPage() {
           base stations and a capable PC, but for comfort plus clarity it is hard
           to beat. It is a true enthusiast tool rather than a first headset.
         </p>
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          Worth watching in the same ultralight class: the Pimax Dream Air SE,
+          from $899 with micro-OLED panels and inside-out tracking, is now{" "}
+          <a
+            href="/articles/pimax-dream-air-preorder-backlog-cleared-august-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            shipping in volume with the preorder backlog expected clear by
+            August
+          </a>
+          . Once it is freely orderable it becomes a genuine Beyond 2
+          alternative that skips the base stations.
+        </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
           A note on your PC
         </h2>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           VR sim racing is demanding to render, so the headset is only half the
-          equation. A graphics card in the RTX 4070 class or better keeps the frame
-          rate locked, which is what actually keeps the experience smooth and
-          comfortable. Budget for the PC as much as the headset, and you will have a
-          setup that makes flat-screen racing hard to go back to.
+          equation. An RTX 4070 Super is the practical floor, and the current
+          sweet spots are the RTX 5070 Ti and AMD&apos;s Radeon RX 9070 XT,
+          which our{" "}
+          <a
+            href="/deals"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            deals tracker
+          </a>{" "}
+          currently lists around $979 and $669. Fair warning: the memory
+          crunch that is delaying headsets has inflated GPU prices too, so a
+          good card at list price is a buy, not a wait. Budget for the PC as
+          much as the headset, and you will have a setup that makes
+          flat-screen racing hard to go back to.
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
@@ -276,6 +301,7 @@ export default function BestVRHeadsetForSimRacingPage() {
             ["Meta Quest 3 (512GB)", "$599", "Best starting point, sharp lenses, easy PC link"],
             ["Pimax Crystal Light", "$899", "Enthusiast clarity and a wide field of view"],
             ["Bigscreen Beyond 2", "$1,019", "Comfort over long stints, ultralight at 107 grams"],
+            ["Pimax Dream Air SE", "From $899", "Ultralight micro-OLED without base stations, shipping now"],
             ["PlayStation VR2", "$399", "Best value OLED if you race on PS5 or via the PC adapter"],
           ]}
         />

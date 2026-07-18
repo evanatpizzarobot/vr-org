@@ -45,7 +45,7 @@
       "file": "src/app/best-vr-games-2026/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-01",
+      "lastRefreshed": "2026-07-18",
       "checklist": [
         "Move shipped games from 'anticipated' to 'released so far' with launch dates",
         "Add internal links to VR.org launch articles for each",
@@ -58,7 +58,7 @@
       "file": "src/app/best-vr-apps/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-01",
+      "lastRefreshed": "2026-07-18",
       "checklist": [
         "Verify each app is still actively maintained (kill anything shuttered)",
         "Refresh the Honorable Mentions section with new apps gaining traction",
@@ -311,7 +311,7 @@
       "file": "src/app/best-vr-headset-for-kids/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-18",
       "checklist": [
         "Re-verify manufacturer age guidance (Meta 10+ with parent accounts, Sony 12+, Apple 13+)",
         "Confirm parental-control feature names (Family Center, parent-managed accounts) are accurate",
@@ -403,7 +403,7 @@
       "file": "src/app/best-vr-headset-for-movies/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-18",
       "checklist": [
         "Verify prices: Vision Pro ($3,499), Quest 3 ($599) against data/deals.json",
         "Confirm media-app availability (Bigscreen, Skybox, Netflix, Apple TV, Google TV) is still accurate",
@@ -416,7 +416,7 @@
       "file": "src/app/best-vr-headset-for-sim-racing/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-04",
+      "lastRefreshed": "2026-07-18",
       "checklist": [
         "Verify prices: Quest 3 ($599), Pimax Crystal Light ($899), Bigscreen Beyond 2 ($1,019)",
         "Update GPU recommendation (currently RTX 4070 class) as new cards ship",

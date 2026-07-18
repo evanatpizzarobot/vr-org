@@ -44,7 +44,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Apps & Utilities 2026: Top Must-Have Apps",
   datePublished: "2026-03-23",
-  dateModified: "2026-06-20",
+  dateModified: "2026-07-18",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -103,7 +103,7 @@ const appsFaq = faqPageSchema([
   {
     question: "What are the best free VR apps?",
     answer:
-      "VRChat and Bigscreen are among the best free VR apps. Wander is a paid app (about $9.99) but goes on sale often. Most Quest headsets also include a free YouTube VR app, various free demos and browser-based VR experiences, and a Horizon Worlds client, though Meta has shifted that platform's development toward mobile.",
+      "VRChat and Bigscreen are among the best free VR apps, and Discord joined them in July 2026 with an official native Quest app that lets you pin a voice call in your playspace while you play anything else. Wander is a paid app (about $9.99) but goes on sale often. Most Quest headsets also include a free YouTube VR app, various free demos and browser-based VR experiences, and a Horizon Worlds client, though Meta has shifted that platform's development toward mobile.",
   },
   {
     question: "What is the best VR fitness app?",
@@ -135,7 +135,7 @@ export default function BestVRAppsPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: June 20, 2026
+          Last updated: July 18, 2026
         </p>
 
         <p
@@ -470,7 +470,19 @@ export default function BestVRAppsPage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Tilt Brush / Open Brush remains one of the most joyful creative
+          The biggest new arrival is Discord, which finally shipped an{" "}
+          <a
+            href="/articles/discord-native-quest-app-launch-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            official native Quest app
+          </a>{" "}
+          on July 1, free on the Horizon Store. The headline feature is
+          pinning a voice call in your playspace while you play anything
+          else, which ends years of phone-on-the-desk workarounds and makes
+          it an instant install for anyone who games with friends. Tilt
+          Brush / Open Brush remains one of the most joyful creative
           tools in VR, letting you paint in 3D space with glowing
           brushstrokes. Supernatural offers premium fitness classes with high
           production values and licensed music (covered in our{" "}
@@ -488,9 +500,18 @@ export default function BestVRAppsPage() {
           with better workout history and integration with Apple Health and
           Google Fit. For Vision Pro owners, the visionOS app catalog has
           quietly grown past the point where you can spend a full work week
-          inside the headset on real apps. The category to watch is
-          spatial-aware AI assistants, where Gemini, Meta AI, and Apple
-          Intelligence are all converging on the headset.
+          inside the headset on real apps, and Apple&apos;s new{" "}
+          <a
+            href="/articles/apple-visionos-27-third-party-motion-controller-specs-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            spatial accessory spec
+          </a>{" "}
+          opens the door to third-party motion controllers, which should
+          widen what visionOS apps and games can do next. The category to
+          watch is still spatial-aware AI assistants, where Gemini, Meta AI,
+          and Apple Intelligence are all converging on the headset.
         </p>
 
         {/* Ad: after honorable mentions, before related articles */}

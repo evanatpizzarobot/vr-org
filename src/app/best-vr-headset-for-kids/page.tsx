@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Kids 2026: Safe, Age-Appropriate Picks",
   datePublished: "2026-06-04",
-  dateModified: "2026-06-20",
+  dateModified: "2026-07-18",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -153,7 +153,7 @@ export default function BestVRHeadsetForKidsPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: June 20, 2026
+          Last updated: July 18, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -205,7 +205,15 @@ export default function BestVRHeadsetForKidsPage() {
           there is no PC or console to manage. Meta's parent-managed accounts let
           you approve apps, set daily time limits, and block titles, all from your
           own phone through Family Center. And it runs the huge Quest library,
-          including the family-friendly games kids actually want to play. Its one
+          including the{" "}
+          <a
+            href="/articles/best-vr-games-family-fourth-of-july-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            family-friendly games
+          </a>{" "}
+          kids actually want to play. Its one
           limitation is three fixed IPD settings rather than continuous
           adjustment, so check the fit for a very young child. It is also our{" "}
           <a
@@ -252,6 +260,26 @@ export default function BestVRHeadsetForKidsPage() {
           account-level parental controls apply. It is not standalone and the age
           recommendation is higher, so it suits older kids in PlayStation homes
           rather than younger children.
+        </p>
+
+        <h2 className="font-display text-2xl font-bold mt-10 mb-3">
+          Should you wait for the Quest 4?
+        </h2>
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          No. Meta&apos;s next gaming headset has slipped to the second half of
+          2027 at the earliest, and credible reporting has its price trending
+          up, not down. A Quest 3S bought today will not be outdated by the
+          holidays, and it will keep getting the same software and parental
+          controls as everything else in the Quest line. Our{" "}
+          <a
+            href="/articles/meta-quest-4-everything-we-know"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Quest 4 tracker
+          </a>{" "}
+          sorts every release date and price claim if you want the full
+          picture.
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">

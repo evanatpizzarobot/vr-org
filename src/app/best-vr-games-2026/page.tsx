@@ -44,7 +44,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Games of 2026: New Releases and Must-Play Titles",
   datePublished: "2026-03-24",
-  dateModified: "2026-06-20",
+  dateModified: "2026-07-18",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -142,6 +142,14 @@ const games2026List = productItemListSchema("Best VR Games of 2026", [
     offers: [{ price: 29.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/2754090/" }],
   },
   {
+    name: "Hot Dogs, Horseshoes & Hand Grenades (H3VR)",
+    brand: "Rust Ltd",
+    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/450540/header.jpg",
+    description: "The definitive VR firearms sandbox, which hit its 1.0 release in July 2026 after a full decade in Early Access.",
+    url: "https://vr.org/best-vr-games-2026",
+    offers: [{ price: 19.99, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://store.steampowered.com/app/450540/" }],
+  },
+  {
     name: "Virtual Hunter",
     brand: "Korpi Games",
     image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1549850/74407f4d2cc61225833c9231d5bb1a30d1b22a37/header.jpg?t=1778837658",
@@ -155,17 +163,17 @@ const games2026Faq = faqPageSchema([
   {
     question: "What are the best VR games of 2026?",
     answer:
-      "Through June 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Aces of Thunder, Star Trek: Infection, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, the breakout indie One More Delve, the S.T.A.L.K.E.R.-style survival shooter Into the Radius 2 (now a full 1.0 release), and the open-world hunting sim Virtual Hunter. Whatever Valve launches alongside the Steam Frame remains the biggest wildcard for the back half of the year.",
+      "Through July 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Aces of Thunder, Star Trek: Infection, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, the breakout indie One More Delve, the S.T.A.L.K.E.R.-style survival shooter Into the Radius 2 (now a full 1.0 release), the open-world hunting sim Virtual Hunter, and H3VR, which finally left Early Access with its 1.0 update over the Fourth of July weekend. Whatever Valve launches alongside the Steam Frame remains the biggest wildcard for the back half of the year.",
   },
   {
     question: "What VR games are coming in the rest of 2026?",
     answer:
-      "The biggest remaining wildcard for 2026 is whatever launch title Valve ships alongside the Steam Frame headset. Several PSVR 2 ports and Quest exclusives remain on publishers' roadmaps for the second half of the year, following a busy spring that delivered Aces of Thunder, Star Trek: Infection, and Virtual Hunter.",
+      "The biggest remaining wildcard for 2026 is whatever launch title Valve ships alongside the Steam Frame headset, and Valve's new Great on Frame store section, which certifies games for the headset, went live in July and is filling in ahead of launch. Nearer term, the narrative escape room Amelia's Escape hits Quest and Steam on July 23 at $15.99, and several PSVR 2 ports and Quest exclusives remain on publishers' roadmaps for the second half of the year.",
   },
   {
     question: "When does the Steam Frame release?",
     answer:
-      "Valve has not announced a release date for the Steam Frame headset. The new Steam Controller launched May 4, 2026 at $99 and sold out within the hour, confirming demand, but a RAM supply shortage tied to AI chip demand has introduced uncertainty around the exact Frame window. Valve now lists the headset as coming soon, likely bundled with a first-party VR title.",
+      "Valve has not announced a release date for the Steam Frame headset, but the signals are stacking up. The Steam Machine shipped June 30 at $1,049, a Great on Frame store section certifying games for the headset went live in July, and tens of tons of VR hardware have cleared into Valve's US warehouses. Valve still cites the memory supply crunch tied to AI demand as the reason it will not commit to a date, but the evidence points to a launch window measured in months, not quarters.",
   },
   {
     question: "Are there new PSVR 2 games in 2026?",
@@ -175,7 +183,7 @@ const games2026Faq = faqPageSchema([
   {
     question: "What is the best VR game in 2026 so far?",
     answer:
-      "Microsoft Flight Simulator on PSVR 2 is the most ambitious release of the year through May. Batman: Arkham Shadow remains the strongest Quest-native title, and One More Delve is the surprise of the year, a polished three-player co-op dungeon crawler built largely by a single student developer that outperformed several big-studio releases.",
+      "Microsoft Flight Simulator on PSVR 2 is the most ambitious release of the year so far. Batman: Arkham Shadow remains the strongest Quest-native title, One More Delve is the surprise of the year, a polished three-player co-op dungeon crawler built largely by a single student developer that outperformed several big-studio releases, and H3VR's long-awaited 1.0 gave PC VR its feel-good story of the summer.",
   },
 ]);
 
@@ -203,7 +211,7 @@ export default function BestVRGames2026Page() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: June 20, 2026
+          Last updated: July 18, 2026
         </p>
 
         <p
@@ -226,13 +234,14 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Five months in, 2026 is delivering on its promise as one of the
-          biggest years for VR gaming. Microsoft Flight Simulator hit PSVR 2,
-          TMNT: Empire City brought the turtles to VR, a solo student
+          Past the halfway mark, 2026 is delivering on its promise as one of
+          the biggest years for VR gaming. Microsoft Flight Simulator hit
+          PSVR 2, TMNT: Empire City brought the turtles to VR, a solo student
           developer dropped one of the most surprising indie hits of the year,
-          and Into the Radius 2 left Early Access as a full game.
-          Valve&apos;s Steam Controller sold out in under an hour on May 4, and
-          the Steam Frame headset is now listed as coming soon. Here are the
+          and H3VR capped a decade in Early Access with its 1.0 release over
+          the July 4 weekend. On the hardware side, the Steam Machine shipped
+          June 30 and Valve quietly opened a Great on Frame store section,
+          the loudest signal yet that the Steam Frame is close. Here are the
           best VR games of 2026 so far, plus the titles still ahead.
         </p>
 
@@ -506,6 +515,43 @@ export default function BestVRGames2026Page() {
           has the breakdown.
         </p>
 
+        {/* H3VR 1.0 */}
+        <h3 className="font-display text-xl font-semibold mb-2">
+          Hot Dogs, Horseshoes &amp; Hand Grenades (H3VR)
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/450540/header.jpg"
+            alt="Hot Dogs, Horseshoes and Hand Grenades Steam header art"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[13px] mb-4"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Developer: Rust Ltd | Platform: PC VR | Released: 1.0 on July 4 weekend, 2026 (Update 120)
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Ten years after entering Early Access at the dawn of consumer VR,
+          H3VR finally shipped its 1.0 over the Fourth of July weekend. It is
+          the definitive firearms sandbox in VR: hundreds of meticulously
+          simulated weapons, the gleefully weird Take and Hold mode, and a
+          decade of free updates from a tiny team. Few games in any medium
+          have been supported this well for this long. Our{" "}
+          <a
+            href="/articles/h3vr-1-0-leaves-early-access-ten-years-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            ten-year retrospective
+          </a>{" "}
+          covers what the journey represents.
+        </p>
+
         {/* Ad: after New Releases, before Most Anticipated */}
         <div className="my-8">
           <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
@@ -531,14 +577,22 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          The new Steam Controller sold out in under an hour on May 4, 2026
-          at $99, confirming real appetite for Valve&apos;s new hardware.
-          Steam Frame is now listed as coming soon, though a RAM supply
-          shortage tied to AI demand has put pressure on the exact timing.
-          Nobody knows what Valve plans to launch alongside it, but the
-          community is hoping for something in the Half-Life universe. A
-          first-party Valve VR title bundled with new hardware could be the
-          biggest VR gaming moment since Alyx.
+          The launch signals keep stacking. The Steam Machine shipped June 30
+          at $1,049, tens of tons of hardware labeled virtual reality devices
+          have cleared into Valve&apos;s US warehouses, and in July Valve
+          quietly published a{" "}
+          <a
+            href="/articles/valve-great-on-frame-steam-page-steam-frame-launch-signal"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Great on Frame store section
+          </a>{" "}
+          that certifies games for the headset, the same playbook that made
+          Deck Verified work. Nobody knows what Valve plans to launch
+          alongside the Frame, but the community is hoping for something in
+          the Half-Life universe. A first-party Valve VR title bundled with
+          new hardware could be the biggest VR gaming moment since Alyx.
         </p>
 
         {/* Star Trek: Infection */}
@@ -634,15 +688,31 @@ export default function BestVRGames2026Page() {
           style={{ color: "var(--text-secondary)" }}
         >
           The Steam Frame launch is still the wild card for the back half
-          of 2026. The new Steam Controller sold out on launch day, confirming
-          demand, but a RAM supply shortage tied to AI chip demand has made the
-          exact Frame window less certain than it looked in April. If Valve delivers a strong standalone
-          headset with a compelling launch title, it could expand the VR
-          gaming audience significantly and give developers a reason to
-          invest more heavily in VR exclusive content. Quest continues to
-          dominate in install base, but SteamVR&apos;s library depth and
-          the enthusiast PC VR audience remain critical for pushing the
-          medium forward.
+          of 2026. The Steam Machine&apos;s June 30 launch proved Valve will
+          ship hardware straight through the memory crunch, and the Great on
+          Frame store section means game certification is already underway.
+          Meta Connect lands September 23 with the Quest 4 now pointed at
+          2027, so Valve has the hardware stage largely to itself this fall.
+          If it delivers a strong standalone headset with a compelling launch
+          title, it could expand the VR gaming audience significantly and
+          give developers a reason to invest more heavily in VR exclusive
+          content. Nearer term, the narrative escape room{" "}
+          <a
+            href="/articles/amelias-escape-vr-escape-room-launch-july-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Amelia&apos;s Escape
+          </a>{" "}
+          hits Quest and Steam on July 23 at $15.99, and our{" "}
+          <a
+            href="/articles/best-vr-games-first-half-2026-standouts"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            first-half standouts roundup
+          </a>{" "}
+          recaps the six months that got us here.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
