@@ -44,7 +44,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-07-17";
+const LAST_UPDATED = "2026-07-18";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -161,6 +161,11 @@ const DATE_SIGNALS: DateSignal[] = [
     signal: "Verified list grows to eight titles in a single day",
     read: "Shelves being stocked",
   },
+  {
+    date: "Jul 18, 2026",
+    signal: "Major SteamVR dashboard overhaul ships to beta users",
+    read: "The software is dressing for launch",
+  },
 ];
 
 export default function SteamFrameReleaseDatePage() {
@@ -183,7 +188,7 @@ export default function SteamFrameReleaseDatePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 17, 2026
+          Last updated: July 18, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -228,11 +233,11 @@ export default function SteamFrameReleaseDatePage() {
           style={{ color: "var(--text-secondary)" }}
         >
           The Valve Steam Frame is confirmed for summer 2026, and as of July
-          17, 2026 Valve has not named the day. But every physical signal says
-          the wait is measured in weeks: the hardware has cleared US customs,
-          the FCC filings are public, the Steam Machine already shipped, and
-          the Great on Frame store section is live and filling with certified
-          games. This page tracks every release date signal, dated, until
+          18, 2026 Valve has not named the day. But every signal says the wait
+          is measured in weeks: the hardware has cleared US customs, the FCC
+          filings are public, the Steam Machine already shipped, the Great on
+          Frame store section is live and filling with certified games, and
+          SteamVR itself just received a major dashboard overhaul in beta. This page tracks every release date signal, dated, until
           Valve makes it official.
         </p>
 
