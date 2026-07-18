@@ -6,6 +6,13 @@ import { ThemeToggle } from "./ThemeToggle";
 
 // isNew renders the magenta NEW badge; give it to a freshly launched page for
 // a few weeks, then remove (Deals had it first, then Releases).
+// The LAST item is the rotating SPOTLIGHT SLOT: a temporary tab pointed at
+// whatever is pulling outsized traffic for a month or two (big product
+// launches, special events, seasonal deals). Swap the label/href to rotate it,
+// keep isNew on whatever currently occupies it, and leave the slot empty when
+// nothing merits it. Current occupant: Steam Frame (added 2026-07-17, the
+// cluster drives ~37% of GSC clicks). Next likely rotations: Frame launch
+// week, Meta Connect, Quest 4.
 const NAV_ITEMS: { label: string; href: string; isNew?: boolean }[] = [
   { label: "Feed", href: "/" },
   { label: "Hardware", href: "/hardware" },
@@ -19,6 +26,7 @@ const NAV_ITEMS: { label: string; href: string; isNew?: boolean }[] = [
   { label: "Originals", href: "/originals" },
   { label: "Best Of", href: "/best-of" },
   { label: "Deals", href: "/deals" },
+  { label: "Steam Frame", href: "/steam-frame", isNew: true },
 ];
 
 interface HeaderProps {
@@ -82,7 +90,9 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
         </a>
 
         {/* Desktop: logo + nav, absolutely centered */}
-        <div className="hidden lg:flex items-center gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        {/* Gaps tighten below 1200px: 13 items (incl. the spotlight slot) need
+            the extra room to clear the theme toggle at the lg breakpoint. */}
+        <div className="hidden lg:flex items-center gap-4 min-[1200px]:gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <a href="/" className="flex items-center gap-1 no-underline flex-shrink-0">
             <img
               src="/logo.png"
@@ -90,7 +100,7 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
               className="h-10 w-auto dark-logo-invert"
             />
           </a>
-          <nav className="flex items-center gap-4">
+          <nav className="flex items-center gap-3 min-[1200px]:gap-4">
             {NAV_ITEMS.map(({ label, href, isNew }) => {
               const isActive = pathname === href;
               return (
@@ -111,9 +121,12 @@ export function Header({ articleCount, lastUpdated }: HeaderProps) {
                   }}
                 >
                   {label}
+                  {/* Badge hides below 1200px: 13 nav items + badge collide
+                      with the theme toggle at the lg breakpoint (same reason
+                      the live dot waits for xl). */}
                   {isNew && (
                     <span
-                      className="font-mono text-[8px] font-bold px-1.5 py-[1px] rounded uppercase tracking-[0.5px]"
+                      className="font-mono text-[8px] font-bold px-1.5 py-[1px] rounded uppercase tracking-[0.5px] hidden min-[1200px]:inline"
                       style={{
                         background: "var(--accent-magenta)",
                         color: "#fff",
