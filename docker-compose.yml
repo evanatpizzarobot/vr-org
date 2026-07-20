@@ -11,7 +11,18 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
+      # Explicit V8 heap cap. Without this, Node auto-derives the old-space
+      # limit from the container mem_limit, which produced a ~259MB heap under
+      # the old 512m limit. The app's real working set (Next 15 SSR + in-process
+      # RSS engine + OG image rendering) crossed that ceiling under normal
+      # traffic and V8 aborted with "heap out of memory" roughly every 2 hours,
+      # crash-looping the container and 502ing /api/stats during each cold start
+      # (diagnosed 2026-07-20, RestartCount had reached 11 in ~24h).
+      - NODE_OPTIONS=--max-old-space-size=512
     volumes:
       - ./data:/app/data
       - /var/log/nginx:/var/log/nginx:ro
-    mem_limit: 512m
+    # 896m ceiling = 512MB JS heap + headroom for native/non-heap memory
+    # (resvg/sharp buffers used by the OG image route). Sized to fit the 2GB
+    # VPS alongside ~740MB of other processes (dockerd, PM2 bot, system).
+    mem_limit: 896m
