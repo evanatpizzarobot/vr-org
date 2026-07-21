@@ -82,3 +82,8 @@ plans/
 # Playwright MCP verification artifacts (local debug only)
 .playwright-mcp/
 vr-org-*.png
+
+# One-off article insert scripts the drafting pipeline leaves behind. They
+# hardcode a single article body that already lives in data/articles.json,
+# are not re-runnable, and write articles.json non-atomically. Scratch only.
+/add_article*.py
