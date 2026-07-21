@@ -49,7 +49,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best AR Glasses 2026: Smart Glasses Comparison & Buyer's Guide",
   datePublished: "2026-04-20",
-  dateModified: "2026-07-17",
+  dateModified: "2026-07-21",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -138,6 +138,17 @@ const glassesList = productItemListSchema("Best AR Glasses 2026", [
     description:
       "A developer preview of true holographic AR, 70 degree field of view with a wireless compute puck and neural wristband. Not for sale.",
     url: "https://vr.org/ar-glasses#meta-orion",
+  },
+  {
+    name: "Snap Specs",
+    brand: "Snap",
+    image: "https://vr.org/article-images/snap-specs-front.webp",
+    description:
+      "The first standalone consumer true AR glasses, a 51 degree field of view on proprietary LCoS displays with no phone or puck required.",
+    url: "https://vr.org/ar-glasses#snap-specs",
+    offers: [
+      { price: 2195, priceCurrency: "USD", availability: "https://schema.org/PreOrder", url: "https://www.specs.com/" },
+    ],
   },
   {
     name: "Google Android XR Glasses",
@@ -417,6 +428,48 @@ export default function ARGlassesPage() {
           glasses are a few hardware generations away. Any serious AR buyer
           should be watching Orion closely because whatever Meta ships for
           real will draw from it.
+        </p>
+
+        {/* Snap Specs */}
+        <h2 id="snap-specs" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
+          Snap Specs: True AR you can actually preorder
+        </h2>
+        <figure className="fitness-figure">
+          <img
+            src="/article-images/snap-specs-front.webp"
+            alt="Snap Specs augmented reality glasses, front view of the 52mm frame"
+            loading="lazy"
+          />
+        </figure>
+        <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
+          Made by Snap | Price: $2,195 ($200 refundable deposit) | Display: Proprietary LCoS, 51 degree field of view
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Snap opened Specs preorders at AWE in June 2026, and it is the most
+          serious attempt at consumer true AR that anyone has attached a real
+          price to. Everything runs on the glasses themselves. No compute puck,
+          no phone tether, no cable down your back. Two Snapdragon processors
+          split the load, one driving computer vision and one running Snap's
+          Lenses, while the proprietary liquid-crystal-on-silicon display puts
+          16 million colors across a 51 degree field of view at 7ms
+          motion-to-photon latency. At 132 grams for the 47mm frame they are a
+          lot heavier than Rokid's 49-gram display glasses, which is the
+          tradeoff for carrying the whole computer on your face.
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          The catch is price and endurance. At $2,195 this is developer and
+          early-adopter territory, not a mainstream purchase, and four hours of
+          mixed use means the charging case is not really optional. Shipping
+          starts this fall in the US, UK, and France. If you want the most
+          practical glasses to buy today, this is not it. If you want to see
+          where the category is genuinely heading, Specs is the most important
+          thing launching this year.
         </p>
 
         {/* Google Android XR */}
