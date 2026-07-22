@@ -91,7 +91,12 @@ function isPageview(pathNoQuery: string): boolean {
   if (
     pathNoQuery.startsWith("/_next") ||
     pathNoQuery.startsWith("/api") ||
-    pathNoQuery.startsWith("/space-bg")
+    pathNoQuery.startsWith("/space-bg") ||
+    // Self-hosted article art. Scanners walk up the path segments of a real
+    // image URL, so /article-images and /article-images/<dir> arrive with no
+    // file extension and would otherwise read as page views.
+    pathNoQuery === "/article-images" ||
+    pathNoQuery.startsWith("/article-images/")
   ) {
     return false;
   }
@@ -105,9 +110,20 @@ function isPageview(pathNoQuery: string): boolean {
 // static asset. Keeps the "broken links" report actionable instead of drowning
 // it in bot probes.
 const SCANNER_404 =
-  /\.(php|aspx?|asp|jsp|cgi|env|git|ya?ml|ini|bak|sql|sh)$|(^|\/)\.[^/]|wp-|xmlrpc|phpmyadmin|\/vendor\/|\/admin/i;
+  /\.(php|aspx?|asp|jsp|cgi|env|git|ya?ml|ini|bak|sql|sh|key|pem|log|conf|suspected)$|(^|\/)\.[^/]|wp-|xmlrpc|phpmyadmin|\/vendor\/|\/admin|graphql|alfa|actuator|rclone|^\/(login|wordpress|wp|backup|old|new|files|images|uploads|storage|ssl|sse|ip|riddle)$|^\/(id_(rsa|dsa|ecdsa|ed25519)|server\.key|localhost\.key|privatekey|private-key|key)$|^\/(ssl|storage)\//i;
+
+// Headless renderers occasionally resolve a computed CSS background value as
+// if it were a URL, producing requests like
+// /articles/linear-gradient(90deg,%20rgb(0,%20229,%20255),...). Nothing on the
+// site emits these; they are never a broken link worth chasing.
+const CSS_VALUE_404 = /gradient\(|^\/,+$/i;
+
 function isPageLike404(pathNoQuery: string): boolean {
-  return isPageview(pathNoQuery) && !SCANNER_404.test(pathNoQuery);
+  return (
+    isPageview(pathNoQuery) &&
+    !SCANNER_404.test(pathNoQuery) &&
+    !CSS_VALUE_404.test(pathNoQuery)
+  );
 }
 
 // Uptime monitors ping fixed URLs on a fixed cadence, so they are neither

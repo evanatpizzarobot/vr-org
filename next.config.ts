@@ -84,9 +84,21 @@ const REDIRECTS: { source: string; destination: string }[] = [
   // Old WordPress date permalinks (/2018/08/17/post-slug). Those posts are
   // gone; the originals index is the closest living analog.
   { source: "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug*", destination: "/originals" },
+  // Bare year/month archives (/2021/04) from the same permalink scheme. The
+  // day-level rule above is more specific and matches first.
+  { source: "/:year(\\d{4})/:month(\\d{2})", destination: "/originals" },
+  // Old WordPress tag archives (/tag/vive, /tag/boneworks-vr). We do not run
+  // per-tag pages; the originals index is the closest living archive, same as
+  // the /author rule above.
+  { source: "/tag/:slug*", destination: "/originals" },
+  // Old WordPress homepage pagination (/page/2). The feed is a single stream
+  // now, so everything collapses to the homepage.
+  { source: "/page/:n(\\d+)", destination: "/" },
+  { source: "/blog", destination: "/originals" },
   // vr.org's pre-2018 hosting-sales pages (VPS and datacenter products).
   // NetActuate is where that business lives now.
   { source: "/datacenters/:path*", destination: "https://netactuate.com" },
+  { source: "/buy-vps", destination: "https://netactuate.com" },
 ];
 
 const nextConfig: NextConfig = {
