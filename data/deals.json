@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-18",
+  "lastUpdated": "2026-07-28",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -138,6 +138,23 @@
             "direct": {
               "url": "https://pimax.com",
               "label": "Pimax"
+            }
+          }
+        },
+        {
+          "name": "HTC VIVE Focus Vision",
+          "price": "$1,069",
+          "image": "https://www.vive.com/media/filer_public/fed-assets/vive-ultimate-tracker/images/accessories/vive-focus-vision-accy-1920.webp",
+          "description": "Down from $1,149. HTC's hybrid standalone that also runs as a tethered PC VR headset, with eye tracking, hand tracking and support for face and body trackers built in. The eye tracking at this price is the reason to look, and it pairs directly with the Ultimate Trackers above.",
+          "badge": "Premium Pick",
+          "links": {
+            "direct": {
+              "url": "https://www.vive.com/us/product/vive-focus-vision/overview/",
+              "label": "VIVE"
+            },
+            "amazon": {
+              "url": "https://amazon.com/s?k=htc+vive+focus+vision+headset&tag=vrorg00-20",
+              "label": "Amazon"
             }
           }
         }
@@ -475,6 +492,64 @@
             },
             "amazon": {
               "url": "https://amazon.com/s?k=reloptix+prescription+lens+inserts&tag=vrorg00-20",
+              "label": "Amazon"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "haptics-tracking",
+      "title": "Haptics & Body Tracking",
+      "description": "The layer most people add after their second headset. Haptic vests turn hits and engine rumble into something you feel, and inside-out trackers add legs and hips without base stations. Prices verified against manufacturer stores.",
+      "items": [
+        {
+          "name": "bHaptics TactSuit Pro",
+          "price": "$565",
+          "image": "https://cdn.bhaptics.com/images/products/pro-0.png",
+          "description": "bHaptics' flagship vest and the replacement for the old X40 naming. 40 feedback motors, Bluetooth or wired, and official support across Quest, PS VR2 and SteamVR with hundreds of games mapped. The one to get if you want impacts you can actually locate on your body.",
+          "badge": "Premium Pick",
+          "links": {
+            "direct": {
+              "url": "https://www.bhaptics.com/tactsuit/tactsuit-pro/",
+              "label": "bHaptics"
+            },
+            "amazon": {
+              "url": "https://amazon.com/s?k=bhaptics+tactsuit+haptic+vest&tag=vrorg00-20",
+              "label": "Amazon"
+            }
+          }
+        },
+        {
+          "name": "bHaptics TactSuit Air",
+          "price": "$320",
+          "image": "https://cdn.bhaptics.com/images/products/air-02.png",
+          "description": "The lighter half of the 2026 lineup at 2.5 lb and 16 motors, built to move in rather than sit heavy on your shoulders. Cheaper entry into haptics than the Pro and the better pick for fitness or anything where you are swinging your arms for an hour.",
+          "badge": "Best Value",
+          "links": {
+            "direct": {
+              "url": "https://www.bhaptics.com/tactsuit/tactsuit-air/",
+              "label": "bHaptics"
+            },
+            "amazon": {
+              "url": "https://amazon.com/s?k=bhaptics+tactsuit+air+haptic+vest&tag=vrorg00-20",
+              "label": "Amazon"
+            }
+          }
+        },
+        {
+          "name": "VIVE Ultimate Tracker 3+1 Kit",
+          "price": "$551",
+          "image": "https://www.vive.com/media/filer_public/fed-assets/vive-ultimate-tracker/images/accessories/vive-ultimate-tracker-3-plus-1-kit-1920.webp",
+          "description": "Down from $689 in HTC's current sale. Three self-tracking pucks plus the wireless dongle, which with a headset and two controllers gets you six-point full-body tracking and no base stations on the wall. Works with Quest and SteamVR headsets, not just VIVE. Roughly 7 hours per charge.",
+          "badge": "Staff Favorite",
+          "links": {
+            "direct": {
+              "url": "https://www.vive.com/us/accessory/vive-ultimate-tracker/",
+              "label": "VIVE"
+            },
+            "amazon": {
+              "url": "https://amazon.com/s?k=vive+ultimate+tracker+3+pack+dongle&tag=vrorg00-20",
               "label": "Amazon"
             }
           }
