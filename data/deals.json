@@ -15,7 +15,7 @@
           "badge": "Best Standalone Value",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=meta+quest+3s+128gb&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0DDK1WM9K?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -27,7 +27,7 @@
           "description": "Same Quest 3S hardware with double the storage. Worth the upgrade if you keep more than a handful of games installed.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=meta+quest+3s+256gb&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0DDJZW3C9?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -40,7 +40,7 @@
           "badge": "Editor's Pick",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=meta+quest+3+512gb&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0DDWH41HB?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -53,7 +53,7 @@
           "badge": "Best VR Value",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=playstation+vr2&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0C1QJ6VHY?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -219,7 +219,7 @@
           "description": "Xreal's everyday flagship. 120Hz micro-OLED, X1 chip with 3DoF spatial anchoring, Bose-tuned speakers, and Real 3D for stereoscopic 2D conversion. Permanent price drop made these the AR glasses sweet spot.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=xreal+one+pro&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0FDPGHVCB?tag=vrorg00-20",
               "label": "Amazon"
             },
             "direct": {
@@ -235,7 +235,7 @@
           "description": "The everyday entry point into Xreal's lineup and the most affordable glasses to carry the in-house X1 spatial computing chip. 120Hz micro-OLED, a rock-steady 3DoF anchored screen with no phone or compute puck required, and Bose-tuned open-ear sound. If the One Pro is more than you need, this is the pair to buy.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=xreal+one+ar+glasses&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0DNFFXG65?tag=vrorg00-20",
               "label": "Amazon"
             },
             "direct": {
@@ -252,7 +252,7 @@
           "badge": "Editor's Pick",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=ray-ban+meta&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0FLYDWQDZ?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -264,7 +264,7 @@
           "description": "XR display glasses with a 174-inch virtual screen. Works with PS5, Switch, Steam Deck, and phones.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=viture+beast&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0FG81WF3N?tag=vrorg00-20",
               "label": "Amazon"
             },
             "direct": {
@@ -332,7 +332,7 @@
           "description": "Official comfort upgrade. Better weight distribution and dial-fit adjustment for long sessions.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=meta+quest+3+elite+strap&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0CD15C641?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -361,7 +361,7 @@
           "description": "Suspended-design strap with a hot-swappable magnetic battery pack. The reviewer favorite for Quest 3 sessions longer than the stock battery can handle.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=bobovr+m3+pro+battery+strap&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0CJLG9SBR?tag=vrorg00-20",
               "label": "Amazon"
             },
             "direct": {
@@ -377,7 +377,7 @@
           "description": "Budget-friendly comfort strap. Solid build quality for the price.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=kiwi+design+quest+3+head+strap&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0CMW2WTNJ?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -470,10 +470,6 @@
           "image": "https://upload.wikimedia.org/wikipedia/commons/7/79/Psvr2_usb_adapter.png",
           "description": "The official adapter that unlocks thousands of SteamVR games on a PSVR2. Plug it in, add a DisplayPort 1.4 cable, and your PS5 headset becomes a capable PC VR display with its OLED panels and eye tracking intact. The cheapest way to give a PSVR2 a second life on PC, and restocks tend to sell out fast.",
           "links": {
-            "amazon": {
-              "url": "https://amazon.com/s?k=playstation+vr2+pc+adapter&tag=vrorg00-20",
-              "label": "Amazon"
-            },
             "direct": {
               "url": "https://direct.playstation.com/en-us/buy-accessories/playstationvr2-pc-adapter",
               "label": "PlayStation"
@@ -507,7 +503,7 @@
           "name": "bHaptics TactSuit Pro",
           "price": "$565",
           "image": "https://cdn.bhaptics.com/images/products/pro-0.png",
-          "description": "bHaptics' flagship vest and the replacement for the old X40 naming. 40 feedback motors, Bluetooth or wired, and official support across Quest, PS VR2 and SteamVR with hundreds of games mapped. The one to get if you want impacts you can actually locate on your body.",
+          "description": "bHaptics' flagship vest and the replacement for the old X40 naming. 32 feedback motors, Bluetooth or wired, and official support across Quest, PS VR2 and SteamVR with hundreds of games mapped. The one to get if you want impacts you can actually locate on your body.",
           "badge": "Premium Pick",
           "links": {
             "direct": {
@@ -515,7 +511,7 @@
               "label": "bHaptics"
             },
             "amazon": {
-              "url": "https://amazon.com/s?k=bhaptics+tactsuit+haptic+vest&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0F2MRP85R?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -532,7 +528,7 @@
               "label": "bHaptics"
             },
             "amazon": {
-              "url": "https://amazon.com/s?k=bhaptics+tactsuit+air+haptic+vest&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0DV9H3LRC?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -549,7 +545,7 @@
               "label": "VIVE"
             },
             "amazon": {
-              "url": "https://amazon.com/s?k=vive+ultimate+tracker+3+pack+dongle&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0CQPQ659X?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
