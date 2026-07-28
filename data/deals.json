@@ -65,7 +65,7 @@
           "description": "Samsung's premium Android XR headset and Google's flagship for the platform. Eye tracking, hand tracking, Gemini-powered spatial AI. The most credible Vision Pro alternative in the Android ecosystem.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=samsung+galaxy+xr&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0H8BCRY8N?tag=vrorg00-20",
               "label": "Amazon"
             },
             "direct": {
@@ -110,7 +110,7 @@
           "description": "Standalone and PC VR in one compact, glasses-like form factor. Color passthrough mixed reality, 110 degree FOV, and a foldable design that travels well. Now ships with the Deluxe Pack.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=htc+vive+xr+elite&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0D6D5Q5M2?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -153,7 +153,7 @@
               "label": "VIVE"
             },
             "amazon": {
-              "url": "https://amazon.com/s?k=htc+vive+focus+vision+headset&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0DDRLX7V4?tag=vrorg00-20",
               "label": "Amazon"
             }
           }
@@ -186,7 +186,7 @@
           "badge": "New",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=xreal+a01+plus+ar+glasses&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0H44Y6F33?tag=vrorg00-20",
               "label": "Amazon"
             },
             "direct": {
@@ -281,7 +281,7 @@
           "badge": "Best Value",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=rayneo+air+3s&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0FFSHMQQ4?tag=vrorg00-20",
               "label": "Amazon"
             },
             "direct": {
@@ -309,7 +309,7 @@
           "description": "Open-platform AI camera glasses and a genuine Ray-Ban Meta alternative. Built-in camera, a voice assistant, open-ear audio, and an SDK that lets developers ship their own apps. Lightweight enough for all-day wear at well under the cost of a headset.",
           "links": {
             "amazon": {
-              "url": "https://amazon.com/s?k=rokid+ai+glasses&tag=vrorg00-20",
+              "url": "https://www.amazon.com/dp/B0FWRR787L?tag=vrorg00-20",
               "label": "Amazon"
             },
             "direct": {
