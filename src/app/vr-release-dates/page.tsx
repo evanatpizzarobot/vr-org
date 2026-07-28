@@ -186,12 +186,12 @@ export default function VRReleaseDatesPage() {
     {
       question: "What new VR headsets are coming out in 2026?",
       answer:
-        "The headliner is Valve's Steam Frame, confirmed for summer 2026. Samsung's Galaxy XR reaches the UK on July 8, and Pico's Project Swan, a Vision Pro competitor with 4000+ PPI micro-OLED displays, targets late 2026. The Meta Quest 4 is not a 2026 product; reporting points to 2027.",
+        "The headliner is Valve's Steam Frame, still slated for summer 2026 but with no price or release date announced as of late July. Samsung's Galaxy XR reached the UK on July 8, and Pico's Project Swan, a Vision Pro competitor with 4000+ PPI micro-OLED displays, targets late 2026. The Meta Quest 4 is not a 2026 product; reporting points to 2027.",
     },
     {
       question: "What VR games are coming out in 2026?",
       answer:
-        "Firm dates on the calendar include Cave Crave in July, Transformers: Beyond Reality Redux on September 3, and The Lightkeepers on September 10. Windowed for this year are Payday: Aces High, Breachers: Outbreak, Project Hail Mary: Journey Among the Stars, the Quest version of FNAF: Secret of the Mimic, Sol Protocol's September early access, and more.",
+        "Firm dates on the calendar include Cave Crave's Tham Luang expansion on July 30, Transformers: Beyond Reality Redux on September 3, and The Lightkeepers on September 10. Windowed for this year are Payday: Aces High, Breachers: Outbreak, Project Hail Mary: Journey Among the Stars, the Quest version of FNAF: Secret of the Mimic, Sol Protocol's September early access, and more.",
     },
     {
       question: "What do confirmed, expected, and rumored mean on this tracker?",
