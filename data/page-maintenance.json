@@ -429,7 +429,7 @@
       "file": "src/app/vr-release-dates/page.tsx",
       "category": "tracker",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-07-17",
+      "lastRefreshed": "2026-07-28",
       "checklist": [
         "Source of truth is data/release-dates.json, not the page",
         "Verify every date/status against the latest news; promote rumored to expected/confirmed as signals firm up",

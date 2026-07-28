@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2026-07-17",
+  "lastUpdated": "2026-07-28",
   "items": [
     {
       "id": "valve-steam-frame",
       "name": "Valve Steam Frame",
       "category": "headset",
       "status": "expected",
-      "dateText": "Summer 2026, reservations imminent",
+      "dateText": "Summer 2026, still no date or price announced",
       "isoDate": null,
-      "sortDate": "2026-07-15",
+      "sortDate": "2026-08-15",
       "platforms": [
         "SteamOS standalone",
         "PC VR streaming"
       ],
       "price": "Not announced. Analysts expect $899 to $1,199",
-      "summary": "Valve's standalone SteamOS headset with a dedicated 6GHz wireless dongle for PC streaming. Hardware is in US warehouses, the Great on Frame store section is live with certified games, and a Steam Machine style reservation lottery is expected any day.",
+      "summary": "Valve's standalone SteamOS headset with a dedicated 6GHz wireless dongle for PC streaming. Hardware has cleared US customs, the FCC filings are public, and the Great on Frame store section is live with certified games. As of July 28 Valve has still named neither a price nor a release date.",
       "link": "/steam-frame",
       "officialUrl": "https://store.steampowered.com/sale/steammachine",
-      "lastVerified": "2026-07-17"
+      "lastVerified": "2026-07-28"
     },
     {
       "id": "samsung-galaxy-xr-uk",
@@ -157,21 +157,21 @@
     },
     {
       "id": "samsung-jinju",
-      "name": "Samsung Galaxy Glasses (Jinju)",
+      "name": "Samsung Intelligent Eyewear (Jinju)",
       "category": "glasses",
-      "status": "rumored",
-      "dateText": "Possible Unpacked reveal, July 2026",
+      "status": "confirmed",
+      "dateText": "Named at Unpacked July 22, no price or ship date",
       "isoDate": null,
-      "sortDate": "2026-07-20",
+      "sortDate": "2026-12-01",
       "platforms": [
         "One UI",
         "Android"
       ],
       "price": "$379 to $499, per supply chain leaks",
-      "summary": "Samsung's display-free AI glasses leaked through One UI firmware, weighing about 50 grams on a Snapdragon AR1. Samsung has not confirmed the product.",
-      "link": "/articles/samsung-galaxy-glasses-leak-jinju-haean-one-ui-android-xr",
+      "summary": "Samsung's display-free AI glasses, confirmed by name at Galaxy Unpacked on July 22 after leaking through One UI firmware. About 50 grams on a Snapdragon AR1. Samsung announced the name and almost nothing else: no price, no ship date, no SDK.",
+      "link": "/articles/samsung-intelligent-eyewear-unpacked-reveal-no-price-2026",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-07-28"
     },
     {
       "id": "gentle-monster-glasses",
@@ -245,18 +245,19 @@
       "id": "cave-crave",
       "name": "Cave Crave",
       "category": "game",
-      "status": "confirmed",
-      "dateText": "July 2026",
+      "status": "released",
+      "dateText": "Out now on Quest and PSVR2",
       "isoDate": null,
       "sortDate": "2026-07-10",
       "platforms": [
-        "Quest"
+        "Quest",
+        "PSVR2"
       ],
       "price": null,
-      "summary": "A claustrophobic cave-systems simulator from 3R Games, dated for July at the UploadVR Summer Showcase.",
+      "summary": "A claustrophobic cave-systems simulator from 3R Games, with crawling, climbing and squeeze-through-tight-gaps traversal. Shipped on Quest first and reached PSVR2 on July 10.",
       "link": "/articles/uploadvr-summer-showcase-2026-everything-announced-recap",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-07-28"
     },
     {
       "id": "amelias-escape",
@@ -590,6 +591,25 @@
       "link": "/articles/pimax-dream-air-preorder-backlog-cleared-august-2026",
       "officialUrl": "https://pimax.com",
       "lastVerified": "2026-07-17"
+    },
+    {
+      "id": "cave-crave-tham-luang",
+      "name": "Cave Crave: Tham Luang expansion",
+      "category": "game",
+      "status": "confirmed",
+      "dateText": "July 30, 2026",
+      "isoDate": "2026-07-30",
+      "sortDate": "2026-07-30",
+      "platforms": [
+        "Quest",
+        "PSVR2",
+        "SteamVR"
+      ],
+      "price": null,
+      "summary": "A virtual reconstruction of Thailand's Tham Luang cave rescue, adding swimming and diving through fully submerged passages. Quest first, with PSVR2 and SteamVR following. Cave rescue divers John Volanthen and Vern Unsworth and cave-scanning expert Richard Walters contributed.",
+      "link": null,
+      "officialUrl": "https://store.steampowered.com/app/3929970/Cave_Crave_VR/",
+      "lastVerified": "2026-07-28"
     }
   ]
 }
