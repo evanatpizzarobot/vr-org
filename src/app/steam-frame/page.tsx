@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-07-18";
+const LAST_UPDATED = "2026-07-30";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -85,7 +85,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Valve Steam Frame come out?",
     answer:
-      "Valve has confirmed a summer 2026 window for the Steam Frame, alongside the Steam Machine that shipped June 30. As of mid July 2026 the reservation window is expected imminently. Roughly 35 tons of VR hardware cleared customs into Valve's US warehouses in June, the FCC filings are public, and the Great on Frame store section went live in mid July, so the hardware is ready and the merchandising has started; Valve just has not named the day.",
+      "Valve has confirmed a summer 2026 window for the Steam Frame, alongside the Steam Machine that shipped June 30. Summer ends September 22, which leaves Valve a narrow window. On July 29 the FCC granted Valve equipment authorization for FCC ID 2AES4-1015, a device listed only as a VR Headset, which is the legal clearance required to sell it in the United States. Roughly 35 tons of VR hardware cleared customs into Valve's US warehouses in June and the Great on Frame store section went live in mid July, so the hardware is built, certified, and merchandised; Valve just has not named the day or the price.",
   },
   {
     question: "How much will the Steam Frame cost?",
@@ -216,6 +216,11 @@ const TIMELINE: TimelineEntry[] = [
     slug: "steam-frame-brutal-market-wins-anyway-2026",
     text: "Valve ships a major SteamVR dashboard overhaul in beta, and our read on why the Frame wins its brutal launch market anyway.",
   },
+  {
+    date: "Jul 30, 2026",
+    slug: "steam-frame-fcc-grant-equipment-authorization-july-2026",
+    text: "The FCC grants equipment authorization for FCC ID 2AES4-1015, clearing the headset for legal sale in the US. Certification covers the 6GHz radio the wireless PC VR pitch depends on.",
+  },
 ];
 
 export default function SteamFramePage() {
@@ -239,7 +244,7 @@ export default function SteamFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 18, 2026
+          Last updated: July 30, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -293,12 +298,13 @@ export default function SteamFramePage() {
         >
           The Steam Frame is Valve&apos;s standalone SteamOS VR headset with a
           dedicated 6GHz wireless dongle for PC VR streaming, confirmed for a
-          summer 2026 release. As of July 18, 2026 there is no official price
-          and no reservation date, but the hardware has cleared US customs, the
-          FCC filings are public, the Great on Frame store section is live and
-          filling with certified games, and SteamVR itself just got a major
-          dashboard overhaul in beta, so the announcement could land any
-          day. This page tracks every signal, links to all of our reporting,
+          summer 2026 release. As of July 30, 2026 there is still no official
+          price and no reservation date, but the last regulatory gate is now
+          closed: the FCC granted Valve equipment authorization on July 29,
+          making the headset legal to sell in the US. Hardware has cleared
+          customs, the Great on Frame store section is live and filling with
+          certified games, and Valve has 54 days left in its own stated summer
+          window. This page tracks every signal, links to all of our reporting,
           and is updated on every beat until launch.
         </p>
 
@@ -328,8 +334,10 @@ export default function SteamFramePage() {
           hardware labeled Virtual Reality Devices cleared customs into
           Valve&apos;s US warehouses in June, and the FCC embargo on the
           Frame&apos;s motion controllers lifted June 18. A leaked June 23 price
-          reveal date came and went without an announcement, so the only thing
-          missing is Valve naming the day.
+          reveal date came and went without a Frame announcement; Valve used
+          that window for the Steam Machine instead. The headset itself cleared
+          the FCC on July 29 under ID 2AES4-1015, so the only thing still
+          missing is Valve naming the day and the price.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
