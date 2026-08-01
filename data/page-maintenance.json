@@ -431,6 +431,7 @@
       "cadenceDays": 7,
       "lastRefreshed": "2026-07-28",
       "checklist": [
+        "Run npm run check:release-dates; it fails on any item that shipped but is still marked upcoming",
         "Source of truth is data/release-dates.json, not the page",
         "Verify every date/status against the latest news; promote rumored to expected/confirmed as signals firm up",
         "Move shipped items to status released (they sort to the bottom); prune anything released more than ~60 days ago",

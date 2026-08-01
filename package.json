@@ -13,6 +13,7 @@
     "check:category-products": "node scripts/check-category-products.mjs",
     "check:rotation": "node scripts/check-author-rotation.mjs",
     "check:articles": "node scripts/validate-articles.mjs",
+    "check:release-dates": "node scripts/check-release-dates.mjs",
     "deals:publish": "node scripts/refresh-deals.mjs",
     "audit:pages": "node scripts/audit-pages.mjs",
     "gsc:mine": "node scripts/gsc-striking-distance.mjs"

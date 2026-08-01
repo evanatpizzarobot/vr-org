@@ -24,8 +24,17 @@ jobs:
         id: audit
         run: |
           set +e
-          output=$(node scripts/audit-pages.mjs --due)
-          status=$?
+          pages=$(node scripts/audit-pages.mjs --due)
+          pages_status=$?
+          # Page-level cadence cannot see an individual tracker item going stale,
+          # so the item check runs alongside it and shares the same issue.
+          items=$(node scripts/check-release-dates.mjs)
+          items_status=$?
+          output=$(printf '%s\n\n%s\n' "$pages" "$items")
+          status=0
+          if [ "$pages_status" -ne 0 ] || [ "$items_status" -ne 0 ]; then
+            status=1
+          fi
           echo "$output"
           {
             echo "report<<AUDIT_EOF"
@@ -82,6 +91,8 @@ jobs:
               "```",
               "",
               "Run `npm run audit:pages -- --due` locally to see the per-page checklist. After refreshing each page, bump `lastRefreshed` in `data/page-maintenance.json` so the audit stops flagging it.",
+              "",
+              "If the report lists items under SHIPPED BUT STILL LISTED AS UPCOMING, fix those in `data/release-dates.json` first: they are rendering on the /deals Coming Soon strip as upcoming releases. Re-check with `npm run check:release-dates`.",
             ].join("\n");
 
             if (existing.length > 0) {
