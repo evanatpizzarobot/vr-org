@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-07-28",
+  "lastUpdated": "2026-08-01",
   "items": [
     {
       "id": "valve-steam-frame",
       "name": "Valve Steam Frame",
       "category": "headset",
       "status": "expected",
-      "dateText": "Summer 2026, still no date or price announced",
+      "dateText": "Summer 2026, FCC cleared, still no date or price announced",
       "isoDate": null,
       "sortDate": "2026-08-15",
       "platforms": [
@@ -14,10 +14,10 @@
         "PC VR streaming"
       ],
       "price": "Not announced. Analysts expect $899 to $1,199",
-      "summary": "Valve's standalone SteamOS headset with a dedicated 6GHz wireless dongle for PC streaming. Hardware has cleared US customs, the FCC filings are public, and the Great on Frame store section is live with certified games. As of July 28 Valve has still named neither a price nor a release date.",
+      "summary": "Valve's standalone SteamOS headset with a dedicated 6GHz wireless dongle for PC streaming. The FCC granted equipment authorization on July 29, which is legal permission to sell, and the hardware has cleared US customs with the Great on Frame store section live. Valve has still named neither a price nor a release date.",
       "link": "/steam-frame",
       "officialUrl": "https://store.steampowered.com/sale/steammachine",
-      "lastVerified": "2026-07-28"
+      "lastVerified": "2026-08-01"
     },
     {
       "id": "samsung-galaxy-xr-uk",
@@ -239,7 +239,7 @@
       "summary": "Acer's return to XR: tethered display glasses with dual 1080p micro-OLED panels, announced at Computex 2026.",
       "link": "/articles/acer-returns-xr-ar-vision-gr0-gi0-ai-glasses-computex-2026",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-08-01"
     },
     {
       "id": "cave-crave",
@@ -263,36 +263,36 @@
       "id": "amelias-escape",
       "name": "Amelia's Escape",
       "category": "game",
-      "status": "expected",
-      "dateText": "July 2026, date TBC",
+      "status": "released",
+      "dateText": "Released July 23, 2026 on Quest and PC VR",
       "isoDate": null,
-      "sortDate": "2026-07-31",
+      "sortDate": "2026-07-23",
       "platforms": [
         "Quest",
         "SteamVR"
       ],
-      "price": null,
-      "summary": "A VR escape room with an interwoven time travel narrative from indie studio Reality Syndrome Symphony. Play as Amelia and puzzle your way out of an obsessed scientist's room. A free demo is live on Steam now.",
-      "link": null,
+      "price": "$15.99",
+      "summary": "A VR escape room with an interwoven time travel narrative from solo developer Rupert Lawrence at Reality Syndrome Symphony. Play as Amelia and puzzle your way out of a time-travel-obsessed scientist's room. Launched July 23 on Quest and SteamVR at $15.99.",
+      "link": "/articles/amelias-escape-vr-escape-room-launch-july-2026",
       "officialUrl": "https://store.steampowered.com/app/3263090/Amelias_Escape/",
-      "lastVerified": "2026-07-13"
+      "lastVerified": "2026-08-01"
     },
     {
       "id": "guardians-planetfall-steamvr",
       "name": "Guardians Planetfall (SteamVR version)",
       "category": "game",
       "status": "expected",
-      "dateText": "Later this summer 2026",
+      "dateText": "Early access, Q4 2026",
       "isoDate": null,
-      "sortDate": "2026-08-15",
+      "sortDate": "2026-10-01",
       "platforms": [
         "SteamVR"
       ],
       "price": null,
-      "summary": "The RTS-shooter hybrid is out now on Quest, with the SteamVR version following later this summer.",
+      "summary": "The RTS-shooter hybrid is out now on Quest, with the SteamVR version now targeting Q4 2026 early access rather than the summer window originally given.",
       "link": "/articles/uploadvr-summer-showcase-2026-everything-announced-recap",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-08-01"
     },
     {
       "id": "transformers-beyond-reality-redux",
@@ -309,7 +309,7 @@
       "summary": "The rebuilt Transformers VR shooter, dated at the Summer 2026 VR Games Showcase.",
       "link": "/articles/breachers-outbreak-triangle-factory-zombie-extraction-vr-games-showcase-2026",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-08-01"
     },
     {
       "id": "the-lightkeepers",
@@ -326,7 +326,7 @@
       "summary": "A day/night lighthouse defense co-op game, announced with a firm date at the Summer 2026 VR Games Showcase.",
       "link": "/articles/breachers-outbreak-triangle-factory-zombie-extraction-vr-games-showcase-2026",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-08-01"
     },
     {
       "id": "sol-protocol",
@@ -596,9 +596,9 @@
       "id": "cave-crave-tham-luang",
       "name": "Cave Crave: Tham Luang expansion",
       "category": "game",
-      "status": "confirmed",
-      "dateText": "July 30, 2026",
-      "isoDate": "2026-07-30",
+      "status": "released",
+      "dateText": "Out now on Quest, PSVR2 and PC VR to follow",
+      "isoDate": null,
       "sortDate": "2026-07-30",
       "platforms": [
         "Quest",
@@ -606,10 +606,10 @@
         "SteamVR"
       ],
       "price": null,
-      "summary": "A virtual reconstruction of Thailand's Tham Luang cave rescue, adding swimming and diving through fully submerged passages. Quest first, with PSVR2 and SteamVR following. Cave rescue divers John Volanthen and Vern Unsworth and cave-scanning expert Richard Walters contributed.",
+      "summary": "A virtual reconstruction of Thailand's Tham Luang cave rescue, adding swimming and diving through fully submerged passages. Launched on Quest July 30, with PSVR2 and SteamVR still to come. Cave rescue divers John Volanthen and Vern Unsworth and cave-scanning expert Richard Walters contributed.",
       "link": null,
       "officialUrl": "https://store.steampowered.com/app/3929970/Cave_Crave_VR/",
-      "lastVerified": "2026-07-28"
+      "lastVerified": "2026-08-01"
     }
   ]
 }
