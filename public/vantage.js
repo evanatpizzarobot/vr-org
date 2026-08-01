@@ -676,12 +676,27 @@ function renderOverviewKpis(){
 }
 function renderRegularKpis(){
   const c=$("#regKpis"); c.innerHTML="";
-  c.appendChild(kpi("Requests · 24h", fmt(STATS.requests24h), "all HTTP requests", {spark:STATS.hourly}));
-  c.appendChild(kpi("Unique visitors", fmt(STATS.uniqueVisitors24h), "distinct IPs"));
-  c.appendChild(kpi("Requests · last hour", fmt(STATS.requests1h), `≈ ${fmt(Math.round(STATS.requests24h/24))}/hr avg`));
-  c.appendChild(kpi("Bandwidth · 24h", gb(STATS.bandwidth24h), "≈ "+ (STATS.bandwidth24h/STATS.requests24h/1024).toFixed(1) +" KB/req", {spark:STATS.hourly}));
-  c.appendChild(kpi("Success rate", pct(STATS.status.s2,STATS.requests24h).toFixed(1)+"%", `<span class="pill good">2xx responses</span>`));
-  c.appendChild(kpi("Client errors", fmt(STATS.status.s4), `<span class="pill flat">${pct(STATS.status.s4,STATS.requests24h).toFixed(1)}% · 4xx</span>`));
+  const H=AI.human;
+  if(!H.available){
+    // /api/ai-stats has no human totals: show the raw counts but say so, rather
+    // than letting bot traffic pass as human on the non-AI tab.
+    c.appendChild(kpi("Requests · 24h", fmt(STATS.requests24h), "all HTTP requests incl. crawlers", {spark:STATS.hourly}));
+    c.appendChild(kpi("Unique visitors", fmt(STATS.uniqueVisitors24h), "distinct IPs incl. crawlers"));
+    c.appendChild(kpi("Requests · last hour", fmt(STATS.requests1h), `≈ ${fmt(Math.round(STATS.requests24h/24))}/hr avg`));
+    c.appendChild(kpi("Bandwidth · 24h", gb(STATS.bandwidth24h), "≈ "+ (STATS.bandwidth24h/STATS.requests24h/1024).toFixed(1) +" KB/req", {spark:STATS.hourly}));
+    c.appendChild(kpi("Success rate", pct(STATS.status.s2,STATS.requests24h).toFixed(1)+"%", `<span class="pill good">2xx responses</span>`));
+    c.appendChild(kpi("Client errors", fmt(STATS.status.s4), `<span class="pill flat">${pct(STATS.status.s4,STATS.requests24h).toFixed(1)}% · 4xx</span>`));
+    return;
+  }
+  // This tab means human traffic, so lead with human numbers. No sparklines on
+  // them: the hourly series is all-request and would misrepresent the shape.
+  const hTotal=H.status2xx+H.status4xx+H.status5xx;
+  c.appendChild(kpi("Pageviews · 24h", fmt(H.pageviews), "people only, crawlers and assets removed"));
+  c.appendChild(kpi("Unique visitors", fmt(H.uniqueVisitors), "distinct IPs, crawlers removed"));
+  c.appendChild(kpi("All requests · 24h", fmt(STATS.requests24h), "every client incl. crawlers and assets", {spark:STATS.hourly}));
+  c.appendChild(kpi("Bandwidth · 24h", gb(STATS.bandwidth24h), "served to all clients", {spark:STATS.hourly}));
+  c.appendChild(kpi("Success rate", (hTotal?pct(H.status2xx,hTotal):0).toFixed(1)+"%", `<span class="pill good">2xx on human pageviews</span>`));
+  c.appendChild(kpi("Not found · 24h", fmt(H.status4xx), `<span class="pill flat">4xx on human pageviews</span>`));
 }
 function renderAiKpis(){
   const c=$("#aiKpis"); c.innerHTML="";
@@ -1058,7 +1073,7 @@ function buildCsvRows(tab){
     const searchTot=AI.search.reduce((s,x)=>s+x[1],0);
     sec(rows,"KPIs",["Metric","Value"],[
       ["Requests 24h",STATS.requests24h],["Requests prev 24h",STATS.requests24hPrev],
-      ["Unique visitors 24h",STATS.uniqueVisitors24h],["AI bot reads 24h",AI.botsTotalHits],
+      ["Unique IPs 24h (incl. crawlers)",STATS.uniqueVisitors24h],["AI bot reads 24h",AI.botsTotalHits],
       ["Bandwidth 24h (GB)",(STATS.bandwidth24h/1e9).toFixed(2)],["AI referral clicks",AI.referrals.total]]);
     sec(rows,"Machines vs search (24h)",["Segment","Hits"],[["AI assistants",AI.botsTotalHits],["Search crawlers",searchTot]]);
     sec(rows,"Where humans arrive from",["Referrer","Pageviews"], AI.topReferrers.filter(r=>r[2]!=="internal").map(r=>[r[0],r[1]]));
@@ -1066,7 +1081,10 @@ function buildCsvRows(tab){
   } else if(tab==="regular"&&STATS&&AI){
     const s=STATS.status, tot=STATS.requests24h||1;
     sec(rows,"KPIs",["Metric","Value"],[
-      ["Requests 24h",STATS.requests24h],["Unique visitors 24h",STATS.uniqueVisitors24h],
+      ["Human pageviews 24h",AI.human.available?AI.human.pageviews:"n/a"],
+      ["Human unique visitors 24h",AI.human.available?AI.human.uniqueVisitors:"n/a"],
+      ["All requests 24h (incl. crawlers/assets)",STATS.requests24h],
+      ["All unique IPs 24h (incl. crawlers)",STATS.uniqueVisitors24h],
       ["Requests last hour",STATS.requests1h],["Bandwidth 24h (GB)",(STATS.bandwidth24h/1e9).toFixed(2)],
       ["Success rate %",pct(s.s2,tot).toFixed(1)],["Client errors 4xx",s.s4]]);
     sec(rows,"Hourly requests (last 24h)",["Bucket","Requests"], (STATS.hourly||[]).map((v,i,a)=>[ i===a.length-1?"current hour":(a.length-1-i)+"h ago", v]));
@@ -1164,6 +1182,12 @@ function adapt(stats, ai){
     modes:{ live:{ hits:(ai.aiModes&&ai.aiModes.live.hits)||0, ips:(ai.aiModes&&ai.aiModes.live.uniqueIps)||0 },
             crawl:{ hits:(ai.aiModes&&ai.aiModes.crawl.hits)||0, ips:(ai.aiModes&&ai.aiModes.crawl.uniqueIps)||0 } },
     humanTopPages:(ai.humanTopPages||[]).map(p=>[p.path,p.hits]),
+    // Human totals from /api/ai-stats (crawlers, monitors and assets removed).
+    // available:false when the API predates this field, so the Regular tab can
+    // fall back to raw counts rather than rendering a screen of zeros.
+    human:(ai.human?{available:true,pageviews:ai.human.pageviews||0,uniqueVisitors:ai.human.uniqueVisitors||0,
+      status2xx:ai.human.status2xx||0,status4xx:ai.human.status4xx||0,status5xx:ai.human.status5xx||0}
+      :{available:false,pageviews:0,uniqueVisitors:0,status2xx:0,status4xx:0,status5xx:0}),
     notFound:(ai.notFound||[]).map(p=>[p.path,p.hits]),
     geo:{ available:!!(ai.geo&&ai.geo.available), top:((ai.geo&&ai.geo.topCountries)||[]).map(c=>[c.code,c.visitors]) },
     latency:(ai.latency||{available:false, avgMs:0, p50Ms:0, p95Ms:0, samples:0}),

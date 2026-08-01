@@ -1,4 +1,6 @@
 import * as fs from "fs/promises";
+import { createReadStream } from "fs";
+import * as readline from "readline";
 import * as zlib from "zlib";
 import { promisify } from "util";
 
@@ -198,6 +200,19 @@ interface AiStatsResponse {
   searchReference: Record<string, number>;
   // Top pages by human pageview (non-bot, non-asset), 24h.
   humanTopPages: PageStat[];
+  // Human totals, 24h. /api/stats is a frozen contract for the WebTraffic
+  // Tracker worker and counts every request from every client, so its
+  // requests24h/uniqueVisitors24h include crawlers, monitors, and each JS
+  // chunk and font. These are the same filters humanTopPages already uses
+  // (bot UAs, monitor UAs and asset paths dropped), so the console can label
+  // human traffic honestly instead of reusing the unfiltered numbers.
+  human: {
+    pageviews: number;
+    uniqueVisitors: number;
+    status2xx: number;
+    status4xx: number;
+    status5xx: number;
+  };
   // Page-like paths returning 404 in 24h (scanner noise filtered out).
   notFound: PageStat[];
   // AI reads split by intent: live answers (cited now) vs crawl/training
@@ -231,22 +246,58 @@ interface AiStatsResponse {
   };
 }
 
-async function readLast24hContents(): Promise<string[]> {
-  // access.log (today) + access.log.1 (yesterday, full) always covers a rolling
-  // 24h window regardless of time of day, since rotation runs at 00:00.
-  const files = [ACCESS_LOG, ACCESS_LOG + ".1"];
-  const out: string[] = [];
-  for (const f of files) {
+// Yields every line of the last-24h logs without holding a file in memory.
+// access.log (today) + access.log.1 (yesterday, full) always covers a rolling
+// 24h window regardless of time of day, since rotation runs at 00:00.
+async function* readLast24hLines(): AsyncGenerator<string> {
+  for (const f of [ACCESS_LOG, ACCESS_LOG + ".1"]) {
+    let stream: ReturnType<typeof createReadStream>;
     try {
-      out.push(await fs.readFile(f, "utf-8"));
+      stream = createReadStream(f);
     } catch {
-      // File may be missing (e.g. before first rotation) or unreadable.
+      continue; // Missing (e.g. before first rotation) or unreadable.
     }
+    // A read error must not abort the other file, so swallow it and move on.
+    let failed = false;
+    stream.on("error", () => {
+      failed = true;
+    });
+    try {
+      const rl = readline.createInterface({ input: stream, crlfDelay: Infinity });
+      for await (const line of rl) {
+        if (line) yield line;
+      }
+    } catch {
+      // Stream died mid-read; whatever was yielded still counts.
+    }
+    if (failed) continue;
   }
-  return out;
 }
 
-function generateAiStats(contents: string[]): AiStatsResponse {
+// Reference implementation kept for the equivalence test: proves the streaming
+// path folds a given set of lines into exactly the same report the old
+// whole-file path produced. Not used to serve requests.
+export async function generateAiStatsFromContents(
+  contents: string[]
+): Promise<AiStatsResponse> {
+  async function* iter(): AsyncGenerator<string> {
+    for (const content of contents) {
+      for (const line of content.split("\n")) yield line;
+    }
+  }
+  return generateAiStatsFromLines(iter());
+}
+
+
+// Folds log lines into the 24h AI/human report. Takes an async iterable so the
+// caller can stream a file rather than hold it in memory: at 60MB of access log
+// (measured 2026-08-01), readFile + split("\n") allocated the whole thing as
+// UTF-16 plus a per-line string array, which is the same shape that pushed the
+// container past its V8 heap cap and produced the /console 502 crash loop on
+// 2026-07-20. /api/stats was converted to streaming then; this route was not.
+async function generateAiStatsFromLines(
+  lines: AsyncIterable<string>
+): Promise<AiStatsResponse> {
   const now = Date.now();
   const cutoff = now - 24 * 60 * 60 * 1000;
 
@@ -268,6 +319,11 @@ function generateAiStats(contents: string[]): AiStatsResponse {
   let referralTotal = 0;
 
   const pvPath: Record<string, number> = {};
+  const humanIps = new Set<string>();
+  let humanPageviews = 0;
+  let human2xx = 0;
+  let human4xx = 0;
+  let human5xx = 0;
   const notFoundCounts: Record<string, number> = {};
   const modeHits = { live: 0, crawl: 0 };
   const modeIps = { live: new Set<string>(), crawl: new Set<string>() };
@@ -281,8 +337,8 @@ function generateAiStats(contents: string[]): AiStatsResponse {
   const countryIps: Record<string, Set<string>> = {};
   let geoSeen = false;
 
-  for (const content of contents) {
-    for (const line of content.split("\n")) {
+  {
+    for await (const line of lines) {
       if (!line) continue;
       const m = line.match(LINE_RE);
       if (!m) continue;
@@ -368,6 +424,11 @@ function generateAiStats(contents: string[]): AiStatsResponse {
 
       // Human-ish traffic: only count real page navigations.
       if (!isPageview(pathNoQuery)) continue;
+      humanPageviews++;
+      humanIps.add(ip);
+      if (status >= 200 && status < 300) human2xx++;
+      else if (status >= 400 && status < 500) human4xx++;
+      else if (status >= 500) human5xx++;
       const host = refererHost(referer);
       pvHost[host || "(direct)"] = (pvHost[host || "(direct)"] || 0) + 1;
       // Top pages = pages the server actually served: 2xx, or 304 (cached copy
@@ -417,6 +478,14 @@ function generateAiStats(contents: string[]): AiStatsResponse {
     .map(([path, hits]) => ({ path, hits }))
     .sort((a, b) => b.hits - a.hits)
     .slice(0, 15);
+
+  const human = {
+    pageviews: humanPageviews,
+    uniqueVisitors: humanIps.size,
+    status2xx: human2xx,
+    status4xx: human4xx,
+    status5xx: human5xx,
+  };
 
   const notFound: PageStat[] = Object.entries(notFoundCounts)
     .map(([path, hits]) => ({ path, hits }))
@@ -469,6 +538,7 @@ function generateAiStats(contents: string[]): AiStatsResponse {
     topReferrers,
     searchReference,
     humanTopPages,
+    human,
     notFound,
     aiModes: {
       live: { hits: modeHits.live, uniqueIps: modeIps.live.size },
@@ -566,8 +636,7 @@ export async function GET(request: Request) {
   try {
     let base = cached;
     if (!base || now - cachedAt >= CACHE_TTL) {
-      const contents = await readLast24hContents();
-      base = generateAiStats(contents);
+      base = await generateAiStatsFromLines(readLast24hLines());
       cached = base;
       cachedAt = now;
     }
