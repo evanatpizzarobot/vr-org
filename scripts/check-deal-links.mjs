@@ -9,16 +9,35 @@
 //   broken     - 404, 410, or dead host (DNS NXDOMAIN / connection refused) -> exit 1
 //   unverified - 403 / 429 / 5xx / timeout (bot walls, transient) -> warn only, exit 0
 //
-// Amazon serves bot walls (captcha, 503) to scripted clients, so Amazon non-2xx
-// is always treated as "unverified", never broken. The deals file uses Amazon
-// search links (/s?k=), which cannot 404, so this is the correct bias.
+// KNOWN LIMITATION, measured 2026-08-01: this check CANNOT detect Amazon ASIN
+// rot. Scripted requests to /dp/<ASIN> return 301 for a dead ASIN and 301 for a
+// live one alike, so a rotted link reports "ok" here. That matters because on
+// 2026-07-28, 20 of 33 Amazon links were converted from search URLs (which
+// cannot 404) to /dp/ASIN links (which do rot). The only reliable check is
+// fetching the page body and matching the product title, which is what was done
+// by hand during that conversion. Do not read a green run as proof the Amazon
+// links resolve to the right products. The 404/410 branch below is kept because
+// it is correct if Amazon ever does return one, but it will rarely fire.
+//
+// Amazon bot walls (captcha, 503, 403) are always "unverified", never broken.
+//
+// Images may be root-relative paths into public/ (self-hosted press art). Those
+// cannot be fetched, so they are verified against the filesystem instead. This
+// also catches an image referenced in deals.json but never committed, which is a
+// live risk because public/ is baked into the Docker image at build time.
+//
+// Flags:
+//   --ci  collapse the unverified list to a one-line summary (keeps the weekly
+//         GitHub issue readable when CI IPs get bot-walled by Amazon)
 
 import fs from "node:fs";
 import path from "node:path";
 
 const DEALS_PATH = path.join(process.cwd(), "data", "deals.json");
+const PUBLIC_DIR = path.join(process.cwd(), "public");
 const UA = "VRorgBot/1.0 (https://vr.org; evan@pizzarobotstudios.com)";
 const TIMEOUT_MS = 12_000;
+const ciMode = process.argv.includes("--ci");
 
 const data = JSON.parse(fs.readFileSync(DEALS_PATH, "utf-8"));
 
@@ -26,7 +45,16 @@ const data = JSON.parse(fs.readFileSync(DEALS_PATH, "utf-8"));
 const tasks = [];
 for (const section of data.sections ?? []) {
   for (const item of section.items ?? []) {
-    if (item.image) tasks.push({ name: item.name, kind: "image", url: item.image });
+    if (item.image) {
+      // Root-relative images are self-hosted assets in public/, not fetchable.
+      const local = item.image.startsWith("/");
+      tasks.push({
+        name: item.name,
+        kind: local ? "image(local)" : "image",
+        url: item.image,
+        local,
+      });
+    }
     for (const [key, link] of Object.entries(item.links ?? {})) {
       if (link?.url) tasks.push({ name: item.name, kind: `link:${key}`, url: link.url });
     }
@@ -94,11 +122,13 @@ async function probe(url) {
   return { status: "ERR", ok: false };
 }
 
-// Bucket a probe result. Amazon non-2xx is never "broken" (bot walls).
+// Bucket a probe result. Amazon bot walls (403/429/5xx) are never "broken", but
+// an Amazon 404/410 is a genuinely dead ASIN and must be caught.
 function bucket(task, r) {
   if (r.ok) return "ok";
-  if (isAmazon(task.url)) return "unverified";
-  if (r.status === 404 || r.status === 410 || r.status === "DEAD") return "broken";
+  const gone = r.status === 404 || r.status === 410 || r.status === "DEAD";
+  if (isAmazon(task.url)) return gone ? "broken" : "unverified";
+  if (gone) return "broken";
   return "unverified"; // 403 / 429 / 5xx / timeout / other
 }
 
@@ -109,7 +139,15 @@ async function worker() {
   while (i < tasks.length) {
     const idx = i++;
     const task = tasks[idx];
-    const r = await probe(task.url);
+    // Local assets are verified on disk; a missing file is definitively broken.
+    const r = task.local
+      ? (() => {
+          const abs = path.join(PUBLIC_DIR, task.url.replace(/^\/+/, ""));
+          return fs.existsSync(abs)
+            ? { ok: true, status: "FILE" }
+            : { ok: false, status: "DEAD", err: "not found in public/" };
+        })()
+      : await probe(task.url);
     const b = bucket(task, r);
     results[idx] = { ...task, ...r, bucket: b };
     process.stdout.write(b === "ok" ? "." : b === "broken" ? "x" : "?");
@@ -122,10 +160,19 @@ const broken = results.filter((r) => r.bucket === "broken");
 const unverified = results.filter((r) => r.bucket === "unverified");
 
 if (unverified.length > 0) {
-  console.log(`\n${unverified.length} URL(s) could not be verified (bot wall / rate limit / transient). Not treated as failures:`);
-  for (const r of unverified) {
-    console.log(`  [${r.status}] ${r.name} (${r.kind})`);
-    console.log(`        ${r.url}`);
+  const hosts = [...new Set(unverified.map((r) => hostname(r.url) || "local"))];
+  if (ciMode) {
+    // CI IPs get bot-walled far more than a desktop does; a full list every week
+    // would bury the real findings.
+    console.log(
+      `\n${unverified.length} URL(s) unverified (bot wall / rate limit / transient), not failures. Hosts: ${hosts.join(", ")}`
+    );
+  } else {
+    console.log(`\n${unverified.length} URL(s) could not be verified (bot wall / rate limit / transient). Not treated as failures:`);
+    for (const r of unverified) {
+      console.log(`  [${r.status}] ${r.name} (${r.kind})`);
+      console.log(`        ${r.url}`);
+    }
   }
 }
 

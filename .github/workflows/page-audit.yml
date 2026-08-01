@@ -30,9 +30,13 @@ jobs:
           # so the item check runs alongside it and shares the same issue.
           items=$(node scripts/check-release-dates.mjs)
           items_status=$?
-          output=$(printf '%s\n\n%s\n' "$pages" "$items")
+          # Dead images on a commercial page ship silently to readers. --ci
+          # collapses the unverified list, which is long from CI IPs.
+          links=$(node scripts/check-deal-links.mjs --ci)
+          links_status=$?
+          output=$(printf '%s\n\n%s\n\n%s\n' "$pages" "$items" "$links")
           status=0
-          if [ "$pages_status" -ne 0 ] || [ "$items_status" -ne 0 ]; then
+          if [ "$pages_status" -ne 0 ] || [ "$items_status" -ne 0 ] || [ "$links_status" -ne 0 ]; then
             status=1
           fi
           echo "$output"
