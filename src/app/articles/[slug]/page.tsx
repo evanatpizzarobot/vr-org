@@ -155,10 +155,17 @@ export default async function ArticlePage({ params }: PageProps) {
   // ten of them sat between the two ads.
   //
   // Longer pieces now get a third unit near the midpoint. Short ones are left
-  // exactly as they were, because a 600-word Nina piece with three ads in it
-  // would look like a content farm, and house policy is aesthetics over
-  // squeezing the last cent.
+  // exactly as they were, because a 600-word piece with three ads in it would
+  // look like a content farm, and house policy is aesthetics over squeezing the
+  // last cent.
+  //
+  // Gate on words AND paragraphs, not paragraphs alone. Paragraph count is a
+  // bad proxy for length because the writers differ: Nina's 627-word DuckDuckGo
+  // piece runs 13 short paragraphs and a paragraph-only gate wrongly read it as
+  // long, while Sam writes far fewer, longer ones. 900 words is roughly the
+  // median original, so about half of the archive qualifies.
   const MID_AD_MIN_PARAGRAPHS = 9;
+  const MID_AD_MIN_WORDS = 900;
 
   const splitBody = (() => {
     const closes = [...linkedBody.matchAll(/<\/p>/gi)];
@@ -168,7 +175,15 @@ export default async function ArticlePage({ params }: PageProps) {
     const firstEnd = (closes[0].index ?? 0) + closes[0][0].length;
     const intro = linkedBody.slice(0, firstEnd);
 
-    if (closes.length < MID_AD_MIN_PARAGRAPHS) {
+    const wordCount = linkedBody
+      .replace(/<[^>]+>/g, " ")
+      .split(/\s+/)
+      .filter(Boolean).length;
+
+    if (
+      closes.length < MID_AD_MIN_PARAGRAPHS ||
+      wordCount < MID_AD_MIN_WORDS
+    ) {
       return { intro, middle: linkedBody.slice(firstEnd), rest: "" };
     }
 
