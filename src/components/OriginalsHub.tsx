@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { OriginalArticleCard } from "@/components/OriginalArticleCard";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS } from "@/lib/ads";
 
 interface ArticleSummary {
   id: string;
@@ -107,16 +109,25 @@ export function OriginalsHub({ initialArticles }: { initialArticles?: ArticleSum
               No articles yet.
             </div>
           ) : (
-            articles.map((article) => (
-              <OriginalArticleCard
-                key={article.id}
-                slug={article.slug}
-                title={article.title}
-                snippet={article.snippet}
-                category={article.category}
-                author={article.author}
-                publishDate={article.publishDate}
-              />
+            articles.map((article, i) => (
+              <Fragment key={article.id}>
+                <OriginalArticleCard
+                  slug={article.slug}
+                  title={article.title}
+                  snippet={article.snippet}
+                  category={article.category}
+                  author={article.author}
+                  publishDate={article.publishDate}
+                />
+                {/* One in-list unit. /originals drew 336 human pageviews/day
+                    with zero ads (measured 2026-08-01). Placed after the sixth
+                    card so it lands in view without leading the page. */}
+                {i === 5 && articles.length > 8 && (
+                  <div className="my-2">
+                    <AdSlot slot={AD_SLOTS.feed} format="auto" />
+                  </div>
+                )}
+              </Fragment>
             ))
           )}
         </div>

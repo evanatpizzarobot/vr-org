@@ -14,6 +14,7 @@
     "check:rotation": "node scripts/check-author-rotation.mjs",
     "check:articles": "node scripts/validate-articles.mjs",
     "check:release-dates": "node scripts/check-release-dates.mjs",
+    "check:ad-coverage": "node scripts/check-ad-coverage.mjs",
     "deals:publish": "node scripts/refresh-deals.mjs",
     "audit:pages": "node scripts/audit-pages.mjs",
     "gsc:mine": "node scripts/gsc-striking-distance.mjs"

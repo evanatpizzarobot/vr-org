@@ -34,7 +34,11 @@ jobs:
           # collapses the unverified list, which is long from CI IPs.
           links=$(node scripts/check-deal-links.mjs --ci)
           links_status=$?
-          output=$(printf '%s\n\n%s\n\n%s\n' "$pages" "$items" "$links")
+          # Report-only and deliberately excluded from the status: ad density is
+          # an editorial call, so this informs the monthly revenue check-in
+          # rather than gating anything.
+          ads=$(node scripts/check-ad-coverage.mjs || true)
+          output=$(printf '%s\n\n%s\n\n%s\n\n%s\n' "$pages" "$items" "$links" "$ads")
           status=0
           if [ "$pages_status" -ne 0 ] || [ "$items_status" -ne 0 ] || [ "$links_status" -ne 0 ]; then
             status=1

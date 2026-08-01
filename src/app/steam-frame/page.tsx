@@ -467,6 +467,13 @@ export default function SteamFramePage() {
           .
         </p>
 
+        {/* Second unit. This is the site's #2 page by traffic (1,792 human
+            pageviews/day, measured 2026-08-01) and carried a single ad more
+            than 300 lines up, so most of the page was unmonetized. */}
+        <div className="my-10">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
+
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
           Every Steam Frame development, dated
         </h2>

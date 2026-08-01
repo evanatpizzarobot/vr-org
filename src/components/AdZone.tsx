@@ -2,12 +2,21 @@
 
 import { useEffect, useState } from "react";
 import type { AdPlacement, AdPlacementMap } from "@/lib/ad-placements";
+import { AdSlot } from "./AdSlot";
 
 // A direct-sold ad slot. Fetches the placement config once (shared across every
 // AdZone on the page) and renders the matching placement ONLY when it is active.
 // When there is no active placement it returns null: no wrapper, no spacing, no
 // DOM, so an inactive slot is completely invisible and cannot shift the layout.
 // This is why the whole ad system can sit wired into the site while dormant.
+//
+// `fallbackSlot` (added 2026-08-01) opts a zone into showing an AdSense unit
+// while it waits for a direct sponsor, so a reserved slot earns something
+// instead of nothing and yields automatically the moment a placement goes
+// active. It is opt-IN rather than default: 9 of the 10 zones sit on pages that
+// already carry two or three AdSense units, and three are on the homepage,
+// which already renders nine. Turning it on everywhere would have pushed the
+// homepage to twelve. Only pass it where a page genuinely earns nothing.
 
 export type AdZoneVariant = "hero" | "banner" | "rectangle" | "in-feed";
 
@@ -57,21 +66,59 @@ function Creative({ placement }: { placement: AdPlacement }) {
   );
 }
 
-export function AdZone({ slot, variant }: { slot: string; variant: AdZoneVariant }) {
+// AdSense format that matches each zone shape, used only for the fallback.
+const FALLBACK_FORMAT: Record<AdZoneVariant, "auto" | "horizontal" | "rectangle"> = {
+  hero: "horizontal",
+  banner: "horizontal",
+  "in-feed": "auto",
+  rectangle: "rectangle",
+};
+
+export function AdZone({
+  slot,
+  variant,
+  fallbackSlot,
+}: {
+  slot: string;
+  variant: AdZoneVariant;
+  fallbackSlot?: string;
+}) {
   const [placement, setPlacement] = useState<AdPlacement | null>(null);
+  const [resolved, setResolved] = useState(false);
 
   useEffect(() => {
     let live = true;
     loadPlacements().then((map) => {
       const p = map[slot];
-      if (live) setPlacement(p && p.active ? p : null);
+      if (live) {
+        setPlacement(p && p.active ? p : null);
+        setResolved(true);
+      }
     });
     return () => {
       live = false;
     };
   }, [slot]);
 
-  if (!placement) return null;
+  if (!placement) {
+    // Render nothing until the config resolves. Painting AdSense first and then
+    // swapping in a direct creative would flash the wrong ad and count a bogus
+    // AdSense impression, so the decision waits for the fetch.
+    if (!resolved || !fallbackSlot) return null;
+    const unit = (
+      <AdSlot slot={fallbackSlot} format={FALLBACK_FORMAT[variant]} />
+    );
+    switch (variant) {
+      case "hero":
+        return <div className="max-w-[1400px] mx-auto px-6 mt-2 mb-1">{unit}</div>;
+      case "banner":
+        return <div className="my-8">{unit}</div>;
+      case "in-feed":
+        return <div className="my-4">{unit}</div>;
+      default:
+        return unit;
+    }
+  }
 
   const label = placement.label || "Sponsored";
   const unit = (
