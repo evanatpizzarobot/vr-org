@@ -7,6 +7,8 @@ import { StructuredData, breadcrumbSchema } from "@/components/StructuredData";
 import { EventsCalendar } from "@/components/EventsCalendar";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS } from "@/lib/ads";
 
 export const metadata: Metadata = {
   title:
@@ -191,7 +193,18 @@ export default function EventsPage() {
           and spatial computing conferences, expos, and showcases.
         </p>
 
+        {/* Single-column page, so the homepage's sidebar units do not apply.
+            Inline horizontal, same pattern the pillar pages use: one above the
+            calendar and one below it, nothing interleaved into the event list. */}
+        <div className="mb-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
+
         <EventsCalendar events={events} />
+
+        <div className="my-10">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
 
         <RecentArticles heading="Latest VR News" limit={5} />
         <AllPillarGuides heading="VR.org Guides" />
