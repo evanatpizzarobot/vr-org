@@ -147,15 +147,53 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const linkedBody = injectInternalLinks(article.body);
 
+  // Ad placement. Measured in AdSense on 2026-08-01: In-Article and Pillar are
+  // 96% of all revenue, and the other three units earn $0.46/week combined. So
+  // In-Article is the unit worth having more of. The old layout put one after
+  // paragraph one and one at the very end, which left the entire middle of a
+  // long piece unmonetized: the median original runs 11 paragraphs, so roughly
+  // ten of them sat between the two ads.
+  //
+  // Longer pieces now get a third unit near the midpoint. Short ones are left
+  // exactly as they were, because a 600-word Nina piece with three ads in it
+  // would look like a content farm, and house policy is aesthetics over
+  // squeezing the last cent.
+  const MID_AD_MIN_PARAGRAPHS = 9;
+
   const splitBody = (() => {
-    const match = linkedBody.match(/<\/p>/i);
-    if (!match || match.index === undefined) {
-      return { intro: linkedBody, rest: "" };
+    const closes = [...linkedBody.matchAll(/<\/p>/gi)];
+    if (closes.length === 0) {
+      return { intro: linkedBody, middle: "", rest: "" };
     }
-    const cutoff = match.index + match[0].length;
+    const firstEnd = (closes[0].index ?? 0) + closes[0][0].length;
+    const intro = linkedBody.slice(0, firstEnd);
+
+    if (closes.length < MID_AD_MIN_PARAGRAPHS) {
+      return { intro, middle: linkedBody.slice(firstEnd), rest: "" };
+    }
+
+    // Nearest paragraph break to the midpoint of the remaining body. Skip any
+    // break immediately followed by a <figure>, since an ad butted against an
+    // image reads as clutter, and skip breaks too near the end so the mid unit
+    // never lands right on top of the closing one.
+    const target = firstEnd + (linkedBody.length - firstEnd) / 2;
+    let best = -1;
+    for (const m of closes) {
+      const end = (m.index ?? 0) + m[0].length;
+      if (end <= firstEnd) continue;
+      if (end >= linkedBody.length - 400) continue;
+      if (/^\s*<figure/i.test(linkedBody.slice(end, end + 40))) continue;
+      if (best === -1 || Math.abs(end - target) < Math.abs(best - target)) {
+        best = end;
+      }
+    }
+    if (best === -1) {
+      return { intro, middle: linkedBody.slice(firstEnd), rest: "" };
+    }
     return {
-      intro: linkedBody.slice(0, cutoff),
-      rest: linkedBody.slice(cutoff),
+      intro,
+      middle: linkedBody.slice(firstEnd, best),
+      rest: linkedBody.slice(best),
     };
   })();
 
@@ -231,7 +269,18 @@ export default async function ArticlePage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: splitBody.intro }}
         />
 
-        {/* Mid-article ad after first paragraph */}
+        {/* Ad after the opening paragraph */}
+        {(splitBody.middle || splitBody.rest) && <ArticleAd />}
+
+        {/* Article body up to the midpoint (or all of it on short pieces) */}
+        {splitBody.middle && (
+          <div
+            className="article-body"
+            dangerouslySetInnerHTML={{ __html: splitBody.middle }}
+          />
+        )}
+
+        {/* Midpoint ad, long articles only */}
         {splitBody.rest && <ArticleAd />}
 
         {/* Article body, remainder */}
