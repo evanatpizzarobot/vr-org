@@ -1,4 +1,4 @@
-// Run: npx --yes tsx src/app/api/ai-stats/ai-stats.test.ts
+// Run: npx --yes tsx src/lib/stats/ai-aggregate.test.ts
 // Standalone assertions (repo has no test framework). Exits non-zero on failure.
 //
 // Guards the 2026-08-01 streaming conversion. The route used to readFile the
@@ -8,7 +8,7 @@
 // what they add up to, so the main test feeds identical input through a
 // line-at-a-time iterator and a whole-file iterator and demands byte-identical
 // reports.
-import { generateAiStatsFromContents } from "./route";
+import { generateAiStatsFromContents } from "./ai-aggregate";
 
 let failures = 0;
 function eq(label: string, actual: unknown, expected: unknown) {
