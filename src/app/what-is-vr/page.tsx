@@ -8,7 +8,6 @@ import {
 } from "@/components/StructuredData";
 import { RecentArticles } from "@/components/RecentArticles";
 import { AllPillarGuides } from "@/components/RelatedGuides";
-import { AD_SLOTS } from "@/lib/ads";
 import { AdZone } from "@/components/AdZone";
 
 export const metadata: Metadata = {
@@ -153,11 +152,11 @@ export default function WhatIsVRPage() {
         </p>
 
         {/* Direct-sold buyer-guide banner. Dormant until activated in data/ad-placements.json. */}
-        <AdZone
-          slot="buyer-guide-banner"
-          variant="banner"
-          fallbackSlot={AD_SLOTS.pillar}
-        />
+        {/* No fallbackSlot: /what-is-vr is an educational explainer and stays
+            ad-free by policy (Evan, 2026-08-01). The AdZone remains so a real
+            direct sponsor can still be booked here; only the AdSense fallback
+            is withheld. */}
+        <AdZone slot="buyer-guide-banner" variant="banner" />
 
         {/* ── Virtual Reality Defined ── */}
         <h2 className="font-display text-2xl font-semibold mb-4">
