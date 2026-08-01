@@ -10,39 +10,67 @@ Disallow: /console
 # Explicit welcome for AI / LLM crawlers and answer engines.
 User-agent: GPTBot
 Allow: /
+Disallow: /console
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /console
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /console
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /console
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /console
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /console
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /console
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /console
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /console
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /console
 
 User-agent: CCBot
 Allow: /
+Disallow: /console
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /console
+
+User-agent: Claude-User
+Allow: /
+Disallow: /console
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /console
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /console
+
+User-agent: Bytespider
+Allow: /
+Disallow: /console
 
 Sitemap: https://vr.org/sitemap.xml
 Sitemap: https://vr.org/news-sitemap.xml

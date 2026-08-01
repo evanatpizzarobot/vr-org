@@ -7,9 +7,14 @@ import { getAllArticles } from "@/lib/articles";
 // surfaced the latest reporting). See also /llms-full.txt for full bodies.
 
 const SITE = "https://vr.org";
-// List the full originals catalog (not just the latest few) so AI crawlers can
-// discover and cite every article; ceiling caps size as the library grows.
-const RECENT = 200;
+// Measured 2026-08-01: at RECENT=200 this file was 94.7KB, and 88.2KB of that
+// (93%) was this one section. The curated part an agent actually needs (identity,
+// pillar index, data study, citation terms, MCP pointer) was 6.5KB buried under
+// it, and llms.txt is meant to be a cheap, concise index. Full-catalog discovery
+// is not lost: sitemap.xml lists every URL, /originals is the human index, and
+// /llms-full.txt carries the bodies. All three are linked above. Keeping the
+// newest 40 with snippets holds the high-signal, most-citable window at ~25KB.
+const RECENT = 40;
 
 export async function GET() {
   const recent = getAllArticles().slice(0, RECENT);
@@ -75,6 +80,8 @@ VR.org was co-founded in 2018 by Evan Marcus and Mark Mahle (NetActuate). Editor
 - [XR](${SITE}/xr): Extended reality, mixed reality, Android XR, WebXR
 
 ## Recent originals
+
+The ${RECENT} newest VR.org Originals are listed below. For the complete archive, see [/originals](${SITE}/originals), [sitemap.xml](${SITE}/sitemap.xml) for every URL, or [/llms-full.txt](${SITE}/llms-full.txt) for full article bodies.
 
 ${recentLines}
 
