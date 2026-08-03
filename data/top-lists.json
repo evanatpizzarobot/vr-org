@@ -4,16 +4,16 @@
     "icon": "🎮",
     "href": "/best-vr-games-2026",
     "items": [
-      { "rank": 1, "title": "Microsoft Flight Simulator", "subtitle": "PSVR2" },
-      { "rank": 2, "title": "Hot Dogs, Horseshoes & Hand Grenades", "subtitle": "PC VR / 1.0" },
-      { "rank": 3, "title": "Batman: Arkham Shadow", "subtitle": "Quest" },
-      { "rank": 4, "title": "Into the Radius 2", "subtitle": "PC VR / Quest" },
-      { "rank": 5, "title": "GERONIMO", "subtitle": "PC VR" },
-      { "rank": 6, "title": "Resident Evil Requiem", "subtitle": "PC VR (mod)" },
-      { "rank": 7, "title": "Little Nightmares: Altered Echoes", "subtitle": "Quest / PSVR2 / PC VR" },
-      { "rank": 8, "title": "TMNT: Empire City", "subtitle": "Quest / PC VR" },
-      { "rank": 9, "title": "Virtual Hunter", "subtitle": "PSVR2 / Quest" },
-      { "rank": 10, "title": "Aces of Thunder", "subtitle": "PSVR2 / PC VR" }
+      { "rank": 1, "title": "Microsoft Flight Simulator", "subtitle": "PSVR2", "steamAppId": 2537590, "image": "/toplist-thumbs/2537590.webp" },
+      { "rank": 2, "title": "Hot Dogs, Horseshoes & Hand Grenades", "subtitle": "PC VR / 1.0", "steamAppId": 450540, "image": "/toplist-thumbs/450540.webp" },
+      { "rank": 3, "title": "Batman: Arkham Shadow", "subtitle": "Quest", "thumbSource": "https://img.youtube.com/vi/EPcCWR3DTIw/maxresdefault.jpg", "image": "/toplist-thumbs/batman-arkham-shadow.webp" },
+      { "rank": 4, "title": "Into the Radius 2", "subtitle": "PC VR / Quest", "steamAppId": 2307350, "image": "/toplist-thumbs/2307350.webp" },
+      { "rank": 5, "title": "GERONIMO", "subtitle": "PC VR", "steamAppId": 2019620, "image": "/toplist-thumbs/2019620.webp" },
+      { "rank": 6, "title": "Resident Evil Requiem", "subtitle": "PC VR (mod)", "steamAppId": 3764200, "image": "/toplist-thumbs/3764200.webp" },
+      { "rank": 7, "title": "Little Nightmares: Altered Echoes", "subtitle": "Quest / PSVR2 / PC VR", "steamAppId": 2482940, "image": "/toplist-thumbs/2482940.webp" },
+      { "rank": 8, "title": "TMNT: Empire City", "subtitle": "Quest / PC VR", "steamAppId": 3713650, "image": "/toplist-thumbs/3713650.webp" },
+      { "rank": 9, "title": "Virtual Hunter", "subtitle": "PSVR2 / Quest", "steamAppId": 1549850, "image": "/toplist-thumbs/1549850.webp" },
+      { "rank": 10, "title": "Aces of Thunder", "subtitle": "PSVR2 / PC VR", "steamAppId": 2754090, "image": "/toplist-thumbs/2754090.webp" }
     ]
   },
   "top-vr-headsets": {

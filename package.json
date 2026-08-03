@@ -17,6 +17,7 @@
     "check:ad-coverage": "node scripts/check-ad-coverage.mjs",
     "deals:publish": "node scripts/refresh-deals.mjs",
     "audit:pages": "node scripts/audit-pages.mjs",
+    "thumbs:toplists": "node scripts/generate-toplist-thumbs.mjs",
     "gsc:mine": "node scripts/gsc-striking-distance.mjs"
   },
   "dependencies": {
