@@ -45,7 +45,7 @@
       "file": "src/app/best-vr-games-2026/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-07-18",
+      "lastRefreshed": "2026-08-03",
       "checklist": [
         "Move shipped games from 'anticipated' to 'released so far' with launch dates",
         "Add internal links to VR.org launch articles for each",
@@ -170,7 +170,7 @@
       "file": "src/app/gaming/page.tsx",
       "category": "category-hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-29",
+      "lastRefreshed": "2026-08-03",
       "checklist": [
         "Verify gaming-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/gaming/page.tsx",

@@ -493,7 +493,7 @@ export default function BestVRGamesPage() {
           the simplest ideas can become the most played VR games in your library.
           Three 2026 standouts that are climbing fast and may make this list
           permanently if their staying power holds: Microsoft Flight Simulator
-          on PSVR 2, the indie surprise One More Delve, and TMNT: Empire City.
+          on PSVR 2, the tactical shooter GERONIMO, and TMNT: Empire City.
           And one milestone that deserves its own sentence: Hot Dogs,
           Horseshoes &amp; Hand Grenades{" "}
           <a
