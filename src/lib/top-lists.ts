@@ -12,6 +12,8 @@ export interface TopListItem {
   steamAppId?: number;
   /** Source image for titles Steam does not carry. Not used at runtime. */
   thumbSource?: string;
+  /** "icon" fits a logo whole instead of cropping it. Not used at runtime. */
+  thumbFit?: "icon";
 }
 
 export interface TopList {

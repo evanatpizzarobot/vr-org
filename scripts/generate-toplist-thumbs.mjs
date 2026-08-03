@@ -24,6 +24,17 @@
  * rows stay aligned. Nothing here writes back to top-lists.json; the `image`
  * field is hand-authored alongside `steamAppId` so the file keeps its compact
  * one-line-per-item formatting.
+ *
+ * `thumbFit: "icon"` switches to app-icon handling: the mark is fitted whole
+ * rather than cropped. Store art gets cropped because it is a scene; an app
+ * icon is a logo and slicing it is vandalism. Icons that already fill a square
+ * are used edge to edge, and icons with transparency are centred on a neutral
+ * card so they stay visible in both the light and dark themes.
+ *
+ * Apps use icons rather than Steam capsules on purpose. A capsule is drawn for
+ * a 460px-wide store shelf, so squaring it cuts the wordmark in half (Steam
+ * Link becomes "STEAM LIN", Gravity Sketch turns into unreadable grey text).
+ * An app icon is drawn to be read at exactly this size.
  */
 import fs from "fs";
 import path from "path";
@@ -122,22 +133,47 @@ for (const [listKey, list] of Object.entries(lists)) {
       continue;
     }
 
-    let pipeline = sharp(found.buf);
-    if (found.portrait) {
-      pipeline = pipeline.resize(SIZE, SIZE, { fit: "cover", position: "top" });
+    const meta = await sharp(found.buf).metadata();
+    let out;
+    let mode;
+
+    if (item.thumbFit === "icon") {
+      const square = Math.abs(meta.width - meta.height) <= 2;
+      if (square && !meta.hasAlpha) {
+        // Already a full-bleed app icon; use it edge to edge.
+        out = await sharp(found.buf).resize(SIZE, SIZE, { fit: "cover" }).webp({ quality: 88 }).toBuffer();
+        mode = "icon full";
+      } else {
+        const inner = Math.round(SIZE * 0.8);
+        const mark = await sharp(found.buf)
+          .resize(inner, inner, { fit: "inside", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+          .png()
+          .toBuffer();
+        out = await sharp({
+          create: { width: SIZE, height: SIZE, channels: 4, background: { r: 20, g: 26, b: 38, alpha: 1 } },
+        })
+          .composite([{ input: mark, gravity: "centre" }])
+          .webp({ quality: 88 })
+          .toBuffer();
+        mode = "icon card";
+      }
+    } else if (found.portrait) {
+      out = await sharp(found.buf).resize(SIZE, SIZE, { fit: "cover", position: "top" }).webp({ quality: 82 }).toBuffer();
+      mode = "portrait ";
     } else {
       // Square out of the right edge of the wide header, away from the logo.
-      const meta = await sharp(found.buf).metadata();
       const side = Math.min(meta.width, meta.height);
-      pipeline = pipeline
+      out = await sharp(found.buf)
         .extract({ left: meta.width - side, top: 0, width: side, height: side })
-        .resize(SIZE, SIZE);
+        .resize(SIZE, SIZE)
+        .webp({ quality: 82 })
+        .toBuffer();
+      mode = "header   ";
     }
 
-    await pipeline.webp({ quality: 82 }).toFile(dest);
-
+    fs.writeFileSync(dest, out);
     const kb = (fs.statSync(dest).size / 1024).toFixed(1);
-    console.log(`  ok ${item.title.padEnd(38)} ${found.portrait ? "portrait" : "header  "}  ${kb} kB`);
+    console.log(`  ok ${item.title.padEnd(38)} ${mode}  ${kb} kB`);
     written++;
   }
 }
