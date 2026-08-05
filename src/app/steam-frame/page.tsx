@@ -110,7 +110,7 @@ const faq = faqPageSchema([
   {
     question: "What is Steam Frame Verified?",
     answer:
-      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold 90 FPS on-device, stricter than the 72Hz baselines Meta and Pico accept, and standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt. Certified games are collected on the Great on Frame storefront page, which went live in mid July 2026 and listed eight titles within two days.",
+      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold at least 72 fps at 1728x1728 per eye on-device, and anything rendering below 1440x1440 is marked Unsupported. Valve first announced 90 FPS and later revised the published requirement down to 72 without an announcement. Standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt. Certified games are collected on the Great on Frame storefront page, which went live in mid July 2026 and listed eight titles within two days.",
   },
 ]);
 
@@ -139,7 +139,7 @@ const TIMELINE: TimelineEntry[] = [
   {
     date: "Apr 25, 2026",
     slug: "steam-frame-verified-90fps-stricter-than-quest-pico",
-    text: "Steam Frame Verified requires 90 FPS for standalone VR, stricter than Meta and Pico.",
+    text: "Valve announces Steam Frame Verified at GDC with a 90 FPS floor for standalone VR. The published requirement was later cut to 72 fps.",
   },
   {
     date: "Apr 25, 2026",
@@ -220,6 +220,11 @@ const TIMELINE: TimelineEntry[] = [
     date: "Jul 30, 2026",
     slug: "steam-frame-fcc-grant-equipment-authorization-july-2026",
     text: "The FCC grants equipment authorization for FCC ID 2AES4-1015, clearing the headset for legal sale in the US. Certification covers the 6GHz radio the wireless PC VR pitch depends on.",
+  },
+  {
+    date: "Aug 5, 2026",
+    slug: "steam-frame-verified-72fps-valve-quietly-cut-requirement-2026",
+    text: "Valve's partner docs now read 72 fps at 1728x1728, down from the 90 FPS announced at GDC, with a hard Unsupported cutoff below 1440x1440.",
   },
 ];
 
@@ -429,11 +434,11 @@ export default function SteamFramePage() {
           through Proton and FEX when you are away from your PC, and the
           strict{" "}
           <a
-            href="/articles/steam-frame-verified-90fps-stricter-than-quest-pico"
+            href="/articles/steam-frame-verified-72fps-valve-quietly-cut-requirement-2026"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            90 FPS Steam Frame Verified program
+            Steam Frame Verified program
           </a>{" "}
           governs what earns the on-device badge. Even Meta is paying
           attention: CTO Andrew Bosworth singled out the wireless dongle as

@@ -15,7 +15,7 @@ import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 export const metadata = {
   title: "Great on Frame: Every Verified Steam Frame Game So Far | VR.org",
   description:
-    "Valve's Great on Frame page collects every game certified for the Steam Frame headset. The full verified list so far, what the 90 FPS certification requires, and every addition tracked as the catalog grows.",
+    "Valve's Great on Frame page collects every game certified for the Steam Frame headset. The full verified list so far, what the 72 fps certification requires, and every addition tracked as the catalog grows.",
   openGraph: {
     title: "Great on Frame: Every Verified Steam Frame Game So Far | VR.org",
     description:
@@ -123,7 +123,7 @@ const VERIFIED_GAMES: VerifiedGame[] = [
     developer: "One Hamsa",
     type: "VR",
     added: "Jul 14, 2026",
-    note: "The physical mech brawler is one of the most demanding arm-workout games in VR, which makes its 90 FPS badge a real statement.",
+    note: "The physical mech brawler is one of the most demanding arm-workout games in VR, which makes holding the certification target through a full match a real statement.",
   },
   {
     name: "Ancient Dungeon",
@@ -176,7 +176,7 @@ const faq = faqPageSchema([
   {
     question: "What does Steam Frame Verified require?",
     answer:
-      "Standalone VR titles must hold 90 FPS on-device, stricter than the 72Hz baselines Meta and Pico accept for their own certification tiers. Standalone flatscreen titles need at least 720p at 30 FPS with full Steam Frame controller support and a working default configuration. The badge is a recommendation rather than a gate.",
+      "Standalone VR titles must hold at least 72 fps at 1728x1728 per eye during normal play, and anything rendering below 1440x1440 is marked Unsupported outright. Valve announced a 90 FPS target at GDC 2026 but quietly revised the published requirement down to 72 fps. Standalone flatscreen titles need at least 720p at 30 FPS with full Steam Frame controller support and a working default configuration. The badge is a recommendation rather than a gate.",
   },
   {
     question: "Why are flatscreen games like Portal 2 on a VR headset list?",
@@ -286,7 +286,7 @@ export default function GreatOnFramePage() {
           stocking shelves before opening the doors.
         </p>
         <ComparisonTable
-          caption="Every game on Valve's Great on Frame page, in the order they appeared. VR titles must hold 90 FPS on-device; flatscreen titles need 720p at 30 FPS with full controller support."
+          caption="Every game on Valve's Great on Frame page, in the order they appeared. VR titles must hold 72 fps at 1728x1728 on-device; flatscreen titles need 720p at 30 FPS with full controller support."
           columns={["Game", "Developer", "Type", "Listed"]}
           rows={VERIFIED_GAMES.map((g) => [g.name, g.developer, g.type, g.added])}
         />
@@ -315,20 +315,22 @@ export default function GreatOnFramePage() {
         >
           Great on Frame is the shop window for the{" "}
           <a
-            href="/articles/steam-frame-verified-90fps-stricter-than-quest-pico"
+            href="/articles/steam-frame-verified-72fps-valve-quietly-cut-requirement-2026"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
             Steam Frame Verified program
           </a>{" "}
-          Valve announced at GDC 2026, and the bar is not gentle. A standalone
-          VR title has to hold 90 frames per second running on the
-          headset&apos;s Snapdragon 8 Gen 3, stricter than the 72Hz baselines
-          Meta and Pico accept for their own stores. The reasoning is
-          physiological rather than cosmetic: on a Steam Deck a frame dip is an
-          annoyance, but in a headset it is a fast route to motion sickness.
-          The badge is Valve personally vouching that a game will not make you
-          queasy.
+          Valve announced at GDC 2026, though the bar has moved since. A
+          standalone VR title has to hold at least 72 frames per second at
+          1728x1728 per eye on the headset&apos;s Snapdragon 8 Gen 3. Valve
+          originally set that number at 90 and revised the published
+          requirement down without an announcement. Rendering below 1440x1440
+          fails outright and earns an Unsupported badge. The reasoning behind
+          having a floor at all is physiological rather than cosmetic: on a
+          Steam Deck a frame dip is an annoyance, but in a headset it is a fast
+          route to motion sickness. The badge is Valve personally vouching that
+          a game will not make you queasy.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"

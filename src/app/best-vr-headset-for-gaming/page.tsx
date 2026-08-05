@@ -299,7 +299,7 @@ export default function BestVRHeadsetForGamingPage() {
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           The wildcard for the second half of 2026 is Valve&apos;s Steam Frame,
           confirmed for summer with a bundled 6GHz dongle that streams your
-          Steam library wirelessly and a strict 90 FPS{" "}
+          Steam library wirelessly and a 72 fps{" "}
           <a
             href="/great-on-frame"
             className="no-underline hover:underline"
