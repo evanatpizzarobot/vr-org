@@ -79,6 +79,42 @@ docs/
 design/
 plans/
 
+# Infrastructure, ops and admin tooling (PUBLIC repo: local only, never pushed)
+#
+# This is a public repo. Anything describing how the box is administered, how
+# it defends itself, or how to reach it is kept off it entirely: server configs,
+# monitoring and watchdog scripts, the deploy listener, firewall and bot rules,
+# SSH details, backups, dashboards. Publishing defensive thresholds tells an
+# attacker exactly what to route around, and publishing host details narrows
+# their search for free. Keep these locally and copy them to the VPS by hand.
+#
+# DELIBERATE EXCEPTIONS, do not add these: Dockerfile and docker-compose.yml
+# MUST stay tracked. The deploy pipeline runs `docker compose up -d --build`
+# inside the repo checkout on the VPS, so ignoring them breaks production
+# deploys outright. Neither contains a credential; .env is ignored separately.
+nginx/
+nginx*.conf
+*.nginx
+scripts/uptime-watch.sh
+uptime-watch.sh
+deploy-listener.js
+deploy-run.sh
+deploy.sh
+*.service
+*.timer
+crontab*
+ops/
+infra/
+runbooks/
+backups/
+*.bak
+*.bak-*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+known_hosts
+
 # Playwright MCP verification artifacts (local debug only)
 .playwright-mcp/
 vr-org-*.png
