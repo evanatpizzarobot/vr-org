@@ -5,6 +5,11 @@ import { getAllArticles } from "@/lib/articles";
 // last 2 days, so this lists only that rolling window. Referenced from
 // robots.txt and submittable in Search Console for Top Stories / News surfaces.
 
+// Reads data/articles.json, which is volume-mounted and updated by data-only
+// deploys that skip the Docker rebuild. Pinned dynamic so Next can never
+// statically prerender it and freeze this output at the container build date.
+export const dynamic = "force-dynamic";
+
 const SITE = "https://vr.org";
 const WINDOW_DAYS = 2;
 

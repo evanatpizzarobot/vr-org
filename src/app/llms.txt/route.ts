@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { getAllArticles } from "@/lib/articles";
 
+// Reads data/articles.json, which is volume-mounted and updated by data-only
+// deploys that skip the Docker rebuild. Pinned dynamic so Next can never
+// statically prerender it and freeze this output at the container build date.
+export const dynamic = "force-dynamic";
+
 // Served at /llms.txt. Built dynamically so the identity/citation header stays
 // curated while the "Recent originals" section auto-refreshes from
 // data/articles.json. Replaces the old static public/llms.txt (which never

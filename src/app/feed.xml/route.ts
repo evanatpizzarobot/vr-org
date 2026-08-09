@@ -7,6 +7,11 @@ import {
   imageMimeType,
 } from "@/lib/feed-media";
 
+// Reads data/articles.json, which is volume-mounted and updated by data-only
+// deploys that skip the Docker rebuild. Pinned dynamic so Next can never
+// statically prerender it and freeze this output at the container build date.
+export const dynamic = "force-dynamic";
+
 // RSS 2.0 feed of VR.org Original editorial articles. Every item links to an
 // on-site https://vr.org/articles/<slug> permalink so sister sites that blend
 // this feed (e.g. TerminalFeed) drive real traffic back to VR.org. Mirrors

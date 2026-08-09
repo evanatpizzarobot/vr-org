@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { getAllArticles } from "@/lib/articles";
 
+// Reads data/articles.json, which is volume-mounted and updated by data-only
+// deploys that skip the Docker rebuild. Pinned dynamic so Next can never
+// statically prerender it and freeze this output at the container build date.
+export const dynamic = "force-dynamic";
+
 // Served at /llms-full.txt. Concatenates the plain-text bodies of recent VR.org
 // Originals so an AI agent can ingest and quote the actual reporting, not just
 // the navigation skeleton in llms.txt. Newest first, capped to keep the

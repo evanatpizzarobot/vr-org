@@ -5,6 +5,11 @@ import { getAllArticles, type EditorialArticle } from "@/lib/articles";
 // and submittable in Search Console. Unlocks Video rich results independently
 // of the VideoObject JSON-LD already rendered on the article pages.
 
+// Reads data/articles.json, which is volume-mounted and updated by data-only
+// deploys that skip the Docker rebuild. Pinned dynamic so Next can never
+// statically prerender it and freeze this output at the container build date.
+export const dynamic = "force-dynamic";
+
 const SITE = "https://vr.org";
 
 function xmlEscape(value: string): string {

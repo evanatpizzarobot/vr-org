@@ -11,6 +11,15 @@ import { getAllArticles } from "@/lib/articles";
 //     not the global newest, so a sparse hub reports its real recency.
 //   - articles use their own updatedDate || publishDate.
 
+// MUST stay force-dynamic. This route reads data/articles.json, which is
+// volume-mounted and updated by data-only deploys that never rebuild the
+// container (see deploy-run.sh). Without this, Next statically prerenders the
+// route at build time and the sitemap freezes at the container's build date, so
+// new articles stay out of the sitemap until something else triggers a rebuild.
+// Caught 2026-08-09: an article was live and linked from every hub while
+// sitemap.xml still listed only the previous day's slugs.
+export const dynamic = "force-dynamic";
+
 const SITE = "https://vr.org";
 
 function xmlEscape(value: string): string {
