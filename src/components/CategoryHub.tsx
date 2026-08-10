@@ -36,10 +36,14 @@ const CATEGORY_GUIDES: Record<string, { label: string; href: string; description
   gaming: [
     { label: "Top 10 VR Games of All Time", href: "/best-vr-games", description: "The definitive ranking of the greatest VR games ever made." },
     { label: "Best VR Games 2026", href: "/best-vr-games-2026", description: "The top VR games to play right now in 2026." },
+    { label: "VR Release Dates", href: "/vr-release-dates", description: "Every confirmed and expected VR game and headset date, tracked." },
+    { label: "Great on Frame", href: "/great-on-frame", description: "Every game Valve has certified for the Steam Frame." },
   ],
   hardware: [
     { label: "Best VR Headsets 2026", href: "/best-vr-headsets", description: "Our picks for the best VR headsets you can buy today." },
     { label: "VR for Beginners", href: "/vr-for-beginners", description: "Everything a first-time VR buyer needs to know." },
+    { label: "Valve Steam Frame", href: "/steam-frame", description: "Specs, price signals, and every launch beat as Valve counts down." },
+    { label: "Upcoming VR Headsets 2026", href: "/upcoming-vr-headsets-2026", description: "What has just launched and what is still on the horizon." },
   ],
   software: [
     { label: "Best VR Apps & Utilities", href: "/best-vr-apps", description: "The top VR apps for productivity, social, fitness, and more." },

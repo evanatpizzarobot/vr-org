@@ -106,7 +106,7 @@
       "file": "src/app/what-is-vr/page.tsx",
       "category": "pillar",
       "cadenceDays": 90,
-      "lastRefreshed": "2026-05-02",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Evergreen explainer; only update when the technology landscape shifts meaningfully",
         "Verify the 'history' and 'future' sections still reflect current state",
@@ -144,7 +144,7 @@
       "file": "src/app/events/page.tsx",
       "category": "schedule",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-07-17",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Source of truth is data/events.json (EventsCalendar auto-buckets past vs upcoming)",
         "Add upcoming VR / AR conferences and game launches",
@@ -157,7 +157,7 @@
       "file": "src/app/hardware/page.tsx",
       "category": "category-hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-29",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Verify hardware-category featured pins in data/featured.json are not expired (expiresAt > today)",
         "Sanity-check the on-page description (HardwarePage in page.tsx) still names the right headset families",
@@ -183,7 +183,7 @@
       "file": "src/app/software/page.tsx",
       "category": "category-hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-29",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Verify software-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/software/page.tsx",
@@ -196,7 +196,7 @@
       "file": "src/app/enterprise/page.tsx",
       "category": "category-hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-29",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Verify enterprise-category featured pins in data/featured.json are not expired (currently rotating slowly)",
         "Sanity-check the on-page description in src/app/enterprise/page.tsx",
@@ -209,7 +209,7 @@
       "file": "src/app/ar/page.tsx",
       "category": "category-hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-29",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Verify AR-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/ar/page.tsx",
@@ -222,7 +222,7 @@
       "file": "src/app/xr/page.tsx",
       "category": "category-hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-29",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Verify XR-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/xr/page.tsx",
@@ -235,7 +235,7 @@
       "file": "src/app/originals/page.tsx",
       "category": "category-hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-06-29",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Verify at least one new VR.org original has published in the last 7d (originals is the editorial differentiator)",
         "If the last original is > 14d old, treat as overdue and queue a piece",
@@ -350,7 +350,7 @@
       "file": "src/app/upcoming-vr-headsets-2026/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-07-17",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "NEWS-SENSITIVE, refresh often: move launched headsets from 'On the horizon' to 'Just launched'",
         "Update Steam Frame and Quest 4 status as Valve/Meta announce specs, price, and dates",
@@ -429,7 +429,7 @@
       "file": "src/app/vr-release-dates/page.tsx",
       "category": "tracker",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-07-28",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Run npm run check:release-dates; it fails on any item that shipped but is still marked upcoming",
         "Source of truth is data/release-dates.json, not the page",

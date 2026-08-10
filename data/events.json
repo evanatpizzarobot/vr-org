@@ -156,6 +156,18 @@
     "featured": false
   },
   {
+    "id": "snap-specs-launch-2026",
+    "name": "Snap Specs Launch Event",
+    "description": "Snap holds a full launch event for Specs, its $2,195 standalone AR glasses, with Evan Spiegel giving the first in-depth look and attendees going hands-on. The first firm date on the fall AR calendar.",
+    "startDate": "2026-09-16",
+    "endDate": "2026-09-16",
+    "location": "Los Angeles, CA",
+    "venue": "TBA",
+    "url": "https://www.spectacles.com/",
+    "category": "showcase",
+    "featured": true
+  },
+  {
     "id": "tokyo-game-show-2026",
     "name": "Tokyo Game Show 2026",
     "description": "Japan's premier gaming expo showcasing the latest VR games, PSVR2 titles, and immersive experiences from Japanese and global studios.",
@@ -251,5 +263,17 @@
     "category": "expo",
     "featured": false,
     "tentative": true
+  },
+  {
+    "id": "gdc-2027",
+    "name": "GDC Festival of Gaming 2027",
+    "description": "The Game Developers Conference returns to San Francisco in an expanded format spanning Moscone Center and venues across downtown. Historically where Valve, Meta, and Google make their developer-facing XR announcements.",
+    "startDate": "2027-03-01",
+    "endDate": "2027-03-05",
+    "location": "San Francisco, CA",
+    "venue": "Moscone Center and downtown venues",
+    "url": "https://gdconf.com/",
+    "category": "conference",
+    "featured": true
   }
 ]

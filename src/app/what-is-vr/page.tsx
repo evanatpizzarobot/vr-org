@@ -95,7 +95,7 @@ export default function WhatIsVRPage() {
       "Everything you need to know about Virtual Reality: how it works, types of headsets, use cases, history, and the future of VR technology.",
     url: "https://vr.org/what-is-vr",
     datePublished: "2026-03-23",
-    dateModified: "2026-05-02",
+    dateModified: "2026-08-10",
     author: {
       "@type": "Organization",
       name: "VR.org",
@@ -513,10 +513,14 @@ export default function WhatIsVRPage() {
           most users. The Quest 2 (2020) became the best-selling VR headset of
           all time, selling over 20 million units. Apple entered the space in
           2024 with the Vision Pro, a high-end spatial computing headset that
-          blurred the line between VR and AR. By 2026, the VR industry has
-          matured significantly. Headsets are lighter, displays are sharper,
-          content libraries are deep, and the technology has found footing in
-          both consumer and enterprise markets.
+          blurred the line between VR and AR. By 2026 the industry has matured
+          and also split. Headsets are lighter, displays are sharper, and the
+          technology has real footing in consumer and enterprise markets, but
+          the fastest growth has moved sideways into camera and display glasses,
+          where Meta has sold millions of Ray-Ban pairs and a $299 set of Viture
+          display glasses will hang a 146-inch screen in front of you. Valve is
+          also about to re-enter with the Steam Frame, a standalone SteamOS
+          headset confirmed for summer 2026.
         </p>
 
         {/* ── The Future of VR ── */}
@@ -676,13 +680,15 @@ export default function WhatIsVRPage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          VR is more affordable than ever. The Meta Quest 3S starts at around
-          $300, making it one of the most accessible entry points for
-          high-quality VR. The Quest 3 runs around $500. PC VR headsets range
-          from $400 to $1,000+ for the headset alone, plus the cost of a capable
-          gaming PC ($800-$1,500+). The PlayStation VR2 is available for around
-          $550 and requires a PS5. At the high end, Apple Vision Pro starts at
-          $3,699. For most people, a standalone Quest headset offers the best
+          Entry-level VR is still cheap, though 2026 has pushed prices up rather
+          than down. The Meta Quest 3S starts at $349 and the Quest 3 at $599,
+          both after Meta raised prices in April 2026 on the back of the memory
+          shortage. The PlayStation VR2 went the other way and now sits at $399,
+          but it needs a PS5. PC VR headsets run from roughly $400 to over
+          $1,000 for the headset alone, plus a capable gaming PC, and graphics
+          cards are the painful part right now: an RTX 5090 that lists at $1,999
+          has been selling above $4,000. At the high end, Apple Vision Pro starts
+          at $3,699. For most people a standalone Quest still offers the best
           balance of price, quality, and content library.
         </p>
 

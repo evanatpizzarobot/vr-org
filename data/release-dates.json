@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2026-08-01",
+  "lastUpdated": "2026-08-10",
   "items": [
     {
       "id": "valve-steam-frame",
       "name": "Valve Steam Frame",
       "category": "headset",
       "status": "expected",
-      "dateText": "Summer 2026, FCC cleared, still no date or price announced",
+      "dateText": "Summer 2026, FCC cleared July 29, no date or price yet",
       "isoDate": null,
-      "sortDate": "2026-08-15",
+      "sortDate": "2026-09-01",
       "platforms": [
         "SteamOS standalone",
         "PC VR streaming"
       ],
       "price": "Not announced. Analysts expect $899 to $1,199",
-      "summary": "Valve's standalone SteamOS headset with a dedicated 6GHz wireless dongle for PC streaming. The FCC granted equipment authorization on July 29, which is legal permission to sell, and the hardware has cleared US customs with the Great on Frame store section live. Valve has still named neither a price nor a release date.",
+      "summary": "Valve's standalone SteamOS headset with a dedicated 6GHz wireless dongle for PC streaming. The FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29, which is legal permission to sell in the US, and the hardware has cleared customs. The Great on Frame catalog has grown from eight certified titles on July 17 to 65 on August 10. Valve has still named neither a price nor a release date, and summer ends September 22.",
       "link": "/steam-frame",
       "officialUrl": "https://store.steampowered.com/sale/steammachine",
-      "lastVerified": "2026-08-01"
+      "lastVerified": "2026-08-10"
     },
     {
       "id": "samsung-galaxy-xr-uk",
@@ -92,34 +92,34 @@
       "name": "XREAL AURA",
       "category": "glasses",
       "status": "expected",
-      "dateText": "Fall 2026",
+      "dateText": "Fall 2026, reservations open",
       "isoDate": null,
       "sortDate": "2026-10-01",
       "platforms": [
         "Android XR"
       ],
       "price": "No more than $1,500, per XREAL",
-      "summary": "XREAL's Android XR display glasses with a tethered Snapdragon Reality Elite puck, a 70 degree field of view, and Gemini built in. Reservations are open now for a $99 deposit.",
+      "summary": "XREAL's Android XR display glasses, with reservations open and retail price capped at no more than $1,500. That undercuts Snap's Specs by roughly $700 and makes AURA the most affordable serious entry on the fall AR calendar.",
       "link": "/articles/xreal-aura-reservations-under-1500-undercuts-snap-2026",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-08-10"
     },
     {
       "id": "snap-specs",
       "name": "Snap Specs",
       "category": "glasses",
       "status": "expected",
-      "dateText": "Fall 2026",
+      "dateText": "Launch event September 16, 2026",
       "isoDate": null,
-      "sortDate": "2026-10-01",
+      "sortDate": "2026-09-16",
       "platforms": [
         "Snap OS"
       ],
       "price": "From $2,195",
-      "summary": "Snap's standalone true AR glasses with a 51 degree field of view and 4 million Lenses at launch. Preorders opened at AWE with a $200 refundable deposit.",
-      "link": "/articles/snap-specs-preorders-open-2195-true-ar-glasses-awe-2026",
+      "summary": "Snap's standalone true AR glasses with a 51 degree field of view and 4 million Lenses at launch. Preorders opened at AWE with a $200 refundable deposit. Snap has now set a full launch event for September 16 in Los Angeles, where Evan Spiegel gives the first in-depth look and attendees go hands-on. A ship date has still not been named.",
+      "link": "/articles/snap-specs-launch-event-september-16-fall-ar-calendar-2026",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-08-10"
     },
     {
       "id": "google-warby-parker-glasses",
@@ -542,40 +542,6 @@
       "lastVerified": "2026-07-04"
     },
     {
-      "id": "asus-rog-xreal-r1",
-      "name": "ASUS ROG XREAL R1",
-      "category": "glasses",
-      "status": "released",
-      "dateText": "Released June 1, 2026",
-      "isoDate": "2026-06-01",
-      "sortDate": null,
-      "platforms": [
-        "Tethered display glasses"
-      ],
-      "price": "$849",
-      "summary": "240Hz AR gaming glasses from the ASUS and XREAL partnership, aimed at handheld and console players.",
-      "link": "/articles/asus-rog-xreal-r1-240hz-ar-glasses",
-      "officialUrl": null,
-      "lastVerified": "2026-07-04"
-    },
-    {
-      "id": "the-boys-trigger-warning-psvr2",
-      "name": "The Boys: Trigger Warning (PSVR2)",
-      "category": "game",
-      "status": "released",
-      "dateText": "Released June 9, 2026",
-      "isoDate": "2026-06-09",
-      "sortDate": null,
-      "platforms": [
-        "PSVR2"
-      ],
-      "price": null,
-      "summary": "The Boys VR shooter arrived on PSVR2 with PS5 Pro enhancements.",
-      "link": "/articles/the-boys-trigger-warning-psvr2-june-2026",
-      "officialUrl": null,
-      "lastVerified": "2026-07-04"
-    },
-    {
       "id": "pimax-dream-air",
       "name": "Pimax Dream Air / Dream Air SE",
       "category": "headset",
@@ -610,6 +576,57 @@
       "link": null,
       "officialUrl": "https://store.steampowered.com/app/3929970/Cave_Crave_VR/",
       "lastVerified": "2026-08-01"
+    },
+    {
+      "id": "decay-vr",
+      "name": "D.E.C.A.Y.",
+      "category": "game",
+      "status": "confirmed",
+      "dateText": "August 21, 2026, Early Access",
+      "isoDate": "2026-08-21",
+      "sortDate": "2026-08-21",
+      "platforms": [
+        "SteamVR"
+      ],
+      "price": null,
+      "summary": "A post-nuclear survival shooter from AGaming+, the solo studio behind the Z.O.N.A. series. Players maintain the Atlas network of thermal and radiation shields, with bunker-based gear management in the vein of Into the Radius. Early Access is expected to run about a year.",
+      "link": null,
+      "officialUrl": "https://store.steampowered.com/app/4251370/DECAY/",
+      "lastVerified": "2026-08-10"
+    },
+    {
+      "id": "viture-pro-2",
+      "name": "VITURE Pro 2",
+      "category": "glasses",
+      "status": "released",
+      "dateText": "Released August 6, 2026",
+      "isoDate": "2026-08-06",
+      "sortDate": "2026-08-06",
+      "platforms": [
+        "USB-C display glasses"
+      ],
+      "price": "$299",
+      "summary": "Viture's lightest glasses yet at 63g, with a 146-inch virtual screen, 1920x1080 per eye at 120Hz, Sony micro-OLED panels rated 1,600 nits, and built-in 0 to -5.00D diopter adjustment. At $299 it is the cheapest credible entry in the display-glasses category.",
+      "link": "/articles/viture-pro-2-299-dollars-63-grams-display-glasses-2026",
+      "officialUrl": "https://www.viture.com/pro2",
+      "lastVerified": "2026-08-10"
+    },
+    {
+      "id": "escape-simulator-2-vr",
+      "name": "Escape Simulator 2 (VR update)",
+      "category": "game",
+      "status": "expected",
+      "dateText": "Free VR update before end of 2026",
+      "isoDate": null,
+      "sortDate": "2026-12-01",
+      "platforms": [
+        "SteamVR"
+      ],
+      "price": null,
+      "summary": "Pine Studio has a public VR preview running on Steam's open_beta branch with every official room playable. The full VR update ships free to existing owners before the end of 2026.",
+      "link": "/articles/escape-simulator-2-vr-preview-open-beta-steam-2026",
+      "officialUrl": null,
+      "lastVerified": "2026-08-10"
     }
   ]
 }

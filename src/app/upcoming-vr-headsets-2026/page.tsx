@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Upcoming VR Headsets 2026: New Releases and What's Coming Next",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-10",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -129,7 +129,7 @@ export default function UpcomingVRHeadsets2026Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 17, 2026
+          Last updated: August 10, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -202,7 +202,22 @@ export default function UpcomingVRHeadsets2026Page() {
           <strong>Apple Vision Pro (M5).</strong> Apple refreshed its spatial
           computer with the faster M5 chip, keeping the class-leading micro-OLED
           displays and visionOS. It remains a premium media and productivity
-          device at $3,699 rather than a gaming headset.
+          device at $3,699 rather than a gaming headset. Apple is now leaning on
+          exclusive live content to justify that price, with four MLB games
+          streaming in 8K immersive video starting August 28.
+        </p>
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          <strong>Pimax Dream Air.</strong> Pimax&apos;s compact micro-OLED PC VR
+          headset has shipped. The company cleared its{" "}
+          <a
+            href="/articles/pimax-dream-air-preorder-backlog-cleared-august-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            preorder backlog in August
+          </a>
+          , so it moves out of the waiting list and into the ultralight PC VR race
+          alongside the Bigscreen Beyond 2. The Dream Air SE starts at $899.
         </p>
 
         <div className="my-8">
@@ -214,12 +229,15 @@ export default function UpcomingVRHeadsets2026Page() {
         </h2>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           <strong>Valve Steam Frame.</strong> The most anticipated headset of
-          the year, and no longer a rumor: Valve has confirmed summer 2026, the
-          full spec sheet is public (dual 2160x2160 panels, Snapdragon 8 Gen 3,
-          16GB RAM, a bundled 6GHz wireless dongle for lag-free PC streaming),
-          the hardware has cleared US customs, and the Great on Frame store
-          section is live. Only the price and the day are missing; estimates
-          cluster between $899 and $1,199. Our{" "}
+          the year, and every prerequisite is now cleared: Valve has confirmed
+          summer 2026, the full spec sheet is public (dual 2160x2160 panels,
+          Snapdragon 8 Gen 3, 16GB RAM, a bundled 6GHz wireless dongle for
+          lag-free PC streaming), the hardware has cleared US customs, and the
+          FCC granted equipment authorization on July 29, which is the last legal
+          gate before a US sale. The Great on Frame catalog has gone from eight
+          certified titles on July 17 to 65 on August 10. Only the price and the
+          day are missing, estimates cluster between $899 and $1,199, and summer
+          ends September 22. Our{" "}
           <a
             href="/steam-frame"
             className="no-underline hover:underline"
@@ -259,19 +277,6 @@ export default function UpcomingVRHeadsets2026Page() {
           ; specs and timing remain reported rather than confirmed.
         </p>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          <strong>Pimax Dream Air.</strong> Pimax&apos;s compact micro-OLED PC
-          VR headset is now reaching buyers, with Pimax saying{" "}
-          <a
-            href="/articles/pimax-dream-air-preorder-backlog-cleared-august-2026"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            every preorder ships by August
-          </a>
-          . One for enthusiasts watching the ultralight PC VR race alongside the
-          Bigscreen Beyond 2.
-        </p>
-        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           <strong>Meta Quest 4.</strong> Not a 2026 device. Credible reporting
           points the gaming-focused Quest 4 to H2 2027 or later, with a much
           lighter, glasses-like design, and a separate ultralight tethered
@@ -290,7 +295,10 @@ export default function UpcomingVRHeadsets2026Page() {
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           <strong>Samsung Galaxy Glasses and the smart-glasses wave.</strong>
           Beyond full headsets, a growing category of AI smart glasses is arriving,
-          including Samsung&apos;s Galaxy Glasses on Android XR. These are
+          including Samsung&apos;s Galaxy Glasses on Android XR and Snap&apos;s
+          Specs, which get a full launch event on September 16. The cheaper
+          display-glasses branch is moving faster: Viture&apos;s Pro 2 landed in
+          August at $299 for a 146-inch virtual screen at 63 grams. These are
           complementary to VR rather than replacements, focused on audio, cameras,
           and lightweight displays. We track them in our{" "}
           <a
