@@ -444,7 +444,7 @@
       "file": "src/app/steam-frame/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-07-18",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Refresh on EVERY Steam Frame news beat until launch, not just on cadence",
         "Update the release-date and price signal sections with the newest reporting",
@@ -459,7 +459,7 @@
       "file": "src/app/great-on-frame/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-07-17",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Check store.steampowered.com/greatonframe for new titles on EVERY Steam Frame beat",
         "Append additions to VERIFIED_GAMES (in page order) AND the CHANGELOG with dates",
@@ -472,7 +472,7 @@
       "file": "src/app/steam-frame-price/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-07-17",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Append new leaks/estimates to PRICE_SIGNALS with dates",
         "Keep the lede's 'as of' date and dollar figures matched to the newest signal",
@@ -485,7 +485,7 @@
       "file": "src/app/steam-frame-release-date/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-07-18",
+      "lastRefreshed": "2026-08-10",
       "checklist": [
         "Append new signals to DATE_SIGNALS with dates",
         "Keep the lede's 'as of' date current on every touch",

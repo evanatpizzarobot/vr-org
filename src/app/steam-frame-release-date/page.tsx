@@ -44,7 +44,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-07-18";
+const LAST_UPDATED = "2026-08-10";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -80,7 +80,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day as of July 17, 2026. The evidence says soon: roughly 35 tons of VR hardware cleared US customs in June, the FCC filings are public, the Steam Machine already shipped June 30, and the Great on Frame store section went live in mid July. Storefront sections appear weeks before a launch, not quarters.",
+      "Valve has confirmed summer 2026 but has not named a day as of August 10, 2026. Every prerequisite is now cleared: the FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29, roughly 35 tons of VR hardware cleared US customs in June, the Steam Machine already shipped June 30, and the Great on Frame catalog has grown from eight titles to 65. Summer ends September 22, which leaves Valve about six weeks to keep the promise.",
   },
   {
     question: "How do I preorder the Steam Frame?",
@@ -166,6 +166,31 @@ const DATE_SIGNALS: DateSignal[] = [
     signal: "Major SteamVR dashboard overhaul ships to beta users",
     read: "The software is dressing for launch",
   },
+  {
+    date: "Jul 24, 2026",
+    signal: "Qualcomm notifies customers of double-digit Snapdragon price rises for orders shipping after September 1",
+    read: "A reason not to slip past August",
+  },
+  {
+    date: "Jul 29, 2026",
+    signal: "FCC grants equipment authorization for FCC ID 2AES4-1015, filed May 13",
+    read: "Legally sellable in the US",
+  },
+  {
+    date: "Aug 5, 2026",
+    signal: "Published Steam Frame Verified floor confirmed at 72 fps, down from the 90 announced at GDC",
+    read: "Bar lowered to fill the shelf",
+  },
+  {
+    date: "Aug 6, 2026",
+    signal: "Half-Life 2: VR Mod certified, the first marquee name on the list",
+    read: "A reason to buy one",
+  },
+  {
+    date: "Aug 10, 2026",
+    signal: "Great on Frame reports 65 titles, up from eight on July 17",
+    read: "Catalog reaching launch scale",
+  },
 ];
 
 export default function SteamFrameReleaseDatePage() {
@@ -188,7 +213,7 @@ export default function SteamFrameReleaseDatePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 18, 2026
+          Last updated: August 10, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -232,12 +257,15 @@ export default function SteamFrameReleaseDatePage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Valve Steam Frame is confirmed for summer 2026, and as of July
-          18, 2026 Valve has not named the day. But every signal says the wait
-          is measured in weeks: the hardware has cleared US customs, the FCC
-          filings are public, the Steam Machine already shipped, the Great on
-          Frame store section is live and filling with certified games, and
-          SteamVR itself just received a major dashboard overhaul in beta. This page tracks every release date signal, dated, until
+          The Valve Steam Frame is confirmed for summer 2026, and as of August
+          10, 2026 Valve has not named the day. The regulatory path is now
+          fully clear: the FCC granted equipment authorization on July 29 under
+          FCC ID 2AES4-1015, which is the last gate before a radio device can
+          legally be sold in the United States. Add the 35 tons of hardware
+          already through US customs, a Steam Machine that shipped on June 30,
+          and a Great on Frame catalog that went from eight titles to 65 in
+          under a month, and nothing is left but the announcement. Summer ends
+          September 22. This page tracks every release date signal, dated, until
           Valve makes it official.
         </p>
 
