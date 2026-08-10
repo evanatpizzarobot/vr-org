@@ -42,8 +42,12 @@ function truncate(text: string, maxLen: number): string {
   return text.slice(0, maxLen).replace(/\s+\S*$/, "") + "...";
 }
 
+// How much of a Tier 2 item's summary counts toward the relevance decision.
+// Roughly a headline plus a lede, which is what a human editor would judge on.
+const RELEVANCE_SNIPPET_CHARS = 400;
+
 const VR_RELEVANCE_REGEX =
-  /\b(?:vr|xr|virtual reality|augmented reality|extended reality|mixed reality|spatial computing|meta quest|quest [234]|quest pro|horizon worlds|vision pro|visionos|psvr|psvr2|playstation vr|steamvr|steam vr|steam frame|valve index|android xr|pico [45]|hololens|magic leap|xreal|nreal|rokid|webxr|openxr|oculus|ray-?ban meta|smart glasses|ar glasses|mr headset|vr headset)\b/i;
+  /\b(?:vr|xr|virtual reality|augmented reality|extended reality|mixed reality|spatial computing|meta quest|quest [234]s?|quest pro|horizon worlds|vision pro|visionos|psvr|psvr2|playstation vr|steamvr|steam vr|steam frame|great on frame|valve index|android xr|galaxy xr|pico [45]|hololens|magic leap|xreal|nreal|rokid|webxr|openxr|oculus|ray-?ban meta|smart glasses|ai glasses|ar glasses|display glasses|mr headset|vr headset)\b/i;
 
 function isVRRelevant(title: string, snippet: string): boolean {
   return VR_RELEVANCE_REGEX.test(`${title} ${snippet}`);
@@ -169,7 +173,17 @@ export async function fetchSource(source: RSSSource): Promise<FetchResult> {
       const id = hashString(link);
       const rawSnippet = stripHtml(contentEncoded || description || atomContent);
 
-      if (source.relevanceFilter && !isVRRelevant(title, rawSnippet)) {
+      // Relevance is judged on the headline plus the opening of the summary,
+      // never the whole article body. Mashable, PCWorld and TechRadar ship the
+      // full post in content:encoded, related-product blocks and footers
+      // included, so one stray "smart glasses" link in a sidebar was enough to
+      // let phone-deal posts into a VR feed. Verified 2026-08-10: every Mashable
+      // item passing the old filter matched on body text alone and none of them
+      // had a VR term in the title.
+      if (
+        source.relevanceFilter &&
+        !isVRRelevant(title, rawSnippet.slice(0, RELEVANCE_SNIPPET_CHARS))
+      ) {
         continue;
       }
 
