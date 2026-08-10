@@ -60,6 +60,18 @@ export function refreshFeatured(allArticles: Article[]): FeaturedData {
   const now = new Date();
   const categories = ["hardware", "gaming", "software", "enterprise", "ar", "xr"];
 
+  // How many different hubs one story may be pinned to. The categorizer hands
+  // out broad tag sets, so a single Apple story can carry software, hardware,
+  // gaming, enterprise, ar and xr at once. Without a cap the newest few items
+  // pin to all six hubs and every category page shows the same five stories.
+  const MAX_CATEGORIES_PER_ARTICLE = 2;
+  const pinCount = new Map<string, number>();
+  for (const cat of categories) {
+    for (const a of data[cat] || []) {
+      pinCount.set(a.id, (pinCount.get(a.id) || 0) + 1);
+    }
+  }
+
   for (const category of categories) {
     // Remove expired articles
     data[category] = (data[category] || []).filter((a) => {
@@ -73,11 +85,18 @@ export function refreshFeatured(allArticles: Article[]): FeaturedData {
     // Get candidate articles for this category
     const existingIds = new Set(data[category].map((a) => a.id));
     const existingSources = new Set(data[category].map((a) => a.source));
-    const candidates = allArticles.filter(
-      (a) =>
-        (a.category === category || a.tags.includes(category)) &&
-        !existingIds.has(a.id)
+    const eligible = (a: Article) =>
+      !existingIds.has(a.id) &&
+      (pinCount.get(a.id) || 0) < MAX_CATEGORIES_PER_ARTICLE;
+
+    // Stories whose PRIMARY category is this hub come first. Tag matches are
+    // only a fallback, because a tag list of six categories says the story is
+    // broadly adjacent, not that it belongs at the top of this page.
+    const primary = allArticles.filter((a) => a.category === category && eligible(a));
+    const secondary = allArticles.filter(
+      (a) => a.category !== category && a.tags.includes(category) && eligible(a)
     );
+    const candidates = [...primary, ...secondary];
 
     // Prioritize diverse sources
     const picked: Article[] = [];
@@ -108,6 +127,7 @@ export function refreshFeatured(allArticles: Article[]): FeaturedData {
         pinnedAt: now.toISOString(),
         expiresAt: expiresAt.toISOString(),
       });
+      pinCount.set(article.id, (pinCount.get(article.id) || 0) + 1);
     }
 
     if (picked.length > 0) {
