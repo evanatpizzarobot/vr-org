@@ -640,6 +640,19 @@
           }
         },
         {
+          "name": "NVIDIA RTX 5070",
+          "price": "~$599",
+          "image": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/graphic-cards/50-series/5070-family/geforce-rtx-5070-banner-xl-offset-laptop.jpg",
+          "description": "The entry point for PC VR on current-generation silicon. 12GB of GDDR7 and DLSS 4 frame generation handle most headsets at native resolution if you are willing to turn a few settings down. It is also the only 50-series card still selling near list, at roughly $599 against a $549 MSRP. About $50 over counts as restraint in this market.",
+          "badge": "Best value",
+          "links": {
+            "amazon": {
+              "url": "https://amazon.com/s?k=rtx+5070&tag=vrorg00-20",
+              "label": "Amazon"
+            }
+          }
+        },
+        {
           "name": "Virtuix Omni One",
           "price": "$2,595",
           "image": "https://img.youtube.com/vi/Zi8rjwtZ_cs/maxresdefault.jpg",
