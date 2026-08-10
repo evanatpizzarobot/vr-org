@@ -241,6 +241,11 @@ const TIMELINE: TimelineEntry[] = [
     slug: "valve-great-on-frame-steam-page-steam-frame-launch-signal",
     text: "Great on Frame reports 65 titles, an eightfold increase in under a month, with flatscreen catalog games now outnumbering native VR ones.",
   },
+  {
+    date: "Aug 10, 2026",
+    slug: "valve-lepton-fex-steam-frame-translation-layers-2026",
+    text: "The Steam Frame ARM64 Compat List drops its access token and appears in the Steam client. Its tool registry now puts Proton 11.0 (ARM64) on the stable channel, replacing the experimental ARM64EC builds that held that slot in 2024.",
+  },
 ];
 
 export default function SteamFramePage() {
@@ -411,7 +416,7 @@ export default function SteamFramePage() {
             ["Chip", "Snapdragon 8 Gen 3"],
             ["Memory", "16GB LPDDR5X (double the Quest 3)"],
             ["Storage", "256GB to 1TB reported; tiers not finalized"],
-            ["OS", "SteamOS (Arch Linux), Proton ARM64 + FEX x86 emulation, Android APKs"],
+            ["OS", "SteamOS (Arch Linux). Proton 11.0 (ARM64) on Steam Linux Runtime 4.0, FEX for x86 translation, Lepton for Android APKs"],
             ["PC streaming", "Bundled dedicated 6GHz Wi-Fi 6E dongle, point to point, no router"],
             ["Tracking", "Inside-out SLAM"],
             ["Controllers", "Two BLE motion controllers, TMR thumbsticks, tracking rings (FCC confirmed)"],
@@ -456,7 +461,11 @@ export default function SteamFramePage() {
           >
             Steam Frame Verified program
           </a>{" "}
-          governs what earns the on-device badge. Even Meta is paying
+          governs what earns the on-device badge. That standalone stack
+          quietly graduated on August 10, when Valve&apos;s compat registry
+          moved Proton 11.0 (ARM64) into the proton-stable slot held until
+          then by experimental ARM64EC builds, and added Steam Linux Runtime
+          4.0 for arm64 as a required dependency. Even Meta is paying
           attention: CTO Andrew Bosworth singled out the wireless dongle as
           something Meta will learn from.
         </p>
