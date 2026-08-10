@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-28",
+  "lastUpdated": "2026-08-10",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -254,6 +254,23 @@
             "amazon": {
               "url": "https://www.amazon.com/dp/B0FLYDWQDZ?tag=vrorg00-20",
               "label": "Amazon"
+            }
+          }
+        },
+        {
+          "name": "VITURE Pro 2",
+          "price": "$299",
+          "image": "https://cdn.shopify.com/s/files/1/0762/8760/7065/files/S6_Pro_2_01.jpg?v=1785898714",
+          "description": "Viture's lightest glasses yet at 63g, with a 146-inch virtual screen, 1920x1080 per eye at 120Hz, Sony micro-OLED panels rated 1,600 nits, and a 50-degree field of view. Built-in 0 to -5.00D diopter adjustment means many nearsighted buyers can skip prescription inserts. Wired USB-C to a phone, laptop, Steam Deck, or Switch.",
+          "badge": "New",
+          "links": {
+            "amazon": {
+              "url": "https://www.amazon.com/dp/B0H824YXJH?tag=vrorg00-20",
+              "label": "Amazon"
+            },
+            "direct": {
+              "url": "https://www.viture.com/pro2",
+              "label": "VITURE"
             }
           }
         },
@@ -555,7 +572,7 @@
     {
       "id": "gaming-hardware",
       "title": "Gaming Hardware",
-      "description": "VR-ready GPUs, Steam hardware, and big-ticket VR gaming rigs for PC VR. GPU prices reflect current retail street averages and now sit well above MSRP, as AI demand for memory squeezes consumer card supply through the 2025-2026 crunch.",
+      "description": "VR-ready GPUs, Steam hardware, and big-ticket VR gaming rigs for PC VR. GPU prices reflect current retail street averages and sit well above MSRP: the AI buildout is absorbing memory supply, NVIDIA cards are running far over list, and AMD raised its own pricing by at least 10% in August 2026. Verified against price trackers on August 10, 2026. If you can wait, waiting is still the better trade.",
       "items": [
         {
           "name": "Valve Steam Machine",
@@ -585,9 +602,9 @@
         },
         {
           "name": "NVIDIA RTX 5090",
-          "price": "~$2,899",
+          "price": "~$4,299",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Palit_GeForce_RTX_5090_Gamerock_20250530_HOF3873_RAW-Export_cens.png/1280px-Palit_GeForce_RTX_5090_Gamerock_20250530_HOF3873_RAW-Export_cens.png",
-          "description": "The absolute top of the stack. 32GB of GDDR7, DLSS 4, and the only card that drives the Bigscreen Beyond 2 at full resolution without compromise. Street prices have blown well past the $1,999 MSRP during the memory crunch, so expect to pay a premium.",
+          "description": "The absolute top of the stack. 32GB of GDDR7, DLSS 4, and the only card that drives the Bigscreen Beyond 2 at full resolution without compromise. Street prices have run to roughly twice the $1,999 MSRP during the memory crunch, with trackers logging $4,199 to $4,599 in early August. Used cards go for meaningfully less if you are willing to take that risk.",
           "badge": "Premium",
           "links": {
             "amazon": {
@@ -598,9 +615,9 @@
         },
         {
           "name": "NVIDIA RTX 5070 Ti",
-          "price": "~$979",
+          "price": "~$919",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/PNY_RTX_5070_Ti_at_Computex_2025.jpg/1280px-PNY_RTX_5070_Ti_at_Computex_2025.jpg",
-          "description": "Blackwell's sweet spot. Roughly 4080 Super performance with DLSS 4, and still one of the strongest all-around PC VR cards, even with memory-crunch pricing pushing it past its $749 launch MSRP.",
+          "description": "The sensible high-end pick for PC VR. 16GB of GDDR7 handles high-resolution headsets at native res in most titles. Listed around $919 against a $749 MSRP, so it carries the same premium as everything else this year, just a smaller one in absolute dollars.",
           "badge": "Editor's Pick",
           "links": {
             "amazon": {
@@ -611,25 +628,13 @@
         },
         {
           "name": "AMD Radeon RX 9070 XT",
-          "price": "~$669",
+          "price": "~$729",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Sapphire_Pulse_Radeon_RX_9070_XT_-_L%C3%BCfter_1.jpg/1280px-Sapphire_Pulse_Radeon_RX_9070_XT_-_L%C3%BCfter_1.jpg",
-          "description": "AMD's flagship RDNA 4 card. 16GB of GDDR6, strong ray tracing for the price, and the best price-per-frame in PC VR right now. It undercuts the slower 4070 Super while staying faster, which makes it the value pick of the lineup. Pairs cleanly with SteamVR and Quest Link, and dips to around $629 on sale.",
+          "description": "AMD's best value for PC VR, with 16GB of VRAM and strong raster performance. AMD raised GPU pricing by at least 10% in August 2026 after waiting for NVIDIA to move first, and some board partners went further, so the card no longer undercuts GeForce the way it did at launch.",
           "badge": "Best Value",
           "links": {
             "amazon": {
               "url": "https://amazon.com/s?k=radeon+rx+9070+xt&tag=vrorg00-20",
-              "label": "Amazon"
-            }
-          }
-        },
-        {
-          "name": "NVIDIA RTX 4070 Super",
-          "price": "~$729",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/2023_Gigabyte_GeForce_RTX_4070_Aero_OC_12GB_%286%29.jpg/1280px-2023_Gigabyte_GeForce_RTX_4070_Aero_OC_12GB_%286%29.jpg",
-          "description": "A capable PC VR card that handles Quest Link and SteamVR at high settings with headroom to spare. The memory crunch has pushed it well above its $599 launch price, so the RX 9070 XT is the stronger value today unless you find the 4070 Super on a genuine discount.",
-          "links": {
-            "amazon": {
-              "url": "https://amazon.com/s?k=rtx+4070+super&tag=vrorg00-20",
               "label": "Amazon"
             }
           }
