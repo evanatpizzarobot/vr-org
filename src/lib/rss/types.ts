@@ -41,4 +41,13 @@ export interface RSSSource {
   url: string;
   priority: "primary" | "secondary";
   relevanceFilter?: boolean;
+  /**
+   * How much of an item counts toward the relevance decision.
+   * "summary" (the default) reads the headline plus the opening of the body,
+   * which keeps general-tech feeds from sneaking phone deals in on a stray
+   * sidebar keyword. "full" reads the whole body, for first-party platform
+   * blogs where VR coverage legitimately lives in a section partway down a
+   * broader post rather than in the headline.
+   */
+  relevanceScope?: "summary" | "full";
 }

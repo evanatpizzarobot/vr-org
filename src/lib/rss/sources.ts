@@ -249,5 +249,11 @@ export const RSS_SOURCES: RSSSource[] = [
     url: "https://blog.playstation.com/feed/",
     priority: "secondary",
     relevanceFilter: true,
+    // Sony's first-party blog buries real PSVR2 coverage inside broader posts:
+    // the monthly PS Store charts carry a PS VR2 downloads section, and
+    // anniversary and showcase roundups list VR titles partway down. Those are
+    // legitimate mentions rather than sidebar noise, so this source is judged
+    // on the whole body.
+    relevanceScope: "full",
   },
 ];

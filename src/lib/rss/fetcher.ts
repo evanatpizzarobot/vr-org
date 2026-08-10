@@ -180,10 +180,12 @@ export async function fetchSource(source: RSSSource): Promise<FetchResult> {
       // let phone-deal posts into a VR feed. Verified 2026-08-10: every Mashable
       // item passing the old filter matched on body text alone and none of them
       // had a VR term in the title.
-      if (
-        source.relevanceFilter &&
-        !isVRRelevant(title, rawSnippet.slice(0, RELEVANCE_SNIPPET_CHARS))
-      ) {
+      const relevanceText =
+        source.relevanceScope === "full"
+          ? rawSnippet
+          : rawSnippet.slice(0, RELEVANCE_SNIPPET_CHARS);
+
+      if (source.relevanceFilter && !isVRRelevant(title, relevanceText)) {
         continue;
       }
 
