@@ -14,6 +14,7 @@ import fs from "fs";
 import path from "path";
 import { getCache } from "@/lib/rss/engine";
 import { getAllArticles, getArticleBySlug } from "@/lib/articles";
+import { PROVENANCE, RELAYED_CONTENT_NOTICE, hasThirdParty } from "@/lib/mcp/provenance";
 
 const BASE = "https://vr.org";
 
@@ -195,6 +196,9 @@ export function searchVrNews(args: { query?: string; category?: string; limit?: 
     category: a.category,
     tags: a.tags,
     snippet: a.snippet,
+    // Origin is known structurally here (this list is the editorial store), so
+    // the label is assigned rather than inferred. See lib/mcp/provenance.ts.
+    provenance: PROVENANCE.EDITORIAL,
   }));
 
   const rssItems = (cache.articles ?? []).map((a) => ({
@@ -206,6 +210,9 @@ export function searchVrNews(args: { query?: string; category?: string; limit?: 
     category: a.category ?? null,
     tags: Array.isArray(a.tags) ? a.tags : [],
     snippet: a.snippet ?? null,
+    // Everything in the RSS cache is relayed text from an outside publisher,
+    // so this is unconditional rather than derived from the source name.
+    provenance: PROVENANCE.THIRD_PARTY,
   }));
 
   let items = [...editorialItems, ...rssItems];
@@ -217,23 +224,32 @@ export function searchVrNews(args: { query?: string; category?: string; limit?: 
   }
   items.sort((a, b) => new Date(b.published ?? 0).getTime() - new Date(a.published ?? 0).getTime());
 
+  const page = items.slice(0, limit);
   return {
     ok: true,
     query: query ? sanitizeReflectedValue(query) : null,
     category: category ?? "all",
     count: Math.min(items.length, limit),
     last_updated: cache.lastUpdated ?? null,
-    articles: items.slice(0, limit),
+    articles: page,
+    // Only attached when the payload actually carries relayed text, so the
+    // notice stays a signal instead of boilerplate on every response.
+    ...(hasThirdParty(page) ? { content_notice: RELAYED_CONTENT_NOTICE } : {}),
     source: BASE,
   };
 }
 
 export function getVrTrending() {
   const cache = getCache();
+  const topics = Array.isArray(cache.trending) ? cache.trending : [];
   return {
     ok: true,
     updated_at: cache.lastUpdated ?? null,
-    topics: Array.isArray(cache.trending) ? cache.trending : [],
+    topics,
+    // Trending terms are extracted from third-party headline text, so the whole
+    // list inherits that provenance rather than being marked per item.
+    provenance: PROVENANCE.THIRD_PARTY,
+    ...(topics.length > 0 ? { content_notice: RELAYED_CONTENT_NOTICE } : {}),
     source: BASE,
   };
 }
@@ -255,6 +271,9 @@ export function listVrOriginals(args: { category?: string; limit?: number }) {
     category: a.category,
     tags: a.tags,
     snippet: a.snippet,
+    // Originals are always VR.org's own work. Stated rather than implied so the
+    // two provenance values form one vocabulary a client can rely on.
+    provenance: PROVENANCE.EDITORIAL,
   }));
   return { ok: true, category: category ?? "all", count: items.length, total: articles.length, articles: items, source: BASE };
 }

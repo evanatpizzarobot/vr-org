@@ -6,6 +6,7 @@
 
 import { getAllArticles, getArticleBySlug } from "@/lib/articles";
 import { searchVrNews, getVrEvents, EXPLAINERS, sanitizeReflectedValue } from "./tools";
+import { RELAYED_CONTENT_NOTICE_MD } from "./provenance";
 
 const BASE = "https://vr.org";
 const MAX_RESPONSE_BYTES = 50_000;
@@ -46,6 +47,8 @@ function formatNewsIndex(items: NewsItem[]): string {
     "# Latest VR / AR / XR headlines",
     "",
     "Aggregated live by VR.org from VR-native and filtered general-tech sources.",
+    "",
+    RELAYED_CONTENT_NOTICE_MD,
     "",
   ];
   const kept = items.filter((it) => it.title);
