@@ -9,6 +9,7 @@
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint",
     "check:images": "node scripts/check-article-images.mjs",
+    "check:image-reuse": "node scripts/check-image-reuse.mjs",
     "check:deals": "node scripts/check-deal-links.mjs",
     "check:category-products": "node scripts/check-category-products.mjs",
     "check:rotation": "node scripts/check-author-rotation.mjs",
