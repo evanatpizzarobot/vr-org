@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Verify every <img src> in data/articles.json returns a 200.
+// Verify every <img src> in data/articles.json resolves: remote URLs must
+// return a 200, and root-relative sources must exist on disk under public/.
 // Exit 1 if any are broken so the article pipeline (and CI) can block
 // before pushing. Run with: npm run check:images
 //
@@ -52,7 +53,34 @@ async function fetchOnce(url, method) {
   }
 }
 
+// Root-relative sources (/article-images/...) are self-hosted assets baked into
+// the Docker image from public/. Resolve them on disk rather than over HTTP:
+// fetch() cannot parse a relative URL, and probing the live site would pass
+// even when the file is missing locally, because the old build still serves it.
+function probeLocal(src) {
+  const clean = src.split(/[?#]/)[0];
+  const rel = decodeURIComponent(clean).replace(/^\/+/, "");
+  const full = path.join(process.cwd(), "public", rel);
+  // Keep the lookup inside public/ so a "/../" in the src cannot escape it.
+  const root = path.join(process.cwd(), "public");
+  const resolved = path.resolve(full);
+  if (!resolved.startsWith(path.resolve(root))) {
+    return { ok: false, status: "ESCAPE" };
+  }
+  try {
+    return fs.statSync(resolved).isFile()
+      ? { ok: true, status: "LOCAL" }
+      : { ok: false, status: "NOTFILE" };
+  } catch {
+    return { ok: false, status: "MISSING" };
+  }
+}
+
 async function probe(url) {
+  // Protocol-relative (//host/path) is still a network fetch; only a single
+  // leading slash means a local asset under public/.
+  if (url.startsWith("/") && !url.startsWith("//")) return probeLocal(url);
+
   // Retry on 429 (rate limit) with backoff. Wikimedia rate-limits aggressively
   // and a 429 does not mean the image is broken.
   const backoff = [0, 1500, 4000];
@@ -105,21 +133,27 @@ if (rateLimited.length > 0) {
   }
 }
 
+// Set exitCode rather than calling process.exit(): forcing teardown while
+// fetch/abort handles are still closing trips a libuv assertion on Windows
+// (UV_HANDLE_CLOSING) and the process dies with 0xC0000409 instead of 0,
+// which would read as a failure to any CI gate.
 if (broken.length === 0) {
   console.log(`\nAll ${tasks.length - rateLimited.length} verified images OK.`);
-  process.exit(0);
+  process.exitCode = 0;
 }
 
-console.log(`\nBroken images (${broken.length} of ${tasks.length}):\n`);
-const bySlug = new Map();
-for (const b of broken) {
-  if (!bySlug.has(b.slug)) bySlug.set(b.slug, []);
-  bySlug.get(b.slug).push(b);
-}
-for (const [slug, list] of bySlug) {
-  console.log(`  ${slug}`);
-  for (const b of list) {
-    console.log(`    [${b.status}] ${b.url}${b.err ? ` (${b.err})` : ""}`);
+else {
+  console.log(`\nBroken images (${broken.length} of ${tasks.length}):\n`);
+  const bySlug = new Map();
+  for (const b of broken) {
+    if (!bySlug.has(b.slug)) bySlug.set(b.slug, []);
+    bySlug.get(b.slug).push(b);
   }
+  for (const [slug, list] of bySlug) {
+    console.log(`  ${slug}`);
+    for (const b of list) {
+      console.log(`    [${b.status}] ${b.url}${b.err ? ` (${b.err})` : ""}`);
+    }
+  }
+  process.exitCode = 1;
 }
-process.exit(1);
