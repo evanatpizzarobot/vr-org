@@ -112,6 +112,7 @@ export async function GET() {
     ["/best-vr-games-2026", reg_or("/best-vr-games-2026"), "weekly", "0.85"],
     ["/best-vr-apps", reg_or("/best-vr-apps"), "monthly", "0.85"],
     ["/best-vr-fitness", reg_or("/best-vr-fitness"), "monthly", "0.85"],
+    ["/best-mixed-reality-games", reg_or("/best-mixed-reality-games"), "monthly", "0.85"],
     ["/ar-glasses", reg_or("/ar-glasses"), "monthly", "0.85"],
     ["/vr-for-beginners", reg_or("/vr-for-beginners"), "monthly", "0.85"],
     ["/advertise", reg_or("/advertise"), "monthly", "0.6"],

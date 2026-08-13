@@ -35,6 +35,11 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/best-vr-fitness",
     description: "Top VR workout apps that actually replace the gym.",
   },
+  "best-mixed-reality-games": {
+    label: "Best Mixed Reality Games 2026",
+    href: "/best-mixed-reality-games",
+    description: "MR games that use your real walls, floor, and furniture.",
+  },
   "ar-glasses": {
     label: "Best AR Glasses 2026",
     href: "/ar-glasses",

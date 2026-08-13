@@ -78,6 +78,19 @@
       ]
     },
     {
+      "path": "/best-mixed-reality-games",
+      "file": "src/app/best-mixed-reality-games/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 30,
+      "lastRefreshed": "2026-08-13",
+      "checklist": [
+        "Re-check every listed price against the Horizon Store and Steam",
+        "Move Laser Dance off 'early access' framing once it hits 1.0",
+        "Add any new MR-first releases and drop anything delisted",
+        "Confirm each YouTube trailer ID still resolves via oEmbed"
+      ]
+    },
+    {
       "path": "/vr-for-beginners",
       "file": "src/app/vr-for-beginners/page.tsx",
       "category": "pillar",
