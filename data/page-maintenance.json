@@ -505,6 +505,21 @@
         "THE MOMENT Valve names a date or opens reservations: rewrite lede to lead with it",
         "After launch: convert to 'Steam Frame launch: how it went' record, relax cadence to 60d"
       ]
+    },
+    {
+      "path": "/vr-youtubers",
+      "file": "src/app/vr-youtubers/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 90,
+      "lastRefreshed": "2026-08-14",
+      "checklist": [
+        "Re-open every channel and re-read subs, video count, and last upload from its own page and RSS feed. Do not copy figures from another list.",
+        "Move anyone with no upload in ~90 days into the dormant group rather than deleting them, and state the last upload date",
+        "Move anyone in the dormant group who has resumed posting back into their beat",
+        "Refresh the achievement note if the cited video is no longer the channel recent or representative work",
+        "Re-check the Portuguese and Chinese-language gaps called out in the What is missing section",
+        "Bump lastUpdated and lastVerified in data/vr-creators.json"
+      ]
     }
   ]
 }

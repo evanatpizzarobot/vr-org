@@ -115,6 +115,7 @@ export async function GET() {
     ["/best-mixed-reality-games", reg_or("/best-mixed-reality-games"), "monthly", "0.85"],
     ["/ar-glasses", reg_or("/ar-glasses"), "monthly", "0.85"],
     ["/vr-for-beginners", reg_or("/vr-for-beginners"), "monthly", "0.85"],
+    ["/vr-youtubers", reg_or("/vr-youtubers"), "monthly", "0.85"],
     ["/advertise", reg_or("/advertise"), "monthly", "0.6"],
     ["/about", reg_or("/about"), "monthly", "0.5"],
     ["/privacy", reg["/privacy"] || "2026-03-23", "monthly", "0.3"],

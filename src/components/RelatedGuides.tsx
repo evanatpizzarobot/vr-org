@@ -135,6 +135,11 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/best-vr-headset-for-sim-racing",
     description: "Clarity and field of view picks for iRacing and ACC.",
   },
+  "vr-youtubers": {
+    label: "VR Creators Worth Following",
+    href: "/vr-youtubers",
+    description: "The channels still covering VR, verified upload by upload.",
+  },
 };
 
 const TAG_TO_GUIDES: Record<string, string[]> = {
