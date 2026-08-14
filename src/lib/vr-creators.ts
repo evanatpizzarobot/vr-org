@@ -1,22 +1,16 @@
 import fs from "fs";
 import path from "path";
 
-// "active" renders in the main roster grouped by beat. "dormant" is the
-// separate section for channels with enormous reach and no recent uploads;
-// they keep their last-upload date stated plainly rather than being quietly
-// dropped. "offsite" is for people whose real work has moved off YouTube.
-export type CreatorGroup = "active" | "dormant" | "offsite";
-
 export type CreatorBeat =
   | "news"
   | "games"
   | "hardware"
+  | "leaks"
+  | "culture"
   | "howto"
   | "fitness"
   | "developer"
-  | "international"
-  | "culture"
-  | "leaks";
+  | "international";
 
 export interface Creator {
   id: string;
@@ -25,13 +19,15 @@ export interface Creator {
   url: string;
   channelId: string;
   // subs is the exact display string YouTube shows ("809K"). subsText is the
-  // rounded prose form used in the page body, because an exact count rots
-  // between refreshes and a rounded one stays true for longer.
+  // rounded prose form used on the page, because an exact count rots between
+  // refreshes and a rounded one stays true for longer.
   subs: string;
   subsText: string;
   videos: string;
+  // Maintenance-only. This page is a directory of who covers what; it does not
+  // publish or comment on posting activity, so lastUpload exists solely to help
+  // the 90-day refresh confirm a channel still resolves. Never render it.
   lastUpload: string;
-  group: CreatorGroup;
   beat: CreatorBeat;
   language: string;
   note: string;
@@ -61,21 +57,8 @@ export function getCreators(): CreatorsData {
   }
 }
 
-export function creatorsInGroup(
-  data: CreatorsData,
-  group: CreatorGroup
-): Creator[] {
-  return data.creators.filter((c) => c.group === group);
-}
-
-// Within a beat the order is the file's order, which is deliberate: the page
-// is unranked, so nothing here re-sorts by subscriber count.
+// Within a beat the order is the file's order, which is deliberate: the page is
+// unranked, so nothing here re-sorts by subscriber count.
 export function creatorsInBeat(data: CreatorsData, beat: CreatorBeat): Creator[] {
-  return data.creators.filter((c) => c.group === "active" && c.beat === beat);
-}
-
-// Dormant channels sort by how recently they last posted, so the section reads
-// from "went quiet most recently" downward.
-export function sortByLastUpload(creators: Creator[]): Creator[] {
-  return [...creators].sort((a, b) => b.lastUpload.localeCompare(a.lastUpload));
+  return data.creators.filter((c) => c.beat === beat);
 }

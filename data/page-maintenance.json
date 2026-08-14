@@ -513,10 +513,11 @@
       "cadenceDays": 90,
       "lastRefreshed": "2026-08-14",
       "checklist": [
-        "Re-open every channel and re-read subs, video count, and last upload from its own page and RSS feed. Do not copy figures from another list.",
-        "Move anyone with no upload in ~90 days into the dormant group rather than deleting them, and state the last upload date",
-        "Move anyone in the dormant group who has resumed posting back into their beat",
-        "Refresh the achievement note if the cited video is no longer the channel recent or representative work",
+        "Confirm every channel URL still resolves and the handle has not changed",
+        "Re-read subscriber and video counts from each channel own page. Do not copy figures from another list.",
+        "Refresh the note if the cited video or series is no longer representative of what the channel covers",
+        "Add creators we have come across since the last pass; the roster is meant to grow",
+        "Do NOT publish posting cadence, last-upload dates, or any commentary on whether a creator is still active. lastUpload in the JSON is maintenance-only.",
         "Re-check the Portuguese and Chinese-language gaps called out in the What is missing section",
         "Bump lastUpdated and lastVerified in data/vr-creators.json"
       ]

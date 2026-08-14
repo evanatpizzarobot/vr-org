@@ -14,8 +14,6 @@ import { FaqSection } from "@/components/SpokeBlocks";
 import {
   getCreators,
   creatorsInBeat,
-  creatorsInGroup,
-  sortByLastUpload,
   type Creator,
   type CreatorBeat,
 } from "@/lib/vr-creators";
@@ -26,13 +24,13 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Best VR YouTubers & Creators 2026: Who Still Covers VR | VR.org",
+  title: "Best VR YouTubers & Creators 2026: 22 Channels Worth Following | VR.org",
   description:
-    "The VR YouTube channels worth following in 2026, verified upload by upload. Nathie, Naysy, Cas and Chary XR, MRTV, Beardo Benjo, and the non-English creators breaking stories first.",
+    "A curated directory of the best VR YouTube channels in 2026, grouped by what they cover. Nathie, Naysy, Cas and Chary XR, MRTV, Beardo Benjo, Without Parole, plus the Spanish, German, Japanese, and Korean creators worth knowing.",
   openGraph: {
-    title: "Best VR YouTubers & Creators 2026: Who Still Covers VR | VR.org",
+    title: "Best VR YouTubers & Creators 2026: 22 Channels Worth Following | VR.org",
     description:
-      "Every channel here was checked against its own upload feed. Who is still covering VR, who moved on, and who broke the story first.",
+      "The VR channels worth following, grouped by beat: news, games and mods, headsets, smart glasses, developer tutorials, and four languages beyond English.",
     url: "https://vr.org/vr-youtubers",
     siteName: "VR.org",
     images: [
@@ -46,9 +44,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image" as const,
-    title: "Best VR YouTubers & Creators 2026: Who Still Covers VR | VR.org",
+    title: "Best VR YouTubers & Creators 2026: 22 Channels Worth Following | VR.org",
     description:
-      "The VR channels worth following in 2026, verified upload by upload.",
+      "A curated directory of the best VR YouTube channels, grouped by what they cover.",
     images: ["https://vr.org/og-image.png"],
   },
   alternates: {
@@ -61,19 +59,31 @@ const BEATS: { key: CreatorBeat; title: string; blurb: string }[] = [
     key: "news",
     title: "VR news and general coverage",
     blurb:
-      "The channels that decide which stories the rest of the audience hears about, plus the one that does it every week for an audience of nine thousand.",
+      "Broad coverage across Quest, PC VR, and PlayStation. Start here if you only want to follow one or two channels.",
   },
   {
     key: "games",
     title: "Games, mods, and ports",
     blurb:
-      "Where a new VR mod or a PSVR2 release surfaces first. Between them these three cover Quest, PC VR, and PlayStation without much overlap.",
+      "Reviews, first looks, and the VR mod scene. Between them these three cover Quest, PC VR, and PSVR2 without much overlap.",
   },
   {
     key: "hardware",
     title: "Headsets and smart glasses",
     blurb:
-      "The review bench. Note how much of it is now glasses rather than headsets, which is the shift the whole category is going through.",
+      "The review bench. Worth noting how much of this beat is now glasses rather than headsets.",
+  },
+  {
+    key: "leaks",
+    title: "Leaks and unreleased hardware",
+    blurb:
+      "For the headsets nobody has announced yet.",
+  },
+  {
+    key: "culture",
+    title: "Social VR and VRChat",
+    blurb:
+      "What life inside the social platforms is actually like, as opposed to what the hardware can do.",
   },
   {
     key: "howto",
@@ -100,16 +110,6 @@ const BEATS: { key: CreatorBeat; title: string; blurb: string }[] = [
       "The part of this page most likely to show you something new. The largest VR channel we found anywhere is in this group, and so is the smallest.",
   },
 ];
-
-function formatDate(iso: string): string {
-  if (!iso) return "";
-  return new Date(iso).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  });
-}
 
 function CreatorCard({ creator }: { creator: Creator }) {
   return (
@@ -140,8 +140,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
         className="font-mono text-[11px] uppercase tracking-[0.5px] mb-2"
         style={{ color: "var(--text-muted)" }}
       >
-        {creator.subsText} subscribers &middot; {creator.videos} videos &middot;{" "}
-        {creator.language} &middot; last upload {formatDate(creator.lastUpload)}
+        {creator.subsText} subscribers &middot; {creator.language}
       </p>
 
       <p
@@ -168,10 +167,10 @@ function CreatorCard({ creator }: { creator: Creator }) {
 
 export default function VRYouTubersPage() {
   const data = getCreators();
-  const verified = formatDate(data.lastVerified);
-  const dormant = sortByLastUpload(creatorsInGroup(data, "dormant"));
-  const offsite = creatorsInGroup(data, "offsite");
-  const activeCount = creatorsInGroup(data, "active").length;
+  const total = data.creators.length;
+  const languages = new Set(
+    data.creators.map((c) => c.language.split(",")[0].trim())
+  ).size;
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -208,27 +207,27 @@ export default function VRYouTubersPage() {
     {
       question: "Who is the biggest VR YouTuber?",
       answer:
-        "In English, Nathie, at roughly 810,000 subscribers and more than 1,500 videos. Globally it is not close: the Spanish-language channel Virtumaniacos has roughly 3.7 million subscribers, more than four times the largest English VR channel, and posts several times a week. Syrmor has a larger subscriber count than Nathie at roughly 1 million, but has published only 139 videos in total and posts a few times a year.",
+        "In English, Nathie, at roughly 810,000 subscribers and more than 1,500 videos, followed by Naysy at roughly 780,000. Globally it is not close: the Spanish-language channel Virtumaniacos has roughly 3.7 million subscribers, more than four times the largest English VR channel. Syrmor has a larger subscriber count than Nathie at roughly 1 million, but works in a different form, editing VRChat interviews into short documentaries.",
     },
     {
-      question: "Which VR YouTubers are still actively posting in 2026?",
+      question: "Which VR YouTuber should I follow for PSVR2?",
       answer:
-        "Nathie, Naysy, Beardo Benjo, Cas and Chary XR, MRTV, Gamertag VR, Without Parole, Fix My Oculus, Tyriel Wood, BMFVR, OtterWorldly, ThisKory, Valem Tutorials, Dilmer Valecillos, Virtumaniacos, VoodooDE VR, Okurasu VR, and SideBook VR had all uploaded within roughly two weeks of this page's last verification. Virtual Reality Oasis, Syrmor, and ThrillSeeker all still have very large audiences but have not posted recently, so they are listed separately with their last upload dates.",
+        "Without Parole, whose catalogue runs to thousands of videos almost entirely about PlayStation VR2, covering reviews, trailers, and a regular podcast. Gamertag VR also reviews PSVR2 releases alongside Quest and PC VR, and uses a blunt buy, wait for a sale, or ignore verdict rather than a score.",
     },
     {
-      question: "Why is Virtual Reality Oasis not in the main list?",
+      question: "Which VR channels cover smart glasses rather than headsets?",
       answer:
-        "His last upload was November 13, 2025, and the three videos before it are all about the Ready Or Not VR mod he built himself rather than VR coverage. He has roughly 615,000 subscribers and a genuinely useful back catalogue of headset reviews, so he is listed under the section for large channels that have gone quiet. We would rather state the date plainly than either drop him silently or imply he is still publishing.",
+        "Tyriel Wood is the most focused on them, covering VITURE Pro 2, XREAL DNA, and camera-free glasses like the Memomind One and Even G2, usually after wearing them for an extended period. Cas and Chary XR cover glasses alongside headsets, and BMFVR mixes smart glasses testing with mixed reality work on Quest 3.",
     },
     {
-      question: "Who broke the Half-Life 2 on Quest 3 standalone story?",
+      question: "Are there good VR YouTube channels that are not in English?",
       answer:
-        "A Korean channel called SideBook VR, with 568 subscribers, posted the Half-Life 2 Quest 3 standalone test on August 10, 2026, followed by an updated run and a Portal 1 test. The story reached a large audience three days later when Nathie posted about it, over footage credited to Hostile VR. It is the clearest example on this page that audience size and contribution are different measurements.",
+        "Yes, and one of them is the largest VR channel we found anywhere. Virtumaniacos is Spanish-language with roughly 3.7 million subscribers. VoodooDE VR is a German creator who runs a separate English-language channel. Okurasu VR covers the Japanese Quest scene as a Meta Quest ambassador. SideBook VR is Korean, has 568 subscribers, and ran the Half-Life 2 Quest 3 standalone test three days before that story reached a large audience.",
     },
     {
       question: "How was this list put together?",
       answer:
-        "Every channel was opened directly and every subscriber count, video count, and last upload date was read from that channel's own page and RSS feed on the verification date shown at the top. No figure was copied from another list. Channels were then judged on what they actually publish rather than on reach alone, which is why several large channels are absent and a 568-subscriber channel is present.",
+        "Every channel was opened directly and its figures read from that channel's own page rather than copied from another roundup, then judged on what it actually publishes rather than on audience size alone. That is why several very large channels are absent and why a 568-subscriber Korean channel is included. The page is grouped by beat and is not ranked.",
     },
   ]);
 
@@ -245,84 +244,57 @@ export default function VRYouTubersPage() {
         style={{ color: "var(--text-primary)" }}
       >
         <h1
-          className="font-display text-4xl font-bold mb-3"
+          className="font-display text-4xl font-bold mb-4"
           style={{ letterSpacing: "-0.5px" }}
         >
           The VR Creators Worth Following in 2026
         </h1>
 
-        {verified && (
-          <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>
-            Every channel verified {verified}
-          </p>
-        )}
-
         <p
           className="text-[15px] leading-[1.7] mb-5"
           style={{ color: "var(--text-secondary)" }}
         >
-          We opened every channel on this page and read its numbers off its own
-          upload feed. Nothing here is copied from another list. That turned out
-          to matter, because the thing we found is not who is biggest. It is
-          what has happened to the beat itself.
+          {total} channels making VR worth watching, grouped by what they
+          actually cover so you can skip to the part you care about. Some review
+          headsets. Some live in the mod scene. One of them interviews strangers
+          inside VRChat and turns it into documentary.
         </p>
 
         <p
           className="text-[15px] leading-[1.7] mb-5"
           style={{ color: "var(--text-secondary)" }}
         >
-          Virtual Reality Oasis, at roughly 615,000 subscribers, has not uploaded
-          since November 2025, and his last three videos are about a mod he built
-          himself. ThrillSeeker, at roughly 720,000, went quiet in March; his
-          final upload is titled &ldquo;The VR Industry&apos;s Great Reset.&rdquo;
-          MRTV is still working but posted a video in July called &ldquo;We Are
-          Not Just Reviewing VR Anymore.&rdquo; Cas and Chary renamed the channel
-          from Cas and Chary VR to Cas and Chary XR. Tyriel Wood has led with
-          smart glasses for weeks.
-        </p>
-
-        <p
-          className="text-[15px] leading-[1.7] mb-5"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          The people posting about VR games several times a week are mostly the
-          mid-size channels. And the largest VR-focused channel we found
-          anywhere is not in English.
+          This is not ranked and it is not ordered by size. We opened every
+          channel rather than copying another site&apos;s roundup, and the test
+          for inclusion was simple: is this worth someone&apos;s evening? That is
+          how a Korean channel with 568 subscribers ends up here alongside one
+          with 3.7 million.
         </p>
 
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          So this is not a ranking. It is {activeCount} channels still doing the
-          work, grouped by what they actually cover, plus an honest accounting of
-          the very large ones that stopped.
+          {languages} languages are represented. If you only ever watch VR
+          coverage in English, the last section is the one to scroll to.
         </p>
 
         <nav aria-label="Jump to section" className="flex flex-wrap gap-2 mb-10">
-          {[
-            ...BEATS.filter((b) => creatorsInBeat(data, b.key).length > 0).map(
-              (b) => ({ label: b.title, id: `heading-${b.key}` })
-            ),
-            ...(dormant.length > 0
-              ? [{ label: "Gone quiet", id: "heading-dormant" }]
-              : []),
-            ...(offsite.length > 0
-              ? [{ label: "Not on YouTube", id: "heading-offsite" }]
-              : []),
-          ].map(({ label, id }) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              className="font-mono text-[11px] uppercase tracking-[0.5px] no-underline px-3 py-1.5 rounded-full border transition-colors hover:!text-[var(--accent-cyan)] hover:!border-[var(--accent-cyan)]"
-              style={{
-                color: "var(--text-secondary)",
-                borderColor: "var(--border)",
-              }}
-            >
-              {label}
-            </a>
-          ))}
+          {BEATS.filter((b) => creatorsInBeat(data, b.key).length > 0).map(
+            (b) => (
+              <a
+                key={b.key}
+                href={`#heading-${b.key}`}
+                className="font-mono text-[11px] uppercase tracking-[0.5px] no-underline px-3 py-1.5 rounded-full border transition-colors hover:!text-[var(--accent-cyan)] hover:!border-[var(--accent-cyan)]"
+                style={{
+                  color: "var(--text-secondary)",
+                  borderColor: "var(--border)",
+                }}
+              >
+                {b.title}
+              </a>
+            )
+          )}
         </nav>
 
         {BEATS.map((beat, idx) => {
@@ -356,57 +328,6 @@ export default function VRYouTubersPage() {
           );
         })}
 
-        {dormant.length > 0 && (
-          <section aria-labelledby="heading-dormant">
-            <h2
-              id="heading-dormant"
-              className="font-display text-2xl font-bold mt-12 mb-2"
-            >
-              Still enormous, no longer posting
-            </h2>
-            <p
-              className="text-[13.5px] leading-[1.6] mb-2"
-              style={{ color: "var(--text-muted)" }}
-            >
-              Three of the largest audiences in VR video belong to channels that
-              have gone quiet. Dropping them would make this page tidier and less
-              true, so here they are with their last upload dates stated plainly.
-              Their back catalogues are still worth your time.
-            </p>
-            <div className="mb-6">
-              {dormant.map((c) => (
-                <CreatorCard key={c.id} creator={c} />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {offsite.length > 0 && (
-          <section aria-labelledby="heading-offsite">
-            <h2
-              id="heading-offsite"
-              className="font-display text-2xl font-bold mt-12 mb-2"
-            >
-              Doing the work somewhere other than YouTube
-            </h2>
-            <p
-              className="text-[13.5px] leading-[1.6] mb-2"
-              style={{ color: "var(--text-muted)" }}
-            >
-              A growing amount of real VR discussion now happens in places with
-              no upload schedule to check. Hostile VR is the example we ran into
-              directly: the footage behind the Half-Life 2 on Quest 3 story this
-              month was theirs, it reached everyone through someone else&apos;s
-              post, and we could not find a channel of their own to point you to.
-            </p>
-            <div className="mb-6">
-              {offsite.map((c) => (
-                <CreatorCard key={c.id} creator={c} />
-              ))}
-            </div>
-          </section>
-        )}
-
         <h2 className="font-display text-2xl font-bold mt-12 mb-3">
           What is missing, and why we are telling you
         </h2>
@@ -414,13 +335,12 @@ export default function VRYouTubersPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Two gaps we could not close honestly. We did not find an active,
-          high-quality Portuguese-language VR channel in this pass, and rather
-          than pad the list with something we would not actually recommend, we
-          left the slot empty. Chinese-language VR creators are a bigger
-          omission, and mostly a structural one: that conversation happens on
-          Bilibili, not YouTube, so a page built on YouTube upload feeds is the
-          wrong instrument for finding it. If you know who belongs in either
+          Two gaps we could not close honestly. We did not find a Portuguese-language
+          VR channel we would actually recommend, and rather than pad the list we
+          left the slot empty. Chinese-language VR creators are a bigger omission,
+          and mostly a structural one: that conversation largely happens on
+          Bilibili rather than YouTube, so a page built around YouTube channels is
+          the wrong instrument for finding it. If you know who belongs in either
           slot, we would genuinely like to hear about it.
         </p>
 
@@ -431,15 +351,13 @@ export default function VRYouTubersPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Every entry was verified by opening the channel and reading its own
-          numbers, not by cross-checking someone else&apos;s roundup. Subscriber
-          counts are rounded on purpose, because an exact figure is wrong within
-          a week. Inclusion is judged on what a channel publishes rather than how
-          many people watch it, which is why a few very large channels are absent
-          and why a Korean channel with 568 subscribers made it in on the
-          strength of one test video. We re-verify every 90 days, and anyone who
-          goes quiet moves to the section above rather than disappearing. For
-          what to actually put on the hardware they are reviewing, start with our{" "}
+          Every entry was checked by opening the channel itself, not by
+          cross-referencing someone else&apos;s list. Subscriber counts are
+          rounded on purpose, because an exact figure is wrong within a week.
+          Inclusion is judged on what a channel publishes rather than how many
+          people watch it. We revisit the roster every 90 days and add creators
+          as we come across them, so this will grow. For what to actually put on
+          the hardware these channels review, start with our{" "}
           <a
             href="/best-vr-headsets"
             className="no-underline hover:underline"
