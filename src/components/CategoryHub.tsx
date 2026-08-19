@@ -211,10 +211,6 @@ export function CategoryHub({ category, title, description, initialEditorial, pr
                       e.currentTarget.style.borderColor = "var(--border)";
                     }}
                   >
-                    <div
-                      className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity"
-                      style={{ background: "var(--accent-cyan)" }}
-                    />
                     <div className="flex items-center gap-2.5 mb-2">
                       <span
                         className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px]"
@@ -300,10 +296,6 @@ export function CategoryHub({ category, title, description, initialEditorial, pr
                       e.currentTarget.style.borderColor = "var(--border)";
                     }}
                   >
-                    <div
-                      className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity"
-                      style={{ background: "var(--accent-cyan)" }}
-                    />
                     <div
                       className="font-display font-semibold text-[15px] leading-[1.4] transition-colors group-hover:!text-[var(--accent-cyan)] mb-1"
                       style={{ color: "var(--text-primary)" }}

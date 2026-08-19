@@ -1,5 +1,7 @@
 "use client";
 
+import { breakingLabel } from "@/lib/breaking";
+
 interface OriginalArticleCardProps {
   slug: string;
   title: string;
@@ -7,6 +9,7 @@ interface OriginalArticleCardProps {
   category: string;
   author: string;
   publishDate: string;
+  breaking?: boolean | string;
 }
 
 export function OriginalArticleCard({
@@ -16,6 +19,7 @@ export function OriginalArticleCard({
   category,
   author,
   publishDate,
+  breaking,
 }: OriginalArticleCardProps) {
   const categoryLabel =
     category.charAt(0).toUpperCase() + category.slice(1);
@@ -25,6 +29,9 @@ export function OriginalArticleCard({
     day: "numeric",
     timeZone: "UTC",
   });
+  // Big-news red outline, auto-expires 48h after publish.
+  const breakingText = breakingLabel(breaking, publishDate);
+  const restingBorder = breakingText ? "var(--accent-red)" : "var(--border)";
 
   return (
     <a
@@ -32,23 +39,32 @@ export function OriginalArticleCard({
       className="block rounded-[10px] border no-underline transition-all group relative overflow-hidden"
       style={{
         background: "var(--bg-card)",
-        borderColor: "var(--border)",
+        borderColor: restingBorder,
         padding: "20px 24px",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.background = "var(--bg-card-hover)";
-        e.currentTarget.style.borderColor = "var(--border-active)";
+        e.currentTarget.style.borderColor = breakingText
+          ? "var(--accent-red)"
+          : "var(--border-active)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.background = "var(--bg-card)";
-        e.currentTarget.style.borderColor = "var(--border)";
+        e.currentTarget.style.borderColor = restingBorder;
       }}
     >
-      <div
-        className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity"
-        style={{ background: "var(--accent-cyan)" }}
-      />
       <div className="flex items-center gap-2.5 mb-2">
+        {breakingText && (
+          <span
+            className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px]"
+            style={{
+              background: "color-mix(in srgb, var(--accent-red) 15%, transparent)",
+              color: "var(--accent-red)",
+            }}
+          >
+            {breakingText}
+          </span>
+        )}
         <span
           className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px]"
           style={{

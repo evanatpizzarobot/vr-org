@@ -564,21 +564,6 @@ nav::-webkit-scrollbar {
 }
 
 /* ===== ARTICLE CARD HOVER POLISH ===== */
-.card-accent-bar {
-  width: 3px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.group:hover .card-accent-bar {
-  transform: scaleY(1);
-}
-
 .source-badge-hover {
   transition: transform 0.15s ease;
 }
@@ -670,10 +655,6 @@ nav::-webkit-scrollbar {
     animation: none;
     opacity: 1;
     transform: none;
-  }
-
-  .card-accent-bar {
-    transition: none;
   }
 }
 

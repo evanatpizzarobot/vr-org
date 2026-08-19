@@ -12,6 +12,7 @@ import { AdZone } from "@/components/AdZone";
 import { useFeed } from "@/hooks/useFeed";
 import { useFilters } from "@/hooks/useFilters";
 import { SOURCES } from "@/lib/constants";
+import { breakingLabel } from "@/lib/breaking";
 import type { HomeInitialData, EditorialSummary } from "@/lib/home-data";
 
 const WRITER_COLORS: Record<string, string> = {
@@ -204,6 +205,9 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
                 {editorials.map((ea) => {
                   const writerColor = WRITER_COLORS[ea.author] || "var(--accent-cyan)";
                   const catColor = CATEGORY_COLORS[ea.category] || "var(--accent-cyan)";
+                  // Big-news red outline, auto-expires 48h after publish.
+                  const breaking = breakingLabel(ea.breaking, ea.publishDate);
+                  const restingBorder = breaking ? "var(--accent-red)" : "var(--border)";
                   return (
                     <a
                       key={ea.id}
@@ -211,24 +215,30 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
                       className="block rounded-[10px] border no-underline transition-all group relative overflow-hidden fade-in hover:translate-y-[-2px] editorial-glow"
                       style={{
                         background: "var(--bg-card)",
-                        borderColor: "var(--border)",
+                        borderColor: restingBorder,
                         padding: "18px 20px",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.background = "var(--bg-card-hover)";
-                        e.currentTarget.style.borderColor = writerColor;
+                        e.currentTarget.style.borderColor = breaking ? "var(--accent-red)" : writerColor;
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.background = "var(--bg-card)";
-                        e.currentTarget.style.borderColor = "var(--border)";
+                        e.currentTarget.style.borderColor = restingBorder;
                       }}
                     >
-                      {/* Writer accent stripe (always visible) */}
-                      <div
-                        className="absolute left-0 top-0 bottom-0 w-[3px] transition-opacity"
-                        style={{ background: writerColor, opacity: 0.5 }}
-                      />
                       <div className="flex items-center gap-2.5 mb-2">
+                        {breaking && (
+                          <span
+                            className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px]"
+                            style={{
+                              background: "color-mix(in srgb, var(--accent-red) 15%, transparent)",
+                              color: "var(--accent-red)",
+                            }}
+                          >
+                            {breaking}
+                          </span>
+                        )}
                         <span
                           className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px]"
                           style={{
@@ -322,10 +332,6 @@ export function HomeClient({ initial }: { initial: HomeInitialData }) {
                     e.currentTarget.style.borderColor = "var(--border)";
                   }}
                 >
-                  <div
-                    className="absolute left-0 top-0 bottom-0 w-[3px] opacity-0 group-hover:opacity-100 transition-opacity"
-                    style={{ background: "var(--accent-cyan)" }}
-                  />
                   <div
                     className="font-display font-semibold text-[13px] leading-[1.4] transition-colors group-hover:!text-[var(--accent-cyan)] mb-1"
                     style={{ color: "var(--text-primary)" }}

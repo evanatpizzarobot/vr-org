@@ -14,6 +14,10 @@ export interface EditorialArticle {
   tags: string[];
   snippet: string;
   featured: boolean;
+  // Optional big-news flag: true renders a "BREAKING" red-outline card
+  // treatment, a string (e.g. "LEAK") becomes the label. Auto-expires 48h
+  // after publishDate via src/lib/breaking.ts.
+  breaking?: boolean | string;
   body: string;
 }
 

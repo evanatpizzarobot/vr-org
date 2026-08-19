@@ -19,6 +19,7 @@ export interface EditorialSummary {
   publishDate: string;
   category: string;
   tags: string[];
+  breaking?: boolean | string;
 }
 
 export interface HomeInitialData {
@@ -87,6 +88,7 @@ function mixEditorials(limit: number): EditorialSummary[] {
     publishDate: a.publishDate,
     category: a.category,
     tags: a.tags,
+    breaking: a.breaking,
   }));
 }
 

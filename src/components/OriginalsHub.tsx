@@ -15,6 +15,7 @@ interface ArticleSummary {
   category: string;
   author: string;
   publishDate: string;
+  breaking?: boolean | string;
 }
 
 // `initialArticles` lets the server seed the full list so the originals archive
@@ -118,6 +119,7 @@ export function OriginalsHub({ initialArticles }: { initialArticles?: ArticleSum
                   category={article.category}
                   author={article.author}
                   publishDate={article.publishDate}
+                  breaking={article.breaking}
                 />
                 {/* One in-list unit. /originals drew 336 human pageviews/day
                     with zero ads (measured 2026-08-01). Placed after the sixth

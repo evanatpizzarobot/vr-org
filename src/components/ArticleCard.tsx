@@ -24,7 +24,6 @@ function timeAgo(dateStr: string): string {
 
 export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
   const src = SOURCES[article.source];
-  const accentColor = src?.color || "var(--accent-cyan)";
   const isOriginal = article.source === "vrorg";
 
   // Relative time depends on the current clock, so compute it after mount to
@@ -60,12 +59,6 @@ export function ArticleCard({ article, compact, index = 0 }: ArticleCardProps) {
         e.currentTarget.style.boxShadow = "var(--shadow-card)";
       }}
     >
-      {/* Left accent border, slides in from bottom on hover */}
-      <div
-        className="card-accent-bar"
-        style={{ background: accentColor }}
-      />
-
       {/* Meta row */}
       <div className="flex items-center gap-2.5 mb-2">
         {isOriginal ? (

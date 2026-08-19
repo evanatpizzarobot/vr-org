@@ -88,10 +88,6 @@ export function RelatedArticles({ current }: { current: EditorialArticle }) {
                 padding: "16px 18px",
               }}
             >
-              <div
-                className="absolute left-0 top-0 bottom-0 w-[3px]"
-                style={{ background: writerColor, opacity: 0.5 }}
-              />
               <div className="flex items-center gap-2 mb-2">
                 <span
                   className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-[3px] uppercase tracking-[0.5px]"
