@@ -25,4 +25,28 @@ async function postTweet(text) {
   return result.data;
 }
 
-module.exports = { postTweet };
+// Cached for the life of the process. The bot runs long-lived under PM2, so this is one
+// extra API call per restart rather than one per posting cycle.
+let selfUserId = null;
+
+async function getOwnUserId() {
+  if (!selfUserId) {
+    const me = await getClient().v2.me();
+    selfUserId = me.data.id;
+  }
+  return selfUserId;
+}
+
+// Recent tweets from our own account, including ones posted by hand rather than by this bot.
+// Requests entities so we can read the real destination of each t.co link.
+async function getOwnRecentTweets({ maxResults = 50 } = {}) {
+  const api = getClient();
+  const userId = await getOwnUserId();
+  const res = await api.v2.userTimeline(userId, {
+    max_results: maxResults,
+    "tweet.fields": "created_at,entities",
+  });
+  return (res.data && res.data.data) || [];
+}
+
+module.exports = { postTweet, getOwnRecentTweets, getOwnUserId };

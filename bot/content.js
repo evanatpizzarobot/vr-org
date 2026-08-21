@@ -36,17 +36,20 @@ async function fetchApi(endpoint) {
 
 // Returns recently-published originals (newest first) that have not been tweeted yet.
 // Empty array on a day with nothing new, which keeps the account silent rather than posting filler.
-function getNewOriginals(posted) {
+// `shared` is the view from selfPosts: anything already on the @vrdotorg timeline, including
+// manual shares. Without it the bot only knows about its own posts and will duplicate Evan.
+function getNewOriginals(posted, shared = null) {
   const articles = readJson("articles.json");
   if (!articles) return [];
   const windowStart = Date.now() - NEW_ORIGINAL_WINDOW_H * 60 * 60 * 1000;
   return articles
     .filter((a) => new Date(a.publishDate).getTime() >= windowStart)
     .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
-    .filter((a) => !tracker.wasPostedRecently(posted, a.slug, "articles", 48));
+    .filter((a) => !tracker.wasPostedRecently(posted, a.slug, "articles", 48))
+    .filter((a) => !(shared && shared.hasSlug(a.slug)));
 }
 
-async function getRssHeadlines(posted) {
+async function getRssHeadlines(posted, shared = null) {
   // Fetch from the live Next.js API (feed data is in-memory, not on disk)
   const feedData = await fetchApi("feed?limit=200");
   const trendingData = await fetchApi("trending");
@@ -63,6 +66,7 @@ async function getRssHeadlines(posted) {
       const hash = tracker.hashUrl(a.link);
       return !tracker.wasPostedRecently(posted, hash, "rss", 48);
     })
+    .filter((a) => !(shared && shared.hasUrl(a.link)))
     .filter((a) => {
       const pubTime = new Date(a.pubDate).getTime();
       return pubTime > twentyFourHoursAgo;
@@ -107,8 +111,8 @@ async function getRssHeadlines(posted) {
 
 // Returns the single top-scored headline only if it clears the notability bar, else null.
 // This is the gate for the optional 2nd "bigger news worth posting" tweet.
-async function getNotableHeadline(posted) {
-  const headlines = await getRssHeadlines(posted);
+async function getNotableHeadline(posted, shared = null) {
+  const headlines = await getRssHeadlines(posted, shared);
   if (!headlines.length) return null;
   const top = headlines[0];
   return (top.score || 0) >= NOTABLE_SCORE ? top : null;

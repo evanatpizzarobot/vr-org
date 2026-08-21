@@ -7,6 +7,7 @@ const { postTweet } = require("./twitter");
 const content = require("./content");
 const formatter = require("./formatter");
 const tracker = require("./tracker");
+const selfPosts = require("./selfPosts");
 const health = require("./health");
 
 const LOG_PATH = path.join(__dirname, "bot.log");
@@ -93,9 +94,24 @@ async function checkAndPost() {
     return;
   }
 
+  // What the account has already shared, including posts Evan made by hand. Fetched only
+  // after the interval and daily-limit gates above, so this costs at most a couple of API
+  // reads per day and cannot re-post something that was already shared manually.
+  const shared = await selfPosts.load(posted, log);
+  if (shared.source === "api") {
+    log(`[TIMELINE] Read ${shared.count} shared link(s) from @vrdotorg`);
+  }
+
   // --- Slot 1: new original article (once per day) ---
   if ((daily.originals || 0) < 1) {
-    const newArticles = content.getNewOriginals(posted);
+    const skippedBySelf = content
+      .getNewOriginals(posted)
+      .filter((a) => shared.hasSlug(a.slug));
+    for (const a of skippedBySelf) {
+      log(`[SKIP] Already shared from @vrdotorg${shared.sharedAt(a.slug) ? ` at ${shared.sharedAt(a.slug)}` : ""}: ${a.slug}`);
+    }
+
+    const newArticles = content.getNewOriginals(posted, shared);
     if (newArticles.length > 0) {
       const article = newArticles[0];
       const tweet = formatter.formatOriginalTweet(article);
@@ -111,7 +127,7 @@ async function checkAndPost() {
 
   // --- Slot 2: notable news headline (once per day, only if it clears the bar) ---
   if ((daily.news || 0) < 1) {
-    const headline = await content.getNotableHeadline(posted);
+    const headline = await content.getNotableHeadline(posted, shared);
     if (headline) {
       const tweet = formatter.formatRssTweet(headline);
       const hash = tracker.hashUrl(headline.link);
