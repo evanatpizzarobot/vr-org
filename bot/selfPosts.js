@@ -53,14 +53,26 @@ function extract(tweets, { lookbackHours = LOOKBACK_HOURS, now = Date.now() } = 
     }
 
     const candidates = [];
-    for (const u of (t.entities && t.entities.urls) || []) {
-      // expanded_url is the real destination; unwound_url appears when X followed a redirect.
-      if (u.unwound_url) candidates.push(u.unwound_url);
-      if (u.expanded_url) candidates.push(u.expanded_url);
+
+    // Long posts come back as note tweets: the top-level `text` is truncated at 280 chars
+    // and top-level `entities` is absent entirely, so the real link only exists under
+    // note_tweet. A roundup shared with all its headlines is exactly this shape, and
+    // reading only the top level silently misses it.
+    const entitySets = [t.entities, t.note_tweet && t.note_tweet.entities];
+    for (const ents of entitySets) {
+      for (const u of (ents && ents.urls) || []) {
+        // expanded_url is the real destination; unwound_url appears when X followed a redirect.
+        if (u.unwound_url) candidates.push(u.unwound_url);
+        if (u.expanded_url) candidates.push(u.expanded_url);
+      }
     }
+
     // Retweets and quotes can carry the link in the body rather than in entities.
-    for (const m of String(t.text || "").matchAll(/https?:\/\/[^\s]+/g)) {
-      candidates.push(m[0]);
+    const texts = [t.text, t.note_tweet && t.note_tweet.text];
+    for (const body of texts) {
+      for (const m of String(body || "").matchAll(/https?:\/\/[^\s]+/g)) {
+        candidates.push(m[0]);
+      }
     }
 
     for (const c of candidates) {

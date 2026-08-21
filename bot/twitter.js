@@ -44,7 +44,9 @@ async function getOwnRecentTweets({ maxResults = 50 } = {}) {
   const userId = await getOwnUserId();
   const res = await api.v2.userTimeline(userId, {
     max_results: maxResults,
-    "tweet.fields": "created_at,entities",
+    // note_tweet is required: long posts truncate `text` at 280 chars and omit top-level
+    // `entities`, so without it a shared link past that cutoff is invisible.
+    "tweet.fields": "created_at,entities,note_tweet",
   });
   return (res.data && res.data.data) || [];
 }
