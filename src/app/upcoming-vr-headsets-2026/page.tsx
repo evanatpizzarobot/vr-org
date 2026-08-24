@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Upcoming VR Headsets 2026: New Releases and What's Coming Next",
   datePublished: "2026-06-04",
-  dateModified: "2026-08-10",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -74,7 +74,7 @@ const headsetList = itemListSchema("New and Upcoming VR Headsets 2026", [
   { name: "Bigscreen Beyond 2", url: "https://vr.org/best-pc-vr-headset#bigscreen-beyond-2" },
   { name: "Apple Vision Pro (M5)", url: "https://vr.org/quest-3-vs-vision-pro" },
   { name: "Valve Steam Frame", url: "https://vr.org/steam-frame" },
-  { name: "Pico Project Swan" },
+  { name: "Pico Space Pro" },
   { name: "Pimax Dream Air" },
   { name: "Meta Quest 4" },
   { name: "Samsung Galaxy Glasses" },
@@ -84,7 +84,7 @@ const faq = faqPageSchema([
   {
     question: "What new VR headsets are coming in 2026?",
     answer:
-      "2026 has already brought the Samsung Galaxy XR, the flagship Android XR headset, and the ultralight Bigscreen Beyond 2 for PC VR, alongside an M5-chip refresh of the Apple Vision Pro. The big one still to come is Valve's Steam Frame, confirmed for summer 2026 with launch signals stacking up fast, plus Pico's Project Swan and a wave of smart glasses including Samsung's Galaxy Glasses. The Meta Quest 4 is expected in 2027 or later.",
+      "2026 has already brought the Samsung Galaxy XR, the flagship Android XR headset, and the ultralight Bigscreen Beyond 2 for PC VR, alongside an M5-chip refresh of the Apple Vision Pro. The big one still to come is Valve's Steam Frame, confirmed for summer 2026, now with 89 certified Great on Frame titles and its own unboxing videos already leaked. Pico's Project Swan is now the Pico Space Pro, debuting September 2, and a wave of smart glasses follows including Samsung's Galaxy Glasses, XREAL's AURA and RayNeo's September 4 pair. The Meta Quest 4 is expected in 2027 or later.",
   },
   {
     question: "When is the Valve Steam Frame coming out?",
@@ -129,7 +129,7 @@ export default function UpcomingVRHeadsets2026Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 10, 2026
+          Last updated: August 24, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -152,8 +152,9 @@ export default function UpcomingVRHeadsets2026Page() {
           2026 has already delivered the Samsung Galaxy XR and the ultralight
           Bigscreen Beyond 2, plus an M5 refresh of the Apple Vision Pro. Next up
           is Valve&apos;s Steam Frame, confirmed for summer 2026 with launch
-          signals stacking up by the week, followed by Pico&apos;s Project Swan, a
-          wave of smart glasses, and the Meta Quest 4 in 2027 or later. This
+          signals stacking up by the week, followed by the Pico Space Pro on
+          September 2, a wave of smart glasses, and the Meta Quest 4 in 2027 or
+          later. This
           is our running guide to the newest and upcoming VR headsets, updated as
           they are announced and released. For exact dates across every category,
           including games and accessories, see our{" "}
@@ -264,17 +265,19 @@ export default function UpcomingVRHeadsets2026Page() {
           follow every beat.
         </p>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          <strong>Pico Project Swan.</strong> Pico&apos;s next flagship is
-          shaping up as a direct Vision Pro competitor, headlined by reported
-          4,000 PPI micro-OLED displays. We broke down{" "}
+          <strong>Pico Space Pro.</strong> Project Swan has a name and a date.
+          Pico&apos;s direct Vision Pro competitor{" "}
           <a
-            href="/articles/pico-project-swan-4000-ppi-vision-pro-competitor-2026"
+            href="/articles/pico-space-pro-september-2-beijing-debut-2026"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            what Project Swan is aiming at
+            debuts in Beijing on September 2
           </a>
-          ; specs and timing remain reported rather than confirmed.
+          , three weeks ahead of Meta Connect, with a claimed 4,000 PPI
+          micro-OLED sheet, dual-chip compute at 12ms perception latency and
+          270 grams. Nobody outside Pico has handled it, and a debut event is
+          not a retail date, so treat the spec sheet as a claim.
         </p>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           <strong>Meta Quest 4.</strong> Not a 2026 device. Credible reporting

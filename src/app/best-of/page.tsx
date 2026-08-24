@@ -142,6 +142,11 @@ const collectionSchema = {
     },
     {
       "@type": "Article",
+      name: "Best Mixed Reality Games 2026",
+      url: "https://vr.org/best-mixed-reality-games",
+    },
+    {
+      "@type": "Article",
       name: "Best VR Apps & Utilities 2026",
       url: "https://vr.org/best-vr-apps",
     },
@@ -316,6 +321,14 @@ const CARDS: BestOfCard[] = [
     description:
       "The top VR games to play right now. New releases, early access hits, and most anticipated.",
     href: "/best-vr-games-2026",
+    badge: "Gaming",
+    badgeColor: "var(--accent-green)",
+  },
+  {
+    title: "Best Mixed Reality Games 2026",
+    description:
+      "The MR games worth clearing floor space for. Passthrough titles that use your actual room on Quest 3 and Quest 3S.",
+    href: "/best-mixed-reality-games",
     badge: "Gaming",
     badgeColor: "var(--accent-green)",
   },

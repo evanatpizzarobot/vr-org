@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Fitness Apps 2026: Top 10 VR Workout Games",
   datePublished: "2026-04-20",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -102,7 +102,7 @@ const fitnessFaq = faqPageSchema([
   {
     question: "What is the best VR fitness app?",
     answer:
-      "FitXR is the leading VR fitness app for structured, instructor-led workouts. Supernatural's current app shuts down December 3, 2026 ahead of a relaunch under the independent Supernatural Health, with the subscription doubling to $20 a month. Beat Saber remains the best gamified fitness app for high-intensity sessions, and for boxing specifically Les Mills Bodycombat and Thrill of the Fight 2 are outstanding.",
+      "FitXR is the leading VR fitness app for structured, instructor-led workouts. Supernatural's current app shuts down December 3, 2026 ahead of a relaunch under the independent Supernatural Health, with the subscription doubling to $20 a month, a $180 founding membership on offer, Favorites confirmed gone, and no guarantee that workout history transfers. Beat Saber remains the best gamified fitness app for high-intensity sessions, and for boxing specifically Les Mills Bodycombat and Thrill of the Fight 2 are outstanding.",
   },
   {
     question: "How many calories do you burn in VR?",
@@ -144,7 +144,7 @@ export default function BestVRFitnessPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p
@@ -237,6 +237,26 @@ export default function BestVRFitnessPage() {
           returning and the subscription doubling to $20 a month on relaunch.
           Do not start a new annual subscription now; ride it monthly until
           the handover shakes out, or put the money on FitXR.
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Three things have firmed up since, and they matter if you are
+          weighing the $180 founding membership the new company is selling.
+          Favorites are confirmed gone at the handover. The rebuilt team is
+          about 15 people where the Meta-era operation ran close to 200, so
+          expect a thinner class release schedule at first. And head of fitness
+          Leanne Pedante{" "}
+          <a
+            href="/articles/supernatural-102-days-founding-members-workout-history-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            will not promise your workout history survives the move
+          </a>
+          . If years of logged sessions are the reason you stay subscribed,
+          treat that as unresolved rather than assumed.
         </p>
 
         {/* 2. FitXR */}

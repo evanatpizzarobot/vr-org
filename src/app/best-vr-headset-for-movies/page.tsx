@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Watching Movies 2026: Top Picks",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-18",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -150,7 +150,7 @@ export default function BestVRHeadsetForMoviesPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 18, 2026
+          Last updated: August 24, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -211,7 +211,26 @@ export default function BestVRHeadsetForMoviesPage() {
           </a>{" "}
           as memory costs pushed prices up across its lineup, so do not wait
           for a discount that is not coming. If money is no object and movies
-          are the point, this is the one. Compare it to the value pick in our{" "}
+          are the point, this is the one.
+        </p>
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          One thing to weigh before spending $3,699 on a movie headset:
+          Bloomberg reported that Apple cut more than 200 roles on August 21,
+          about 100 of them inside the Vision Products Group, and the{" "}
+          <a
+            href="/articles/apple-vision-pro-layoffs-immersive-video-gaming-teams-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            immersive video unit was among the teams cut back
+          </a>
+          . The hardware is unaffected and Apple went ahead with its first live
+          immersive baseball stream a week later, so nothing you can buy today
+          got worse. But Apple Immersive is the format that makes this headset
+          feel like more than an expensive screen, and the team producing it is
+          smaller than it was in July. Buy the Vision Pro for how it plays the
+          movies you already own, not for a promised pipeline of exclusives.
+          Compare it to the value pick in our{" "}
           <a
             href="/quest-3-vs-vision-pro"
             className="no-underline hover:underline"

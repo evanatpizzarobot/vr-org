@@ -131,7 +131,7 @@
       "file": "src/app/best-of/page.tsx",
       "category": "hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-07-18",
+      "lastRefreshed": "2026-08-24",
       "checklist": [
         "Hub page; verify card grid links match the live pillar pages",
         "Update card descriptions if a pillar page shifts focus",
@@ -143,7 +143,7 @@
       "file": "src/app/deals/page.tsx",
       "category": "commercial",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-08-10",
+      "lastRefreshed": "2026-08-24",
       "checklist": [
         "Source of truth is data/deals.json, not the page",
         "Verify every product is still in stock and price is within ~10% of listed",
@@ -157,7 +157,7 @@
       "file": "src/app/events/page.tsx",
       "category": "schedule",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-10",
+      "lastRefreshed": "2026-08-24",
       "checklist": [
         "Source of truth is data/events.json (EventsCalendar auto-buckets past vs upcoming)",
         "Add upcoming VR / AR conferences and game launches",
@@ -300,7 +300,7 @@
       "cadenceDays": 30,
       "lastRefreshed": "2026-07-17",
       "checklist": [
-        "Verify Quest 3 ($599) and Apple Vision Pro ($3,499) prices",
+        "Verify Quest 3 ($599) and Apple Vision Pro ($3,699) prices",
         "Confirm the Vision Pro model and chip generation are current",
         "Update if either device gets a successor or a price change",
         "Keep the cross-links to /best-vr-headsets and /quest-3-vs-quest-3s intact"
@@ -352,7 +352,7 @@
       "cadenceDays": 30,
       "lastRefreshed": "2026-07-17",
       "checklist": [
-        "Verify prices: Quest 3 ($599), Quest 3S ($349), Vision Pro ($3499), Galaxy XR ($1799)",
+        "Verify prices: Quest 3 ($599), Quest 3S ($349), Vision Pro ($3,699), Galaxy XR ($1799)",
         "Add a verified Samsung Galaxy XR Offer URL if one becomes available (currently Product-only, no Offer)",
         "Update picks if a notable standalone (Pico, Play For Dream) enters the US market",
         "Keep cross-links to /best-vr-headsets, /quest-3-vs-quest-3s, /best-pc-vr-headset intact"
@@ -418,7 +418,7 @@
       "cadenceDays": 30,
       "lastRefreshed": "2026-07-18",
       "checklist": [
-        "Verify prices: Vision Pro ($3,499), Quest 3 ($599) against data/deals.json",
+        "Verify prices: Vision Pro ($3,699), Quest 3 ($599) against data/deals.json",
         "Confirm media-app availability (Bigscreen, Skybox, Netflix, Apple TV, Google TV) is still accurate",
         "Keep the PSVR2 'not great for movies' caveat unless Sony ships a real media app",
         "Keep cross-links to /quest-3-vs-vision-pro, /best-vr-apps, /best-vr-headsets intact"
@@ -442,7 +442,7 @@
       "file": "src/app/vr-release-dates/page.tsx",
       "category": "tracker",
       "cadenceDays": 7,
-      "lastRefreshed": "2026-08-10",
+      "lastRefreshed": "2026-08-24",
       "checklist": [
         "Run npm run check:release-dates; it fails on any item that shipped but is still marked upcoming",
         "Source of truth is data/release-dates.json, not the page",
@@ -457,7 +457,7 @@
       "file": "src/app/steam-frame/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-10",
+      "lastRefreshed": "2026-08-24",
       "checklist": [
         "Refresh on EVERY Steam Frame news beat until launch, not just on cadence",
         "Update the release-date and price signal sections with the newest reporting",
@@ -472,7 +472,7 @@
       "file": "src/app/great-on-frame/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-10",
+      "lastRefreshed": "2026-08-24",
       "checklist": [
         "Check store.steampowered.com/greatonframe for new titles on EVERY Steam Frame beat",
         "Append additions to VERIFIED_GAMES (in page order) AND the CHANGELOG with dates",
@@ -485,7 +485,7 @@
       "file": "src/app/steam-frame-price/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-10",
+      "lastRefreshed": "2026-08-24",
       "checklist": [
         "Append new leaks/estimates to PRICE_SIGNALS with dates",
         "Keep the lede's 'as of' date and dollar figures matched to the newest signal",
@@ -498,7 +498,7 @@
       "file": "src/app/steam-frame-release-date/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-10",
+      "lastRefreshed": "2026-08-24",
       "checklist": [
         "Append new signals to DATE_SIGNALS with dates",
         "Keep the lede's 'as of' date current on every touch",

@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Quest 3 vs Quest 3S: Which Meta Quest Should You Buy in 2026?",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -160,7 +160,7 @@ export default function Quest3VsQuest3SPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -291,7 +291,11 @@ export default function Quest3VsQuest3SPage() {
           One question worth answering before you buy either: should you wait
           for the Quest 4? No. Credible reporting puts it in 2027 or later, and
           Meta&apos;s April price hike moved both current headsets up, not down,
-          so there is no discount wave coming. Our{" "}
+          so there is no discount wave coming. Meta Connect lands September 23
+          to 24 and is expected to center on smart glasses rather than a new
+          headset, which means these two stay Meta&apos;s current lineup through
+          the rest of the year. Both prices were re-checked on Meta&apos;s own
+          store on August 24 and are unchanged at $599.99 and $349.99. Our{" "}
           <a
             href="/articles/meta-quest-4-everything-we-know"
             className="no-underline hover:underline"

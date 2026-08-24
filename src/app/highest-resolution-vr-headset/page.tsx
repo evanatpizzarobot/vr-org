@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Highest Resolution VR Headset 2026: Sharpest Displays Ranked",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -150,7 +150,7 @@ export default function HighestResolutionVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -275,18 +275,23 @@ export default function HighestResolutionVRHeadsetPage() {
         </p>
 
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          The resolution race is not standing still either. Pico&apos;s Project
-          Swan is{" "}
+          The resolution race is not standing still either, and the closest
+          challenger now has a name and a date. Project Swan is the{" "}
           <a
-            href="/articles/pico-project-swan-4000-ppi-vision-pro-competitor-2026"
+            href="/articles/pico-space-pro-september-2-beijing-debut-2026"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            reportedly targeting 4,000 PPI micro-OLED displays
-          </a>{" "}
-          aimed straight at the Vision Pro, and Valve&apos;s summer-bound Steam
-          Frame pairs dual 2160x2160 panels with eye-tracked foveated
-          rendering, which spends its pixels where you are actually looking.
+            Pico Space Pro, debuting in Beijing on September 2
+          </a>
+          , with a claimed 4,000 PPI micro-OLED sheet aimed straight at the
+          Vision Pro, dual-chip compute at 12ms perception latency, and 270
+          grams. Treat that number as a claim until somebody outside Pico has
+          handled the hardware. A debut event is not a review, and PPI on a
+          spec sheet is not pixels per degree through a lens, which is the
+          figure this page ranks on. Valve&apos;s summer-bound Steam Frame
+          pairs dual 2160x2160 panels with eye-tracked foveated rendering,
+          which spends its pixels where you are actually looking.
           Our{" "}
           <a
             href="/steam-frame"

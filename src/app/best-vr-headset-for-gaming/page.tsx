@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Gaming 2026: Top Picks Ranked",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -157,7 +157,7 @@ export default function BestVRHeadsetForGamingPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -307,9 +307,15 @@ export default function BestVRHeadsetForGamingPage() {
           >
             Great on Frame
           </a>{" "}
-          certification for on-device games. Expected pricing of $899 to
-          $1,199 puts it in enthusiast territory rather than against the
-          Quest 3S, but if PC VR gaming is your endgame, check our{" "}
+          certification for on-device games. That catalog is filling fast:
+          89 certified titles as of August 24, up from eight in mid July, and
+          Valve&apos;s own unboxing and setup videos leaked out of the Steam
+          client on August 19, which is not something a company stages for
+          hardware that is quarters away. Summer ends September 22. Expected
+          pricing of $899 to $1,199 puts it in enthusiast territory rather than
+          against the Quest 3S, but if you are shopping at that level right
+          now, waiting the few weeks out costs you nothing. If PC VR gaming is
+          your endgame, check our{" "}
           <a
             href="/steam-frame"
             className="no-underline hover:underline"

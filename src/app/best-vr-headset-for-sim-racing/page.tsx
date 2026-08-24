@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Sim Racing 2026: iRacing & ACC Picks",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-18",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -113,7 +113,7 @@ const faq = faqPageSchema([
   {
     question: "Do you need a PC for sim racing in VR?",
     answer:
-      "Yes. Sim racing titles like iRacing, Assetto Corsa Competizione, and Automobilista 2 run on a gaming PC, so you need a PC VR setup. A standalone headset like the Quest 3 connects to that PC over Link, Air Link, or Virtual Desktop, while dedicated headsets like the Pimax Crystal Light and Bigscreen Beyond 2 plug straight in. Because VR is demanding, a strong graphics card makes a big difference: an RTX 4070 Super is the practical floor, with the RTX 5070 Ti or Radeon RX 9070 XT the current sweet spots.",
+      "Yes. Sim racing titles like iRacing, Assetto Corsa Competizione, and Automobilista 2 run on a gaming PC, so you need a PC VR setup. A standalone headset like the Quest 3 connects to that PC over Link, Air Link, or Virtual Desktop, while dedicated headsets like the Pimax Crystal Light and Bigscreen Beyond 2 plug straight in. Because VR is demanding, a strong graphics card makes a big difference: an RTX 4070 Super is the practical floor, with the RTX 5070 Ti or Radeon RX 9070 XT the current sweet spots. Note that GPU pricing is unusually volatile through the current DRAM cycle, so check the live price before committing to a card tier.",
   },
   {
     question: "What matters most in a sim racing VR headset?",
@@ -153,7 +153,7 @@ export default function BestVRHeadsetForSimRacingPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 18, 2026
+          Last updated: August 24, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>

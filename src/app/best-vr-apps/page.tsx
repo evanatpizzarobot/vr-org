@@ -44,7 +44,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Apps & Utilities 2026: Top Must-Have Apps",
   datePublished: "2026-03-23",
-  dateModified: "2026-07-18",
+  dateModified: "2026-08-24",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -108,7 +108,7 @@ const appsFaq = faqPageSchema([
   {
     question: "What is the best VR fitness app?",
     answer:
-      "FitXR is the leading VR fitness app, offering structured workout classes with instructors, music, and progression. Supernatural is still available, but Meta stopped adding new content in January 2026. For game-like fitness, Beat Saber and Les Mills Bodycombat deliver serious cardio in a more gamified format.",
+      "FitXR is the leading VR fitness app, offering structured workout classes with instructors, music, and progression. Supernatural is still running but its current app shuts down on December 3, 2026, ahead of a relaunch under the independent Supernatural Health at $20 a month, so do not start an annual plan on it. For game-like fitness, Beat Saber and Les Mills Bodycombat deliver serious cardio in a more gamified format.",
   },
 ]);
 
@@ -135,7 +135,7 @@ export default function BestVRAppsPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: July 18, 2026
+          Last updated: August 24, 2026
         </p>
 
         <p
@@ -485,7 +485,9 @@ export default function BestVRAppsPage() {
           Brush / Open Brush remains one of the most joyful creative
           tools in VR, letting you paint in 3D space with glowing
           brushstrokes. Supernatural offers premium fitness classes with high
-          production values and licensed music (covered in our{" "}
+          production values and licensed music, though its current app shuts
+          down on December 3, 2026 ahead of an independent relaunch, so check
+          the handover terms before subscribing (covered in our{" "}
           <a
             href="/best-vr-fitness"
             className="no-underline hover:underline"

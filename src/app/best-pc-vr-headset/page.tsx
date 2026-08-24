@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best PC VR Headset 2026: Top Headsets for SteamVR and PC Gaming",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -168,7 +168,7 @@ const faq = faqPageSchema([
   {
     question: "Is the Steam Frame a PC VR headset?",
     answer:
-      "Yes, and Valve calls PC streaming the primary experience. The Steam Frame ships with a dedicated 6GHz wireless dongle that streams your Steam library with no perceptible lag in hands-on reports, plus standalone SteamOS play on-device. Valve has confirmed summer 2026; the price is not announced, with estimates between $899 and $1,199. It is not yet a buy because you cannot buy it, but if you are shopping for wireless PC VR it is the launch to wait a few weeks for. Our Steam Frame hub tracks every signal.",
+      "Yes, and Valve calls PC streaming the primary experience. The Steam Frame ships with a dedicated 6GHz wireless dongle that streams your Steam library with no perceptible lag in hands-on reports, plus standalone SteamOS play on-device. Valve has confirmed summer 2026; the price is not announced, with estimates between $899 and $1,199. The launch signals keep stacking: the Great on Frame catalog hit 89 certified titles on August 24, up from eight in mid July, and Valve's own unboxing and first-time-setup videos leaked out of the Steam client on August 19. Summer ends September 22. It is not yet a buy because you cannot buy it, but if you are shopping for wireless PC VR it is worth waiting the few weeks out. Our Steam Frame hub tracks every signal.",
   },
 ]);
 
@@ -193,7 +193,7 @@ export default function BestPCVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>

@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "PSVR2 vs Quest 3: Which VR Headset Should You Buy in 2026?",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -130,7 +130,7 @@ const faq = faqPageSchema([
   {
     question: "Which has more games, the PSVR2 or Quest 3?",
     answer:
-      "The Quest 3 has the larger library by a wide margin, because the Quest platform is the center of gravity for VR development. The PSVR2 has a strong, more curated lineup of high-production console VR games and some standout exclusives, but fewer total titles. If raw selection and constant new releases matter most, the Quest 3 leads. If you want polished console-grade VR experiences, the PSVR2 delivers.",
+      "The Quest 3 has the larger library by a wide margin, because the Quest platform is the center of gravity for VR development. The PSVR2 has a strong, more curated lineup of high-production console VR games and some standout exclusives, but fewer total titles, and the notable ports usually land there after Quest and PC. Into the Radius 2 is the current example: it leaves Early Access on Quest on August 27 and reaches PS VR2 on September 24. If raw selection and constant new releases matter most, the Quest 3 leads. If you want polished console-grade VR experiences, the PSVR2 delivers.",
   },
   {
     question: "Can I use the PSVR2 on a PC?",
@@ -160,7 +160,7 @@ export default function Psvr2VsQuest3Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>

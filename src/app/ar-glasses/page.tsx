@@ -49,7 +49,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best AR Glasses 2026: Smart Glasses Comparison & Buyer's Guide",
   datePublished: "2026-04-20",
-  dateModified: "2026-07-21",
+  dateModified: "2026-08-24",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -183,7 +183,7 @@ const glassesFaq = faqPageSchema([
   {
     question: "When are Google's Android XR glasses coming out?",
     answer:
-      "Google and Samsung revealed their joint Android XR smart glasses at Google I/O in May 2026. The first-generation glasses are audio-only (no display) and are confirmed for a fall 2026 launch in styles from Gentle Monster and Warby Parker. Xreal's Project Aura, the first Android XR display glasses, is also due before the end of 2026, with display-only Samsung models expected in 2027.",
+      "Google and Samsung revealed their joint Android XR smart glasses at Google I/O in May 2026. The first-generation glasses are audio-only (no display) and are confirmed for a fall 2026 launch in styles from Gentle Monster and Warby Parker. XREAL's AURA, the first Android XR display glasses, is due this fall and has passed 10,000 reservations, with its 2,000 Founder Priority Passes gone in 36 hours. XREAL caps the price at no more than $1,500 for the base model. Display-only Samsung models are expected in 2027.",
   },
   {
     question: "How much do AR glasses cost?",
@@ -215,7 +215,7 @@ export default function ARGlassesPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p
@@ -540,16 +540,46 @@ export default function ARGlassesPage() {
           at their joint Android XR smart glasses, shown in two styles made
           with Gentle Monster and Warby Parker, with an audio-and-camera first
           generation (no display) confirmed for a fall 2026 launch and a
-          display version on the 2027 roadmap. Xreal also revealed Project
-          Aura, the first Android XR display glasses, due before the end of
-          2026, with reservations already open under $1,500, undercutting
-          Snap. Meta is expected to ship a consumer Orion successor in the 2027
-          to 2028 window, while Apple has reportedly pushed its lighter, cheaper
-          Vision device toward 2028 and shifted resources to its own smart
-          glasses. Snap opened Specs preorders at AWE at $2,195: fully standalone
-          true AR with a 51 degree field of view at 132 grams, shipping this
-          fall. Pico&apos;s Project Swan remains the wildcard. The
-          market will consolidate quickly once these platforms land.
+          display version on the 2027 roadmap. XREAL&apos;s AURA, the first
+          Android XR display glasses, is the clearest demand signal the
+          category has produced: it passed 10,000 reservations by August 20,
+          its 2,000 $299 Founder Priority Passes sold out in 36 hours, and the
+          $99 Launch Credit tier is gone too. Read the fine print before you
+          put money down, though. XREAL&apos;s $1,500 ceiling now applies to
+          the base model only, there is a higher configuration with more memory
+          and storage above it, and Canada has quietly dropped off a
+          launch region list that has otherwise grown to 28 entries. Meta is
+          expected to ship a consumer Orion successor in the 2027 to 2028
+          window, while Apple has reportedly pushed its lighter, cheaper Vision
+          device toward 2028 and shifted resources to its own smart glasses.
+          Snap opened Specs preorders at AWE at $2,195, fully standalone true
+          AR with a 51 degree field of view at 132 grams, and has set a launch
+          event for September 16. Pico&apos;s wildcard now has a name and a
+          date: Project Swan is the Pico Space Pro, debuting in Beijing on
+          September 2. The market will consolidate quickly once these platforms
+          land.
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-4"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          The most interesting argument in the category right now is coming
+          from the company with the largest share and the smallest name
+          recognition. RayNeo, spun out of TCL, says it held 23.7 percent of
+          global consumer AR glasses shipments in the first quarter of 2026 by
+          Counterpoint Research&apos;s count. On September 4 it puts two
+          devices on sale at once rather than one compromise: the 33-gram iO, a
+          camera-free waveguide HUD built for ambient AI, and the 78-gram GT
+          and GT Max, a personal cinema with dual 1080p 120Hz micro-OLED panels
+          and a 59 degree field of view. Neither has a price yet.{" "}
+          <a
+            href="/articles/rayneo-io-gt-max-two-devices-september-4-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Both halves of the glasses argument, sold separately
+          </a>
+          .
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"

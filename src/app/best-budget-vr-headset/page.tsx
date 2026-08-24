@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best Budget VR Headset 2026: The Cheapest Ways Into VR Under $400",
   datePublished: "2026-06-02",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -168,7 +168,7 @@ export default function BestBudgetVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -547,7 +547,27 @@ export default function BestBudgetVRHeadsetPage() {
           , fifty dollars under a Quest 3S. It is a genuinely good product for
           watching video on a plane, but it plays zero VR games. If you want
           actual virtual reality, put the money toward the Quest 3S or a used
-          Quest instead.
+          Quest instead. For reference, the Quest 3S was still $349.99 and the
+          Quest 3 still $599.99 on Meta&apos;s own store as of August 24.
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          A newer trap is worth naming: sub-$100 camera glasses. Rollme&apos;s
+          AuraView and ProView{" "}
+          <a
+            href="/articles/rollme-auraview-proview-99-dollar-camera-glasses-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            put a 12MP sensor on your face for $99.99
+          </a>
+          , and they turn up in the same searches as budget headsets. They are
+          not VR, they are not display glasses, and the company&apos;s own
+          store pages list a price and a color with no specifications at all.
+          A device with no published spec sheet is not a bargain, it is an
+          unknown.
         </p>
 
         {/* How to choose */}

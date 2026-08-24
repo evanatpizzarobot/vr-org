@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headset for Kids 2026: Safe, Age-Appropriate Picks",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-18",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -108,7 +108,7 @@ const faq = faqPageSchema([
   {
     question: "What age is appropriate for a VR headset?",
     answer:
-      "Meta sets a minimum age of 10 for Quest headsets, with parent-managed accounts required for children aged 10 to 12 and standard accounts available from 13. Sony recommends the PSVR2 for ages 12 and up, and Apple recommends the Vision Pro for 13 and up. These are the manufacturers' own guidelines. For any child, keep sessions short, take frequent breaks, and supervise play, since long VR sessions can cause eye strain or motion discomfort.",
+      "Meta sets a minimum age of 10 for Quest headsets, with parent-managed accounts required for children aged 10 to 12 and standard accounts available from 13. Sony recommends the PSVR2 for ages 12 and up, and Apple recommends the Vision Pro for 13 and up. These are the manufacturers' own guidelines, re-verified in August 2026 and unchanged. For any child, keep sessions short, take frequent breaks, and supervise play, since long VR sessions can cause eye strain or motion discomfort. Turning on the comfort settings before handing a headset over helps a lot: use teleport movement rather than smooth locomotion, switch on snap turning, and enable the comfort vignette, which narrows the view during artificial movement.",
   },
   {
     question: "Is VR safe for kids' eyes?",
@@ -153,7 +153,7 @@ export default function BestVRHeadsetForKidsPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 18, 2026
+          Last updated: August 24, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>

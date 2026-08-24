@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Quest 3 vs Apple Vision Pro: Is the Vision Pro Worth 6x the Price?",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -160,7 +160,7 @@ export default function Quest3VsVisionProPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -271,6 +271,26 @@ export default function Quest3VsVisionProPage() {
             Quest 3S
           </a>
           , that is the more relevant comparison for most buyers.
+        </p>
+        <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
+          Both prices were re-checked at source on August 24 and are unchanged:
+          $599.99 for the Quest 3 on Meta&apos;s store, $3,699 for the base
+          Vision Pro on Apple&apos;s. One piece of context belongs on the
+          Vision Pro side of the ledger before you spend the difference.
+          Bloomberg reported that Apple cut more than 200 roles on August 21,
+          roughly 100 inside the Vision Products Group, and{" "}
+          <a
+            href="/articles/apple-vision-pro-layoffs-immersive-video-gaming-teams-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            the gaming and immersive video teams took the brunt of it
+          </a>
+          . The device you buy today is unchanged and Apple still shipped its
+          first live immersive baseball stream a week later. But if your reason
+          for choosing Vision Pro over a Quest is the promise of first-party
+          immersive content, that promise is being made by a smaller team than
+          it was in July.
         </p>
 
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>

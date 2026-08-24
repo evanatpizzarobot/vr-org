@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best Standalone VR Headset 2026: No PC, No Console Required",
   datePublished: "2026-06-04",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -185,7 +185,7 @@ export default function BestStandaloneVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -307,12 +307,25 @@ export default function BestStandaloneVRHeadsetPage() {
         </p>
 
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          One more thing to watch before you decide: Valve&apos;s Steam Frame
-          is a standalone SteamOS headset too, confirmed for summer 2026 with
-          on-device Proton play plus a bundled wireless dongle for PC
-          streaming. There is no official price yet, with estimates between
-          $899 and $1,199, so it is aiming above the Quest line rather than at
-          it. Our{" "}
+          Two more things to watch before you decide. Pico&apos;s next
+          flagship, previously Project Swan, is now the{" "}
+          <a
+            href="/articles/pico-space-pro-september-2-beijing-debut-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Pico Space Pro, debuting in Beijing on September 2
+          </a>{" "}
+          with a claimed 4,000 PPI micro-OLED sheet at 270 grams. Pico has no
+          US retail presence, so treat it as a signal about where standalone
+          hardware is heading rather than a headset you will be buying this
+          year. And Valve&apos;s Steam Frame is a standalone SteamOS headset
+          too, confirmed for summer 2026 with on-device Proton play plus a
+          bundled wireless dongle for PC streaming. Its Great on Frame catalog
+          reached 89 certified titles on August 24 and Valve&apos;s own setup
+          videos leaked on August 19, so the launch is close. There is no
+          official price yet, with estimates between $899 and $1,199, so it is
+          aiming above the Quest line rather than at it. Our{" "}
           <a
             href="/steam-frame"
             className="no-underline hover:underline"

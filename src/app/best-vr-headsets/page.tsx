@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headsets 2026: The Complete Buyer's Guide",
   datePublished: "2026-03-23",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -243,7 +243,7 @@ export default function BestVRHeadsetsPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p
@@ -854,11 +854,15 @@ export default function BestVRHeadsetsPage() {
             Steam Frame
           </strong>{" "}
           headset is confirmed for summer 2026, with the hardware through US
-          customs, FCC filings public, and the Great on Frame store section
-          live. Dual 2160x2160 displays, a bundled 6GHz wireless dongle for
+          customs, FCC filings public, and the Great on Frame store section at
+          89 certified titles as of August 24, up from eight in mid July.
+          Valve&apos;s own unboxing and first-time-setup videos leaked out of
+          the Steam client on August 19, which means retail packaging is
+          finished. Dual 2160x2160 displays, a bundled 6GHz wireless dongle for
           lag-free PC streaming, and standalone SteamOS play are all locked;
-          only the price is unannounced, with estimates between $899 and
-          $1,199. Our{" "}
+          only the price and the day are unannounced, with estimates between
+          $899 and $1,199. Summer ends September 22, so Valve has about four
+          weeks to keep the promise. Our{" "}
           <a
             href="/steam-frame"
             className="no-underline hover:underline"
@@ -891,10 +895,16 @@ export default function BestVRHeadsetsPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Pico is still developing a high-end headset under the codename{" "}
-          <strong style={{ color: "var(--text-primary)" }}>Project Swan</strong>
-          , reportedly with very high-resolution displays at a price well below
-          Apple&apos;s. Samsung&apos;s{" "}
+          Pico&apos;s high-end headset has a name and a date. What was
+          Project Swan is now the{" "}
+          <strong style={{ color: "var(--text-primary)" }}>
+            Pico Space Pro
+          </strong>
+          , debuting in Beijing on September 2, three weeks before Meta
+          Connect. The claimed sheet is 4,000 PPI micro-OLED, dual-chip compute
+          at 12ms perception latency, and 270 grams, at a price well below
+          Apple&apos;s. Nobody outside Pico has handled the hardware yet, and a
+          debut event is not a retail date. Samsung&apos;s{" "}
           <strong style={{ color: "var(--text-primary)" }}>
             Galaxy Glasses
           </strong>{" "}
