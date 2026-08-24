@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-08-10";
+const LAST_UPDATED = "2026-08-24";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -105,12 +105,12 @@ const faq = faqPageSchema([
   {
     question: "What games will the Steam Frame launch with?",
     answer:
-      "No first-party launch game has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. The launch story is the Steam library itself via streaming and Proton, plus the certified catalog on the Great on Frame page, which reported 65 titles on August 10, up from eight on July 17. Most of that growth is flatscreen catalog games such as Balatro, Cuphead, and Hollow Knight: Silksong rather than native VR. The highest-profile VR title on the list is Half-Life 2: VR Mod, a free community mod certified on August 6, while Valve's own The Lab was downgraded to Unsupported on July 29. Payday: Aces High was the first third-party title to list Steam Frame as a target platform.",
+      "No first-party launch game has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. The launch story is the Steam library itself via streaming and Proton, plus the certified catalog on the Great on Frame page, which reported 89 titles on August 24, up from 65 on August 10 and eight on July 17. Most of that growth is flatscreen catalog games such as Balatro, Cuphead, and Hollow Knight: Silksong rather than native VR. The highest-profile VR title on the list is Half-Life 2: VR Mod, a free community mod certified on August 6, while Valve's own The Lab was downgraded to Unsupported on July 29. Payday: Aces High was the first third-party title to list Steam Frame as a target platform.",
   },
   {
     question: "What is Steam Frame Verified?",
     answer:
-      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold at least 72 fps at 1728x1728 per eye on-device, and anything rendering below 1440x1440 is marked Unsupported. Valve first announced 90 FPS and later revised the published requirement down to 72 without an announcement. Standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt. Certified games are collected on the Great on Frame storefront page, which went live in mid July 2026 with eight titles and reported 65 on August 10.",
+      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold at least 72 fps at 1728x1728 per eye on-device, and anything rendering below 1440x1440 is marked Unsupported. Valve first announced 90 FPS and later revised the published requirement down to 72 without an announcement. Standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt. Certified games are collected on the Great on Frame storefront page, which went live in mid July 2026 with eight titles and reported 89 on August 24.",
   },
 ]);
 
@@ -246,6 +246,16 @@ const TIMELINE: TimelineEntry[] = [
     slug: "valve-lepton-fex-steam-frame-translation-layers-2026",
     text: "The Steam Frame ARM64 Compat List drops its access token and appears in the Steam client. Its tool registry now puts Proton 11.0 (ARM64) on the stable channel, replacing the experimental ARM64EC builds that held that slot in 2024.",
   },
+  {
+    date: "Aug 19, 2026",
+    slug: "steam-frame-unboxing-setup-videos-leak-steam-client",
+    text: "Valve's own unboxing and first-time-setup videos fall out of the Steam client, showing retail packaging and the Ergonomic Accessories Kit. Companies do not finish and stage setup videos for hardware that is quarters away.",
+  },
+  {
+    date: "Aug 24, 2026",
+    slug: "valve-great-on-frame-steam-page-steam-frame-launch-signal",
+    text: "Great on Frame reaches 89 titles, up 24 in fourteen days, with every genre count rising and the RPG filter doubling. Still no price and no date, and summer ends September 22.",
+  },
 ];
 
 export default function SteamFramePage() {
@@ -269,7 +279,7 @@ export default function SteamFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 10, 2026
+          Last updated: August 24, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -323,12 +333,12 @@ export default function SteamFramePage() {
         >
           The Steam Frame is Valve&apos;s standalone SteamOS VR headset with a
           dedicated 6GHz wireless dongle for PC VR streaming, confirmed for a
-          summer 2026 release. As of August 10, 2026 there is still no official
+          summer 2026 release. As of August 24, 2026 there is still no official
           price and no reservation date, but the last regulatory gate is now
           closed: the FCC granted Valve equipment authorization on July 29,
           making the headset legal to sell in the US. Hardware has cleared
           customs, and the Great on Frame catalog has gone from eight certified
-          titles on July 17 to 65 today, which is the fastest-moving public
+          titles on July 17 to 89 today, which is the fastest-moving public
           signal on the board. Valve has 43 days left in its own stated summer
           window. This page tracks every signal, links to all of our reporting,
           and is updated on every beat until launch.

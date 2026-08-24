@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-08-10";
+const LAST_UPDATED = "2026-08-24";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -232,6 +232,55 @@ const VERIFIED_GAMES: VerifiedGame[] = [
     added: "By Aug 10, 2026",
     note: "A 2026 release rather than a back-catalog port, which suggests new games are now certifying at launch.",
   },
+  {
+    name: "Space Pirate Trainer",
+    developer: "I-Illusions",
+    type: "VR",
+    added: "Aug 24, 2026",
+    note: "The 2017 arcade wave shooter was on the shelf at the original Vive launch and is one of the few VR games older than the Index still being certified for new hardware. A fixed-position shooter is also the easiest possible case for holding 72 fps.",
+  },
+  {
+    name: "HARD BULLET",
+    developer: "GexagonVR",
+    type: "VR",
+    added: "Aug 24, 2026",
+    note: "A physics sandbox built on ragdolls, slow motion and dismemberment, which is a heavier simulation load than anything else certified so far. Its badge is the most surprising entry on the list.",
+  },
+  {
+    name: "Forefront",
+    developer: "Triangle Factory",
+    type: "VR",
+    added: "Aug 24, 2026",
+    note: "The large-scale multiplayer shooter from the Breachers studio. Certifying a networked shooter means the target holds with other players in the scene, not just in a demo room.",
+  },
+  {
+    name: "Moss: The Forgotten Relic",
+    developer: "Polyarc and Blackbird Interactive",
+    type: "Flatscreen",
+    added: "Aug 24, 2026",
+    note: "Polyarc built its name on the VR Moss games, and the entry it got certified here is the flatscreen July 2026 release. Steam lists no VR category on it at all, which makes a VR-native studio a flatscreen data point.",
+  },
+  {
+    name: "Drunken Rogue",
+    developer: "2.6 billion years studio",
+    type: "Flatscreen",
+    added: "Aug 24, 2026",
+    note: "Released August 20 and certified within days, which suggests developers are now submitting at launch rather than being swept up later.",
+  },
+  {
+    name: "DR LIVESEY ROM AND DEATH EDITION",
+    developer: "Agafonoff",
+    type: "Flatscreen",
+    added: "Aug 24, 2026",
+    note: "A 2023 meme brawler. Nothing about the certification bar is curatorial; if a flatscreen game runs at 720p30 with working controller support, it qualifies.",
+  },
+  {
+    name: "Funi Raccoon Game",
+    developer: "Crayon and Kit",
+    type: "Flatscreen",
+    added: "Aug 24, 2026",
+    note: "One of several small 2026 indies picked up in the August wave, alongside RACCOIN.",
+  },
 ];
 
 interface ChangelogEntry {
@@ -240,6 +289,10 @@ interface ChangelogEntry {
 }
 
 const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: "Aug 24, 2026",
+    text: "Valve's page reports 89 matches, up from 65 on August 10. Every genre count moved: 55 Action, 41 Adventure, 32 Casual, 24 Simulation, and 16 RPG. Space Pirate Trainer, HARD BULLET and Forefront are the notable VR additions, and Polyarc's flatscreen Moss: The Forgotten Relic is certified while its VR games are not.",
+  },
   {
     date: "Aug 10, 2026",
     text: "Valve's page reports 65 matches, up from eight on July 17. The filter panel breaks down to 40 Action, 32 Adventure, 24 Casual, 16 Simulation, and 8 RPG titles. Flatscreen catalog games now outnumber native VR ones.",
@@ -288,7 +341,7 @@ const faq = faqPageSchema([
   {
     question: "Which games are Great on Frame right now?",
     answer:
-      "Valve's page reported 65 matches on August 10, 2026, up from eight on July 17. Confirmed entries include Half-Life 2: VR Mod, SUPERHOT VR, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, and Escape Simulator. Flatscreen catalog games now outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
+      "Valve's page reported 89 matches on August 24, 2026, up from 65 on August 10 and eight on July 17. Confirmed entries include Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
   },
   {
     question: "What does Steam Frame Verified require?",
@@ -308,7 +361,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day or a price as of August 10, 2026. The Great on Frame catalog growing from eight titles to 65 in under a month is the strongest launch signal on the board; storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
+      "Valve has confirmed summer 2026 but has not named a day or a price as of August 24, 2026, and summer ends September 22. The catalog going from eight titles to 89 in six weeks is the strongest launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
   },
 ]);
 
@@ -333,7 +386,7 @@ export default function GreatOnFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 10, 2026
+          Last updated: August 24, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -372,8 +425,8 @@ export default function GreatOnFramePage() {
           Great on Frame is Valve&apos;s curated Steam section for games
           certified to run well on the Steam Frame headset, the VR sibling of
           the Great on Deck label that shaped Steam Deck buying for four years.
-          The page went live in mid July 2026 with eight titles and reported 65
-          matches on August 10, a roughly eightfold increase in under a month.
+          The page went live in mid July 2026 with eight titles and reported 89
+          matches on August 24, more than a tenfold increase in six weeks.
           Most of that growth is flatscreen catalog games rather than native VR,
           and Valve&apos;s own The Lab lost its certification along the way. This
           page tracks the confirmed titles, what the certification actually
@@ -398,12 +451,13 @@ export default function GreatOnFramePage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve&apos;s page reported 65 matches on August 10, 2026. It launched
+          Valve&apos;s page reported 89 matches on August 24, 2026. It launched
           with five titles the week of July 13, reached eight within a day, sat
-          around 42 by late July, passed 50 on August 3, and is at 65 now. The
-          filter panel on Valve&apos;s page breaks the catalog down as 40 Action,
-          32 Adventure, 24 Casual, 16 Simulation, and 8 RPG titles, with games
-          counted in more than one genre.
+          around 42 by late July, passed 50 on August 3, hit 65 on August 10,
+          and is at 89 now. The filter panel on Valve&apos;s page breaks the
+          catalog down as 55 Action, 41 Adventure, 32 Casual, 24 Simulation, and
+          16 RPG titles, with games counted in more than one genre. Every one of
+          those counts rose in the last fourteen days, and RPG doubled.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
@@ -411,7 +465,7 @@ export default function GreatOnFramePage() {
         >
           Valve does not publish a plain-text index of the catalog, and the
           storefront grid loads in pages, so the table below covers the titles
-          VR.org has individually confirmed rather than all 65. The remainder
+          VR.org has individually confirmed rather than all 89. The remainder
           are being added as they are verified.
         </p>
         <ComparisonTable

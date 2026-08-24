@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2026-08-10",
+  "lastUpdated": "2026-08-24",
   "items": [
     {
       "id": "valve-steam-frame",
       "name": "Valve Steam Frame",
       "category": "headset",
       "status": "expected",
-      "dateText": "Summer 2026, FCC cleared July 29, no date or price yet",
+      "dateText": "Summer 2026, packaging finished, no date or price yet",
       "isoDate": null,
-      "sortDate": "2026-09-01",
+      "sortDate": "2026-09-22",
       "platforms": [
         "SteamOS standalone",
         "PC VR streaming"
       ],
       "price": "Not announced. Analysts expect $899 to $1,199",
-      "summary": "Valve's standalone SteamOS headset with a dedicated 6GHz wireless dongle for PC streaming. The FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29, which is legal permission to sell in the US, and the hardware has cleared customs. The Great on Frame catalog has grown from eight certified titles on July 17 to 65 on August 10. Valve has still named neither a price nor a release date, and summer ends September 22.",
+      "summary": "Valve's standalone SteamOS headset with a dedicated 6GHz wireless dongle for PC streaming. The FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29 and the hardware has cleared customs. Valve's own unboxing and first-time-setup videos leaked out of the Steam client on August 19, showing retail packaging and the Ergonomic Accessories Kit. The Great on Frame catalog has grown from eight certified titles on July 17 to 89 on August 24. Valve has still named neither a price nor a release date, and summer ends September 22.",
       "link": "/steam-frame",
       "officialUrl": "https://store.steampowered.com/sale/steammachine",
-      "lastVerified": "2026-08-10"
+      "lastVerified": "2026-08-24"
     },
     {
       "id": "samsung-galaxy-xr-uk",
@@ -38,20 +38,20 @@
     },
     {
       "id": "pico-project-swan",
-      "name": "Pico Project Swan",
+      "name": "Pico Space Pro",
       "category": "headset",
-      "status": "expected",
-      "dateText": "Late 2026",
+      "status": "confirmed",
+      "dateText": "September 2, 2026 Beijing debut, retail date TBA",
       "isoDate": null,
-      "sortDate": "2026-11-01",
+      "sortDate": "2026-09-02",
       "platforms": [
         "Pico OS 6"
       ],
       "price": "Not announced",
-      "summary": "Pico's Vision Pro competitor with 4000+ PPI micro-OLED displays, a dual-chip architecture, and a 270 gram design. Teased at GDC 2026 with a late 2026 target.",
-      "link": "/articles/pico-project-swan-4000-ppi-vision-pro-competitor-2026",
+      "summary": "Project Swan is now Pico Space Pro, debuting in Beijing on September 2, three weeks before Meta Connect. The claimed sheet is 4,000 PPI micro-OLED, dual-chip compute at 12ms perception latency, and 270 grams. Nobody outside Pico has seen the hardware, and a debut event is not a retail date.",
+      "link": "/articles/pico-space-pro-september-2-beijing-debut-2026",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-08-24"
     },
     {
       "id": "vivo-vision",
@@ -92,17 +92,17 @@
       "name": "XREAL AURA",
       "category": "glasses",
       "status": "expected",
-      "dateText": "Fall 2026, reservations open",
+      "dateText": "Fall 2026, two of three reservation tiers sold out",
       "isoDate": null,
       "sortDate": "2026-10-01",
       "platforms": [
         "Android XR"
       ],
-      "price": "No more than $1,500, per XREAL",
-      "summary": "XREAL's Android XR display glasses, with reservations open and retail price capped at no more than $1,500. That undercuts Snap's Specs by roughly $700 and makes AURA the most affordable serious entry on the fall AR calendar.",
-      "link": "/articles/xreal-aura-reservations-under-1500-undercuts-snap-2026",
-      "officialUrl": null,
-      "lastVerified": "2026-08-10"
+      "price": "No more than $1,500 for the base model, per XREAL, before tax",
+      "summary": "XREAL's Android XR glasses have passed 10,000 reservations. The $299 Founder Priority Pass sold out its 2,000 units in 36 hours and the $99 Launch Credit tier is gone, leaving the refundable $199 Priority Deposit. XREAL's FAQ now caps the $1,500 ceiling to the base configuration only, and the launch region list has grown to 28 entries while quietly dropping Canada.",
+      "link": "/articles/xreal-aura-founder-passes-sold-out-10000-reservations-2026",
+      "officialUrl": "https://www.xreal.com/aura/",
+      "lastVerified": "2026-08-24"
     },
     {
       "id": "snap-specs",
@@ -332,18 +332,20 @@
       "id": "sol-protocol",
       "name": "Sol Protocol",
       "category": "game",
-      "status": "expected",
-      "dateText": "Early access, September 2026",
-      "isoDate": null,
-      "sortDate": "2026-09-15",
+      "status": "confirmed",
+      "dateText": "September 17, 2026, Early Access on Quest 3 and 3S",
+      "isoDate": "2026-09-17",
+      "sortDate": "2026-09-17",
       "platforms": [
-        "VR"
+        "Quest 3",
+        "Quest 3S",
+        "SteamVR"
       ],
-      "price": null,
-      "summary": "The sci-fi extraction shooter's early access moved from an April target to September, per the June showcase recap.",
-      "link": "/articles/uploadvr-summer-showcase-2026-everything-announced-recap",
-      "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "price": "$9.99 preorder, rising to $12.99 at full release",
+      "summary": "Singular Perception's three-player co-op space roguelike. Pilot, gunner and engineer seats aboard the Pathfinder, with roles swapping mid-run through procedurally generated systems. SteamVR is targeted for October. The Automa systems meant to fill empty crew seats are still in development and are not a launch feature.",
+      "link": "/articles/sol-protocol-quest-3-september-17-early-access-2026",
+      "officialUrl": "https://store.steampowered.com/app/4250370/",
+      "lastVerified": "2026-08-24"
     },
     {
       "id": "already-dead",
@@ -394,10 +396,10 @@
         "Steam Frame"
       ],
       "price": null,
-      "summary": "Fast Travel Games' four-player co-op heist shooter, confirmed for 2026 and notable as the first game to list Steam Frame as a target platform.",
+      "summary": "Fast Travel Games' four-player co-op heist shooter, confirmed for 2026 and notable as the first game to list Steam Frame as a target platform. Press played the first heist job at an August 2026 media session; no date has been named.",
       "link": "/articles/vr-games-showcase-march-2026-biggest-reveals",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-08-24"
     },
     {
       "id": "breachers-outbreak",
@@ -476,18 +478,18 @@
       "id": "into-the-radius-2-quest",
       "name": "Into the Radius 2 (Quest version)",
       "category": "game",
-      "status": "expected",
-      "dateText": "TBA",
-      "isoDate": null,
-      "sortDate": null,
+      "status": "confirmed",
+      "dateText": "August 27, 2026, leaving Early Access",
+      "isoDate": "2026-08-27",
+      "sortDate": "2026-08-27",
       "platforms": [
         "Quest"
       ],
       "price": null,
-      "summary": "The Quest port of the 1.0 release is coming later, along with a four-player co-op update, per CM Games. The PC VR 1.0 shipped April 23.",
-      "link": "/articles/into-the-radius-2-full-release-april-2026",
+      "summary": "CM Games' survival shooter leaves Early Access on Quest on August 27. The PC VR 1.0 shipped April 23. A PS VR2 version follows on September 24.",
+      "link": "/articles/into-the-radius-2-quest-1-0-august-27-2026",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-08-24"
     },
     {
       "id": "frame-enthusiast-kit",
@@ -520,24 +522,6 @@
       "price": "From $1,049",
       "summary": "Valve's living-room SteamOS console shipped June 30 after a lottery-style preorder, setting the price ceiling context for the Steam Frame.",
       "link": "/articles/steam-machine-1049-june-30-launch-price-ceiling-steam-frame",
-      "officialUrl": null,
-      "lastVerified": "2026-07-04"
-    },
-    {
-      "id": "virtuix-omni-one",
-      "name": "Virtuix Omni One (Quest)",
-      "category": "accessory",
-      "status": "released",
-      "dateText": "Released June 23, 2026",
-      "isoDate": "2026-06-23",
-      "sortDate": null,
-      "platforms": [
-        "Quest 2",
-        "Quest 3"
-      ],
-      "price": "$2,595",
-      "summary": "The first VR treadmill with Made for Meta certification, now shipping and working natively with Quest headsets.",
-      "link": "/articles/virtuix-omni-one-quest-made-for-meta-2595-launch-2026",
       "officialUrl": null,
       "lastVerified": "2026-07-04"
     },
@@ -582,17 +566,17 @@
       "name": "D.E.C.A.Y.",
       "category": "game",
       "status": "confirmed",
-      "dateText": "August 21, 2026, Early Access",
-      "isoDate": "2026-08-21",
-      "sortDate": "2026-08-21",
+      "dateText": "August 26, 2026, Early Access",
+      "isoDate": "2026-08-26",
+      "sortDate": "2026-08-26",
       "platforms": [
         "SteamVR"
       ],
       "price": null,
-      "summary": "A post-nuclear survival shooter from AGaming+, the solo studio behind the Z.O.N.A. series. Players maintain the Atlas network of thermal and radiation shields, with bunker-based gear management in the vein of Into the Radius. Early Access is expected to run about a year.",
+      "summary": "A post-nuclear survival shooter from AGaming+, the solo studio behind the Z.O.N.A. series. Players maintain the Atlas network of thermal and radiation shields, with bunker-based gear management in the vein of Into the Radius. The Early Access date slipped from August 21 to August 26; Steam still lists it as upcoming. Early Access is expected to run about a year.",
       "link": null,
       "officialUrl": "https://store.steampowered.com/app/4251370/DECAY/",
-      "lastVerified": "2026-08-10"
+      "lastVerified": "2026-08-24"
     },
     {
       "id": "viture-pro-2",
@@ -627,6 +611,57 @@
       "link": "/articles/escape-simulator-2-vr-preview-open-beta-steam-2026",
       "officialUrl": null,
       "lastVerified": "2026-08-10"
+    },
+    {
+      "id": "into-the-radius-2-psvr2",
+      "name": "Into the Radius 2 (PS VR2 version)",
+      "category": "game",
+      "status": "confirmed",
+      "dateText": "September 24, 2026",
+      "isoDate": "2026-09-24",
+      "sortDate": "2026-09-24",
+      "platforms": [
+        "PS VR2"
+      ],
+      "price": null,
+      "summary": "The PlayStation VR2 release of CM Games' survival shooter, announced on the PlayStation Blog for September 24, four weeks after the Quest version leaves Early Access.",
+      "link": "/articles/into-the-radius-2-quest-1-0-august-27-2026",
+      "officialUrl": "https://blog.playstation.com/2026/08/24/vr-shooter-into-the-radius-2-hits-ps-vr2-september-24/",
+      "lastVerified": "2026-08-24"
+    },
+    {
+      "id": "rayneo-io",
+      "name": "RayNeo iO Smart Glasses",
+      "category": "glasses",
+      "status": "confirmed",
+      "dateText": "September 4, 2026, price not announced",
+      "isoDate": "2026-09-04",
+      "sortDate": "2026-09-04",
+      "platforms": [
+        "Android companion"
+      ],
+      "price": "Not announced",
+      "summary": "A 33-gram camera-free waveguide HUD built for ambient AI rather than media, with a MicroLED display and a 23 degree field of view. Sold through RayNeo's own store and Amazon, with IFA demos in Hall 21A.",
+      "link": "/articles/rayneo-io-gt-max-two-devices-september-4-2026",
+      "officialUrl": "https://www.rayneo.com/",
+      "lastVerified": "2026-08-24"
+    },
+    {
+      "id": "rayneo-gt-max",
+      "name": "RayNeo GT and GT Max",
+      "category": "glasses",
+      "status": "confirmed",
+      "dateText": "September 4, 2026, price not announced",
+      "isoDate": "2026-09-04",
+      "sortDate": "2026-09-04",
+      "platforms": [
+        "USB-C display"
+      ],
+      "price": "Not announced",
+      "summary": "A 78-gram personal-cinema pair with dual 1080p 120Hz micro-OLED panels, a 59 degree field of view, dual-chip architecture and Bang & Olufsen quad speakers. The display half of RayNeo's deliberate split between a display device and an assistant device.",
+      "link": "/articles/rayneo-io-gt-max-two-devices-september-4-2026",
+      "officialUrl": "https://www.rayneo.com/",
+      "lastVerified": "2026-08-24"
     }
   ]
 }

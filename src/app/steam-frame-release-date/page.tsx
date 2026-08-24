@@ -44,7 +44,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-08-10";
+const LAST_UPDATED = "2026-08-24";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -80,7 +80,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day as of August 10, 2026. Every prerequisite is now cleared: the FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29, roughly 35 tons of VR hardware cleared US customs in June, the Steam Machine already shipped June 30, and the Great on Frame catalog has grown from eight titles to 65. Summer ends September 22, which leaves Valve about six weeks to keep the promise.",
+      "Valve has confirmed summer 2026 but has not named a day as of August 24, 2026. Every prerequisite is now cleared: the FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29, roughly 35 tons of VR hardware cleared US customs in June, the Steam Machine already shipped June 30, the Great on Frame catalog has grown from eight titles to 89, and Valve's own unboxing and first-time-setup videos leaked out of the Steam client on August 19. Summer ends September 22, which leaves Valve about four weeks to keep the promise.",
   },
   {
     question: "How do I preorder the Steam Frame?",
@@ -191,6 +191,16 @@ const DATE_SIGNALS: DateSignal[] = [
     signal: "Great on Frame reports 65 titles, up from eight on July 17",
     read: "Catalog reaching launch scale",
   },
+  {
+    date: "Aug 19, 2026",
+    signal: "Valve's unboxing and first-time-setup videos leak from the Steam client",
+    read: "Retail packaging is finished",
+  },
+  {
+    date: "Aug 24, 2026",
+    signal: "Great on Frame at 89 titles, four weeks of summer remaining",
+    read: "Shelves filling, clock running",
+  },
 ];
 
 export default function SteamFrameReleaseDatePage() {
@@ -213,7 +223,7 @@ export default function SteamFrameReleaseDatePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 10, 2026
+          Last updated: August 24, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -263,7 +273,7 @@ export default function SteamFrameReleaseDatePage() {
           FCC ID 2AES4-1015, which is the last gate before a radio device can
           legally be sold in the United States. Add the 35 tons of hardware
           already through US customs, a Steam Machine that shipped on June 30,
-          and a Great on Frame catalog that went from eight titles to 65 in
+          and a Great on Frame catalog that went from eight titles to 89 in
           under a month, and nothing is left but the announcement. Summer ends
           September 22. This page tracks every release date signal, dated, until
           Valve makes it official.
