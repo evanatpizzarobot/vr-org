@@ -4,16 +4,76 @@
     "icon": "🎮",
     "href": "/best-vr-games-2026",
     "items": [
-      { "rank": 1, "title": "Microsoft Flight Simulator", "subtitle": "PSVR2", "steamAppId": 2537590, "image": "/toplist-thumbs/2537590.webp" },
-      { "rank": 2, "title": "Hot Dogs, Horseshoes & Hand Grenades", "subtitle": "PC VR / 1.0", "steamAppId": 450540, "image": "/toplist-thumbs/450540.webp" },
-      { "rank": 3, "title": "Batman: Arkham Shadow", "subtitle": "Quest", "thumbSource": "https://img.youtube.com/vi/EPcCWR3DTIw/maxresdefault.jpg", "image": "/toplist-thumbs/batman-arkham-shadow.webp" },
-      { "rank": 4, "title": "Into the Radius 2", "subtitle": "PC VR / Quest", "steamAppId": 2307350, "image": "/toplist-thumbs/2307350.webp" },
-      { "rank": 5, "title": "GERONIMO", "subtitle": "PC VR", "steamAppId": 2019620, "image": "/toplist-thumbs/2019620.webp" },
-      { "rank": 6, "title": "Resident Evil Requiem", "subtitle": "PC VR (mod)", "steamAppId": 3764200, "image": "/toplist-thumbs/3764200.webp" },
-      { "rank": 7, "title": "Little Nightmares: Altered Echoes", "subtitle": "Quest / PSVR2 / PC VR", "steamAppId": 2482940, "image": "/toplist-thumbs/2482940.webp" },
-      { "rank": 8, "title": "TMNT: Empire City", "subtitle": "Quest / PC VR", "steamAppId": 3713650, "image": "/toplist-thumbs/3713650.webp" },
-      { "rank": 9, "title": "Virtual Hunter", "subtitle": "PSVR2 / Quest", "steamAppId": 1549850, "image": "/toplist-thumbs/1549850.webp" },
-      { "rank": 10, "title": "Aces of Thunder", "subtitle": "PSVR2 / PC VR", "steamAppId": 2754090, "image": "/toplist-thumbs/2754090.webp" }
+      {
+        "rank": 1,
+        "title": "Microsoft Flight Simulator",
+        "subtitle": "PSVR2",
+        "steamAppId": 2537590,
+        "image": "/toplist-thumbs/2537590.webp"
+      },
+      {
+        "rank": 2,
+        "title": "Hot Dogs, Horseshoes & Hand Grenades",
+        "subtitle": "PC VR / 1.0",
+        "steamAppId": 450540,
+        "image": "/toplist-thumbs/450540.webp"
+      },
+      {
+        "rank": 3,
+        "title": "Batman: Arkham Shadow",
+        "subtitle": "Quest",
+        "thumbSource": "https://img.youtube.com/vi/EPcCWR3DTIw/maxresdefault.jpg",
+        "image": "/toplist-thumbs/batman-arkham-shadow.webp"
+      },
+      {
+        "rank": 4,
+        "title": "Into the Radius 2",
+        "subtitle": "PC VR / Quest",
+        "steamAppId": 2307350,
+        "image": "/toplist-thumbs/2307350.webp"
+      },
+      {
+        "rank": 5,
+        "title": "GERONIMO",
+        "subtitle": "PC VR",
+        "steamAppId": 2019620,
+        "image": "/toplist-thumbs/2019620.webp"
+      },
+      {
+        "rank": 6,
+        "title": "Resident Evil Requiem",
+        "subtitle": "PC VR (mod)",
+        "steamAppId": 3764200,
+        "image": "/toplist-thumbs/3764200.webp"
+      },
+      {
+        "rank": 7,
+        "title": "Little Nightmares: Altered Echoes",
+        "subtitle": "Quest / PSVR2 / PC VR",
+        "steamAppId": 2482940,
+        "image": "/toplist-thumbs/2482940.webp"
+      },
+      {
+        "rank": 8,
+        "title": "TMNT: Empire City",
+        "subtitle": "Quest / PC VR",
+        "steamAppId": 3713650,
+        "image": "/toplist-thumbs/3713650.webp"
+      },
+      {
+        "rank": 9,
+        "title": "Virtual Hunter",
+        "subtitle": "PSVR2 / Quest",
+        "steamAppId": 1549850,
+        "image": "/toplist-thumbs/1549850.webp"
+      },
+      {
+        "rank": 10,
+        "title": "Aces of Thunder",
+        "subtitle": "PSVR2 / PC VR",
+        "steamAppId": 2754090,
+        "image": "/toplist-thumbs/2754090.webp"
+      }
     ]
   },
   "top-vr-headsets": {
@@ -21,12 +81,36 @@
     "icon": "🥽",
     "href": "/best-vr-headsets",
     "items": [
-      { "rank": 1, "title": "Meta Quest 3S", "subtitle": "$349 / best budget pick" },
-      { "rank": 2, "title": "Meta Quest 3", "subtitle": "$599 / best all-around" },
-      { "rank": 3, "title": "PlayStation VR2", "subtitle": "$399 / best for PS5" },
-      { "rank": 4, "title": "Apple Vision Pro", "subtitle": "$3,499 / spatial computing" },
-      { "rank": 5, "title": "Valve Index", "subtitle": "PC VR enthusiasts" },
-      { "rank": 6, "title": "HP Reverb G2", "subtitle": "Sim racing and flight" }
+      {
+        "rank": 1,
+        "title": "Meta Quest 3S",
+        "subtitle": "$349 / best budget pick"
+      },
+      {
+        "rank": 2,
+        "title": "Meta Quest 3",
+        "subtitle": "$599 / best all-around"
+      },
+      {
+        "rank": 3,
+        "title": "PlayStation VR2",
+        "subtitle": "$399 / best for PS5"
+      },
+      {
+        "rank": 4,
+        "title": "Apple Vision Pro",
+        "subtitle": "$3,499 / spatial computing"
+      },
+      {
+        "rank": 5,
+        "title": "Valve Index",
+        "subtitle": "PC VR enthusiasts"
+      },
+      {
+        "rank": 6,
+        "title": "HP Reverb G2",
+        "subtitle": "Sim racing and flight"
+      }
     ]
   },
   "top-ar-glasses": {
@@ -34,12 +118,36 @@
     "icon": "🕶️",
     "href": "/ar-glasses",
     "items": [
-      { "rank": 1, "title": "Ray-Ban Meta (Gen 2)", "subtitle": "$379 / best mainstream pair" },
-      { "rank": 2, "title": "Rokid Glasses", "subtitle": "$499 / best display glasses" },
-      { "rank": 3, "title": "Xreal One Pro", "subtitle": "$599 / best for media" },
-      { "rank": 4, "title": "Viture Pro", "subtitle": "$499 / best for prescriptions" },
-      { "rank": 5, "title": "Meta Orion", "subtitle": "Developer preview, not for sale" },
-      { "rank": 6, "title": "Android XR Glasses", "subtitle": "Google, coming soon" }
+      {
+        "rank": 1,
+        "title": "Ray-Ban Meta (Gen 2)",
+        "subtitle": "$379 / best mainstream pair"
+      },
+      {
+        "rank": 2,
+        "title": "Rokid Glasses",
+        "subtitle": "$499 / best display glasses"
+      },
+      {
+        "rank": 3,
+        "title": "Xreal One Pro",
+        "subtitle": "$599 / best for media"
+      },
+      {
+        "rank": 4,
+        "title": "Viture Pro",
+        "subtitle": "$499 / best for prescriptions"
+      },
+      {
+        "rank": 5,
+        "title": "Meta Orion",
+        "subtitle": "Developer preview, not for sale"
+      },
+      {
+        "rank": 6,
+        "title": "Android XR Glasses",
+        "subtitle": "Google, coming soon"
+      }
     ]
   },
   "top-vr-apps": {
@@ -47,16 +155,86 @@
     "icon": "🛠️",
     "href": "/best-vr-apps",
     "items": [
-      { "rank": 1, "title": "Virtual Desktop", "subtitle": "Wireless PC VR streaming", "thumbFit": "icon", "thumbSource": "https://static.wixstatic.com/media/e0881d_667d7d32eadb45a282f375385db9a448~mv2.png/v1/fill/w_192,h_192,al_c/e0881d_667d7d32eadb45a282f375385db9a448~mv2.png", "image": "/toplist-thumbs/virtual-desktop.webp" },
-      { "rank": 2, "title": "Steam Link", "subtitle": "Steam library in VR", "thumbFit": "icon", "thumbSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/960px-Steam_icon_logo.svg.png", "image": "/toplist-thumbs/steam-link.webp" },
-      { "rank": 3, "title": "Immersed", "subtitle": "Multi-monitor workspace", "thumbFit": "icon", "thumbSource": "https://static.immersed.com/assets/favicon/apple-icon-180x180-a1231e5e2ec4a1c1cc245aa28fcb72180beb1f3aed2202729c1a149eb094e6f8.png", "image": "/toplist-thumbs/immersed.webp" },
-      { "rank": 4, "title": "VRChat", "subtitle": "Social VR platform", "thumbFit": "icon", "thumbSource": "https://static1.squarespace.com/static/5f0770791aaf57311515b23d/t/6508c787b8ced41ca3404f36/1718212268632/VRC_Logo.png?format=500w", "image": "/toplist-thumbs/vrchat.webp" },
-      { "rank": 5, "title": "Bigscreen", "subtitle": "Virtual cinema & desktop", "thumbFit": "icon", "thumbSource": "https://www.bigscreenvr.com/android-chrome-192x192.png", "image": "/toplist-thumbs/bigscreen.webp" },
-      { "rank": 6, "title": "Supernatural", "subtitle": "Premium VR fitness", "thumbFit": "icon", "thumbSource": "https://www.getsupernatural.com/public/android-chrome-192x192.png", "image": "/toplist-thumbs/supernatural.webp" },
-      { "rank": 7, "title": "Gravity Sketch", "subtitle": "3D design & modeling", "thumbFit": "icon", "thumbSource": "https://gravitysketch.com/wp-content/uploads/2024/08/logomark.png", "image": "/toplist-thumbs/gravity-sketch.webp" },
-      { "rank": 8, "title": "FitXR", "subtitle": "VR fitness workouts", "thumbFit": "icon", "thumbSource": "https://fitxr.com/cdn/shop/files/favicon-5.png?crop=center&height=192&v=1757556283&width=192", "image": "/toplist-thumbs/fitxr.webp" },
-      { "rank": 9, "title": "ShapesXR", "subtitle": "Spatial design prototyping", "thumbFit": "icon", "thumbSource": "https://cdn.prod.website-files.com/615dc84364c5917b852e46b2/64a14aaf2d4f8e4d8e0fcaf9_Favicon-256.png", "image": "/toplist-thumbs/shapesxr.webp" },
-      { "rank": 10, "title": "YouTube VR", "subtitle": "Immersive 360 and VR video", "thumbFit": "icon", "thumbSource": "https://www.youtube.com/s/desktop/ce6b1040/img/favicon_144x144.png", "image": "/toplist-thumbs/youtube-vr.webp" }
+      {
+        "rank": 1,
+        "title": "Virtual Desktop",
+        "subtitle": "Wireless PC VR streaming",
+        "thumbFit": "icon",
+        "thumbSource": "https://static.wixstatic.com/media/e0881d_667d7d32eadb45a282f375385db9a448~mv2.png/v1/fill/w_192,h_192,al_c/e0881d_667d7d32eadb45a282f375385db9a448~mv2.png",
+        "image": "/toplist-thumbs/virtual-desktop.webp"
+      },
+      {
+        "rank": 2,
+        "title": "Steam Link",
+        "subtitle": "Steam library in VR",
+        "thumbFit": "icon",
+        "thumbSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/960px-Steam_icon_logo.svg.png",
+        "image": "/toplist-thumbs/steam-link.webp"
+      },
+      {
+        "rank": 3,
+        "title": "Immersed",
+        "subtitle": "Multi-monitor workspace",
+        "thumbFit": "icon",
+        "thumbSource": "https://static.immersed.com/assets/favicon/apple-icon-180x180-a1231e5e2ec4a1c1cc245aa28fcb72180beb1f3aed2202729c1a149eb094e6f8.png",
+        "image": "/toplist-thumbs/immersed.webp"
+      },
+      {
+        "rank": 4,
+        "title": "VRChat",
+        "subtitle": "Social VR platform",
+        "thumbFit": "icon",
+        "thumbSource": "https://static1.squarespace.com/static/5f0770791aaf57311515b23d/t/6508c787b8ced41ca3404f36/1718212268632/VRC_Logo.png?format=500w",
+        "image": "/toplist-thumbs/vrchat.webp"
+      },
+      {
+        "rank": 5,
+        "title": "Bigscreen",
+        "subtitle": "Virtual cinema & desktop",
+        "thumbFit": "icon",
+        "thumbSource": "https://www.bigscreenvr.com/android-chrome-192x192.png",
+        "image": "/toplist-thumbs/bigscreen.webp"
+      },
+      {
+        "rank": 6,
+        "title": "Supernatural",
+        "subtitle": "VR fitness, current app ends Dec 3",
+        "thumbFit": "icon",
+        "thumbSource": "https://www.getsupernatural.com/public/android-chrome-192x192.png",
+        "image": "/toplist-thumbs/supernatural.webp"
+      },
+      {
+        "rank": 7,
+        "title": "Gravity Sketch",
+        "subtitle": "3D design & modeling",
+        "thumbFit": "icon",
+        "thumbSource": "https://gravitysketch.com/wp-content/uploads/2024/08/logomark.png",
+        "image": "/toplist-thumbs/gravity-sketch.webp"
+      },
+      {
+        "rank": 8,
+        "title": "FitXR",
+        "subtitle": "VR fitness workouts",
+        "thumbFit": "icon",
+        "thumbSource": "https://fitxr.com/cdn/shop/files/favicon-5.png?crop=center&height=192&v=1757556283&width=192",
+        "image": "/toplist-thumbs/fitxr.webp"
+      },
+      {
+        "rank": 9,
+        "title": "ShapesXR",
+        "subtitle": "Spatial design prototyping",
+        "thumbFit": "icon",
+        "thumbSource": "https://cdn.prod.website-files.com/615dc84364c5917b852e46b2/64a14aaf2d4f8e4d8e0fcaf9_Favicon-256.png",
+        "image": "/toplist-thumbs/shapesxr.webp"
+      },
+      {
+        "rank": 10,
+        "title": "YouTube VR",
+        "subtitle": "Immersive 360 and VR video",
+        "thumbFit": "icon",
+        "thumbSource": "https://www.youtube.com/s/desktop/ce6b1040/img/favicon_144x144.png",
+        "image": "/toplist-thumbs/youtube-vr.webp"
+      }
     ]
   }
 }

@@ -1509,6 +1509,49 @@ nav::-webkit-scrollbar {
 .deal-btn-zybervr { background: #22c55e; color: #111; }
 .deal-btn-direct { background: var(--accent-cyan); color: var(--bg-ink); }
 .deal-btn-default { background: var(--accent-cyan); color: var(--bg-ink); }
+.deal-btn-steam { background: #1b6aa5; }
+.deal-btn-playstation { background: #0070d1; }
+
+/* Official-store link row on guide pages (StoreLinks.tsx) */
+.store-links {
+  margin: -8px 0 28px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg-card);
+}
+
+.store-links-label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+}
+
+.store-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.store-links .deal-btn {
+  flex: 0 1 auto;
+}
+
+.store-links-note {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+@media (max-width: 480px) {
+  .store-links-row .deal-btn { flex: 1 1 100%; }
+}
 
 .deals-section-title {
   font-family: var(--font-display);

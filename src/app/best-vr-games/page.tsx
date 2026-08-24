@@ -12,6 +12,7 @@ import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
 import { AdZone } from "@/components/AdZone";
 import { AD_SLOTS } from "@/lib/ads";
+import { StoreLinks } from "@/components/StoreLinks";
 
 export const metadata: Metadata = {
   title: "Top 10 VR Games of All Time | VR.org",
@@ -42,7 +43,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Top 10 VR Games of All Time",
   datePublished: "2026-03-24",
-  dateModified: "2026-07-17",
+  dateModified: "2026-08-24",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -120,7 +121,7 @@ export default function BestVRGamesPage() {
           Top 10 VR Games of All Time
         </h1>
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
 
         <p
@@ -170,6 +171,12 @@ export default function BestVRGamesPage() {
         >
           Developer: Valve | Platform: PC VR | Released: 2020
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "steam", label: "Steam", href: "https://store.steampowered.com/app/546560/" },
+          ]}
+          note="PC VR only. There is no standalone Quest or PlayStation release; on a Quest you play it by streaming from a PC."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -206,8 +213,16 @@ export default function BestVRGamesPage() {
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
         >
-          Developer: Beat Games | Platform: Quest, PC VR, PSVR | Released: 2018
+          Developer: Beat Games | Platform: Quest, PC VR, PS VR / PS VR2 | Released: 2018
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "steam", label: "Steam", href: "https://store.steampowered.com/app/620980/" },
+            { brand: "meta", label: "Meta Quest", href: "https://www.meta.com/experiences/beat-saber/2448060205267927/" },
+            { brand: "playstation", label: "PlayStation", href: "https://store.playstation.com/en-us/concept/232492" },
+          ]}
+          note="The PlayStation listing covers both the PS VR and PS VR2 versions. Music packs are sold separately on every platform."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -238,6 +253,12 @@ export default function BestVRGamesPage() {
         >
           Developer: Armature Studio / Capcom | Platform: Quest | Released: 2021
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "meta", label: "Meta Quest", href: "https://www.meta.com/experiences/resident-evil-4/2637179839719680/" },
+          ]}
+          note="Quest exclusive; the Meta Store lists it simply as Resident Evil 4. Meta closed developer Armature Studio in January 2026, so treat this as a finished game rather than one still being worked on. It remains on sale and runs on Quest 2, 3 and 3S."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -269,6 +290,12 @@ export default function BestVRGamesPage() {
         >
           Developer: Sanzaru Games | Platform: Quest | Released: 2023
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "meta", label: "Meta Quest", href: "https://www.meta.com/experiences/asgards-wrath-2/2603836099654226/" },
+          ]}
+          note="Quest exclusive. Meta closed Sanzaru Games in January 2026, and the studio shipped a final bug-fix update on the way out with no further content planned. The game is complete and still on sale, but nothing more is coming to it."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -297,9 +324,17 @@ export default function BestVRGamesPage() {
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
         >
-          Developer: Superhot Team | Platform: Quest, PC VR, PSVR | Released:
+          Developer: Superhot Team | Platform: Quest, PC VR, PS VR | Released:
           2017
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "steam", label: "Steam", href: "https://store.steampowered.com/app/617830/" },
+            { brand: "meta", label: "Meta Quest", href: "https://www.meta.com/experiences/superhot-vr/1921533091289407/" },
+            { brand: "playstation", label: "PlayStation", href: "https://store.playstation.com/en-us/product/UP2613-CUSA09143_00-USSUPERHOTVRGAME" },
+          ]}
+          note="The PlayStation version is the PS4 / PS VR release, playable on PS5 with the original headset."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -336,6 +371,14 @@ export default function BestVRGamesPage() {
           Developer: Stress Level Zero | Platform: PC VR / Quest | Released:
           2019 / 2022
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "steam", label: "Boneworks (Steam)", href: "https://store.steampowered.com/app/823500/" },
+            { brand: "steam", label: "Bonelab (Steam)", href: "https://store.steampowered.com/app/1592190/" },
+            { brand: "meta", label: "Bonelab (Meta Quest)", href: "https://www.meta.com/experiences/bonelab/4215734068529064/" },
+          ]}
+          note="These are two separate purchases. Boneworks is PC VR only. Bonelab is the one that runs standalone on Quest."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -364,9 +407,17 @@ export default function BestVRGamesPage() {
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
         >
-          Developer: Skydance Interactive | Platform: Quest, PC VR, PSVR |
+          Developer: Skydance Interactive | Platform: Quest, PC VR, PS VR / PS VR2 |
           Released: 2020
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "steam", label: "Steam", href: "https://store.steampowered.com/app/916840/" },
+            { brand: "meta", label: "Meta Quest", href: "https://www.meta.com/experiences/the-walking-dead-saints-sinners/2897337400373711/" },
+            { brand: "playstation", label: "PlayStation", href: "https://store.playstation.com/en-us/product/UP2533-PPSA13639_00-TWDSAINTSSINNERS" },
+          ]}
+          note="Chapter 2: Retribution is a separate purchase on all three storefronts."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -394,8 +445,16 @@ export default function BestVRGamesPage() {
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
         >
-          Developer: Polyarc | Platform: Quest, PC VR, PSVR | Released: 2018
+          Developer: Polyarc | Platform: Quest, PC VR, PS VR / PS VR2 | Released: 2018
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "steam", label: "Steam", href: "https://store.steampowered.com/app/846470/" },
+            { brand: "meta", label: "Meta Quest", href: "https://www.meta.com/experiences/moss/1654565391314903/" },
+            { brand: "playstation", label: "PlayStation", href: "https://store.playstation.com/en-us/concept/229162" },
+          ]}
+          note="Moss: Book II is a separate purchase and worth it if the first one lands for you."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -426,6 +485,13 @@ export default function BestVRGamesPage() {
         >
           Developer: Vankrupt Games | Platform: Quest, PC VR | Released: 2017
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "steam", label: "Pavlov (Steam)", href: "https://store.steampowered.com/app/555160/" },
+            { brand: "meta", label: "Pavlov Shack (Meta Quest)", href: "https://www.meta.com/experiences/pavlov-shack/2443267419018232/" },
+          ]}
+          note="The Quest build is sold under the name Pavlov Shack and is a separate product from the PC version, not a cross-buy."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
@@ -454,9 +520,16 @@ export default function BestVRGamesPage() {
           className="text-[13px] mb-4"
           style={{ color: "var(--text-muted)" }}
         >
-          Developer: Hello Games | Platform: Quest, PC VR, PSVR | Released: 2019
+          Developer: Hello Games | Platform: PC VR, PS VR / PS VR2 | Released: 2019
           (VR update)
         </p>
+        <StoreLinks
+          stores={[
+            { brand: "steam", label: "Steam", href: "https://store.steampowered.com/app/275850/" },
+            { brand: "playstation", label: "PlayStation", href: "https://store.playstation.com/en-us/concept/216600" },
+          ]}
+          note="There is no standalone Quest version. Playing it on a Quest means streaming from a PC over Link, Air Link or Virtual Desktop, which needs a gaming PC. VR is included free with the base game on both storefronts."
+        />
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
