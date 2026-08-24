@@ -1509,7 +1509,6 @@ nav::-webkit-scrollbar {
 .deal-btn-zybervr { background: #22c55e; color: #111; }
 .deal-btn-direct { background: var(--accent-cyan); color: var(--bg-ink); }
 .deal-btn-default { background: var(--accent-cyan); color: var(--bg-ink); }
-.deal-btn-steam { background: #1b6aa5; }
 .deal-btn-playstation { background: #0070d1; }
 
 /* Official-store link row on guide pages (StoreLinks.tsx) */
