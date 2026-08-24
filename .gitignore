@@ -124,3 +124,7 @@ vr-org-*.png
 # hardcode a single article body that already lives in data/articles.json,
 # are not re-runnable, and write articles.json non-atomically. Scratch only.
 /add_article*.py
+
+# Stray screenshots from browser-automation checks (never commit these).
+# Leading slash keeps this to the repo root so public/*.png stays tracked.
+/*.png
