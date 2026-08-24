@@ -20,12 +20,13 @@ export const RSS_SOURCES: RSSSource[] = [
     url: "https://www.auganix.org/feed/",
     priority: "primary",
   },
-  {
-    key: "uctodayxr",
-    name: "UC Today XR",
-    url: "https://www.uctoday.com/tag/extended-reality/feed/",
-    priority: "primary",
-  },
+  // UC Today XR removed 2026-08-24: the tag feed returns a hard 404 on every
+  // attempt while uctoday.com itself serves 200, and their site no longer
+  // exposes any extended-reality path. Also probed /feed/,
+  // /category/extended-reality/feed/, /extended-reality/feed/ and xrtoday.com;
+  // all dead. Re-add here if the tag feed comes back. The constants.ts entry is
+  // deliberately kept so any cached item still renders, matching how the
+  // sources dropped on 2026-05-02 were handled.
   {
     key: "skarredghost",
     name: "The Ghost Howls",
