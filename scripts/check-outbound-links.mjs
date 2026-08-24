@@ -118,6 +118,8 @@ const KNOWN_CITATION_HOSTS = new Set([
   "upload.wikimedia.org",
   "steamdb.info",
   "www.freepatentsonline.com",
+  "www.accessdata.fda.gov",
+  "api.fda.gov",
   "www.kickstarter.com",
   "www.reddit.com",
   "x.com",
