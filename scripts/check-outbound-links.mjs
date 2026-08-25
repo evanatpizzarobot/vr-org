@@ -87,6 +87,10 @@ const TRUSTED_FIRST_PARTY = new Set([
   "cemu.info",
   "pcvrcentral.com",
   "realitysyndromesymphony.com",
+  // Quest 1 bootloader unlocker, the WebUSB build of darknight1050's tool.
+  // The page links back to github.com/darknight1050/quest1-bootloader-unlocker-web
+  // in its own header, and both project READMEs point here. Verified 2026-08-25.
+  "quest1-unlock.skystate.ch",
 ]);
 
 /**
