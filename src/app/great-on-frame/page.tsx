@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-08-24";
+const LAST_UPDATED = "2026-08-27";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -290,6 +290,10 @@ interface ChangelogEntry {
 
 const CHANGELOG: ChangelogEntry[] = [
   {
+    date: "Aug 27, 2026",
+    text: "Valve's page reports 98 matches, up from 89 on August 24. The count matters less than the names: Beat Saber, Job Simulator, Vacation Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter and Red Matter 2, Moss II VR, The Room VR: A Dark Matter, The Last Clockwinder, Cubism, Eleven Table Tennis, THRASHER, Vendetta Forever, The Light Brigade: Definitive Edition and all three I Expect You To Die games are now certified. Pavlov Shack is on the list having only reached Steam on August 21.",
+  },
+  {
     date: "Aug 24, 2026",
     text: "Valve's page reports 89 matches, up from 65 on August 10. Every genre count moved: 55 Action, 41 Adventure, 32 Casual, 24 Simulation, and 16 RPG. Space Pirate Trainer, HARD BULLET and Forefront are the notable VR additions, and Polyarc's flatscreen Moss: The Forgotten Relic is certified while its VR games are not.",
   },
@@ -341,7 +345,7 @@ const faq = faqPageSchema([
   {
     question: "Which games are Great on Frame right now?",
     answer:
-      "Valve's page reported 89 matches on August 24, 2026, up from 65 on August 10 and eight on July 17. Confirmed entries include Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
+      "Valve's page reported 98 matches on August 27, 2026, up from 89 on August 24, 65 on August 10 and eight on July 17. Confirmed entries include Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter 2, Moss II VR, The Room VR: A Dark Matter, the I Expect You To Die trilogy, Pavlov Shack, The Light Brigade: Definitive Edition, Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
   },
   {
     question: "What does Steam Frame Verified require?",
@@ -361,7 +365,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day or a price as of August 24, 2026, and summer ends September 22. The catalog going from eight titles to 89 in six weeks is the strongest launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
+      "Valve has confirmed summer 2026 but has not named a day or a price as of August 27, 2026, and summer ends September 22, which leaves 26 days. The catalog going from eight titles to 98 in six weeks is the strongest launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
   },
 ]);
 
@@ -386,7 +390,7 @@ export default function GreatOnFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 24, 2026
+          Last updated: August 27, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -425,8 +429,8 @@ export default function GreatOnFramePage() {
           Great on Frame is Valve&apos;s curated Steam section for games
           certified to run well on the Steam Frame headset, the VR sibling of
           the Great on Deck label that shaped Steam Deck buying for four years.
-          The page went live in mid July 2026 with eight titles and reported 89
-          matches on August 24, more than a tenfold increase in six weeks.
+          The page went live in mid July 2026 with eight titles and reported 98
+          matches on August 27, more than a twelvefold increase in six weeks.
           Most of that growth is flatscreen catalog games rather than native VR,
           and Valve&apos;s own The Lab lost its certification along the way. This
           page tracks the confirmed titles, what the certification actually
@@ -451,13 +455,17 @@ export default function GreatOnFramePage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve&apos;s page reported 89 matches on August 24, 2026. It launched
+          Valve&apos;s page reported 98 matches on August 27, 2026. It launched
           with five titles the week of July 13, reached eight within a day, sat
-          around 42 by late July, passed 50 on August 3, hit 65 on August 10,
-          and is at 89 now. The filter panel on Valve&apos;s page breaks the
-          catalog down as 55 Action, 41 Adventure, 32 Casual, 24 Simulation, and
-          16 RPG titles, with games counted in more than one genre. Every one of
-          those counts rose in the last fourteen days, and RPG doubled.
+          around 42 by late July, passed 50 on August 3, hit 65 on August 10, 89
+          on August 24, and is at 98 now. You can confirm the running total
+          yourself by appending frame_compatibility=3 to a Steam store search,
+          which is how the figures on this page are taken. What changed most
+          recently is the composition rather than the count: Beat Saber, Job
+          Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red
+          Matter 2, Moss II VR and all three I Expect You To Die games are now
+          certified, which is a meaningful shift from a list once dominated by
+          Valve demos and flatscreen catalog titles.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
@@ -465,7 +473,7 @@ export default function GreatOnFramePage() {
         >
           Valve does not publish a plain-text index of the catalog, and the
           storefront grid loads in pages, so the table below covers the titles
-          VR.org has individually confirmed rather than all 89. The remainder
+          VR.org has individually confirmed rather than all 98. The remainder
           are being added as they are verified.
         </p>
         <ComparisonTable
