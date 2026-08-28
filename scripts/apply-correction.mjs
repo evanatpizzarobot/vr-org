@@ -17,6 +17,12 @@
  * Usage:
  *   node scripts/apply-correction.mjs --slug=some-slug --text="The price is $549, not $649."
  *   node scripts/apply-correction.mjs --slug=some-slug --text="..." --date=2026-08-29
+ *
+ * --date, when given, must be a real calendar date in strict YYYY-MM-DD
+ * form. This script writes to a live published article, so a malformed date
+ * (a non-ISO format, or an impossible date like a February 30th) is refused
+ * with a FAIL before anything is read or written, rather than silently
+ * producing an invalid updatedDate and a broken correction blockquote.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -39,6 +45,32 @@ export function buildCorrectionBlock(text, date) {
   const [y, m, d] = date.split("-").map((n) => parseInt(n, 10));
   const pretty = `${MONTHS[m - 1]} ${d}, ${y}`;
   return `<blockquote><strong>Correction, ${pretty}:</strong> ${text}</blockquote>`;
+}
+
+/**
+ * Validates that a string is a real calendar date in strict YYYY-MM-DD form.
+ * Rejects anything that is not exactly that shape (so "08/29/2026" and
+ * "2026-8-29" both fail), and rejects a shape-valid but impossible date such
+ * as "2026-02-30". A non-ISO string that Date() would still parse is exactly
+ * the trap CLAUDE.md's UTC date rule warns about: Date() reads a non-ISO
+ * string in local time, which is how a malformed --date could silently write
+ * the wrong day into a live article.
+ *
+ * @param {string} dateStr
+ * @returns {boolean}
+ */
+export function isValidIsoDate(dateStr) {
+  if (typeof dateStr !== "string") return false;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return false;
+  const [y, m, d] = dateStr.split("-").map((n) => parseInt(n, 10));
+  if (m < 1 || m > 12) return false;
+  // new Date(year, month, 0) lands on the last day of `month` when `month`
+  // is 1-indexed (1 = January ... 12 = December): passing the 1-indexed
+  // month straight into Date's 0-indexed month argument names the NEXT
+  // month, and day 0 of that month is the last day of the one we want. The
+  // UTC form avoids any local-timezone rollover at the year or month edges.
+  const daysInMonth = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  return d >= 1 && d <= daysInMonth;
 }
 
 /**
@@ -72,6 +104,16 @@ function main() {
   const text = get("text");
   const date = get("date") || new Date().toISOString().slice(0, 10);
 
+  // Validated before any read or write. A malformed --date would otherwise
+  // write "Correction, undefined NaN, NaN:" into a live published article
+  // and set a non-ISO updatedDate, so this is checked first, ahead of even
+  // the slug/text presence check below.
+  if (!isValidIsoDate(date)) {
+    console.error(`apply-correction  FAIL  --date "${date}" is not a valid YYYY-MM-DD calendar date`);
+    process.exitCode = 1;
+    return;
+  }
+
   if (!slug || !text) {
     console.error("Usage: node scripts/apply-correction.mjs --slug=SLUG --text=\"...\" [--date=YYYY-MM-DD]");
     process.exitCode = 1;
@@ -86,7 +128,20 @@ function main() {
     return;
   }
 
-  articles[idx] = applyCorrection(articles[idx], text, date);
+  let corrected;
+  try {
+    corrected = applyCorrection(articles[idx], text, date);
+  } catch (err) {
+    // applyCorrection throws on an em dash, en dash or double hyphen in the
+    // correction text (VR.org's number one writing rule). Uncaught, that
+    // throw would print a raw stack trace instead of the house FAIL format
+    // this script uses everywhere else.
+    console.error(`apply-correction  FAIL  ${err.message}`);
+    process.exitCode = 1;
+    return;
+  }
+
+  articles[idx] = corrected;
   writeFileSync(DEFAULT_ARTICLES, JSON.stringify(articles, null, 2) + "\n", "utf8");
 
   console.log(`apply-correction  OK  ${slug}`);
