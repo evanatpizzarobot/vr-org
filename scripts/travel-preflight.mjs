@@ -6,11 +6,15 @@
  * question: is this repository in a state I understand well enough to safely
  * add articles to it?
  *
- * Three ways the answer is no:
- *   1. Uncommitted changes in the working tree. Something else is mid-edit.
- *   2. Local master is behind origin. Drafting would build on a stale archive
+ * Four ways the answer is no:
+ *   1. HEAD is not on master. Travel mode publishes from master. Drafting on
+ *      any other branch, or in a detached HEAD, would commit articles to a
+ *      branch nothing deploys from, and an unattended run would report
+ *      success while nothing reached production.
+ *   2. Uncommitted changes in the working tree. Something else is mid-edit.
+ *   3. Local master is behind origin. Drafting would build on a stale archive
  *      and the duplicate check would miss recently published pieces.
- *   3. Unpushed local commits. Another tool committed without pushing, which
+ *   4. Unpushed local commits. Another tool committed without pushing, which
  *      has happened five times between 2026-06-09 and 2026-08-10, and on
  *      2026-06-25 produced a near duplicate caught only by this check.
  *
@@ -44,6 +48,19 @@ function main() {
     // is worth more than matching this one call site to the brief.
     process.exitCode = 1;
     return;
+  }
+
+  // Checked first and pushed first: if HEAD is on the wrong branch (or
+  // detached), that fact explains any other anomaly this run might report,
+  // so it should lead the problems list rather than get buried under it.
+  //
+  // A detached HEAD returns the literal string "HEAD" from this command,
+  // which never equals "master", so the equality check below already
+  // catches it. Do not loosen this to something like checking for a null
+  // or empty branch name; "HEAD" is the correct, intentional non-match.
+  const branch = git(["rev-parse", "--abbrev-ref", "HEAD"]);
+  if (branch !== "master") {
+    problems.push(`not on master (currently on ${branch}). Travel mode publishes from master; drafting here would commit to the wrong branch.`);
   }
 
   const dirty = git(["status", "--porcelain"]);
