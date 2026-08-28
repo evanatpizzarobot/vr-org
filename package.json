@@ -18,6 +18,7 @@
     "check:articles": "node scripts/validate-articles.mjs",
     "check:release-dates": "node scripts/check-release-dates.mjs",
     "check:ad-coverage": "node scripts/check-ad-coverage.mjs",
+    "check:youtube": "node scripts/check-youtube-ids.mjs",
     "deals:publish": "node scripts/refresh-deals.mjs",
     "audit:pages": "node scripts/audit-pages.mjs",
     "thumbs:toplists": "node scripts/generate-toplist-thumbs.mjs",
