@@ -51,3 +51,25 @@ test("ignores entries missing an author or a date", () => {
   ];
   assert.deepEqual(findSameDateBylineCollisions(articles), []);
 });
+
+test("finds a collision inside a recent-window slice", () => {
+  const articles = [
+    { slug: "a", author: "Alex Reeves", publishDate: "2026-08-28" },
+    { slug: "b", author: "Alex Reeves", publishDate: "2026-08-28" },
+    { slug: "c", author: "Nina Castillo", publishDate: "2026-01-01" },
+  ];
+  const hits = findSameDateBylineCollisions(articles.slice(0, 2));
+  assert.equal(hits.length, 1);
+  assert.deepEqual(hits[0].slugs, ["a", "b"]);
+});
+
+test("does not find a collision that falls outside a recent-window slice", () => {
+  const articles = [
+    { slug: "a", author: "Nina Castillo", publishDate: "2026-08-28" },
+    { slug: "b", author: "Jordan Kuo", publishDate: "2026-08-27" },
+    { slug: "c", author: "Sam Whitfield", publishDate: "2026-01-05" },
+    { slug: "d", author: "Sam Whitfield", publishDate: "2026-01-05" },
+  ];
+  const hits = findSameDateBylineCollisions(articles.slice(0, 2));
+  assert.deepEqual(hits, []);
+});

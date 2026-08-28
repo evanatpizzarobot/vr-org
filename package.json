@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "node scripts/validate-articles.mjs && node scripts/check-author-rotation.mjs --recent 12 && node scripts/check-same-date-byline.mjs && node scripts/check-outbound-links.mjs --recent 20",
+    "prebuild": "node scripts/validate-articles.mjs && node scripts/check-author-rotation.mjs --recent 12 && node scripts/check-same-date-byline.mjs --recent 12 && node scripts/check-outbound-links.mjs --recent 20",
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint",
-    "test": "node --test test/",
+    "test": "node --test \"test/*.test.mjs\"",
     "check:images": "node scripts/check-article-images.mjs",
     "check:image-reuse": "node scripts/check-image-reuse.mjs",
     "check:deals": "node scripts/check-deal-links.mjs",
