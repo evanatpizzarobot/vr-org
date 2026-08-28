@@ -9,16 +9,23 @@
  *
  * What it decides mechanically (exit 1):
  *   an ID that does not resolve through the oEmbed endpoint at all.
+ *   a --slug given that matches no article at all (the gate never opened
+ *     an article, so it cannot certify one; see extractYouTubeRefs usage
+ *     below for how a matched article with zero references still reports OK).
+ *   a malformed --recent or --slug value, rather than silently falling back
+ *     to scanning the whole archive or matching nothing.
  *
  * What it reports for a human or agent to judge (exit 0, printed as REVIEW):
- *   an ID that resolves to a title sharing no distinctive word with the
- *   surrounding figcaption or anchor text. Auto-failing this produces false
- *   positives on legitimate paraphrased captions, so it is surfaced, not
- *   enforced.
+ *   an ID that resolves to a title sharing no distinctive word with its
+ *   enclosing figcaption, image alt text, or anchor text. Auto-failing this
+ *   produces false positives on legitimate paraphrased captions, so it is
+ *   surfaced, not enforced.
  *
  * Usage:
  *   node scripts/check-youtube-ids.mjs --recent 3
+ *   node scripts/check-youtube-ids.mjs --recent=3
  *   node scripts/check-youtube-ids.mjs --slug=some-article-slug
+ *   node scripts/check-youtube-ids.mjs --slug some-article-slug
  *
  * NOT wired into prebuild: it makes third-party network calls, and a YouTube
  * outage must not be able to break a Docker deploy.
@@ -33,7 +40,106 @@ const DEFAULT_ARTICLES = resolve(here, "..", "data", "articles.json");
 const STOPWORDS = new Set([
   "the", "and", "for", "with", "from", "this", "that", "your", "you",
   "our", "its", "watch", "official", "video", "youtube", "trailer",
+  // Ambient VR-copy words that show up in nearly every article on the site
+  // and therefore carry no identifying signal between a video title and its
+  // surrounding caption. Without these, a wrong-but-real video titled "Meta
+  // Quest 3 Official Unboxing" passed silently inside any Quest coverage,
+  // because "meta" and "quest" alone counted as a shared distinctive word.
+  "meta", "quest", "steam", "valve", "headset", "gameplay",
 ]);
+
+/**
+ * Finds the nearest enclosing figure element around a match position: the
+ * last <figure ...> opened at or before the index whose closing </figure>
+ * comes after it. Article body markup does not nest figures, so this
+ * nearest-open, nearest-close approach is sufficient.
+ *
+ * @param {string} body
+ * @param {number} index
+ * @returns {string|null}
+ */
+function findEnclosingFigure(body, index) {
+  const openTag = /<figure[^>]*>/g;
+  let lastOpen = -1;
+  let m;
+  while ((m = openTag.exec(body)) !== null) {
+    if (m.index > index) break;
+    lastOpen = m.index;
+  }
+  if (lastOpen === -1) return null;
+  const closeIdx = body.indexOf("</figure>", lastOpen);
+  if (closeIdx === -1 || closeIdx < index) return null;
+  return body.slice(lastOpen, closeIdx + "</figure>".length);
+}
+
+/**
+ * Same approach as findEnclosingFigure, for a bare anchor not wrapped in a
+ * figure (a plain in-text watch link).
+ *
+ * @param {string} body
+ * @param {number} index
+ * @returns {string|null}
+ */
+function findEnclosingAnchor(body, index) {
+  const openTag = /<a[\s>][^>]*>?/g;
+  let lastOpen = -1;
+  let lastOpenEnd = -1;
+  let m;
+  while ((m = openTag.exec(body)) !== null) {
+    if (m.index > index) break;
+    lastOpen = m.index;
+    lastOpenEnd = openTag.lastIndex;
+  }
+  if (lastOpen === -1) return null;
+  const closeIdx = body.indexOf("</a>", lastOpenEnd);
+  if (closeIdx === -1 || closeIdx < index) return null;
+  return body.slice(lastOpen, closeIdx + "</a>".length);
+}
+
+function stripTags(html) {
+  return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/**
+ * Builds the judgment context for one YouTube reference: the enclosing
+ * figure's figcaption plus img alt text when the reference sits inside a
+ * <figure>, the enclosing anchor's text for a bare watch link, and only as a
+ * last resort (no enclosing element found) a fixed 200-character radius.
+ *
+ * The original design used a fixed 400-character radius unconditionally,
+ * which reliably swept in unrelated ambient copy from neighboring paragraphs.
+ * That is what let a wrong-but-real video pass the overlap check: the
+ * surrounding prose, not just the caption, supplied the shared word. The
+ * enclosing element is what an editor would actually read to judge the
+ * reference, so it is what this checks against; the radius is a fallback
+ * only, and a smaller one than before.
+ *
+ * @param {string} body
+ * @param {number} index
+ * @returns {string}
+ */
+function contextFor(body, index) {
+  const figure = findEnclosingFigure(body, index);
+  if (figure) {
+    const captionMatch = figure.match(/<figcaption[^>]*>([\s\S]*?)<\/figcaption>/);
+    const altMatch = figure.match(/<img\s[^>]*\balt="([^"]*)"/);
+    const parts = [];
+    if (altMatch && altMatch[1]) parts.push(altMatch[1]);
+    if (captionMatch) parts.push(stripTags(captionMatch[1]));
+    const joined = parts.join(" ").trim();
+    if (joined) return joined;
+  }
+
+  const anchor = findEnclosingAnchor(body, index);
+  if (anchor) {
+    const text = stripTags(anchor);
+    if (text) return text;
+  }
+
+  const start = Math.max(0, index - 200);
+  const slice = body.slice(start, index + 200);
+  return stripTags(slice);
+}
 
 /**
  * @param {string} body article body HTML
@@ -51,10 +157,7 @@ export function extractYouTubeRefs(body) {
     while ((m = re.exec(body)) !== null) {
       const id = m[1];
       if (found.has(id)) continue;
-      const start = Math.max(0, m.index - 400);
-      const slice = body.slice(start, m.index + 400);
-      const context = slice.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-      found.set(id, { id, context });
+      found.set(id, { id, context: contextFor(body, m.index) });
     }
   }
   return [...found.values()];
@@ -98,12 +201,67 @@ async function resolveTitle(id) {
   }
 }
 
+/**
+ * Parses --recent, accepting both "--recent 12" and "--recent=12" forms. The
+ * equals form matches the sibling --slug flag; the two forms disagreeing was
+ * itself the source of a fail-open bug, so both are accepted here.
+ *
+ * @param {string[]} args
+ * @returns {{present: boolean, valid: boolean, value: number, raw: string|null}}
+ */
+export function parseRecentFlag(args) {
+  const eqArg = args.find((a) => a.startsWith("--recent="));
+  if (eqArg !== undefined) {
+    const raw = eqArg.slice("--recent=".length);
+    const valid = /^[1-9][0-9]*$/.test(raw);
+    return { present: true, valid, value: valid ? parseInt(raw, 10) : 0, raw };
+  }
+  const idx = args.indexOf("--recent");
+  if (idx !== -1) {
+    const raw = args[idx + 1];
+    const valid = raw !== undefined && /^[1-9][0-9]*$/.test(raw);
+    return { present: true, valid, value: valid ? parseInt(raw, 10) : 0, raw: raw ?? null };
+  }
+  return { present: false, valid: true, value: 0, raw: null };
+}
+
+/**
+ * Parses --slug, accepting both "--slug=foo" and "--slug foo" forms.
+ *
+ * @param {string[]} args
+ * @returns {{present: boolean, valid: boolean, value: string|null}}
+ */
+export function parseSlugFlag(args) {
+  const eqArg = args.find((a) => a.startsWith("--slug="));
+  if (eqArg !== undefined) {
+    const raw = eqArg.slice("--slug=".length);
+    return { present: true, valid: raw.length > 0, value: raw || null };
+  }
+  const idx = args.indexOf("--slug");
+  if (idx !== -1) {
+    const raw = args[idx + 1];
+    const valid = raw !== undefined && raw.length > 0 && !raw.startsWith("--");
+    return { present: true, valid, value: valid ? raw : null };
+  }
+  return { present: false, valid: true, value: null };
+}
+
 async function main() {
   const args = process.argv.slice(2);
-  const recentIdx = args.indexOf("--recent");
-  const recent = recentIdx !== -1 ? parseInt(args[recentIdx + 1], 10) || 0 : 0;
-  const slugArg = args.find((a) => a.startsWith("--slug="));
-  const slug = slugArg ? slugArg.split("=")[1] : null;
+
+  const recentFlag = parseRecentFlag(args);
+  if (!recentFlag.valid) {
+    console.error(`check:youtube  FAIL  --recent value "${recentFlag.raw ?? ""}" is not a positive integer`);
+    process.exitCode = 1;
+    return;
+  }
+
+  const slugFlag = parseSlugFlag(args);
+  if (slugFlag.present && !slugFlag.valid) {
+    console.error("check:youtube  FAIL  --slug was given with no value");
+    process.exitCode = 1;
+    return;
+  }
 
   let articles;
   try {
@@ -118,8 +276,20 @@ async function main() {
   }
 
   let scope = articles;
-  if (slug) scope = articles.filter((a) => a.slug === slug);
-  else if (recent > 0) scope = articles.slice(0, recent);
+  if (slugFlag.present) {
+    scope = articles.filter((a) => a.slug === slugFlag.value);
+    if (scope.length === 0) {
+      // Distinguish "matched an article with nothing to check" (fine, OK 0)
+      // from "matched nothing at all" (a gate that never opened the article
+      // it was asked about, which must never certify it as OK).
+      console.error(`check:youtube  FAIL  --slug=${slugFlag.value} matched no article in articles.json`);
+      console.error("The gate never opened an article, so it cannot certify one. Check the slug for a typo, or confirm the article has been added yet.");
+      process.exitCode = 1;
+      return;
+    }
+  } else if (recentFlag.value > 0) {
+    scope = articles.slice(0, recentFlag.value);
+  }
 
   const dead = [];
   const review = [];

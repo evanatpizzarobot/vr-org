@@ -1,6 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { extractSteamLinks, namesAgree } from "../scripts/check-steam-products.mjs";
+import {
+  extractSteamLinks,
+  namesAgree,
+  uniqueAppIds,
+  parseRecentFlag,
+  parseSlugFlag,
+} from "../scripts/check-steam-products.mjs";
 
 test("extracts appid and anchor text", () => {
   const body = '<a href="https://store.steampowered.com/app/620980/" target="_blank" rel="noopener">Beat Saber</a>';
@@ -60,4 +66,52 @@ test("namesAgree rejects an unrelated product", () => {
 test("namesAgree never auto-accepts an empty or punctuation-only anchor", () => {
   assert.equal(namesAgree("", "VR"), false);
   assert.equal(namesAgree("!!!", "VR"), false);
+});
+
+test("uniqueAppIds dedupes repeated app ids across occurrences, in first-seen order", () => {
+  const occurrences = [
+    { slug: "a", appid: "620980", anchor: "Beat Saber" },
+    { slug: "b", appid: "620980", anchor: "Beat Saber" },
+    { slug: "c", appid: "1408230", anchor: "Walkabout Mini Golf" },
+  ];
+  assert.deepEqual(uniqueAppIds(occurrences), ["620980", "1408230"]);
+});
+
+test("uniqueAppIds returns an empty list for no occurrences", () => {
+  assert.deepEqual(uniqueAppIds([]), []);
+});
+
+test("parseRecentFlag accepts the space form", () => {
+  const flag = parseRecentFlag(["--recent", "12"]);
+  assert.deepEqual(flag, { present: true, valid: true, value: 12, raw: "12" });
+});
+
+test("parseRecentFlag accepts the equals form", () => {
+  const flag = parseRecentFlag(["--recent=12"]);
+  assert.equal(flag.valid, true);
+  assert.equal(flag.value, 12);
+});
+
+test("parseRecentFlag is invalid when --recent is the trailing argument with no value", () => {
+  const flag = parseRecentFlag(["--recent"]);
+  assert.equal(flag.present, true);
+  assert.equal(flag.valid, false);
+});
+
+test("parseRecentFlag is invalid for a non-numeric value in either form", () => {
+  assert.equal(parseRecentFlag(["--recent=abc"]).valid, false);
+  assert.equal(parseRecentFlag(["--recent", "abc"]).valid, false);
+});
+
+test("parseRecentFlag defaults to the whole archive when absent", () => {
+  assert.deepEqual(parseRecentFlag([]), { present: false, valid: true, value: 0, raw: null });
+});
+
+test("parseSlugFlag accepts both the equals and space forms", () => {
+  assert.equal(parseSlugFlag(["--slug=foo"]).value, "foo");
+  assert.equal(parseSlugFlag(["--slug", "foo"]).value, "foo");
+});
+
+test("parseSlugFlag is invalid when given with no value", () => {
+  assert.equal(parseSlugFlag(["--slug"]).valid, false);
 });

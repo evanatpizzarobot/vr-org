@@ -11,6 +11,11 @@
  *
  * What it decides mechanically (exit 1):
  *   an app id that does not resolve through the appdetails endpoint.
+ *   a --slug given that matches no article at all (the gate never opened
+ *     an article, so it cannot certify one; a matched article with no Steam
+ *     links at all is a separate, fine case that still reports OK 0).
+ *   a malformed --recent or --slug value, rather than silently falling back
+ *     to scanning the whole archive or matching nothing.
  *
  * What it reports for a human or agent to judge (exit 0, printed as REVIEW):
  *   any anchor text that is not an exact normalized match for the real product
@@ -20,7 +25,9 @@
  *
  * Usage:
  *   node scripts/check-steam-products.mjs --recent 3
+ *   node scripts/check-steam-products.mjs --recent=3
  *   node scripts/check-steam-products.mjs --slug=some-article-slug
+ *   node scripts/check-steam-products.mjs --slug some-article-slug
  *
  * NOT wired into prebuild: third-party network calls must not gate a deploy.
  */
@@ -79,6 +86,22 @@ export function namesAgree(anchor, appName) {
   return a === b;
 }
 
+/**
+ * Reduces a flat list of Steam link occurrences to the app ids that actually
+ * need a network round trip, in first-seen order. The same game is often
+ * linked from more than one article (or more than once in one), and each
+ * occurrence used to trigger its own appdetails fetch: 58 link occurrences
+ * across the archive resolve to 43 unique app ids as of this writing. This
+ * mirrors the YouTube gate's per-body Map dedup, applied here across the
+ * whole run instead of within a single article.
+ *
+ * @param {Array<{slug: string, appid: string, anchor: string}>} occurrences
+ * @returns {string[]} unique app ids, first-seen order
+ */
+export function uniqueAppIds(occurrences) {
+  return [...new Map(occurrences.map((o) => [o.appid, true])).keys()];
+}
+
 async function resolveApp(appid) {
   const url = `https://store.steampowered.com/api/appdetails?appids=${appid}&l=english`;
   try {
@@ -100,12 +123,67 @@ async function resolveApp(appid) {
   }
 }
 
+/**
+ * Parses --recent, accepting both "--recent 12" and "--recent=12" forms. The
+ * equals form matches the sibling --slug flag; the two forms disagreeing was
+ * itself the source of a fail-open bug, so both are accepted here.
+ *
+ * @param {string[]} args
+ * @returns {{present: boolean, valid: boolean, value: number, raw: string|null}}
+ */
+export function parseRecentFlag(args) {
+  const eqArg = args.find((a) => a.startsWith("--recent="));
+  if (eqArg !== undefined) {
+    const raw = eqArg.slice("--recent=".length);
+    const valid = /^[1-9][0-9]*$/.test(raw);
+    return { present: true, valid, value: valid ? parseInt(raw, 10) : 0, raw };
+  }
+  const idx = args.indexOf("--recent");
+  if (idx !== -1) {
+    const raw = args[idx + 1];
+    const valid = raw !== undefined && /^[1-9][0-9]*$/.test(raw);
+    return { present: true, valid, value: valid ? parseInt(raw, 10) : 0, raw: raw ?? null };
+  }
+  return { present: false, valid: true, value: 0, raw: null };
+}
+
+/**
+ * Parses --slug, accepting both "--slug=foo" and "--slug foo" forms.
+ *
+ * @param {string[]} args
+ * @returns {{present: boolean, valid: boolean, value: string|null}}
+ */
+export function parseSlugFlag(args) {
+  const eqArg = args.find((a) => a.startsWith("--slug="));
+  if (eqArg !== undefined) {
+    const raw = eqArg.slice("--slug=".length);
+    return { present: true, valid: raw.length > 0, value: raw || null };
+  }
+  const idx = args.indexOf("--slug");
+  if (idx !== -1) {
+    const raw = args[idx + 1];
+    const valid = raw !== undefined && raw.length > 0 && !raw.startsWith("--");
+    return { present: true, valid, value: valid ? raw : null };
+  }
+  return { present: false, valid: true, value: null };
+}
+
 async function main() {
   const args = process.argv.slice(2);
-  const recentIdx = args.indexOf("--recent");
-  const recent = recentIdx !== -1 ? parseInt(args[recentIdx + 1], 10) || 0 : 0;
-  const slugArg = args.find((a) => a.startsWith("--slug="));
-  const slug = slugArg ? slugArg.split("=")[1] : null;
+
+  const recentFlag = parseRecentFlag(args);
+  if (!recentFlag.valid) {
+    console.error(`check:steam  FAIL  --recent value "${recentFlag.raw ?? ""}" is not a positive integer`);
+    process.exitCode = 1;
+    return;
+  }
+
+  const slugFlag = parseSlugFlag(args);
+  if (slugFlag.present && !slugFlag.valid) {
+    console.error("check:steam  FAIL  --slug was given with no value");
+    process.exitCode = 1;
+    return;
+  }
 
   let articles;
   try {
@@ -120,30 +198,52 @@ async function main() {
   }
 
   let scope = articles;
-  if (slug) scope = articles.filter((a) => a.slug === slug);
-  else if (recent > 0) scope = articles.slice(0, recent);
+  if (slugFlag.present) {
+    scope = articles.filter((a) => a.slug === slugFlag.value);
+    if (scope.length === 0) {
+      // Distinguish "matched an article with nothing to check" (fine, OK 0)
+      // from "matched nothing at all" (a gate that never opened the article
+      // it was asked about, which must never certify it as OK).
+      console.error(`check:steam  FAIL  --slug=${slugFlag.value} matched no article in articles.json`);
+      console.error("The gate never opened an article, so it cannot certify one. Check the slug for a typo, or confirm the article has been added yet.");
+      process.exitCode = 1;
+      return;
+    }
+  } else if (recentFlag.value > 0) {
+    scope = articles.slice(0, recentFlag.value);
+  }
+
+  const occurrences = [];
+  for (const article of scope) {
+    for (const link of extractSteamLinks(article.body || "")) {
+      occurrences.push({ slug: article.slug, appid: link.appid, anchor: link.anchor });
+    }
+  }
+
+  const appIds = uniqueAppIds(occurrences);
+  const resolved = new Map();
+  for (const appid of appIds) {
+    resolved.set(appid, await resolveApp(appid));
+  }
 
   const dead = [];
   const review = [];
-  let checked = 0;
+  const checked = occurrences.length;
 
-  for (const article of scope) {
-    for (const link of extractSteamLinks(article.body || "")) {
-      checked++;
-      const result = await resolveApp(link.appid);
-      if (!result.ok) {
-        dead.push({ slug: article.slug, appid: link.appid, reason: result.reason });
-        continue;
-      }
-      if (!namesAgree(link.anchor, result.name)) {
-        review.push({
-          slug: article.slug,
-          appid: link.appid,
-          anchor: link.anchor,
-          name: result.name,
-          developers: result.developers.join(", "),
-        });
-      }
+  for (const occ of occurrences) {
+    const result = resolved.get(occ.appid);
+    if (!result.ok) {
+      dead.push({ slug: occ.slug, appid: occ.appid, reason: result.reason });
+      continue;
+    }
+    if (!namesAgree(occ.anchor, result.name)) {
+      review.push({
+        slug: occ.slug,
+        appid: occ.appid,
+        anchor: occ.anchor,
+        name: result.name,
+        developers: result.developers.join(", "),
+      });
     }
   }
 
@@ -165,7 +265,7 @@ async function main() {
     return;
   }
 
-  console.log(`check:steam  OK  ${checked} steam link(s) resolve, ${review.length} flagged for review`);
+  console.log(`check:steam  OK  ${checked} steam link(s) resolve (${appIds.length} unique app id(s)), ${review.length} flagged for review`);
   // process.exitCode (not process.exit()) so Node drains the event loop
   // naturally. process.exit() tears down before pending I/O (an in-flight
   // fetch() using AbortSignal.timeout()) settles, which crashes libuv on
