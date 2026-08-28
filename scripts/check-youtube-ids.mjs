@@ -110,7 +110,11 @@ async function main() {
     articles = JSON.parse(readFileSync(DEFAULT_ARTICLES, "utf8"));
   } catch (err) {
     console.warn(`check:youtube  WARN  could not read articles.json: ${err.message}`);
-    process.exit(0);
+    // process.exitCode (not process.exit()) so Node drains the event loop
+    // naturally. process.exit() tears down before pending I/O (an in-flight
+    // fetch() using AbortSignal.timeout()) settles, which crashes libuv on
+    // Windows. Do not "simplify" this back to process.exit().
+    return;
   }
 
   let scope = articles;
@@ -146,11 +150,21 @@ async function main() {
     console.error(`check:youtube  FAIL  ${dead.length} of ${checked} video id(s) do not resolve:`);
     for (const d of dead) console.error(`  ${d.slug}  ${d.id}  (${d.reason})`);
     console.error("An unresolvable id means the id was invented. Remove it or find the real video.");
-    process.exit(1);
+    // process.exitCode (not process.exit()) so Node drains the event loop
+    // naturally. process.exit() tears down before pending I/O (an in-flight
+    // fetch() using AbortSignal.timeout()) settles, which crashes libuv on
+    // Windows. Do not "simplify" this back to process.exit().
+    process.exitCode = 1;
+    return;
   }
 
   console.log(`check:youtube  OK  ${checked} video id(s) resolve, ${review.length} flagged for review`);
-  process.exit(0);
+  // process.exitCode (not process.exit()) so Node drains the event loop
+  // naturally. process.exit() tears down before pending I/O (an in-flight
+  // fetch() using AbortSignal.timeout()) settles, which crashes libuv on
+  // Windows. Returning here resolves main()'s promise and Node exits once
+  // nothing else is pending. Do not "simplify" this back to process.exit().
+  return;
 }
 
 const invokedPath = process.argv[1] ? resolve(process.argv[1]) : "";
