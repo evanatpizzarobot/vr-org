@@ -25,12 +25,28 @@ test("returns nothing when there are no steam links", () => {
 });
 
 test("namesAgree accepts an exact match ignoring case and punctuation", () => {
-  assert.equal(namesAgree("Beat Saber", "Beat Saber"), true);
-  assert.equal(namesAgree("POSTAL 2", "POSTAL 2"), true);
+  // Genuinely different strings that must still normalize equal, not the
+  // same string compared against itself (that would also pass a naive
+  // anchor === appName with no normalization at all).
+  assert.equal(namesAgree("Beat Saber", "beat saber!"), true);
+  assert.equal(namesAgree("POSTAL 2", "postal 2"), true);
 });
 
-test("namesAgree accepts a VR suffix on the real product name", () => {
-  assert.equal(namesAgree("Walkabout Mini Golf", "Walkabout Mini Golf VR"), true);
+test("namesAgree does not auto-accept a VR suffix, even the legitimate case", () => {
+  // "Walkabout Mini Golf" linking to "Walkabout Mini Golf VR" is a correct,
+  // legitimate link. It is still surfaced as REVIEW rather than auto-accepted,
+  // because the identical shape also describes a wrong-product link (see the
+  // next test). There is no string-level way to tell the two apart, so both
+  // are deliberately left for a human or agent to judge.
+  assert.equal(namesAgree("Walkabout Mini Golf", "Walkabout Mini Golf VR"), false);
+});
+
+test("namesAgree rejects a different studio's VR edition of a same-named flat game", () => {
+  // The flagship collision from CLAUDE.md: "I Am Your Beast" (Strange
+  // Scaffold, flat) is not "I AM YOUR BEAST VR" (Impact Inked). Same shape as
+  // the Walkabout case above, opposite ground truth, which is exactly why
+  // neither can be resolved by string matching alone.
+  assert.equal(namesAgree("I Am Your Beast", "I AM YOUR BEAST VR"), false);
 });
 
 test("namesAgree rejects a Redux edition standing in for the original", () => {
@@ -39,4 +55,9 @@ test("namesAgree rejects a Redux edition standing in for the original", () => {
 
 test("namesAgree rejects an unrelated product", () => {
   assert.equal(namesAgree("Beat Saber", "Half-Life: Alyx"), false);
+});
+
+test("namesAgree never auto-accepts an empty or punctuation-only anchor", () => {
+  assert.equal(namesAgree("", "VR"), false);
+  assert.equal(namesAgree("!!!", "VR"), false);
 });

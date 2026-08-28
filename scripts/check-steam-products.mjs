@@ -13,10 +13,10 @@
  *   an app id that does not resolve through the appdetails endpoint.
  *
  * What it reports for a human or agent to judge (exit 0, printed as REVIEW):
- *   anchor text that disagrees with the real product name. "VR" as a suffix on
- *   the real name is tolerated because that is the common legitimate case.
- *   Anything else is surfaced rather than auto-failed, because no string metric
- *   separates a legitimate paraphrase from a wrong-edition link.
+ *   any anchor text that is not an exact normalized match for the real product
+ *   name, including a trailing "VR" difference. That case is surfaced, not
+ *   auto-accepted: see namesAgree below for why a VR suffix cannot be trusted
+ *   as a string-level signal on its own.
  *
  * Usage:
  *   node scripts/check-steam-products.mjs --recent 3
@@ -51,6 +51,21 @@ function normalize(name) {
 }
 
 /**
+ * Deliberately exact match only. No VR-suffix tolerance.
+ *
+ * A trailing "VR" difference between the anchor and the real product name is
+ * ambiguous by shape alone, and the two ways it resolves are opposites:
+ *   "Walkabout Mini Golf" linking to "Walkabout Mini Golf VR" is the SAME
+ *   product, correctly linked.
+ *   "I Am Your Beast" (Strange Scaffold, flat) linking to "I AM YOUR BEAST VR"
+ *   (Impact Inked) is a DIFFERENT product by a different studio, wrongly linked.
+ * Both pairs normalize to identical strings plus a trailing "vr". A rule that
+ * accepts one accepts the other; there is no string-level test that tells them
+ * apart. So neither is auto-accepted. Both are surfaced as REVIEW for a human
+ * or an agent with real-world knowledge of the two products to judge. Do not
+ * reintroduce a VR-suffix tolerance here; it silently waves through the exact
+ * collision this gate exists to catch.
+ *
  * @param {string} anchor the article's link text
  * @param {string} appName the real product name from Steam
  * @returns {boolean}
@@ -58,12 +73,10 @@ function normalize(name) {
 export function namesAgree(anchor, appName) {
   const a = normalize(anchor);
   const b = normalize(appName);
-  if (a === b) return true;
-  // A trailing "VR" on the real product name is the common legitimate case:
-  // "Walkabout Mini Golf" is the correct way to refer to "Walkabout Mini Golf VR".
-  if (b === `${a}vr`) return true;
-  if (a === `${b}vr`) return true;
-  return false;
+  // An empty (or punctuation-only, which normalizes to empty) anchor must
+  // never auto-accept, even against an empty-normalizing appName.
+  if (a === "") return false;
+  return a === b;
 }
 
 async function resolveApp(appid) {
