@@ -1,27 +1,27 @@
 #!/usr/bin/env node
 /**
- * Same-date byline guard for VR.org originals.
+ * Same-date byline reporter for VR.org originals (advisory only).
  *
- * Rule (see CLAUDE.md, "This Week in VR" section):
- *   Multiple originals on one date are fine and normal, but never two by the
- *   same writer on the same date. Two pieces under one name on one day reads
- *   as bulk generation, which is the same failure the rotation rule guards.
+ * Corrected rule, per the site owner: two articles by one writer on one date
+ * is acceptable and happens regularly. The site aims for one original per
+ * writer per day where practical, but doubling up is not a violation. The
+ * hard rule is rotation: an author must never appear three or more times in
+ * a row. That rule is enforced (with a real exit-1 failure) by check:rotation,
+ * not by this script.
  *
- * check:rotation does NOT cover this. It permits runs of two consecutive
- * same-author entries, and two same-date pieces by one author are exactly
- * such a run.
+ * This script never fails a build. It exists purely to surface same-date
+ * doubles as an informational signal, useful during an unattended publishing
+ * run ("you are doubling up on Alex today") without blocking anything.
  *
- * Exit 1 if any (author, publishDate) pair appears more than once.
+ * Always exits 0, in every code path.
  *
  * Usage:
  *   node scripts/check-same-date-byline.mjs             # check the whole file
  *   node scripts/check-same-date-byline.mjs --recent 12 # only the newest 12
  *   node scripts/check-same-date-byline.mjs --file path/to/articles.json
  *
- * Wired into `prebuild` as --recent 12 (matching check:rotation, so legacy
- * collisions that predate this gate do not block a deploy) and into
- * `npm run check:same-date` unscoped, so the full historical count stays
- * visible on demand without breaking builds.
+ * NOT wired into `prebuild`. Advisory output must not gate a Docker deploy.
+ * Available on demand via `npm run check:same-date`.
  */
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -78,15 +78,15 @@ function main() {
     process.exit(0);
   }
 
-  console.error(`check:same-date  FAIL  ${hits.length} date(s) carry two or more articles by one author (${windowLabel}):`);
-  console.error("");
+  console.log(`check:same-date  NOTE  ${hits.length} date(s) carry two or more articles by one author (${windowLabel}, advisory, not a failure):`);
+  console.log("");
   for (const hit of hits) {
-    console.error(`  ${hit.date}  ${hit.author}  (${hit.slugs.length} articles)`);
-    for (const slug of hit.slugs) console.error(`     ${slug}`);
+    console.log(`  ${hit.date}  ${hit.author}  (${hit.slugs.length} articles)`);
+    for (const slug of hit.slugs) console.log(`     ${slug}`);
   }
-  console.error("");
-  console.error("Reassign one byline by beat. See CLAUDE.md, Editorial Rotation Schedule.");
-  process.exit(1);
+  console.log("");
+  console.log("Doubles like this are fine, the site aims for one original per writer per day where practical but does not require it. Rotation is the real constraint: no author three or more times in a row, enforced by check:rotation.");
+  process.exit(0);
 }
 
 const invokedPath = process.argv[1] ? resolve(process.argv[1]) : "";

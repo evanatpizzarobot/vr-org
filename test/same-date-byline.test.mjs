@@ -73,3 +73,18 @@ test("does not find a collision that falls outside a recent-window slice", () =>
   const hits = findSameDateBylineCollisions(articles.slice(0, 2));
   assert.deepEqual(hits, []);
 });
+
+// Per the site owner, two articles by one writer on one date is acceptable
+// and common; this is not a rule violation. findSameDateBylineCollisions
+// still detects and reports doubles (that part of its behavior is unchanged),
+// but the finding is advisory only. The calling script never fails a build
+// over it; only check:rotation's 3-in-a-row rule is a real gate.
+test("still detects a same-date double as an advisory finding, not a failure", () => {
+  const articles = [
+    { slug: "a", author: "Alex Reeves", publishDate: "2026-08-28" },
+    { slug: "b", author: "Alex Reeves", publishDate: "2026-08-28" },
+  ];
+  const hits = findSameDateBylineCollisions(articles);
+  assert.equal(hits.length, 1);
+  assert.equal(hits[0].author, "Alex Reeves");
+});
