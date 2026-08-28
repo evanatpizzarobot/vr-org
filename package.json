@@ -24,7 +24,8 @@
     "audit:pages": "node scripts/audit-pages.mjs",
     "thumbs:toplists": "node scripts/generate-toplist-thumbs.mjs",
     "gsc:mine": "node scripts/gsc-striking-distance.mjs",
-    "check:links": "node scripts/check-outbound-links.mjs"
+    "check:links": "node scripts/check-outbound-links.mjs",
+    "travel:preflight": "node scripts/travel-preflight.mjs"
   },
   "dependencies": {
     "mcp-handler": "^1.1.0",
