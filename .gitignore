@@ -128,3 +128,6 @@ vr-org-*.png
 # Stray screenshots from browser-automation checks (never commit these).
 # Leading slash keeps this to the repo root so public/*.png stays tracked.
 /*.png
+
+# Subagent-driven development workspace (ledger, briefs, review packages) - local only
+.superpowers/

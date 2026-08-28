@@ -1,0 +1,128 @@
+#!/usr/bin/env node
+/**
+ * Travel mode preflight.
+ *
+ * Run before drafting anything in an unattended session. It answers one
+ * question: is this repository in a state I understand well enough to safely
+ * add articles to it?
+ *
+ * Four ways the answer is no:
+ *   1. HEAD is not on master. Travel mode publishes from master. Drafting on
+ *      any other branch, or in a detached HEAD, would commit articles to a
+ *      branch nothing deploys from, and an unattended run would report
+ *      success while nothing reached production.
+ *   2. Uncommitted changes in the working tree. Something else is mid-edit.
+ *   3. Local master is behind origin. Drafting would build on a stale archive
+ *      and the duplicate check would miss recently published pieces.
+ *   4. Unpushed local commits. Another tool committed without pushing, which
+ *      has happened five times between 2026-06-09 and 2026-08-10, and on
+ *      2026-06-25 produced a near duplicate caught only by this check.
+ *
+ * Every git call this script makes is individually wrapped. A stale
+ * index.lock, or a checkout with no local master ref, previously made a
+ * later git() call throw a raw Node stack trace instead of a house FAIL
+ * line: this script is meant to fail closed, but it also has to fail
+ * legibly, since an unattended run has nothing but this output to act on.
+ *
+ * Exit 0 means safe to draft. Exit 1 means stop and notify Evan.
+ *
+ * Usage:
+ *   node scripts/travel-preflight.mjs
+ */
+import { execFileSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
+
+const here = dirname(fileURLToPath(import.meta.url));
+const REPO = resolve(here, "..");
+
+class GitCommandError extends Error {
+  constructor(label, cmd, reason) {
+    super(`${label} (\`${cmd}\`) failed: ${reason}`);
+    this.name = "GitCommandError";
+  }
+}
+
+/**
+ * Runs one git command and returns its trimmed stdout. Any failure, a
+ * nonzero exit, a missing ref, a lock file blocking the operation, is
+ * converted into a GitCommandError naming which command failed and why,
+ * rather than letting execFileSync's raw error (and stack trace) escape.
+ *
+ * @param {string[]} args
+ * @param {string} label human-readable description of what this call is for
+ * @returns {string}
+ */
+function git(args, label) {
+  try {
+    // stdio is explicit so a failing git command's own stderr (a raw "fatal:
+    // ..." line) is captured into err.stderr for the FAIL message below
+    // rather than also leaking straight to this process's terminal, which
+    // would otherwise interleave git's diagnostic text ahead of the one line
+    // an unattended run actually needs to read.
+    return execFileSync("git", args, { cwd: REPO, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  } catch (err) {
+    const cmd = `git ${args.join(" ")}`;
+    const reason = err.stderr ? String(err.stderr).trim() : err.message;
+    throw new GitCommandError(label, cmd, reason);
+  }
+}
+
+function main() {
+  try {
+    const problems = [];
+
+    git(["fetch", "origin", "master"], "fetch origin/master");
+
+    // Checked first and pushed first: if HEAD is on the wrong branch (or
+    // detached), that fact explains any other anomaly this run might report,
+    // so it should lead the problems list rather than get buried under it.
+    //
+    // A detached HEAD returns the literal string "HEAD" from this command,
+    // which never equals "master", so the equality check below already
+    // catches it. Do not loosen this to something like checking for a null
+    // or empty branch name; "HEAD" is the correct, intentional non-match.
+    const branch = git(["rev-parse", "--abbrev-ref", "HEAD"], "determine the current branch");
+    if (branch !== "master") {
+      problems.push(`not on master (currently on ${branch}). Travel mode publishes from master; drafting here would commit to the wrong branch.`);
+    }
+
+    const dirty = git(["status", "--porcelain"], "read working tree status");
+    if (dirty) {
+      problems.push(`working tree is not clean:\n${dirty.split("\n").map((l) => `      ${l}`).join("\n")}`);
+    }
+
+    const unpushed = git(["log", "origin/master..master", "--oneline"], "list commits not yet pushed to origin/master");
+    if (unpushed) {
+      problems.push(`unpushed local commits:\n${unpushed.split("\n").map((l) => `      ${l}`).join("\n")}`);
+    }
+
+    const unpulled = git(["log", "master..origin/master", "--oneline"], "list commits on origin/master not yet pulled");
+    if (unpulled) {
+      problems.push(`local master is behind origin:\n${unpulled.split("\n").map((l) => `      ${l}`).join("\n")}`);
+    }
+
+    if (problems.length > 0) {
+      console.error("travel:preflight  FAIL  repository is not in a known-good state:");
+      console.error("");
+      for (const p of problems) console.error(`  - ${p}`);
+      console.error("");
+      console.error("Do NOT draft. Notify Evan with this output and stop.");
+      process.exitCode = 1;
+      return;
+    }
+
+    const head = git(["rev-parse", "--short", "HEAD"], "resolve the short HEAD sha");
+    console.log(`travel:preflight  OK  clean tree, synced with origin at ${head}`);
+    process.exitCode = 0;
+    return;
+  } catch (err) {
+    const detail = err instanceof GitCommandError ? err.message : `unexpected error: ${err.message}`;
+    console.error(`travel:preflight  FAIL  could not determine repository state: ${detail}`);
+    console.error("Do NOT draft. Notify Evan with this output and stop.");
+    process.exitCode = 1;
+    return;
+  }
+}
+
+main();
