@@ -14,6 +14,9 @@
  *     below for how a matched article with zero references still reports OK).
  *   a malformed --recent or --slug value, rather than silently falling back
  *     to scanning the whole archive or matching nothing.
+ *   a --file value that is missing, or that names a path this process cannot
+ *     read, rather than silently falling back to data/articles.json. See
+ *     --file below for why a fall back here would be dangerous.
  *
  * What it reports for a human or agent to judge (exit 0, printed as REVIEW):
  *   an ID that resolves to a title sharing no distinctive word with its
@@ -26,6 +29,16 @@
  *   node scripts/check-youtube-ids.mjs --recent=3
  *   node scripts/check-youtube-ids.mjs --slug=some-article-slug
  *   node scripts/check-youtube-ids.mjs --slug some-article-slug
+ *   node scripts/check-youtube-ids.mjs --file path/to/draft-articles.json
+ *   node scripts/check-youtube-ids.mjs --file=path/to/draft-articles.json
+ *
+ * --file exists so the travel-mode verification gate can check a draft
+ * article's YouTube references before that draft has been added to
+ * data/articles.json. Verification has to happen before publishing, and the
+ * default path only ever contains articles that are already live, so without
+ * --file this gate could not be run on a draft at all. It composes with
+ * --slug and --recent, both of which apply within whichever file --file
+ * points at.
  *
  * NOT wired into prebuild: it makes third-party network calls, and a YouTube
  * outage must not be able to break a Docker deploy.
@@ -246,8 +259,42 @@ export function parseSlugFlag(args) {
   return { present: false, valid: true, value: null };
 }
 
+/**
+ * Parses --file, accepting both "--file path" and "--file=path" forms. A
+ * value that is missing entirely, in either form, is invalid rather than
+ * silently resolving to resolve(undefined), which throws an uncaught
+ * TypeError from a script documented as never crashing on a malformed
+ * invocation. Same shape as check-same-date-byline.mjs's parseFileFlag; do
+ * not invent a different convention here.
+ *
+ * @param {string[]} args
+ * @returns {{present: boolean, valid: boolean, raw: string|null}}
+ */
+export function parseFileFlag(args) {
+  const eqArg = args.find((a) => a.startsWith("--file="));
+  if (eqArg !== undefined) {
+    const raw = eqArg.slice("--file=".length);
+    return { present: true, valid: raw.length > 0, raw: raw || null };
+  }
+  const idx = args.indexOf("--file");
+  if (idx !== -1) {
+    const raw = args[idx + 1];
+    const valid = raw !== undefined && raw.length > 0 && !raw.startsWith("--");
+    return { present: true, valid, raw: valid ? raw : null };
+  }
+  return { present: false, valid: true, raw: null };
+}
+
 async function main() {
   const args = process.argv.slice(2);
+
+  const fileFlag = parseFileFlag(args);
+  if (!fileFlag.valid) {
+    console.error("check:youtube  FAIL  --file was given with no path");
+    process.exitCode = 1;
+    return;
+  }
+  const articlesPath = fileFlag.present ? resolve(fileFlag.raw) : DEFAULT_ARTICLES;
 
   const recentFlag = parseRecentFlag(args);
   if (!recentFlag.valid) {
@@ -265,9 +312,20 @@ async function main() {
 
   let articles;
   try {
-    articles = JSON.parse(readFileSync(DEFAULT_ARTICLES, "utf8"));
+    articles = JSON.parse(readFileSync(articlesPath, "utf8"));
   } catch (err) {
-    console.warn(`check:youtube  WARN  could not read articles.json: ${err.message}`);
+    if (fileFlag.present) {
+      // --file was given explicitly, most likely by the travel-mode
+      // verification gate pointing at a draft that has not been added to
+      // data/articles.json yet. A gate that cannot read the file it was
+      // told to check must say so and fail, not quietly report OK against
+      // zero articles: that is the exact fails-open shape a prior review
+      // already found in this script's --recent handling.
+      console.error(`check:youtube  FAIL  could not read ${articlesPath}: ${err.message}`);
+      process.exitCode = 1;
+      return;
+    }
+    console.warn(`check:youtube  WARN  could not read ${articlesPath}: ${err.message}`);
     // process.exitCode (not process.exit()) so Node drains the event loop
     // naturally. process.exit() tears down before pending I/O (an in-flight
     // fetch() using AbortSignal.timeout()) settles, which crashes libuv on

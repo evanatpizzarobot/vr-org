@@ -101,6 +101,85 @@ test("check:steam exits 1 on a bad --recent value", () => {
   assert.match(result.stderr, /check:steam {2}FAIL/);
 });
 
+// --file lets the travel-mode verification gate point check:youtube and
+// check:steam at a draft articles file that has not been added to
+// data/articles.json yet, since verification has to run before publishing.
+// These three cases per script mirror the --file coverage already proven for
+// check:same-date in same-date-byline.test.mjs: a valid fixture resolves and
+// runs the real gate, a missing value fails closed, and a path that cannot
+// be read fails closed rather than silently falling back to the default
+// archive (the fails-open shape a prior review already found in --recent).
+
+test("check:youtube --file resolves a valid fixture and runs the real gate", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-youtube-file-"));
+  const fixture = join(dir, "draft-articles.json");
+  try {
+    writeFileSync(fixture, JSON.stringify([{ slug: "no-video-here", body: "<p>no video here</p>" }]), "utf8");
+    const result = run("scripts/check-youtube-ids.mjs", [`--file=${fixture}`]);
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /check:youtube {2}OK {2}0 video/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("check:youtube exits 1 when --file is given with no value", () => {
+  const result = run("scripts/check-youtube-ids.mjs", ["--file"]);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /check:youtube {2}FAIL/);
+});
+
+test("check:youtube exits 1 when --file points at a nonexistent path, without falling back to the default archive", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-youtube-file-missing-"));
+  const missing = join(dir, "does-not-exist.json");
+  try {
+    const result = run("scripts/check-youtube-ids.mjs", [`--file=${missing}`]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /check:youtube {2}FAIL/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+// Deliberately no Steam link in this fixture, matching the network-free
+// invariant this whole file states up top: extractSteamLinks finds nothing,
+// so main() never calls resolveApp(), and the test still proves --file was
+// actually resolved and read (the run() would exit 1 on a missing/unreadable
+// path, per the tests below) without depending on a live network call. The
+// real-network case (a fixture with an actual Steam link resolving through
+// the live appdetails endpoint) is exercised by hand as part of manual
+// verification, not pinned into the automated suite.
+test("check:steam --file resolves a valid fixture and runs the real gate", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-steam-file-"));
+  const fixture = join(dir, "draft-articles.json");
+  try {
+    writeFileSync(fixture, JSON.stringify([{ slug: "no-links-here", body: "<p>no steam links here</p>" }]), "utf8");
+    const result = run("scripts/check-steam-products.mjs", [`--file=${fixture}`]);
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /check:steam {2}OK {2}0 steam link/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("check:steam exits 1 when --file is given with no value", () => {
+  const result = run("scripts/check-steam-products.mjs", ["--file"]);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /check:steam {2}FAIL/);
+});
+
+test("check:steam exits 1 when --file points at a nonexistent path, without falling back to the default archive", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-steam-file-missing-"));
+  const missing = join(dir, "does-not-exist.json");
+  try {
+    const result = run("scripts/check-steam-products.mjs", [`--file=${missing}`]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /check:steam {2}FAIL/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
 test("apply-correction exits 1 on a malformed --date and never writes data/articles.json", () => {
   const before = readFileSync(ARTICLES);
   const result = run("scripts/apply-correction.mjs", [
