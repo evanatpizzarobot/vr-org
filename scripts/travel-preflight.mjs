@@ -6,7 +6,16 @@
  * question: is this repository in a state I understand well enough to safely
  * add articles to it?
  *
- * Four ways the answer is no:
+ * It also answers a second question the 2026-08-29 run had to discover the
+ * expensive way: can this session reach the open internet at all? That run
+ * passed preflight, then spent an entire session finding out that every host
+ * except api.github.com was refused by the environment's egress proxy, and
+ * stopped at Step 2 with nothing published. The cause was the cloud
+ * environment's Network access level, not anything in this repo. Probing four
+ * representative hosts here costs a few seconds and turns that into a Step 1
+ * stop with the fix named in the output.
+ *
+ * Five ways the answer is no:
  *   1. HEAD is not on master. Travel mode publishes from master. Drafting on
  *      any other branch, or in a detached HEAD, would commit articles to a
  *      branch nothing deploys from, and an unattended run would report
@@ -17,6 +26,9 @@
  *   4. Unpushed local commits. Another tool committed without pushing, which
  *      has happened five times between 2026-06-09 and 2026-08-10, and on
  *      2026-06-25 produced a near duplicate caught only by this check.
+ *   5. No outbound network. Every source, image, store page and the deploy
+ *      verification in Step 7 needs it, so a run without it cannot produce a
+ *      publishable article and should never start drafting.
  *
  * Every git call this script makes is individually wrapped. A stale
  * index.lock, or a checkout with no local master ref, previously made a
@@ -28,6 +40,7 @@
  *
  * Usage:
  *   node scripts/travel-preflight.mjs
+ *   node scripts/travel-preflight.mjs --no-network   # git checks only
  */
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
@@ -68,7 +81,74 @@ function git(args, label) {
   }
 }
 
-function main() {
+/**
+ * Four hosts that together stand in for everything a travel mode run needs
+ * from the open internet. They are not an exhaustive list of what the run
+ * touches, they are the four whose absence makes the run pointless:
+ *
+ *   vr.org                  Step 7 confirms a deploy by reading the live site
+ *                           over public HTTP. Without it a push is unverifiable.
+ *   store.steampowered.com  Tier 2 confirms a store link's developers or
+ *                           publishers match who the article says made the thing.
+ *   commons.wikimedia.org   Every article carries 2-4 images and each one has to
+ *                           be fetched and actually looked at, not just 200-checked.
+ *   www.youtube.com         Trailer IDs are confirmed against the oEmbed title,
+ *                           because a valid-but-mislabeled ID returns 200 too.
+ *
+ * Reachability is the question, not correctness, so any HTTP status counts as a
+ * pass. A 404 still proves the request left the box. Only a thrown fetch (DNS
+ * refusal, a proxy answering 403 to CONNECT, a timeout) counts as blocked.
+ * vr.org is the one exception: it is our own site, a non-OK status there is a
+ * real signal, and publishing into a site that is down is not something an
+ * unattended run should decide to do.
+ */
+const EGRESS_PROBES = [
+  { host: "vr.org", url: "https://vr.org/api/health", requireOk: true },
+  { host: "store.steampowered.com", url: "https://store.steampowered.com/api/appdetails?appids=620980" },
+  { host: "commons.wikimedia.org", url: "https://commons.wikimedia.org/w/api.php?action=query&format=json&meta=siteinfo" },
+  { host: "www.youtube.com", url: "https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdQw4w9WgXcQ&format=json" },
+];
+
+const PROBE_TIMEOUT_MS = 10_000;
+
+/**
+ * Issues one probe request. Never throws: the caller wants a verdict per host,
+ * not an exception that hides the other three results.
+ *
+ * @param {{host: string, url: string, requireOk?: boolean}} probe
+ * @returns {Promise<{host: string, ok: boolean, detail: string}>}
+ */
+async function probe({ host, url, requireOk }) {
+  try {
+    const res = await fetch(url, {
+      // Wikimedia rate-limits default agents and Steam varies its response by
+      // agent, so identify ourselves the same way the image checks do.
+      headers: { "User-Agent": "VRorgBot/1.0 (https://vr.org; evan@pizzarobotstudios.com)" },
+      signal: AbortSignal.timeout(PROBE_TIMEOUT_MS),
+      redirect: "follow",
+    });
+    if (requireOk && !res.ok) {
+      return { host, ok: false, detail: `reachable but answered HTTP ${res.status}` };
+    }
+    return { host, ok: true, detail: `HTTP ${res.status}` };
+  } catch (err) {
+    const reason = err?.name === "TimeoutError" ? `no response in ${PROBE_TIMEOUT_MS / 1000}s` : (err?.cause?.message || err?.message || String(err));
+    return { host, ok: false, detail: reason };
+  }
+}
+
+/**
+ * Probes all four hosts in parallel and returns the failures. An empty array
+ * means the run can reach what it needs.
+ *
+ * @returns {Promise<{host: string, ok: boolean, detail: string}[]>}
+ */
+async function checkEgress() {
+  const results = await Promise.all(EGRESS_PROBES.map(probe));
+  return results.filter((r) => !r.ok);
+}
+
+async function main() {
   try {
     const problems = [];
 
@@ -113,6 +193,38 @@ function main() {
     }
 
     const head = git(["rev-parse", "--short", "HEAD"], "resolve the short HEAD sha");
+
+    // Network last: the git checks are local and instant, so a repo problem
+    // should surface without waiting on four HTTP round trips first.
+    if (!process.argv.includes("--no-network")) {
+      const unreachable = await checkEgress();
+      if (unreachable.length > 0) {
+        const total = EGRESS_PROBES.length;
+        console.error(`travel:preflight  FAIL  ${unreachable.length} of ${total} required hosts unreachable:`);
+        console.error("");
+        for (const u of unreachable) console.error(`  - ${u.host}: ${u.detail}`);
+        console.error("");
+        if (unreachable.length === total) {
+          // Every probe failing at once is not four coincident outages. It is
+          // one policy, applied at the egress proxy, and no amount of retrying
+          // or degrading inside the run will get around it.
+          console.error("  All of them failing together means outbound HTTPS is blocked for this");
+          console.error("  environment, not that four sites are down. If this is a cloud session,");
+          console.error("  the fix is on the environment, not in this repo: open the routine at");
+          console.error("  claude.ai/code/routines, click the pencil, select the cloud icon below");
+          console.error("  Instructions, open that environment's settings, and set Network access");
+          console.error("  to Full (or Custom with the news, store and image hosts listed). GitHub");
+          console.error("  reaches api.github.com through a separate proxy, so github working is");
+          console.error("  not evidence that the rest of the network does.");
+          console.error("");
+        }
+        console.error("  Sourcing, image verification, store checks and the Step 7 deploy check all");
+        console.error("  need these. Do NOT draft. Notify Evan with this output and stop.");
+        process.exitCode = 1;
+        return;
+      }
+    }
+
     console.log(`travel:preflight  OK  clean tree, synced with origin at ${head}`);
     process.exitCode = 0;
     return;
@@ -125,4 +237,4 @@ function main() {
   }
 }
 
-main();
+await main();
