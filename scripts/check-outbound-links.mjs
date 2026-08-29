@@ -96,6 +96,14 @@ const TRUSTED_FIRST_PARTY = new Set([
   // product JSON at /products/bigscreen-beyond-2.js returns real Bigscreen SKUs
   // (Beyond 2 at $899, 2e at $1,099). Verified 2026-08-28.
   "store.bigscreenvr.com",
+  // The two largest out-of-home VR operators, both linked from the 2026-08-29
+  // location-based VR feature. zerolatencyvr.com self-identifies as "Global
+  // Virtual Reality Experience Provider - Zero Latency VR" and is the domain
+  // carried on the company's own PR Newswire releases; sandboxvr.com serves
+  // the live location list and per-experience pages the article cites.
+  // Verified 2026-08-29.
+  "zerolatencyvr.com",
+  "sandboxvr.com",
 ]);
 
 /**
