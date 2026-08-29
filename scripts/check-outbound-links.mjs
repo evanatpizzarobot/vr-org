@@ -91,6 +91,11 @@ const TRUSTED_FIRST_PARTY = new Set([
   // The page links back to github.com/darknight1050/quest1-bootloader-unlocker-web
   // in its own header, and both project READMEs point here. Verified 2026-08-25.
   "quest1-unlock.skystate.ch",
+  // Bigscreen's own storefront. bigscreenvr.com is the company's marketing site
+  // and store.bigscreenvr.com is its Shopify store on the same domain; the
+  // product JSON at /products/bigscreen-beyond-2.js returns real Bigscreen SKUs
+  // (Beyond 2 at $899, 2e at $1,099). Verified 2026-08-28.
+  "store.bigscreenvr.com",
 ]);
 
 /**
