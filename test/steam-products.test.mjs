@@ -3,22 +3,23 @@ import assert from "node:assert/strict";
 import {
   extractSteamLinks,
   namesAgree,
-  uniqueAppIds,
+  uniqueSteamRefs,
   parseRecentFlag,
   parseSlugFlag,
 } from "../scripts/check-steam-products.mjs";
 
-test("extracts appid and anchor text", () => {
+test("extracts an app link's kind, id and anchor text", () => {
   const body = '<a href="https://store.steampowered.com/app/620980/" target="_blank" rel="noopener">Beat Saber</a>';
   const links = extractSteamLinks(body);
   assert.equal(links.length, 1);
-  assert.equal(links[0].appid, "620980");
+  assert.equal(links[0].kind, "app");
+  assert.equal(links[0].id, "620980");
   assert.equal(links[0].anchor, "Beat Saber");
 });
 
-test("extracts an appid from a url carrying a name slug", () => {
+test("extracts an id from a url carrying a name slug", () => {
   const body = '<a href="https://store.steampowered.com/app/12120/Grand_Theft_Auto_San_Andreas/">GTA San Andreas</a>';
-  assert.equal(extractSteamLinks(body)[0].appid, "12120");
+  assert.equal(extractSteamLinks(body)[0].id, "12120");
 });
 
 test("strips nested markup out of the anchor text", () => {
@@ -28,6 +29,38 @@ test("strips nested markup out of the anchor text", () => {
 
 test("returns nothing when there are no steam links", () => {
   assert.deepEqual(extractSteamLinks("<p>no links</p>"), []);
+});
+
+// The defect this fix closes: a rehearsal article's headline price came from
+// a /bundle/ link, and the gate reported OK without ever opening it because
+// extractSteamLinks only matched /app/. These pin all three forms, together
+// in one body so an app link cannot mask a bundle link being dropped.
+test("extracts all three link forms, app, bundle and sub, from one body", () => {
+  const body = [
+    '<a href="https://store.steampowered.com/app/620980/">Beat Saber</a>',
+    '<a href="https://store.steampowered.com/bundle/79241/Some_Bundle/">Hip Hop Mixtape 2</a>',
+    '<a href="https://store.steampowered.com/sub/7/">Condition Zero pack</a>',
+  ].join(" ");
+  const links = extractSteamLinks(body);
+  assert.equal(links.length, 3);
+  assert.deepEqual(
+    links.map((l) => l.kind),
+    ["app", "bundle", "sub"]
+  );
+  assert.deepEqual(
+    links.map((l) => l.id),
+    ["620980", "79241", "7"]
+  );
+});
+
+test("a bundle link is no longer silently dropped in a body that also has an app link", () => {
+  const body =
+    '<a href="https://store.steampowered.com/bundle/79241/">Hip Hop Mixtape 2</a> ' +
+    '<a href="https://store.steampowered.com/app/620980/">Beat Saber</a>';
+  const links = extractSteamLinks(body);
+  assert.equal(links.length, 2);
+  assert.ok(links.some((l) => l.kind === "bundle" && l.id === "79241"));
+  assert.ok(links.some((l) => l.kind === "app" && l.id === "620980"));
 });
 
 test("namesAgree accepts an exact match ignoring case and punctuation", () => {
@@ -68,17 +101,36 @@ test("namesAgree never auto-accepts an empty or punctuation-only anchor", () => 
   assert.equal(namesAgree("!!!", "VR"), false);
 });
 
-test("uniqueAppIds dedupes repeated app ids across occurrences, in first-seen order", () => {
+test("uniqueSteamRefs dedupes repeated (kind, id) pairs across occurrences, in first-seen order", () => {
   const occurrences = [
-    { slug: "a", appid: "620980", anchor: "Beat Saber" },
-    { slug: "b", appid: "620980", anchor: "Beat Saber" },
-    { slug: "c", appid: "1408230", anchor: "Walkabout Mini Golf" },
+    { slug: "a", kind: "app", id: "620980", anchor: "Beat Saber" },
+    { slug: "b", kind: "app", id: "620980", anchor: "Beat Saber" },
+    { slug: "c", kind: "app", id: "1408230", anchor: "Walkabout Mini Golf" },
   ];
-  assert.deepEqual(uniqueAppIds(occurrences), ["620980", "1408230"]);
+  assert.deepEqual(uniqueSteamRefs(occurrences), [
+    { kind: "app", id: "620980" },
+    { kind: "app", id: "1408230" },
+  ]);
 });
 
-test("uniqueAppIds returns an empty list for no occurrences", () => {
-  assert.deepEqual(uniqueAppIds([]), []);
+test("uniqueSteamRefs returns an empty list for no occurrences", () => {
+  assert.deepEqual(uniqueSteamRefs([]), []);
+});
+
+test("uniqueSteamRefs does not merge an app id and a bundle id that share the same number", () => {
+  // A bundle id and an app id are drawn from separate Steam numbering spaces
+  // and can collide numerically. Deduping on id alone would treat these as
+  // the same reference and resolve one of them against the wrong endpoint.
+  const occurrences = [
+    { slug: "a", kind: "app", id: "79241", anchor: "Some App" },
+    { slug: "b", kind: "bundle", id: "79241", anchor: "Hip Hop Mixtape 2" },
+  ];
+  const refs = uniqueSteamRefs(occurrences);
+  assert.equal(refs.length, 2);
+  assert.deepEqual(refs, [
+    { kind: "app", id: "79241" },
+    { kind: "bundle", id: "79241" },
+  ]);
 });
 
 test("parseRecentFlag accepts the space form", () => {

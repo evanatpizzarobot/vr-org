@@ -141,14 +141,17 @@ test("check:youtube exits 1 when --file points at a nonexistent path, without fa
   }
 });
 
-// Deliberately no Steam link in this fixture, matching the network-free
-// invariant this whole file states up top: extractSteamLinks finds nothing,
-// so main() never calls resolveApp(), and the test still proves --file was
-// actually resolved and read (the run() would exit 1 on a missing/unreadable
-// path, per the tests below) without depending on a live network call. The
-// real-network case (a fixture with an actual Steam link resolving through
-// the live appdetails endpoint) is exercised by hand as part of manual
-// verification, not pinned into the automated suite.
+// Deliberately no Steam link of any kind (app, bundle or sub) in this
+// fixture, matching the network-free invariant this whole file states up
+// top: extractSteamLinks finds nothing, so main() never calls resolveRef(),
+// and the test still proves --file was actually resolved and read (the
+// run() would exit 1 on a missing/unreadable path, per the tests below)
+// without depending on a live network call. The real-network cases,
+// including a fixture with an actual /bundle/ link resolving through
+// ajaxresolvebundles (the endpoint this gate silently skipped before this
+// fix, which is how a rehearsal article's headline price went unchecked),
+// are exercised by hand as part of manual verification, not pinned into the
+// automated suite.
 test("check:steam --file resolves a valid fixture and runs the real gate", () => {
   const dir = mkdtempSync(join(tmpdir(), "vr-org-steam-file-"));
   const fixture = join(dir, "draft-articles.json");
