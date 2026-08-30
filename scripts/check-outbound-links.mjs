@@ -104,6 +104,14 @@ const TRUSTED_FIRST_PARTY = new Set([
   // Verified 2026-08-29.
   "zerolatencyvr.com",
   "sandboxvr.com",
+  // Kinetic Games, developer and publisher of Phasmophobia. The Steam
+  // appdetails `website` field for app 739630 returns kineticgames.co.uk, and
+  // the studio's own Steam announcements link to /news/ posts on this domain.
+  // kineticgames.zendesk.com is the Help Centre the studio links from those
+  // same posts for bug reports. Verified 2026-08-30.
+  "kineticgames.co.uk",
+  "www.kineticgames.co.uk",
+  "kineticgames.zendesk.com",
 ]);
 
 /**
