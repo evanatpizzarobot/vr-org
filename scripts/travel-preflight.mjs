@@ -272,9 +272,14 @@ async function main() {
         console.error("  a run found every write path equally shut and lost a finished, gated");
         console.error("  article when its container went away.");
         console.error("");
-        console.error("  The fix is on GitHub, not in this repo: install the Claude GitHub App for");
-        console.error("  the account at github.com/apps/claude/installations/select_target, or");
-        console.error("  reconnect GitHub from claude.ai settings under Connectors.");
+        console.error("  The fix is on GitHub, not in this repo, and the remote's wording misleads:");
+        console.error("  it reads like the Claude GitHub App is missing, when the usual cause is an");
+        console.error("  app that IS installed but whose repository selection does not list this");
+        console.error("  repo. That is what happened on 2026-08-30. The app had been installed two");
+        console.error("  days earlier pointed only at the private vr-org-specs, and because vr-org");
+        console.error("  is public the run could still read and clone it, so nothing looked wrong");
+        console.error("  until the push. Check github.com/settings/installations, open the Claude");
+        console.error("  app, Configure, Repository access, and add this repo (or All repositories).");
         console.error("");
         console.error("  Do NOT draft; the article could not be published. Notify Evan and stop.");
         process.exitCode = 1;
