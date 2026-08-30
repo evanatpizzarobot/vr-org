@@ -148,6 +148,39 @@ async function checkEgress() {
   return results.filter((r) => !r.ok);
 }
 
+/**
+ * Can this session actually push?
+ *
+ * Reachability is not authorization, and the two fail at opposite ends of the
+ * run. On 2026-08-30 a cloud run passed preflight, sourced, drafted, cleared a
+ * full verification gate, committed, and only then discovered that GitHub
+ * refuses it write access:
+ *
+ *   remote: Claude doesn't have GitHub access to evanatpizzarobot/vr-org for
+ *   your organization.
+ *   fatal: unable to access '...': The requested URL returned error: 403
+ *
+ * Every write path was shut (push to master, push to a side branch, the GitHub
+ * MCP file API) while GitHub READ worked fine, which is exactly why nothing
+ * upstream of the push noticed. The container was ephemeral, so the commit and
+ * the whole morning's work went with it.
+ *
+ * `git push --dry-run` negotiates refs against git-receive-pack, which is the
+ * authenticated endpoint, so a permissions denial surfaces here in about a
+ * second. It writes nothing: on an already-synced branch it prints
+ * "Everything up-to-date" and exits 0.
+ *
+ * @returns {{ok: boolean, detail: string}}
+ */
+function checkPushAccess() {
+  try {
+    git(["push", "--dry-run", "origin", "master"], "dry-run push to origin/master");
+    return { ok: true, detail: "" };
+  } catch (err) {
+    return { ok: false, detail: err instanceof GitCommandError ? err.message : String(err) };
+  }
+}
+
 async function main() {
   try {
     const problems = [];
@@ -220,6 +253,30 @@ async function main() {
         }
         console.error("  Sourcing, image verification, store checks and the Step 7 deploy check all");
         console.error("  need these. Do NOT draft. Notify Evan with this output and stop.");
+        process.exitCode = 1;
+        return;
+      }
+
+      // Authorization, not reachability. Last of the network checks because it
+      // is the one whose failure is least about this repo and most about the
+      // session's GitHub grant.
+      const push = checkPushAccess();
+      if (!push.ok) {
+        console.error("travel:preflight  FAIL  this session cannot push to origin/master:");
+        console.error("");
+        console.error(`  ${push.detail}`);
+        console.error("");
+        console.error("  Reaching GitHub is not the same as being allowed to write to it, and a");
+        console.error("  403 here is an authorization denial, not a network fault. Do not try to");
+        console.error("  route around it with a side branch or the GitHub file API; on 2026-08-30");
+        console.error("  a run found every write path equally shut and lost a finished, gated");
+        console.error("  article when its container went away.");
+        console.error("");
+        console.error("  The fix is on GitHub, not in this repo: install the Claude GitHub App for");
+        console.error("  the account at github.com/apps/claude/installations/select_target, or");
+        console.error("  reconnect GitHub from claude.ai settings under Connectors.");
+        console.error("");
+        console.error("  Do NOT draft; the article could not be published. Notify Evan and stop.");
         process.exitCode = 1;
         return;
       }
