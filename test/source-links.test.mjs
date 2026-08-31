@@ -6,6 +6,7 @@ import {
   extractQuotes,
   linksAnyOf,
   unlinkedOutlets,
+  isAttributed,
   findUnlinkedSources,
   parseRecentFlag,
   parseFileFlag,
@@ -144,4 +145,46 @@ test("parseRecentFlag accepts both spellings and rejects junk", () => {
 test("parseFileFlag falls back to the repo articles.json", () => {
   assert.match(parseFileFlag([]), /articles\.json$/);
   assert.match(parseFileFlag(["--file=/tmp/other.json"]), /other\.json$/);
+});
+
+// Rhetorical scare-quotes are the gate's main false-positive risk. VR.org's
+// house voice uses long ones constantly, and no link would improve them.
+
+test("long rhetorical scare-quotes with no speaker are not treated as sourcing", () => {
+  const body =
+    "<p>Immersive on the web is graduating from “cool demo” to " +
+    "“thing you can actually build a business on.” Interop is the mechanism that turns " +
+    "“the spec says X” into “every browser actually does X the same way.”</p>";
+  assert.deepEqual(findUnlinkedSources([{ slug: "webxr", publishDate: "2026-06-17", body }]), []);
+});
+
+test("isAttributed sees a speaker before the quote", () => {
+  const text = 'Griffais told The Verge that pricing would be “positioned closer to the entry level of the PC space.”';
+  assert.equal(isAttributed(text, "positioned closer to the entry level of the PC space."), true);
+});
+
+test("isAttributed sees a speaker after the quote", () => {
+  const text = '“Effectively, we went from zero aircraft to five virtual platforms,” Malanowski said in the release.';
+  assert.equal(isAttributed(text, "Effectively, we went from zero aircraft to five virtual platforms,"), true);
+});
+
+test("isAttributed rejects a quote with no speaker anywhere near it", () => {
+  const text =
+    "For years the standard knock on WebXR was that Apple was absent, so “write once, run everywhere” was really " +
+    "“write once, run everywhere except the most talked-about headset on the market.” That has changed now.";
+  assert.equal(isAttributed(text, "write once, run everywhere except the most talked-about headset on the market."), false);
+});
+
+test("an article mixing one attributed quote with rhetorical ones stays under the threshold", () => {
+  // Spacing matters and is realistic here: in the published piece the two
+  // quotes sit paragraphs apart, so the speech cue attached to the first one
+  // is nowhere near the second.
+  const body =
+    "<p>Griffais told The Verge pricing would be “positioned closer to the entry level of the PC space.”</p>" +
+    "<p>The machine reportedly delivers over six times the horsepower of a Steam Deck, which puts it in a bracket " +
+    "that has not existed in the living room before. Whatever number Valve lands on, the comparison people will " +
+    "actually make is against a box they already own or a console sitting under the same television. A single " +
+    "device that runs the full Steam library at high settings and streams VR to a lightweight wireless headset is " +
+    "a meaningfully different proposition than “buy a $2,000 gaming PC and a $500 headset and run a cable between them.”</p>";
+  assert.deepEqual(findUnlinkedSources([{ slug: "steam-machine", publishDate: "2026-04-25", body }]), []);
 });

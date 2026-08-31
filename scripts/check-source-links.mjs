@@ -117,6 +117,30 @@ const MIN_QUOTE_WORDS = 8;
 const MIN_UNSOURCED_QUOTES = 2;
 
 /**
+ * Length matched a lot of quotation marks that quote nobody.
+ *
+ * VR.org's house voice leans on long rhetorical scare-quotes: immersive web
+ * graduating from "cool demo" to "thing you can actually build a business
+ * on", or the knock on WebXR being that "write once, run everywhere" was
+ * really "write once, run everywhere except the most talked-about headset on
+ * the market". Those are the writer's own words held at arm's length. There
+ * is no document behind them and no link that would improve them, so a gate
+ * that demands one is asking for a citation that cannot exist. Three of the
+ * first eighteen findings were exactly this.
+ *
+ * A real quotation almost always sits beside its speaker: "Griffais told The
+ * Verge", "she said in the announcement", "the documentation says". So a
+ * quote counts as borrowed only when an attribution cue appears close to it.
+ * Checked on both sides, because English puts the cue before the quote about
+ * as often as after.
+ */
+const SPEECH_CUE =
+  /\b(said|says|told|wrote|writes|according to|in a (?:post|statement|release|blog post|note|filing|memo)|announcement|press release|documentation|docs|changelog|patch notes|newsletter|report(?:ed|s)?|statement|spokesperson|confirmed|explained|added|put it|framed|described|quoted|filing|testimony)\b/i;
+
+/** How far from a quote a speech cue still counts as attributing it. */
+const SPEECH_CUE_WINDOW = 140;
+
+/**
  * Strips markup to readable text. Figures go first and whole: a figcaption
  * credits an image, and neither it nor the trailer link wrapped around the
  * thumbnail is a citation for anything in the prose.
@@ -225,6 +249,52 @@ export function linksAnyOf(hosts, domains) {
 }
 
 /**
+ * Is this quotation attributed to somebody, or is it the writer's own phrase
+ * in quotation marks? See SPEECH_CUE above for why the difference decides
+ * whether a missing link is a defect or a demand for a citation that does
+ * not exist.
+ *
+ * @param {string} text full article text
+ * @param {string} quote one extracted quotation
+ * @returns {boolean}
+ */
+export function isAttributed(text, quote) {
+  const at = text.indexOf(quote);
+  if (at === -1) return false;
+
+  // Search the narration only. A cue sitting INSIDE a neighbouring quotation
+  // attributes nothing: "the spec says X" is a rhetorical aside about specs,
+  // and letting its "says" vouch for the quote next to it would hand every
+  // scare-quote an attribution it does not have.
+  const narration = blankQuotes(text);
+  const before = narration.slice(Math.max(0, at - SPEECH_CUE_WINDOW), at);
+  const after = narration.slice(at + quote.length, at + quote.length + SPEECH_CUE_WINDOW);
+  return SPEECH_CUE.test(before) || SPEECH_CUE.test(after);
+}
+
+/**
+ * Same string, same length, with the inside of every quotation replaced by
+ * spaces. Length is preserved so offsets taken against the original text
+ * still line up.
+ *
+ * @param {string} text
+ * @returns {string}
+ */
+function blankQuotes(text) {
+  const chars = [...text];
+  for (const q of extractQuotes(text)) {
+    let from = 0;
+    for (;;) {
+      const at = text.indexOf(q, from);
+      if (at === -1) break;
+      for (let i = at; i < at + q.length; i += 1) chars[i] = " ";
+      from = at + q.length;
+    }
+  }
+  return chars.join("");
+}
+
+/**
  * Outlets the body credits for reporting but never links.
  *
  * @param {string} text
@@ -289,7 +359,9 @@ export function findUnlinkedSources(articles) {
       });
     }
 
-    const quotes = extractQuotes(text).filter((q) => q.split(/\s+/).length >= MIN_QUOTE_WORDS);
+    const quotes = extractQuotes(text)
+      .filter((q) => q.split(/\s+/).length >= MIN_QUOTE_WORDS)
+      .filter((q) => isAttributed(text, q));
     if (quotes.length >= MIN_UNSOURCED_QUOTES && hosts.size === 0) {
       findings.push({
         art,
