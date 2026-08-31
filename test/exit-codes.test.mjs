@@ -216,3 +216,81 @@ test("apply-correction exits 1 with no arguments and never writes data/articles.
   assert.equal(result.status, 1);
   assert.deepEqual(before, after);
 });
+
+test("check:sources exits 0 on an article that links what it cites", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-sources-ok-"));
+  const fixture = join(dir, "articles.json");
+  try {
+    writeFileSync(
+      fixture,
+      JSON.stringify([
+        {
+          slug: "linked",
+          publishDate: "2026-08-31",
+          body: '<p><a href="https://roadtovr.com/story/">Road to VR reported</a> the change.</p>',
+        },
+      ]),
+      "utf8"
+    );
+    const result = run("scripts/check-source-links.mjs", [`--file=${fixture}`]);
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /check:sources {2}OK/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("check:sources exits 1 on an outlet credited but not linked", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-sources-fail-"));
+  const fixture = join(dir, "articles.json");
+  try {
+    writeFileSync(
+      fixture,
+      JSON.stringify([
+        {
+          slug: "unlinked",
+          publishDate: "2026-08-31",
+          body: "<p>Road to VR reported on August 31 that the rates reached retail units.</p>",
+        },
+      ]),
+      "utf8"
+    );
+    const result = run("scripts/check-source-links.mjs", [`--file=${fixture}`]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /check:sources {2}FAIL/);
+    assert.match(result.stderr, /UNLINKED OUTLET/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("check:sources exits 1 on a bad --recent value", () => {
+  const result = run("scripts/check-source-links.mjs", ["--recent=notanumber"]);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /check:sources {2}FAIL/);
+});
+
+test("check:sources exits 1 when --file points at a nonexistent path, without falling back to the default archive", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-sources-missing-"));
+  const missing = join(dir, "does-not-exist.json");
+  try {
+    const result = run("scripts/check-source-links.mjs", [`--file=${missing}`]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /check:sources {2}FAIL {2}could not read/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("check:sources exits 1 when the articles file is not an array", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-sources-shape-"));
+  const fixture = join(dir, "articles.json");
+  try {
+    writeFileSync(fixture, JSON.stringify({ articles: [] }), "utf8");
+    const result = run("scripts/check-source-links.mjs", [`--file=${fixture}`]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /did not contain an array/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
