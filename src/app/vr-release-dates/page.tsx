@@ -181,17 +181,17 @@ export default function VRReleaseDatesPage() {
     {
       question: "When does the Valve Steam Frame come out?",
       answer:
-        "Valve has confirmed a summer 2026 window for the Steam Frame, and as of early July the reservation window is expected imminently, likely following the same short-notice lottery format as the Steam Machine. There is no official price yet; analyst estimates cluster between $899 and $1,199. Our dedicated Steam Frame page tracks every signal as it lands.",
+        "Valve confirmed a summer 2026 window for the Steam Frame. Summer officially ends September 22 and Valve has still named no price or release date. Analyst estimates cluster between $899 and $1,199. Our dedicated Steam Frame page tracks every signal as it lands.",
     },
     {
       question: "What new VR headsets are coming out in 2026?",
       answer:
-        "The headliner is Valve's Steam Frame, still slated for summer 2026 but with no price or release date announced as of late July. Samsung's Galaxy XR reached the UK on July 8, and Pico's Project Swan, a Vision Pro competitor with 4000+ PPI micro-OLED displays, targets late 2026. The Meta Quest 4 is not a 2026 product; reporting points to 2027.",
+        "The Valve Steam Frame is the headliner, now at the edge of its confirmed summer 2026 window with no price or date announced. Samsung's Galaxy XR reached the UK on July 8. Pico's Space Pro, a Vision Pro competitor with 4,000-PPI micro-OLED displays, makes its public debut at a Beijing event on September 2. The Meta Quest 4 is not a 2026 product; reporting points to 2027.",
     },
     {
       question: "What VR games are coming out in 2026?",
       answer:
-        "Firm dates on the calendar include Cave Crave's Tham Luang expansion on July 30, Transformers: Beyond Reality Redux on September 3, and The Lightkeepers on September 10. Windowed for this year are Payday: Aces High, Breachers: Outbreak, Project Hail Mary: Journey Among the Stars, the Quest version of FNAF: Secret of the Mimic, Sol Protocol's September early access, and more.",
+        "Already out: D.E.C.A.Y. launched on SteamVR Early Access on August 26, and Into the Radius 2 left Early Access on Quest on August 27. Coming next: Transformers: Beyond Reality Redux on September 3, The Lightkeepers on September 10, and Sol Protocol early access on September 17. Windowed for later this year are Payday: Aces High, Breachers: Outbreak, and Project Hail Mary: Journey Among the Stars.",
     },
     {
       question: "What do confirmed, expected, and rumored mean on this tracker?",
@@ -285,7 +285,7 @@ export default function VRReleaseDatesPage() {
         >
           This is the VR.org release date tracker: every upcoming VR headset,
           pair of smart glasses, game, and accessory with a real signal behind
-          it, in one dated list. The headline entry right now is Valve&apos;s{" "}
+          it, in one dated list. The headline entry is Valve&apos;s{" "}
           <a
             href="/steam-frame"
             className="no-underline hover:underline"
@@ -293,7 +293,8 @@ export default function VRReleaseDatesPage() {
           >
             Steam Frame
           </a>
-          , confirmed for summer 2026 with reservations expected any day. Every
+          , confirmed for summer 2026 and now at the edge of that window (summer
+          ends September 22) with no price or release date yet named. Every
           entry links to the VR.org reporting it is sourced from, and each one
           carries a status badge so you can tell a maker-stated date from a
           leak.
@@ -327,7 +328,7 @@ export default function VRReleaseDatesPage() {
           </a>
           <figcaption>
             The headline release of 2026: Valve&apos;s Steam Frame, confirmed for
-            summer with reservations imminent. Image: Valve
+            summer 2026 with no price or release date yet named. Image: Valve
           </figcaption>
         </figure>
 

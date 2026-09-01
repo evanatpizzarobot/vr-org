@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-24",
+  "lastUpdated": "2026-09-01",
   "items": [
     {
       "id": "valve-steam-frame",
@@ -478,18 +478,18 @@
       "id": "into-the-radius-2-quest",
       "name": "Into the Radius 2 (Quest version)",
       "category": "game",
-      "status": "confirmed",
-      "dateText": "August 27, 2026, leaving Early Access",
-      "isoDate": "2026-08-27",
+      "status": "released",
+      "dateText": "Released August 27, 2026 on Quest",
+      "isoDate": null,
       "sortDate": "2026-08-27",
       "platforms": [
         "Quest"
       ],
       "price": null,
-      "summary": "CM Games' survival shooter leaves Early Access on Quest on August 27. The PC VR 1.0 shipped April 23. A PS VR2 version follows on September 24.",
+      "summary": "CM Games' survival shooter left Early Access on Quest on August 27, completing the 1.0 release after the PC VR launch in April. A PS VR2 version follows on September 24.",
       "link": "/articles/into-the-radius-2-quest-1-0-august-27-2026",
       "officialUrl": null,
-      "lastVerified": "2026-08-24"
+      "lastVerified": "2026-09-01"
     },
     {
       "id": "frame-enthusiast-kit",
@@ -505,23 +505,6 @@
       "price": "Not announced",
       "summary": "An accessory bundle with a hot-swappable battery pack for the Steam Frame, confirmed by FCC filings in June.",
       "link": "/steam-frame",
-      "officialUrl": null,
-      "lastVerified": "2026-07-04"
-    },
-    {
-      "id": "valve-steam-machine",
-      "name": "Valve Steam Machine",
-      "category": "accessory",
-      "status": "released",
-      "dateText": "Released June 30, 2026",
-      "isoDate": "2026-06-30",
-      "sortDate": null,
-      "platforms": [
-        "SteamOS"
-      ],
-      "price": "From $1,049",
-      "summary": "Valve's living-room SteamOS console shipped June 30 after a lottery-style preorder, setting the price ceiling context for the Steam Frame.",
-      "link": "/articles/steam-machine-1049-june-30-launch-price-ceiling-steam-frame",
       "officialUrl": null,
       "lastVerified": "2026-07-04"
     },
@@ -565,18 +548,18 @@
       "id": "decay-vr",
       "name": "D.E.C.A.Y.",
       "category": "game",
-      "status": "confirmed",
-      "dateText": "August 26, 2026, Early Access",
-      "isoDate": "2026-08-26",
+      "status": "released",
+      "dateText": "Early Access launched August 26, 2026 on SteamVR",
+      "isoDate": null,
       "sortDate": "2026-08-26",
       "platforms": [
         "SteamVR"
       ],
       "price": null,
-      "summary": "A post-nuclear survival shooter from AGaming+, the solo studio behind the Z.O.N.A. series. Players maintain the Atlas network of thermal and radiation shields, with bunker-based gear management in the vein of Into the Radius. The Early Access date slipped from August 21 to August 26; Steam still lists it as upcoming. Early Access is expected to run about a year.",
+      "summary": "A post-nuclear survival shooter from AGaming+, the solo studio behind the Z.O.N.A. series. Players maintain the Atlas network of thermal and radiation shields, with bunker-based gear management in the vein of Into the Radius. Launched Early Access on August 26; full release is expected about a year out.",
       "link": null,
       "officialUrl": "https://store.steampowered.com/app/4251370/DECAY/",
-      "lastVerified": "2026-08-24"
+      "lastVerified": "2026-09-01"
     },
     {
       "id": "viture-pro-2",

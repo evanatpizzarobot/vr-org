@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-24",
+  "lastUpdated": "2026-09-01",
   "disclosure": "VR.org is a participant in the Amazon Associates affiliate program. We earn a small commission from qualifying purchases at no extra cost to you. Other retailer links on this page (Bigscreen, direct manufacturer links) are provided as a convenience and do not currently earn us a commission. Our recommendations are editorially independent.",
   "sections": [
     {
@@ -132,8 +132,8 @@
           "name": "Pimax Dream Air SE",
           "price": "From $899",
           "image": "https://pimax.com/cdn/shop/articles/dream_se_fcaca184-7b7e-4609-95e5-ca25f4facf81.jpg?v=1778767315&width=1280",
-          "description": "Pimax's compact micro-OLED PC VR headset at around 140 grams. Preorder backlog is clearing, with Pimax committing to ship every outstanding order by August.",
-          "badge": "Shipping Now",
+          "description": "Pimax's compact micro-OLED PC VR headset at around 140 grams. Preorder backlog cleared by the end of August; the headset ships from stock.",
+          "badge": "In Stock",
           "links": {
             "direct": {
               "url": "https://pimax.com",
@@ -572,7 +572,7 @@
     {
       "id": "gaming-hardware",
       "title": "Gaming Hardware",
-      "description": "VR-ready GPUs, Steam hardware, and big-ticket VR gaming rigs for PC VR. GPU prices reflect current retail street averages and sit well above MSRP: the AI buildout is absorbing memory supply, NVIDIA cards are running far over list, and AMD raised its own pricing by at least 10% in August 2026. Verified against price trackers on August 10, 2026. If you can wait, waiting is still the better trade.",
+      "description": "VR-ready GPUs, Steam hardware, and big-ticket VR gaming rigs for PC VR. GPU prices reflect current retail street averages and sit well above MSRP: the AI buildout is absorbing memory supply, NVIDIA cards are running far over list, and AMD raised its own pricing by at least 10% in August 2026. Verified against price trackers on September 1, 2026. If you can wait, waiting is still the better trade.",
       "items": [
         {
           "name": "Valve Steam Machine",
