@@ -294,3 +294,75 @@ test("check:sources exits 1 when the articles file is not an array", () => {
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test("check:corrections exits 0 when the correction sits on the article that erred", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-corrections-ok-"));
+  const fixture = join(dir, "articles.json");
+  try {
+    writeFileSync(
+      fixture,
+      JSON.stringify([
+        {
+          slug: "follow-up",
+          publishDate: "2026-09-02",
+          body: '<p>On August 28, <a href="/articles/original">VR.org reported</a> $899. That was wrong.</p>',
+        },
+        {
+          slug: "original",
+          publishDate: "2026-08-28",
+          updatedDate: "2026-09-02",
+          body: "<p>x</p><blockquote><strong>Correction, September 2, 2026:</strong> $1,019.</blockquote>",
+        },
+      ]),
+      "utf8"
+    );
+    const result = run("scripts/check-corrections.mjs", [`--file=${fixture}`]);
+    assert.equal(result.status, 0);
+    assert.match(result.stdout, /check:corrections {2}OK/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("check:corrections exits 1 when a follow-up walks back a piece that carries no correction", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-corrections-fail-"));
+  const fixture = join(dir, "articles.json");
+  try {
+    writeFileSync(
+      fixture,
+      JSON.stringify([
+        {
+          slug: "follow-up",
+          publishDate: "2026-09-02",
+          body: '<p>On August 28, <a href="/articles/original">VR.org reported</a> $899. That was wrong.</p>',
+        },
+        { slug: "original", publishDate: "2026-08-28", body: "<p>It starts at $899.</p>" },
+      ]),
+      "utf8"
+    );
+    const result = run("scripts/check-corrections.mjs", [`--file=${fixture}`]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /UNPAIRED CORRECTION/);
+    assert.match(result.stderr, /npm run correction/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("check:corrections exits 1 on a bad --recent value", () => {
+  const result = run("scripts/check-corrections.mjs", ["--recent=notanumber"]);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /check:corrections {2}FAIL/);
+});
+
+test("check:corrections exits 1 when --file points at a nonexistent path, without falling back to the default archive", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vr-org-corrections-missing-"));
+  const missing = join(dir, "does-not-exist.json");
+  try {
+    const result = run("scripts/check-corrections.mjs", [`--file=${missing}`]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /check:corrections {2}FAIL {2}could not read/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
