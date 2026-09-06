@@ -722,8 +722,11 @@ export default function BestVRGames2026Page() {
             Great on Frame store section
           </a>{" "}
           that certifies games for the headset opened in July with about half a
-          dozen titles and passed 50 by early August. Then came the two that
-          matter most: the{" "}
+          dozen titles and stood at 117 on September 6. On September 3, two of
+          the headset&apos;s seven Steam backend packages were revised for the
+          first time since May, the same move that preceded Steam Machine
+          reservations by six days. Before that came the two regulatory and
+          software gates: the{" "}
           <a
             href="/articles/steam-frame-fcc-grant-equipment-authorization-july-2026"
             className="no-underline hover:underline"
