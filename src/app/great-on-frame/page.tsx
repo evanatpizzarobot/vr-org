@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-08-27";
+const LAST_UPDATED = "2026-09-06";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -281,6 +281,643 @@ const VERIFIED_GAMES: VerifiedGame[] = [
     added: "Aug 24, 2026",
     note: "One of several small 2026 indies picked up in the August wave, alongside RACCOIN.",
   },
+  {
+    name: "Beat Saber",
+    developer: "Beat Games",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Walkabout Mini Golf VR",
+    developer: "Mighty Coconut",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Job Simulator",
+    developer: "Owlchemy Labs",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Moss II VR",
+    developer: "Polyarc",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Synth Riders",
+    developer: "Kluge Interactive",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Vacation Simulator",
+    developer: "Owlchemy Labs",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "The Light Brigade: Definitive Edition",
+    developer: "Funktronic Labs",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "I Expect You To Die 3: Cog in the Machine",
+    developer: "Schell Games",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Pistol Whip",
+    developer: "Cloudhead Games Ltd.",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "I Expect You To Die",
+    developer: "Schell Games",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "The Room VR: A Dark Matter",
+    developer: "Fireproof Games",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "I Expect You To Die 2: The Spy and the Liar",
+    developer: "Schell Games",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Red Matter 2",
+    developer: "Vertical Robot",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Eleven Table Tennis",
+    developer: "For Fun Labs",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Red Matter",
+    developer: "Vertical Robot",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "The Last Clockwinder",
+    developer: "Pontoco",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "THRASHER",
+    developer: "Puddle",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Cubism",
+    developer: "Thomas Van Bouwel",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Vendetta Forever",
+    developer: "Meatspace Interactive",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Pavlov Shack",
+    developer: "Vankrupt Games",
+    type: "VR",
+    added: "Aug 27, 2026",
+    note: "Certified in the late-August wave that brought the first marquee VR names onto the list.",
+  },
+  {
+    name: "Factorio",
+    developer: "Wube Software LTD.",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "DAVE THE DIVER",
+    developer: "MINTROCKET",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Teenage Mutant Ninja Turtles: Shredder's Revenge",
+    developer: "Tribute Games Inc.",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Keep Talking and Nobody Explodes",
+    developer: "Steel Crate Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Is This Seat Taken?",
+    developer: "Poti Poti Studio",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "ANIMAL WELL",
+    developer: "Billy Basso",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Streets of Rage 4",
+    developer: "Dotemu, Guard Crush",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "XENOTILT: HOSTILE PINBALL ACTION",
+    developer: "WIZNWAR, FLARB LLC",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Dungeons of Eternity",
+    developer: "Othergate",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Shelldiver",
+    developer: "Gagonfe",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "INSIDE",
+    developer: "Playdead",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "IRON REBELLION",
+    developer: "Black Beach Studio",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Legends of Dragaea: Idle Dungeons",
+    developer: "Blast Programming",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Broforce",
+    developer: "Free Lives",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Moss VR",
+    developer: "Polyarc",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Dino Party",
+    developer: "Studio Nachtwerk",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "ANNO: Mutationem",
+    developer: "ThinkingStars",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Puzzling Places - 3D Jigsaw Sim",
+    developer: "Realities.io Inc",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "VAIL",
+    developer: "AEXLAB",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Little Nightmares VR: Altered Echoes",
+    developer: "ICONIK",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Shattered Divinities",
+    developer: "星魂游戏",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Whirlight - No Time To Trip",
+    developer: "imaginarylab",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Deisim",
+    developer: "Myron Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "fpsVR",
+    developer: "SBSoftLab",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Zombiehood",
+    developer: "Weak Spots, Dead Traveler",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Virtual Fighter Maneuvers",
+    developer: "Boundless Dynamics, LLC",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Thumper",
+    developer: "Drool",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "XeGrader plus",
+    developer: "Tokihiro NAITO",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "APE OUT",
+    developer: "Gabe Cuzzillo, Bennett Foddy",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Sphinx and the Cursed Mummy",
+    developer: "Eurocom, THQ Nordic",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Sushi Ben",
+    developer: "Big Brane Studios, Inc.",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Look Mum No Computer",
+    developer: "The Bitfather",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Arcadium - Space Odyssey",
+    developer: "Luciano Bercini",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Tiny Lands 2",
+    developer: "Hyper Three Studio",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Resist",
+    developer: "The Binary Mill",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Shave & Stuff",
+    developer: "HyperVR Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Floor Plan 2 VR",
+    developer: "Turbo Button",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Sweet Surrender VR",
+    developer: "Salmi Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Blast Brigade vs. the Evil Legion of Dr. Cread",
+    developer: "MY.GAMES",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Space Control",
+    developer: "MoonMonster Studios",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Underworld Overseer",
+    developer: "Myron Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "BAZOOKA: Rhythm Game",
+    developer: "Gregory Seguru, Codrin Bradea",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Plot of the Druid",
+    developer: "Yakir Israel, Adventure4Life Studios",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Mini Motor Racing X",
+    developer: "The Binary Mill",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "SimplePlanes VR",
+    developer: "Jundroo, LLC",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Gun Club VR",
+    developer: "The Binary Mill",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Guinea Pig Runaway Together",
+    developer: "DVS Interactive",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Climbey",
+    developer: "Brian Lindenhof",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "GrowRilla VR",
+    developer: "Salmi Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Vengeance Hunters",
+    developer: "Nalua Studio SLU",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Spirit Talk - Cozy Visual Novel",
+    developer: "Tortita Studio",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "E.Z",
+    developer: "Totally Normal Creature",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Half-Life 2: VR Mod - Episode One",
+    developer: "Source VR Mod Team",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Pixel Heroes: Byte & Magic",
+    developer: "The Bitfather",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Bakahazard 3",
+    developer: "流比奈梦工厂",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Ink Inside",
+    developer: "Blackfield Entertainment LLC",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Forgotten Fragments",
+    developer: "Binary Phoenix",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Racket Fury: Table Tennis VR",
+    developer: "Pixel Edge Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Unloop",
+    developer: "ThreeTrees.eu",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "First Person Hooper",
+    developer: "Ejo",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Windlands",
+    developer: "Psytec Games Ltd",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Connected Clue",
+    developer: "Alpheratz Games ",
+    type: "Flatscreen",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Quest for Runia",
+    developer: "Cykyria",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Crystal Rift",
+    developer: "Psytec Games Ltd",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Table Space: Board and Card Game Sandbox",
+    developer: "Boxtree, Inc.",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Enigmo",
+    developer: "Fortell Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "NotiVR",
+    developer: "Matterworks Interactive",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "StarDrone: Sling Star (with VR mode)",
+    developer: "Fortell Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Action Hero",
+    developer: "Fast Travel Games",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Fruit Golf",
+    developer: "Coal Car Studio Ltd.",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
+  {
+    name: "Stellar Cafe",
+    developer: "AstroBeam",
+    type: "VR",
+    added: "Sep 6, 2026",
+    note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
+  },
 ];
 
 interface ChangelogEntry {
@@ -289,6 +926,10 @@ interface ChangelogEntry {
 }
 
 const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: "Sep 6, 2026",
+    text: "Valve's page reports 117 matches, up from 98 on August 27. The filter counts read 75 Action, 55 Adventure, 50 Casual, 32 Simulation and 19 RPG. Titles now on the page that this table had not yet listed include Factorio, DAVE THE DIVER, Streets of Rage 4, ANIMAL WELL, INSIDE, Broforce and Teenage Mutant Ninja Turtles: Shredder's Revenge on the flatscreen side, and Windlands, Racket Fury, Dungeons of Eternity, IRON REBELLION and Puzzling Places in VR. Two of the headset's Steam backend packages were revised on September 3, the first change since May.",
+  },
   {
     date: "Aug 27, 2026",
     text: "Valve's page reports 98 matches, up from 89 on August 24. The count matters less than the names: Beat Saber, Job Simulator, Vacation Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter and Red Matter 2, Moss II VR, The Room VR: A Dark Matter, The Last Clockwinder, Cubism, Eleven Table Tennis, THRASHER, Vendetta Forever, The Light Brigade: Definitive Edition and all three I Expect You To Die games are now certified. Pavlov Shack is on the list having only reached Steam on August 21.",
@@ -345,7 +986,7 @@ const faq = faqPageSchema([
   {
     question: "Which games are Great on Frame right now?",
     answer:
-      "Valve's page reported 98 matches on August 27, 2026, up from 89 on August 24, 65 on August 10 and eight on July 17. Confirmed entries include Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter 2, Moss II VR, The Room VR: A Dark Matter, the I Expect You To Die trilogy, Pavlov Shack, The Light Brigade: Definitive Edition, Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
+      "Valve's page reported 117 matches on September 6, 2026, up from 98 on August 27, 89 on August 24, 65 on August 10 and eight on July 17. Confirmed entries include Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter 2, Moss II VR, The Room VR: A Dark Matter, the I Expect You To Die trilogy, Pavlov Shack, The Light Brigade: Definitive Edition, Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
   },
   {
     question: "What does Steam Frame Verified require?",
@@ -365,7 +1006,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day or a price as of August 27, 2026, and summer ends September 22, which leaves 26 days. The catalog going from eight titles to 98 in six weeks is the strongest launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
+      "Valve has confirmed summer 2026 but has not named a day or a price as of September 6, 2026, and summer ends September 22, which leaves 16 days. On September 3 two of the headset's Steam backend packages were revised for the first time since May, and Steam Machine packages changed six days before its lottery opened. The catalog going from eight titles to 117 in seven weeks is the other strong launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
   },
 ]);
 
@@ -390,7 +1031,7 @@ export default function GreatOnFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 27, 2026
+          Last updated: September 6, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -429,8 +1070,8 @@ export default function GreatOnFramePage() {
           Great on Frame is Valve&apos;s curated Steam section for games
           certified to run well on the Steam Frame headset, the VR sibling of
           the Great on Deck label that shaped Steam Deck buying for four years.
-          The page went live in mid July 2026 with eight titles and reported 98
-          matches on August 27, more than a twelvefold increase in six weeks.
+          The page went live in mid July 2026 with eight titles and reported 117
+          matches on September 6, more than a fourteenfold increase in seven weeks.
           Most of that growth is flatscreen catalog games rather than native VR,
           and Valve&apos;s own The Lab lost its certification along the way. This
           page tracks the confirmed titles, what the certification actually
@@ -455,10 +1096,10 @@ export default function GreatOnFramePage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve&apos;s page reported 98 matches on August 27, 2026. It launched
+          Valve&apos;s page reported 117 matches on September 6, 2026. It launched
           with five titles the week of July 13, reached eight within a day, sat
           around 42 by late July, passed 50 on August 3, hit 65 on August 10, 89
-          on August 24, and is at 98 now. You can confirm the running total
+          on August 24, 98 on August 27, and is at 117 now. You can confirm the running total
           yourself by appending frame_compatibility=3 to a Steam store search,
           which is how the figures on this page are taken. What changed most
           recently is the composition rather than the count: Beat Saber, Job
@@ -473,7 +1114,7 @@ export default function GreatOnFramePage() {
         >
           Valve does not publish a plain-text index of the catalog, and the
           storefront grid loads in pages, so the table below covers the titles
-          VR.org has individually confirmed rather than all 98. The remainder
+          VR.org has individually confirmed rather than all 117. The remainder
           are being added as they are verified.
         </p>
         <ComparisonTable

@@ -44,7 +44,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-08-24";
+const LAST_UPDATED = "2026-09-06";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -80,12 +80,12 @@ const faq = faqPageSchema([
   {
     question: "When does the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day as of August 24, 2026. Every prerequisite is now cleared: the FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29, roughly 35 tons of VR hardware cleared US customs in June, the Steam Machine already shipped June 30, the Great on Frame catalog has grown from eight titles to 89, and Valve's own unboxing and first-time-setup videos leaked out of the Steam client on August 19. Summer ends September 22, which leaves Valve about four weeks to keep the promise.",
+      "Valve has confirmed summer 2026 but has not named a day as of September 6, 2026. The strongest signal yet arrived on September 3, when two of the headset's seven Steam backend packages were revised for the first time since May 5; Steam Machine packages changed six days before its reservation lottery opened, which points at the week of September 7. Every other prerequisite is cleared: the FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29, roughly 35 tons of VR hardware cleared US customs in June, the Steam Machine already shipped June 30, the Great on Frame catalog has grown from eight titles to 117, and Valve's own unboxing and first-time-setup videos leaked out of the Steam client on August 19. Summer ends September 22, which leaves Valve 16 days to keep the promise.",
   },
   {
     question: "How do I preorder the Steam Frame?",
     answer:
-      "You cannot yet. Expect the Steam Machine playbook: a short-notice randomized reservation queue on Steam rather than first-come first-served preorders, with purchase emails following within days. The $99 Steam Controller sold out in under an hour and the Machine used a lottery, so plan on tight supply and act fast when reservations open.",
+      "You cannot yet, though dataminer Brad Lynch reported on September 4 that a reservation system is already live in Steam's backend for two Steam Frame SKUs. Expect the Steam Machine playbook: a short-notice randomized reservation queue on Steam rather than first-come first-served preorders, with purchase emails following within days. The $99 Steam Controller sold out in under an hour and the Machine used a lottery, so plan on tight supply and act fast when reservations open.",
   },
   {
     question: "Was the Steam Frame delayed?",
@@ -201,6 +201,31 @@ const DATE_SIGNALS: DateSignal[] = [
     signal: "Great on Frame at 89 titles, four weeks of summer remaining",
     read: "Shelves filling, clock running",
   },
+  {
+    date: "Aug 27, 2026",
+    signal: "Great on Frame reaches 98 titles, with Beat Saber and Job Simulator certified",
+    read: "Marquee names arriving",
+  },
+  {
+    date: "Aug 28, 2026",
+    signal: "Brad Lynch tells the Gamertag VR podcast review units are out and shipping starts mid September",
+    read: "Reviewers have hardware",
+  },
+  {
+    date: "Sep 3, 2026",
+    signal: "Two of the Frame's seven Steam packages revised, the first change since May 5; Steam Machine packages moved six days before its lottery",
+    read: "The six-day clock starts",
+  },
+  {
+    date: "Sep 4, 2026",
+    signal: "Lynch reports a reservation system live in Steam's backend for two SKUs",
+    read: "The checkout exists",
+  },
+  {
+    date: "Sep 6, 2026",
+    signal: "Great on Frame at 117 titles, 16 days of summer left",
+    read: "Week of September 7 is the working assumption",
+  },
 ];
 
 export default function SteamFrameReleaseDatePage() {
@@ -223,7 +248,7 @@ export default function SteamFrameReleaseDatePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 24, 2026
+          Last updated: September 6, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -267,14 +292,17 @@ export default function SteamFrameReleaseDatePage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Valve Steam Frame is confirmed for summer 2026, and as of August
-          10, 2026 Valve has not named the day. The regulatory path is now
-          fully clear: the FCC granted equipment authorization on July 29 under
+          The Valve Steam Frame is confirmed for summer 2026, and as of September
+          6, 2026 Valve has not named the day. It has, however, started touching
+          the store: two of the headset&apos;s seven Steam backend packages were
+          revised on September 3, the first change since May 5, and Steam Machine
+          packages moved six days before its reservation lottery opened. The
+          regulatory path is fully clear: the FCC granted equipment authorization on July 29 under
           FCC ID 2AES4-1015, which is the last gate before a radio device can
           legally be sold in the United States. Add the 35 tons of hardware
           already through US customs, a Steam Machine that shipped on June 30,
-          and a Great on Frame catalog that went from eight titles to 89 in
-          under a month, and nothing is left but the announcement. Summer ends
+          and a Great on Frame catalog that went from eight titles to 117 in
+          seven weeks, and nothing is left but the announcement. Summer ends
           September 22. This page tracks every release date signal, dated, until
           Valve makes it official.
         </p>

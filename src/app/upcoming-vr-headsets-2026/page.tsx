@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Upcoming VR Headsets 2026: New Releases and What's Coming Next",
   datePublished: "2026-06-04",
-  dateModified: "2026-08-24",
+  dateModified: "2026-09-06",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -129,7 +129,7 @@ export default function UpcomingVRHeadsets2026Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 24, 2026
+          Last updated: September 6, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -236,9 +236,12 @@ export default function UpcomingVRHeadsets2026Page() {
           lag-free PC streaming), the hardware has cleared US customs, and the
           FCC granted equipment authorization on July 29, which is the last legal
           gate before a US sale. The Great on Frame catalog has gone from eight
-          certified titles on July 17 to 65 on August 10. Only the price and the
-          day are missing, estimates cluster between $899 and $1,199, and summer
-          ends September 22. Our{" "}
+          certified titles on July 17 to 117 on September 6, and on September 3
+          two of the headset&apos;s seven Steam backend packages were revised for
+          the first time since May, the same move Steam Machine packages made six
+          days before its reservation lottery opened. Only the price and the day
+          are missing, estimates cluster between $899 and $1,199, and summer ends
+          September 22. Our{" "}
           <a
             href="/steam-frame"
             className="no-underline hover:underline"

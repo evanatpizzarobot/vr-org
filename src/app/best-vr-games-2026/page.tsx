@@ -44,7 +44,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Games of 2026: New Releases and Must-Play Titles",
   datePublished: "2026-03-24",
-  dateModified: "2026-08-03",
+  dateModified: "2026-09-06",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -173,17 +173,17 @@ const games2026Faq = faqPageSchema([
   {
     question: "What are the best VR games of 2026?",
     answer:
-      "Through early August 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Aces of Thunder, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, the S.T.A.L.K.E.R.-style survival shooter Into the Radius 2 (now a full 1.0 release), the open-world hunting sim Virtual Hunter, and H3VR, which finally left Early Access with its 1.0 update over the Fourth of July weekend and sits at 97 percent positive across more than 23,000 Steam reviews. The summer's biggest new arrival is GERONIMO, a tactical CQB shooter that launched July 10 and holds a Very Positive rating on Steam. Whatever Valve launches alongside the Steam Frame remains the biggest wildcard for the back half of the year.",
+      "Through early September 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Aces of Thunder, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, the S.T.A.L.K.E.R.-style survival shooter Into the Radius 2 (now a full 1.0 release), the open-world hunting sim Virtual Hunter, and H3VR, which finally left Early Access with its 1.0 update over the Fourth of July weekend and sits at 97 percent positive across more than 23,000 Steam reviews. The summer's biggest new arrival is GERONIMO, a tactical CQB shooter that launched July 10 and holds a Very Positive rating on Steam. Whatever Valve launches alongside the Steam Frame remains the biggest wildcard for the back half of the year.",
   },
   {
     question: "What VR games are coming in the rest of 2026?",
     answer:
-      "The biggest remaining wildcard for 2026 is whatever launch title Valve ships alongside the Steam Frame headset. Valve's Great on Frame store section, which certifies games for the headset, went live in July with a handful of titles and passed 50 games and apps by early August. Rust Ltd has also announced Hot Dogs, Horseshoes & Hand Grenades 2, with no date attached yet. Nearer term, Pine Studio opened a public VR preview for Escape Simulator 2 on August 3, the 1980s open-world crime game Streets of Miami VR lands on Quest and PC VR on August 28, and several PSVR 2 ports and Quest exclusives remain on publishers' roadmaps for the rest of the year.",
+      "The biggest remaining wildcard for 2026 is whatever Valve ships alongside the Steam Frame headset, and the headset itself now looks days away: two of its Steam backend packages were revised on September 3, the first change since May, and Valve's Great on Frame certification section stood at 117 titles on September 6. Dated releases inside that window include Detective VR on September 9 and Gunman Contracts: Stand Alone on September 10, both on Steam, with the co-op starship shooter Sol Protocol listed for October. Rust Ltd has announced Hot Dogs, Horseshoes & Hand Grenades 2 with no date attached. Streets of Miami VR, once slated for August 28, currently shows Coming Soon on Steam.",
   },
   {
     question: "When does the Steam Frame release?",
     answer:
-      "Valve has not announced a release date for the Steam Frame headset, but the signals have stopped being subtle. The Steam Machine shipped June 30 at $1,049, tens of tons of VR hardware cleared into Valve's US warehouses, the FCC granted equipment authorization on July 29, the Great on Frame certification section passed 50 titles, and on August 2 Valve published the headset's compatibility layers, Lepton and FEX, as public Steam entries. Valve still cites the memory supply crunch tied to AI demand as the reason it will not commit to a date, but regulatory clearance plus a public software stack points to weeks, not quarters.",
+      "Valve has not announced a release date for the Steam Frame headset, but on September 3 two of the headset's seven Steam backend packages were revised for the first time since May 5, and dataminer Brad Lynch reports a reservation system is live in Steam's backend for two SKUs. Steam Machine packages changed six days before its reservation lottery opened, which points at the week of September 7. The FCC granted equipment authorization on July 29, the Great on Frame certification section reached 117 titles on September 6, and Valve's stated summer window ends September 22.",
   },
   {
     question: "Are there new PSVR 2 games in 2026?",
@@ -221,7 +221,7 @@ export default function BestVRGames2026Page() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: August 3, 2026
+          Last updated: September 6, 2026
         </p>
 
         <p
@@ -607,67 +607,7 @@ export default function BestVRGames2026Page() {
           the real thing.
         </p>
 
-        {/* Ad: after New Releases, before Most Anticipated */}
-        <div className="my-8">
-          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
-        </div>
 
-        {/* Most anticipated VR games for the rest of 2026 */}
-        <h2 className="font-display text-2xl font-semibold mb-4">
-          Recently released, and what is still ahead
-        </h2>
-
-        {/* Whatever Valve ships with Steam Frame */}
-        <h3 className="font-display text-xl font-semibold mb-2">
-          Whatever Valve ships with Steam Frame
-        </h3>
-        <figure className="fitness-figure">
-          <img
-            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4165890/866449b5fb3696b4c869e954c1e98d1e19df0721/header.jpg"
-            alt="Valve Steam Frame wireless VR headset official product image"
-            loading="lazy"
-          />
-        </figure>
-        <p
-          className="text-[15px] leading-[1.7] mb-8"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          The signals have stopped being signals. The Steam Machine shipped
-          June 30 at $1,049, tens of tons of hardware labeled virtual reality
-          devices cleared into Valve&apos;s US warehouses, and the{" "}
-          <a
-            href="/articles/valve-great-on-frame-steam-page-steam-frame-launch-signal"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            Great on Frame store section
-          </a>{" "}
-          that certifies games for the headset opened in July with about half a
-          dozen titles and passed 50 by early August. Then came the two that
-          matter most: the{" "}
-          <a
-            href="/articles/steam-frame-fcc-grant-equipment-authorization-july-2026"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            FCC granted equipment authorization on July 29
-          </a>
-          , which is legal permission to sell, and on August 2 Valve published
-          Lepton and FEX, the headset&apos;s{" "}
-          <a
-            href="/articles/valve-lepton-fex-steam-frame-translation-layers-2026"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            Android and x86 translation layers
-          </a>
-          , as public Steam entries. Nobody knows what Valve plans to launch
-          alongside the Frame, but the community is hoping for something in the
-          Half-Life universe. A first-party Valve VR title bundled with new
-          hardware could be the biggest VR gaming moment since Alyx.
-        </p>
-
-        {/* Star Trek: Infection */}
         <h3 className="font-display text-xl font-semibold mb-2">
           Star Trek: Infection
         </h3>
@@ -746,6 +686,166 @@ export default function BestVRGames2026Page() {
           breaks down the platform differences.
         </p>
 
+
+        {/* Ad: after New Releases, before Most Anticipated */}
+        <div className="my-8">
+          <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
+        </div>
+
+        {/* Still ahead in 2026 */}
+        <h2 className="font-display text-2xl font-semibold mb-4">
+          Still ahead in 2026
+        </h2>
+
+        <h3 className="font-display text-xl font-semibold mb-2">
+          Whatever Valve ships with Steam Frame
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4165890/866449b5fb3696b4c869e954c1e98d1e19df0721/header.jpg"
+            alt="Valve Steam Frame wireless VR headset official product image"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          The signals have stopped being signals. The Steam Machine shipped
+          June 30 at $1,049, tens of tons of hardware labeled virtual reality
+          devices cleared into Valve&apos;s US warehouses, and the{" "}
+          <a
+            href="/articles/valve-great-on-frame-steam-page-steam-frame-launch-signal"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Great on Frame store section
+          </a>{" "}
+          that certifies games for the headset opened in July with about half a
+          dozen titles and passed 50 by early August. Then came the two that
+          matter most: the{" "}
+          <a
+            href="/articles/steam-frame-fcc-grant-equipment-authorization-july-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            FCC granted equipment authorization on July 29
+          </a>
+          , which is legal permission to sell, and on August 2 Valve published
+          Lepton and FEX, the headset&apos;s{" "}
+          <a
+            href="/articles/valve-lepton-fex-steam-frame-translation-layers-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Android and x86 translation layers
+          </a>
+          , as public Steam entries. Nobody knows what Valve plans to launch
+          alongside the Frame, but the community is hoping for something in the
+          Half-Life universe. A first-party Valve VR title bundled with new
+          hardware could be the biggest VR gaming moment since Alyx.
+        </p>
+
+        {/* Star Trek: Infection */}
+        <h3 className="font-display text-xl font-semibold mb-2">
+          Detective VR
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3939360/3ced37c63b2ec5339ccba6f314ced32443d980be/header.jpg"
+            alt="Detective VR key art showing a magnifying glass over a dimly lit study"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Due September 9 on{" "}
+          <a
+            href="https://store.steampowered.com/app/3939360/"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam
+          </a>{" "}
+          from Studio CHIPO Y JUAN and Valem Studio, this is a first-person
+          investigation game built for VR and mixed reality: examine a scene,
+          bag evidence, interrogate suspects, and assemble the case yourself.
+          It is the first dated release of the week the Steam Frame math points
+          at, and a VR Only listing on Steam.
+        </p>
+
+        <h3 className="font-display text-xl font-semibold mb-2">
+          Gunman Contracts: Stand Alone
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2421750/485415c36bcefe36cbed8d8cef7d1b1eb2169c83/header.jpg"
+            alt="Gunman Contracts: Stand Alone key art with the title over a silhouetted gunman and scattered pistols"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Due September 10 on{" "}
+          <a
+            href="https://store.steampowered.com/app/2421750/"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam
+          </a>
+          . ANB_Seth&apos;s free Half-Life: Alyx mod drew more than 300,000
+          subscribers before it became a paid standalone game, and the developer{" "}
+          <a
+            href="/articles/gunman-contracts-own-launch-date-september-10-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            set the September 10 date on its own
+          </a>
+          , without waiting for Valve. A tight, physics-heavy action shooter
+          that plays like a John Wick set piece; it is the one PC VR release
+          this month that does not need a pitch.
+        </p>
+
+        <h3 className="font-display text-xl font-semibold mb-2">
+          Sol Protocol
+        </h3>
+        <figure className="fitness-figure">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4250370/3caf0967689a7da2c4135e88225ae6e0ff16d8ba/header.jpg"
+            alt="Sol Protocol key art with a starship bridge crew facing a black hole"
+            loading="lazy"
+          />
+        </figure>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Listed for October on{" "}
+          <a
+            href="https://store.steampowered.com/app/4250370/"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam
+          </a>{" "}
+          from Singular Perception, with a Quest early access listing planned
+          for the same window. A co-op starship bridge game in the Star Trek:
+          Bridge Crew mould: each player runs a station, the ship only survives
+          if everyone does their job. VR Only on Steam.
+        </p>
+
         {/* Ad: after the last anticipated game, before related articles */}
         <div className="my-8">
           <AdSlot slot={AD_SLOTS.pillar} format="auto" />
@@ -759,26 +859,25 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Steam Frame launch is still the wild card for the back half of
-          2026, but it is a much smaller wild card than it was a month ago. The
-          headset has regulatory clearance, a certification program past 50
-          titles, and a published software stack. Meta Connect lands September
-          23 with the Quest 4 now pointed at 2027, so Valve has the hardware
-          stage largely to itself this fall. If it delivers a strong standalone
-          headset with a compelling launch title, it could expand the VR gaming
-          audience significantly and give developers a reason to invest more
-          heavily in VR exclusive content. Nearer term, August is the usual
-          pre-fall lull: Pine Studio opened a public VR preview for Escape
-          Simulator 2 on August 3, Streets of Miami VR arrives August 28, and
-          the narrative escape room{" "}
+          The Steam Frame launch is no longer a wild card so much as a date
+          nobody has said out loud. On September 3 two of the headset&apos;s
+          Steam backend packages were revised for the first time since May, the
+          same move Valve made six days before Steam Machine reservations
+          opened, and the{" "}
           <a
-            href="/articles/amelias-escape-vr-escape-room-launch-july-2026"
+            href="/great-on-frame"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            Amelia&apos;s Escape
+            Great on Frame
           </a>{" "}
-          landed on Quest and Steam on July 23 at $15.99. Our{" "}
+          catalog stood at 117 certified titles on September 6. Meta Connect
+          follows on September 23 with the Quest 4 pointed at 2027, so Valve
+          has the hardware stage to itself this month. The software calendar
+          is filling in around it: Detective VR on September 9, Gunman
+          Contracts: Stand Alone on September 10, Sol Protocol in October.
+          Streets of Miami VR, which had been dated August 28, is back to
+          Coming Soon on Steam. Our{" "}
           <a
             href="/articles/best-vr-games-first-half-2026-standouts"
             className="no-underline hover:underline"

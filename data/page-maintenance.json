@@ -45,7 +45,7 @@
       "file": "src/app/best-vr-games-2026/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-08-03",
+      "lastRefreshed": "2026-09-06",
       "checklist": [
         "Move shipped games from 'anticipated' to 'released so far' with launch dates",
         "Add internal links to VR.org launch articles for each",
@@ -183,7 +183,7 @@
       "file": "src/app/gaming/page.tsx",
       "category": "category-hub",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-08-03",
+      "lastRefreshed": "2026-09-06",
       "checklist": [
         "Verify gaming-category featured pins in data/featured.json are not expired",
         "Sanity-check the on-page description in src/app/gaming/page.tsx",
@@ -363,7 +363,7 @@
       "file": "src/app/upcoming-vr-headsets-2026/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-10",
+      "lastRefreshed": "2026-09-06",
       "checklist": [
         "NEWS-SENSITIVE, refresh often: move launched headsets from 'On the horizon' to 'Just launched'",
         "Update Steam Frame and Quest 4 status as Valve/Meta announce specs, price, and dates",
@@ -457,7 +457,7 @@
       "file": "src/app/steam-frame/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-24",
+      "lastRefreshed": "2026-09-06",
       "checklist": [
         "Refresh on EVERY Steam Frame news beat until launch, not just on cadence",
         "Update the release-date and price signal sections with the newest reporting",
@@ -472,7 +472,7 @@
       "file": "src/app/great-on-frame/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-24",
+      "lastRefreshed": "2026-09-06",
       "checklist": [
         "Check store.steampowered.com/greatonframe for new titles on EVERY Steam Frame beat",
         "Append additions to VERIFIED_GAMES (in page order) AND the CHANGELOG with dates",
@@ -485,7 +485,7 @@
       "file": "src/app/steam-frame-price/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-24",
+      "lastRefreshed": "2026-09-06",
       "checklist": [
         "Append new leaks/estimates to PRICE_SIGNALS with dates",
         "Keep the lede's 'as of' date and dollar figures matched to the newest signal",
@@ -498,7 +498,7 @@
       "file": "src/app/steam-frame-release-date/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-08-24",
+      "lastRefreshed": "2026-09-06",
       "checklist": [
         "Append new signals to DATE_SIGNALS with dates",
         "Keep the lede's 'as of' date current on every touch",

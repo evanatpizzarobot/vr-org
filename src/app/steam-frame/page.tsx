@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-08-24";
+const LAST_UPDATED = "2026-09-06";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -85,7 +85,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Valve Steam Frame come out?",
     answer:
-      "Valve has confirmed a summer 2026 window for the Steam Frame, alongside the Steam Machine that shipped June 30. Summer ends September 22, which leaves Valve a narrow window. On July 29 the FCC granted Valve equipment authorization for FCC ID 2AES4-1015, a device listed only as a VR Headset, which is the legal clearance required to sell it in the United States. Roughly 35 tons of VR hardware cleared customs into Valve's US warehouses in June and the Great on Frame store section went live in mid July, so the hardware is built, certified, and merchandised; Valve just has not named the day or the price.",
+      "Valve has confirmed a summer 2026 window for the Steam Frame, alongside the Steam Machine that shipped June 30. Summer ends September 22, which leaves Valve a narrow window. On July 29 the FCC granted Valve equipment authorization for FCC ID 2AES4-1015, a device listed only as a VR Headset, which is the legal clearance required to sell it in the United States. Roughly 35 tons of VR hardware cleared customs into Valve's US warehouses in June and the Great on Frame store section went live in mid July, so the hardware is built, certified, and merchandised. On September 3 two of the headset's seven Steam backend packages were revised for the first time since May 5, and Steam Machine packages changed six days before its reservation lottery opened, which points at the week of September 7. Valve still has not named the day or the price.",
   },
   {
     question: "How much will the Steam Frame cost?",
@@ -95,7 +95,7 @@ const faq = faqPageSchema([
   {
     question: "How do I preorder the Steam Frame?",
     answer:
-      "Valve has not opened reservations yet. Expect the same playbook as the Steam Machine: a short-notice, randomized reservation queue on Steam rather than a first-come first-served preorder, with purchase emails following within days. The Steam Controller sold out in under an hour and the Machine used a lottery, so supply will likely be tight.",
+      "Valve has not opened reservations yet, but the plumbing appears to be in place: dataminer Brad Lynch reported on September 4 that a reservation system is live in Steam's backend for two Steam Frame SKUs, a day after two of the headset's backend packages were revised. Expect the same playbook as the Steam Machine: a short-notice, randomized reservation queue on Steam rather than a first-come first-served preorder, with purchase emails following within days. The Steam Controller sold out in under an hour and the Machine used a lottery, so supply will likely be tight.",
   },
   {
     question: "Is the Steam Frame standalone or a PC VR headset?",
@@ -105,12 +105,12 @@ const faq = faqPageSchema([
   {
     question: "What games will the Steam Frame launch with?",
     answer:
-      "No first-party launch game has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. The launch story is the Steam library itself via streaming and Proton, plus the certified catalog on the Great on Frame page, which reported 89 titles on August 24, up from 65 on August 10 and eight on July 17. Most of that growth is flatscreen catalog games such as Balatro, Cuphead, and Hollow Knight: Silksong rather than native VR. The highest-profile VR title on the list is Half-Life 2: VR Mod, a free community mod certified on August 6, while Valve's own The Lab was downgraded to Unsupported on July 29. Payday: Aces High was the first third-party title to list Steam Frame as a target platform.",
+      "No first-party launch game has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. The launch story is the Steam library itself via streaming and Proton, plus the certified catalog on the Great on Frame page, which reported 117 titles on September 6, up from 98 on August 27, 65 on August 10 and eight on July 17. Most of that growth is flatscreen catalog games such as Balatro, Cuphead, and Hollow Knight: Silksong rather than native VR. The highest-profile VR title on the list is Half-Life 2: VR Mod, a free community mod certified on August 6, while Valve's own The Lab was downgraded to Unsupported on July 29. Payday: Aces High was the first third-party title to list Steam Frame as a target platform.",
   },
   {
     question: "What is Steam Frame Verified?",
     answer:
-      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold at least 72 fps at 1728x1728 per eye on-device, and anything rendering below 1440x1440 is marked Unsupported. Valve first announced 90 FPS and later revised the published requirement down to 72 without an announcement. Standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt. Certified games are collected on the Great on Frame storefront page, which went live in mid July 2026 with eight titles and reported 89 on August 24.",
+      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold at least 72 fps at 1728x1728 per eye on-device, and anything rendering below 1440x1440 is marked Unsupported. Valve first announced 90 FPS and later revised the published requirement down to 72 without an announcement. Standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt. Certified games are collected on the Great on Frame storefront page, which went live in mid July 2026 with eight titles and reported 117 on September 6.",
   },
 ]);
 
@@ -252,6 +252,21 @@ const TIMELINE: TimelineEntry[] = [
     text: "Valve's own unboxing and first-time-setup videos fall out of the Steam client, showing retail packaging and the Ergonomic Accessories Kit. Companies do not finish and stage setup videos for hardware that is quarters away.",
   },
   {
+    date: "Sep 6, 2026",
+    slug: "steam-frame-packages-revised-september-3-reservation-backend-2026",
+    text: "SteamDB shows two of the Frame's seven backend packages revised on September 3, the first change since May 5, and Brad Lynch reports a reservation system live in Steam's backend for two SKUs. Steam Machine packages moved six days before its lottery opened. Great on Frame stands at 117 titles.",
+  },
+  {
+    date: "Sep 1, 2026",
+    slug: "gunman-contracts-own-launch-date-september-10-2026",
+    text: "Gunman Contracts: Stand Alone sets a September 10 launch on its own, the first third-party title to put a day on the calendar inside the Frame's expected window.",
+  },
+  {
+    date: "Aug 27, 2026",
+    slug: "great-on-frame-98-certified-titles-72fps-threshold-2026",
+    text: "Great on Frame reaches 98 titles, and the names finally matter: Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip and all three I Expect You To Die games are certified.",
+  },
+  {
     date: "Aug 24, 2026",
     slug: "valve-great-on-frame-steam-page-steam-frame-launch-signal",
     text: "Great on Frame reaches 89 titles, up 24 in fourteen days, with every genre count rising and the RPG filter doubling. Still no price and no date, and summer ends September 22.",
@@ -279,7 +294,7 @@ export default function SteamFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 24, 2026
+          Last updated: September 6, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -333,13 +348,14 @@ export default function SteamFramePage() {
         >
           The Steam Frame is Valve&apos;s standalone SteamOS VR headset with a
           dedicated 6GHz wireless dongle for PC VR streaming, confirmed for a
-          summer 2026 release. As of August 24, 2026 there is still no official
-          price and no reservation date, but the last regulatory gate is now
-          closed: the FCC granted Valve equipment authorization on July 29,
-          making the headset legal to sell in the US. Hardware has cleared
-          customs, and the Great on Frame catalog has gone from eight certified
-          titles on July 17 to 89 today, which is the fastest-moving public
-          signal on the board. Valve has 43 days left in its own stated summer
+          summer 2026 release. As of September 6, 2026 there is still no official
+          price and no reservation date, but the backend has started moving: on
+          September 3 two of the headset&apos;s seven Steam packages were revised
+          for the first time since May 5, and Steam Machine packages changed six
+          days before its reservation lottery opened. The FCC granted Valve
+          equipment authorization on July 29, hardware has cleared customs, and
+          the Great on Frame catalog has gone from eight certified titles on
+          July 17 to 117 today. Valve has 16 days left in its own stated summer
           window. This page tracks every signal, links to all of our reporting,
           and is updated on every beat until launch.
         </p>

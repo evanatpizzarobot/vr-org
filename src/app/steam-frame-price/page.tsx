@@ -42,7 +42,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-08-24";
+const LAST_UPDATED = "2026-09-06";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -74,7 +74,7 @@ const faq = faqPageSchema([
   {
     question: "How much will the Steam Frame cost?",
     answer:
-      "There is no official price as of August 24, 2026. Early retailer database listings surfaced in June around $950 for a 512GB model and about $1,070 for a larger tier, and analyst estimates cluster between $899 and $1,199. Given the Steam Machine landed at $1,049, about $250 above expectations, and that Qualcomm told customers on July 24 that Snapdragon prices rise by double digits for orders shipping after September 1, we recommend budgeting toward the high end of that range. Valve's own unboxing and setup videos leaked out of the Steam client on August 19, which means retail packaging is finished while the price is still unannounced.",
+      "There is no official price as of September 6, 2026, even though two of the headset's Steam backend packages were revised on September 3 and dataminer Brad Lynch reports a reservation system is live in Steam's backend. Lynch's own expectation, given on the Gamertag VR podcast in late August, is a price north of $1,000. Early retailer database listings surfaced in June around $950 for a 512GB model and about $1,070 for a larger tier, and analyst estimates cluster between $899 and $1,199. Given the Steam Machine landed at $1,049, about $250 above expectations, and that Qualcomm told customers on July 24 that Snapdragon prices rise by double digits for orders shipping after September 1, we recommend budgeting toward the high end of that range. Valve's own unboxing and setup videos leaked out of the Steam client on August 19, which means retail packaging is finished while the price is still unannounced.",
   },
   {
     question: "When will Valve announce the Steam Frame price?",
@@ -166,6 +166,16 @@ const PRICE_SIGNALS: PriceSignal[] = [
     figure: "Still no price",
   },
   {
+    date: "Aug 28, 2026",
+    signal: "Brad Lynch, on the Gamertag VR podcast, expects the Frame to land north of $1,000",
+    figure: "Over $1,000",
+  },
+  {
+    date: "Sep 3, 2026",
+    signal: "Two Steam packages revised and a reservation backend appears; neither carries a price",
+    figure: "Still none",
+  },
+  {
     date: "Aug 24, 2026",
     signal: "Great on Frame at 89 titles, four weeks of summer left, no price",
     figure: "$899 to $1,199 stands",
@@ -192,7 +202,7 @@ export default function SteamFramePricePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 24, 2026
+          Last updated: September 6, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -228,8 +238,9 @@ export default function SteamFramePricePage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve has not announced a price for the Steam Frame as of August 24,
-          2026, even though the FCC cleared the headset for US sale on July 29.
+          Valve has not announced a price for the Steam Frame as of September 6,
+          2026, even though the FCC cleared the headset for US sale on July 29
+          and two of its Steam backend packages were revised on September 3.
           The most concrete signals are June retailer database listings around
           $950 for a 512GB model and roughly $1,070 for a larger tier, with
           analyst estimates clustering between $899 and $1,199. Valve originally
