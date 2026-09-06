@@ -104,6 +104,8 @@ export async function GET() {
     ["/great-on-frame", reg_or("/great-on-frame"), "weekly", "0.85"],
     ["/steam-frame-price", reg_or("/steam-frame-price"), "weekly", "0.8"],
     ["/steam-frame-release-date", reg_or("/steam-frame-release-date"), "weekly", "0.8"],
+    ["/steam-frame-vs-quest-3", reg_or("/steam-frame-vs-quest-3"), "weekly", "0.8"],
+    ["/meta-connect-2026", reg_or("/meta-connect-2026"), "weekly", "0.85"],
     ["/best-vr-headset-for-gaming", reg_or("/best-vr-headset-for-gaming"), "monthly", "0.8"],
     ["/highest-resolution-vr-headset", reg_or("/highest-resolution-vr-headset"), "monthly", "0.8"],
     ["/best-vr-headset-for-movies", reg_or("/best-vr-headset-for-movies"), "monthly", "0.8"],

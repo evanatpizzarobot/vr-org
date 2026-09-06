@@ -43,6 +43,7 @@ const CATEGORY_GUIDES: Record<string, { label: string; href: string; description
     { label: "Best VR Headsets 2026", href: "/best-vr-headsets", description: "Our picks for the best VR headsets you can buy today." },
     { label: "VR for Beginners", href: "/vr-for-beginners", description: "Everything a first-time VR buyer needs to know." },
     { label: "Valve Steam Frame", href: "/steam-frame", description: "Specs, price signals, and every launch beat as Valve counts down." },
+    { label: "Steam Frame vs Quest 3", href: "/steam-frame-vs-quest-3", description: "Valve's PC-first headset against Meta's $599 standalone." },
     { label: "Upcoming VR Headsets 2026", href: "/upcoming-vr-headsets-2026", description: "What has just launched and what is still on the horizon." },
   ],
   software: [
@@ -54,6 +55,7 @@ const CATEGORY_GUIDES: Record<string, { label: string; href: string; description
     { label: "Best VR Headsets 2026", href: "/best-vr-headsets", description: "Apple Vision Pro, Quest 3, and every major headset compared." },
   ],
   xr: [
+    { label: "Meta Connect 2026", href: "/meta-connect-2026", description: "September 23 to 24. What Meta has teased and what to expect." },
     { label: "Best AR Glasses 2026", href: "/ar-glasses", description: "Smart glasses and Android XR devices ranked." },
     { label: "Best VR Apps & Utilities", href: "/best-vr-apps", description: "Top VR apps for productivity, social, and creativity." },
   ],

@@ -521,6 +521,33 @@
         "Re-check the Portuguese and Chinese-language gaps called out in the What is missing section",
         "Bump lastUpdated and lastVerified in data/vr-creators.json"
       ]
+    },
+    {
+      "path": "/steam-frame-vs-quest-3",
+      "file": "src/app/steam-frame-vs-quest-3/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-09-06",
+      "checklist": [
+        "THE MOMENT Valve announces the Steam Frame price: put the official number in the SpecTable, rewrite the price section and FAQ, re-check the verdict",
+        "Verify Quest 3 ($599) price at Meta's store",
+        "Keep the Great on Frame count in sync with /great-on-frame",
+        "After the Frame ships: add hands-on findings and relax cadence to 30d"
+      ]
+    },
+    {
+      "path": "/meta-connect-2026",
+      "file": "src/app/meta-connect-2026/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 7,
+      "lastRefreshed": "2026-09-06",
+      "checklist": [
+        "NEWS-SENSITIVE until Sept 24: refresh on every Connect beat, not just on cadence",
+        "Add the keynote start time to the schedule table and FAQ the moment Meta posts it",
+        "Append new reporting to the dated timeline with article links",
+        "Sept 23-24: convert the page to 'everything announced' with the same-day recap linked from the lede",
+        "After the show: relax cadence to 90d and keep as the canonical Connect 2026 record"
+      ]
     }
   ]
 }

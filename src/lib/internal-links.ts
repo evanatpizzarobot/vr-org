@@ -19,6 +19,9 @@ const RULES: LinkRule[] = [
   { pattern: /\b(?:Meta )?Quest 3 vs\.? (?:the |Apple )?Vision Pro\b/i, href: "/quest-3-vs-vision-pro" },
   { pattern: /\b(?:Apple )?Vision Pro vs\.? (?:the |Meta )?Quest 3\b/i, href: "/quest-3-vs-vision-pro" },
   { pattern: /\bPSVR ?2 vs\.? (?:the |Meta )?Quest 3\b/i, href: "/psvr2-vs-quest-3" },
+  { pattern: /\b(?:Valve )?Steam Frame vs\.? (?:the |Meta )?Quest 3\b/i, href: "/steam-frame-vs-quest-3" },
+  { pattern: /\b(?:Meta )?Quest 3 vs\.? (?:the |Valve )?Steam Frame\b/i, href: "/steam-frame-vs-quest-3" },
+  { pattern: /\bMeta Connect(?: 2026)?\b(?! 20(?:1\d|2[0-5]))/i, href: "/meta-connect-2026" },
   { pattern: /\b(?:Meta )?Quest 3 vs\.? (?:the )?PSVR ?2\b/i, href: "/psvr2-vs-quest-3" },
 
   // Headset spokes by segment / intent -> specific spoke pages (BEFORE the generic hub rule)

@@ -115,6 +115,16 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/steam-frame-release-date",
     description: "Summer 2026 confirmed. Every launch signal, dated.",
   },
+  "steam-frame-vs-quest-3": {
+    label: "Steam Frame vs Quest 3",
+    href: "/steam-frame-vs-quest-3",
+    description: "Valve's PC-first SteamOS headset versus Meta's $599 standalone.",
+  },
+  "meta-connect-2026": {
+    label: "Meta Connect 2026",
+    href: "/meta-connect-2026",
+    description: "September 23 to 24. What Meta has teased and what the roadmap allows.",
+  },
   "best-vr-headset-for-gaming": {
     label: "Best VR Headset for Gaming",
     href: "/best-vr-headset-for-gaming",

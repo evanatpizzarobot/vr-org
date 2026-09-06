@@ -322,6 +322,14 @@ export default function SteamFramePage() {
           >
             Great on Frame verified games list
           </a>
+          , plus our{" "}
+          <a
+            href="/steam-frame-vs-quest-3"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Steam Frame vs Quest 3 comparison
+          </a>
           . Part of our{" "}
           <a
             href="/vr-release-dates"
