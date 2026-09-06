@@ -7,7 +7,7 @@
       "file": "src/app/best-vr-headsets/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-07-17",
+      "lastRefreshed": "2026-09-06",
       "checklist": [
         "Verify each headset's price and availability in deals.json",
         "Update 'What's Coming in 2026' section with confirmed launches",
@@ -107,7 +107,7 @@
       "file": "src/app/ar-glasses/page.tsx",
       "category": "pillar",
       "cadenceDays": 30,
-      "lastRefreshed": "2026-07-17",
+      "lastRefreshed": "2026-09-06",
       "checklist": [
         "AR moves fast. Refresh 'What is coming' with confirmed Android XR / Meta / Apple news",
         "Update Ray-Ban Meta, Rokid, Xreal, Viture pricing and feature notes",
@@ -340,7 +340,7 @@
       "lastRefreshed": "2026-07-17",
       "checklist": [
         "Verify prices: Quest 3 ($599), Bigscreen Beyond 2 ($1019), Pimax Crystal Light ($899), PSVR2 ($399)",
-        "Confirm Valve Index / HP Reverb G2 remain discontinued; update if a successor ships",
+        "Confirm Valve Index remains discontinued and the Bigscreen Beyond 2 price ($959 since Aug 31, 2026) still matches the store",
         "Update the Steam Frame note when Valve confirms specs/price/date",
         "Keep cross-links to /best-vr-headsets, /best-budget-vr-headset, /psvr2-vs-quest-3 intact"
       ]

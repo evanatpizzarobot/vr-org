@@ -49,7 +49,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best AR Glasses 2026: Smart Glasses Comparison & Buyer's Guide",
   datePublished: "2026-04-20",
-  dateModified: "2026-08-24",
+  dateModified: "2026-09-06",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -119,6 +119,17 @@ const glassesList = productItemListSchema("Best AR Glasses 2026", [
     url: "https://vr.org/ar-glasses#viture-pro",
     offers: [
       { price: 499, priceCurrency: "USD", availability: "https://schema.org/InStock" },
+    ],
+  },
+  {
+    name: "HTC Vive Eagle",
+    brand: "HTC",
+    image: "https://vr.org/article-images/vive-eagle-pantos-black.jpg",
+    description:
+      "The $499 Ray-Ban Meta alternative, camera and audio glasses with a 12MP ultra-wide camera, open-ear speakers and two years of VIVE AI Plus included.",
+    url: "https://vr.org/ar-glasses#vive-eagle",
+    offers: [
+      { price: 499, priceCurrency: "USD", availability: "https://schema.org/InStock", url: "https://shop-us.vive.com/products/vive-eagle" },
     ],
   },
   {
@@ -215,7 +226,7 @@ export default function ARGlassesPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: August 2026
+          Last updated: September 2026
         </p>
 
         <p
@@ -243,7 +254,9 @@ export default function ARGlassesPage() {
           of Wayfarers. Rokid's 49-gram display glasses just hit number one
           globally in the display-AI category. Xreal and Viture are selling
           enough units to prove there is real demand for a virtual screen you
-          can clip to your phone. And Google, Samsung, and Meta are all about
+          can clip to your phone. HTC&apos;s Vive Eagle went on sale in the US
+          in September at $499, the first real Ray-Ban Meta rival at that
+          price. And Google, Samsung, and Meta are all about
           to fire the serious shots with Android XR and Orion. This guide
           breaks down which AR smart glasses are actually worth your money
           right now, plus what is coming next.
@@ -398,7 +411,59 @@ export default function ARGlassesPage() {
           the more affordable Luma line starting at $399.
         </p>
 
-        {/* Ad: between Viture Pro (4th) and Meta Orion (5th) */}
+        {/* HTC Vive Eagle */}
+        <h2 id="vive-eagle" className="font-display text-2xl font-semibold mb-2 scroll-mt-20">
+          HTC Vive Eagle: The $499 Ray-Ban Meta alternative
+        </h2>
+        <figure className="fitness-figure">
+          <img
+            src="/article-images/vive-eagle-pantos-black.jpg"
+            alt="HTC Vive Eagle smart glasses, Pantos round frame in Charcoal Black with sunglass lenses"
+            loading="lazy"
+          />
+        </figure>
+        <p className="text-[13px] mb-4" style={{ color: "var(--text-muted)" }}>
+          Made by HTC | Price: $499 | Display: none, camera and audio glasses
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-8"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          HTC put the{" "}
+          <a
+            href="https://shop-us.vive.com/products/vive-eagle"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Vive Eagle
+          </a>{" "}
+          on sale in the US on September 3 at $499. It is a pair of camera
+          and audio glasses in the Ray-Ban Meta mould: a 12MP ultra-wide
+          camera, four microphones feeding two open-ear speakers, and a $49
+          magnetic Power Boost battery that clips to the frame instead of
+          plugging in. The Square frame weighs 49 grams with lenses. Two years
+          of the VIVE AI Plus tier come in the box, while the 90-language live
+          translation HTC leads its marketing with is the paid VIVE AI Pro
+          tier, metered by the minute. Only three of ten configurations were
+          in stock at launch, the round Pantos frame in Charcoal Black with
+          sunglass or blue-light lenses and the Square frame in Black with
+          sunglass lenses; the photochromic lens and the Navy, Berry and
+          Coffee colors have no date.{" "}
+          <a
+            href="/articles/htc-vive-eagle-499-us-store-three-of-ten-configurations-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Our launch-day breakdown
+          </a>{" "}
+          covers the two AI tiers in detail. If Ray-Ban Meta is the product
+          you want but not the company, this is the first credible alternative
+          at the same price band.
+        </p>
+
+        {/* Ad: between Vive Eagle (5th) and Meta Orion (6th) */}
         <div className="my-8">
           <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
         </div>

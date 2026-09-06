@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headsets 2026: The Complete Buyer's Guide",
   datePublished: "2026-03-23",
-  dateModified: "2026-08-24",
+  dateModified: "2026-09-06",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -79,7 +79,7 @@ const breadcrumbs = breadcrumbSchema([
 // Product entities for each pick. Currently-sold models carry an Offer whose
 // price matches the on-page copy (priceCurrency USD, InStock, official product
 // URL verified 200) so they are eligible for Google product rich results.
-// Discontinued picks (Valve Index, HP Reverb G2) get no Offer: claiming InStock
+// Discontinued picks (Valve Index) get no Offer: claiming InStock
 // for a discontinued product is a false signal. No aggregateRating until VR.org
 // assigns first-party scores.
 const headsetList = productItemListSchema("Best VR Headsets 2026", [
@@ -156,12 +156,20 @@ const headsetList = productItemListSchema("Best VR Headsets 2026", [
     url: "https://vr.org/best-vr-headsets#valve-index",
   },
   {
-    name: "HP Reverb G2",
-    brand: "HP",
-    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1271440/header.jpg",
+    name: "Bigscreen Beyond 2",
+    brand: "Bigscreen",
+    image: "https://vr.org/article-images/bigscreen-beyond-2-universal-cushion.jpg",
     description:
-      "The best VR headset for sim racing and flight sim, with a high 2160 by 2160 per-eye resolution.",
-    url: "https://vr.org/best-vr-headsets#hp-reverb-g2",
+      "The best VR headset for sim racing and flight sim, a 107 gram PC VR headset with 2560 by 2560 per-eye micro-OLED panels.",
+    url: "https://vr.org/best-vr-headsets#bigscreen-beyond-2",
+    offers: [
+      {
+        price: 959,
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: "https://store.bigscreenvr.com/products/bigscreen-beyond-2",
+      },
+    ],
   },
 ]);
 
@@ -179,7 +187,7 @@ const headsetFaq = faqPageSchema([
   {
     question: "Do I need a gaming PC for VR?",
     answer:
-      "No. Standalone headsets like the Meta Quest 3S, Quest 3, and Apple Vision Pro run entirely on their own hardware with no PC required. You only need a gaming PC if you want to play PC VR titles on SteamVR or use a tethered headset like the Valve Index or HP Reverb G2.",
+      "No. Standalone headsets like the Meta Quest 3S, Quest 3, and Apple Vision Pro run entirely on their own hardware with no PC required. You only need a gaming PC if you want to play PC VR titles on SteamVR or use a tethered headset like the Bigscreen Beyond 2 or Valve Index.",
   },
   {
     question: "Is VR worth it in 2026?",
@@ -243,7 +251,7 @@ export default function BestVRHeadsetsPage() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: August 2026
+          Last updated: September 2026
         </p>
 
         <p
@@ -425,10 +433,10 @@ export default function BestVRHeadsetsPage() {
                   backgroundColor: "rgba(255,255,255,0.02)",
                 }}
               >
-                <td className="py-3 px-4 font-medium" style={{ color: "var(--text-primary)" }}>HP Reverb G2</td>
-                <td className="py-3 px-4">Discontinued</td>
-                <td className="py-3 px-4">PC VR</td>
-                <td className="py-3 px-4">2160 x 2160 per eye</td>
+                <td className="py-3 px-4 font-medium" style={{ color: "var(--text-primary)" }}>Bigscreen Beyond 2</td>
+                <td className="py-3 px-4">$959</td>
+                <td className="py-3 px-4">PC VR tethered</td>
+                <td className="py-3 px-4">2560 x 2560 per eye</td>
                 <td className="py-3 px-4">Best for sim racing / flight sim</td>
               </tr>
             </tbody>
@@ -682,14 +690,14 @@ export default function BestVRHeadsetsPage() {
           should wait for the Frame.
         </p>
 
-        {/* HP Reverb G2 */}
-        <h3 id="hp-reverb-g2" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
-          HP Reverb G2: Best for Sim Racing &amp; Flight Sim (Discontinued)
+        {/* Bigscreen Beyond 2 */}
+        <h3 id="bigscreen-beyond-2" className="font-display text-xl font-semibold mb-3 scroll-mt-20">
+          Bigscreen Beyond 2: Best for Sim Racing &amp; Flight Sim
         </h3>
         <figure className="fitness-figure">
           <img
-            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1271440/header.jpg"
-            alt="HP Reverb G2 PC VR headset official product image"
+            src="/article-images/bigscreen-beyond-2-universal-cushion.jpg"
+            alt="Bigscreen Beyond 2 in its clear shell held in one hand, showing the tracking sensors behind the faceplate"
             loading="lazy"
           />
         </figure>
@@ -697,38 +705,70 @@ export default function BestVRHeadsetsPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The HP Reverb G2 has carved out a loyal niche among sim racers and
-          flight sim pilots. Its 2160 x 2160 per-eye resolution is among the
-          highest in this price range, making cockpit instruments, road
-          textures, and distant details noticeably crisper than on competing
-          headsets. The display clarity is what matters most in simulation
-          titles where you spend long sessions reading gauges and scanning
-          the horizon, and the G2 excels here.
+          The{" "}
+          <a
+            href="https://store.bigscreenvr.com/products/bigscreen-beyond-2"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Bigscreen Beyond 2
+          </a>{" "}
+          took over the sim niche the HP Reverb G2 left behind when Windows
+          Mixed Reality was retired. It weighs 107 grams, runs two micro-OLED
+          panels at 2560 x 2560 per eye with a 116 degree diagonal field of
+          view, and plugs into a PC over a five-meter fiber optic cable. That
+          is the sharpest PC VR image in this list, so cockpit instruments and
+          distant track detail resolve cleanly, and the weight means a
+          three-hour race or a long flight does not end with a sore neck. Our{" "}
+          <a
+            href="/articles/bigscreen-beyond-2-review-107g-pcvr"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            full review
+          </a>{" "}
+          goes deeper on the optics.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The trade-off is controller tracking. The G2 uses inside-out
-          tracking via onboard cameras, which works adequately for sim use
-          (where you are typically holding a wheel or flight stick rather
-          than VR controllers) but struggles with fast hand movements at the
-          edge of the tracking volume. For room-scale games or titles
-          requiring precise controller tracking, the Quest 3 or Valve Index
-          are better choices. But if your primary use case is sitting in a
-          virtual cockpit, the G2&apos;s visual clarity is hard to beat for the
-          price.
+          The trade-offs are the ones every Lighthouse headset carries.
+          Tracking comes from SteamVR base stations you buy and mount
+          yourself, controllers are not included, and there is no standalone
+          mode and no passthrough. It also needs a real gaming PC. For sim
+          use those matter less than they sound, since a wheel or a flight
+          stick replaces the controllers anyway and the base stations only
+          have to see the headset.
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-4"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Bigscreen{" "}
+          <a
+            href="/articles/bigscreen-beyond-2-959-universal-fit-cushion-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            cut the entry price to $959 on August 31
+          </a>{" "}
+          by making the $60 universal-fit cushion standard in place of the
+          $120 face-scan cushion, and the eye-tracking Beyond 2e now starts at
+          $1,159. The custom cushion is still sold separately for anyone who
+          wants the molded fit, and buying it no longer holds up the order.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
           <strong style={{ color: "var(--text-primary)" }}>Verdict:</strong>{" "}
-          A purpose-built headset for sim enthusiasts, now discontinued and
-          dependent on Windows Mixed Reality, which Microsoft has retired. If
-          you can still find one it remains capable for Microsoft Flight
-          Simulator or iRacing, but new sim buyers should look at the Bigscreen
-          Beyond 2 or the Quest 3 instead.
+          The best PC VR headset for sim racing and flight sim in 2026, and the
+          lightest PC VR headset on sale. Budget for base stations and
+          controllers on top of the $959, and skip it if you want anything
+          standalone or wireless.
         </p>
 
         {/* How to Choose */}
@@ -746,8 +786,8 @@ export default function BestVRHeadsetsPage() {
           The biggest decision is whether you want a standalone headset or a
           PC-tethered one. Standalone headsets like the Quest 3 and Quest 3S
           run everything onboard with no PC, no wires, no external sensors. You
-          put them on and play. PC VR headsets like the Valve Index and HP
-          Reverb G2 require a gaming PC (typically with at least an RTX 3070
+          put them on and play. PC VR headsets like the Bigscreen Beyond 2 and
+          Valve Index require a gaming PC (typically with at least an RTX 3070
           or equivalent), but they can render far more complex scenes and
           support graphically demanding titles. Some headsets, including the
           Quest 3, support both modes.
@@ -955,7 +995,7 @@ export default function BestVRHeadsetsPage() {
           No. Standalone headsets like the Meta Quest 3S, Quest 3, and Apple
           Vision Pro run entirely on their own hardware with no PC required. You
           only need a gaming PC if you want to play PC VR titles on SteamVR
-          or use a tethered headset like the Valve Index or HP Reverb G2.
+          or use a tethered headset like the Bigscreen Beyond 2 or Valve Index.
           For PC VR, a minimum of an RTX 3070 GPU and a modern CPU is
           recommended for a smooth experience.
         </p>
