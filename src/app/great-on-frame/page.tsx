@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-09-06";
+const LAST_UPDATED = "2026-09-08";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -918,6 +918,34 @@ const VERIFIED_GAMES: VerifiedGame[] = [
     added: "Sep 6, 2026",
     note: "Observed on Valve's Great on Frame page on September 6, 2026, in the wave that took the count from 98 to 117.",
   },
+  {
+    name: "DREDGE",
+    developer: "Black Salt Games",
+    type: "Flatscreen",
+    added: "Sep 8, 2026",
+    note: "Observed on Valve's Great on Frame page on September 8, 2026, in the wave that took the count from 117 to 121.",
+  },
+  {
+    name: "BALL x PIT",
+    developer: "Kenny Sun and Friends",
+    type: "Flatscreen",
+    added: "Sep 8, 2026",
+    note: "Observed on Valve's Great on Frame page on September 8, 2026, in the wave that took the count from 117 to 121.",
+  },
+  {
+    name: "Everything is Crab: The Animal Evolution Roguelite",
+    developer: "Odd Dreams Digital",
+    type: "Flatscreen",
+    added: "Sep 8, 2026",
+    note: "Observed on Valve's Great on Frame page on September 8, 2026, in the wave that took the count from 117 to 121.",
+  },
+  {
+    name: "RUMBLE",
+    developer: "Buckethead Entertainment",
+    type: "VR",
+    added: "Sep 8, 2026",
+    note: "Observed on Valve's Great on Frame page on September 8, 2026, in the wave that took the count from 117 to 121.",
+  },
 ];
 
 interface ChangelogEntry {
@@ -926,6 +954,10 @@ interface ChangelogEntry {
 }
 
 const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: "Sep 8, 2026",
+    text: "Valve's page reports 121 matches, up four from 117 on September 6. The additions are DREDGE, BALL x PIT and Everything is Crab: The Animal Evolution Roguelite on the flatscreen side, and RUMBLE in VR. Four titles in two days is a slower rate than the late-August waves, which is what a shelf looks like once it is mostly stocked. Summer ends September 22, leaving Valve 14 days.",
+  },
   {
     date: "Sep 6, 2026",
     text: "Valve's page reports 117 matches, up from 98 on August 27. The filter counts read 75 Action, 55 Adventure, 50 Casual, 32 Simulation and 19 RPG. Titles now on the page that this table had not yet listed include Factorio, DAVE THE DIVER, Streets of Rage 4, ANIMAL WELL, INSIDE, Broforce and Teenage Mutant Ninja Turtles: Shredder's Revenge on the flatscreen side, and Windlands, Racket Fury, Dungeons of Eternity, IRON REBELLION and Puzzling Places in VR. Two of the headset's Steam backend packages were revised on September 3, the first change since May.",
@@ -986,7 +1018,7 @@ const faq = faqPageSchema([
   {
     question: "Which games are Great on Frame right now?",
     answer:
-      "Valve's page reported 117 matches on September 6, 2026, up from 98 on August 27, 89 on August 24, 65 on August 10 and eight on July 17. Confirmed entries include Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter 2, Moss II VR, The Room VR: A Dark Matter, the I Expect You To Die trilogy, Pavlov Shack, The Light Brigade: Definitive Edition, Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
+      "Valve's page reported 121 matches on September 8, 2026, up from 117 on September 6, 98 on August 27, 89 on August 24, 65 on August 10 and eight on July 17. Confirmed entries include Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter 2, Moss II VR, The Room VR: A Dark Matter, the I Expect You To Die trilogy, Pavlov Shack, The Light Brigade: Definitive Edition, Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
   },
   {
     question: "What does Steam Frame Verified require?",
@@ -1006,7 +1038,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day or a price as of September 6, 2026, and summer ends September 22, which leaves 16 days. On September 3 two of the headset's Steam backend packages were revised for the first time since May, and Steam Machine packages changed six days before its lottery opened. The catalog going from eight titles to 117 in seven weeks is the other strong launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
+      "Valve has confirmed summer 2026 but has not named a day or a price as of September 8, 2026, and summer ends September 22, which leaves 14 days. On September 3 two of the headset's Steam backend packages were revised for the first time since May, and Steam Machine packages changed six days before its lottery opened. The catalog going from eight titles to 121 in eight weeks is the other strong launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
   },
 ]);
 
@@ -1086,8 +1118,8 @@ export default function GreatOnFramePage() {
           Great on Frame is Valve&apos;s curated Steam section for games
           certified to run well on the Steam Frame headset, the VR sibling of
           the Great on Deck label that shaped Steam Deck buying for four years.
-          The page went live in mid July 2026 with eight titles and reported 117
-          matches on September 6, more than a fourteenfold increase in seven weeks.
+          The page went live in mid July 2026 with eight titles and reported 121
+          matches on September 8, more than a fifteenfold increase in eight weeks.
           Most of that growth is flatscreen catalog games rather than native VR,
           and Valve&apos;s own The Lab lost its certification along the way. This
           page tracks the confirmed titles, what the certification actually
@@ -1112,10 +1144,10 @@ export default function GreatOnFramePage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve&apos;s page reported 117 matches on September 6, 2026. It launched
+          Valve&apos;s page reported 121 matches on September 8, 2026. It launched
           with five titles the week of July 13, reached eight within a day, sat
           around 42 by late July, passed 50 on August 3, hit 65 on August 10, 89
-          on August 24, 98 on August 27, and is at 117 now. You can confirm the running total
+          on August 24, 98 on August 27, 117 on September 6, and is at 121 now. You can confirm the running total
           yourself by appending frame_compatibility=3 to a Steam store search,
           which is how the figures on this page are taken. What changed most
           recently is the composition rather than the count: Beat Saber, Job
@@ -1130,7 +1162,7 @@ export default function GreatOnFramePage() {
         >
           Valve does not publish a plain-text index of the catalog, and the
           storefront grid loads in pages, so the table below covers the titles
-          VR.org has individually confirmed rather than all 117. The remainder
+          VR.org has individually confirmed rather than all 121. The remainder
           are being added as they are verified.
         </p>
         <ComparisonTable
