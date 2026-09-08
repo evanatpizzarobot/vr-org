@@ -230,6 +230,23 @@ export default function SteamFramePricePage() {
           >
             Great on Frame verified games list
           </a>
+          , the{" "}
+          <a
+            href="/steam-frame-specs"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            full spec sheet
+          </a>
+          , and a guide to{" "}
+          <a
+            href="/steam-frame-games"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            what games run on it
+          </a>
+
           .
         </p>
 

@@ -115,6 +115,16 @@ const PILLAR_GUIDES: Record<string, Guide> = {
     href: "/steam-frame-release-date",
     description: "Summer 2026 confirmed. Every launch signal, dated.",
   },
+  "steam-frame-specs": {
+    label: "Steam Frame Specs",
+    href: "/steam-frame-specs",
+    description: "The full hardware spec sheet, controllers, and what Valve has not said.",
+  },
+  "steam-frame-games": {
+    label: "Steam Frame Games",
+    href: "/steam-frame-games",
+    description: "The three ways games run on it, and what is missing at launch.",
+  },
   "steam-frame-vs-quest-3": {
     label: "Steam Frame vs Quest 3",
     href: "/steam-frame-vs-quest-3",

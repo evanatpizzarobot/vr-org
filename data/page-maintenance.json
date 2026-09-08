@@ -536,6 +536,34 @@
       ]
     },
     {
+      "path": "/steam-frame-specs",
+      "file": "src/app/steam-frame-specs/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-09-08",
+      "checklist": [
+        "THE MOMENT Valve publishes final retail specs: replace announcement figures with shipping ones and note anything that changed",
+        "Fill the 'What Valve still has not told anyone' table as gaps close (price, date, battery runtime, IPD range)",
+        "Refresh rates are the soft figure: if Valve publishes the full supported list, replace the 72/120/experimental-144 wording",
+        "Keep the expansion-slot section current as third-party accessories appear",
+        "After launch: add measured real-world figures (battery runtime, actual weight on head) once reviews land"
+      ]
+    },
+    {
+      "path": "/steam-frame-games",
+      "file": "src/app/steam-frame-games/page.tsx",
+      "category": "pillar",
+      "cadenceDays": 14,
+      "lastRefreshed": "2026-09-08",
+      "checklist": [
+        "Update the Great on Frame certified count and its dated growth line from /great-on-frame",
+        "Add marquee certifications as they land; link every named game to its verified Steam app id",
+        "If Valve ever announces a first-party title, the 'gap nobody at Valve is filling' section must be rewritten, not patched",
+        "Keep the three-path table accurate if Valve changes the Verified thresholds",
+        "After launch: add what people actually play, from reviews and charts"
+      ]
+    },
+    {
       "path": "/meta-connect-2026",
       "file": "src/app/meta-connect-2026/page.tsx",
       "category": "pillar",
