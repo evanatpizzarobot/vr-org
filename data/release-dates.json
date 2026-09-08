@@ -49,7 +49,7 @@
       ],
       "price": "Not announced",
       "summary": "Project Swan is now Pico Space Pro. Pico cancelled its September 2 Beijing launch event nine days out and moved the headset to Q4 2026, citing a late software upgrade. The claimed sheet is 4,000 PPI micro-OLED, dual-chip compute at 12ms perception latency, and 270 grams, none of it confirmed outside Pico. Two devices cleared the FCC on September 1, which is a step toward a US release rather than a date for one.",
-      "link": "/articles/pico-space-pro-delayed-q4-september-event-cancelled-2026",
+      "link": "/articles/pico-space-pro-fcc-headset-no-wifi-puck-carries-radios-2026",
       "officialUrl": null,
       "lastVerified": "2026-09-08"
     },
@@ -387,7 +387,7 @@
       "name": "Payday: Aces High",
       "category": "game",
       "status": "expected",
-      "dateText": "2026",
+      "dateText": "Q4 2026",
       "isoDate": null,
       "sortDate": "2026-12-01",
       "platforms": [
@@ -396,10 +396,10 @@
         "Steam Frame"
       ],
       "price": null,
-      "summary": "Fast Travel Games' four-player co-op heist shooter, confirmed for 2026 and notable as the first game to list Steam Frame as a target platform. Press played the first heist job at an August 2026 media session; no date has been named.",
-      "link": "/articles/vr-games-showcase-march-2026-biggest-reveals",
-      "officialUrl": null,
-      "lastVerified": "2026-08-24"
+      "summary": "Fast Travel Games' four-player co-op heist shooter. The first public playtest ran August 20 to 24 on Quest 3 and SteamVR, and the Steam page now reads Q4 2026 rather than an open 2026. Notable as the first game to list Steam Frame as a target platform.",
+      "link": "/articles/payday-aces-high-playtest-closed-q4-2026",
+      "officialUrl": "https://store.steampowered.com/app/3456660/",
+      "lastVerified": "2026-09-08"
     },
     {
       "id": "breachers-outbreak",
