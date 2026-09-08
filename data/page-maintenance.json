@@ -485,7 +485,7 @@
       "file": "src/app/steam-frame-price/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-09-06",
+      "lastRefreshed": "2026-09-08",
       "checklist": [
         "Append new leaks/estimates to PRICE_SIGNALS with dates",
         "Keep the lede's 'as of' date and dollar figures matched to the newest signal",
@@ -527,7 +527,7 @@
       "file": "src/app/steam-frame-vs-quest-3/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-09-06",
+      "lastRefreshed": "2026-09-08",
       "checklist": [
         "THE MOMENT Valve announces the Steam Frame price: put the official number in the SpecTable, rewrite the price section and FAQ, re-check the verdict",
         "Verify Quest 3 ($599) price at Meta's store",

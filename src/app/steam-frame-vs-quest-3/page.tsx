@@ -12,7 +12,7 @@ import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
 
-const LAST_UPDATED = "2026-09-06";
+const LAST_UPDATED = "2026-09-08";
 
 export const metadata = {
   title: "Steam Frame vs Quest 3: Which Headset Should You Buy? | VR.org",
@@ -107,7 +107,7 @@ const faq = faqPageSchema([
   {
     question: "Is the Steam Frame better than the Quest 3?",
     answer:
-      "For PC VR, almost certainly. The Steam Frame ships with a dedicated 6GHz wireless dongle that talks directly to your PC, has eye tracking that drives foveated streaming, runs your entire Steam library through SteamOS, and puts 185 grams on your face instead of 515. For standalone play the answer is less clear: the Quest 3 has the largest native VR library in existence, color mixed reality with a depth sensor, and a $599 price the Frame is not expected to match. Valve has not announced the Frame's price or a release day as of September 6, 2026.",
+      "For PC VR, almost certainly. The Steam Frame ships with a dedicated 6GHz wireless dongle that talks directly to your PC, has eye tracking that drives foveated streaming, runs your entire Steam library through SteamOS, and puts 185 grams on your face instead of 515. For standalone play the answer is less clear: the Quest 3 has the largest native VR library in existence, color mixed reality with a depth sensor, and a $599 price the Frame is not expected to match. Valve has not announced the Frame's price or a release day as of September 8, 2026.",
   },
   {
     question: "How much will the Steam Frame cost compared to the Quest 3?",
@@ -127,7 +127,7 @@ const faq = faqPageSchema([
   {
     question: "Which headset has more games?",
     answer:
-      "Different kinds of more. The Quest 3 has the largest library of native standalone VR games and the biggest exclusives, from Batman: Arkham Shadow to the Horizon+ subscription catalog. The Steam Frame reaches the whole Steam catalog, VR and flatscreen, and Valve's Great on Frame section listed 117 titles certified to run well on the headset itself as of September 6, 2026, up from eight in mid July. If you want games that were built for standalone VR, Quest wins today. If you want your existing Steam library on your face, the Frame does.",
+      "Different kinds of more. The Quest 3 has the largest library of native standalone VR games and the biggest exclusives, from Batman: Arkham Shadow to the Horizon+ subscription catalog. The Steam Frame reaches the whole Steam catalog, VR and flatscreen, and Valve's Great on Frame section listed 121 titles certified to run well on the headset itself as of September 8, 2026, up from eight in mid July. If you want games that were built for standalone VR, Quest wins today. If you want your existing Steam library on your face, the Frame does.",
   },
   {
     question: "Should I buy a Quest 3 now or wait for the Steam Frame?",
@@ -157,7 +157,7 @@ export default function SteamFrameVsQuest3Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 6, 2026
+          Last updated: September 8, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -212,7 +212,7 @@ export default function SteamFrameVsQuest3Page() {
             { label: "PC VR", a: "Bundled dedicated 6GHz dongle, point to point", b: "Link cable, Air Link, Steam Link, Virtual Desktop" },
             { label: "Mixed reality", a: "Not positioned as an MR device", b: "Color passthrough with depth sensor" },
             { label: "Controllers", a: "Two motion controllers that double as a gamepad", b: "Touch Plus controllers" },
-            { label: "Native library", a: "Steam catalog; 117 Great on Frame titles", b: "Horizon Store, largest standalone VR library" },
+            { label: "Native library", a: "Steam catalog; 121 Great on Frame titles", b: "Horizon Store, largest standalone VR library" },
           ]}
         />
 
@@ -318,8 +318,7 @@ export default function SteamFrameVsQuest3Page() {
           >
             Great on Frame
           </a>{" "}
-          section certifies which ones hold up on the headset itself: 117
-          titles as of September 6, including Beat Saber, Half-Life 2: VR Mod,
+          section certifies which ones hold up on the headset itself: 121 titles as of September 8, including Beat Saber, Half-Life 2: VR Mod,
           Balatro and Hollow Knight: Silksong. Everything else in your Steam
           library streams from the PC. Quest games do not cross over; a title
           sold on both stores has to be bought on Steam to play on the Frame.

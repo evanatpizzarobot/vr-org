@@ -313,8 +313,7 @@ export default function SteamFrameReleaseDatePage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Valve Steam Frame is confirmed for summer 2026, and as of September
-          6, 2026 Valve has not named the day. It has, however, started touching
+          The Valve Steam Frame is confirmed for summer 2026, and as of September 8, 2026 Valve has not named the day. It has, however, started touching
           the store: two of the headset&apos;s seven Steam backend packages were
           revised on September 3, the first change since May 5, and Steam Machine
           packages moved six days before its reservation lottery opened. The

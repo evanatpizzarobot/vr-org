@@ -1063,7 +1063,7 @@ export default function GreatOnFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 6, 2026
+          Last updated: September 8, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
