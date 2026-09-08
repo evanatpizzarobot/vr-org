@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-01",
+  "lastUpdated": "2026-09-08",
   "items": [
     {
       "id": "valve-steam-frame",
@@ -40,18 +40,18 @@
       "id": "pico-project-swan",
       "name": "Pico Space Pro",
       "category": "headset",
-      "status": "confirmed",
-      "dateText": "September 2, 2026 Beijing debut, retail date TBA",
+      "status": "expected",
+      "dateText": "Q4 2026, September 2 Beijing event cancelled",
       "isoDate": null,
-      "sortDate": "2026-09-02",
+      "sortDate": null,
       "platforms": [
         "Pico OS 6"
       ],
       "price": "Not announced",
-      "summary": "Project Swan is now Pico Space Pro, debuting in Beijing on September 2, three weeks before Meta Connect. The claimed sheet is 4,000 PPI micro-OLED, dual-chip compute at 12ms perception latency, and 270 grams. Nobody outside Pico has seen the hardware, and a debut event is not a retail date.",
-      "link": "/articles/pico-space-pro-september-2-beijing-debut-2026",
+      "summary": "Project Swan is now Pico Space Pro. Pico cancelled its September 2 Beijing launch event nine days out and moved the headset to Q4 2026, citing a late software upgrade. The claimed sheet is 4,000 PPI micro-OLED, dual-chip compute at 12ms perception latency, and 270 grams, none of it confirmed outside Pico. Two devices cleared the FCC on September 1, which is a step toward a US release rather than a date for one.",
+      "link": "/articles/pico-space-pro-delayed-q4-september-event-cancelled-2026",
       "officialUrl": null,
-      "lastVerified": "2026-08-24"
+      "lastVerified": "2026-09-08"
     },
     {
       "id": "vivo-vision",
@@ -229,17 +229,17 @@
       "name": "Acer AR Vision GR0",
       "category": "glasses",
       "status": "expected",
-      "dateText": "Q3 to Q4 2026 by region",
+      "dateText": "Australia Q3 2026, EMEA Q4 2026, North America TBA",
       "isoDate": null,
-      "sortDate": "2026-09-01",
+      "sortDate": null,
       "platforms": [
         "Tethered display glasses"
       ],
-      "price": "$500 in North America",
+      "price": "$499.99 in North America, EUR 599 in EMEA, AUD 999 in Australia",
       "summary": "Acer's return to XR: tethered display glasses with dual 1080p micro-OLED panels, announced at Computex 2026.",
       "link": "/articles/acer-returns-xr-ar-vision-gr0-gi0-ai-glasses-computex-2026",
       "officialUrl": null,
-      "lastVerified": "2026-08-01"
+      "lastVerified": "2026-09-08"
     },
     {
       "id": "cave-crave",
@@ -299,17 +299,17 @@
       "name": "Transformers: Beyond Reality Redux",
       "category": "game",
       "status": "confirmed",
-      "dateText": "September 3, 2026",
-      "isoDate": "2026-09-03",
+      "dateText": "September 10, 2026",
+      "isoDate": "2026-09-10",
       "sortDate": null,
       "platforms": [
         "VR"
       ],
       "price": null,
-      "summary": "The rebuilt Transformers VR shooter, dated at the Summer 2026 VR Games Showcase.",
+      "summary": "The rebuilt Transformers VR shooter, dated at the Summer 2026 VR Games Showcase for September 3 and now listed on the Meta Store for September 10 at 10 AM PDT.",
       "link": "/articles/breachers-outbreak-triangle-factory-zombie-extraction-vr-games-showcase-2026",
       "officialUrl": null,
-      "lastVerified": "2026-08-01"
+      "lastVerified": "2026-09-08"
     },
     {
       "id": "the-lightkeepers",
@@ -616,35 +616,35 @@
       "id": "rayneo-io",
       "name": "RayNeo iO Smart Glasses",
       "category": "glasses",
-      "status": "confirmed",
-      "dateText": "September 4, 2026, price not announced",
-      "isoDate": "2026-09-04",
+      "status": "released",
+      "dateText": "Released September 4, 2026",
+      "isoDate": null,
       "sortDate": "2026-09-04",
       "platforms": [
         "Android companion"
       ],
-      "price": "Not announced",
+      "price": "$449 introductory, $499 list",
       "summary": "A 33-gram camera-free waveguide HUD built for ambient AI rather than media, with a MicroLED display and a 23 degree field of view. Sold through RayNeo's own store and Amazon, with IFA demos in Hall 21A.",
       "link": "/articles/rayneo-io-gt-max-two-devices-september-4-2026",
       "officialUrl": "https://www.rayneo.com/",
-      "lastVerified": "2026-08-24"
+      "lastVerified": "2026-09-08"
     },
     {
       "id": "rayneo-gt-max",
       "name": "RayNeo GT and GT Max",
       "category": "glasses",
-      "status": "confirmed",
-      "dateText": "September 4, 2026, price not announced",
-      "isoDate": "2026-09-04",
+      "status": "released",
+      "dateText": "Released September 4, 2026",
+      "isoDate": null,
       "sortDate": "2026-09-04",
       "platforms": [
         "USB-C display"
       ],
-      "price": "Not announced",
+      "price": "GT $299 introductory ($329 list), GT Max $399 introductory ($429 list)",
       "summary": "A 78-gram personal-cinema pair with dual 1080p 120Hz micro-OLED panels, a 59 degree field of view, dual-chip architecture and Bang & Olufsen quad speakers. The display half of RayNeo's deliberate split between a display device and an assistant device.",
       "link": "/articles/rayneo-io-gt-max-two-devices-september-4-2026",
       "officialUrl": "https://www.rayneo.com/",
-      "lastVerified": "2026-08-24"
+      "lastVerified": "2026-09-08"
     }
   ]
 }
