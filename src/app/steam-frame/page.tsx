@@ -252,19 +252,9 @@ const TIMELINE: TimelineEntry[] = [
     text: "Valve's own unboxing and first-time-setup videos fall out of the Steam client, showing retail packaging and the Ergonomic Accessories Kit. Companies do not finish and stage setup videos for hardware that is quarters away.",
   },
   {
-    date: "Sep 8, 2026",
-    slug: "steam-frame-packages-revised-september-3-reservation-backend-2026",
-    text: "Great on Frame reaches 121 certified titles, four more than September 6: DREDGE, BALL x PIT and Everything is Crab on the flatscreen side, RUMBLE in VR. Four in two days is a slower rate than the late-August waves, which is what a shelf looks like once it is mostly stocked. The week the package revisions pointed at is now underway, with 14 days of summer left.",
-  },
-  {
-    date: "Sep 6, 2026",
-    slug: "steam-frame-packages-revised-september-3-reservation-backend-2026",
-    text: "SteamDB shows two of the Frame's seven backend packages revised on September 3, the first change since May 5, and Brad Lynch reports a reservation system live in Steam's backend for two SKUs. Steam Machine packages moved six days before its lottery opened. Great on Frame stands at 117 titles.",
-  },
-  {
-    date: "Sep 1, 2026",
-    slug: "gunman-contracts-own-launch-date-september-10-2026",
-    text: "Gunman Contracts: Stand Alone sets a September 10 launch on its own, the first third-party title to put a day on the calendar inside the Frame's expected window.",
+    date: "Aug 24, 2026",
+    slug: "valve-great-on-frame-steam-page-steam-frame-launch-signal",
+    text: "Great on Frame reaches 89 titles, up 24 in fourteen days, with every genre count rising and the RPG filter doubling. Still no price and no date, and summer ends September 22.",
   },
   {
     date: "Aug 27, 2026",
@@ -272,11 +262,29 @@ const TIMELINE: TimelineEntry[] = [
     text: "Great on Frame reaches 98 titles, and the names finally matter: Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip and all three I Expect You To Die games are certified.",
   },
   {
-    date: "Aug 24, 2026",
-    slug: "valve-great-on-frame-steam-page-steam-frame-launch-signal",
-    text: "Great on Frame reaches 89 titles, up 24 in fourteen days, with every genre count rising and the RPG filter doubling. Still no price and no date, and summer ends September 22.",
+    date: "Sep 1, 2026",
+    slug: "gunman-contracts-own-launch-date-september-10-2026",
+    text: "Gunman Contracts: Stand Alone sets a September 10 launch on its own, the first third-party title to put a day on the calendar inside the Frame's expected window.",
+  },
+  {
+    date: "Sep 6, 2026",
+    slug: "steam-frame-packages-revised-september-3-reservation-backend-2026",
+    text: "SteamDB shows two of the Frame's seven backend packages revised on September 3, the first change since May 5, and Brad Lynch reports a reservation system live in Steam's backend for two SKUs. Steam Machine packages moved six days before its lottery opened. Great on Frame stands at 117 titles.",
+  },
+  {
+    date: "Sep 8, 2026",
+    slug: "steam-frame-packages-revised-september-3-reservation-backend-2026",
+    text: "Great on Frame reaches 121 certified titles, four more than September 6: DREDGE, BALL x PIT and Everything is Crab on the flatscreen side, RUMBLE in VR. Four in two days is a slower rate than the late-August waves, which is what a shelf looks like once it is mostly stocked. The week the package revisions pointed at is now underway, with 14 days of summer left.",
   },
 ];
+
+// Rendered oldest to newest. Entries are hand-maintained and have shipped
+// appended in the wrong direction before (Sept 2026), so sort at render time
+// instead of trusting array order. Stable sort keeps same-day entries in
+// array order.
+const TIMELINE_SORTED = [...TIMELINE].sort(
+  (a, b) => Date.parse(a.date) - Date.parse(b.date),
+);
 
 export default function SteamFramePage() {
   return (
@@ -570,7 +578,7 @@ export default function SteamFramePage() {
           newest. The headset itself was announced in November 2025.
         </p>
         <div className="mb-6">
-          {TIMELINE.map((entry) => (
+          {TIMELINE_SORTED.map((entry) => (
             <div key={`${entry.slug}-${entry.text.slice(0, 12)}`} className="release-row">
               <span className="release-date" style={{ marginLeft: 0 }}>
                 {entry.date}
