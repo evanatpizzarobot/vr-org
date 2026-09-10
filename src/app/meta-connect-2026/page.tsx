@@ -185,6 +185,14 @@ const TIMELINE: TimelineEntry[] = [
   },
 ];
 
+// Rendered oldest to newest. Entries are hand-maintained and the equivalent
+// array on /steam-frame shipped reversed in Sept 2026, so sort at render time
+// instead of trusting array order. Stable sort keeps same-day entries in
+// array order.
+const TIMELINE_SORTED = [...TIMELINE].sort(
+  (a, b) => Date.parse(a.date) - Date.parse(b.date),
+);
+
 export default function MetaConnect2026Page() {
   return (
     <>
@@ -442,7 +450,7 @@ export default function MetaConnect2026Page() {
           Every Connect 2026 signal, dated
         </h2>
         <div className="mb-8">
-          {TIMELINE.map((t) => (
+          {TIMELINE_SORTED.map((t) => (
             <div
               key={t.slug + t.date}
               className="py-3"

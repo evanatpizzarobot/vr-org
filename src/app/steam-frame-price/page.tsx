@@ -166,6 +166,11 @@ const PRICE_SIGNALS: PriceSignal[] = [
     figure: "Still no price",
   },
   {
+    date: "Aug 24, 2026",
+    signal: "Great on Frame at 89 titles, four weeks of summer left, no price",
+    figure: "$899 to $1,199 stands",
+  },
+  {
     date: "Aug 28, 2026",
     signal: "Brad Lynch, on the Gamertag VR podcast, expects the Frame to land north of $1,000",
     figure: "Over $1,000",
@@ -174,11 +179,6 @@ const PRICE_SIGNALS: PriceSignal[] = [
     date: "Sep 3, 2026",
     signal: "Two Steam packages revised and a reservation backend appears; neither carries a price",
     figure: "Still none",
-  },
-  {
-    date: "Aug 24, 2026",
-    signal: "Great on Frame at 89 titles, four weeks of summer left, no price",
-    figure: "$899 to $1,199 stands",
   },
 ];
 

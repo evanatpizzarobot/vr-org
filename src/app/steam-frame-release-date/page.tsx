@@ -222,14 +222,14 @@ const DATE_SIGNALS: DateSignal[] = [
     read: "The checkout exists",
   },
   {
-    date: "Sep 8, 2026",
-    signal: "Great on Frame at 121 titles, 14 days of summer left",
-    read: "Shelf mostly stocked, the promised week is here",
-  },
-  {
     date: "Sep 6, 2026",
     signal: "Great on Frame at 117 titles, 16 days of summer left",
     read: "Week of September 7 is the working assumption",
+  },
+  {
+    date: "Sep 8, 2026",
+    signal: "Great on Frame at 121 titles, 14 days of summer left",
+    read: "Shelf mostly stocked, the promised week is here",
   },
 ];
 
