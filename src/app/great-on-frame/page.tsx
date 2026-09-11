@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-09-08";
+const LAST_UPDATED = "2026-09-11";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -97,7 +97,8 @@ const VERIFIED_GAMES: VerifiedGame[] = [
     developer: "Valve",
     type: "VR",
     added: "Jul 13, 2026",
-    note: "The 2019 hand-interaction demo built to show off Index controller finger tracking, recertified for the Frame's controllers.",
+    status: "Unsupported",
+    note: "The 2019 hand-interaction demo built to show off Index controller finger tracking. Valve cut it to Unsupported on July 29 with a single UnsupportedGraphicsPerformance result, the same verdict and the same week as The Lab, and it has not returned to the certified list since.",
   },
   {
     name: "Portal 2",
@@ -946,6 +947,69 @@ const VERIFIED_GAMES: VerifiedGame[] = [
     added: "Sep 8, 2026",
     note: "Observed on Valve's Great on Frame page on September 8, 2026, in the wave that took the count from 117 to 121.",
   },
+  {
+    name: "Waltz of the Wizard",
+    developer: "Aldin Dynamics",
+    type: "VR",
+    added: "Sep 11, 2026",
+    note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
+  },
+  {
+    name: "Real VR Fishing",
+    developer: "Devs United Games",
+    type: "VR",
+    added: "Sep 11, 2026",
+    note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
+  },
+  {
+    name: "Noun Town: VR Language Learning",
+    developer: "SUPER HYPER MEGA",
+    type: "VR",
+    added: "Sep 11, 2026",
+    note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
+  },
+  {
+    name: "Boxing Underdog",
+    developer: "Monologic Games",
+    type: "VR",
+    added: "Sep 11, 2026",
+    note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
+  },
+  {
+    name: "Pro Jank Footy",
+    developer: "Powerbomb Games, Tinker Town",
+    type: "Flatscreen",
+    added: "Sep 11, 2026",
+    note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
+  },
+  {
+    name: "Fights in Tight Spaces",
+    developer: "Ground Shatter",
+    type: "Flatscreen",
+    added: "Sep 11, 2026",
+    note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
+  },
+  {
+    name: "Paquerette Down the Bunburrows",
+    developer: "Bunstack",
+    type: "Flatscreen",
+    added: "Sep 11, 2026",
+    note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
+  },
+  {
+    name: "Tormenture",
+    developer: "Croxel Studios",
+    type: "Flatscreen",
+    added: "Sep 11, 2026",
+    note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
+  },
+  {
+    name: "Wyvia: Prologue",
+    developer: "Blast Programming",
+    type: "Flatscreen",
+    added: "Sep 11, 2026",
+    note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
+  },
 ];
 
 interface ChangelogEntry {
@@ -954,6 +1018,10 @@ interface ChangelogEntry {
 }
 
 const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: "Sep 11, 2026",
+    text: "Valve's page reports 130 matches, up nine from 121 on September 8. The additions are Waltz of the Wizard, Real VR Fishing, Noun Town and Boxing Underdog in VR, plus Pro Jank Footy, Fights in Tight Spaces, Paquerette Down the Bunburrows, Tormenture and Wyvia: Prologue on the flatscreen side. Reading the recommended_runtime field across all 130 records, 67 point at proton-stable and 52 at lepton-stable, Valve's Android layer, so two fifths of the certified shelf is an Android build rather than a translated Windows one. Aperture Hand Lab is corrected to Unsupported on this update; Valve cut it on July 29 and this table had it listed as certified.",
+  },
   {
     date: "Sep 8, 2026",
     text: "Valve's page reports 121 matches, up four from 117 on September 6. The additions are DREDGE, BALL x PIT and Everything is Crab: The Animal Evolution Roguelite on the flatscreen side, and RUMBLE in VR. Four titles in two days is a slower rate than the late-August waves, which is what a shelf looks like once it is mostly stocked. Summer ends September 22, leaving Valve 14 days.",
@@ -1018,7 +1086,7 @@ const faq = faqPageSchema([
   {
     question: "Which games are Great on Frame right now?",
     answer:
-      "Valve's page reported 121 matches on September 8, 2026, up from 117 on September 6, 98 on August 27, 89 on August 24, 65 on August 10 and eight on July 17. Confirmed entries include Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter 2, Moss II VR, The Room VR: A Dark Matter, the I Expect You To Die trilogy, Pavlov Shack, The Light Brigade: Definitive Edition, Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
+      "Valve's page reported 130 matches on September 11, 2026, up from 121 on September 8, 117 on September 6, 98 on August 27, 89 on August 24, 65 on August 10 and eight on July 17. Confirmed entries include Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter 2, Moss II VR, The Room VR: A Dark Matter, the I Expect You To Die trilogy, Pavlov Shack, The Light Brigade: Definitive Edition, Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
   },
   {
     question: "What does Steam Frame Verified require?",
@@ -1038,7 +1106,7 @@ const faq = faqPageSchema([
   {
     question: "When does the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day or a price as of September 8, 2026, and summer ends September 22, which leaves 14 days. On September 3 two of the headset's Steam backend packages were revised for the first time since May, and Steam Machine packages changed six days before its lottery opened. The catalog going from eight titles to 121 in eight weeks is the other strong launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
+      "Valve has confirmed summer 2026 but has not named a day or a price as of September 11, 2026, and summer ends September 22, which leaves 11 days. Two of the headset's Steam backend packages were revised on September 3 for the first time since May, then revised again on September 10, and Steam Machine packages changed six days before its lottery opened. The catalog going from eight titles to 130 in eight weeks is the other strong launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
   },
 ]);
 
@@ -1063,7 +1131,7 @@ export default function GreatOnFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 8, 2026
+          Last updated: September 11, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -1118,8 +1186,8 @@ export default function GreatOnFramePage() {
           Great on Frame is Valve&apos;s curated Steam section for games
           certified to run well on the Steam Frame headset, the VR sibling of
           the Great on Deck label that shaped Steam Deck buying for four years.
-          The page went live in mid July 2026 with eight titles and reported 121
-          matches on September 8, more than a fifteenfold increase in eight weeks.
+          The page went live in mid July 2026 with eight titles and reported 130
+          matches on September 11, more than a sixteenfold increase in eight weeks.
           Most of that growth is flatscreen catalog games rather than native VR,
           and Valve&apos;s own The Lab lost its certification along the way. This
           page tracks the confirmed titles, what the certification actually
@@ -1144,10 +1212,10 @@ export default function GreatOnFramePage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve&apos;s page reported 121 matches on September 8, 2026. It launched
+          Valve&apos;s page reported 130 matches on September 11, 2026. It launched
           with five titles the week of July 13, reached eight within a day, sat
           around 42 by late July, passed 50 on August 3, hit 65 on August 10, 89
-          on August 24, 98 on August 27, 117 on September 6, and is at 121 now. You can confirm the running total
+          on August 24, 98 on August 27, 117 on September 6, 121 on September 8, and is at 130 now. You can confirm the running total
           yourself by appending frame_compatibility=3 to a Steam store search,
           which is how the figures on this page are taken. What changed most
           recently is the composition rather than the count: Beat Saber, Job
@@ -1162,7 +1230,7 @@ export default function GreatOnFramePage() {
         >
           Valve does not publish a plain-text index of the catalog, and the
           storefront grid loads in pages, so the table below covers the titles
-          VR.org has individually confirmed rather than all 121. The remainder
+          VR.org has individually confirmed rather than all 130. The remainder
           are being added as they are verified.
         </p>
         <ComparisonTable

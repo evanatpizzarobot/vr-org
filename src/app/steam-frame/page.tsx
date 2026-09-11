@@ -105,12 +105,12 @@ const faq = faqPageSchema([
   {
     question: "What games will the Steam Frame launch with?",
     answer:
-      "No first-party launch game has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. The launch story is the Steam library itself via streaming and Proton, plus the certified catalog on the Great on Frame page, which reported 121 titles on September 8, up from 117 on September 6, 98 on August 27, 65 on August 10 and eight on July 17. Most of that growth is flatscreen catalog games such as Balatro, Cuphead, and Hollow Knight: Silksong rather than native VR. The highest-profile VR title on the list is Half-Life 2: VR Mod, a free community mod certified on August 6, while Valve's own The Lab was downgraded to Unsupported on July 29. Payday: Aces High was the first third-party title to list Steam Frame as a target platform.",
+      "No first-party launch game has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. The launch story is the Steam library itself via streaming and Proton, plus the certified catalog on the Great on Frame page, which reported 130 titles on September 11, up from 121 on September 8, 117 on September 6, 98 on August 27, 65 on August 10 and eight on July 17. Most of that growth is flatscreen catalog games such as Balatro, Cuphead, and Hollow Knight: Silksong rather than native VR. The highest-profile VR title on the list is Half-Life 2: VR Mod, a free community mod certified on August 6, while Valve's own The Lab was downgraded to Unsupported on July 29. Payday: Aces High was the first third-party title to list Steam Frame as a target platform.",
   },
   {
     question: "What is Steam Frame Verified?",
     answer:
-      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold at least 72 fps at 1728x1728 per eye on-device, and anything rendering below 1440x1440 is marked Unsupported. Valve first announced 90 FPS and later revised the published requirement down to 72 without an announcement. Standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt. Certified games are collected on the Great on Frame storefront page, which went live in mid July 2026 with eight titles and reported 121 on September 8.",
+      "Valve's compatibility program, announced at GDC 2026. Standalone VR titles must hold at least 72 fps at 1728x1728 per eye on-device, and anything rendering below 1440x1440 is marked Unsupported. Valve first announced 90 FPS and later revised the published requirement down to 72 without an announcement. Standalone flatscreen titles need 720p at 30 FPS minimum with full Frame controller support. The badge is a recommendation rather than a gate, and streamed PC VR content is exempt. Certified games are collected on the Great on Frame storefront page, which went live in mid July 2026 with eight titles and reported 130 on September 11.",
   },
 ]);
 
@@ -276,6 +276,11 @@ const TIMELINE: TimelineEntry[] = [
     slug: "steam-frame-packages-revised-september-3-reservation-backend-2026",
     text: "Great on Frame reaches 121 certified titles, four more than September 6: DREDGE, BALL x PIT and Everything is Crab on the flatscreen side, RUMBLE in VR. Four in two days is a slower rate than the late-August waves, which is what a shelf looks like once it is mostly stocked. The week the package revisions pointed at is now underway, with 14 days of summer left.",
   },
+  {
+    date: "Sep 11, 2026",
+    slug: "steam-frame-lepton-android-runtime-52-of-130-certified-2026",
+    text: "Great on Frame reaches 130, and the runtime field on those records shows 67 titles pointed at proton-stable against 52 at lepton-stable, Valve's Android layer. Three certified games are Steam pages with no PC build at all. The same two backend packages that moved on September 3 moved again on September 10, three minutes apart both times.",
+  },
 ];
 
 // Rendered oldest to newest. Entries are hand-maintained and have shipped
@@ -392,7 +397,7 @@ export default function SteamFramePage() {
           days before its reservation lottery opened. The FCC granted Valve
           equipment authorization on July 29, hardware has cleared customs, and
           the Great on Frame catalog has gone from eight certified titles on
-          July 17 to 121 today. Valve has 14 days left in its own stated summer
+          July 17 to 130 today. Valve has 11 days left in its own stated summer
           window. This page tracks every signal, links to all of our reporting,
           and is updated on every beat until launch.
         </p>

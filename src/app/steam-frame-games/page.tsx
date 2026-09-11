@@ -18,7 +18,7 @@ export const metadata = {
   openGraph: {
     title: "Steam Frame Games: What You Can Actually Play on It | VR.org",
     description:
-      "Streamed PC VR, flatscreen Steam games through Proton, and 121 certified native titles. The three ways anything runs on a Steam Frame.",
+      "Streamed PC VR, flatscreen Steam games through Proton, and 130 certified native titles. The three ways anything runs on a Steam Frame.",
     url: "https://vr.org/steam-frame-games",
     siteName: "VR.org",
     images: [
@@ -78,7 +78,7 @@ const faq = faqPageSchema([
   {
     question: "What games can you play on the Steam Frame?",
     answer:
-      "Three different libraries, through three different mechanisms. First, your existing PC VR library streamed from a gaming PC over the bundled 6GHz adapter, which is the experience Valve calls primary and which means anything in SteamVR already works. Second, flatscreen Steam games running on the headset itself, translated from x86 by Proton and FEX, played on a virtual screen. Third, native VR titles certified under Steam Frame Verified, collected on Valve's Great on Frame page, which reported 121 titles on September 8, 2026. The Frame also runs Android APKs.",
+      "Three different libraries, through three different mechanisms. First, your existing PC VR library streamed from a gaming PC over the bundled 6GHz adapter, which is the experience Valve calls primary and which means anything in SteamVR already works. Second, flatscreen Steam games running on the headset itself, translated from x86 by Proton and FEX, played on a virtual screen. Third, native VR titles certified under Steam Frame Verified, collected on Valve's Great on Frame page, which reported 130 titles on September 11, 2026. The Frame also runs Android APKs.",
   },
   {
     question: "Does the Steam Frame play PC VR games?",
@@ -88,7 +88,7 @@ const faq = faqPageSchema([
   {
     question: "How many games are Steam Frame Verified?",
     answer:
-      "121 as of September 8, 2026, up from 117 on September 6, 98 on August 27, 65 on August 10 and just eight on July 17. The catalog has grown roughly fifteen-fold in eight weeks. Most of that growth is flatscreen Steam catalog games rather than native VR, so the raw number overstates how much new VR content the Frame arrives with.",
+      "130 as of September 11, 2026, up from 121 on September 8, 117 on September 6, 98 on August 27, 65 on August 10 and just eight on July 17. The catalog has grown roughly sixteen-fold in eight weeks. Most of that growth is flatscreen Steam catalog games rather than native VR, so the raw number overstates how much new VR content the Frame arrives with.",
   },
   {
     question: "Does the Steam Frame have exclusive games?",
@@ -122,7 +122,7 @@ const pathRows = [
   ],
   [
     "On-device native VR",
-    "121 certified titles as of Sep 8",
+    "130 certified titles as of Sep 11",
     "Nothing, runs on the headset",
     "Must hold 72fps at 1728x1728 per eye",
   ],
@@ -207,7 +207,7 @@ export default function SteamFrameGamesPage() {
           over a dedicated 6GHz link. Flatscreen Steam games run{" "}
           <strong>on the headset itself</strong>, translated from x86 by Proton
           and FEX. And native VR titles certified under{" "}
-          <strong>Steam Frame Verified</strong> run on-device too, 121 of them
+          <strong>Steam Frame Verified</strong> run on-device too, 130 of them
           as of September 8, 2026. The Frame also runs Android APKs. What it
           does not have is a single exclusive launch title.
         </p>
@@ -392,7 +392,7 @@ export default function SteamFrameGamesPage() {
           Whether that argument holds depends entirely on which path you fall
           into. If you have a gaming PC, the Frame arrives with more VR content
           than any headset ever launched with. If you do not, it arrives with
-          121 certified titles, most of them flatscreen, and a free Half-Life 2
+          130 certified titles, most of them flatscreen, and a free Half-Life 2
           mod as the headline VR experience.
         </p>
 
