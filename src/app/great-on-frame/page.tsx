@@ -1012,12 +1012,208 @@ const VERIFIED_GAMES: VerifiedGame[] = [
   },
 ];
 
+// Category 2, the tier below Great on Frame. Pulled from Valve's
+// frame_compatibility=2 filter with each title's result tokens read out of its
+// Steam app record, so "held on" is Valve's own verdict rather than ours.
+// Sorted oldest test first. Refresh this alongside VERIFIED_GAMES.
+interface PlayableGame {
+  name: string;
+  developer: string;
+  type: "VR" | "Flatscreen";
+  deck: string;
+  tested: string;
+  held: string[];
+}
+
+const PLAYABLE_GAMES: PlayableGame[] = [
+  {
+    name: "Star Vortex",
+    developer: "Zorg Games",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 16, 2026",
+    held: ["Default controller config not fully functional", "No on-screen keyboard on text input", "Interface text not legible"],
+  },
+  {
+    name: "Pathfinder: Kingmaker - Enhanced Plus Edition",
+    developer: "Owlcat Games",
+    type: "Flatscreen",
+    deck: "Playable",
+    tested: "Jul 17, 2026",
+    held: ["No on-screen keyboard on text input"],
+  },
+  {
+    name: "Nikoderiko: The Magical World - Director’s Cut",
+    developer: "VEA Games",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 17, 2026",
+    held: ["Not performant at default settings"],
+  },
+  {
+    name: "Vampire Survivors",
+    developer: "poncle",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 20, 2026",
+    held: ["No on-screen keyboard on text input"],
+  },
+  {
+    name: "Robot Daycare",
+    developer: "KigyoDev",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 20, 2026",
+    held: ["No on-screen keyboard on text input"],
+  },
+  {
+    name: "Freefall '95",
+    developer: "S-Bend Games",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 22, 2026",
+    held: ["Native resolution not supported"],
+  },
+  {
+    name: "Roombattle",
+    developer: "Dust Games",
+    type: "Flatscreen",
+    deck: "Unsupported",
+    tested: "Jul 22, 2026",
+    held: ["No on-screen keyboard on text input"],
+  },
+  {
+    name: "Artificial Fashionista",
+    developer: "KigyoDev",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 22, 2026",
+    held: ["Default controller config not fully functional"],
+  },
+  {
+    name: "Socrates Jones: Pro Philosopher",
+    developer: "Intelligible Games",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 23, 2026",
+    held: ["Native resolution not supported"],
+  },
+  {
+    name: "Looking Up I See Only A Ceiling",
+    developer: "silver978",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 24, 2026",
+    held: ["Native resolution not supported"],
+  },
+  {
+    name: "RimWorld",
+    developer: "Ludeon Studios",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 28, 2026",
+    held: ["Default controller config not fully functional", "Controller glyphs do not match the device", "No on-screen keyboard on text input"],
+  },
+  {
+    name: "Vagrus - The Riven Realms",
+    developer: "Lost Pilgrims Studio",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 28, 2026",
+    held: ["No on-screen keyboard on text input"],
+  },
+  {
+    name: "Deer & Boy",
+    developer: "Lifeline Games",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Jul 28, 2026",
+    held: ["Not performant at default settings"],
+  },
+  {
+    name: "Backpack Jianghu",
+    developer: "背包工作室",
+    type: "Flatscreen",
+    deck: "Playable",
+    tested: "Jul 28, 2026",
+    held: ["Default controller config not fully functional", "Controller glyphs do not match the device", "No on-screen keyboard on text input", "Interface text not legible"],
+  },
+  {
+    name: "Teenage Mutant Ninja Turtles: Splintered Fate",
+    developer: "Super Evil Megacorp",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Aug 4, 2026",
+    held: ["No on-screen keyboard on text input"],
+  },
+  {
+    name: "Bible Puzzle: Christian Game",
+    developer: "Or Games",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Aug 6, 2026",
+    held: ["No on-screen keyboard on text input"],
+  },
+  {
+    name: "The Bench",
+    developer: "Voxel Studios",
+    type: "Flatscreen",
+    deck: "Playable",
+    tested: "Aug 17, 2026",
+    held: ["Not performant at default settings"],
+  },
+  {
+    name: "Arca's Path VR",
+    developer: "Dream Reality Interactive",
+    type: "VR",
+    deck: "None",
+    tested: "Aug 20, 2026",
+    held: ["Controller glyphs do not match the device"],
+  },
+  {
+    name: "Lou's Lagoon",
+    developer: "Tiny Roar",
+    type: "Flatscreen",
+    deck: "Playable",
+    tested: "Aug 21, 2026",
+    held: ["Not performant at default settings"],
+  },
+  {
+    name: "Geometry Dash",
+    developer: "RobTop Games",
+    type: "Flatscreen",
+    deck: "Playable",
+    tested: "Aug 25, 2026",
+    held: ["Default controller config not fully functional", "No on-screen keyboard on text input"],
+  },
+  {
+    name: "Cast n Chill",
+    developer: "Wombat Brawler",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Aug 28, 2026",
+    held: ["Display output has nonblocking issues"],
+  },
+  {
+    name: "Tetris Effect: Connected",
+    developer: "Monstars Inc., Resonair, Stage Games",
+    type: "VR",
+    deck: "Verified",
+    tested: "Sep 1, 2026",
+    held: ["Not performant at default settings"],
+  },
+];
+
 interface ChangelogEntry {
   date: string;
   text: string;
 }
 
 const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: "Sep 11, 2026",
+    text: "Added the Playable tier to this page. Valve's category 2 holds 23 titles, none of them surfaced anywhere on the storefront, and each app record names the check that failed. Eleven failed on text input rather than anything graphical, and 16 of the 23 hold Steam Deck Verified. We are Eva appears in Valve's filter with no Steam Frame compatibility record in its app data, so the table lists 22 and flags the discrepancy.",
+  },
   {
     date: "Sep 11, 2026",
     text: "Valve's page reports 130 matches, up nine from 121 on September 8. The additions are Waltz of the Wizard, Real VR Fishing, Noun Town and Boxing Underdog in VR, plus Pro Jank Footy, Fights in Tight Spaces, Paquerette Down the Bunburrows, Tormenture and Wyvia: Prologue on the flatscreen side. Reading the recommended_runtime field across all 130 records, 67 point at proton-stable and 52 at lepton-stable, Valve's Android layer, so two fifths of the certified shelf is an Android build rather than a translated Windows one. Aperture Hand Lab is corrected to Unsupported on this update; Valve cut it on July 29 and this table had it listed as certified.",
@@ -1092,6 +1288,11 @@ const faq = faqPageSchema([
     question: "What does Steam Frame Verified require?",
     answer:
       "Standalone VR titles must hold at least 72 fps at 1728x1728 per eye during normal play, and anything rendering below 1440x1440 is marked Unsupported outright. Valve announced a 90 FPS target at GDC 2026 but quietly revised the published requirement down to 72 fps. Standalone flatscreen titles need at least 720p at 30 FPS with full Steam Frame controller support and a working default configuration. The badge is a recommendation rather than a gate.",
+  },
+  {
+    question: "What does Playable mean on Steam Frame, and which games are in that tier?",
+    answer:
+      "Playable is Valve's category 2, one step below the Verified rating that earns a place on the Great on Frame page, and Valve does not display it anywhere on the storefront. As of September 11, 2026 the frame_compatibility=2 filter returns 23 titles, including RimWorld, Vampire Survivors, Geometry Dash, Tetris Effect: Connected and Arca's Path VR. Each game's Steam app record names the check it failed. Eleven of the 23 failed because the game never asks the system for the on-screen keyboard, which matters more in a headset than on a handheld with a touchscreen. Five have a default controller configuration that is not fully functional, five are not performant at default settings, three do not support the native resolution, three show the wrong controller glyphs and two have interface text Valve judged not legible. Sixteen of the 23 hold Steam Deck Verified, the top badge on Valve's handheld, and still sit a tier lower on the Frame.",
   },
   {
     question: "Why are flatscreen games like Portal 2 on a VR headset list?",
@@ -1296,6 +1497,83 @@ export default function GreatOnFramePage() {
           buttons on the right precisely so they can double as a gamepad.
           Streamed PC VR content is exempt from all of it, because performance
           over the 6GHz dongle depends on the PC doing the rendering.
+        </p>
+
+        <h2 className="font-display text-2xl font-bold mt-10 mb-3">
+          The tier below: 22 games rated Playable
+        </h2>
+        <p
+          className="text-[15px] leading-[1.7] mb-4"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Great on Frame shows only the top tier. One step down sits Playable,
+          Valve&apos;s category 2, and Valve does not surface it anywhere on the
+          storefront. It is readable through the same search filter with
+          frame_compatibility=2, and each game&apos;s Steam app record names the
+          specific check it failed. What that data shows is that almost none of
+          these games missed on graphics. Eleven of them missed because the game
+          never asks the system for the on-screen keyboard, which leaves you
+          looking at a text field you cannot type into with a headset on.
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-4"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          The comparison worth making is against the Steam Deck. Sixteen of
+          these titles hold Deck Verified, Valve&apos;s top handheld badge, and
+          still land a tier lower on the Frame. One runs the other way:
+          Roombattle is Unsupported on Deck and Playable here. Our full
+          breakdown is in{" "}
+          <a
+            href="/articles/steam-frame-playable-tier-23-games-text-input-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            the September 11 piece on what the Playable tier measures
+          </a>
+          .
+        </p>
+        {/*
+          A list rather than a table. The failure text runs long enough that a
+          fifth table column is 95px wide on a phone, and roughly 90 percent of
+          this site's traffic is on a phone, so the same release-row pattern the
+          certified list uses below its table carries it better: the meta line
+          takes the full width and wraps.
+        */}
+        <div className="mb-6">
+          {PLAYABLE_GAMES.map((g) => (
+            <div key={g.name} className="release-row">
+              <span className="release-name">{g.name}</span>
+              <span className="release-platforms">
+                {g.type} · Deck {g.deck}
+              </span>
+              <span className="release-meta">
+                <strong style={{ color: "var(--text-primary)" }}>Held on:</strong>{" "}
+                {g.held.join("; ")}. {g.developer}, tested {g.tested}.
+              </span>
+            </div>
+          ))}
+        </div>
+        <p className="text-[12px] mb-6" style={{ color: "var(--text-muted)" }}>
+          Games rated Playable on Steam Frame, oldest test first. Held on is
+          Valve&apos;s own failure token translated into plain English, and a game
+          can carry more than one. Deck is the same title&apos;s Steam Deck
+          rating. Type follows Valve&apos;s store categories, so VR covers both
+          VR Only and VR Supported. Valve&apos;s filter returns 23 titles, but We
+          are Eva carries no Steam Frame compatibility record in its app data at
+          all, so it is left out here pending a retest.
+        </p>
+        <p
+          className="text-[15px] leading-[1.7] mb-4"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Across the 22, the failures fall out as eleven on text input, five on
+          the default controller configuration, five on default performance,
+          three on native resolution, three on controller glyphs, two on
+          interface legibility, and one, Cast n Chill, on a display output issue
+          nothing else in the tier carries. For contrast, 126 of the 130
+          certified games carry the identical four passing checks with no
+          variation at all.
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
