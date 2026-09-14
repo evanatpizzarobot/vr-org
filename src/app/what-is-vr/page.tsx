@@ -518,9 +518,18 @@ export default function WhatIsVRPage() {
           technology has real footing in consumer and enterprise markets, but
           the fastest growth has moved sideways into camera and display glasses,
           where Meta has sold millions of Ray-Ban pairs and a $299 set of Viture
-          display glasses will hang a 146-inch screen in front of you. Valve is
-          also about to re-enter with the Steam Frame, a standalone SteamOS
-          headset confirmed for summer 2026.
+          display glasses will hang a 146-inch screen in front of you. Valve
+          re-entered the headset market on September 14, 2026 with the Steam
+          Frame, a wireless SteamOS headset that streams from a PC or runs
+          games on its own, starting at $1,059, with{" "}
+          <a
+            href="/articles/half-life-alyx-standalone-steam-frame-launch-game-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Half-Life: Alyx included and running natively on the headset
+          </a>
+          .
         </p>
 
         {/* ── The Future of VR ── */}

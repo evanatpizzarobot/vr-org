@@ -12,16 +12,16 @@ import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
 
-const LAST_UPDATED = "2026-09-08";
+const LAST_UPDATED = "2026-09-14";
 
 export const metadata = {
   title: "Steam Frame vs Quest 3: Which Headset Should You Buy? | VR.org",
   description:
-    "Valve's Steam Frame vs the Meta Quest 3, compared on specs, weight, PC VR streaming, game libraries, and price. The Quest 3 is $599 today; the Frame is expected at $899 to $1,199 with reservations imminent.",
+    "Valve's Steam Frame vs the Meta Quest 3, compared on specs, weight, PC VR streaming, game libraries, and price. The Quest 3 is $599; the Steam Frame launched September 14 at $1,059 for 256GB and $1,299 for 1TB, with reservations open until September 17.",
   openGraph: {
     title: "Steam Frame vs Quest 3: Which Headset Should You Buy? | VR.org",
     description:
-      "A $599 standalone with the biggest VR library versus a SteamOS headset built around wireless PC VR. Specs, weight, libraries, and price, broken down.",
+      "A $599 standalone with the biggest VR library versus a $1,059 SteamOS headset built around wireless PC VR. Specs, weight, libraries, and price, broken down.",
     url: "https://vr.org/steam-frame-vs-quest-3",
     siteName: "VR.org",
     images: [
@@ -37,7 +37,7 @@ export const metadata = {
     card: "summary_large_image" as const,
     title: "Steam Frame vs Quest 3: Which Headset Should You Buy? | VR.org",
     description:
-      "Valve's SteamOS headset versus Meta's $599 standalone. The differences that decide it.",
+      "Valve's $1,059 SteamOS headset versus Meta's $599 standalone. The differences that decide it.",
     images: ["https://vr.org/og-image.png"],
   },
   alternates: {
@@ -72,17 +72,24 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Steam Frame vs Quest 3", url: "https://vr.org/steam-frame-vs-quest-3" },
 ]);
 
-// The Quest 3 carries an Offer at its store price. The Steam Frame has no
-// official price, so it gets no Offer: an InStock or PreOrder claim with a
-// guessed number would be a false signal.
+// Both headsets carry an Offer at their official store price. The Steam Frame
+// sells through Valve's reservation list, so its availability is PreOrder.
 const productList = productItemListSchema("Valve Steam Frame vs Meta Quest 3", [
   {
     name: "Valve Steam Frame",
     brand: "Valve",
     image: "https://vr.org/article-images/steam-frame/steam-frame-headset.jpg",
     description:
-      "Valve's standalone SteamOS headset with a bundled 6GHz wireless dongle for PC VR streaming, eye tracking, and a 185 gram frontbox. Confirmed for summer 2026, price not yet announced.",
+      "Valve's wireless, streaming-first SteamOS headset with a bundled Wi-Fi 6E wireless adapter for PC VR streaming, eye tracking, and a 185 gram frontbox. Launched September 14, 2026 at $1,059 for 256GB.",
     url: "https://vr.org/steam-frame-vs-quest-3#steam-frame",
+    offers: [
+      {
+        price: 1059,
+        priceCurrency: "USD",
+        availability: "https://schema.org/PreOrder",
+        url: "https://store.steampowered.com/hardware/steamframe",
+      },
+    ],
   },
   {
     name: "Meta Quest 3",
@@ -107,12 +114,12 @@ const faq = faqPageSchema([
   {
     question: "Is the Steam Frame better than the Quest 3?",
     answer:
-      "For PC VR, almost certainly. The Steam Frame ships with a dedicated 6GHz wireless dongle that talks directly to your PC, has eye tracking that drives foveated streaming, runs your entire Steam library through SteamOS, and puts 185 grams on your face instead of 515. For standalone play the answer is less clear: the Quest 3 has the largest native VR library in existence, color mixed reality with a depth sensor, and a $599 price the Frame is not expected to match. Valve has not announced the Frame's price or a release day as of September 8, 2026.",
+      "For PC VR, almost certainly. The Steam Frame ships with a Wi-Fi 6E wireless adapter that gives PC streaming its own 6GHz link, has eye tracking that drives Foveated Streaming, runs your Steam library through SteamOS, and puts 185 grams on your face instead of 515. For standalone play the answer is less clear: the Quest 3 has the largest native VR library in existence, color mixed reality with a depth sensor, and costs $599, against $1,059 for the cheapest Steam Frame. Valve launched the Frame on September 14, 2026.",
   },
   {
-    question: "How much will the Steam Frame cost compared to the Quest 3?",
+    question: "How much does the Steam Frame cost compared to the Quest 3?",
     answer:
-      "The Quest 3 is $599 for the 512GB model. Valve has not announced a Steam Frame price. Retailer database leaks pointed to roughly $950 and $1,070 for two tiers, analyst estimates cluster between $899 and $1,199, and dataminer Brad Lynch expects north of $1,000. The Steam Machine landed at $1,049 in June, which is the closest reference point Valve itself has given. Budget for the Frame costing $300 to $600 more than a Quest 3.",
+      "The Quest 3 is $599 for the 512GB model. The Steam Frame is $1,059 for the 256GB Kit and $1,299 for the 1TB Kit, so the cheapest Frame costs $460 more than a Quest 3 with half the storage, though it adds a microSD slot. The Frame ships without a power supply; Valve's 45W unit adds $29, or any 45W or higher USB-C charger works. It does include Half-Life: Alyx, the controllers, and the wireless adapter.",
   },
   {
     question: "Can the Steam Frame play Quest games?",
@@ -122,17 +129,17 @@ const faq = faqPageSchema([
   {
     question: "Which headset is better for PC VR?",
     answer:
-      "The Steam Frame is built for it. The bundled dongle creates a point-to-point 6GHz link that does not go through your router, and testers at Valve's offices reported no perceptible lag. The Quest 3 does PC VR well through a Link cable, Air Link, Steam Link, or Virtual Desktop, but every wireless option shares your home Wi-Fi with everything else in the house. If your VR life is mostly SteamVR, the Frame is the one designed around that.",
+      "The Steam Frame is built for it. The bundled adapter gives streaming a dedicated 6GHz link, one of the headset's two Wi-Fi 7 radios is reserved for that stream, and Multi-Link Streaming routes data across every available connection at once. Testers at Valve's offices reported no perceptible lag. The Quest 3 does PC VR well through a Link cable, Air Link, Steam Link, or Virtual Desktop, but its wireless options share your home Wi-Fi with everything else in the house. If your VR life is mostly SteamVR, the Frame is the one designed around that.",
   },
   {
     question: "Which headset has more games?",
     answer:
-      "Different kinds of more. The Quest 3 has the largest library of native standalone VR games and the biggest exclusives, from Batman: Arkham Shadow to the Horizon+ subscription catalog. The Steam Frame reaches the whole Steam catalog, VR and flatscreen, and Valve's Great on Frame section listed 121 titles certified to run well on the headset itself as of September 8, 2026, up from eight in mid July. If you want games that were built for standalone VR, Quest wins today. If you want your existing Steam library on your face, the Frame does.",
+      "Different kinds of more. The Quest 3 has the largest library of native standalone VR games and the biggest exclusives, from Batman: Arkham Shadow to the Horizon+ subscription catalog. The Steam Frame reaches the whole Steam catalog, VR and flatscreen, includes a copy of Half-Life: Alyx, and launched with over 100 games Steam Frame Standalone Verified; Valve's Great on Frame section listed 130 certified titles on September 11, 2026, up from eight in mid July. If you want games that were built for standalone VR, Quest wins today. If you want your existing Steam library on your face, the Frame does.",
   },
   {
-    question: "Should I buy a Quest 3 now or wait for the Steam Frame?",
+    question: "Should I buy a Quest 3 now or reserve a Steam Frame?",
     answer:
-      "If you mainly want standalone VR games and mixed reality, buy the Quest 3 now; the Frame will not change that calculus and costs more. If you already own a gaming PC and play SteamVR, wait. Valve confirmed a summer 2026 window that ends September 22, two of the Frame's Steam backend packages were revised on September 3 for the first time since May, and the Steam Machine's packages moved six days before its reservation lottery opened. The wait is being measured in days, not months.",
+      "If you mainly want standalone VR games and mixed reality, buy the Quest 3; the Frame costs $460 more and does not change that calculus. If you already own a gaming PC and play SteamVR, join the Steam Frame reservation list before Thursday, September 17, 2026 at 10:00 AM Pacific. Signing up costs nothing and early signups get no advantage, since the list is shuffled once, but you need a Steam account in good standing with a purchase made before April 27, 2026. Purchase emails start September 18, and anyone who misses the deadline goes to the back of the waitlist.",
   },
 ]);
 
@@ -157,7 +164,7 @@ export default function SteamFrameVsQuest3Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 8, 2026
+          Last updated: September 14, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -190,29 +197,31 @@ export default function SteamFrameVsQuest3Page() {
           The $599 Quest 3 is a standalone-first device with the largest native
           VR library and color mixed reality, with PC VR as a well-supported
           extra. Valve&apos;s Steam Frame is a PC-first device: a SteamOS
-          headset with a bundled 6GHz streaming dongle, eye tracking, and a
-          185 gram frontbox, with standalone play as the bonus. Valve has not
-          announced a price or a day, but the launch signals now point at
-          September. Buy the Quest 3 for standalone VR and mixed reality; wait
-          for the Frame if you own a gaming PC and live in SteamVR.
+          headset with a bundled 6GHz wireless adapter, eye tracking, and a
+          185 gram frontbox, with standalone play as the bonus. It launched on
+          September 14, 2026 at $1,059, $460 more than the Quest 3, and you can
+          only get one through a reservation list that closes September 17.
+          Buy the Quest 3 for standalone VR and mixed reality; reserve the
+          Frame if you own a gaming PC and live in SteamVR.
         </p>
 
         <SpecTable
           headers={["", "Valve Steam Frame", "Meta Quest 3"]}
           rows={[
-            { label: "Price", a: "Not announced ($899 to $1,199 expected)", b: "$599 (512GB)" },
-            { label: "Availability", a: "Summer 2026, reservations imminent", b: "In stock since October 2023" },
+            { label: "Price", a: "$1,059 (256GB), $1,299 (1TB); PSU $29 extra", b: "$599 (512GB)" },
+            { label: "Availability", a: "Launched Sep 14, 2026; reservation list closes Sep 17", b: "In stock since October 2023" },
             { label: "Weight", a: "185g frontbox, about 440g with battery strap", b: "515g" },
             { label: "Displays", a: "Dual 2160 x 2160 LCD, pancake lenses", b: "Dual 2064 x 2208 LCD, pancake lenses" },
-            { label: "Refresh rate", a: "72 to 120Hz, experimental 144Hz", b: "72, 90, 120Hz (extended rates behind developer mode)" },
-            { label: "Eye tracking", a: "Yes, with foveated streaming", b: "No" },
-            { label: "Chip and memory", a: "Snapdragon 8 Gen 3, 16GB", b: "Snapdragon XR2 Gen 2, 8GB" },
-            { label: "Storage", a: "256GB and 1TB per Valve; tiers not final", b: "512GB" },
-            { label: "Operating system", a: "SteamOS (Proton, FEX, Lepton for APKs)", b: "Horizon OS (Android based)" },
-            { label: "PC VR", a: "Bundled dedicated 6GHz dongle, point to point", b: "Link cable, Air Link, Steam Link, Virtual Desktop" },
-            { label: "Mixed reality", a: "Not positioned as an MR device", b: "Color passthrough with depth sensor" },
-            { label: "Controllers", a: "Two motion controllers that double as a gamepad", b: "Touch Plus controllers" },
-            { label: "Native library", a: "Steam catalog; 121 Great on Frame titles", b: "Horizon Store, largest standalone VR library" },
+            { label: "Refresh rate", a: "72 to 144Hz (144Hz experimental)", b: "72, 90, 120Hz (extended rates behind developer mode)" },
+            { label: "Eye tracking", a: "Yes, drives Foveated Streaming", b: "No" },
+            { label: "Chip and memory", a: "Snapdragon 8 Gen 3, 16GB LPDDR5X", b: "Snapdragon XR2 Gen 2, 8GB" },
+            { label: "Storage", a: "256GB or 1TB UFS, plus microSD", b: "512GB" },
+            { label: "Operating system", a: "SteamOS 3 (Proton, FEX, Lepton for APKs)", b: "Horizon OS (Android based)" },
+            { label: "PC VR", a: "Bundled Wi-Fi 6E adapter on a dedicated 6GHz link", b: "Link cable, Air Link, Steam Link, Virtual Desktop" },
+            { label: "Mixed reality", a: "Monochrome passthrough; color via Arcturus Vision add-on", b: "Color passthrough with depth sensor" },
+            { label: "Controllers", a: "Steam Frame Controllers, 6-DOF plus gamepad controls", b: "Touch Plus controllers" },
+            { label: "In the box", a: "Controllers, wireless adapter, Half-Life: Alyx; no charger", b: "Touch Plus controllers, charger" },
+            { label: "Native library", a: "Steam catalog; over 100 Standalone Verified at launch", b: "Horizon Store, largest standalone VR library" },
           ]}
         />
 
@@ -272,12 +281,13 @@ export default function SteamFrameVsQuest3Page() {
           over your home Wi-Fi, Valve&apos;s own Steam Link app, and third-party
           Virtual Desktop. All of them work, and the wireless options are good
           on a strong Wi-Fi 6E router. They also all share that router with
-          everything else in the house. The Steam Frame ships with a dedicated
-          6GHz adapter that plugs into your PC and links directly to the
-          headset, no router involved, and journalists who tried it at
+          everything else in the house. The Steam Frame ships with a Wi-Fi 6E
+          adapter that plugs into your PC and gives the stream its own 6GHz
+          link, with one of the headset&apos;s two radios dedicated to it, and
+          journalists who tried it at
           Valve&apos;s offices reported no perceptible lag. Combined with
           foveated streaming from the eye tracker, that is the Frame&apos;s
-          whole pitch, and it is the reason to wait for it if SteamVR is where
+          whole pitch, and it is the reason to reserve one if SteamVR is where
           you spend your time. One footnote in the Quest&apos;s favor:{" "}
           <a
             href="/articles/steam-link-wired-usb-ncm-quest-public-beta-2026"
@@ -318,57 +328,61 @@ export default function SteamFrameVsQuest3Page() {
           >
             Great on Frame
           </a>{" "}
-          section certifies which ones hold up on the headset itself: 121 titles as of September 8, including Beat Saber, Half-Life 2: VR Mod,
-          Balatro and Hollow Knight: Silksong. Everything else in your Steam
+          section certifies which ones hold up on the headset itself: 130 titles
+          as of September 11, including Beat Saber, Half-Life 2: VR Mod,
+          Balatro and Hollow Knight: Silksong, and Valve&apos;s launch post
+          counts over 100 Standalone Verified. Every Frame also includes a copy
+          of Half-Life: Alyx. Everything else in your Steam
           library streams from the PC. Quest games do not cross over; a title
           sold on both stores has to be bought on Steam to play on the Frame.
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
-          Price: $599 today versus a number Valve has not said
+          Price: $599 versus $1,059
         </h2>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           The Quest 3 is $599 for 512GB and has been since Meta dropped the
-          128GB model. The Steam Frame has no official price. Retailer database
-          leaks in June pointed to roughly $950 and $1,070 for two tiers,
-          analyst estimates cluster between $899 and $1,199, and the{" "}
+          128GB model. Valve priced the Steam Frame on September 14: $1,059 for
+          the 256GB Kit and $1,299 for the 1TB Kit. That is $460 more for the
+          entry Frame, with half the Quest&apos;s built-in storage and a microSD
+          slot to make up the difference, and $10 more than the{" "}
           <a
             href="/articles/steam-machine-1049-june-30-launch-price-ceiling-steam-frame"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
             Steam Machine&apos;s $1,049
-          </a>{" "}
-          is the closest reference Valve itself has given. The memory market
-          that pushed the Machine there has not improved. Our{" "}
+          </a>
+          . The Frame also ships without a charger. Valve sells a 45W power
+          supply for $29, though any 45W or higher USB-C charger works, and it
+          bundles Half-Life: Alyx, the controllers, and the wireless adapter.
+          Our{" "}
           <a
             href="/steam-frame-price"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            price tracker
+            Steam Frame price page
           </a>{" "}
-          carries every signal; the practical read is to budget $300 to $600
-          above a Quest 3.
+          has regional pricing and every accessory.
         </p>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          Timing is the other half of the price question. Valve confirmed
-          summer 2026, which ends September 22, and{" "}
+          Timing is the other half of the price question. You cannot simply
+          order a Frame. Valve is running{" "}
           <a
-            href="/articles/steam-frame-packages-revised-september-3-reservation-backend-2026"
+            href="/articles/steam-frame-reservation-how-to-sign-up-before-september-17-2026"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            two of the Frame&apos;s Steam backend packages were revised on
-            September 3
-          </a>
-          , the first change since May. Steam Machine packages moved six days
-          before its reservation lottery opened. Expect a short-notice lottery
-          rather than an open preorder, and expect the first batch to sell
-          out.
+            a randomized reservation list
+          </a>{" "}
+          that closes Thursday, September 17 at 10:00 AM Pacific, with purchase
+          emails from September 18 and 72 hours to check out once yours
+          arrives. The Quest 3 is on shelves today. If you need a headset this
+          week, that difference may decide it before specs do.
         </p>
 
-        <h2 className="font-display text-2xl font-bold mt-10 mb-3">
+                <h2 className="font-display text-2xl font-bold mt-10 mb-3">
           Who should buy which
         </h2>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
@@ -390,10 +404,10 @@ export default function SteamFrameVsQuest3Page() {
           >
             Quest 3S
           </a>{" "}
-          runs the same library for $349. Wait for the Steam Frame if you have
-          a gaming PC, your library lives on Steam, and you want the lightest
-          wireless PC VR headset with eye tracking that anyone has shipped.
-          Read our{" "}
+          runs the same library for $349. Reserve a Steam Frame if you have a
+          gaming PC, your library lives on Steam, and you want the lightest
+          wireless PC VR headset with eye tracking that anyone has shipped,
+          and the $1,059 does not change that for you. Read our{" "}
           <a
             href="/best-pc-vr-headset"
             className="no-underline hover:underline"
@@ -404,9 +418,10 @@ export default function SteamFrameVsQuest3Page() {
           if you cannot wait; the wired picks there are not going anywhere.
         </p>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
-          This page will be rewritten the day Valve announces the price, with
-          the Frame&apos;s official number in the table above and the verdict
-          re-checked against it.
+          We re-checked this verdict against the official price on launch day.
+          It holds. At $1,059 the Frame is not a Quest 3 competitor for
+          someone without a PC, and for someone with one it is still the
+          headset built around how they already play.
         </p>
 
         <RecentArticles heading="Latest Hardware News" limit={4} tag="hardware" />

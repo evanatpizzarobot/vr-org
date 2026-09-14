@@ -15,11 +15,11 @@ import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 export const metadata = {
   title: "Valve Steam Frame: Release Date, Price, Specs & Everything We Know | VR.org",
   description:
-    "Valve's Steam Frame is confirmed for summer 2026 with reservations imminent. The latest on the release date, price signals ($899 to $1,199 expected), full specs, and every development, tracked by VR.org.",
+    "Valve's Steam Frame launched September 14, 2026 at $1,059 (256GB) and $1,299 (1TB), with reservation signups open until September 17. Official price, reservation dates, full specs, and every development, tracked by VR.org.",
   openGraph: {
     title: "Valve Steam Frame: Release Date, Price, Specs & Everything We Know | VR.org",
     description:
-      "Confirmed for summer 2026 with reservations imminent. Release date signals, price expectations, specs, and every development tracked.",
+      "Launched September 14 at $1,059 and $1,299. Reservation dates, official specs, what is in the box, and every development tracked.",
     url: "https://vr.org/steam-frame",
     siteName: "VR.org",
     images: [
@@ -35,7 +35,7 @@ export const metadata = {
     card: "summary_large_image" as const,
     title: "Valve Steam Frame: Release Date, Price, Specs & Everything We Know",
     description:
-      "Confirmed for summer 2026 with reservations imminent. Every Steam Frame development, tracked by VR.org.",
+      "Launched September 14 at $1,059. Reservations close September 17. Every Steam Frame development, tracked by VR.org.",
     images: ["https://vr.org/article-images/steam-frame/steam-frame-headset.jpg"],
   },
   alternates: {
@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-09-08";
+const LAST_UPDATED = "2026-09-14";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -71,41 +71,58 @@ const breadcrumbs = breadcrumbSchema([
   { name: "Valve Steam Frame", url: "https://vr.org/steam-frame" },
 ]);
 
-// Entity-only Product node: no offers (price unannounced), no ratings.
+// Product node with Valve's official launch pricing (September 14, 2026).
+// Sold through a reservation list, so availability is PreOrder. No ratings.
 const frameProduct = productSchema({
   name: "Valve Steam Frame",
   brand: "Valve",
   description:
-    "Standalone SteamOS VR headset with a dedicated 6GHz wireless dongle for PC VR streaming. Confirmed for a summer 2026 release; pricing not yet announced.",
+    "Wireless, streaming-first SteamOS VR headset with controllers, a Wi-Fi 6E wireless adapter for PC streaming, and standalone play on a Snapdragon 8 Gen 3. Launched September 14, 2026 in 256GB and 1TB kits.",
   url: "https://vr.org/steam-frame",
   image: "https://vr.org/article-images/steam-frame/steam-frame-headset.jpg",
+  offers: [
+    {
+      price: 1059,
+      priceCurrency: "USD",
+      availability: "https://schema.org/PreOrder",
+      url: "https://store.steampowered.com/hardware/steamframe",
+      seller: "Valve",
+    },
+    {
+      price: 1299,
+      priceCurrency: "USD",
+      availability: "https://schema.org/PreOrder",
+      url: "https://store.steampowered.com/hardware/steamframe",
+      seller: "Valve",
+    },
+  ],
 });
 
 const faq = faqPageSchema([
   {
     question: "When does the Valve Steam Frame come out?",
     answer:
-      "Valve has confirmed a summer 2026 window for the Steam Frame, alongside the Steam Machine that shipped June 30. Summer ends September 22, which leaves Valve a narrow window. On July 29 the FCC granted Valve equipment authorization for FCC ID 2AES4-1015, a device listed only as a VR Headset, which is the legal clearance required to sell it in the United States. Roughly 35 tons of VR hardware cleared customs into Valve's US warehouses in June and the Great on Frame store section went live in mid July, so the hardware is built, certified, and merchandised. On September 3 two of the headset's seven Steam backend packages were revised for the first time since May 5, and Steam Machine packages changed six days before its reservation lottery opened, which pointed at the week of September 7. That week is now underway and Valve still has not named the day or the price.",
+      "Valve launched the Steam Frame on September 14, 2026, opening reservation signups in a Steam Hardware post titled \"Steam Frame is here!\" Signups close Thursday, September 17 at 10:00 AM Pacific, when Valve randomizes each list once and emails every signup a reservation or waitlist result. The first purchase emails go out September 18, and units ship as they become available. That lands inside the summer 2026 window Valve confirmed in late June, eight days before summer ends on September 22. The trail that led here included FCC equipment authorization on July 29 under FCC ID 2AES4-1015, roughly 35 tons of VR hardware through US customs in June, and Steam backend package revisions on September 3 and 10.",
   },
   {
-    question: "How much will the Steam Frame cost?",
+    question: "How much does the Steam Frame cost?",
     answer:
-      "There is no official price yet. Early retailer database listings pointed to roughly $950 for a 512GB model and about $1,070 for a larger one, and analyst estimates cluster between $899 and $1,199. Valve originally said it wanted the Frame cheaper than the $999 Index, but the memory crisis that pushed the Steam Machine to $1,049 makes the low end of that range look optimistic. Budget toward the high end.",
+      "The Steam Frame 256GB Kit costs $1,059 and the 1TB Kit costs $1,299. Regional prices are 1,529 and 1,859 CAD, 1,049 and 1,279 EUR, 889 and 1,089 GBP, 1,609 and 1,969 AUD, and 4,539 and 5,549 PLN, VAT included where applicable. Each kit includes the headset, the Steam Frame Controllers, the Wi-Fi 6E wireless adapter, and Half-Life: Alyx. A power supply is not included: Valve sells a 45W PSU for $29, and a Steam Deck charger or any 45W or higher USB-C charger also works.",
   },
   {
     question: "How do I preorder the Steam Frame?",
     answer:
-      "Valve has not opened reservations yet, but the plumbing appears to be in place: dataminer Brad Lynch reported on September 4 that a reservation system is live in Steam's backend for two Steam Frame SKUs, a day after two of the headset's backend packages were revised. Expect the same playbook as the Steam Machine: a short-notice, randomized reservation queue on Steam rather than a first-come first-served preorder, with purchase emails following within days. The Steam Controller sold out in under an hour and the Machine used a lottery, so supply will likely be tight.",
+      "Valve does not take traditional preorders. Choose the 256GB or 1TB model on the Steam Frame product page and join the reservation list before September 17, 2026 at 10:00 AM Pacific. Your Steam account must be in good standing and must have made a purchase before April 27, 2026, and Valve allows one signup per household. Signing up early gives no advantage, since every signup is shuffled once. If you land in the reservation queue, Valve emails a purchase link when your unit is ready, starting September 18, and you have 72 hours to check out. Buyers in Japan, Taiwan, and Hong Kong order through KOMODO, Valve's authorized distributor.",
   },
   {
     question: "Is the Steam Frame standalone or a PC VR headset?",
     answer:
-      "Both. It runs SteamOS on a Snapdragon 8 Gen 3 with 16GB of RAM and plays games on-device through Proton and FEX x86 emulation, including Android APKs. It also ships with a dedicated 6GHz point-to-point wireless dongle for streaming from a gaming PC, which Valve describes as the primary experience. Hands-on reports describe the streaming as having no perceptible lag.",
+      "Both. Valve calls it a streaming-first wireless VR headset that also supports standalone play. It runs SteamOS 3 on a 4nm Snapdragon 8 Gen 3 with 16GB of LPDDR5X and plays games on-device through Proton and FEX x86 translation, plus Android APKs through Lepton, with over 100 games Steam Frame Standalone Verified at launch. For PC play it ships with a Wi-Fi 6E wireless adapter that gives streaming a dedicated 6GHz link, while one of the headset's two Wi-Fi 7 radios carries the stream and the other stays on your home network. Eye tracking drives Valve's Foveated Streaming, which Valve says typically offers over a 10x improvement in image quality and effective bandwidth.",
   },
   {
-    question: "What games will the Steam Frame launch with?",
+    question: "What games does the Steam Frame launch with?",
     answer:
-      "No first-party launch game has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. The launch story is the Steam library itself via streaming and Proton, plus the certified catalog on the Great on Frame page, which reported 130 titles on September 11, up from 121 on September 8, 117 on September 6, 98 on August 27, 65 on August 10 and eight on July 17. Most of that growth is flatscreen catalog games such as Balatro, Cuphead, and Hollow Knight: Silksong rather than native VR. The highest-profile VR title on the list is Half-Life 2: VR Mod, a free community mod certified on August 6, while Valve's own The Lab was downgraded to Unsupported on July 29. Payday: Aces High was the first third-party title to list Steam Frame as a target platform.",
+      "Every Steam Frame includes a copy of Half-Life: Alyx, redeemed in the headset's settings; only one copy can be redeemed per device, and not on an account that already owns it. UploadVR reports Valve built a native 64-bit ARM version that runs standalone on the headset, with Workshop items and Steam Cloud saves working across standalone and PC streaming. No new first-party game shipped with it, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. Valve's launch post counts over 100 games Steam Frame Standalone Verified. The rest of the launch story is the Steam library itself via streaming and Proton, plus the certified catalog on the Great on Frame page, which reported 130 titles on September 11, up from 121 on September 8, 117 on September 6, 98 on August 27, 65 on August 10 and eight on July 17. Most of that growth is flatscreen catalog games such as Balatro, Cuphead, and Hollow Knight: Silksong rather than native VR. The highest-profile VR title on the list is Half-Life 2: VR Mod, a free community mod certified on August 6, while Valve's own The Lab was downgraded to Unsupported on July 29. Payday: Aces High was the first third-party title to list Steam Frame as a target platform.",
   },
   {
     question: "What is Steam Frame Verified?",
@@ -281,6 +298,11 @@ const TIMELINE: TimelineEntry[] = [
     slug: "steam-frame-lepton-android-runtime-52-of-130-certified-2026",
     text: "Great on Frame reaches 130, and the runtime field on those records shows 67 titles pointed at proton-stable against 52 at lepton-stable, Valve's Android layer. Three certified games are Steam pages with no PC build at all. The same two backend packages that moved on September 3 moved again on September 10, three minutes apart both times.",
   },
+  {
+    date: "Sep 14, 2026",
+    slug: "steam-frame-launch-price-1059-psu-not-included-2026",
+    text: "Valve launches the Steam Frame at $1,059 for 256GB and $1,299 for 1TB, with Half-Life: Alyx included and the power supply sold separately. Reservation signups open immediately and close September 17 at 10 AM Pacific; purchase emails begin September 18.",
+  },
 ];
 
 // Rendered oldest to newest. Entries are hand-maintained and have shipped
@@ -312,7 +334,7 @@ export default function SteamFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 8, 2026
+          Last updated: September 14, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -388,18 +410,17 @@ export default function SteamFramePage() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Steam Frame is Valve&apos;s standalone SteamOS VR headset with a
-          dedicated 6GHz wireless dongle for PC VR streaming, confirmed for a
-          summer 2026 release. As of September 8, 2026 there is still no official
-          price and no reservation date, but the backend has started moving: on
-          September 3 two of the headset&apos;s seven Steam packages were revised
-          for the first time since May 5, and Steam Machine packages changed six
-          days before its reservation lottery opened. The FCC granted Valve
-          equipment authorization on July 29, hardware has cleared customs, and
-          the Great on Frame catalog has gone from eight certified titles on
-          July 17 to 130 today. Valve has 11 days left in its own stated summer
-          window. This page tracks every signal, links to all of our reporting,
-          and is updated on every beat until launch.
+          The Steam Frame is Valve&apos;s wireless, streaming-first SteamOS VR
+          headset, and it launched on September 14, 2026. The 256GB Kit costs
+          $1,059 and the 1TB Kit $1,299, each with the Steam Frame Controllers,
+          a Wi-Fi 6E wireless adapter for PC streaming, and a copy of
+          Half-Life: Alyx. The power supply is sold separately for $29. You buy
+          one through a randomized reservation list: signups close Thursday,
+          September 17 at 10:00 AM Pacific, and the first purchase emails go
+          out September 18. Valve counts over 100 games Steam Frame Standalone
+          Verified at launch. This page links every piece of our reporting,
+          from the November 2025 announcement through launch week, and keeps
+          tracking the headset as it reaches buyers.
         </p>
 
         <figure className="pillar-figure">
@@ -414,59 +435,95 @@ export default function SteamFramePage() {
         </figure>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
-          Release date: summer 2026, reservations imminent
+          Release date: launched September 14, 2026
         </h2>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve confirmed in late June that both the Steam Machine and the Steam
-          Frame ship in summer 2026, and the Machine has already made good on
-          that, launching June 30 at $1,049 through a randomized reservation
-          lottery. The Frame is expected to follow the same playbook within a
-          similar window. The physical evidence agrees: roughly 32,000 kg of
-          hardware labeled Virtual Reality Devices cleared customs into
-          Valve&apos;s US warehouses in June, and the FCC embargo on the
-          Frame&apos;s motion controllers lifted June 18. A leaked June 23 price
-          reveal date came and went without a Frame announcement; Valve used
-          that window for the Steam Machine instead. The headset itself cleared
-          the FCC on July 29 under ID 2AES4-1015, so the only thing still
-          missing is Valve naming the day and the price.
+          Valve&apos;s Steam Hardware account posted &quot;Steam Frame is
+          here!&quot; at 10:01 AM Pacific on Monday, September 14, and opened
+          reservations in the same post. It is the Steam Machine playbook
+          again, and Valve says so, citing the reservation system as a way to
+          improve the purchase experience and limit resellers. Signups stay
+          open until Thursday, September 17 at 10:00 AM Pacific. Each
+          model&apos;s list is then shuffled once, everyone is emailed a
+          reservation or waitlist result that day, and purchase emails start
+          September 18 with a 72-hour window to check out. To qualify, your
+          Steam account must be in good standing with a purchase made before
+          April 27, 2026, and Valve allows one signup per household. Our{" "}
+          <a
+            href="/articles/steam-frame-reservation-how-to-sign-up-before-september-17-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            reservation guide
+          </a>{" "}
+          walks through each step, and the{" "}
+          <a
+            href="/steam-frame-release-date"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            release date page
+          </a>{" "}
+          has every key date.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The road here had slips. The November 2025 announcement targeted early
-          2026, which softened to first half by February, and in April Valve
-          publicly said the memory crisis forced it to revisit both the shipping
-          schedule and pricing. Summer 2026 is the version that stuck, and it is
-          the one Valve has put its name on.
+          Valve ships directly through Steam to the U.S., Canada, the UK, the
+          EU, and Australia. Japan, Taiwan, and Hong Kong buy through KOMODO,
+          Valve&apos;s authorized distributor, and South Korea follows later.
+          The road here had slips. The November 2025 announcement targeted
+          early 2026, which softened to first half by February, and in April
+          Valve publicly said the memory crisis forced it to revisit both the
+          shipping schedule and pricing. Summer 2026 was the version that
+          stuck, and Valve made it with eight days of summer left.
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
-          Price: nothing official, budget for $899 to $1,199
+          Price: $1,059 and $1,299, power supply extra
         </h2>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve&apos;s stated goal was a headset cheaper than the $999 Index.
-          Early 2026 estimates ranged from $500 to $800, but the AI-driven DRAM
-          shortage rewrote everyone&apos;s math. Early retailer database
-          listings surfaced in June around $950 for a 512GB model and $1,070 for
-          a larger tier, and analyst estimates cluster between $899 and $1,199.
-          The cautionary tale is the Steam Machine, which landed at $1,049,
-          about $250 above expectations, with Valve explicitly blaming DDR5
-          contract prices up more than 170% year over year. The Frame carries
-          16GB of LPDDR5X into that same market, so we would budget toward the
-          high end of the range. One honest caveat: reporting on the storage
-          tiers is inconsistent, with 256GB, 512GB, and 1TB all appearing in
-          different sources, so treat the exact configurations as unsettled
-          until Valve publishes them.
+          Valve&apos;s stated goal in November 2025 was a headset cheaper than
+          the $999 Index. The 256GB Kit landed at $1,059, and the 1TB Kit at
+          $1,299. That is inside the $899 to $1,199 analyst range we tracked
+          all summer, and $10 above the Steam Machine, which Valve priced at
+          $1,049 after blaming DDR5 contract prices up more than 170% year
+          over year. Three first-party accessories are sold separately, and
+          only at checkout once you have a purchase email: a 45W power supply
+          with a 2.5m cable ($29), the Ergonomic Accessories Kit with
+          controller hand straps and battery doors, a top strap, and an
+          extended light blocker ($59), and a replacement kit of the face
+          gasket, head cushion, and standard light blocker ($49). Color
+          passthrough is not built in; Valve lists the Arcturus Vision camera
+          as a Steam Frame Compatible add-on for it, which UploadVR reports at
+          $149, and Zenni makes the prescription inserts. Regional prices and the full signal history
+          are on{" "}
+          <a
+            href="/steam-frame-price"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            our Steam Frame price page
+          </a>
+          , and{" "}
+          <a
+            href="/articles/steam-frame-launch-price-1059-psu-not-included-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            our launch report
+          </a>{" "}
+          breaks down what the money buys.
         </p>
 
-        <div className="my-8">
+                <div className="my-8">
           <AdSlot slot={AD_SLOTS.pillar} format="horizontal" />
         </div>
 
@@ -474,21 +531,26 @@ export default function SteamFramePage() {
           Specs at a glance
         </h2>
         <ComparisonTable
-          caption="Confirmed Steam Frame specifications from Valve's announcement, FCC filings, and our reporting. Storage tiers remain unsettled across sources."
+          caption="Steam Frame specifications from Valve's official product page (September 14, 2026), with weight from earlier reporting and controller details from FCC filings."
           columns={["Spec", "Steam Frame"]}
           rows={[
             ["Weight", "185g frontbox, about 440g with battery strap (Quest 3 is 515g)"],
             ["Displays", "Dual 2160x2160 LCD per eye, pancake lenses"],
-            ["Refresh rate", "72 / 80 / 90 / 120Hz, experimental 144Hz"],
-            ["Eye tracking", "Yes, drives foveated rendering and streaming optimization"],
-            ["Chip", "Snapdragon 8 Gen 3"],
-            ["Memory", "16GB LPDDR5X (double the Quest 3)"],
-            ["Storage", "256GB to 1TB reported; tiers not finalized"],
-            ["OS", "SteamOS (Arch Linux). Proton 11.0 (ARM64) on Steam Linux Runtime 4.0, FEX for x86 translation, Lepton for Android APKs"],
-            ["PC streaming", "Bundled dedicated 6GHz Wi-Fi 6E dongle, point to point, no router"],
-            ["Tracking", "Inside-out SLAM"],
-            ["Controllers", "Two BLE motion controllers, TMR thumbsticks, tracking rings (FCC confirmed)"],
-            ["Accessories", "Enthusiast Kit with hot-swappable battery (FCC confirmed); $99 Steam Controller for non-VR mode"],
+            ["Refresh rate", "72 to 144Hz (144Hz experimental)"],
+            ["Eye tracking", "Yes, low-latency eye tracking drives Foveated Streaming"],
+            ["Chip", "4nm Snapdragon 8 Gen 3, ARM64"],
+            ["Memory", "16GB unified LPDDR5X (double the Quest 3)"],
+            ["Storage", "256GB or 1TB UFS, plus microSD card slot"],
+            ["Battery", "Rechargeable 21.6 Wh Li-ion; power supply not included"],
+            ["OS", "SteamOS 3. Proton 11.0 (ARM64) on Steam Linux Runtime 4.0, FEX for x86 translation, Lepton for Android APKs"],
+            ["Wireless", "Headset Wi-Fi 7, 2x2, dual radios; Bluetooth 5.4"],
+            ["PC streaming", "Included Wi-Fi 6E wireless adapter on a dedicated 6GHz link; Foveated Streaming and Multi-Link Streaming"],
+            ["Tracking", "Inside-out, four high-resolution monochrome cameras with infrared illuminators"],
+            ["Passthrough", "Monochrome built in; color via the $149 Arcturus Vision camera add-on"],
+            ["Audio", "Dual speaker drivers per ear, dual microphone array"],
+            ["Controllers", "Steam Frame Controllers, full 6-DOF and gamepad controls; TMR thumbsticks (FCC filings)"],
+            ["Price", "$1,059 (256GB Kit), $1,299 (1TB Kit); Half-Life: Alyx included"],
+            ["Accessories", "PSU $29, Ergonomic Accessories Kit $59, Accessory Replacement Kit $49; Zenni prescription inserts"],
           ]}
         />
 
@@ -515,9 +577,15 @@ export default function SteamFramePage() {
           style={{ color: "var(--text-secondary)" }}
         >
           Every wireless PC VR setup today fights your router. The Frame ships
-          with a dedicated point-to-point 6GHz adapter that plugs into your PC
-          and talks directly to the headset, and journalists who tried it at
-          Valve&apos;s offices reported no perceptible lag. Valve describes the
+          with a plug-and-play 6GHz wireless adapter that plugs into your PC
+          and gives streaming its own link, and journalists who tried it at
+          Valve&apos;s offices reported no perceptible lag. The launch page
+          fills in the rest: one of the headset&apos;s two radios is dedicated
+          to the stream while the other handles your Wi-Fi, Multi-Link
+          Streaming routes data across every available connection at once,
+          and Foveated Streaming uses eye tracking to put the best pixels
+          where you are looking, which Valve says typically offers over a 10x
+          improvement in image quality and effective bandwidth. Valve describes the
           Frame as streaming-first with standalone capability, not the other way
           around: the Snapdragon 8 Gen 3 runs the Steam library on-device
           through Proton and FEX when you are away from your PC, and the
@@ -545,12 +613,35 @@ export default function SteamFramePage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          There is no Half-Life: Alyx moment on the calendar. Road to VR
-          reported at the announcement that a Steam Frame team member flatly
-          denied Valve has any VR content in development, and seven months of
-          silence have not contradicted that. Valve&apos;s bet is that the
-          library is the launch title: your entire Steam catalog over the
-          dongle, plus standalone Proton play. On the third-party side, Payday:
+          There is no new Half-Life moment. Road to VR reported at the
+          announcement that a Steam Frame team member flatly denied Valve has
+          any VR content in development, and ten months later the launch
+          confirmed it. What Valve did instead was put the old one in the box:
+          every Steam Frame includes a copy of Half-Life: Alyx, redeemed in the
+          headset&apos;s settings, one per device, and{" "}
+          <a
+            href="https://www.uploadvr.com/steam-frame-price-revealed-reservations-opened-alyx-included/"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            UploadVR reports
+          </a>{" "}
+          Valve built a native 64-bit ARM version that runs standalone, with
+          Steam Cloud saves shared between the headset and PC streaming. We
+          wrote about{" "}
+          <a
+            href="/articles/half-life-alyx-standalone-steam-frame-launch-game-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            what that does for the launch
+          </a>
+          . Valve&apos;s bet is still
+          that the library is the launch title: your entire Steam catalog over
+          the wireless adapter, plus over 100 games Steam Frame Standalone
+          Verified for on-device play. On the third-party side, Payday:
           Aces High was the first game to list Steam Frame as a platform, and
           titles like H3VR2 and Into the Radius 2 sit naturally in the launch
           window. We covered the stakes of shipping without a marquee exclusive

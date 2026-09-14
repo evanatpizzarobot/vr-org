@@ -44,7 +44,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Games of 2026: New Releases and Must-Play Titles",
   datePublished: "2026-03-24",
-  dateModified: "2026-09-06",
+  dateModified: "2026-09-14",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -173,17 +173,17 @@ const games2026Faq = faqPageSchema([
   {
     question: "What are the best VR games of 2026?",
     answer:
-      "Through early September 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Aces of Thunder, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, the S.T.A.L.K.E.R.-style survival shooter Into the Radius 2 (now a full 1.0 release), the open-world hunting sim Virtual Hunter, and H3VR, which finally left Early Access with its 1.0 update over the Fourth of July weekend and sits at 97 percent positive across more than 23,000 Steam reviews. The summer's biggest new arrival is GERONIMO, a tactical CQB shooter that launched July 10 and holds a Very Positive rating on Steam. Whatever Valve launches alongside the Steam Frame remains the biggest wildcard for the back half of the year.",
+      "Through early September 2026, the strongest VR releases include Batman: Arkham Shadow (carrying momentum from late 2025), the Resident Evil Requiem PC VR mod, Aces of Thunder, Little Nightmares VR: Altered Echoes, Microsoft Flight Simulator on PSVR2, TMNT: Empire City, the S.T.A.L.K.E.R.-style survival shooter Into the Radius 2 (now a full 1.0 release), the open-world hunting sim Virtual Hunter, and H3VR, which finally left Early Access with its 1.0 update over the Fourth of July weekend and sits at 97 percent positive across more than 23,000 Steam reviews. The summer's biggest new arrival is GERONIMO, a tactical CQB shooter that launched July 10 and holds a Very Positive rating on Steam. Valve launched the Steam Frame on September 14 with Half-Life: Alyx included and running standalone on the headset, plus over 100 Standalone Verified games, but announced no new first-party game alongside it.",
   },
   {
     question: "What VR games are coming in the rest of 2026?",
     answer:
-      "The biggest remaining wildcard for 2026 is whatever Valve ships alongside the Steam Frame headset, and the headset itself now looks days away: two of its Steam backend packages were revised on September 3, the first change since May, and Valve's Great on Frame certification section stood at 117 titles on September 6. Dated releases inside that window include Detective VR on September 9 and Gunman Contracts: Stand Alone on September 10, both on Steam, with the co-op starship shooter Sol Protocol listed for October. Rust Ltd has announced Hot Dogs, Horseshoes & Hand Grenades 2 with no date attached. Streets of Miami VR, once slated for August 28, currently shows Coming Soon on Steam.",
+      "Valve launched the Steam Frame headset on September 14 with Half-Life: Alyx included and over 100 games Standalone Verified, and no new first-party game announced; purchase invitations from its reservation lottery start going out September 18. Dated September releases around it include Detective VR on September 9 and Gunman Contracts: Stand Alone on September 10, both on Steam, with the co-op starship shooter Sol Protocol listed for October. Rust Ltd has announced Hot Dogs, Horseshoes & Hand Grenades 2 with no date attached. Streets of Miami VR, once slated for August 28, currently shows Coming Soon on Steam.",
   },
   {
     question: "When does the Steam Frame release?",
     answer:
-      "Valve has not announced a release date for the Steam Frame headset, but on September 3 two of the headset's seven Steam backend packages were revised for the first time since May 5, and dataminer Brad Lynch reports a reservation system is live in Steam's backend for two SKUs. Steam Machine packages changed six days before its reservation lottery opened, which points at the week of September 7. The FCC granted equipment authorization on July 29, the Great on Frame certification section reached 117 titles on September 6, and Valve's stated summer window ends September 22.",
+      "Valve launched the Steam Frame on September 14, 2026, at $1,059 for 256GB and $1,299 for 1TB, with Half-Life: Alyx included. It is sold through a reservation lottery rather than open orders: signups close September 17 at 10 AM Pacific, and Valve begins emailing purchase invitations on September 18, in randomized order, with 72 hours to buy. Valve says over 100 games are already Steam Frame Standalone Verified.",
   },
   {
     question: "Are there new PSVR 2 games in 2026?",
@@ -221,7 +221,7 @@ export default function BestVRGames2026Page() {
           className="text-sm mb-3"
           style={{ color: "var(--text-muted)" }}
         >
-          Last updated: September 6, 2026
+          Last updated: September 14, 2026
         </p>
 
         <p
@@ -252,7 +252,8 @@ export default function BestVRGames2026Page() {
           strongest reception any new VR release has had this summer. On the
           hardware side, the Steam Frame cleared the FCC on July 29 and Valve
           put the headset&apos;s compatibility layers on Steam on August 2,
-          which makes a fall launch look close to certain. Here are the best VR
+          and Valve launched it on September 14 at $1,059 with Half-Life: Alyx
+          in the box. Here are the best VR
           games of 2026 so far, plus the titles still ahead.
         </p>
 
@@ -698,7 +699,7 @@ export default function BestVRGames2026Page() {
         </h2>
 
         <h3 className="font-display text-xl font-semibold mb-2">
-          Whatever Valve ships with Steam Frame
+          Steam Frame, and the Half-Life: Alyx bundle
         </h3>
         <figure className="fitness-figure">
           <img
@@ -711,9 +712,28 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          The signals have stopped being signals. The Steam Machine shipped
-          June 30 at $1,049, tens of tons of hardware labeled virtual reality
-          devices cleared into Valve&apos;s US warehouses, and the{" "}
+          Valve launched the Steam Frame on September 14 at{" "}
+          <a
+            href="/articles/steam-frame-launch-price-1059-psu-not-included-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            $1,059 for 256GB and $1,299 for 1TB
+          </a>
+          , and the launch game turned out to be one VR players already know:
+          every headset includes a copy of{" "}
+          <a
+            href="/articles/half-life-alyx-standalone-steam-frame-launch-game-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Half-Life: Alyx, which now runs natively on the headset with no PC
+          </a>
+          , redeemed in Settings
+          on the headset, one per device (if Alyx is already in your library, you
+          cannot redeem a second copy). Valve announced no new first-party game
+          alongside it. What it has instead is a catalog: over 100 games Steam
+          Frame Standalone Verified, up from about half a dozen when the{" "}
           <a
             href="/articles/valve-great-on-frame-steam-page-steam-frame-launch-signal"
             className="no-underline hover:underline"
@@ -721,21 +741,7 @@ export default function BestVRGames2026Page() {
           >
             Great on Frame store section
           </a>{" "}
-          that certifies games for the headset opened in July with about half a
-          dozen titles and stood at 117 on September 6. On September 3, two of
-          the headset&apos;s seven Steam backend packages were revised for the
-          first time since May, the same move that preceded Steam Machine
-          reservations by six days. Before that came the two regulatory and
-          software gates: the{" "}
-          <a
-            href="/articles/steam-frame-fcc-grant-equipment-authorization-july-2026"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            FCC granted equipment authorization on July 29
-          </a>
-          , which is legal permission to sell, and on August 2 Valve published
-          Lepton and FEX, the headset&apos;s{" "}
+          opened in July, helped along by Lepton and FEX, the headset&apos;s{" "}
           <a
             href="/articles/valve-lepton-fex-steam-frame-translation-layers-2026"
             className="no-underline hover:underline"
@@ -743,10 +749,19 @@ export default function BestVRGames2026Page() {
           >
             Android and x86 translation layers
           </a>
-          , as public Steam entries. Nobody knows what Valve plans to launch
-          alongside the Frame, but the community is hoping for something in the
-          Half-Life universe. A first-party Valve VR title bundled with new
-          hardware could be the biggest VR gaming moment since Alyx.
+          , plus everything on your PC over its streaming link. Hardware is not
+          in players&apos; hands yet. Valve is selling it through a reservation
+          lottery that closes September 17 at 10 AM Pacific, with purchase
+          emails from September 18, and our{" "}
+          <a
+            href="/articles/steam-frame-reservation-how-to-sign-up-before-september-17-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            signup guide
+          </a>{" "}
+          walks through it. Any Half-Life hopes beyond Alyx will have to wait
+          for another day.
         </p>
 
         {/* Star Trek: Infection */}
@@ -777,8 +792,8 @@ export default function BestVRGames2026Page() {
           from Studio CHIPO Y JUAN and Valem Studio, this is a first-person
           investigation game built for VR and mixed reality: examine a scene,
           bag evidence, interrogate suspects, and assemble the case yourself.
-          It is the first dated release of the week the Steam Frame math points
-          at, and a VR Only listing on Steam.
+          Its date fell the week before Valve launched the Steam Frame, and it
+          is a VR Only listing on Steam.
         </p>
 
         <h3 className="font-display text-xl font-semibold mb-2">
@@ -862,11 +877,10 @@ export default function BestVRGames2026Page() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Steam Frame launch is no longer a wild card so much as a date
-          nobody has said out loud. On September 3 two of the headset&apos;s
-          Steam backend packages were revised for the first time since May, the
-          same move Valve made six days before Steam Machine reservations
-          opened, and the{" "}
+          The Steam Frame is out of the rumor stage: Valve launched it on
+          September 14, and the first purchase emails from its reservation
+          lottery go out September 18, which makes the next few weeks the first
+          real test of the{" "}
           <a
             href="/great-on-frame"
             className="no-underline hover:underline"
@@ -874,7 +888,8 @@ export default function BestVRGames2026Page() {
           >
             Great on Frame
           </a>{" "}
-          catalog stood at 117 certified titles on September 6. Meta Connect
+          catalog, now over 100 Standalone Verified games by Valve&apos;s
+          count. Meta Connect
           follows on September 23 with the Quest 4 pointed at 2027, so Valve
           has the hardware stage to itself this month. The software calendar
           is filling in around it: Detective VR on September 9, Gunman

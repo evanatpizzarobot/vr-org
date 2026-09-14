@@ -15,7 +15,7 @@ import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 export const metadata = {
   title: "Upcoming VR Headsets 2026: New Releases & What's Coming Next | VR.org",
   description:
-    "Every new and upcoming VR headset for 2026 and beyond. The Samsung Galaxy XR and Bigscreen Beyond 2 have landed, and Valve's Steam Frame and the Meta Quest 4 are on the horizon. Here is what's coming.",
+    "Every new and upcoming VR headset for 2026 and beyond. The Samsung Galaxy XR and Bigscreen Beyond 2 have landed, Valve's Steam Frame is priced and taking reservations, and the Meta Quest 4 is on the horizon. Here is what's coming.",
   openGraph: {
     title: "Upcoming VR Headsets 2026: New Releases & What's Coming Next | VR.org",
     description:
@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Upcoming VR Headsets 2026: New Releases and What's Coming Next",
   datePublished: "2026-06-04",
-  dateModified: "2026-09-06",
+  dateModified: "2026-09-14",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -84,12 +84,12 @@ const faq = faqPageSchema([
   {
     question: "What new VR headsets are coming in 2026?",
     answer:
-      "2026 has already brought the Samsung Galaxy XR, the flagship Android XR headset, and the ultralight Bigscreen Beyond 2 for PC VR, alongside an M5-chip refresh of the Apple Vision Pro. The big one still to come is Valve's Steam Frame, confirmed for summer 2026, now with 89 certified Great on Frame titles and its own unboxing videos already leaked. Pico's Project Swan is now the Pico Space Pro, debuting September 2, and a wave of smart glasses follows including Samsung's Galaxy Glasses, XREAL's AURA and RayNeo's September 4 pair. The Meta Quest 4 is expected in 2027 or later.",
+      "2026 has already brought the Samsung Galaxy XR, the flagship Android XR headset, and the ultralight Bigscreen Beyond 2 for PC VR, alongside an M5-chip refresh of the Apple Vision Pro. Valve's Steam Frame launched on September 14 at $1,059 for 256GB and $1,299 for 1TB, sold through a reservation lottery with purchase emails starting September 18, so units have not reached customers yet. Pico's Project Swan is now the Pico Space Pro, debuting September 2, and a wave of smart glasses follows including Samsung's Galaxy Glasses, XREAL's AURA and RayNeo's September 4 pair. The Meta Quest 4 is expected in 2027 or later.",
   },
   {
     question: "When is the Valve Steam Frame coming out?",
     answer:
-      "Valve has confirmed summer 2026 and every signal says the date is close: the hardware has cleared US customs, the FCC filings are public, and the Great on Frame store section is live and filling with certified games. There is no official price yet; retailer leaks and analyst estimates cluster between $899 and $1,199. Our Steam Frame hub and release date tracker follow every development.",
+      "Valve launched the Steam Frame on September 14, 2026, but you cannot order one outright. Signups for Valve's randomized reservation lottery run until September 17 at 10 AM Pacific, and Valve begins emailing purchase invitations on September 18, with 72 hours to complete each purchase. It costs $1,059 for 256GB and $1,299 for 1TB, includes Half-Life: Alyx and a Wi-Fi 6E wireless adapter, and does not include a power supply. It ships directly from Steam in the US, Canada, the UK, the EU and Australia, and through the distributor KOMODO in Japan, Taiwan and Hong Kong. Our Steam Frame hub and price page have every detail.",
   },
   {
     question: "When is the Meta Quest 4 coming out?",
@@ -99,7 +99,7 @@ const faq = faqPageSchema([
   {
     question: "Should I wait for an upcoming VR headset or buy now?",
     answer:
-      "For most buyers, there is no reason to wait. The Quest 3 and Quest 3S are excellent and fully supported, and the headsets on the horizon are either far off (Quest 4 around 2027) or aimed at niches (enthusiast PC VR, smart glasses). If you specifically want wireless PC VR in the Steam ecosystem, keeping an eye on the Steam Frame makes sense; otherwise, buying a current headset gets you playing today.",
+      "For most buyers, there is no reason to wait. The Quest 3 and Quest 3S are excellent and fully supported, and the headsets on the horizon are either far off (Quest 4 around 2027) or aimed at niches (enthusiast PC VR, smart glasses). If you specifically want wireless PC VR in the Steam ecosystem, signing up for the Steam Frame reservation lottery (open until September 17) makes sense; otherwise, buying a current headset gets you playing today.",
   },
   {
     question: "Are smart glasses replacing VR headsets?",
@@ -129,7 +129,7 @@ export default function UpcomingVRHeadsets2026Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 6, 2026
+          Last updated: September 14, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -151,8 +151,9 @@ export default function UpcomingVRHeadsets2026Page() {
         >
           2026 has already delivered the Samsung Galaxy XR and the ultralight
           Bigscreen Beyond 2, plus an M5 refresh of the Apple Vision Pro. Next up
-          is Valve&apos;s Steam Frame, confirmed for summer 2026 with launch
-          signals stacking up by the week, followed by the Pico Space Pro on
+          is Valve&apos;s Steam Frame, which launched on September 14 at $1,059
+          and reaches its first buyers through a reservation lottery, followed
+          by the Pico Space Pro on
           September 2, a wave of smart glasses, and the Meta Quest 4 in 2027 or
           later. This
           is our running guide to the newest and upcoming VR headsets, updated as
@@ -230,18 +231,29 @@ export default function UpcomingVRHeadsets2026Page() {
         </h2>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           <strong>Valve Steam Frame.</strong> The most anticipated headset of
-          the year, and every prerequisite is now cleared: Valve has confirmed
-          summer 2026, the full spec sheet is public (dual 2160x2160 panels,
-          Snapdragon 8 Gen 3, 16GB RAM, a bundled 6GHz wireless dongle for
-          lag-free PC streaming), the hardware has cleared US customs, and the
-          FCC granted equipment authorization on July 29, which is the last legal
-          gate before a US sale. The Great on Frame catalog has gone from eight
-          certified titles on July 17 to 117 on September 6, and on September 3
-          two of the headset&apos;s seven Steam backend packages were revised for
-          the first time since May, the same move Steam Machine packages made six
-          days before its reservation lottery opened. Only the price and the day
-          are missing, estimates cluster between $899 and $1,199, and summer ends
-          September 22. Our{" "}
+          the year launched on September 14, and it is still on this list only
+          because nobody has one yet. Valve priced it at $1,059 for 256GB and
+          $1,299 for 1TB (1,049 EUR, 889 GBP, 1,529 CAD, 1,609 AUD), with
+          Half-Life: Alyx and a Wi-Fi 6E wireless adapter in the kit and no
+          power supply; Valve sells a 45W unit for $29. The official spec line
+          is a Snapdragon 8 Gen 3, 16GB of LPDDR5X, two 2160x2160 LCD panels at
+          72 to 144Hz, a 21.6 Wh battery, eye-tracked Foveated Streaming and
+          over 100 Standalone Verified games. Tracking runs on four monochrome
+          cameras, and for color passthrough Valve lists the $149 Arcturus
+          Vision camera, which plugs into the headset&apos;s PCIe expansion
+          port, as a compatible accessory. Instead of opening a
+          checkout, Valve is running the same reservation lottery it used for
+          the Steam Machine: signups close September 17 at 10 AM Pacific,
+          purchase emails start September 18, and anyone past the available
+          units lands on a waitlist. Our{" "}
+          <a
+            href="/articles/steam-frame-reservation-how-to-sign-up-before-september-17-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            signup guide
+          </a>
+          , our{" "}
           <a
             href="/steam-frame"
             className="no-underline hover:underline"
@@ -265,7 +277,7 @@ export default function UpcomingVRHeadsets2026Page() {
           >
             verified games list
           </a>{" "}
-          follow every beat.
+          have the rest.
         </p>
         <p className="text-[15px] leading-[1.7] mb-4" style={{ color: "var(--text-secondary)" }}>
           <strong>Pico Space Pro.</strong> Project Swan has a name and a date.
@@ -356,7 +368,7 @@ export default function UpcomingVRHeadsets2026Page() {
           New 2026 headsets at a glance
         </h2>
         <ComparisonTable
-          caption="New 2026 headsets you can buy today, with prices from our live VR.org deals tracker. The most anticipated upcoming models (Valve Steam Frame, Meta Quest 4) are left off until their pricing is confirmed."
+          caption="New 2026 headsets you can buy today, with prices from our live VR.org deals tracker. The Valve Steam Frame has an official price ($1,059) but is left off because it is sold only through a reservation lottery, not off the shelf; the Meta Quest 4 has no price yet."
           columns={["Headset", "Price", "Best for"]}
           rows={[
             ["Samsung Galaxy XR", "$1,799", "Flagship Android XR, a Vision Pro alternative"],

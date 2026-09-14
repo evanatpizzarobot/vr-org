@@ -287,7 +287,7 @@ const CARDS: BestOfCard[] = [
   {
     title: "Valve Steam Frame: Everything We Know",
     description:
-      "The most anticipated headset in VR. Release date signals, price expectations, specs, and every development tracked.",
+      "Launched September 14 at $1,059 and $1,299. Official specs, regional prices, the reservation lottery, and every development tracked.",
     href: "/steam-frame",
     badge: "Hardware",
     badgeColor: "var(--accent-cyan)",
@@ -295,7 +295,7 @@ const CARDS: BestOfCard[] = [
   {
     title: "Great on Frame: Verified Games List",
     description:
-      "Every game certified for the Steam Frame, tracked as Valve stocks the shelves ahead of launch. The launch lineup, live.",
+      "Every game certified for the Steam Frame, from launch week onward. Over 100 titles and counting, tracked live.",
     href: "/great-on-frame",
     badge: "Hardware",
     badgeColor: "var(--accent-cyan)",

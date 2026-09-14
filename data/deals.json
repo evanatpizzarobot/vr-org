@@ -578,7 +578,7 @@
           "name": "Valve Steam Machine",
           "price": "From $1,049",
           "image": "https://img.youtube.com/vi/ov-XrojBA50/maxresdefault.jpg",
-          "description": "Valve's living-room gaming cube, shipped June 30. Starts at $1,049 for 512GB, $1,349 for 2TB, after memory costs pushed pricing above the rumored $799. Runs the full Steam library on SteamOS and pairs natively with the Steam Controller and the upcoming Steam Frame.",
+          "description": "Valve's living-room gaming cube, shipped June 30. Starts at $1,049 for 512GB, $1,349 for 2TB, after memory costs pushed pricing above the rumored $799. Runs the full Steam library on SteamOS and pairs natively with the Steam Controller and the Steam Frame headset, which launched September 14.",
           "badge": "New",
           "links": {
             "direct": {
@@ -591,7 +591,7 @@
           "name": "Valve Steam Controller (2026)",
           "price": "$99",
           "image": "https://img.youtube.com/vi/a55UIaiTE-A/maxresdefault.jpg",
-          "description": "Valve's new flagship controller. TMR magnetic thumbsticks that eliminate stick drift, dual haptic trackpads, 6-axis gyro, Grip Sense, 35+ hour battery. Paired natively with the upcoming Steam Frame headset. Steam store exclusive, no retail.",
+          "description": "Valve's new flagship controller. TMR magnetic thumbsticks that eliminate stick drift, dual haptic trackpads, 6-axis gyro, Grip Sense, 35+ hour battery. Paired natively with the Steam Frame headset, which launched September 14. Steam store exclusive, no retail.",
           "badge": "New",
           "links": {
             "direct": {

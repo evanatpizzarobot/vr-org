@@ -14,11 +14,11 @@ import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 export const metadata = {
   title: "Steam Frame Specs: Full Hardware Spec Sheet & Controllers | VR.org",
   description:
-    "Every confirmed Steam Frame specification: 2160x2160 per eye, Snapdragon 8 Gen 3, 16GB LPDDR5X, 21.6Wh battery, 185g visor, eye tracking, and the PCIe expansion slot. Plus the numbers Valve still has not published.",
+    "Valve's official Steam Frame spec sheet: 2160x2160 LCD per eye, 72 to 144Hz, 4nm Snapdragon 8 Gen 3, 16GB LPDDR5X, 256GB or 1TB plus microSD, 21.6Wh battery, Wi-Fi 7 dual radios, 185g visor. Launch prices $1,059 and $1,299, and the numbers Valve still has not published.",
   openGraph: {
     title: "Steam Frame Specs: Full Hardware Spec Sheet & Controllers | VR.org",
     description:
-      "2160x2160 per eye, Snapdragon 8 Gen 3, 16GB RAM, 185g visor, eye-tracked foveated streaming. Every confirmed number in one table.",
+      "2160x2160 per eye, Snapdragon 8 Gen 3, 16GB RAM, 185g visor, Foveated Streaming. Valve's official launch spec sheet in one place.",
     url: "https://vr.org/steam-frame-specs",
     siteName: "VR.org",
     images: [
@@ -34,7 +34,7 @@ export const metadata = {
     card: "summary_large_image" as const,
     title: "Steam Frame Specs: Full Hardware Spec Sheet & Controllers",
     description:
-      "Every confirmed Steam Frame number in one table, and the ones Valve still has not given.",
+      "Valve's official Steam Frame spec sheet from launch day, and the numbers it still has not given.",
     images: [
       "https://vr.org/article-images/steam-frame/steam-frame-headset.jpg",
     ],
@@ -44,7 +44,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-09-08";
+const LAST_UPDATED = "2026-09-14";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -77,12 +77,12 @@ const faq = faqPageSchema([
   {
     question: "What resolution is the Steam Frame?",
     answer:
-      "2160x2160 per eye, on dual LCD panels behind multi-element pancake lenses. That is 4,665,600 pixels per eye, roughly 15 percent more per axis than the Quest 3's 2064x2208. Valve quotes the field of view conservatively at 110 degrees horizontal by 110 degrees vertical. Refresh runs at 72Hz and 120Hz, with a 144Hz mode Valve described as experimental at announcement.",
+      "2160x2160 per eye, on dual LCD panels behind multi-element pancake lenses. That is 4,665,600 pixels per eye, roughly 15 percent more per axis than the Quest 3's 2064x2208. Valve quotes the field of view conservatively at 110 degrees horizontal by 110 degrees vertical. Valve's launch product page lists supported refresh rates of 72 to 144Hz, with 144Hz labeled experimental.",
   },
   {
     question: "What chip is in the Steam Frame?",
     answer:
-      "A Qualcomm Snapdragon 8 Gen 3 with 16GB of LPDDR5X RAM. That is the same class of silicon as the Quest 3, but with double the memory, which matters because the Frame runs x86 Steam games through Proton and FEX emulation rather than native Android builds. Storage comes in 256GB and 1TB UFS tiers, and there is a microSD slot that takes the same cards as a Steam Deck or Steam Machine.",
+      "A 4nm Qualcomm Snapdragon 8 Gen 3 (ARM64) with 16GB of unified LPDDR5X RAM. That is the same class of silicon as the Quest 3, but with double the memory, which matters because the Frame runs x86 Steam games through Proton and FEX emulation rather than native Android builds. Storage comes in 256GB and 1TB UFS kits, priced at $1,059 and $1,299, and there is a microSD slot that takes the same cards as a Steam Deck or Steam Machine.",
   },
   {
     question: "How much does the Steam Frame weigh?",
@@ -107,7 +107,12 @@ const faq = faqPageSchema([
   {
     question: "Does the Steam Frame have color passthrough?",
     answer:
-      "No. The four outward-facing cameras are greyscale fisheye units built for computer vision, meaning inside-out tracking, room geometry and controller position. Passthrough to the wearer is a secondary use of two of them and it is monochrome. Valve has not positioned the Frame as a mixed reality device, which is the single clearest difference between it and a Quest 3. Color passthrough on a Frame is an accessory purchase through the expansion slot, at a price nobody has published.",
+      "No. The four outward-facing cameras are greyscale fisheye units built for computer vision, meaning inside-out tracking, room geometry and controller position. Passthrough to the wearer is a secondary use of two of them and it is monochrome. Valve has not positioned the Frame as a mixed reality device, which is the single clearest difference between it and a Quest 3. Color passthrough on a Frame is an accessory purchase: Valve's launch page lists the Arcturus Vision camera as a Steam Frame Compatible add-on that brings 5K HDR color passthrough and spatial video capture. UploadVR reports it costs $149, weighs 10 grams, uses dual 32-megapixel Sony RGB sensors, and attaches through the Frame's PCIe expansion port.",
+  },
+  {
+    question: "Does the Steam Frame come with a charger?",
+    answer:
+      "No. Valve's product page notes that the Steam Frame does not come with a dedicated power supply. Valve sells a 45W PD 3.0 USB-C power supply with a 2.5m cable for $29, and says a Steam Deck charger or any 45W or higher USB-C charger will work. The first-party accessories, including that PSU, are only offered at checkout to buyers who received a purchase email.",
   },
   {
     question: "What are the Steam Frame Verified requirements?",
@@ -119,31 +124,34 @@ const faq = faqPageSchema([
 const displayRows = [
   ["Panels", "Dual LCD, 2160x2160 per eye"],
   ["Lenses", "Multi-element pancake"],
-  ["Refresh", "72Hz and 120Hz, plus a 144Hz mode called experimental at announcement"],
+  ["Refresh", "72 to 144Hz, with 144Hz labeled experimental"],
   ["Field of view", "110 degrees horizontal by 110 degrees vertical, quoted conservatively"],
   ["IPD", "Manual dial"],
-  ["Eye tracking", "Yes, with IR illuminators, driving foveated streaming"],
+  ["Eye tracking", "Yes, low-latency, driving Foveated Streaming"],
   ["Hand tracking", "Not supported, an input device is required"],
 ];
 
 const computeRows = [
-  ["SoC", "Qualcomm Snapdragon 8 Gen 3"],
+  ["SoC", "4nm Qualcomm Snapdragon 8 Gen 3, ARM64"],
   ["Memory", "16GB LPDDR5X, unified"],
-  ["Storage", "256GB or 1TB UFS"],
+  ["Storage", "256GB Kit ($1,059) or 1TB Kit ($1,299), UFS"],
   ["Expandable storage", "microSD, same cards as Steam Deck and Steam Machine"],
-  ["OS", "SteamOS, with Proton and FEX x86 emulation"],
-  ["Battery", "21.6Wh, rear-mounted in the strap, replaceable"],
+  ["OS", "SteamOS 3, with Proton and FEX x86 emulation"],
+  ["Battery", "Rechargeable 21.6Wh Li-ion, rear-mounted in the strap, replaceable"],
+  ["Charger", "Not included. 45W or higher USB-C; Valve's 45W PSU is $29"],
   ["Weight, visor", "185 g"],
   ["Weight, complete", "440 g with facial interface, speakers, strap and battery"],
 ];
 
 const ioRows = [
-  ["Cameras", "Four outward-facing greyscale fisheye"],
-  ["Tracking", "Inside-out computer vision (SLAM)"],
-  ["Passthrough", "Monochrome, via two front cameras"],
-  ["Audio", "Built-in dual driver speakers"],
-  ["Wi-Fi", "Wi-Fi 7, dual radios"],
-  ["Bundled adapter", "6GHz Wi-Fi 6E USB adapter for point-to-point PC streaming"],
+  ["Cameras", "Four high-resolution monochrome fisheye cameras, infrared illuminators"],
+  ["Tracking", "Inside-out camera-based tracking of headset and controllers"],
+  ["Passthrough", "Monochrome built in; color via the $149 Arcturus Vision camera add-on"],
+  ["Audio", "Dual speaker drivers per ear, opposed to cancel vibration; dual microphone array"],
+  ["Wi-Fi", "Wi-Fi 7, 2x2, dual radios: one for the stream, one for your network"],
+  ["Bluetooth", "5.4"],
+  ["Bundled adapter", "6GHz Wi-Fi 6E USB adapter for a dedicated PC streaming link"],
+  ["Streaming features", "Foveated Streaming, Multi-Link Streaming"],
   ["Expansion", "One-lane Gen 4 PCIe port plus dual 2.5Gbps MIPI camera interface"],
 ];
 
@@ -153,15 +161,20 @@ const controllerRows = [
   ["Thumbsticks", "TMR (tunneling magnetoresistance), not potentiometers"],
   ["Sensing", "Capacitive on every input and on the handle"],
   ["Battery", "One AA per controller, roughly 40 hours"],
-  ["Grip straps", "Sold separately"],
+  ["Grip straps", "Sold separately, in the $59 Ergonomic Accessories Kit with battery doors"],
+];
+
+const resolvedRows = [
+  ["Price", "$1,059 for the 256GB Kit, $1,299 for the 1TB Kit"],
+  ["Release date", "Launched September 14, 2026; reservation signups close September 17, purchase emails from September 18"],
+  ["Refresh rates", "72 to 144Hz on Valve's product page, with 144Hz experimental"],
+  ["In the box", "Headset, Steam Frame Controllers, Wi-Fi 6E wireless adapter, Half-Life: Alyx code; no power supply"],
+  ["Color passthrough", "Arcturus Vision camera, $149 per UploadVR, via the PCIe expansion port"],
 ];
 
 const unknownRows = [
-  ["Price", "Not announced. Analyst estimates cluster $899 to $1,199"],
-  ["Release date", "Summer 2026 confirmed, no day named. Summer ends September 22"],
   ["Battery life", "No runtime figure published for the headset"],
   ["IPD range", "Valve has not given the millimetre range of the dial"],
-  ["Storage pricing", "No per-tier price for the 256GB and 1TB models"],
 ];
 
 export default function SteamFrameSpecsPage() {
@@ -185,7 +198,7 @@ export default function SteamFrameSpecsPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 8, 2026
+          Last updated: September 14, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -245,17 +258,27 @@ export default function SteamFrameSpecsPage() {
           <strong>185 grams</strong> on its own or{" "}
           <strong>440 grams</strong> fully assembled. It has eye tracking, four
           greyscale tracking cameras, Wi-Fi 7, and a PCIe expansion slot. It
-          does not have color passthrough or hand tracking. Valve has confirmed
-          every number on this page and none of the money: there is still no
-          price and no release date beyond summer 2026.
+          does not have built-in color passthrough or hand tracking. It
+          launched on September 14, 2026 at $1,059 for the 256GB Kit and
+          $1,299 for the 1TB Kit, without a power supply in the box.
         </p>
 
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Specifications below come from Valve&apos;s own announcement, as
-          documented in{" "}
+          Specifications below come from{" "}
+          <a
+            href="https://store.steampowered.com/hardware/steamframe"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Valve&apos;s Steam Frame product page
+          </a>
+          , published with the September 14, 2026 launch, and from Valve&apos;s
+          original announcement, as documented in{" "}
           <a
             href="https://www.uploadvr.com/valve-steam-frame-official-announcement-features-details/"
             target="_blank"
@@ -284,7 +307,7 @@ export default function SteamFrameSpecsPage() {
         </h2>
 
         <ComparisonTable
-          caption="Refresh rates are the one soft figure here. Valve's announcement described 72Hz and 120Hz with an experimental 144Hz mode; some later spec aggregators list intermediate steps that Valve has not published."
+          caption="Refresh rate was the one soft figure here. Valve's November 2025 announcement described 72Hz and 120Hz with an experimental 144Hz mode; the launch product page settles it as a supported range of 72 to 144Hz, 144Hz still experimental."
           columns={["Spec", "Steam Frame"]}
           rows={displayRows}
         />
@@ -320,7 +343,8 @@ export default function SteamFrameSpecsPage() {
           front, even though the Frame&apos;s assembled 440 grams is not far
           off. Valve also made the battery part of the strap and replaceable,
           which is a repairability choice almost nobody else in this category
-          has made.
+          has made. What it did not make is a charger: the Frame ships without
+          one, and Valve&apos;s own 45W unit is a $29 add-on at checkout.
         </p>
 
         <div className="my-8">
@@ -332,7 +356,7 @@ export default function SteamFrameSpecsPage() {
         </h2>
 
         <ComparisonTable
-          caption="Four greyscale cameras, no color passthrough. This is the clearest line between the Frame and a mixed reality headset."
+          caption="Four monochrome cameras, no built-in color passthrough. This is the clearest line between the Frame and a mixed reality headset."
           columns={["Spec", "Steam Frame"]}
           rows={ioRows}
         />
@@ -341,12 +365,18 @@ export default function SteamFrameSpecsPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Note the two different radios. The Frame has Wi-Fi 7 with dual radios
-          for normal network use, and it ships with a separate 6GHz Wi-Fi 6E
-          USB adapter that plugs into your gaming PC to create a dedicated
-          point-to-point link. That adapter is the reason Valve calls this a
-          streaming-first headset rather than a standalone one. Hands-on
-          reports have described the streaming as having no perceptible lag.
+          Note the two different radios. The Frame has Wi-Fi 7 with two radios,
+          and Valve&apos;s launch page spells out the split: one is dedicated
+          to streaming audio and video, the other connects to your Wi-Fi. It
+          ships with a separate 6GHz Wi-Fi 6E USB adapter that plugs into your
+          gaming PC to give that stream its own link. Multi-Link Streaming
+          then routes data across every available connection at once, and
+          Foveated Streaming uses the eye tracker to send the best pixels only
+          where you are looking, which Valve says typically offers over a 10x
+          improvement in image quality and effective bandwidth. That stack is
+          the reason Valve calls this a streaming-first headset rather than a
+          standalone one. Hands-on reports have described the streaming as
+          having no perceptible lag.
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
@@ -396,15 +426,41 @@ export default function SteamFrameSpecsPage() {
           32-megapixel sensors and 5K stereo capture, apparently earlier than
           anyone intended. Arcturus Industries built the camera tracking system
           inside the Frame, so the company selling the upgrade supplied the
-          part being upgraded. No price, and no date.
+          part being upgraded. On launch day Valve made it official, listing
+          the Arcturus Vision camera on its own Steam Frame page as a Steam
+          Frame Compatible accessory that adds 5K HDR color passthrough and
+          spatial video capture.{" "}
+          <a
+            href="https://www.uploadvr.com/steam-frame-price-revealed-reservations-opened-alyx-included/"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            UploadVR reports
+          </a>{" "}
+          a $149 price, a 10-gram weight and dual 32-megapixel Sony RGB
+          sensors, attached through the PCIe expansion port described above.
+          Zenni prescription inserts carry the same Steam Frame Compatible
+          mark.
         </p>
+
+        <h2 className="font-display text-2xl font-bold mt-10 mb-3">
+          What launch day answered
+        </h2>
+
+        <ComparisonTable
+          caption="Open questions on this page before September 14, 2026 that Valve's launch announcement and product page resolved."
+          columns={["Question", "Answer"]}
+          rows={resolvedRows}
+        />
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
           What Valve still has not told anyone
         </h2>
 
         <ComparisonTable
-          caption="A spec sheet with no price on it is not a product you can plan around. These are the gaps as of September 8, 2026."
+          caption="The gaps that remain after launch, as of September 14, 2026."
           columns={["Unknown", "Where it stands"]}
           rows={unknownRows}
         />

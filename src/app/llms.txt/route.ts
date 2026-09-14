@@ -63,7 +63,7 @@ VR.org was co-founded in 2018 by Evan Marcus and Mark Mahle (NetActuate). Editor
 - [Best Standalone VR Headset 2026](${SITE}/best-standalone-vr-headset): All-in-one VR headsets that need no PC or console
 - [Upcoming VR Headsets 2026](${SITE}/upcoming-vr-headsets-2026): New releases and upcoming headsets, updated as they are announced
 - [VR, AR & XR Release Dates 2026](${SITE}/vr-release-dates): Live tracker of every upcoming VR headset, AR glasses, game, and accessory release date with confirmed/expected/rumored status
-- [Valve Steam Frame: Everything We Know](${SITE}/steam-frame): Release date signals, price expectations, specs, and a dated timeline of every Steam Frame development
+- [Valve Steam Frame: Everything We Know](${SITE}/steam-frame): Launched September 14, 2026 at $1,059 (256GB) and $1,299 (1TB); reservation dates, official specs, what is in the box, and a dated timeline of every Steam Frame development
 - [Best VR Headset for Gaming 2026](${SITE}/best-vr-headset-for-gaming): Quest 3, Quest 3S, PSVR2, and PC VR ranked for gaming
 - [Highest Resolution VR Headset 2026](${SITE}/highest-resolution-vr-headset): The sharpest VR displays ranked, with the pixels-per-degree caveat explained
 - [Best VR Headset for Watching Movies 2026](${SITE}/best-vr-headset-for-movies): Top headsets for a giant personal cinema in VR

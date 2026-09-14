@@ -12,13 +12,13 @@ import { AD_SLOTS } from "@/lib/ads";
 import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 
 export const metadata = {
-  title: "Steam Frame Release Date: Latest News & Launch Signals | VR.org",
+  title: "Steam Frame Release Date: Launched September 14, 2026, Reservation Dates | VR.org",
   description:
-    "When does the Valve Steam Frame come out? Summer 2026 is confirmed, hardware has cleared US customs, and the Great on Frame store page is live. Every release date signal, tracked and dated.",
+    "The Valve Steam Frame launched September 14, 2026. Reservation signups close September 17 at 10 AM Pacific, results arrive that day, and purchase emails begin September 18. Every date, plus the signals that predicted it.",
   openGraph: {
-    title: "Steam Frame Release Date: Latest News & Launch Signals | VR.org",
+    title: "Steam Frame Release Date: Launched September 14, 2026, Reservation Dates | VR.org",
     description:
-      "Summer 2026 confirmed, hardware in US warehouses, store page live. Every launch signal tracked and dated.",
+      "Launched September 14. Signups close September 17 at 10 AM PT, purchase emails from September 18. Every key date and every signal that led there.",
     url: "https://vr.org/steam-frame-release-date",
     siteName: "VR.org",
     images: [
@@ -32,9 +32,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image" as const,
-    title: "Steam Frame Release Date: Latest News & Launch Signals",
+    title: "Steam Frame Release Date: Launched September 14, 2026",
     description:
-      "Summer 2026 confirmed, hardware in US warehouses, store page live. Tracked by VR.org.",
+      "Signups close September 17 at 10 AM PT; purchase emails start September 18. Tracked by VR.org.",
     images: [
       "https://vr.org/article-images/steam-frame/steam-frame-controllers.jpg",
     ],
@@ -44,13 +44,13 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-09-08";
+const LAST_UPDATED = "2026-09-14";
 
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline:
-    "When Does the Steam Frame Come Out? Every Release Date Signal, Tracked",
+    "Steam Frame Release Date: Launched September 14, 2026, and Every Signal That Called It",
   datePublished: "2026-07-17",
   dateModified: LAST_UPDATED,
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
@@ -78,34 +78,39 @@ const breadcrumbs = breadcrumbSchema([
 
 const faq = faqPageSchema([
   {
-    question: "When does the Steam Frame come out?",
+    question: "When did the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day as of September 8, 2026. The strongest signal yet arrived on September 3, when two of the headset's seven Steam backend packages were revised for the first time since May 5; Steam Machine packages changed six days before its reservation lottery opened, which pointed at the week of September 7, a week now underway. Every other prerequisite is cleared: the FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29, roughly 35 tons of VR hardware cleared US customs in June, the Steam Machine already shipped June 30, the Great on Frame catalog has grown from eight titles to 121, and Valve's own unboxing and first-time-setup videos leaked out of the Steam client on August 19. Summer ends September 22, which leaves Valve 14 days to keep the promise.",
+      "Valve launched the Steam Frame on September 14, 2026, with a Steam Hardware post titled \"Steam Frame is here!\" that opened reservation signups the same morning. Signups close Thursday, September 17, 2026 at 10:00 AM Pacific. Valve then runs a one-time randomization and emails every signup on September 17 with a reservation or waitlist result, and the first purchase emails go out September 18. Units ship as they become available, in randomized queue order. That kept Valve's summer 2026 promise with eight days to spare before summer ends on September 22.",
   },
   {
-    question: "How do I preorder the Steam Frame?",
+    question: "How do I reserve a Steam Frame?",
     answer:
-      "You cannot yet, though dataminer Brad Lynch reported on September 4 that a reservation system is already live in Steam's backend for two Steam Frame SKUs. Expect the Steam Machine playbook: a short-notice randomized reservation queue on Steam rather than first-come first-served preorders, with purchase emails following within days. The $99 Steam Controller sold out in under an hour and the Machine used a lottery, so plan on tight supply and act fast when reservations open.",
+      "Pick one model, the 256GB Kit at $1,059 or the 1TB Kit at $1,299, on the Steam Frame product page and join the list before September 17 at 10:00 AM Pacific. You need a Steam account in good standing that made a purchase before April 27, 2026, and Valve allows one signup per household, checked against payment method and shipping address. Signing up early gives no advantage, because the whole list is shuffled once. Anyone who signs up after the shuffle goes to the back of the waitlist.",
+  },
+  {
+    question: "What happens after the September 17 randomization?",
+    answer:
+      "You get an email on September 17 saying you are either in the reservation queue or on the waitlist. A reservation means a unit of the model you chose is held in your name; when it is ready to ship, Valve emails you a purchase link and you have 72 hours to complete checkout before the reservation passes to the next person. Waitlisted buyers move up if reservations are cancelled, and future production runs are offered in waitlist order. Lists are separate for each model and for each shipping region, and you cannot switch models after the shuffle.",
   },
   {
     question: "Was the Steam Frame delayed?",
     answer:
-      "Yes, softly. The November 2025 announcement targeted early 2026, which slipped to first half by February, and in April Valve publicly blamed the memory crisis for revisiting the schedule. Summer 2026 is the window that stuck, and Valve reaffirmed it in late June alongside the Steam Machine launch.",
+      "Yes, softly. The November 2025 announcement targeted early 2026, which slipped to first half by February, and in April Valve publicly blamed the memory crisis for revisiting the schedule. Summer 2026 was the window that stuck: Valve reaffirmed it in late June alongside the Steam Machine launch and launched on September 14.",
   },
   {
-    question: "Will the Steam Frame launch worldwide?",
+    question: "Where can you buy the Steam Frame?",
     answer:
-      "Valve has not published a country list. Steam store hardware pages went live in April with KOMODO listed as the distribution partner for Asian markets, the same arrangement Valve uses for the Steam Deck in Japan, Korea, Taiwan, and Hong Kong. Expect an initial wave centered on Valve's usual hardware regions with KOMODO handling Asia.",
+      "Valve ships the Steam Frame directly through Steam in the U.S., Canada, the UK, the EU, and Australia, with separate reservation lists for North America, the UK and EU, and Australia. In Japan, Taiwan, and Hong Kong it is sold through KOMODO, Valve's authorized distributor, which publishes its own pricing. South Korea is coming at a later date.",
   },
   {
-    question: "What will the Steam Frame launch with?",
+    question: "What does the Steam Frame launch with?",
     answer:
-      "No first-party launch game exists; Valve's bet is that your whole Steam library is the launch title, streamed over the bundled 6GHz dongle or run on-device through Proton. The Great on Frame page, which certifies games for on-device play, listed eight titles as of July 17. Watch how fast it grows; a filling storefront shelf is the classic pre-launch tell.",
+      "No first-party launch game, but every kit includes a copy of Half-Life: Alyx, redeemed in the headset's settings (one copy per device, and not if you already own it). Valve counts over 100 games as Steam Frame Standalone Verified at launch, and the rest of your Steam library streams from a PC over the included Wi-Fi 6E wireless adapter.",
   },
   {
-    question: "How much will the Steam Frame cost at launch?",
+    question: "How much does the Steam Frame cost at launch?",
     answer:
-      "No official price. Retailer database leaks point to roughly $950 to $1,070, analyst estimates run $899 to $1,199, and the Steam Machine's $1,049 sticker argues for the high end. Our Steam Frame price tracker follows every signal.",
+      "$1,059 for the 256GB Kit and $1,299 for the 1TB Kit in the US, VAT included where applicable in other regions. A power supply is not included; Valve sells a 45W unit for $29. Our Steam Frame price page lists every regional price and accessory.",
   },
 ]);
 
@@ -231,6 +236,19 @@ const DATE_SIGNALS: DateSignal[] = [
     signal: "Great on Frame at 121 titles, 14 days of summer left",
     read: "Shelf mostly stocked, the promised week is here",
   },
+  {
+    date: "Sep 14, 2026",
+    signal: "Valve posts \"Steam Frame is here!\" and opens reservation signups at $1,059 and $1,299",
+    read: "Launched, eight days before summer ends",
+  },
+];
+
+const KEY_DATES: string[][] = [
+  ["Mon, Sep 14, 2026", "Launch announcement; reservation signups open"],
+  ["Thu, Sep 17, 2026, 10:00 AM PT", "Signups close; one-time randomization of each list"],
+  ["Thu, Sep 17, 2026", "Reservation or waitlist result emails go out"],
+  ["Fri, Sep 18, 2026", "First purchase emails; 72 hours to check out each"],
+  ["After Sep 17, 2026", "Late signups join the back of the waitlist"],
 ];
 
 export default function SteamFrameReleaseDatePage() {
@@ -249,11 +267,11 @@ export default function SteamFrameReleaseDatePage() {
           className="font-display text-4xl font-bold mb-3"
           style={{ letterSpacing: "-0.5px" }}
         >
-          When Does the Steam Frame Come Out? Every Release Date Signal, Tracked
+          Steam Frame Release Date: Launched September 14, 2026, and Every Signal That Called It
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 8, 2026
+          Last updated: September 14, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -310,21 +328,46 @@ export default function SteamFrameReleaseDatePage() {
 
         {/* Definitional lede for AI Overview capture */}
         <p
+          className="text-[15px] leading-[1.7] mb-4"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          The Valve Steam Frame launched on September 14, 2026. Valve&apos;s
+          Steam Hardware post, headlined &quot;Steam Frame is here!&quot;, went
+          up at 10:01 AM Pacific and opened reservation signups on the spot.
+          Signups close Thursday, September 17 at 10:00 AM Pacific, everyone
+          gets a reservation or waitlist email that day, and the first purchase
+          emails go out Friday, September 18. Pricing starts at $1,059. The
+          launch kept Valve&apos;s summer 2026 promise with eight days of summer
+          to spare.
+        </p>
+        <p
           className="text-[15px] leading-[1.7] mb-8"
           style={{ color: "var(--text-secondary)" }}
         >
-          The Valve Steam Frame is confirmed for summer 2026, and as of September 8, 2026 Valve has not named the day. It has, however, started touching
-          the store: two of the headset&apos;s seven Steam backend packages were
-          revised on September 3, the first change since May 5, and Steam Machine
-          packages moved six days before its reservation lottery opened. The
-          regulatory path is fully clear: the FCC granted equipment authorization on July 29 under
-          FCC ID 2AES4-1015, which is the last gate before a radio device can
-          legally be sold in the United States. Add the 35 tons of hardware
-          already through US customs, a Steam Machine that shipped on June 30,
-          and a Great on Frame catalog that went from eight titles to 121 in
-          seven weeks, and nothing is left but the announcement. Summer ends
-          September 22. This page tracks every release date signal, dated, until
-          Valve makes it official.
+          It did not arrive in the week this page had pointed to. Two of the
+          headset&apos;s Steam backend packages were revised on September 3,
+          and because Steam Machine packages had moved six days before its own
+          lottery, we read that as the week of September 7. The actual gap was
+          11 days. The rest of the trail held up: FCC authorization on July 29,
+          35 tons of hardware through US customs in June, leaked setup videos
+          on August 19, and a Great on Frame shelf that reached 121 titles by
+          September 8. Our{" "}
+          <a
+            href="/articles/steam-frame-reservation-how-to-sign-up-before-september-17-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            reservation guide
+          </a>{" "}
+          walks through signing up, and the{" "}
+          <a
+            href="/articles/steam-frame-launch-price-1059-psu-not-included-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            launch report
+          </a>{" "}
+          covers what Valve announced.
         </p>
 
         <figure className="pillar-figure">
@@ -339,22 +382,32 @@ export default function SteamFrameReleaseDatePage() {
         </figure>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
+          Steam Frame key dates
+        </h2>
+        <ComparisonTable
+          caption="Valve's official Steam Frame reservation schedule, from the September 14, 2026 announcement and the Steam Frame FAQ. Times are Pacific."
+          columns={["Date", "What happens"]}
+          rows={KEY_DATES}
+        />
+
+        <h2 className="font-display text-2xl font-bold mt-10 mb-3">
           The signal timeline
         </h2>
         <ComparisonTable
-          caption="Every Steam Frame release date signal in order, and what each one actually tells us."
+          caption="Every Steam Frame release date signal in order, from the November 2025 announcement to launch day, and what each one told us."
           columns={["Date", "Signal", "Our read"]}
           rows={DATE_SIGNALS.map((s) => [s.date, s.signal, s.read])}
         />
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
-          Why we think it is weeks, not months
+          Why the launch was never months away
         </h2>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Three kinds of evidence stack up. The regulatory kind:{" "}
+          Three kinds of evidence stacked up before Valve said a word. The
+          regulatory kind:{" "}
           <a
             href="/articles/steam-frame-fcc-filing-warehouse-imports-june-2026-launch-imminent"
             className="no-underline hover:underline"
@@ -391,8 +444,8 @@ export default function SteamFrameReleaseDatePage() {
           >
             the Steam Machine started reaching doorsteps June 30
           </a>
-          . The Frame is the last piece of Valve&apos;s 2026 hardware wave
-          still waiting for a date, and summer ends in September.
+          . The Frame was the last piece of Valve&apos;s 2026 hardware wave
+          waiting for a date, and it got one on September 14.
         </p>
 
         <div className="my-8">
@@ -400,44 +453,51 @@ export default function SteamFrameReleaseDatePage() {
         </div>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
-          How launch day will probably work
+          How launch day actually works
         </h2>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Do not expect a traditional preorder page. The Steam Machine used a
-          short-notice randomized reservation lottery on Steam, with purchase
-          emails going out within days, and the{" "}
+          There is no traditional preorder page. Valve reused the randomized
+          reservation system it built for the Steam Machine, saying it helped
+          improve the purchase experience and limit resellers, and the{" "}
           <a
             href="/articles/valve-steam-controller-sold-out-launch-day-may-2026"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            $99 Steam Controller sold out in under an hour
+            $99 Steam Controller selling out in under an hour
           </a>{" "}
-          before that. Valve built the lottery system precisely because its
-          hardware launches keep getting crushed by demand. When the Frame
-          reservation window opens, it will likely open with little warning
-          and close fast, so decide your budget now (
-          <a
-            href="/steam-frame-price"
-            className="no-underline hover:underline"
-            style={{ color: "var(--accent-cyan)" }}
-          >
-            our price tracker has every signal
-          </a>
-          ) and keep your Steam wallet and shipping details current.
+          shows what first-come first-served would have looked like. This time
+          the window runs three days instead of opening with no warning, and
+          Valve says outright that there is no incentive to be first: every
+          signup made before September 17 at 10:00 AM Pacific lands in the same
+          shuffle. Its FAQ adds that the longer window gives it time to confirm
+          signups are real accounts, one per household.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The one wrinkle history warns about: a leaked June 23 price reveal
-          date already came and went without an announcement. Valve&apos;s
-          calendar is not our calendar, and the only date that counts is the
-          one Valve publishes. When that happens, this page will say so in the
-          first sentence.
+          The eligibility bar is the part most likely to catch someone out.
+          Your Steam account must be in good standing and must have made a
+          purchase before April 27, 2026, so a fresh account opened for launch
+          week does not qualify. You pick the 256GB or 1TB model at signup and
+          cannot change it after the shuffle. Lists are separate per model and
+          per shipping region (North America, the UK and EU, and Australia),
+          which is why Valve warns that a waitlisted buyer in another region
+          may get a purchase email before you do. Once your email arrives, you
+          have 72 hours to check out. Price details, including the $29 power
+          supply that is not in the box, are on{" "}
+          <a
+            href="/steam-frame-price"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            our Steam Frame price page
+          </a>
+          .
         </p>
 
         <FaqSection schema={faq} />

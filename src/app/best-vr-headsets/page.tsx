@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best VR Headsets 2026: The Complete Buyer's Guide",
   datePublished: "2026-03-23",
-  dateModified: "2026-09-06",
+  dateModified: "2026-09-14",
   author: {
     "@type": "Organization",
     name: "VR.org",
@@ -684,10 +684,10 @@ export default function BestVRHeadsetsPage() {
           <strong style={{ color: "var(--text-primary)" }}>Verdict:</strong>{" "}
           The Valve Index is for PC VR purists who value tracking fidelity,
           wide FOV, and high refresh rate over resolution and convenience.
-          Valve has now discontinued the Index as its standalone successor, the
-          Steam Frame, closes in on its confirmed summer 2026 launch.
+          Valve has now discontinued the Index, and its successor, the Steam
+          Frame, launched on September 14 at $1,059 with reservations open.
           Remaining stock may still sell at clearance prices, but most buyers
-          should wait for the Frame.
+          who want Valve hardware should look at the Frame instead.
         </p>
 
         {/* Bigscreen Beyond 2 */}
@@ -893,16 +893,25 @@ export default function BestVRHeadsetsPage() {
           <strong style={{ color: "var(--text-primary)" }}>
             Steam Frame
           </strong>{" "}
-          headset is confirmed for summer 2026, with the hardware through US
-          customs, FCC filings public, and the Great on Frame store section at
-          89 certified titles as of August 24, up from eight in mid July.
-          Valve&apos;s own unboxing and first-time-setup videos leaked out of
-          the Steam client on August 19, which means retail packaging is
-          finished. Dual 2160x2160 displays, a bundled 6GHz wireless dongle for
-          lag-free PC streaming, and standalone SteamOS play are all locked;
-          only the price and the day are unannounced, with estimates between
-          $899 and $1,199. Summer ends September 22, so Valve has about four
-          weeks to keep the promise. Our{" "}
+          headset launched on September 14 at $1,059 for 256GB and $1,299 for
+          1TB, with Half-Life: Alyx and a Wi-Fi 6E wireless adapter in the kit
+          and no power supply (Valve sells a 45W unit for $29). It runs a
+          Snapdragon 8 Gen 3 with 16GB of RAM behind two 2160x2160 LCD panels,
+          streams from your PC with eye-tracked foveated streaming, and plays
+          over 100 Standalone Verified games on its own. For color
+          passthrough, Valve lists the $149 Arcturus Vision add-on camera. You cannot
+          just add one to a cart yet: Valve is running a reservation lottery
+          with signups open until September 17 at 10 AM Pacific and purchase
+          emails going out from September 18, so no retail unit is in
+          customers&apos; hands and we have not reviewed one. Our{" "}
+          <a
+            href="/articles/steam-frame-reservation-how-to-sign-up-before-september-17-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            signup guide
+          </a>{" "}
+          covers the rules, and our{" "}
           <a
             href="/steam-frame"
             className="no-underline hover:underline"
@@ -912,13 +921,13 @@ export default function BestVRHeadsetsPage() {
           </a>{" "}
           and{" "}
           <a
-            href="/steam-frame-release-date"
+            href="/steam-frame-price"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            release date tracker
+            price breakdown
           </a>{" "}
-          follow every signal.
+          have the full details.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"

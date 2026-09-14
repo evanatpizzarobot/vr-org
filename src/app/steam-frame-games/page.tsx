@@ -14,11 +14,11 @@ import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 export const metadata = {
   title: "Steam Frame Games: What You Can Actually Play on It | VR.org",
   description:
-    "Three different things run on a Steam Frame: your PC VR library streamed over the 6GHz link, flatscreen Steam games on-device through Proton, and native certified VR titles. What each path gets you, and what is missing at launch.",
+    "Three different things run on a Steam Frame: your PC VR library streamed over the 6GHz link, flatscreen Steam games on-device through Proton, and native certified VR titles. Plus the Half-Life: Alyx copy in every box, and what is still missing at launch.",
   openGraph: {
     title: "Steam Frame Games: What You Can Actually Play on It | VR.org",
     description:
-      "Streamed PC VR, flatscreen Steam games through Proton, and 130 certified native titles. The three ways anything runs on a Steam Frame.",
+      "Streamed PC VR, flatscreen Steam games through Proton, over 100 Standalone Verified titles, and Half-Life: Alyx in the box. The three ways anything runs on a Steam Frame.",
     url: "https://vr.org/steam-frame-games",
     siteName: "VR.org",
     images: [
@@ -44,7 +44,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-09-08";
+const LAST_UPDATED = "2026-09-14";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -78,22 +78,27 @@ const faq = faqPageSchema([
   {
     question: "What games can you play on the Steam Frame?",
     answer:
-      "Three different libraries, through three different mechanisms. First, your existing PC VR library streamed from a gaming PC over the bundled 6GHz adapter, which is the experience Valve calls primary and which means anything in SteamVR already works. Second, flatscreen Steam games running on the headset itself, translated from x86 by Proton and FEX, played on a virtual screen. Third, native VR titles certified under Steam Frame Verified, collected on Valve's Great on Frame page, which reported 130 titles on September 11, 2026. The Frame also runs Android APKs.",
+      "Three different libraries, through three different mechanisms. First, your existing PC VR library streamed from a gaming PC over the bundled 6GHz adapter, which is the experience Valve calls primary and which means anything in SteamVR already works. Second, flatscreen Steam games running on the headset itself, translated from x86 by Proton and FEX, played on a virtual screen. Third, native VR titles certified under Steam Frame Verified, collected on Valve's Great on Frame page, which reported 130 titles on September 11, 2026; Valve's September 14 launch post counts over 100 games Steam Frame Standalone Verified. Every Steam Frame also includes a copy of Half-Life: Alyx. The Frame also runs Android APKs.",
   },
   {
     question: "Does the Steam Frame play PC VR games?",
     answer:
-      "Yes, and it is the headset's main pitch. The Frame ships with a dedicated 6GHz Wi-Fi 6E USB adapter that plugs into your gaming PC and creates a point-to-point link rather than routing through your home network. Eye-tracked foveated streaming sends full detail only where you are looking, which is how the image survives compression. Valve claims lower latency and greater precision than Steam Link VR, and hands-on reports have described no perceptible lag. Anything that runs in SteamVR on your PC is playable this way.",
+      "Yes, and it is the headset's main pitch. The Frame ships with a Wi-Fi 6E USB adapter that plugs into your gaming PC and gives the stream a dedicated 6GHz link, and one of the headset's two Wi-Fi 7 radios is reserved for that stream. Foveated Streaming uses eye tracking to send full detail only where you are looking, which Valve says typically offers over a 10x improvement in image quality and effective bandwidth and works for your entire VR library. Valve claims lower latency and greater precision than Steam Link VR, and hands-on reports have described no perceptible lag. Anything that runs in SteamVR on your PC is playable this way.",
   },
   {
     question: "How many games are Steam Frame Verified?",
     answer:
-      "130 as of September 11, 2026, up from 121 on September 8, 117 on September 6, 98 on August 27, 65 on August 10 and just eight on July 17. The catalog has grown roughly sixteen-fold in eight weeks. Most of that growth is flatscreen Steam catalog games rather than native VR, so the raw number overstates how much new VR content the Frame arrives with.",
+      "130 as of September 11, 2026, up from 121 on September 8, 117 on September 6, 98 on August 27, 65 on August 10 and just eight on July 17. The catalog has grown roughly sixteen-fold in eight weeks, and Valve's own launch post on September 14 describes it as over 100 games and growing. Most of that growth is flatscreen Steam catalog games rather than native VR, so the raw number overstates how much new VR content the Frame arrives with.",
+  },
+  {
+    question: "Does the Steam Frame come with any games?",
+    answer:
+      "Yes, one. Every Steam Frame includes a copy of Half-Life: Alyx, which you redeem in Settings the first time you log into the headset. Only one copy can be redeemed per device, and you cannot redeem it if Half-Life: Alyx is already in your library. Valve built a native 64-bit ARM version of the game that runs standalone on the headset, with no content changes, so Workshop items work, and Steam Cloud saves let you switch between standalone play and PC streaming, according to UploadVR's launch report. It is a 2020 game rather than a new release.",
   },
   {
     question: "Does the Steam Frame have exclusive games?",
     answer:
-      "No first-party launch title has been announced, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. Valve's own The Lab was downgraded to Unsupported on July 29, 2026. The most notable VR title on the certified list is Half-Life 2: VR Mod, a free community mod certified on August 6. The Frame's launch library argument is the Steam library you already own, not exclusives.",
+      "No. No new first-party launch title shipped, and Road to VR reported that a Steam Frame team member denied Valve has any VR content in development. Valve's own The Lab was downgraded to Unsupported on July 29, 2026. The most notable VR title on the certified list is Half-Life 2: VR Mod, a free community mod certified on August 6. The Frame's launch library argument is the Steam library you already own, not exclusives.",
   },
   {
     question: "Can you play flatscreen Steam games on the Steam Frame?",
@@ -149,7 +154,7 @@ export default function SteamFrameGamesPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 8, 2026
+          Last updated: September 14, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -208,8 +213,19 @@ export default function SteamFrameGamesPage() {
           <strong>on the headset itself</strong>, translated from x86 by Proton
           and FEX. And native VR titles certified under{" "}
           <strong>Steam Frame Verified</strong> run on-device too, 130 of them
-          as of September 8, 2026. The Frame also runs Android APKs. What it
-          does not have is a single exclusive launch title.
+          on Valve&apos;s Great on Frame page as of September 11, 2026. The
+          Frame also runs Android APKs. It launched on September 14 with a copy
+          of{" "}
+          <a
+            href="https://store.steampowered.com/app/546560/"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            Half-Life: Alyx
+          </a>{" "}
+          in every box, and without a single exclusive launch title.
         </p>
 
         <ComparisonTable
@@ -238,7 +254,8 @@ export default function SteamFrameGamesPage() {
           style={{ color: "var(--text-secondary)" }}
         >
           Practically, that means the Frame&apos;s VR library on day one is
-          however many SteamVR titles you already own. No certification list
+          however many SteamVR titles you already own, plus the copy of
+          Half-Life: Alyx Valve puts in the box. No certification list
           applies, because none of it is running on the headset. This is also
           the path with the hard prerequisite: no gaming PC, no path one.
         </p>
@@ -377,13 +394,37 @@ export default function SteamFrameGamesPage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          There is no first-party launch game. Road to VR reported that a Steam
-          Frame team member denied Valve has any VR content in development, and
-          Valve&apos;s own The Lab was downgraded to Unsupported on July 29,
-          2026. A hardware launch from the company that made Half-Life: Alyx,
-          arriving with nothing of its own to play, is a genuine strategic
-          choice rather than an oversight: the argument is that you already own
-          the library.
+          There is no new first-party launch game. Road to VR reported that a
+          Steam Frame team member denied Valve has any VR content in
+          development, and Valve&apos;s own The Lab was downgraded to
+          Unsupported on July 29, 2026. What Valve did at launch was reach back
+          six years: every Frame includes a copy of Half-Life: Alyx, redeemed
+          in Settings, one per device, and not for anyone who already owns it.
+          The more interesting part is how it runs.{" "}
+          <a
+            href="https://www.uploadvr.com/steam-frame-price-revealed-reservations-opened-alyx-included/"
+            target="_blank"
+            rel="noopener"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            UploadVR reports
+          </a>{" "}
+          that Valve made a native 64-bit ARM build of Alyx for standalone
+          play, with no content changes, so Workshop items carry over, and
+          Steam Cloud saves that follow you between the headset and a PC
+          stream. The copy is worth the most to people new to PC VR, while
+          SteamVR veterans who already own Alyx get the ARM build rather than
+          a second license. Our{" "}
+          <a
+            href="/articles/half-life-alyx-standalone-steam-frame-launch-game-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            piece on Alyx as the launch game
+          </a>{" "}
+          goes further. Beyond that, the argument is still that you already
+          own the library.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
@@ -392,8 +433,19 @@ export default function SteamFrameGamesPage() {
           Whether that argument holds depends entirely on which path you fall
           into. If you have a gaming PC, the Frame arrives with more VR content
           than any headset ever launched with. If you do not, it arrives with
-          130 certified titles, most of them flatscreen, and a free Half-Life 2
-          mod as the headline VR experience.
+          130 certified titles, most of them flatscreen, a free Half-Life 2 mod
+          as the headline certified VR experience, and a native ARM build of
+          Half-Life: Alyx in the box. Alyx was not among the 131 titles on
+          Valve&apos;s Great on Frame page when we checked on launch day.
+          Our{" "}
+          <a
+            href="/articles/steam-frame-launch-price-1059-psu-not-included-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            launch report
+          </a>{" "}
+          covers the rest of what is in the box.
         </p>
 
         <FaqSection schema={faq} />

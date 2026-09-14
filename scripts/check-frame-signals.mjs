@@ -52,8 +52,8 @@ const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)";
 // Last known state, updated by hand when a check confirms a change. These are
 // the baseline the report compares against.
 const KNOWN = {
-  appChangeNumber: 35675573,
-  releaseState: "prerelease",
+  appChangeNumber: 38870567,
+  releaseState: "released", // flipped on launch day, Sep 14, 2026
   sectionType: "ownersonly",
   subs: [
     { id: 1629484, last: "2026-09-10 19:52:43 UTC", note: "moved Sep 3 and Sep 10" },
@@ -73,12 +73,8 @@ const KNOWN = {
  * note, because that is the moment the row should be added.
  */
 const EXCLUDED = [
-  {
-    name: "We are Eva",
-    appid: "1490590",
-    tier: "Playable",
-    reason: "appears in the filter with no steam_frame_compatibility record in its app data",
-  },
+  // We are Eva was excluded until its compatibility record appeared; it gained
+  // one by launch day (Sep 14, 2026) and is now a regular Playable row.
 ];
 
 const label = (kind, name) => `check:frame  ${kind}  ${name}`;

@@ -15,7 +15,7 @@ import { ComparisonTable, FaqSection } from "@/components/SpokeBlocks";
 export const metadata = {
   title: "Great on Frame: Every Verified Steam Frame Game So Far | VR.org",
   description:
-    "Valve's Great on Frame page collects every game certified for the Steam Frame headset. The full verified list so far, what the 72 fps certification requires, and every addition tracked as the catalog grows.",
+    "Valve's Great on Frame page collects every game certified for the Steam Frame, which launched September 14, 2026. The full verified list, now 131 titles, what the 72 fps certification requires, and every addition tracked as the catalog grows.",
   openGraph: {
     title: "Great on Frame: Every Verified Steam Frame Game So Far | VR.org",
     description:
@@ -43,7 +43,7 @@ export const metadata = {
   },
 };
 
-const LAST_UPDATED = "2026-09-11";
+const LAST_UPDATED = "2026-09-14";
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -82,7 +82,7 @@ interface VerifiedGame {
 
 // Source of truth for the verified list. Append on every addition and mirror
 // each change in the CHANGELOG below; the audit registry tracks this page on a
-// 14-day cadence but the real cadence is every catalog beat until launch.
+// 14-day cadence but the real cadence is every catalog beat through launch month.
 const VERIFIED_GAMES: VerifiedGame[] = [
   {
     name: "The Lab",
@@ -1010,6 +1010,13 @@ const VERIFIED_GAMES: VerifiedGame[] = [
     added: "Sep 11, 2026",
     note: "Observed on Valve's Great on Frame page on September 11, 2026, in the wave that took the count from 121 to 130.",
   },
+  {
+    name: "The Thrill of the Fight 2",
+    developer: "Halfbrick Studios",
+    type: "VR",
+    added: "Sep 14, 2026",
+    note: "Observed on Valve's Great on Frame page on launch day, September 14, 2026, taking the count to 131. Its app record points at lepton-stable, Valve's Android runtime, rather than Proton.",
+  },
 ];
 
 // Category 2, the tier below Great on Frame. Pulled from Valve's
@@ -1187,6 +1194,14 @@ const PLAYABLE_GAMES: PlayableGame[] = [
     held: ["Default controller config not fully functional", "No on-screen keyboard on text input"],
   },
   {
+    name: "We are Eva",
+    developer: "Totally Normal Creature",
+    type: "Flatscreen",
+    deck: "Verified",
+    tested: "Aug 26, 2026",
+    held: ["Controller glyphs do not match the device"],
+  },
+  {
     name: "Cast n Chill",
     developer: "Wombat Brawler",
     type: "Flatscreen",
@@ -1210,6 +1225,10 @@ interface ChangelogEntry {
 }
 
 const CHANGELOG: ChangelogEntry[] = [
+  {
+    date: "Sep 14, 2026",
+    text: "Launch day. Valve opened Steam Frame reservations at $1,059 and $1,299 and its announcement counts over 100 games Steam Frame Standalone Verified; the Great on Frame filter reports 131, up one from 130 with The Thrill of the Fight 2. We are Eva, left out of the Playable table on September 11 because it had no Steam Frame compatibility record, now carries one (category 2, held on controller glyphs), so the Playable table lists all 23. Half-Life: Alyx, bundled with every Frame, is not on the Great on Frame list.",
+  },
   {
     date: "Sep 11, 2026",
     text: "Added the Playable tier to this page. Valve's category 2 holds 23 titles, none of them surfaced anywhere on the storefront, and each app record names the check that failed. Eleven failed on text input rather than anything graphical, and 16 of the 23 hold Steam Deck Verified. We are Eva appears in Valve's filter with no Steam Frame compatibility record in its app data, so the table lists 22 and flags the discrepancy.",
@@ -1277,12 +1296,12 @@ const faq = faqPageSchema([
   {
     question: "What is Great on Frame?",
     answer:
-      "Great on Frame is a curated Steam storefront section, live at store.steampowered.com/greatonframe, that collects every game certified to run well on the Steam Frame, Valve's upcoming standalone VR headset. It is the VR sibling of Great on Deck, the label that told Steam Deck buyers which games would actually play well on the hardware.",
+      "Great on Frame is a curated Steam storefront section, live at store.steampowered.com/greatonframe, that collects every game certified to run well on the Steam Frame, the wireless VR headset Valve launched on September 14, 2026. It is the VR sibling of Great on Deck, the label that told Steam Deck buyers which games would actually play well on the hardware.",
   },
   {
     question: "Which games are Great on Frame right now?",
     answer:
-      "Valve's page reported 130 matches on September 11, 2026, up from 121 on September 8, 117 on September 6, 98 on August 27, 89 on August 24, 65 on August 10 and eight on July 17. Confirmed entries include Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter 2, Moss II VR, The Room VR: A Dark Matter, the I Expect You To Die trilogy, Pavlov Shack, The Light Brigade: Definitive Edition, Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29.",
+      "Valve's page reported 131 matches on September 14, 2026, launch day, up from 130 on September 11, 121 on September 8, 117 on September 6, 98 on August 27, 89 on August 24, 65 on August 10 and eight on July 17. Confirmed entries include Beat Saber, Job Simulator, Walkabout Mini Golf VR, Pistol Whip, Synth Riders, Red Matter 2, Moss II VR, The Room VR: A Dark Matter, the I Expect You To Die trilogy, Pavlov Shack, The Light Brigade: Definitive Edition, The Thrill of the Fight 2, Half-Life 2: VR Mod, SUPERHOT VR, Space Pirate Trainer, HARD BULLET, Forefront, Arizona Sunshine VR Remake and VR 2, Into Black, Titan Isles, Underdogs, Ancient Dungeon, and Deadly Delivery on the VR side, plus flatscreen titles including Portal 2, Balatro, Hollow Knight: Silksong, Hades, Hades II, Cuphead, Brotato, Escape Simulator, and Moss: The Forgotten Relic. Flatscreen catalog games still outnumber native VR ones. Valve's own The Lab was downgraded to Unsupported on July 29, and Half-Life: Alyx, which comes with every Steam Frame, is not on the list.",
   },
   {
     question: "What does Steam Frame Verified require?",
@@ -1292,7 +1311,7 @@ const faq = faqPageSchema([
   {
     question: "What does Playable mean on Steam Frame, and which games are in that tier?",
     answer:
-      "Playable is Valve's category 2, one step below the Verified rating that earns a place on the Great on Frame page, and Valve does not display it anywhere on the storefront. As of September 11, 2026 the frame_compatibility=2 filter returns 23 titles, including RimWorld, Vampire Survivors, Geometry Dash, Tetris Effect: Connected and Arca's Path VR. Each game's Steam app record names the check it failed. Eleven of the 23 failed because the game never asks the system for the on-screen keyboard, which matters more in a headset than on a handheld with a touchscreen. Five have a default controller configuration that is not fully functional, five are not performant at default settings, three do not support the native resolution, three show the wrong controller glyphs and two have interface text Valve judged not legible. Sixteen of the 23 hold Steam Deck Verified, the top badge on Valve's handheld, and still sit a tier lower on the Frame.",
+      "Playable is Valve's category 2, one step below the Verified rating that earns a place on the Great on Frame page, and Valve does not display it anywhere on the storefront. As of September 14, 2026 the frame_compatibility=2 filter returns 23 titles, including RimWorld, Vampire Survivors, Geometry Dash, Tetris Effect: Connected and Arca's Path VR. Each game's Steam app record names the check it failed. Eleven of the 23 failed because the game never asks the system for the on-screen keyboard, which matters more in a headset than on a handheld with a touchscreen. Five have a default controller configuration that is not fully functional, five are not performant at default settings, three do not support the native resolution, four show the wrong controller glyphs and two have interface text Valve judged not legible. Seventeen of the 23 hold Steam Deck Verified, the top badge on Valve's handheld, and still sit a tier lower on the Frame.",
   },
   {
     question: "Why are flatscreen games like Portal 2 on a VR headset list?",
@@ -1305,9 +1324,9 @@ const faq = faqPageSchema([
       "No. The certification applies to games running on the headset itself. Anything streamed from a gaming PC over the Frame's dedicated 6GHz wireless dongle is exempt, because performance there depends on your PC, not the headset.",
   },
   {
-    question: "When does the Steam Frame come out?",
+    question: "When did the Steam Frame come out?",
     answer:
-      "Valve has confirmed summer 2026 but has not named a day or a price as of September 11, 2026, and summer ends September 22, which leaves 11 days. Two of the headset's Steam backend packages were revised on September 3 for the first time since May, then revised again on September 10, and Steam Machine packages changed six days before its lottery opened. The catalog going from eight titles to 130 in eight weeks is the other strong launch signal on the board, and Valve's own unboxing and setup videos leaked out of the Steam client on August 19. Storefront shelves fill weeks before a product ships, not quarters. Our Steam Frame hub tracks every release date and price signal.",
+      "Valve launched the Steam Frame on September 14, 2026, at $1,059 for 256GB and $1,299 for 1TB. Reservation signups close September 17 at 10:00 AM Pacific and purchase emails begin September 18. The Great on Frame catalog went from eight titles in mid July to 131 on launch day, and Valve's announcement counts over 100 games Steam Frame Standalone Verified. Our Steam Frame hub has the full launch details.",
   },
 ]);
 
@@ -1332,7 +1351,7 @@ export default function GreatOnFramePage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 11, 2026
+          Last updated: September 14, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -1387,12 +1406,15 @@ export default function GreatOnFramePage() {
           Great on Frame is Valve&apos;s curated Steam section for games
           certified to run well on the Steam Frame headset, the VR sibling of
           the Great on Deck label that shaped Steam Deck buying for four years.
-          The page went live in mid July 2026 with eight titles and reported 130
-          matches on September 11, more than a sixteenfold increase in eight weeks.
+          The page went live in mid July 2026 with eight titles and reported 131
+          matches on September 14, the day the Steam Frame launched, more than
+          a sixteenfold increase in nine weeks.
           Most of that growth is flatscreen catalog games rather than native VR,
           and Valve&apos;s own The Lab lost its certification along the way. This
           page tracks the confirmed titles, what the certification actually
-          requires, and every change as Valve fills the shelves ahead of launch.
+          requires, and every change as Valve keeps filling the shelves after
+          launch. One gap stands out on day one: Half-Life: Alyx comes with
+          every Steam Frame, yet it is not on the list.
         </p>
 
         <figure className="pillar-figure">
@@ -1413,10 +1435,11 @@ export default function GreatOnFramePage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve&apos;s page reported 130 matches on September 11, 2026. It launched
+          Valve&apos;s page reported 131 matches on September 14, 2026, launch
+          day. It launched
           with five titles the week of July 13, reached eight within a day, sat
           around 42 by late July, passed 50 on August 3, hit 65 on August 10, 89
-          on August 24, 98 on August 27, 117 on September 6, 121 on September 8, and is at 130 now. You can confirm the running total
+          on August 24, 98 on August 27, 117 on September 6, 121 on September 8, 130 on September 11, and is at 131 now, with The Thrill of the Fight 2 the launch-day addition. You can confirm the running total
           yourself by appending frame_compatibility=3 to a Steam store search,
           which is how the figures on this page are taken. What changed most
           recently is the composition rather than the count: Beat Saber, Job
@@ -1431,7 +1454,7 @@ export default function GreatOnFramePage() {
         >
           Valve does not publish a plain-text index of the catalog, and the
           storefront grid loads in pages, so the table below covers the titles
-          VR.org has individually confirmed rather than all 130. The remainder
+          VR.org has individually confirmed rather than all 131. The remainder
           are being added as they are verified.
         </p>
         <ComparisonTable
@@ -1500,7 +1523,7 @@ export default function GreatOnFramePage() {
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">
-          The tier below: 22 games rated Playable
+          The tier below: 23 games rated Playable
         </h2>
         <p
           className="text-[15px] leading-[1.7] mb-4"
@@ -1519,7 +1542,7 @@ export default function GreatOnFramePage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The comparison worth making is against the Steam Deck. Sixteen of
+          The comparison worth making is against the Steam Deck. Seventeen of
           these titles hold Deck Verified, Valve&apos;s top handheld badge, and
           still land a tier lower on the Frame. One runs the other way:
           Roombattle is Unsupported on Deck and Playable here. Our full
@@ -1559,19 +1582,19 @@ export default function GreatOnFramePage() {
           Valve&apos;s own failure token translated into plain English, and a game
           can carry more than one. Deck is the same title&apos;s Steam Deck
           rating. Type follows Valve&apos;s store categories, so VR covers both
-          VR Only and VR Supported. Valve&apos;s filter returns 23 titles, but We
-          are Eva carries no Steam Frame compatibility record in its app data at
-          all, so it is left out here pending a retest.
+          VR Only and VR Supported. We are Eva was missing from this list on
+          September 11 because it had no Steam Frame compatibility record in
+          its app data; the record appeared by launch day and is included.
         </p>
         <p
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Across the 22, the failures fall out as eleven on text input, five on
+          Across the 23, the failures fall out as eleven on text input, five on
           the default controller configuration, five on default performance,
-          three on native resolution, three on controller glyphs, two on
+          three on native resolution, four on controller glyphs, two on
           interface legibility, and one, Cast n Chill, on a display output issue
-          nothing else in the tier carries. For contrast, 126 of the 130
+          nothing else in the tier carries. For contrast, 127 of the 131
           certified games carry the identical four passing checks with no
           variation at all.
         </p>
@@ -1603,8 +1626,9 @@ export default function GreatOnFramePage() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          The growth rate of this list is also the best public proxy for launch
-          timing. The Frame has{" "}
+          The growth rate of this list was also the best public proxy for
+          launch timing, and it held: the shelf reached 131 on the day Valve
+          opened reservations. The Frame has{" "}
           <a
             href="/articles/steam-frame-no-launch-game-reckoning-2026"
             className="no-underline hover:underline"
@@ -1612,8 +1636,9 @@ export default function GreatOnFramePage() {
           >
             no first-party launch game
           </a>
-          , so the certified catalog is the launch lineup. Eight titles was not
-          a lineup. Sixty-five is the beginning of one, and the shape of it is
+          , so the certified catalog plus the bundled copy of Half-Life: Alyx
+          is the launch lineup. Eight titles was not a lineup. 131 is one, and
+          the shape of it is
           the interesting part: most of the growth has come from flatscreen
           catalog games like Balatro, Cuphead, and Hollow Knight: Silksong
           rather than native VR. Valve appears to be stocking the Frame the way

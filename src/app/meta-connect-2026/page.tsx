@@ -11,7 +11,7 @@ import { AllPillarGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
 import { AD_SLOTS } from "@/lib/ads";
 
-const LAST_UPDATED = "2026-09-06";
+const LAST_UPDATED = "2026-09-14";
 
 export const metadata = {
   title: "Meta Connect 2026: Date, Time, What to Expect, and Everything We Know | VR.org",
@@ -127,7 +127,7 @@ const faq = faqPageSchema([
   {
     question: "How does Meta Connect relate to the Steam Frame launch?",
     answer:
-      "Valve's stated summer 2026 window for the Steam Frame ends September 22, the day before the Connect keynote. Two of the Frame's Steam backend packages were revised on September 3 for the first time since May, the same move that preceded Steam Machine reservations by six days, so the Frame is expected to be on sale or in a reservation lottery before Meta takes the stage. Bosworth has already said Meta will learn from the Steam Frame.",
+      "Valve launched the Steam Frame on September 14, nine days before the Connect keynote, at $1,059 for 256GB and $1,299 for 1TB. It is sold through a reservation lottery: signups close September 17 at 10 AM Pacific and Valve starts emailing purchase invitations on September 18, so the first buyers will be placing orders the week before Meta takes the stage. Bosworth has already said Meta will learn from the Steam Frame.",
   },
 ]);
 
@@ -183,6 +183,11 @@ const TIMELINE: TimelineEntry[] = [
     slug: "quest-3-240hz-extended-refresh-rates-developer-docs-2026",
     text: "Meta's developer docs list Quest 3 as accepting refresh rates up to 207 Hz, with 240 Hz behind developer mode, then tell developers not to require it.",
   },
+  {
+    date: "Sep 14, 2026",
+    slug: "steam-frame-launch-price-1059-psu-not-included-2026",
+    text: "Valve launches the Steam Frame nine days before the keynote: $1,059 for 256GB, $1,299 for 1TB, sold through a reservation lottery that closes September 17 with purchase emails from September 18.",
+  },
 ];
 
 // Rendered oldest to newest. Entries are hand-maintained and the equivalent
@@ -214,7 +219,7 @@ export default function MetaConnect2026Page() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: September 6, 2026
+          Last updated: September 14, 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -412,21 +417,28 @@ export default function MetaConnect2026Page() {
           className="text-[15px] leading-[1.7] mb-4"
           style={{ color: "var(--text-secondary)" }}
         >
-          Valve&apos;s stated summer window for the Steam Frame ends September
-          22, the day before the keynote, and{" "}
+          Valve did not wait for summer to run out. The Steam Frame{" "}
+          <a
+            href="/articles/steam-frame-launch-price-1059-psu-not-included-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            launched on September 14 at $1,059
+          </a>
+          , eleven days after{" "}
           <a
             href="/articles/steam-frame-packages-revised-september-3-reservation-backend-2026"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            two of the Frame&apos;s Steam backend packages were revised on
-            September 3
+            two of its Steam backend packages were revised
           </a>
-          , the same move that preceded Steam Machine reservations by six
-          days. So the likeliest sequence is a Steam Frame lottery in the
-          second week of September, first units in mid September, and Meta
-          walking on stage a week later with no new headset to sell against a
-          185 gram SteamOS device that streams the entire Steam catalog. Bosworth
+          , through the same reservation lottery Valve used for the Steam
+          Machine. Signups close September 17, purchase emails start going out
+          September 18, and Meta walks on stage September 23 with no new
+          headset to sell against a SteamOS device that streams the entire
+          Steam catalog and plays over 100 Standalone Verified games on its
+          own. Bosworth{" "}
           said in May that{" "}
           <a
             href="/articles/bosworth-quest-4-roadmap-learn-from-steam-frame-may-2026"
@@ -443,7 +455,7 @@ export default function MetaConnect2026Page() {
           >
             Steam Frame vs Quest 3 comparison
           </a>{" "}
-          covers the two headsets that will actually be on sale that week.
+          covers the two headsets people will be choosing between that week.
         </p>
 
         <h2 className="font-display text-2xl font-bold mt-10 mb-3">

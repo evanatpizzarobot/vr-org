@@ -457,9 +457,9 @@
       "file": "src/app/steam-frame/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-09-08",
+      "lastRefreshed": "2026-09-14",
       "checklist": [
-        "Refresh on EVERY Steam Frame news beat until launch, not just on cadence",
+        "Refresh on EVERY Steam Frame news beat through launch month (launched Sep 14, 2026; purchase emails from Sep 18), not just on cadence",
         "Update the release-date and price signal sections with the newest reporting",
         "Append new articles to the dated timeline with links",
         "Keep the FAQ answers in sync with the latest status (no stale windows)",
@@ -472,7 +472,7 @@
       "file": "src/app/great-on-frame/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-09-08",
+      "lastRefreshed": "2026-09-14",
       "checklist": [
         "Check store.steampowered.com/greatonframe for new titles on EVERY Steam Frame beat",
         "Append additions to VERIFIED_GAMES (in page order) AND the CHANGELOG with dates",
@@ -485,11 +485,11 @@
       "file": "src/app/steam-frame-price/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-09-08",
+      "lastRefreshed": "2026-09-14",
       "checklist": [
         "Append new leaks/estimates to PRICE_SIGNALS with dates",
         "Keep the lede's 'as of' date and dollar figures matched to the newest signal",
-        "THE MOMENT Valve announces the price: rewrite lede to lead with the official number, keep signal history below",
+        "DONE Sep 14, 2026: Valve announced $1,059 (256GB) and $1,299 (1TB); lede leads with the official number, signal history kept below. Keep regional and accessory tables matched to Valve's store",
         "After launch: relax cadence to 30d, page becomes 'Steam Frame price and where to buy'"
       ]
     },
@@ -498,11 +498,11 @@
       "file": "src/app/steam-frame-release-date/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-09-08",
+      "lastRefreshed": "2026-09-14",
       "checklist": [
         "Append new signals to DATE_SIGNALS with dates",
         "Keep the lede's 'as of' date current on every touch",
-        "THE MOMENT Valve names a date or opens reservations: rewrite lede to lead with it",
+        "DONE Sep 14, 2026: launched with reservations (signups close Sep 17 10am PT, purchase emails from Sep 18); lede leads with it. Add first-shipment and delivery signals as they land",
         "After launch: convert to 'Steam Frame launch: how it went' record, relax cadence to 60d"
       ]
     },
@@ -527,7 +527,7 @@
       "file": "src/app/steam-frame-vs-quest-3/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-09-08",
+      "lastRefreshed": "2026-09-14",
       "checklist": [
         "THE MOMENT Valve announces the Steam Frame price: put the official number in the SpecTable, rewrite the price section and FAQ, re-check the verdict",
         "Verify Quest 3 ($599) price at Meta's store",
@@ -540,7 +540,7 @@
       "file": "src/app/steam-frame-specs/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-09-08",
+      "lastRefreshed": "2026-09-14",
       "checklist": [
         "THE MOMENT Valve publishes final retail specs: replace announcement figures with shipping ones and note anything that changed",
         "Fill the 'What Valve still has not told anyone' table as gaps close (price, date, battery runtime, IPD range)",
@@ -554,7 +554,7 @@
       "file": "src/app/steam-frame-games/page.tsx",
       "category": "pillar",
       "cadenceDays": 14,
-      "lastRefreshed": "2026-09-08",
+      "lastRefreshed": "2026-09-14",
       "checklist": [
         "Update the Great on Frame certified count and its dated growth line from /great-on-frame",
         "Add marquee certifications as they land; link every named game to its verified Steam app id",

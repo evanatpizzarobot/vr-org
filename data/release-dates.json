@@ -1,23 +1,23 @@
 {
-  "lastUpdated": "2026-09-08",
+  "lastUpdated": "2026-09-14",
   "items": [
     {
       "id": "valve-steam-frame",
       "name": "Valve Steam Frame",
       "category": "headset",
-      "status": "expected",
-      "dateText": "Summer 2026, packaging finished, no date or price yet",
-      "isoDate": null,
-      "sortDate": "2026-09-22",
+      "status": "confirmed",
+      "dateText": "Launched September 14, 2026. Reservations close September 17, purchase emails from September 18",
+      "isoDate": "2026-09-18",
+      "sortDate": null,
       "platforms": [
         "SteamOS standalone",
         "PC VR streaming"
       ],
-      "price": "Not announced. Analysts expect $899 to $1,199",
-      "summary": "Valve's standalone SteamOS headset with a dedicated 6GHz wireless dongle for PC streaming. The FCC granted equipment authorization for FCC ID 2AES4-1015 on July 29 and the hardware has cleared customs. Valve's own unboxing and first-time-setup videos leaked out of the Steam client on August 19, showing retail packaging and the Ergonomic Accessories Kit. The Great on Frame catalog has grown from eight certified titles on July 17 to 89 on August 24. Valve has still named neither a price nor a release date, and summer ends September 22.",
+      "price": "$1,059 (256GB) or $1,299 (1TB); power supply $29 extra",
+      "summary": "Valve's wireless, streaming-first SteamOS headset, with a Wi-Fi 6E wireless adapter for PC streaming and standalone play on a Snapdragon 8 Gen 3. Valve launched it on September 14 through a randomized reservation list: signups close September 17 at 10:00 AM Pacific, and the first purchase emails go out September 18. Each kit includes the controllers, the adapter, and Half-Life: Alyx, and Valve counts over 100 games Steam Frame Standalone Verified. Valve ships to the US, Canada, the UK, the EU and Australia, with KOMODO selling in Japan, Taiwan and Hong Kong.",
       "link": "/steam-frame",
-      "officialUrl": "https://store.steampowered.com/sale/steammachine",
-      "lastVerified": "2026-08-24"
+      "officialUrl": "https://store.steampowered.com/hardware/steamframe",
+      "lastVerified": "2026-09-14"
     },
     {
       "id": "samsung-galaxy-xr-uk",
@@ -496,17 +496,17 @@
       "name": "Steam Frame Enthusiast Kit",
       "category": "accessory",
       "status": "expected",
-      "dateText": "TBA, FCC confirmed",
+      "dateText": "TBA, FCC confirmed, not in Valve's launch accessory lineup",
       "isoDate": null,
       "sortDate": null,
       "platforms": [
         "Steam Frame"
       ],
       "price": "Not announced",
-      "summary": "An accessory bundle with a hot-swappable battery pack for the Steam Frame, confirmed by FCC filings in June.",
+      "summary": "An accessory bundle with a hot-swappable battery pack for the Steam Frame, confirmed by FCC filings in June. It was not among the three first-party accessories Valve listed at the September 14 launch: a $29 power supply, the $59 Ergonomic Accessories Kit, and the $49 Accessory Replacement Kit.",
       "link": "/steam-frame",
       "officialUrl": null,
-      "lastVerified": "2026-07-04"
+      "lastVerified": "2026-09-14"
     },
     {
       "id": "pimax-dream-air",

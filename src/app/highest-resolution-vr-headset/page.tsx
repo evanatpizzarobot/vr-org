@@ -48,7 +48,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Highest Resolution VR Headset 2026: Sharpest Displays Ranked",
   datePublished: "2026-06-04",
-  dateModified: "2026-08-24",
+  dateModified: "2026-09-14",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -150,7 +150,7 @@ export default function HighestResolutionVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 2026
+          Last updated: September 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -289,9 +289,11 @@ export default function HighestResolutionVRHeadsetPage() {
           grams. Treat that number as a claim until somebody outside Pico has
           handled the hardware. A debut event is not a review, and PPI on a
           spec sheet is not pixels per degree through a lens, which is the
-          figure this page ranks on. Valve&apos;s summer-bound Steam Frame
-          pairs dual 2160x2160 panels with eye-tracked foveated rendering,
-          which spends its pixels where you are actually looking.
+          figure this page ranks on. Valve&apos;s Steam Frame, launched on
+          September 14 at $1,059 and sold through a reservation lottery, pairs
+          two 2160x2160 LCD panels with eye-tracked Foveated Streaming, which
+          Valve says steers the best-quality pixels to where you are looking
+          when you stream from a PC. No retail unit has been measured yet.
           Our{" "}
           <a
             href="/steam-frame"
@@ -300,7 +302,7 @@ export default function HighestResolutionVRHeadsetPage() {
           >
             Steam Frame hub
           </a>{" "}
-          tracks the latter&apos;s launch.
+          has the official specs.
         </p>
 
         <RecentArticles heading="Latest Hardware News" limit={4} tag="hardware" />

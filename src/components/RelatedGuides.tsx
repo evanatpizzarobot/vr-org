@@ -98,7 +98,7 @@ const PILLAR_GUIDES: Record<string, Guide> = {
   "steam-frame": {
     label: "Valve Steam Frame: Everything We Know",
     href: "/steam-frame",
-    description: "Release date signals, price expectations, and specs, updated.",
+    description: "Launched September 14. Official price, specs, and the reservation lottery.",
   },
   "great-on-frame": {
     label: "Great on Frame: Verified Games List",
@@ -108,17 +108,17 @@ const PILLAR_GUIDES: Record<string, Guide> = {
   "steam-frame-price": {
     label: "Steam Frame Price Tracker",
     href: "/steam-frame-price",
-    description: "Every leak, estimate, and signal on what the Frame will cost.",
+    description: "Official pricing: $1,059 and $1,299, every region, plus accessories.",
   },
   "steam-frame-release-date": {
     label: "Steam Frame Release Date Tracker",
     href: "/steam-frame-release-date",
-    description: "Summer 2026 confirmed. Every launch signal, dated.",
+    description: "Launched September 14. Reservation dates and every launch signal.",
   },
   "steam-frame-specs": {
     label: "Steam Frame Specs",
     href: "/steam-frame-specs",
-    description: "The full hardware spec sheet, controllers, and what Valve has not said.",
+    description: "Valve's official spec sheet, controllers, and what is sold separately.",
   },
   "steam-frame-games": {
     label: "Steam Frame Games",

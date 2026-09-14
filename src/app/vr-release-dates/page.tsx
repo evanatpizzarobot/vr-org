@@ -59,7 +59,7 @@ const SECTIONS: { key: ReleaseCategory; title: string; blurb: string }[] = [
     key: "headset",
     title: "VR headsets",
     blurb:
-      "Full headsets, from the imminent Valve Steam Frame to the 2027 wave. Shipped models move up to the Out now section.",
+      "Full headsets, from the just-launched Valve Steam Frame to the 2027 wave. Shipped models move up to the Out now section.",
   },
   {
     key: "glasses",
@@ -181,12 +181,12 @@ export default function VRReleaseDatesPage() {
     {
       question: "When does the Valve Steam Frame come out?",
       answer:
-        "Valve confirmed a summer 2026 window for the Steam Frame. Summer officially ends September 22 and Valve has still named no price or release date. Analyst estimates cluster between $899 and $1,199. Our dedicated Steam Frame page tracks every signal as it lands.",
+        "Valve launched the Steam Frame on September 14, 2026, at $1,059 for the 256GB Kit and $1,299 for the 1TB Kit. You buy one through a randomized reservation list: signups close September 17 at 10:00 AM Pacific, results arrive that day, and the first purchase emails go out September 18. Our dedicated Steam Frame page has the full launch details.",
     },
     {
       question: "What new VR headsets are coming out in 2026?",
       answer:
-        "The Valve Steam Frame is the headliner, now at the edge of its confirmed summer 2026 window with no price or date announced. Samsung's Galaxy XR reached the UK on July 8. Pico's Space Pro, a Vision Pro competitor with 4,000-PPI micro-OLED displays, makes its public debut at a Beijing event on September 2. The Meta Quest 4 is not a 2026 product; reporting points to 2027.",
+        "The Valve Steam Frame is the headliner, launched September 14 at $1,059 with purchase emails starting September 18. Samsung's Galaxy XR reached the UK on July 8. Pico's Space Pro, a Vision Pro competitor with 4,000-PPI micro-OLED displays, makes its public debut at a Beijing event on September 2. The Meta Quest 4 is not a 2026 product; reporting points to 2027.",
     },
     {
       question: "What VR games are coming out in 2026?",
@@ -201,7 +201,7 @@ export default function VRReleaseDatesPage() {
     {
       question: "How often is this page updated?",
       answer:
-        "The tracker runs on a weekly verification cycle, and major beats like a Steam Frame price reveal are reflected the day they land. Every entry links to the VR.org coverage it is sourced from, and the last-updated date at the top of the page reflects the most recent real change.",
+        "The tracker runs on a weekly verification cycle, and major beats like the Steam Frame's September 14 launch are reflected the day they land. Every entry links to the VR.org coverage it is sourced from, and the last-updated date at the top of the page reflects the most recent real change.",
     },
   ]);
 
@@ -293,8 +293,9 @@ export default function VRReleaseDatesPage() {
           >
             Steam Frame
           </a>
-          , confirmed for summer 2026 and now at the edge of that window (summer
-          ends September 22) with no price or release date yet named. Every
+          , which Valve launched on September 14, 2026 at $1,059, with
+          reservation signups closing September 17 and the first purchase
+          emails going out September 18. Every
           entry links to the VR.org reporting it is sourced from, and each one
           carries a status badge so you can tell a maker-stated date from a
           leak.
@@ -327,8 +328,8 @@ export default function VRReleaseDatesPage() {
             />
           </a>
           <figcaption>
-            The headline release of 2026: Valve&apos;s Steam Frame, confirmed for
-            summer 2026 with no price or release date yet named. Image: Valve
+            The headline release of 2026: Valve&apos;s Steam Frame, launched
+            September 14, 2026 at $1,059 and $1,299. Image: Valve
           </figcaption>
         </figure>
 

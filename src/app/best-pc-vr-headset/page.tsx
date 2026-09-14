@@ -47,7 +47,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Best PC VR Headset 2026: Top Headsets for SteamVR and PC Gaming",
   datePublished: "2026-06-04",
-  dateModified: "2026-08-24",
+  dateModified: "2026-09-14",
   author: { "@type": "Organization", name: "VR.org", url: "https://vr.org" },
   publisher: {
     "@type": "Organization",
@@ -163,12 +163,12 @@ const faq = faqPageSchema([
   {
     question: "What happened to the Valve Index and HP Reverb G2?",
     answer:
-      "Both are effectively discontinued. The Valve Index was a beloved PC VR enthusiast headset with finger-tracking controllers, and the HP Reverb G2 was a sim favorite for its sharp displays, but neither is in regular production anymore. You may still find clearance or used units. For a new purchase, the Quest 3, Bigscreen Beyond 2, and Pimax Crystal Light are the current picks, with Valve's upcoming Steam Frame the one to watch.",
+      "Both are effectively discontinued. The Valve Index was a beloved PC VR enthusiast headset with finger-tracking controllers, and the HP Reverb G2 was a sim favorite for its sharp displays, but neither is in regular production anymore. You may still find clearance or used units. For a new purchase, the Quest 3, Bigscreen Beyond 2, and Pimax Crystal Light are the current picks, with Valve's Steam Frame, launched September 14 at $1,059 and sold through a reservation lottery, the new option to consider.",
   },
   {
     question: "Is the Steam Frame a PC VR headset?",
     answer:
-      "Yes, and Valve calls PC streaming the primary experience. The Steam Frame ships with a dedicated 6GHz wireless dongle that streams your Steam library with no perceptible lag in hands-on reports, plus standalone SteamOS play on-device. Valve has confirmed summer 2026; the price is not announced, with estimates between $899 and $1,199. The launch signals keep stacking: the Great on Frame catalog hit 89 certified titles on August 24, up from eight in mid July, and Valve's own unboxing and first-time-setup videos leaked out of the Steam client on August 19. Summer ends September 22. It is not yet a buy because you cannot buy it, but if you are shopping for wireless PC VR it is worth waiting the few weeks out. Our Steam Frame hub tracks every signal.",
+      "Yes, and Valve calls it streaming-first. The Steam Frame ships with a dedicated 6GHz (Wi-Fi 6E) wireless adapter, dual radios in the headset, and eye-tracked Foveated Streaming for your PC library, plus standalone SteamOS play on-device with over 100 Standalone Verified games. Valve launched it on September 14 at $1,059 for 256GB and $1,299 for 1TB, with Half-Life: Alyx included and no power supply in the box. You cannot buy one outright yet: signups for Valve's reservation lottery close September 17 at 10 AM Pacific and purchase emails start September 18, so no retail unit has reached customers and we have not reviewed one. If you are shopping for wireless PC VR, signing up costs nothing. Our Steam Frame hub has the full details.",
   },
 ]);
 
@@ -193,7 +193,7 @@ export default function BestPCVRHeadsetPage() {
         </h1>
 
         <p className="text-sm mb-3" style={{ color: "var(--text-muted)" }}>
-          Last updated: August 2026
+          Last updated: September 2026
         </p>
 
         <p className="text-[13px] mb-8" style={{ color: "var(--text-muted)" }}>
@@ -296,17 +296,19 @@ export default function BestPCVRHeadsetPage() {
           >
             Steam Frame
           </a>
-          , confirmed for summer 2026 with a bundled 6GHz dongle for wireless PC
-          streaming and every launch signal now flashing; if your budget can
-          stretch to the expected $899 to $1,199 and you are not in a hurry,{" "}
+          , which launched on September 14 at $1,059 for 256GB and $1,299 for
+          1TB with a Wi-Fi 6E adapter in the kit for wireless PC streaming (a
+          power supply is not included). It sells through a reservation
+          lottery, not a checkout button; if your budget stretches that far,{" "}
           <a
-            href="/steam-frame-release-date"
+            href="/articles/steam-frame-reservation-how-to-sign-up-before-september-17-2026"
             className="no-underline hover:underline"
             style={{ color: "var(--accent-cyan)" }}
           >
-            waiting for the reservation window
+            signing up before September 17
           </a>{" "}
-          is a defensible call. For the cheapest entry overall, see our{" "}
+          is a defensible call, with the caveat that nobody has reviewed a
+          retail unit yet. For the cheapest entry overall, see our{" "}
           <a
             href="/best-budget-vr-headset"
             className="no-underline hover:underline"
