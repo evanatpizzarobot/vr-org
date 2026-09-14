@@ -191,7 +191,7 @@ export default function VRReleaseDatesPage() {
     {
       question: "What VR games are coming out in 2026?",
       answer:
-        "Already out: D.E.C.A.Y. launched on SteamVR Early Access on August 26, and Into the Radius 2 left Early Access on Quest on August 27. Coming next: Transformers: Beyond Reality Redux on September 3, The Lightkeepers on September 10, and Sol Protocol early access on September 17. Windowed for later this year are Payday: Aces High, Breachers: Outbreak, and Project Hail Mary: Journey Among the Stars.",
+        "Already out: D.E.C.A.Y. launched on SteamVR Early Access on August 26, Into the Radius 2 left Early Access on Quest on August 27, and Transformers: Beyond Reality Redux and The Lightkeepers both shipped on the Meta Store on September 10. Coming next: Sol Protocol early access on September 17. Windowed for later this year are Payday: Aces High, Breachers: Outbreak, and Project Hail Mary: Journey Among the Stars.",
     },
     {
       question: "What do confirmed, expected, and rumored mean on this tracker?",

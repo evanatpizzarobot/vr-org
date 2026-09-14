@@ -298,35 +298,35 @@
       "id": "transformers-beyond-reality-redux",
       "name": "Transformers: Beyond Reality Redux",
       "category": "game",
-      "status": "confirmed",
-      "dateText": "September 10, 2026",
+      "status": "released",
+      "dateText": "Released September 10, 2026",
       "isoDate": "2026-09-10",
       "sortDate": null,
       "platforms": [
         "VR"
       ],
-      "price": null,
-      "summary": "The rebuilt Transformers VR shooter, dated at the Summer 2026 VR Games Showcase for September 3 and now listed on the Meta Store for September 10 at 10 AM PDT.",
+      "price": "$19.99",
+      "summary": "The rebuilt Transformers VR shooter from META4 Interactive and Illogika, dated at the Summer 2026 VR Games Showcase for September 3, shipped on the Meta Store on September 10 at $19.99.",
       "link": "/articles/breachers-outbreak-triangle-factory-zombie-extraction-vr-games-showcase-2026",
-      "officialUrl": null,
-      "lastVerified": "2026-09-08"
+      "officialUrl": "https://www.meta.com/experiences/34014552811522021/",
+      "lastVerified": "2026-09-14"
     },
     {
       "id": "the-lightkeepers",
       "name": "The Lightkeepers",
       "category": "game",
-      "status": "confirmed",
-      "dateText": "September 10, 2026",
+      "status": "released",
+      "dateText": "Released September 10, 2026",
       "isoDate": "2026-09-10",
       "sortDate": null,
       "platforms": [
         "Quest exclusive"
       ],
-      "price": null,
-      "summary": "A day/night lighthouse defense co-op game, announced with a firm date at the Summer 2026 VR Games Showcase.",
+      "price": "$19.99",
+      "summary": "Spectral Games' Lovecraftian day/night lighthouse defense co-op game, announced with a firm date at the Summer 2026 VR Games Showcase, shipped on Quest 3 and 3S on September 10 at $19.99.",
       "link": "/articles/breachers-outbreak-triangle-factory-zombie-extraction-vr-games-showcase-2026",
-      "officialUrl": null,
-      "lastVerified": "2026-08-01"
+      "officialUrl": "https://www.meta.com/experiences/the-lightkeepers/27856043040707456/",
+      "lastVerified": "2026-09-14"
     },
     {
       "id": "sol-protocol",
