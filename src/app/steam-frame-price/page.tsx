@@ -297,7 +297,16 @@ export default function SteamFramePricePage() {
           tracked all summer, but above the roughly $950 that June&apos;s
           retailer database leak attached to a 512GB model, a tier that never
           existed. It missed the goal Valve set itself in November 2025, a
-          Frame cheaper than the $999 Index. You can only buy at this price through Valve&apos;s randomized
+          Frame cheaper than the $999 Index. How the regional figures compare
+          once VAT is taken out is in{" "}
+          <a
+            href="/articles/steam-frame-regional-prices-net-of-tax-reservation-supply-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            our regional pricing analysis
+          </a>
+          . You can only buy at this price through Valve&apos;s randomized
           reservation list, which closes Thursday, September 17 at 10:00 AM
           Pacific. Our{" "}
           <a

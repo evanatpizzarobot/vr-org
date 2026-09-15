@@ -233,7 +233,15 @@ export default function UpcomingVRHeadsets2026Page() {
           <strong>Valve Steam Frame.</strong> The most anticipated headset of
           the year launched on September 14, and it is still on this list only
           because nobody has one yet. Valve priced it at $1,059 for 256GB and
-          $1,299 for 1TB (1,049 EUR, 889 GBP, 1,529 CAD, 1,609 AUD), with
+          $1,299 for 1TB (1,049 EUR, 889 GBP, 1,529 CAD, 1,609 AUD, and{" "}
+          <a
+            href="/articles/steam-frame-regional-prices-net-of-tax-reservation-supply-2026"
+            className="no-underline hover:underline"
+            style={{ color: "var(--accent-cyan)" }}
+          >
+            here is how those compare net of tax
+          </a>
+          ), with
           Half-Life: Alyx and a Wi-Fi 6E wireless adapter in the kit and no
           power supply; Valve sells a 45W unit for $29. The official spec line
           is a Snapdragon 8 Gen 3, 16GB of LPDDR5X, two 2160x2160 LCD panels at
